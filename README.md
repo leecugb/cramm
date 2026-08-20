@@ -164,7 +164,7 @@ Each PDF page dissects one candidate rule — every diagnostic / not-absorption
 continuum-removed profile (squares) against the input (circles), and the
 full constraint audit (k0/k1, r², raw depth, weights, thresholds):
 
-![Single-spectrum diagnostic PDF: per-rule feature dissection](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/single_spectrum_diagnostic.png)
+![Single-spectrum diagnostic PDF: per-rule feature dissection](docs/single_spectrum_diagnostic.png)
 
 More scenarios — float (`raw=True`) output, custom rule libraries, the
 `invalidate_caches()` contract, component-level calls — in
@@ -252,7 +252,7 @@ degree X_Ts = X(Fe-Celadonite)+X(Celadonite) in the muscovite stability field
 with the corresponding wv2200 position (USGS conversion chain:
 X_Ts → Al₂O₃ wt% → λ = −3.1·Al₂O₃ + 2308):
 
-![Tschermak substitution degree vs. wv2200 in the muscovite field](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/muscovite_wv2200_phase_diagram.png)
+![Tschermak substitution degree vs. wv2200 in the muscovite field](docs/muscovite_wv2200_phase_diagram.png)
 
 X_Ts rises from ~0 on the high-T / low-K⁺ side to 0.35+ on the low-T / high-K⁺
 side, and the wv2200 contours (magenta, 2190→2215 nm) run nearly parallel to
