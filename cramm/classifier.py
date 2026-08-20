@@ -88,6 +88,10 @@ def _hyper_read_specpr(filename: str) -> "pd.DataFrame":  # type: ignore[name-de
     with open(filename, "rb") as f:
         n = f.seek(0, 2)
         f.seek(0)
+        if n < 1536 or n % 1536:
+            raise ValueError(
+                f"{filename}: size {n} is not a positive multiple of the 1536-byte "
+                f"specpr record (truncated or not a specpr file)")
         f.read(1536)
         firstTime = 1
         dtype = [
@@ -245,11 +249,19 @@ def _get_quadratic_center(
     y2 = con.ravel()[index[mas] + c * np.arange(r)]
     y1 = con.ravel()[index[mas] - 1 + c * np.arange(r)]
     y3 = con.ravel()[index[mas] + 1 + c * np.arange(r)]
-    temp = ((y2 - y1) * (x3**2 - x2**2) - (y3 - y2) * (x2**2 - x1**2)) / (
-        (y3 - y2) * (x2 - x1) - (y2 - y1) * (x3 - x2)
-    ) / 2
+    # errstate: a collinear triple makes the vertex denominator 0 -> the
+    # division legitimately produces inf/nan, folded to NaN just below
+    with np.errstate(invalid="ignore", divide="ignore"):
+        temp = ((y2 - y1) * (x3**2 - x2**2) - (y3 - y2) * (x2**2 - x1**2)) / (
+            (y3 - y2) * (x2 - x1) - (y2 - y1) * (x3 - x2)
+        ) / 2
     cen = np.zeros(len(index)) * np.nan
     cen[mas] = -1 * temp
+    # The parabola-vertex denominator is 0 for collinear triples (noise /
+    # flat-topped spectra), yielding +-inf: fold every non-finite vertex to
+    # NaN so the caller's NaN->0 fold catches them too (an inf would survive
+    # into mus_center and corrupt the tiered coloring downstream)
+    cen[~np.isfinite(cen)] = np.nan
     center = np.zeros(len(spectrum)) * np.nan
     center[mask_const] = cen
     return center
@@ -570,10 +582,14 @@ def _diagnostic_feature(
         mask_const = mask_const & (y_av[:, 1] >= CONTINUUM_CONSTRAINTS[4])
     if CONTINUUM_CONSTRAINTS[5] is not None:
         mask_const = mask_const & (y_av[:, 1] <= CONTINUUM_CONSTRAINTS[5])
-    if CONTINUUM_CONSTRAINTS[6] is not None:
-        mask_const = mask_const & ((y_av[:, 1] / y_av[:, 0]) >= CONTINUUM_CONSTRAINTS[6])
-    if CONTINUUM_CONSTRAINTS[7] is not None:
-        mask_const = mask_const & ((y_av[:, 1] / y_av[:, 0]) <= CONTINUUM_CONSTRAINTS[7])
+    # errstate: a zero left-endpoint reflectance legitimately yields inf/nan in
+    # the ratio, which then correctly fails the >= / <= comparisons (the
+    # warnings are noise; same rationale as the depth-ratio constraint below)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        if CONTINUUM_CONSTRAINTS[6] is not None:
+            mask_const = mask_const & ((y_av[:, 1] / y_av[:, 0]) >= CONTINUUM_CONSTRAINTS[6])
+        if CONTINUUM_CONSTRAINTS[7] is not None:
+            mask_const = mask_const & ((y_av[:, 1] / y_av[:, 0]) <= CONTINUUM_CONSTRAINTS[7])
 
     con = y_av[mask_const][:, [0]] + (y_av[mask_const][:, [1]] - y_av[mask_const][:, [0]]) / (
         x_av[1] - x_av[0]
@@ -1048,16 +1064,23 @@ class MicaClassifier:
             raise FileNotFoundError(f"{splib_p} not found.")
         dic3 = _hyper_read_specpr(str(splib_p))
 
-        # Build the set of record numbers needed for resampling
+        # Build the set of record numbers needed for resampling. int guard on
+        # every source: JSON object keys are strings, and mixture component ids
+        # arrive via the mixtures loop below as int(comp_id) -- a stray string
+        # here would crash sorted(self.ids) with an opaque TypeError.
         ids: set = set()
         for value in rf.values():
             ref = value["reference"]["reflectance_record"]
             if isinstance(ref, int):
                 ids.add(ref)
             for feat in value.get("not_absolute_features", []):
-                ids.add(feat["reflectance_record"])
+                rec = feat["reflectance_record"]
+                if isinstance(rec, int):
+                    ids.add(rec)
             for feat in value.get("not_relative_features", []):
-                ids.add(feat["reflectance_record"])
+                rec = feat["reflectance_record"]
+                if isinstance(rec, int):
+                    ids.add(rec)
         for components in mixtures.values():
             for comp_id in components.keys():
                 ids.add(int(comp_id))

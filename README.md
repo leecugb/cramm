@@ -307,10 +307,6 @@ relying on `test_parallel.py`.
   data directory and use a relative path instead.
 - **`ImportError: gdal`** — you called `write_tiff` without GDAL installed; see
   *Installation*. Classification itself never imports GDAL.
-- **`RuntimeWarning: invalid value encountered in divide`** during
-  classification — benign: ratio constraints are evaluated against zero
-  left-endpoint reflectances on some rules; the resulting NaN/inf correctly
-  fails the comparison.
 
 ## Package layout
 

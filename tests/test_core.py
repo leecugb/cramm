@@ -302,7 +302,7 @@ def test_specpr_and_splib_validation():
             _hyper_read_specpr(empty)
             raise AssertionError("empty file should raise ValueError")
         except ValueError as e:
-            assert "no spectral records parsed" in str(e)
+            assert "specpr" in str(e)  # size guard or "no spectral records parsed"
     finally:
         os.remove(empty)
     try:
@@ -331,6 +331,62 @@ def test_emit_reader_non_emit_nc():
             assert "not an EMIT L2A structure" in str(e)
     finally:
         os.remove(path)
+
+
+def test_emit_reader_shape_validation():
+    """EMIT-structured but geometrically inconsistent NetCDF -> clear ValueError."""
+    try:
+        import netCDF4 as nc
+    except ImportError:
+        raise SkipTest("netCDF4 not available")
+    from cramm.emit_reader import EmitReader
+
+    # case 1: reflectance not 3-D
+    path = os.path.join(tempfile.gettempdir(), "cramm_bad_shape1.nc")
+    try:
+        with nc.Dataset(path, "w") as ds:
+            ds.createDimension("r", 3)
+            ds.createDimension("c", 5)
+            ds.createDimension("b", 4)
+            loc = ds.createGroup("location")
+            loc.createVariable("lon", "f8", ("r", "c"))[:] = 0.0
+            loc.createVariable("lat", "f8", ("r", "c"))[:] = 0.0
+            ds.createVariable("reflectance", "f4", ("r", "c"))[:] = 0.5
+            sbp = ds.createGroup("sensor_band_parameters")
+            sbp.createVariable("wavelengths", "f4", ("b",))[:] = np.arange(400, 404)
+            sbp.createVariable("fwhm", "f4", ("b",))[:] = 7.4
+        try:
+            EmitReader.load(path)
+            raise AssertionError("should raise ValueError")
+        except ValueError as e:
+            assert "3-D" in str(e)
+    finally:
+        if os.path.exists(path):
+            os.remove(path)
+
+    # case 2: band axis longer than wavelengths
+    path = os.path.join(tempfile.gettempdir(), "cramm_bad_shape2.nc")
+    try:
+        with nc.Dataset(path, "w") as ds:
+            ds.createDimension("r", 3)
+            ds.createDimension("c", 5)
+            ds.createDimension("b", 4)
+            ds.createDimension("b6", 6)
+            loc = ds.createGroup("location")
+            loc.createVariable("lon", "f8", ("r", "c"))[:] = 0.0
+            loc.createVariable("lat", "f8", ("r", "c"))[:] = 0.0
+            ds.createVariable("reflectance", "f4", ("r", "c", "b6"))[:] = 0.5
+            sbp = ds.createGroup("sensor_band_parameters")
+            sbp.createVariable("wavelengths", "f4", ("b",))[:] = np.arange(400, 404)
+            sbp.createVariable("fwhm", "f4", ("b",))[:] = 7.4
+        try:
+            EmitReader.load(path)
+            raise AssertionError("should raise ValueError")
+        except ValueError as e:
+            assert "band axis mismatch" in str(e)
+    finally:
+        if os.path.exists(path):
+            os.remove(path)
 
 
 def test_pdf_rcparams_restored():
@@ -407,6 +463,7 @@ def main():
     run("render color table upfront validation", test_render_missing_color)
     run("specpr/splib validation", test_specpr_and_splib_validation)
     run("EmitReader non-EMIT error", test_emit_reader_non_emit_nc)
+    run("EmitReader shape validation", test_emit_reader_shape_validation)
     run("PDF rcParams restoration", test_pdf_rcparams_restored)
 
     if os.path.exists(args.nc):

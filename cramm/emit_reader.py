@@ -54,6 +54,19 @@ class EmitReader:
                 bp = dataset["sensor_band_parameters"]["fwhm"][:].data / 1000.0
             except (IndexError, KeyError) as e:
                 raise ValueError(f"{pathname}: not an EMIT L2A structure (missing variable/group {e})") from e
+        # Structural validation: fail here with an actionable message rather than
+        # deep downstream (obscure unpack / indexing errors in the bad-band scan).
+        if spectrum.ndim != 3:
+            raise ValueError(
+                f"{pathname}: reflectance should be 3-D [r, c, bands], got shape {spectrum.shape}")
+        if lon.shape != spectrum.shape[:2] or lat.shape != spectrum.shape[:2]:
+            raise ValueError(
+                f"{pathname}: geometry mismatch — reflectance{spectrum.shape} "
+                f"vs lon{lon.shape}/lat{lat.shape}")
+        if spectrum.shape[2] != w.shape[0]:
+            raise ValueError(
+                f"{pathname}: band axis mismatch — reflectance has {spectrum.shape[2]} bands "
+                f"but sensor_band_parameters/wavelengths has {w.shape[0]}")
         spectrum[spectrum == -9999] = 0
 
         _, _, s = spectrum.shape
