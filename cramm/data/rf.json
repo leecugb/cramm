@@ -1,0 +1,5876 @@
+{
+  "rf": {
+    "vegetation_green": {
+      "output_name": "vegetation_green",
+      "reference": {
+        "reflectance_record": 12539,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.85,
+          "continuum_endpoints": [
+            0.522,
+            0.552,
+            0.74,
+            0.78
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.03,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": 0.9,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.05,
+          "continuum_endpoints": [
+            0.88,
+            0.92,
+            1.063,
+            1.093
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.06,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            1.09,
+            1.131,
+            1.27,
+            1.3
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.06,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.2,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "vegetation_npv_and_green": {
+      "output_name": "vegetation_npv_and_green",
+      "reference": {
+        "reflectance_record": 13411,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.7,
+          "continuum_endpoints": [
+            0.522,
+            0.552,
+            0.73,
+            0.775
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.03,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": 0.9,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            1.08,
+            1.131,
+            1.27,
+            1.3
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.06,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.2,
+          "continuum_endpoints": [
+            2.205,
+            2.24,
+            2.385,
+            2.416
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.015,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.07,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "snow_melting": {
+      "output_name": "snow_melting",
+      "reference": {
+        "reflectance_record": 11541,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.35,
+          "continuum_endpoints": [
+            0.895,
+            0.946,
+            1.08,
+            1.11
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.08,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.65,
+          "continuum_endpoints": [
+            1.085,
+            1.178,
+            1.305,
+            1.345
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": 0.9091
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12539,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            0.522,
+            0.552,
+            0.74,
+            0.78
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.5
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.05,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "snow_slush": {
+      "output_name": "snow_slush",
+      "reference": {
+        "reflectance_record": 11589,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.35,
+          "continuum_endpoints": [
+            0.87,
+            0.92,
+            1.08,
+            1.11
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": 0.5,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.65,
+          "continuum_endpoints": [
+            1.08,
+            1.13,
+            1.305,
+            1.345
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.03,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": 0.9091
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12539,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            0.522,
+            0.552,
+            0.74,
+            0.78
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.5
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.05,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "water": {
+      "output_name": "water",
+      "reference": {
+        "reflectance_record": 11607,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.9,
+          "continuum_endpoints": [
+            0.54,
+            0.585,
+            2.19,
+            2.28
+          ],
+          "continuum_constraints": {
+            "left_min": 0.0,
+            "left_max": 0.19,
+            "mean_min": null,
+            "mean_max": null,
+            "right_min": 0.0,
+            "right_max": 0.08,
+            "ratio_min": null,
+            "ratio_max": 1.0
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            0.42,
+            0.48,
+            0.61,
+            0.64
+          ],
+          "continuum_constraints": {
+            "left_min": 0.0,
+            "left_max": 0.14,
+            "mean_min": null,
+            "mean_max": null,
+            "right_min": 0.0,
+            "right_max": 0.14,
+            "ratio_min": null,
+            "ratio_max": 1.5
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "water_sediment_high": {
+      "output_name": "water_sediment_high",
+      "reference": {
+        "reflectance_record": 11647,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.8,
+          "continuum_endpoints": [
+            0.87,
+            0.913,
+            1.055,
+            1.085
+          ],
+          "continuum_constraints": {
+            "left_min": 0.0,
+            "left_max": 0.28,
+            "mean_min": null,
+            "mean_max": null,
+            "right_min": 0.0,
+            "right_max": 0.24,
+            "ratio_min": null,
+            "ratio_max": 1.1
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            0.685,
+            0.725,
+            0.792,
+            0.822
+          ],
+          "continuum_constraints": {
+            "left_min": 0.0,
+            "left_max": 0.42,
+            "mean_min": null,
+            "mean_max": null,
+            "right_min": 0.0,
+            "right_max": 0.35,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            0.73,
+            0.76,
+            0.85,
+            0.885
+          ],
+          "continuum_constraints": {
+            "left_min": 0.0,
+            "left_max": 0.32,
+            "mean_min": null,
+            "mean_max": null,
+            "right_min": 0.0,
+            "right_max": 0.32,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "water_sediment_low": {
+      "output_name": "water_sediment_low",
+      "reference": {
+        "reflectance_record": 11629,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.8,
+          "continuum_endpoints": [
+            0.87,
+            0.911,
+            1.052,
+            1.082
+          ],
+          "continuum_constraints": {
+            "left_min": 0.0,
+            "left_max": 0.14,
+            "mean_min": null,
+            "mean_max": null,
+            "right_min": 0.0,
+            "right_max": 0.12,
+            "ratio_min": null,
+            "ratio_max": 1.1
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            0.68,
+            0.71,
+            0.796,
+            0.826
+          ],
+          "continuum_constraints": {
+            "left_min": 0.0,
+            "left_max": 0.18,
+            "mean_min": null,
+            "mean_max": null,
+            "right_min": 0.0,
+            "right_max": 0.15,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            0.725,
+            0.76,
+            0.835,
+            0.87
+          ],
+          "continuum_constraints": {
+            "left_min": 0.0,
+            "left_max": 0.14,
+            "mean_min": null,
+            "mean_max": null,
+            "right_min": 0.0,
+            "right_max": 0.14,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "dry_veg_grass": {
+      "output_name": "dry_veg_grass",
+      "reference": {
+        "reflectance_record": 12658,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.1,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.38,
+            2.415
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.1,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "dry_veg_grass_2_3um": {
+      "output_name": "dry_veg_grass_2_3um",
+      "reference": {
+        "reflectance_record": 12658,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.38,
+            2.415
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.1,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "dry_veg_nongrass": {
+      "output_name": "dry_veg_nongrass",
+      "reference": {
+        "reflectance_record": 12794,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.1,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.39,
+            2.425
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.1,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "dry_veg_nongrass_2_3um": {
+      "output_name": "dry_veg_nongrass_2_3um",
+      "reference": {
+        "reflectance_record": 12794,
+        "wavelength_record": 28
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.39,
+            2.425
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.1,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "muscovite_lowAl": {
+      "output_name": "muscovite_lowAl",
+      "reference": {
+        "reflectance_record": 6258,
+        "wavelength_record": 40
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.75,
+          "continuum_endpoints": [
+            2.13,
+            2.165,
+            2.2658,
+            2.29
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ],
+          "absorption_center_range": [
+            2.206,
+            2.220
+          ]
+        },
+        {
+          "feature_weight": 0.25,
+          "continuum_endpoints": [
+            2.27,
+            2.305,
+            2.395,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.6
+    },
+    "muscovite_medAl": {
+      "output_name": "muscovite_medAl",
+      "reference": {
+        "reflectance_record": 11117,
+        "wavelength_record": 40
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.75,
+          "continuum_endpoints": [
+            2.1284,
+            2.151,
+            2.26,
+            2.29
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ],
+          "absorption_center_range": [
+            2.200,
+            2.206
+          ]
+        },
+        {
+          "feature_weight": 0.25,
+          "continuum_endpoints": [
+            2.28,
+            2.305,
+            2.38,
+            2.41
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.6
+    },
+    "muscovite_medhighAl": {
+      "output_name": "muscovite_medhighAl",
+      "reference": {
+        "reflectance_record": 6348,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.75,
+          "continuum_endpoints": [
+            2.118,
+            2.151,
+            2.267,
+            2.296
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ],
+          "absorption_center_range": [
+            2.195,
+            2.200
+          ]
+        },
+        {
+          "feature_weight": 0.25,
+          "continuum_endpoints": [
+            2.275,
+            2.315,
+            2.386,
+            2.415
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.6
+    },
+    "muscovite_Fe-rich": {
+      "output_name": "muscovite_Fe-rich",
+      "reference": {
+        "reflectance_record": 6394,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.75,
+          "continuum_endpoints": [
+            2.13,
+            2.165,
+            2.277,
+            2.306
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ],
+          "absorption_center_range": [
+            2.206,
+            2.220
+          ]
+        },
+        {
+          "feature_weight": 0.25,
+          "continuum_endpoints": [
+            2.28,
+            2.31,
+            2.405,
+            2.44
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.6
+    },
+    "illite_imt1": {
+      "output_name": "illite_imt1",
+      "reference": {
+        "reflectance_record": 4693,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.75,
+          "continuum_endpoints": [
+            2.13,
+            2.165,
+            2.266,
+            2.3
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.25,
+          "continuum_endpoints": [
+            2.28,
+            2.306,
+            2.385,
+            2.415
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.6
+    },
+    "illite_gds4": {
+      "output_name": "illite_gds4",
+      "reference": {
+        "reflectance_record": 4625,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.75,
+          "continuum_endpoints": [
+            2.13,
+            2.165,
+            2.266,
+            2.3
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.25,
+          "continuum_endpoints": [
+            2.275,
+            2.306,
+            2.385,
+            2.415
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.6
+    },
+    "kaolinite_wxl": {
+      "output_name": "kaolinite_wxl",
+      "reference": {
+        "reflectance_record": 5088,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.07,
+            2.115,
+            2.237,
+            2.267
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 6348,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.275,
+            2.315,
+            2.386,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 596,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 655,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "kaolinite_pxl": {
+      "output_name": "kaolinite_pxl",
+      "reference": {
+        "reflectance_record": 5167,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.07,
+            2.115,
+            2.24,
+            2.275
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 6348,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.275,
+            2.315,
+            2.386,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 596,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 655,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "kaolinite+clay_mica_or_halloysite": {
+      "output_name": "kaolinite+clay_mica_or_halloysite",
+      "reference": {
+        "reflectance_record": 3869,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.07,
+            2.115,
+            2.25,
+            2.28
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 6348,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.275,
+            2.315,
+            2.386,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 596,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 655,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "kaolinite_or_dickite": {
+      "output_name": "kaolinite_or_dickite",
+      "reference": {
+        "reflectance_record": 2872,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.07,
+            2.115,
+            2.23,
+            2.265
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 6348,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.275,
+            2.315,
+            2.386,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 596,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 655,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.05,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "buddingtonite": {
+      "output_name": "buddingtonite",
+      "reference": {
+        "reflectance_record": 1632,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            1.93,
+            2.05,
+            2.277,
+            2.306
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.38,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.05
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.39,
+            2.425
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.05
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "buddingtonite+montmorillonite_mix_intimate": {
+      "output_name": "buddingtonite+montmorillonite_mix_intimate",
+      "reference": {
+        "reflectance_record": 10350,
+        "wavelength_record": 40
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.04,
+            2.08,
+            2.265,
+            2.3
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.38,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.05
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.39,
+            2.425
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.05
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "alunite_K_250C": {
+      "output_name": "alunite_K_250C",
+      "reference": {
+        "reflectance_record": 596,
+        "wavelength_record": 40
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.025,
+            2.075,
+            2.235,
+            2.26
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "alunite_Na_450C": {
+      "output_name": "alunite_Na_450C",
+      "reference": {
+        "reflectance_record": 655,
+        "wavelength_record": 40
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.02,
+            2.075,
+            2.24,
+            2.27
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.01,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "pyrophyllite": {
+      "output_name": "pyrophyllite",
+      "reference": {
+        "reflectance_record": 7893,
+        "wavelength_record": 40
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.1,
+            2.135,
+            2.21,
+            2.24
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.03,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "pyrophyllite.25+kaolinite.75": {
+      "output_name": "pyrophyllite.25+kaolinite.75",
+      "reference": {
+        "reflectance_record": "mix_7737",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.09,
+            2.128,
+            2.22,
+            2.255
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            0.03,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "jarosite_Na": {
+      "output_name": "jarosite_Na",
+      "reference": {
+        "reflectance_record": 4819,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.069,
+            2.099,
+            2.327,
+            2.357
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "jarosite_K": {
+      "output_name": "jarosite_K",
+      "reference": {
+        "reflectance_record": 4875,
+        "wavelength_record": 40
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.069,
+            2.099,
+            2.327,
+            2.357
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "montmorillonite_Na": {
+      "output_name": "montmorillonite_Na",
+      "reference": {
+        "reflectance_record": 6200,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.118,
+            2.155,
+            2.255,
+            2.287
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 6348,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.275,
+            2.315,
+            2.386,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 3767,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            1.68,
+            1.71,
+            1.765,
+            1.795
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "montmorillonite_Ca": {
+      "output_name": "montmorillonite_Ca",
+      "reference": {
+        "reflectance_record": 6120,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.14,
+            2.178,
+            2.255,
+            2.287
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 6348,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.275,
+            2.315,
+            2.386,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 3767,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            1.68,
+            1.71,
+            1.765,
+            1.795
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "nontronite": {
+      "output_name": "nontronite",
+      "reference": {
+        "reflectance_record": 6772,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.23,
+            2.265,
+            2.32,
+            2.35
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "hectorite": {
+      "output_name": "hectorite",
+      "reference": {
+        "reflectance_record": 3913,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.25,
+            2.27,
+            2.335,
+            2.36
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.33,
+            2.365,
+            2.415,
+            2.44
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "gypsum": {
+      "output_name": "gypsum",
+      "reference": {
+        "reflectance_record": 3767,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            1.5,
+            1.52,
+            1.58,
+            1.6
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.5,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.35,
+          "continuum_endpoints": [
+            1.68,
+            1.71,
+            1.765,
+            1.795
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.65,
+          "continuum_endpoints": [
+            2.06,
+            2.1,
+            2.29,
+            2.325
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "gypsum.6+montmorilloniteNa.4": {
+      "output_name": "gypsum.6+montmorilloniteNa.4",
+      "reference": {
+        "reflectance_record": "mix_7723",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            1.5,
+            1.52,
+            1.58,
+            1.61
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.35,
+          "continuum_endpoints": [
+            1.68,
+            1.71,
+            1.765,
+            1.795
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.65,
+          "continuum_endpoints": [
+            2.06,
+            2.1,
+            2.28,
+            2.32
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "chlorite_lowFe": {
+      "output_name": "chlorite_lowFe",
+      "reference": {
+        "reflectance_record": 2047,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.19,
+            2.22,
+            2.258,
+            2.29
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.7,
+          "continuum_endpoints": [
+            2.16,
+            2.2,
+            2.41,
+            2.445
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.3,
+          "continuum_endpoints": [
+            0.51,
+            0.55,
+            1.69,
+            1.74
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "clinochlore": {
+      "output_name": "clinochlore",
+      "reference": {
+        "reflectance_record": 2253,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.19,
+            2.22,
+            2.28,
+            2.31
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.16,
+            2.19,
+            2.415,
+            2.44
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "clinochlore_Fe": {
+      "output_name": "clinochlore_Fe",
+      "reference": {
+        "reflectance_record": 2371,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.29,
+            2.325
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.175,
+            2.2,
+            2.41,
+            2.445
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "thuringite": {
+      "output_name": "thuringite",
+      "reference": {
+        "reflectance_record": 9262,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.295,
+            2.325
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.43,
+            2.455
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "epidote": {
+      "output_name": "epidote",
+      "reference": {
+        "reflectance_record": 3152,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.268,
+            2.29
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.9,
+          "continuum_endpoints": [
+            2.19,
+            2.23,
+            2.41,
+            2.445
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "pyrophyllite.5+alunite.5_mix_intimate": {
+      "output_name": "pyrophyllite.5+alunite.5_mix_intimate",
+      "reference": {
+        "reflectance_record": 10131,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.505,
+            1.53
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.04,
+            2.08,
+            2.228,
+            2.258
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.245,
+            2.28,
+            2.344,
+            2.374
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.07,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "alunite.5+kaolinite.5": {
+      "output_name": "alunite.5+kaolinite.5",
+      "reference": {
+        "reflectance_record": "mix_7703",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.505,
+            1.524
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.068,
+            2.099,
+            2.23,
+            2.268
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.268,
+            2.298,
+            2.34,
+            2.375
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.07,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "alunite.25+kaolinite.75": {
+      "output_name": "alunite.25+kaolinite.75",
+      "reference": {
+        "reflectance_record": "mix_7707",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.505,
+            1.524
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.068,
+            2.099,
+            2.23,
+            2.268
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.25,
+            2.28,
+            2.345,
+            2.375
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.07,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "kaolinite.5+muscoviteMedAl.5": {
+      "output_name": "kaolinite.5+muscoviteMedAl.5",
+      "reference": {
+        "reflectance_record": "mix_7741",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.108,
+            2.138,
+            2.248,
+            2.278
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.265,
+            2.295,
+            2.39,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 596,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 655,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.05,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.4
+    },
+    "kaolinite.5+muscoviteMedhighAl.5": {
+      "output_name": "kaolinite.5+muscoviteMedhighAl.5",
+      "reference": {
+        "reflectance_record": "mix_7745",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.105,
+            2.135,
+            2.248,
+            2.278
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.265,
+            2.295,
+            2.39,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 596,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 655,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.05,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.4
+    },
+    "kaolinite+muscovite_mix_intimate": {
+      "output_name": "kaolinite+muscovite_mix_intimate",
+      "reference": {
+        "reflectance_record": 10851,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.105,
+            2.138,
+            2.253,
+            2.287
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.28,
+            2.31,
+            2.39,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 596,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 655,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.05,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      },
+      "max_depth_ratio_feat1_over_feat0": 0.4
+    },
+    "kaolinite+smectite_mix_intimate": {
+      "output_name": "kaolinite+smectite_mix_intimate",
+      "reference": {
+        "reflectance_record": 10930,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.098,
+            2.135,
+            2.25,
+            2.285
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 6348,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.275,
+            2.315,
+            2.386,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 596,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.44,
+            1.47,
+            1.5,
+            1.524
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 655,
+          "wavelength_record": 40,
+          "continuum_endpoints": [
+            1.463,
+            1.48,
+            1.515,
+            1.546
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 3767,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            1.68,
+            1.71,
+            1.765,
+            1.795
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.03,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "jarosite+muscovite_mix_intimate": {
+      "output_name": "jarosite+muscovite_mix_intimate",
+      "reference": {
+        "reflectance_record": 11106,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.4,
+          "continuum_endpoints": [
+            0.706,
+            0.738,
+            1.275,
+            1.33
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.6,
+          "continuum_endpoints": [
+            2.105,
+            2.145,
+            2.295,
+            2.325
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.05,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "chlorite+muscovite_mix_intimate": {
+      "output_name": "chlorite+muscovite_mix_intimate",
+      "reference": {
+        "reflectance_record": 10552,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.05,
+          "continuum_endpoints": [
+            0.781,
+            0.815,
+            1.276,
+            1.34
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": 0.4,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.9,
+          "continuum_endpoints": [
+            2.123,
+            2.157,
+            2.274,
+            2.308
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.05,
+          "continuum_endpoints": [
+            2.275,
+            2.31,
+            2.382,
+            2.415
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.015,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "clinochlore_Fe.3+muscovite.7": {
+      "output_name": "clinochlore_Fe.3+muscovite.7",
+      "reference": {
+        "reflectance_record": "mix_7749",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.9,
+          "continuum_endpoints": [
+            2.14,
+            2.165,
+            2.265,
+            2.29
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.1,
+          "continuum_endpoints": [
+            2.28,
+            2.305,
+            2.4,
+            2.425
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite_abundant": {
+      "output_name": "calcite_abundant",
+      "reference": {
+        "reflectance_record": 1751,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.178,
+            2.208,
+            2.377,
+            2.406
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.09,
+            2.12,
+            2.18,
+            2.205
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 10552,
+          "wavelength_record": 6,
+          "continuum_endpoints": [
+            0.781,
+            0.815,
+            1.276,
+            1.34
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.2
+        },
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [
+        {
+          "reflectance_record": 3152,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.268,
+            2.29
+          ],
+          "fit_constraint": 0.65,
+          "relative_depth_threshold": 0.08
+        }
+      ],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.03
+      }
+    },
+    "calcite": {
+      "output_name": "calcite",
+      "reference": {
+        "reflectance_record": 1751,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.000001,
+          "continuum_endpoints": [
+            2.178,
+            2.208,
+            2.377,
+            2.406
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 10552,
+          "wavelength_record": 6,
+          "continuum_endpoints": [
+            0.781,
+            0.815,
+            1.276,
+            1.34
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.2
+        },
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 1751,
+          "wavelength_record": 6,
+          "continuum_endpoints": [
+            2.09,
+            2.12,
+            2.18,
+            2.205
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.0015
+        }
+      ],
+      "not_relative_features": [
+        {
+          "reflectance_record": 3152,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.268,
+            2.29
+          ],
+          "fit_constraint": 0.65,
+          "relative_depth_threshold": 0.08
+        }
+      ],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.03
+      }
+    },
+    "dolomite_abundant": {
+      "output_name": "dolomite_abundant",
+      "reference": {
+        "reflectance_record": 2986,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0001,
+          "continuum_endpoints": [
+            2.158,
+            2.188,
+            2.357,
+            2.387
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": 1.2
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.06,
+            2.1,
+            2.16,
+            2.185
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.045
+      }
+    },
+    "dolomite": {
+      "output_name": "dolomite",
+      "reference": {
+        "reflectance_record": 2986,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.000001,
+          "continuum_endpoints": [
+            2.158,
+            2.188,
+            2.357,
+            2.387
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": 1.2
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 2986,
+          "wavelength_record": 6,
+          "continuum_endpoints": [
+            2.06,
+            2.1,
+            2.16,
+            2.185
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.0015
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.045
+      }
+    },
+    "calcite.5+dolomite.5": {
+      "output_name": "calcite.5+dolomite.5",
+      "reference": {
+        "reflectance_record": "mix_7821",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.18,
+            2.205,
+            2.37,
+            2.395
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": 1.2
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.0
+      }
+    },
+    "carbonate_Fe_bearing": {
+      "output_name": "carbonate_Fe_bearing",
+      "reference": {
+        "reflectance_record": 8623,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.198,
+            2.228,
+            2.386,
+            2.416
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            0.73,
+            0.785,
+            1.675,
+            1.725
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            0.02,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite.18+dolomite.22+montmorilloniteNa.6": {
+      "output_name": "calcite.18+dolomite.22+montmorilloniteNa.6",
+      "reference": {
+        "reflectance_record": "mix_7781",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.125,
+            2.16,
+            2.248,
+            2.278
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.24,
+            2.27,
+            2.37,
+            2.4
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.025,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite.18+dolomite.22+montmorilloniteCa.6": {
+      "output_name": "calcite.18+dolomite.22+montmorilloniteCa.6",
+      "reference": {
+        "reflectance_record": "mix_7811",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.15,
+            2.185,
+            2.25,
+            2.285
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.25,
+            2.28,
+            2.36,
+            2.395
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.025,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite.8+montmorilloniteNa.2_mix_intimate": {
+      "output_name": "calcite.8+montmorilloniteNa.2_mix_intimate",
+      "reference": {
+        "reflectance_record": "mix_7785",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.125,
+            2.155,
+            2.25,
+            2.277
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.248,
+            2.278,
+            2.376,
+            2.406
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 2253,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.19,
+            2.22,
+            2.28,
+            2.31
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.01
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite.25+montmorilloniteCa.75": {
+      "output_name": "calcite.25+montmorilloniteCa.75",
+      "reference": {
+        "reflectance_record": "mix_7787",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.13,
+            2.165,
+            2.25,
+            2.277
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.255,
+            2.29,
+            2.37,
+            2.405
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 2253,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.19,
+            2.22,
+            2.28,
+            2.31
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.01
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite.25+montmorilloniteNa.75": {
+      "output_name": "calcite.25+montmorilloniteNa.75",
+      "reference": {
+        "reflectance_record": "mix_7791",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.125,
+            2.155,
+            2.25,
+            2.277
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.255,
+            2.29,
+            2.376,
+            2.406
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 2253,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.19,
+            2.22,
+            2.28,
+            2.31
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.01
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite.5+muscoviteMedHiAl.5": {
+      "output_name": "calcite.5+muscoviteMedHiAl.5",
+      "reference": {
+        "reflectance_record": "mix_7795",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.125,
+            2.158,
+            2.227,
+            2.257
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.227,
+            2.257,
+            2.376,
+            2.406
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [
+        {
+          "reflectance_record": 3152,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.268,
+            2.29
+          ],
+          "fit_constraint": 0.65,
+          "relative_depth_threshold": 0.08
+        }
+      ],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite.5+muscoviteMedAl.5": {
+      "output_name": "calcite.5+muscoviteMedAl.5",
+      "reference": {
+        "reflectance_record": "mix_7799",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.125,
+            2.158,
+            2.227,
+            2.257
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.24,
+            2.27,
+            2.376,
+            2.406
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [
+        {
+          "reflectance_record": 3152,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.268,
+            2.29
+          ],
+          "fit_constraint": 0.65,
+          "relative_depth_threshold": 0.08
+        }
+      ],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "calcite.3+muscoviteLowAl.7": {
+      "output_name": "calcite.3+muscoviteLowAl.7",
+      "reference": {
+        "reflectance_record": "mix_7803",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.125,
+            2.158,
+            2.24,
+            2.275
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.24,
+            2.275,
+            2.376,
+            2.406
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [
+        {
+          "reflectance_record": 3152,
+          "wavelength_record": 60,
+          "continuum_endpoints": [
+            2.19,
+            2.225,
+            2.268,
+            2.29
+          ],
+          "fit_constraint": 0.65,
+          "relative_depth_threshold": 0.08
+        }
+      ],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "dolomite.5+montmorilloniteNa.5": {
+      "output_name": "dolomite.5+montmorilloniteNa.5",
+      "reference": {
+        "reflectance_record": "mix_7711",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.14,
+            2.17,
+            2.248,
+            2.278
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.24,
+            2.27,
+            2.35,
+            2.385
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.025,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "dolomite.5+montmorilloniteCa.5": {
+      "output_name": "dolomite.5+montmorilloniteCa.5",
+      "reference": {
+        "reflectance_record": "mix_7715",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.15,
+            2.185,
+            2.248,
+            2.278
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.24,
+            2.27,
+            2.35,
+            2.385
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.025,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "kaolinite.2+calcite.8_mix_intimate": {
+      "output_name": "kaolinite.2+calcite.8_mix_intimate",
+      "reference": {
+        "reflectance_record": "mix_7807",
+        "wavelength_record": null
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.09,
+            2.14,
+            2.225,
+            2.255
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.5,
+          "continuum_endpoints": [
+            2.229,
+            2.258,
+            2.39,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "chalcedony": {
+      "output_name": "chalcedony",
+      "reference": {
+        "reflectance_record": 1900,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.119,
+            2.155,
+            2.358,
+            2.39
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "hydrated_silica": {
+      "output_name": "hydrated_silica",
+      "reference": {
+        "reflectance_record": 7243,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.116,
+            2.155,
+            2.37,
+            2.39
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.02,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "tremolite_or_talc": {
+      "output_name": "tremolite_or_talc",
+      "reference": {
+        "reflectance_record": 9744,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.21,
+            2.25,
+            2.324,
+            2.355
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.324,
+            2.355,
+            2.405,
+            2.445
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.04
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.04
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.035,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "talc_or_tremolite": {
+      "output_name": "talc_or_tremolite",
+      "reference": {
+        "reflectance_record": 9092,
+        "wavelength_record": 60
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.23,
+            2.26,
+            2.33,
+            2.365
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.25,
+            2.275,
+            2.305,
+            2.335
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.64,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        },
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.33,
+            2.355,
+            2.39,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.65,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.06
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.06
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.035,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    },
+    "serpentine_antigorite_or_calcite+dolomite": {
+      "output_name": "serpentine_antigorite_or_calcite+dolomite",
+      "reference": {
+        "reflectance_record": 1265,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.175,
+            2.2,
+            2.38,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.035,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.045
+      }
+    },
+    "serpentine_chrysotile": {
+      "output_name": "serpentine_chrysotile",
+      "reference": {
+        "reflectance_record": 2196,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.185,
+            2.23,
+            2.39,
+            2.43
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.035,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.045
+      }
+    },
+    "serpentine_antigorite_withironfeat": {
+      "output_name": "serpentine_antigorite_withironfeat",
+      "reference": {
+        "reflectance_record": 1265,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            0.79,
+            0.83,
+            1.3,
+            1.35
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.64,
+          "depth_constraints": [
+            0.02,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.000001,
+          "continuum_endpoints": [
+            2.175,
+            2.2,
+            2.38,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.035,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.045
+      }
+    },
+    "serpentine_chrysotile_withsecondfeat": {
+      "output_name": "serpentine_chrysotile_withsecondfeat",
+      "reference": {
+        "reflectance_record": 2196,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.05,
+            2.08,
+            2.16,
+            2.185
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.5,
+          "depth_constraints": [
+            0.002,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.000001,
+          "continuum_endpoints": [
+            2.185,
+            2.23,
+            2.39,
+            2.43
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.035,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.045
+      }
+    },
+    "serpentine_antigorite_withsecondfeat": {
+      "output_name": "serpentine_antigorite_withsecondfeat",
+      "reference": {
+        "reflectance_record": 1265,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 0.0,
+          "continuum_endpoints": [
+            2.05,
+            2.08,
+            2.16,
+            2.185
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": 0.5,
+          "depth_constraints": [
+            0.002,
+            null
+          ]
+        },
+        {
+          "feature_weight": 1.000002,
+          "continuum_endpoints": [
+            2.175,
+            2.2,
+            2.38,
+            2.42
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.02,
+            2.06,
+            2.198,
+            2.228
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.02
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.035,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.045
+      }
+    },
+    "topaz": {
+      "output_name": "topaz",
+      "reference": {
+        "reflectance_record": 9412,
+        "wavelength_record": 6
+      },
+      "diagnostic_features": [
+        {
+          "feature_weight": 1.0,
+          "continuum_endpoints": [
+            2.0,
+            2.06,
+            2.1,
+            2.14
+          ],
+          "continuum_constraints": {
+            "left_min": null,
+            "left_max": null,
+            "mean_min": 0.04,
+            "mean_max": null,
+            "right_min": null,
+            "right_max": null,
+            "ratio_min": null,
+            "ratio_max": null
+          },
+          "fit_constraint": null,
+          "depth_constraints": [
+            null,
+            null
+          ]
+        }
+      ],
+      "not_absolute_features": [
+        {
+          "reflectance_record": 12658,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.38,
+            2.415
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.05
+        },
+        {
+          "reflectance_record": 12794,
+          "wavelength_record": 28,
+          "continuum_endpoints": [
+            2.21,
+            2.24,
+            2.39,
+            2.425
+          ],
+          "fit_constraint": 0.65,
+          "absolute_depth_constraint": 0.05
+        }
+      ],
+      "not_relative_features": [],
+      "weighted_constraints": {
+        "min_weighted_fit": 0.64,
+        "min_weighted_depth": 0.05,
+        "max_weighted_depth": null,
+        "min_fit_depth_product": 0.025
+      }
+    }
+  },
+  "mixtures": {
+    "mix_7811": {
+      "1751": 0.18,
+      "2986": 0.22,
+      "6120": 0.6
+    },
+    "mix_7821": {
+      "1751": 0.5,
+      "2986": 0.5
+    },
+    "mix_7703": {
+      "596": 0.5,
+      "5167": 0.5
+    },
+    "mix_7707": {
+      "596": 0.25,
+      "5088": 0.75
+    },
+    "mix_7711": {
+      "2986": 0.5,
+      "6200": 0.5
+    },
+    "mix_7715": {
+      "2986": 0.5,
+      "6120": 0.5
+    },
+    "mix_7723": {
+      "3767": 0.6,
+      "6200": 0.4
+    },
+    "mix_7737": {
+      "7893": 0.25,
+      "5088": 0.75
+    },
+    "mix_7741": {
+      "5167": 0.5,
+      "11117": 0.5
+    },
+    "mix_7745": {
+      "5088": 0.5,
+      "6348": 0.5
+    },
+    "mix_7749": {
+      "2371": 0.3,
+      "6258": 0.7
+    },
+    "mix_7799": {
+      "1751": 0.5,
+      "11117": 0.5
+    },
+    "mix_7781": {
+      "1751": 0.18,
+      "2986": 0.22,
+      "6200": 0.6
+    },
+    "mix_7785": {
+      "10466": 1.0
+    },
+    "mix_7787": {
+      "1751": 0.25,
+      "6120": 0.75
+    },
+    "mix_7791": {
+      "1751": 0.25,
+      "6200": 0.75
+    },
+    "mix_7795": {
+      "1751": 0.5,
+      "6348": 0.5
+    },
+    "mix_7803": {
+      "1751": 0.3,
+      "6258": 0.7
+    },
+    "mix_7807": {
+      "10477": 1.0
+    }
+  },
+  "wavelength_map": {
+    "1900": 6,
+    "11607": 6,
+    "3869": 60,
+    "2986": 6,
+    "9412": 6,
+    "12658": 28,
+    "11629": 28,
+    "6348": 60,
+    "2196": 6,
+    "1265": 6,
+    "596": 40,
+    "6120": 60,
+    "11647": 28,
+    "3913": 60,
+    "9744": 60,
+    "6394": 60,
+    "4819": 60,
+    "5088": 60,
+    "2872": 60,
+    "13411": 28,
+    "7893": 40,
+    "12539": 28,
+    "3152": 60,
+    "655": 40,
+    "2371": 60,
+    "4875": 40,
+    "9262": 60,
+    "11541": 28,
+    "10350": 40,
+    "11117": 40,
+    "6200": 60,
+    "5167": 60,
+    "4693": 6,
+    "4625": 6,
+    "3767": 60,
+    "1632": 6,
+    "6772": 60,
+    "10131": 6,
+    "7243": 60,
+    "10851": 6,
+    "6258": 40,
+    "11106": 6,
+    "10552": 6,
+    "1751": 6,
+    "9092": 60,
+    "8623": 6,
+    "12794": 28,
+    "10930": 60,
+    "11589": 28,
+    "2253": 60,
+    "2047": 6,
+    "10466": 6,
+    "10477": 6
+  }
+}

@@ -1,0 +1,6 @@
+# sdist also ships tests and examples (the wheel contains only the cramm package)
+include README.md
+include example_usage.py
+include regen_golden.py
+recursive-include tests *.py *.npz
+recursive-include docs *.png
