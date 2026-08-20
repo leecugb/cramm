@@ -32,7 +32,7 @@ NC_PATH = "./EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc"
 # ---------------------------------------------------------------------------
 
 def example_quickstart():
-    from core import MicaEngine
+    from cramm import MicaEngine
 
     engine = MicaEngine()  # bundled rf.json + splib06b spectral library + color table
 
@@ -58,7 +58,7 @@ def example_quickstart():
 # ---------------------------------------------------------------------------
 
 def example_pixel():
-    from core import MicaEngine
+    from cramm import MicaEngine
 
     engine = MicaEngine()
     spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit(NC_PATH)
@@ -85,7 +85,7 @@ def example_pixel():
 # ---------------------------------------------------------------------------
 
 def example_raw():
-    from core import MicaEngine
+    from cramm import MicaEngine
 
     engine = MicaEngine()
     spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit(NC_PATH)
@@ -106,15 +106,18 @@ def example_raw():
 # ---------------------------------------------------------------------------
 
 def example_custom_rules():
-    from core import MicaEngine
+    from cramm import MicaEngine
 
     engine = MicaEngine()
     spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit(NC_PATH)
 
     # scenario: run clay minerals only (trim the rule library for speed and fewer false positives)
+    # engine.rf is an alias of the classifier's rule dict -- mutate it in place
+    # (assigning engine.rf = clay would only rebind the alias, not the classifier's dict)
     clay = {k: v for k, v in engine.rf.items()
             if any(s in k for s in ("kaolinite", "illite", "smectite", "muscovite"))}
-    engine._classifier.rf = clay
+    engine.rf.clear()
+    engine.rf.update(clay)
     engine.invalidate_caches()  # critical! the cache key does not include rule-library content; stale constants persist unless cleared
 
     pixel = spectrum[spectrum.shape[0] // 2, spectrum.shape[1] // 2, :]
