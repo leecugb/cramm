@@ -263,7 +263,7 @@ def main():
     import time
 
     parser = argparse.ArgumentParser(
-        description="CRAMM — EMIT hyperspectral mineral identification (USGS MICA algorithm)"
+        description="CRAMM — EMIT hyperspectral mineral identification (USGS MICA, extended)"
     )
     parser.add_argument("--input", "-i", required=True, help="path to EMIT L2A NetCDF file")
     parser.add_argument("--output", "-o", default=".", help="output directory (default: current directory)")
