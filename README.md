@@ -78,6 +78,10 @@ Per-rule evaluation (77 rules, parallel across rules)
 Best-match selection (argmax fit×depth)  +  muscovite 2.2 µm center fit
       │
       ▼
+Wavelength-arbitrated muscovite subtyping
+      │  mus_center vs. per-rule absorption_center_range windows
+      │  (lowAl / medAl / medhighAl / Fe-rich re-attribution)
+      ▼
 Mineral map · color-enhanced map · muscovite map (+ raw float arrays)
 ```
 
