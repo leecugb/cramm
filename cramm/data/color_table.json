@@ -1,0 +1,387 @@
+{
+  "calcite_abundant": [
+    20,
+    70,
+    0
+  ],
+  "calcite": [
+    40,
+    130,
+    10
+  ],
+  "calcite.5+dolomite.5": [
+    176,
+    131,
+    255
+  ],
+  "dolomite_abundant": [
+    205,
+    25,
+    255
+  ],
+  "dolomite": [
+    205,
+    25,
+    255
+  ],
+  "carbonate_Fe_bearing": [
+    220,
+    185,
+    255
+  ],
+  "calcite.18+dolomite.22+montmorilloniteNa.6": [
+    135,
+    155,
+    60
+  ],
+  "calcite.18+dolomite.22+montmorilloniteCa.6": [
+    145,
+    165,
+    70
+  ],
+  "calcite.8+montmorilloniteNa.2_mix_intimate": [
+    180,
+    180,
+    110
+  ],
+  "calcite.25+montmorilloniteNa.75": [
+    180,
+    180,
+    110
+  ],
+  "calcite.25+montmorilloniteCa.75": [
+    190,
+    190,
+    120
+  ],
+  "dolomite.5+montmorilloniteNa.5": [
+    165,
+    20,
+    200
+  ],
+  "dolomite.5+montmorilloniteCa.5": [
+    175,
+    30,
+    210
+  ],
+  "calcite.5+muscoviteMedHiAl.5": [
+    113,
+    160,
+    90
+  ],
+  "calcite.5+muscoviteMedAl.5": [
+    113,
+    160,
+    90
+  ],
+  "calcite.3+muscoviteLowAl.7": [
+    113,
+    160,
+    90
+  ],
+  "epidote": [
+    220,
+    20,
+    0
+  ],
+  "chlorite_lowFe": [
+    235,
+    25,
+    0
+  ],
+  "clinochlore": [
+    255,
+    20,
+    20
+  ],
+  "clinochlore_Fe": [
+    255,
+    20,
+    20
+  ],
+  "thuringite": [
+    255,
+    20,
+    20
+  ],
+  "chlorite+muscovite_mix_intimate": [
+    190,
+    30,
+    110
+  ],
+  "clinochlore_Fe.3+muscovite.7": [
+    170,
+    25,
+    80
+  ],
+  "muscovite_lowAl": [
+    220,
+    130,
+    0
+  ],
+  "muscovite_medAl": [
+    225,
+    135,
+    0
+  ],
+  "muscovite_medhighAl": [
+    240,
+    140,
+    0
+  ],
+  "muscovite_Fe-rich": [
+    250,
+    100,
+    0
+  ],
+  "illite_imt1": [
+    220,
+    110,
+    0
+  ],
+  "illite_gds4": [
+    220,
+    110,
+    0
+  ],
+  "kaolinite_or_dickite": [
+    25,
+    60,
+    200
+  ],
+  "kaolinite_wxl": [
+    25,
+    85,
+    225
+  ],
+  "kaolinite_pxl": [
+    30,
+    95,
+    250
+  ],
+  "kaolinite+clay_mica_or_halloysite": [
+    40,
+    145,
+    255
+  ],
+  "kaolinite.5+muscoviteMedAl.5": [
+    40,
+    145,
+    255
+  ],
+  "kaolinite.5+muscoviteMedhighAl.5": [
+    40,
+    145,
+    255
+  ],
+  "kaolinite+muscovite_mix_intimate": [
+    50,
+    155,
+    255
+  ],
+  "kaolinite+smectite_mix_intimate": [
+    60,
+    165,
+    255
+  ],
+  "kaolinite.2+calcite.8_mix_intimate": [
+    35,
+    180,
+    175
+  ],
+  "montmorillonite_Na": [
+    100,
+    190,
+    145
+  ],
+  "montmorillonite_Ca": [
+    135,
+    215,
+    165
+  ],
+  "nontronite": [
+    185,
+    250,
+    215
+  ],
+  "hectorite": [
+    185,
+    250,
+    215
+  ],
+  "alunite_Na_450C": [
+    235,
+    135,
+    185
+  ],
+  "alunite_K_250C": [
+    250,
+    180,
+    200
+  ],
+  "alunite.5+kaolinite.5": [
+    255,
+    200,
+    215
+  ],
+  "alunite.25+kaolinite.75": [
+    50,
+    30,
+    185
+  ],
+  "pyrophyllite": [
+    140,
+    20,
+    50
+  ],
+  "pyrophyllite.5+alunite.5_mix_intimate": [
+    160,
+    40,
+    70
+  ],
+  "pyrophyllite.25+kaolinite.75": [
+    30,
+    30,
+    185
+  ],
+  "jarosite_Na": [
+    75,
+    230,
+    230
+  ],
+  "jarosite_K": [
+    90,
+    245,
+    245
+  ],
+  "jarosite+muscovite_mix_intimate": [
+    105,
+    255,
+    255
+  ],
+  "buddingtonite": [
+    250,
+    210,
+    0
+  ],
+  "buddingtonite+montmorillonite_mix_intimate": [
+    255,
+    225,
+    20
+  ],
+  "serpentine_antigorite_or_calcite+dolomite": [
+    165,
+    120,
+    245
+  ],
+  "serpentine_antigorite_withironfeat": [
+    160,
+    215,
+    50
+  ],
+  "serpentine_antigorite_withsecondfeat": [
+    160,
+    215,
+    50
+  ],
+  "serpentine_chrysotile": [
+    160,
+    215,
+    50
+  ],
+  "serpentine_chrysotile_withsecondfeat": [
+    160,
+    215,
+    50
+  ],
+  "tremolite_or_talc": [
+    100,
+    40,
+    175
+  ],
+  "talc_or_tremolite": [
+    110,
+    50,
+    185
+  ],
+  "hydrated_silica": [
+    255,
+    255,
+    75
+  ],
+  "chalcedony": [
+    250,
+    250,
+    75
+  ],
+  "gypsum": [
+    240,
+    0,
+    255
+  ],
+  "gypsum.6+montmorilloniteNa.4": [
+    220,
+    0,
+    235
+  ],
+  "topaz": [
+    220,
+    220,
+    50
+  ],
+  "vegetation_green": [
+    230,
+    210,
+    175
+  ],
+  "vegetation_npv_and_green": [
+    220,
+    200,
+    165
+  ],
+  "dry_veg_grass": [
+    147,
+    115,
+    48
+  ],
+  "dry_veg_grass_2_3um": [
+    147,
+    115,
+    48
+  ],
+  "dry_veg_nongrass": [
+    147,
+    115,
+    48
+  ],
+  "dry_veg_nongrass_2_3um": [
+    147,
+    115,
+    48
+  ],
+  "snow_melting": [
+    80,
+    0,
+    115
+  ],
+  "snow_slush": [
+    80,
+    0,
+    115
+  ],
+  "water_sediment_high": [
+    180,
+    180,
+    180
+  ],
+  "water_sediment_low": [
+    180,
+    180,
+    180
+  ],
+  "water": [
+    180,
+    180,
+    180
+  ]
+}

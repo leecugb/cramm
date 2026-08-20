@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CRAMM"
+version = "1.0.0"
+description = "CRAMM — EMIT hyperspectral mineral identification toolkit (USGS MICA, extended: depth-ratio rules + quantitative muscovite mapping)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Proprietary" }
+authors = [{ name = "lee" }]
+keywords = ["hyperspectral", "EMIT", "mineral", "MICA", "USGS", "remote-sensing"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+# All hard dependencies have prebuilt PyPI wheels on Windows/Linux/macOS
+# (the package itself is pure Python), so pip install cramm works out of the box
+# on all three platforms.
+dependencies = [
+    "numpy",
+    "pandas",
+    "netCDF4",
+    "pyproj",
+    "pyresample",
+    "threadpoolctl",
+]
+
+[project.optional-dependencies]
+# GDAL: PyPI ships official wheels for Windows only; Linux/macOS need a system
+# libgdal (recommended: conda install -c conda-forge gdal, then
+# pip install cramm --no-deps). renderer.write_tiff / GeoTIFF output depends on
+# it; when missing only that feature is unavailable (lazy import), so it stays
+# optional — cross-platform pip install must not be blocked by a GDAL source build.
+tiff = ["gdal"]
+pdf = ["matplotlib"]          # single-spectrum feature PDF (plot_features_pdf)
+all = ["gdal", "matplotlib"]
+
+[project.scripts]
+cramm = "cramm.mica_engine:main"
+
+[tool.setuptools]
+packages = ["cramm"]
+
+[tool.setuptools.package-data]
+cramm = ["data/rf.json", "data/color_table.json", "data/splib06b"]
