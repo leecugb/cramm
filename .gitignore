@@ -7,3 +7,10 @@ __pycache__/
 
 # Local test scene (1.8 GB, not part of the package)
 *.nc
+
+# Local secrets / one-off push helpers (never commit)
+_gh_token.txt
+_api_push.py
+
+# Local run outputs
+output/
