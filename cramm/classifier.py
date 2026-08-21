@@ -17,7 +17,9 @@ from __future__ import annotations
 import multiprocessing as mp
 import os
 import struct
+import sys
 import tempfile
+import threading
 from dataclasses import dataclass
 from typing import Callable, Dict, List, Optional, Tuple
 
@@ -328,7 +330,13 @@ def _reassign_by_absorption_center(
         return
     rows = np.nonzero(member)[0][uniq]          # pixel rows within the segment
     tgt_local = hits[uniq].argmax(1)            # unique hit, as group index
-    ok = (gidx[tgt_local] != im[rows]) & ~fit_nan[rows, gidx[tgt_local]]
+    # Target must (a) differ from the current match, (b) have accepted the
+    # pixel (fit not NaN), (c) have a positive fit -- a zero-but-not-NaN fit
+    # (custom rules with min_weighted_fit=None) would reassign the pixel into
+    # a state indistinguishable from background downstream (fit_pos semantic)
+    ok = (gidx[tgt_local] != im[rows]) & ~fit_nan[rows, gidx[tgt_local]] & (
+        FIT[rows, gidx[tgt_local]] > 0
+    )
     if not ok.any():
         return
     rows, tgt_local = rows[ok], tgt_local[ok]
@@ -426,26 +434,28 @@ def _precompute_feature(reference: np.ndarray, wl: np.ndarray, CONTINUUM_ENDPTS:
     }
 
 
-# Process-level r2-chain buffer (independent in the main process and in each
-# worker). Grows on demand and never shrinks; slice views feed out= in-place
-# operations -- collapsing the 6 large temporary arrays of the r2 chain into 1
-# persistent buffer, eliminating per-feature-call bulk allocation and
-# first-touch page faults (microbenchmark: this chain 2.1x).
-# Contract: not thread-safe -- the caller must guarantee single-threaded use
-# within a process (GUI multi-threaded concurrent calls to classify_spectrum /
-# classify must serialize themselves; multiprocessing workers are independent
-# of each other and unaffected).
-_R2_BUF: List[Optional[np.ndarray]] = [None]
+# Process- and thread-local r2-chain buffer (independent in the main process,
+# in each worker process, and in every thread). Grows on demand and never
+# shrinks; slice views feed out= in-place operations -- collapsing the 6 large
+# temporaries of the r2 chain into 1 persistent buffer, eliminating
+# per-feature-call bulk allocation and first-touch page faults
+# (microbenchmark: this chain 2.1x).
+# Threading: the buffer is scratch space whose contents are fully rewritten
+# inside each _fit_r2_depth call (no values survive between calls), so
+# thread-local storage makes concurrent classify_spectrum / classify calls
+# from multiple threads of the same process safe. Multiprocessing workers
+# are independent processes (spawn) and were never affected.
+_R2_TLS = threading.local()
 
 
 def _r2_buf(m: int, n: int) -> np.ndarray:
-    """Return a persistent buffer view of shape (m, n) (reused across calls,
-    contents rewritten each time). Not thread-safe."""
-    buf = _R2_BUF[0]
+    """Return this thread's persistent buffer view of shape (m, n) (reused
+    across calls, contents rewritten each time)."""
+    buf = getattr(_R2_TLS, "buf", None)
     if buf is None:
-        _R2_BUF[0] = buf = np.empty((max(m, 1), max(n, 1)))
+        _R2_TLS.buf = buf = np.empty((max(m, 1), max(n, 1)))
     elif buf.shape[0] < m or buf.shape[1] < n:
-        _R2_BUF[0] = buf = np.empty((max(m, buf.shape[0]), max(n, buf.shape[1])))
+        _R2_TLS.buf = buf = np.empty((max(m, buf.shape[0]), max(n, buf.shape[1])))
     return buf[:m, :n]
 
 
@@ -924,6 +934,13 @@ def _judge_reference_entry(
 # Per-worker-process private state (written by the initializer, read by tasks)
 _WORKER: Dict = {}
 
+# Serializes the parallel path's BLAS-env override window across threads of
+# this process: the env override must stay in effect until the spawned workers
+# have imported numpy, and the save/restore pairing would break if two threads
+# ran parallel classify concurrently. Unrelated to worker-process isolation
+# (spawn already guarantees that).
+_PARALLEL_ENV_LOCK = threading.Lock()
+
 
 def _init_worker(spec_path, resampled1, wl, chanels):
     """At worker startup, attach spec_sel as a read-only memmap, cache
@@ -1261,6 +1278,17 @@ class MicaClassifier:
         -------
         ClassificationResult
             fit / depth / num / mus_center / r / c / index / index_d
+
+        Notes
+        -----
+        Concurrency: concurrent calls from multiple threads of the same
+        process are safe -- the r2-chain scratch buffer is thread-local and
+        the parallel path's BLAS-env window is serialized by a process-wide
+        lock (parallel calls from different threads run one after another).
+        Do NOT mutate self.rf / self.mixtures / the caches while a call is
+        running (segment tasks are re-enumerated from self.rf per segment).
+        Caller scripts using n_workers > 1 need the standard
+        ``if __name__ == "__main__":`` guard (spawn re-imports __main__).
         """
         resampled1 = self.get_resample(w, bp)
         r, c, s = spectrum.shape
@@ -1288,43 +1316,50 @@ class MicaClassifier:
         pool = None
         spec_path = None
         env_saved = None
-        if parallel:
-            # Limit BLAS threads to 1 before the spawned child processes import
-            # numpy, avoiding N_worker x multi-thread oversubscription. Child
-            # processes inherit these environment variables, which take effect
-            # when numpy/MKL is imported. The original values are saved and
-            # restored in finally, avoiding polluting the main process's
-            # os.environ and affecting child processes spawned later by the caller.
-            env_saved = {}
-            for _v in ("MKL_NUM_THREADS", "OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS",
-                       "NUMEXPR_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
-                env_saved[_v] = os.environ.get(_v)
-                os.environ[_v] = "1"
-
-            spec_sel = np.ascontiguousarray(spectrum.reshape(r * c, s)[:, chanels])
-            fd, spec_path = tempfile.mkstemp(suffix=".npy", prefix="mica_spec_")
-            os.close(fd)
-            np.save(spec_path, spec_sel)
-            del spec_sel  # written to disk only for the workers' read-only memmap; the main process holds no file handle, avoiding an os.remove leak
-            # The main process's muscovite second pass instead slices from the
-            # original spectrum (see inside the loop) and does not touch the memmap file
-
-            # Explicit spawn context: Windows/macOS default to spawn, Linux
-            # defaults to fork -- fork would inherit the main process's already
-            # initialized MKL/OpenBLAS state (including thread locks and memory
-            # allocator internal locks), risking deadlock and inconsistent
-            # behavior across the three platforms. With uniform spawn: workers
-            # start as fresh interpreters, attach the memmap via the
-            # initializer (data does not go through pickle), and BLAS is
-            # limited to 1 thread by the environment variables before numpy is
-            # imported -- identical semantics on all three platforms.
-            pool = mp.get_context("spawn").Pool(
-                nw,
-                initializer=_init_worker,
-                initargs=(spec_path, resampled1, wl, chanels),
-            )
-
         try:
+            if parallel:
+                # Serialize the BLAS-env window across threads (see
+                # _PARALLEL_ENV_LOCK). Limit BLAS threads to 1 before the
+                # spawned child processes import numpy, avoiding N_worker x
+                # multi-thread oversubscription. Child processes inherit these
+                # environment variables, which take effect when numpy/MKL is
+                # imported. The original values are saved and restored in
+                # finally, avoiding polluting the main process's os.environ and
+                # affecting child processes spawned later by the caller.
+                _PARALLEL_ENV_LOCK.acquire()
+                env_saved = {}
+                for _v in ("MKL_NUM_THREADS", "OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS",
+                           "NUMEXPR_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
+                    env_saved[_v] = os.environ.get(_v)
+                    os.environ[_v] = "1"
+
+                spec_sel = np.ascontiguousarray(spectrum.reshape(r * c, s)[:, chanels])
+                fd, spec_path = tempfile.mkstemp(suffix=".npy", prefix="mica_spec_")
+                os.close(fd)
+                np.save(spec_path, spec_sel)
+                del spec_sel  # written to disk only for the workers' read-only memmap; the main process holds no file handle, avoiding an os.remove leak
+                # The main process's muscovite second pass instead slices from the
+                # original spectrum (see inside the loop) and does not touch the memmap file
+
+                # Explicit spawn context: Windows/macOS default to spawn, Linux
+                # defaults to fork -- fork would inherit the main process's already
+                # initialized MKL/OpenBLAS state (including thread locks and memory
+                # allocator internal locks), risking deadlock and inconsistent
+                # behavior across the three platforms. With uniform spawn: workers
+                # start as fresh interpreters, attach the memmap via the
+                # initializer (data does not go through pickle), and BLAS is
+                # limited to 1 thread by the environment variables before numpy is
+                # imported -- identical semantics on all three platforms.
+                pool = mp.get_context("spawn").Pool(
+                    nw,
+                    initializer=_init_worker,
+                    initargs=(spec_path, resampled1, wl, chanels),
+                )
+            # NOTE: the env/mkstemp/Pool setup above lives INSIDE this try so
+            # that a failure there (e.g. spawn denied by the platform) still
+            # hits the finally cleanup (env restore / temp-file removal / lock
+            # release) instead of leaking.
+
             for seg_idx, (a, b) in enumerate(segments):
                 if cancel_flag is not None and not cancel_flag():
                     raise RuntimeError("cancelled by user")
@@ -1414,7 +1449,16 @@ class MicaClassifier:
                     progress_callback(int((seg_idx + 1) / 3 * 100))
         finally:
             if pool is not None:
-                pool.close()
+                if sys.exc_info()[0] is not None:
+                    # Exception in flight (worker crash, cancellation, ...):
+                    # kill the workers NOW instead of close()-draining the
+                    # remaining queued tasks. Dead/OOMing workers can hold the
+                    # memmap handle and block the temp-file removal below
+                    # (observed: 1.5 GB mica_spec_*.npy leaked after a worker
+                    # MemoryError); terminate() releases it promptly.
+                    pool.terminate()
+                else:
+                    pool.close()
                 pool.join()
             if spec_path is not None:
                 # The main process holds no file handle (spec_sel was del'ed,
@@ -1443,6 +1487,7 @@ class MicaClassifier:
                         os.environ.pop(_k, None)
                     else:
                         os.environ[_k] = _v
+                _PARALLEL_ENV_LOCK.release()
 
         return ClassificationResult(
             fit=FIT_, depth=DEPTH_, num=NUM_, mus_center=mus_center,

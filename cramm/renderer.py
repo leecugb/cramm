@@ -147,8 +147,14 @@ class ResultRenderer:
             if ds is None:
                 raise RuntimeError(f"Failed to open {tif_p}")
             color = ds.ReadAsArray()
-            # linspace(0, 282, 10) -> 10 sampling indices
-            indices = np.linspace(0, 282, 10).astype(int)
+            if color.ndim != 3 or color.shape[0] < 3:
+                raise ValueError(
+                    f"{tif_p}: color lookup table should be a >=3-band RGB GeoTIFF, "
+                    f"got array shape {color.shape}")
+            # Sample 10 columns evenly across the LUT width. The heritage endpoint
+            # 282 equals the original color.tif width-1, so this is bit-identical
+            # for that file and robust for any other width.
+            indices = np.linspace(0, color.shape[2] - 1, 10).astype(int)
             table = [color[:, 0, i] for i in indices]
 
         return cls(colors_dic, table)
@@ -265,6 +271,13 @@ class ResultRenderer:
         # exist, and the later SetMetadataItem would raise a context-free AttributeError
         if folder:
             os.makedirs(folder, exist_ok=True)
+        # Antimeridian guard: a scene straddling lon +/-180 would produce a ~360
+        # deg extent (raster width ~1e6 columns -> memory/disk blowup) and a
+        # meaningless mean-longitude UTM zone. Fail clearly instead.
+        if lon.max() - lon.min() > 180:
+            raise ValueError(
+                f"scene crosses the antimeridian (lon range {lon.min():.2f}..{lon.max():.2f} deg); "
+                "split the scene or unwrap longitudes before write_tiff")
         # Standard UTM zoning: floor((lon+180)/6)+1 (the original ceil(lon/6)+30 is
         # off by one zone when lon is an exact multiple of 6, e.g. 114 deg -> 49
         # instead of 50); southern-hemisphere scenes need +south (EMIT global coverage).
@@ -467,4 +480,6 @@ class ResultRenderer:
                     fig.suptitle(f"{name}\nMICA fit={r['fit']:.4f}, features={n}{ratio_text}", fontsize=9, fontweight="bold", y=0.98)
                     fig.tight_layout(rect=[0, 0, 1, 0.94])
                     pdf.savefig(fig, dpi=300); plt.close(fig)
-            plt.close("all")
+            # Note: no plt.close("all") here — each figure is closed individually
+            # above; close("all") would also destroy figures belonging to a host
+            # application (e.g. the desktop GUI) that embeds this call

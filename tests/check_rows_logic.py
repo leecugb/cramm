@@ -120,6 +120,20 @@ def main():
     except Exception as e:
         check("empty rows does not crash", False, repr(e))
 
+    print("== 5. _get_quadratic_center: boolean-mask subset vs full ==")
+    from cramm.classifier import _get_quadratic_center
+    mrule = clf.rf["muscovite_medAl"]
+    endpts = mrule["diagnostic_features"][0]["continuum_endpoints"]
+    mask_full = np.ones(N, dtype=bool)
+    cen_full = _get_quadratic_center(spec, wl, endpts, mask_full)
+    # boolean subset mask (every 3rd pixel) — values at subset positions must
+    # be bit-identical, outside must stay NaN
+    mask_sub = np.zeros(N, dtype=bool)
+    mask_sub[::3] = True
+    cen_sub = _get_quadratic_center(spec, wl, endpts, mask_sub)
+    check("quad_center subset bit-exact", np.array_equal(cen_full[mask_sub], cen_sub[mask_sub], equal_nan=True))
+    check("quad_center all NaN outside subset", np.isnan(cen_sub[~mask_sub]).all())
+
     print()
     print("Summary:", "FAIL: " + ", ".join(FAIL) if FAIL else "all passed -- rows subset semantics bit-exact with full computation")
 

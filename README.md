@@ -5,9 +5,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/leecugb/cramm/blob/main/LICENSE)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
-**EMIT L2A hyperspectral mineral identification toolkit** — built on the USGS
-MICA (Material Identification and Characterization Algorithm) decision-rule
-system, and extended beyond it in two ways:
+**General-purpose hyperspectral mineral identification toolkit** — built on
+the USGS MICA (Material Identification and Characterization Algorithm)
+decision-rule system. The classification core is **sensor-agnostic**: it works
+on any VNIR–SWIR reflectance cube given its band configuration (center
+wavelengths, FWHM, valid-band mask), because the bundled splib06b reference
+spectra are resampled to the sensor's bands at runtime. EMIT L2A is simply the
+built-in data reader — one supported input type, not the defining one.
+
+CRAMM extends MICA in three ways:
 
 1. **An enhanced rule schema.** CRAMM adds an optional secondary-feature
    depth-ratio constraint (`max_depth_ratio_feat1_over_feat0`) that rejects
@@ -49,9 +55,13 @@ Everything is pure Python and GUI-free. Cross-platform:
   also re-arbitrates the lowAl / medAl / medhighAl / Fe-rich attribution
   against calibrated wavelength windows, with a phase-diagram
   interpretation framework.
-- **Whole-scene and single-spectrum modes** — batch-classify an entire EMIT
-  scene to GeoTIFF, or identify one spectrum (GUI point-click, field
+- **Whole-scene and single-spectrum modes** — batch-classify an entire scene
+  to GeoTIFF, or identify one spectrum (GUI point-click, field
   spectrometer) with Top-N ranking and a PDF diagnostic report.
+- **Sensor-agnostic core** — everything downstream of data loading consumes a
+  generic `(spectrum, wavelengths, FWHM, valid bands)` contract. The bundled
+  reader covers EMIT L2A NetCDF; any other sensor (airborne or spaceborne)
+  plugs in through the same seven-tuple — no rule or code changes needed.
 - **Fast** — reference-side constants are precompiled once per band
   configuration (two-level cache; ~16× speedup on repeated single-spectrum
   calls), and scene classification parallelizes across rules with worker
@@ -64,8 +74,9 @@ Everything is pure Python and GUI-free. Cross-platform:
 ## How it works
 
 ```
-EMIT L2A NetCDF
-      │  load_emit (bad-band removal, float32 cube)
+Hyperspectral reflectance cube (any VNIR–SWIR sensor)
+      │  built-in: load_emit (EMIT L2A NetCDF, bad-band removal)
+      │  or your own loader → (spectrum, wl, w, bp, chanels)
       ▼
 Reference resampling ── splib06b records ──► sensor wavelengths/FWHM
       │                                        (Gaussian kernel, cached)
@@ -115,6 +126,9 @@ pip install .            # add [all] for the optional extras
 
 ### Command line
 
+The CLI uses the built-in EMIT L2A reader; for other sensors, use the Python
+API (below) with your own loader.
+
 ```bash
 cramm -i EMIT_L2A_RFL_001_xxx.nc -o output [-n scene] [-w 4] [--raw]
 ```
@@ -157,6 +171,30 @@ for r in results:
     print(f"{r['name']:50s} fit={r['fit']:.4f}  fd={r['fd']:.4f}")
 ```
 
+### Other sensors (non-EMIT data)
+
+`load_emit` is only a convenience reader. For any other sensor, load the cube
+yourself and pass the same band-configuration contract — references are
+resampled to your wavelengths/FWHM automatically:
+
+```python
+from cramm import MicaEngine
+import numpy as np
+
+engine = MicaEngine()
+spectrum = my_loader("scene.dat")          # [rows, cols, bands] reflectance
+w  = np.array([...])                       # band center wavelengths [µm]
+bp = np.array([...])                       # band FWHM [µm]
+chanels = np.arange(len(w))                # valid bands (drop bad-band indices)
+wl = w[chanels]
+
+orth, color, mus = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
+                                            n_workers=4)
+```
+
+Only the map rendering (`write_tiff`) needs geolocation (`lon`/`lat` grids);
+classification itself is purely spectral and location-free.
+
 `classify_spectrum` returns a list of `{"name", "fit", "fd"}` dicts sorted by
 descending fit (empty list when nothing passes the filters). With
 `pdf_path=` it also writes a multi-page PDF: one page per Top-N mineral with
@@ -178,7 +216,7 @@ More scenarios — float (`raw=True`) output, custom rule libraries, the
 
 | `MicaEngine` method | Purpose |
 |---|---|
-| `load_emit(path)` | Read EMIT L2A NetCDF → `(spectrum, lon, lat, w, bp, wl, chanels)`; float32 cube, bad bands removed, fill values zeroed |
+| `load_emit(path)` | *(EMIT-specific convenience reader)* Read EMIT L2A NetCDF → `(spectrum, lon, lat, w, bp, wl, chanels)`; float32 cube, bad bands removed, fill values zeroed. Not needed for other sensors — supply the same tuple yourself |
 | `spectrum_analysis(spectrum, wl, w, bp, chanels, ...)` | Classify a whole scene → 3 uint8 RGB images; `raw=True` adds `mus_center` + `fd` float arrays. Supports `progress_callback`, `log_callback`, `cancel_flag`, `n_workers` |
 | `classify_spectrum(spectrum, wl, w, bp, chanels, top_n=10, pdf_path=None)` | Identify one spectrum → Top-N `[{"name", "fit", "fd"}]` |
 | `write_tiff(prefix, lon, lat, orth, color, mus)` | Orthorectify (pyresample) and write the 3 GeoTIFFs; requires GDAL |
@@ -260,7 +298,7 @@ X_Ts → Al₂O₃ wt% → λ = −3.1·Al₂O₃ + 2308):
 
 X_Ts rises from ~0 on the high-T / low-K⁺ side to 0.35+ on the low-T / high-K⁺
 side, and the wv2200 contours (magenta, 2190→2215 nm) run nearly parallel to
-the X_Ts contours (dark blue). Each `mus_center` value fitted from an EMIT
+the X_Ts contours (dark blue). Each `mus_center` value fitted from an image
 pixel therefore maps directly onto this diagram, inverting muscovite
 composition — and with it formation temperature and fluid K⁺/H⁺ conditions —
 from orbit.
@@ -274,18 +312,23 @@ from orbit.
 - **Parallelism**: scene classification fans out across the 77 rules with
   `multiprocessing` (spawn context); BLAS is pinned to a single thread so the
   parallel path stays bit-identical to the serial one.
-- **Typical runtime**: a full EMIT scene (≈1280×1242 pixels) classifies in a
-  few minutes on a desktop; a warm single-spectrum call is ≈10 ms.
+- **Typical runtime**: a full scene (e.g. an EMIT granule, ≈1280×1242 pixels)
+  classifies in about a minute with a few workers on a desktop; a warm
+  single-spectrum call is ≈10 ms.
 
 ## Testing
 
 ```bash
-python tests/test_core.py              # 14 API contract / behavior tests
+python tests/test_core.py              # 18 API contract / behavior tests
                                        # (integration section auto-skips without the test scene)
+python tests/test_custom_rules.py      # custom rule-library verification (7 scenarios:
+                                       #   rf_path / constraint & window edits / new rules / cache contract)
+python tests/test_parallel_isolation.py # shared-state isolation (6 checks: worker/thread
+                                       #   isolation, env restore, temp-file cleanup)
 
 # The suites below need the EMIT test scene in the working directory
 # (file name defined in each script's NC constant):
-python tests/check_rows_logic.py       # rows alive-pixel semantics (14 checks)
+python tests/check_rows_logic.py       # rows alive-pixel semantics (16 checks)
 python tests/test_single_spectrum.py   # single-spectrum identification (7 tests:
                                        #   self-ID / noise robustness / determinism / ...)
 python tests/check_compiled_path.py    # compiled vs direct path, 302 pixels × 77 rules, bit-level diff
@@ -332,5 +375,5 @@ example_usage.py    # five usage-scenario examples
 
 The decision rules implement the USGS MICA system
 (Kokaly et al., `russet`-era rule set); reference spectra come from the USGS
-splib06b spectral library (Clark et al., 2007). EMIT L2A products are courtesy
-of NASA/JPL.
+splib06b spectral library (Clark et al., 2007). The bundled test scene uses
+EMIT L2A products, courtesy of NASA/JPL.
