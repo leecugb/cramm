@@ -2,6 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/cramm)](https://pypi.org/project/cramm/)
 [![Python](https://img.shields.io/pypi/pyversions/cramm)](https://pypi.org/project/cramm/)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22024483-blue.svg)](https://doi.org/10.5281/zenodo.22024483)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/leecugb/cramm/blob/main/LICENSE)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 

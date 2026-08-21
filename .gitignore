@@ -4,6 +4,7 @@ build/
 *.egg-info/
 __pycache__/
 *.pyc
+.pytest_cache/
 
 # Local test scene (1.8 GB, not part of the package)
 *.nc
@@ -14,4 +15,6 @@ _api_push.py
 _md2pdf.py
 _pdf_assets/
 README.pdf
+
+# Local run outputs
 output/

@@ -1,0 +1,14 @@
+# Line-ending policy: text files are LF in the repo and stay LF on checkout
+# (Windows autocrlf=true must not flip them, otherwise every line shows as a
+# spurious diff). Binary payloads are marked explicitly.
+*.py   text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.toml text eol=lf
+*.cfg  text eol=lf
+*.txt  text eol=lf
+
+cramm/data/splib06b binary
+tests/*.npz          binary
+docs/*.png           binary
+*.nc                 binary
