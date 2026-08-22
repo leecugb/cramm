@@ -32,10 +32,11 @@ CRAMM 实现 USGS MICA 决策规则体系,并扩展深度比约束与白云母�
 1. **最佳匹配** — 逐像素 `argmax(fit × depth)`。
 2. **白云母 2.2 µm 吸收中心二次拟合** — `mus_center`(`_get_quadratic_center`),化学成分代理量。
 3. **波长仲裁亚型归属** — `absorption_center_range` 窗口(medhighAl [2.195,2.200) / medAl [2.200,2.206) / lowAl [2.206,2.210) / Fe-rich [2.210,2.220),互不重叠)对白云母像元重仲裁(`_reassign_by_absorption_center`);中心无效或出窗时保持原匹配(保守策略)。
+4. **绿泥石 2250 nm 吸收中心二次拟合** — `chl_center`,三条纯绿泥石规则(chlorite_lowFe / clinochlore / clinochlore_Fe)胜出像元,用胜方规则 feat0 端点拟合;**不做波长仲裁**(三参考是成分连续谱上的点,非带位定义的亚型),作连续成分图层输出,解读走 chl13 M1 标定(LOO 1.0 nm)。
 
 ## e 输出层
 
 | 模式 | 产品 |
 |---|---|
-| 整景 | 矿物图 · 彩色增强图 · 白云母中心图(3 幅 uint8 RGB)+ `mus_center`/`fd` 浮点数组 → GeoTIFF(pyresample 正射校正)/ npz |
+| 整景 | 矿物图 · 彩色增强图 · 白云母中心图 · 绿泥石中心图(4 幅 uint8 RGB)+ `mus_center`/`chl_center`/`fd` 浮点数组 → GeoTIFF(pyresample 正射校正)/ npz |
 | 单光谱 | Top-N 矿物排序 `{"name", fit, fd}` + 多页 PDF 诊断报告(逐规则特征解剖与约束审计) |

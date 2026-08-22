@@ -282,7 +282,7 @@ def test_render_missing_color():
     renderer = ResultRenderer.from_paths()
     bogus = ClassificationResult(
         fit=np.array([1.0]), depth=np.array([0.5]), num=np.zeros(1, dtype="uint8"),
-        mus_center=np.zeros(1), r=1, c=1,
+        mus_center=np.zeros(1), chl_center=np.zeros(1), r=1, c=1,
         index=["no_such_mineral"], index_d={"no_such_mineral": 0},
     )
     try:
@@ -515,8 +515,40 @@ def make_integration_tests(nc_path):
         for x in res:
             assert x["name"] in e.rf and x["fit"] > 0
 
+    def test_chl_center_product():
+        """Chlorite product line: chl_center contract on a chlorite-rich tile
+        (rows 440:540, cols 160:260 of the EMIT test scene — 3109 chlorite
+        pixels in the golden baseline)."""
+        from cramm.emit_reader import EmitReader
+        e = eng()
+        spectrum, lon, lat, w, bp, wl, chanels = EmitReader.load(nc_path)
+        tile = spectrum[440:540, 160:260]
+
+        # 1) classify-level contract: chl_center > 0 exactly on chlorite winners
+        res = e._classifier.classify(tile, wl, w, bp, chanels, n_workers=1)
+        chl_idx = [res.index_d[n] for n in
+                   ("chlorite_lowFe", "clinochlore", "clinochlore_Fe") if n in res.index_d]
+        winner = np.isin(res.num, chl_idx) & (res.fit > 0)
+        assert winner.sum() > 1000, "tile should be chlorite-rich"
+        has_center = res.chl_center > 0
+        assert (has_center <= winner).all(), "center without a chlorite win"
+        assert (winner == has_center).mean() > 0.999, "winners should all get a center"
+        vals = res.chl_center[has_center]
+        assert (vals > 2.23).all() and (vals < 2.27).all(), "center out of 2250nm band range"
+
+        # 2) facade-level contract: raw=True returns 7 arrays, renderer colors
+        # exactly the in-range pixels
+        out = e.spectrum_analysis(tile, wl, w, bp, chanels, n_workers=1, raw=True)
+        assert len(out) == 7
+        orth, color, mus, chl, mus_center, chl_center2, fd = out
+        assert chl.shape == (100, 100, 3) and chl_center2.shape == (100, 100)
+        colored = chl.any(axis=2)
+        inrange = (chl_center2 >= 2.244) & (chl_center2 < 2.259)
+        assert (colored == inrange).all(), "chl_image bins must match the [2.244, 2.259) contract"
+
     return [("integration: load_emit output contract", test_load_emit_contract),
-            ("integration: real-pixel classify_spectrum", test_real_pixel_classify)]
+            ("integration: real-pixel classify_spectrum", test_real_pixel_classify),
+            ("integration: chl_center product line", test_chl_center_product)]
 
 
 # ----------------------------------------------------------------------------

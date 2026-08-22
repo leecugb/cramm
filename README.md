@@ -55,6 +55,12 @@ Everything is pure Python and GUI-free. Cross-platform:
   also re-arbitrates the lowAl / medAl / medhighAl / Fe-rich attribution
   against calibrated wavelength windows, with a phase-diagram
   interpretation framework.
+- **Quantitative chlorite mapping** — per-pixel 2250 nm absorption-center
+  wavelength (`chl_center`) for pixels won by the three pure-chlorite rules,
+  as a fourth thematic map and float array; a continuous Fe-content proxy
+  anchored by the chl13 calibration (LOO 1.0 nm), with no hard
+  lowFe/clinochlore/Fe-rich re-arbitration (the three references are points
+  on a composition continuum, not band-position-defined subtypes).
 - **Whole-scene and single-spectrum modes** — batch-classify an entire scene
   to GeoTIFF, or identify one spectrum (GUI point-click, field
   spectrometer) with Top-N ranking and a PDF diagnostic report.
@@ -87,13 +93,14 @@ Per-rule evaluation (77 rules, parallel across rules)
       │  continuum & depth-ratio constraints
       ▼
 Best-match selection (argmax fit×depth)  +  muscovite 2.2 µm center fit
-      │
+      │                                   +  chlorite 2250 nm center fit
       ▼
 Wavelength-arbitrated muscovite subtyping
       │  mus_center vs. per-rule absorption_center_range windows
       │  (lowAl / medAl / medhighAl / Fe-rich re-attribution)
       ▼
-Mineral map · color-enhanced map · muscovite map (+ raw float arrays)
+Mineral map · color-enhanced map · muscovite map · chlorite map
+(+ raw float arrays: mus_center / chl_center / fd)
 ```
 
 ## Installation
@@ -139,7 +146,7 @@ cramm -i EMIT_L2A_RFL_001_xxx.nc -o output [-n scene] [-w 4] [--raw]
 | `-o`, `--output` | `.` | Output directory |
 | `-n`, `--name` | input filename | Output filename prefix |
 | `-w`, `--workers` | `min(cpu, 8)` | Parallel worker processes (`1` = serial) |
-| `--raw` | off | Also save `mus_center` + `fd` float arrays as `.npz` |
+| `--raw` | off | Also save `mus_center` + `chl_center` + `fd` float arrays as `.npz` |
 
 **Output files** (written to `<output>/<name>*`):
 
@@ -148,7 +155,8 @@ cramm -i EMIT_L2A_RFL_001_xxx.nc -o output [-n scene] [-w 4] [--raw]
 | `<name>_mapping_orth.tiff` | Mineral map (orthorectified, rule-library colors) |
 | `<name>_color_enhanced_orth.tiff` | Color-enhanced mineral map |
 | `<name>_mus_orth.tiff` | Muscovite 2.2 µm absorption-center thematic map |
-| `<name>_raw.npz` | *(only with `--raw`)* `mus_center` [μm] + `fd` (fit×depth), float `[r, c]` |
+| `<name>_chl_orth.tiff` | Chlorite 2250 nm absorption-center thematic map |
+| `<name>_raw.npz` | *(only with `--raw`)* `mus_center` + `chl_center` [μm] + `fd` (fit×depth), float `[r, c]` |
 
 ### Python API
 
@@ -159,9 +167,9 @@ engine = MicaEngine()                                    # all resources bundled
 spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit("EMIT_xxx.nc")
 
 # --- whole scene → GeoTIFF -------------------------------------------------
-orth, color, mus = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
-                                            n_workers=4)
-engine.write_tiff("output/scene", lon, lat, orth, color, mus)
+orth, color, mus, chl = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
+                                                 n_workers=4)
+engine.write_tiff("output/scene", lon, lat, orth, color, mus, chl)
 
 # --- single spectrum (one pixel, field spectrometer, ...) ------------------
 pixel = spectrum[100, 200, :]                            # full-band [285] or selected [len(chanels)]
@@ -188,8 +196,8 @@ bp = np.array([...])                       # band FWHM [µm]
 chanels = np.arange(len(w))                # valid bands (drop bad-band indices)
 wl = w[chanels]
 
-orth, color, mus = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
-                                            n_workers=4)
+orth, color, mus, chl = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
+                                                 n_workers=4)
 ```
 
 Only the map rendering (`write_tiff`) needs geolocation (`lon`/`lat` grids);
@@ -217,9 +225,9 @@ More scenarios — float (`raw=True`) output, custom rule libraries, the
 | `MicaEngine` method | Purpose |
 |---|---|
 | `load_emit(path)` | *(EMIT-specific convenience reader)* Read EMIT L2A NetCDF → `(spectrum, lon, lat, w, bp, wl, chanels)`; float32 cube, bad bands removed, fill values zeroed. Not needed for other sensors — supply the same tuple yourself |
-| `spectrum_analysis(spectrum, wl, w, bp, chanels, ...)` | Classify a whole scene → 3 uint8 RGB images; `raw=True` adds `mus_center` + `fd` float arrays. Supports `progress_callback`, `log_callback`, `cancel_flag`, `n_workers` |
+| `spectrum_analysis(spectrum, wl, w, bp, chanels, ...)` | Classify a whole scene → 4 uint8 RGB images; `raw=True` adds `mus_center` + `chl_center` + `fd` float arrays. Supports `progress_callback`, `log_callback`, `cancel_flag`, `n_workers` |
 | `classify_spectrum(spectrum, wl, w, bp, chanels, top_n=10, pdf_path=None)` | Identify one spectrum → Top-N `[{"name", "fit", "fd"}]` |
-| `write_tiff(prefix, lon, lat, orth, color, mus)` | Orthorectify (pyresample) and write the 3 GeoTIFFs; requires GDAL |
+| `write_tiff(prefix, lon, lat, orth, color, mus, chl=None)` | Orthorectify (pyresample) and write the GeoTIFFs; `chl` is optional (omit for legacy 3-file output); requires GDAL |
 | `get_resample(w, bp)` | All reference spectra resampled to the sensor bands `{record_id: spectrum}` (cached) |
 | `invalidate_caches()` | **Required** after mutating `engine.rf` in place — see below |
 
@@ -319,6 +327,23 @@ the X_Ts contours (dark blue). Each `mus_center` value fitted from an image
 pixel therefore maps directly onto this diagram, inverting muscovite
 composition — and with it formation temperature and fluid K⁺/H⁺ conditions —
 from orbit.
+
+## Application: reading chlorite Fe content from chl_center
+
+The chlorite thematic map's per-pixel `chl_center` (2250 nm Fe–OH absorption
+position) is a continuous composition proxy: across the chl13 calibration
+set (13 samples spanning xFe 0.014–0.553) the closed-form model
+`pos2250 = 2218.8·xAl + 2279.6·xFe + 2249.7·xMg` reproduces band positions
+with LOO-RMSE 1.0 nm — at the repeat-measurement noise floor — and the
+calibration is immune to the Fe²⁺/Fe³⁺ reporting convention (closure
+normalization cancels it exactly). Unlike the muscovite subtypes, the three
+chlorite rules are **not** re-arbitrated by wavelength: lowFe / clinochlore
+/ Fe-rich are three references on a composition continuum, not
+band-position-defined classes, so CRAMM keeps the argmax attribution and
+reports the center as a continuous layer instead. Practical limits from the
+calibration: quantitative inversion needs chlorite ≳50 % of the pixel and a
+comparable sample preparation; the 2350 nm Mg–OH band (cross-instrument
+anchor, bias ≈0.2 nm) is reserved for pure-mineral checks.
 
 ## Performance notes
 

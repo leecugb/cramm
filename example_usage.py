@@ -41,15 +41,16 @@ def example_quickstart():
     print(f"image {spectrum.shape}, valid bands {len(chanels)}/{len(w)}")
 
     # spectral analysis: classification + rendering. n_workers=None defaults to min(cpu, 8)
-    orth_rgb, color_enhanced, mus_image = engine.spectrum_analysis(
+    orth_rgb, color_enhanced, mus_image, chl_image = engine.spectrum_analysis(
         spectrum, wl, w, bp, chanels,
         n_workers=4,
         progress_callback=lambda p: print(f"  {p}%"),
     )
 
-    # write 3 georeferenced GeoTIFFs (output directory created automatically)
-    engine.write_tiff("output/scene", lon, lat, orth_rgb, color_enhanced, mus_image)
-    # → output/scene_mapping_orth.tiff / scene_color_enhanced_orth.tiff / scene_mus_orth.tiff
+    # write 4 georeferenced GeoTIFFs (output directory created automatically)
+    engine.write_tiff("output/scene", lon, lat, orth_rgb, color_enhanced, mus_image, chl_image)
+    # → output/scene_mapping_orth.tiff / scene_color_enhanced_orth.tiff
+    #   / scene_mus_orth.tiff / scene_chl_orth.tiff
 
 
 # ---------------------------------------------------------------------------
@@ -90,15 +91,19 @@ def example_raw():
     engine = MicaEngine()
     spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit(NC_PATH)
 
-    orth, color, mus, mus_center, fd = engine.spectrum_analysis(
+    orth, color, mus, chl, mus_center, chl_center, fd = engine.spectrum_analysis(
         spectrum, wl, w, bp, chanels, n_workers=4, raw=True,
     )
     # mus_center [r,c]: muscovite 2.2μm absorption-center wavelength (μm); 0 for non-muscovite pixels
     #            -- Al-content indicator: shorter wavelength = high Al, longer = low Al / illitization
+    # chl_center [r,c]: chlorite 2250nm absorption-center wavelength (μm); 0 for non-chlorite pixels
+    #            -- Fe-content indicator: longer wavelength = higher xFe (chl13 M1 calibration)
     # fd        [r,c]: per-pixel best fit x depth joint confidence
     print(f"muscovite pixel count: {(mus_center > 0).sum()}, absorption-center range "
           f"{mus_center[mus_center > 0].min():.4f}–{mus_center[mus_center > 0].max():.4f} μm")
-    np.savez_compressed("output/scene_raw.npz", mus_center=mus_center, fd=fd)
+    print(f"chlorite pixel count: {(chl_center > 0).sum()}, absorption-center range "
+          f"{chl_center[chl_center > 0].min():.4f}–{chl_center[chl_center > 0].max():.4f} μm")
+    np.savez_compressed("output/scene_raw.npz", mus_center=mus_center, chl_center=chl_center, fd=fd)
 
 
 # ---------------------------------------------------------------------------
@@ -142,14 +147,14 @@ def example_components():
     clf = MicaClassifier.from_paths()          # bundled rule library + splib
     renderer = ResultRenderer.from_paths()     # bundled color table
 
-    # classify (returns ClassificationResult: fit/depth/num/mus_center/index etc.)
+    # classify (returns ClassificationResult: fit/depth/num/mus_center/chl_center/index etc.)
     result = clf.classify(spectrum, wl, w, bp, chanels, n_workers=4)
     print(f"mineral species identified: {(result.num.max())} / {len(result.index)} rules total")
     print(f"mineral name list: {result.index[:5]} ...")
 
-    # rendering the three maps + writing GeoTIFF are separate calls (e.g. thematic map only, custom output names)
-    orth_rgb, color_enhanced, mus_image = renderer.render(result)
-    renderer.write_tiff("output/scene_comp", lon, lat, orth_rgb, color_enhanced, mus_image)
+    # rendering the four maps + writing GeoTIFF are separate calls (e.g. thematic map only, custom output names)
+    orth_rgb, color_enhanced, mus_image, chl_image = renderer.render(result)
+    renderer.write_tiff("output/scene_comp", lon, lat, orth_rgb, color_enhanced, mus_image, chl_image)
 
 
 # ---------------------------------------------------------------------------
@@ -157,7 +162,7 @@ def example_components():
 EXAMPLES = {
     "quickstart": ("full-scene processing -> GeoTIFF", example_quickstart),
     "pixel": ("single-spectrum identification + PDF diagnostics", example_pixel),
-    "raw": ("float output mus_center/fd", example_raw),
+    "raw": ("float output mus_center/chl_center/fd", example_raw),
     "custom_rules": ("custom rule library", example_custom_rules),
     "components": ("component-level calls", example_components),
 }

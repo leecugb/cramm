@@ -5,7 +5,7 @@ MICA spectral analysis core
 ===========================
 Pure core for per-pixel mineral discrimination: given a spectral cube +
 wavelengths + rule library, produce raw classification results
-(FIT / DEPTH / NUM / mus_center), **without** any coloring or image packaging.
+(FIT / DEPTH / NUM / mus_center / chl_center), **without** any coloring or image packaging.
 
 Dependencies: numpy only (top level). Heavy dependencies (pandas) are lazily
 imported at the point of use, so multiprocessing workers that merely import
@@ -56,6 +56,7 @@ class ClassificationResult:
     depth: np.ndarray        # [r*c] best fit*depth (fd) per pixel
     num: np.ndarray          # [r*c] uint8 argmax mineral index
     mus_center: np.ndarray   # [r*c] muscovite absorption center (0 if absent)
+    chl_center: np.ndarray   # [r*c] chlorite 2250nm absorption center (0 if absent)
     r: int
     c: int
     index: List[str]         # mineral names (order matches num indices)
@@ -77,6 +78,17 @@ MUSCOVITE_MINERALS = [
     "calcite.5+muscoviteMedHiAl.5",
     "calcite.5+muscoviteMedAl.5",
     "calcite.3+muscoviteLowAl.7",
+]
+
+# Pure-chlorite minerals (used for chl_center quadratic fitting of the 2250 nm
+# Fe-OH band). Only the three pure references are included: the chlorite-bearing
+# mixture rules are excluded on purpose — their band position reflects the
+# mixture, not the chlorite composition (chl13 application boundary: band-
+# position inversion is quantitative only for chlorite >= ~50%)
+CHLORITE_MINERALS = [
+    "chlorite_lowFe",
+    "clinochlore",
+    "clinochlore_Fe",
 ]
 
 
@@ -1282,7 +1294,7 @@ class MicaClassifier:
         Returns
         -------
         ClassificationResult
-            fit / depth / num / mus_center / r / c / index / index_d
+            fit / depth / num / mus_center / chl_center / r / c / index / index_d
 
         Notes
         -----
@@ -1307,6 +1319,7 @@ class MicaClassifier:
             )
 
         mus_center = np.zeros(r * c, dtype="float")
+        chl_center = np.zeros(r * c, dtype="float")
         FIT_ = np.zeros(r * c, dtype="float")
         DEPTH_ = np.zeros(r * c, dtype="float")
         NUM_ = np.zeros(r * c, dtype="uint8")
@@ -1438,6 +1451,25 @@ class MicaClassifier:
                     center[np.isnan(center)] = 0
                     mus_center[a * c : b * c] = mus_center[a * c : b * c] + center
 
+                # Quadratic fit of the chlorite 2250 nm absorption center
+                # (chl_center: the chlorite product line analog of mus_center;
+                # composition proxy via the chl13 M1 calibration). Same shared
+                # code path for serial and parallel -> bit-exact.
+                for item in CHLORITE_MINERALS:
+                    if item not in index_d:
+                        continue  # a custom rule library may not contain all built-in chlorites
+                    t_mask = (im == index_d[item]) & fit_pos
+                    if not t_mask.any():
+                        continue
+                    center = _get_quadratic_center(
+                        spectrum1,
+                        wl,
+                        self.rf[item]["diagnostic_features"][0]["continuum_endpoints"],
+                        t_mask,
+                    )
+                    center[np.isnan(center)] = 0
+                    chl_center[a * c : b * c] = chl_center[a * c : b * c] + center
+
                 # Wavelength-based reassignment among the absorption_center_range
                 # rules (the pure muscovites): mus_center arbitrates the final
                 # attribution. Single shared implementation for the serial and
@@ -1496,5 +1528,6 @@ class MicaClassifier:
 
         return ClassificationResult(
             fit=FIT_, depth=DEPTH_, num=NUM_, mus_center=mus_center,
+            chl_center=chl_center,
             r=r, c=c, index=index, index_d=index_d,
         )

@@ -14,7 +14,7 @@ def run(nw):
     print(f"[load_emit] {time.time()-t0:.1f}s  spectrum={spectrum.shape} {spectrum.dtype}", flush=True)
 
     t1 = time.time()
-    orth, color, mus = eng.spectrum_analysis(
+    orth, color, mus, chl = eng.spectrum_analysis(
         spectrum, wl, w, bp, chanels,
         n_workers=nw,
         progress_callback=lambda p: print(f"  progress {p}% @ {time.time()-t1:.1f}s", flush=True),

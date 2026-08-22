@@ -50,6 +50,7 @@ class ProcessResult:
     orth_rgb: np.ndarray          # [H, W, 3] uint8
     color_enhanced: np.ndarray    # [H, W, 3] uint8
     mus_image: np.ndarray         # [H, W, 3] uint8
+    chl_image: np.ndarray         # [H, W, 3] uint8
     lon: np.ndarray               # [H, W]
     lat: np.ndarray               # [H, W]
 
@@ -208,19 +209,23 @@ class MicaEngine:
             dual-path golden regression in test_parallel.py); None defaults to
             min(os.cpu_count() or 1, 8).
         raw : bool, optional
-            False (default) returns the three uint8 images
-            (orth_rgb, color_enhanced, mus_image).
-            True additionally returns two float arrays:
+            False (default) returns the four uint8 images
+            (orth_rgb, color_enhanced, mus_image, chl_image).
+            True additionally returns three float arrays:
               mus_center — muscovite 2.2μm absorption center wavelength (μm);
                            non-muscovite pixels are 0.
+              chl_center — chlorite 2250nm absorption center wavelength (μm);
+                           non-chlorite pixels are 0.
               fd — per-pixel best (argmax) fit×depth joint confidence.
 
         Returns
         -------
-        orth_rgb, color_enhanced, mus_image : np.ndarray
+        orth_rgb, color_enhanced, mus_image, chl_image : np.ndarray
             All [r, c, 3] uint8.
         mus_center : np.ndarray, optional (when raw=True)
             [r, c] float, muscovite 2200nm absorption wavelength (μm).
+        chl_center : np.ndarray, optional (when raw=True)
+            [r, c] float, chlorite 2250nm absorption wavelength (μm).
         fd : np.ndarray, optional (when raw=True)
             [r, c] float, best fit×depth.
         """
@@ -231,14 +236,15 @@ class MicaEngine:
             cancel_flag=cancel_flag,
             n_workers=n_workers,
         )
-        orth_rgb, color_enhanced, mus_image = self._renderer.render(result)
+        orth_rgb, color_enhanced, mus_image, chl_image = self._renderer.render(result)
         if raw:
             return (
-                orth_rgb, color_enhanced, mus_image,
+                orth_rgb, color_enhanced, mus_image, chl_image,
                 result.mus_center.reshape(result.r, result.c),
+                result.chl_center.reshape(result.r, result.c),
                 result.depth.reshape(result.r, result.c),
             )
-        return orth_rgb, color_enhanced, mus_image
+        return orth_rgb, color_enhanced, mus_image, chl_image
 
     # ------------------------------------------------------------------
     # Public interface: GeoTIFF output (delegated to ResultRenderer)
@@ -252,10 +258,11 @@ class MicaEngine:
         orth_rgb: np.ndarray,
         color_enhanced: np.ndarray,
         mus_image: np.ndarray,
+        chl_image: Optional[np.ndarray] = None,
     ) -> None:
         """Handle coordinate resampling and GeoTIFF file saving (delegated to ResultRenderer)."""
         ResultRenderer.write_tiff(
-            pathname, lon, lat, orth_rgb, color_enhanced, mus_image
+            pathname, lon, lat, orth_rgb, color_enhanced, mus_image, chl_image
         )
 
 
@@ -264,7 +271,7 @@ class MicaEngine:
 # =============================================================================
 
 def main():
-    """Command-line entry point: process EMIT NetCDF → 3 GeoTIFFs + float variables."""
+    """Command-line entry point: process EMIT NetCDF → 4 GeoTIFFs + float variables."""
     import argparse
     import time
 
@@ -275,7 +282,7 @@ def main():
     parser.add_argument("--output", "-o", default=".", help="output directory (default: current directory)")
     parser.add_argument("--name", "-n", default=None, help="output filename prefix (default: input filename)")
     parser.add_argument("--workers", "-w", type=int, default=None, help="number of parallel worker processes (default: min(cpu, 8))")
-    parser.add_argument("--raw", action="store_true", help="also save mus_center + fd float arrays as npz")
+    parser.add_argument("--raw", action="store_true", help="also save mus_center + chl_center + fd float arrays as npz")
     args = parser.parse_args()
 
     nc_path = args.input
@@ -292,25 +299,25 @@ def main():
 
     t0 = time.time()
     if args.raw:
-        orth, color, mus, mus_center, fd = engine.spectrum_analysis(
+        orth, color, mus, chl, mus_center, chl_center, fd = engine.spectrum_analysis(
             spectrum, wl, w, bp, chanels, n_workers=args.workers, raw=True,
             progress_callback=lambda p: print(f"[CRAMM] {p}%", flush=True),
         )
         np.savez_compressed(
             os.path.join(out_dir, out_name + "_raw.npz"),
-            mus_center=mus_center, fd=fd,
+            mus_center=mus_center, chl_center=chl_center, fd=fd,
         )
         print(f"[CRAMM] Raw data saved: {out_name}_raw.npz", flush=True)
     else:
-        orth, color, mus = engine.spectrum_analysis(
+        orth, color, mus, chl = engine.spectrum_analysis(
             spectrum, wl, w, bp, chanels, n_workers=args.workers,
             progress_callback=lambda p: print(f"[CRAMM] {p}%", flush=True),
         )
     print(f"[CRAMM] Analysis: {time.time()-t0:.1f}s", flush=True)
 
-    engine.write_tiff(out_path, lon, lat, orth, color, mus)
+    engine.write_tiff(out_path, lon, lat, orth, color, mus, chl)
     print(f"[CRAMM] GeoTIFF written to: {out_dir}", flush=True)
-    for suffix in ["_mapping_orth.tiff", "_color_enhanced_orth.tiff", "_mus_orth.tiff"]:
+    for suffix in ["_mapping_orth.tiff", "_color_enhanced_orth.tiff", "_mus_orth.tiff", "_chl_orth.tiff"]:
         p = out_path + suffix
         if os.path.exists(p):
             print(f"  {os.path.basename(p)}", flush=True)

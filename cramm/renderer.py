@@ -4,8 +4,8 @@
 MICA result packaging
 =====================
 Consumes a ClassificationResult (raw classification output) plus a color
-table, produces three RGB images (orth_rgb / color_enhanced / mus_image),
-and writes GeoTIFFs.
+table, produces four RGB images (orth_rgb / color_enhanced / mus_image /
+chl_image), and writes GeoTIFFs.
 
 Decoupled from spectral analysis and image reading: this module performs no
 mineral discrimination; it is responsible only for rendering and output.
@@ -159,13 +159,13 @@ class ResultRenderer:
 
         return cls(colors_dic, table)
 
-    def render(self, result: ClassificationResult) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    def render(self, result: ClassificationResult) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """
-        Renders the three RGB images.
+        Renders the four RGB images.
 
         Returns
         -------
-        orth_rgb, color_enhanced, mus_image : np.ndarray
+        orth_rgb, color_enhanced, mus_image, chl_image : np.ndarray
             All are [r, c, 3] uint8
         """
         r, c = result.r, result.c
@@ -244,10 +244,25 @@ class ResultRenderer:
         mus_image[mus_center < 2.195] = [0, 0, 0]
         mus_image[mus_center >= 2.226] = [0, 0, 0]
 
+        # ---- Chlorite (chlorite 2250nm thematic map) ----
+        # Same 10-level table and short->long wavelength convention as the
+        # muscovite map. The chl_center absorption center within [2.244, 2.259)
+        # um is binned into 10 uniform levels of 0.0015 um (shorter = low-Fe,
+        # longer = Fe-rich; the chl13 calibration anchors span 2246.1-2254.5 nm
+        # over xFe 0.102-0.342); out-of-range pixels are colored black
+        # (including non-chlorite pixels with chl_center=0)
+        chl_center = result.chl_center
+        chl_image = np.zeros([r * c, 3], dtype="uint8")
+        for _lvl in range(10):
+            _lo = 2.244 + _lvl * 0.0015
+            _hi = _lo + 0.0015
+            chl_image[(chl_center >= _lo) & (chl_center < _hi)] = self.table[_lvl]
+
         return (
             orth_rgb.reshape([r, c, 3]),
             color_enhanced.reshape([r, c, 3]),
             mus_image.reshape([r, c, 3]),
+            chl_image.reshape([r, c, 3]),
         )
 
     @staticmethod
@@ -258,8 +273,13 @@ class ResultRenderer:
         orth_rgb: np.ndarray,
         color_enhanced: np.ndarray,
         mus_image: np.ndarray,
+        chl_image: Optional[np.ndarray] = None,
     ) -> None:
-        """Handles coordinate resampling and GeoTIFF file saving."""
+        """Handles coordinate resampling and GeoTIFF file saving.
+
+        chl_image is optional: when given, a fourth GeoTIFF (_chl_orth.tiff)
+        is written; omitting it keeps the legacy three-file output.
+        """
         from osgeo import gdal
         from pyproj import Proj
         from pyresample import geometry, kd_tree
@@ -318,6 +338,8 @@ class ResultRenderer:
         _save(orth_rgb, "_mapping_orth.tiff")
         _save(color_enhanced, "_color_enhanced_orth.tiff")
         _save(mus_image, "_mus_orth.tiff")
+        if chl_image is not None:
+            _save(chl_image, "_chl_orth.tiff")
 
     # ------------------------------------------------------------------
     # Single-spectrum feature continuum-removal PDF (lazy matplotlib import)
