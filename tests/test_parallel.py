@@ -25,7 +25,7 @@ def run(nw):
 
     g = np.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "golden_arrays.npz"))
     ok = True
-    for name, arr in [("orth_rgb", orth), ("color_enhanced", color), ("mus_image", mus)]:
+    for name, arr in [("orth_rgb", orth), ("color_enhanced", color), ("mus_image", mus), ("chl_image", chl)]:
         same = np.array_equal(arr, g[name])
         print(f"  {name:16s} array_equal={same}", flush=True)
         if not same:

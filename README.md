@@ -58,9 +58,10 @@ Everything is pure Python and GUI-free. Cross-platform:
 - **Quantitative chlorite mapping** — per-pixel 2250 nm absorption-center
   wavelength (`chl_center`) for pixels won by the three pure-chlorite rules,
   as a fourth thematic map and float array; a continuous Fe-content proxy
-  anchored by the chl13 calibration (LOO 1.0 nm), with no hard
-  lowFe/clinochlore/Fe-rich re-arbitration (the three references are points
-  on a composition continuum, not band-position-defined subtypes).
+  anchored by the chl13 calibration (LOO 1.0 nm). The same center also
+  re-arbitrates the lowFe / clinochlore / Fe-rich attribution against
+  deliberately overlapping tolerance windows — intermediate compositions
+  keep their best-fit class, only clear outliers flip.
 - **Whole-scene and single-spectrum modes** — batch-classify an entire scene
   to GeoTIFF, or identify one spectrum (GUI point-click, field
   spectrometer) with Top-N ranking and a PDF diagnostic report.
@@ -270,12 +271,13 @@ The constraint is part of the rule schema — custom rule libraries can set
 `"max_depth_ratio_feat1_over_feat0": <float>` on any rule with ≥2 diagnostic
 features; omitting the key disables it (original MICA behavior).
 
-### Wavelength-based muscovite attribution
+### Wavelength-based absorption-center attribution
 
 CRAMM also adds an optional per-feature **absorption-center window**,
 `absorption_center_range` on a rule's first diagnostic feature. After the
 best-match selection, pixels attributed to a rule carrying this field are
-re-arbitrated by their fitted 2.2 µm absorption center (`mus_center`):
+re-arbitrated by their fitted absorption center (`mus_center` at 2.2 µm for
+the white-mica family, `chl_center` at 2250 nm for the chlorite family):
 
 > If the center falls inside exactly one rule's `[lo, hi)` window, differs
 > from the current match, and that rule itself accepted the pixel, the pixel
@@ -288,7 +290,13 @@ The four bundled pure-muscovite rules carry calibrated windows (anchored on
 each reference spectrum's measured wv2200): medhighAl `[2.195, 2.200)`,
 medAl `[2.200, 2.206)`, lowAl `[2.206, 2.210)`, Fe-rich `[2.210, 2.220)` —
 the four windows tile the 2.195–2.220 µm range without overlap, so every
-valid center arbitrates to exactly one subtype.
+valid center arbitrates to exactly one subtype. The three bundled
+pure-chlorite rules instead carry **overlapping** windows — lowFe
+`[2.245, 2.248)`, clinochlore `[2.247, 2.252)`, Fe-rich `[2.251, 2.25549)` —
+whose 1 nm overlaps act as tolerance zones: an intermediate-composition
+pixel lands in two windows at once, is ambiguous by the rule above, and
+keeps its best-fit class (see *Application: reading chlorite Fe content
+from chl_center*).
 This is a scene-classification feature; single-spectrum Top-N ranking is
 unaffected. Custom rule libraries opt in by adding the field; rules without
 it are never reassigned.
@@ -336,11 +344,16 @@ set (13 samples spanning xFe 0.014–0.553) the closed-form model
 `pos2250 = 2218.8·xAl + 2279.6·xFe + 2249.7·xMg` reproduces band positions
 with LOO-RMSE 1.0 nm — at the repeat-measurement noise floor — and the
 calibration is immune to the Fe²⁺/Fe³⁺ reporting convention (closure
-normalization cancels it exactly). Unlike the muscovite subtypes, the three
-chlorite rules are **not** re-arbitrated by wavelength: lowFe / clinochlore
-/ Fe-rich are three references on a composition continuum, not
-band-position-defined classes, so CRAMM keeps the argmax attribution and
-reports the center as a continuous layer instead. Practical limits from the
+normalization cancels it exactly). Unlike the muscovite subtypes — whose
+windows tile their range without overlap — the three chlorite rules carry
+**deliberately overlapping tolerance windows**: lowFe `[2.245, 2.248)`,
+clinochlore `[2.247, 2.252)`, Fe-rich `[2.251, 2.25549)` µm. A `chl_center`
+landing in a 1 nm overlap hits two windows, is declared ambiguous, and keeps
+its argmax attribution (the three references are points on a composition
+continuum, so intermediate compositions must not be forced into a class);
+only a center falling exclusively inside another rule's window flips the
+attribution, with the center refitted once against the target rule's
+endpoints. Practical limits from the
 calibration: quantitative inversion needs chlorite ≳50 % of the pixel and a
 comparable sample preparation; the 2350 nm Mg–OH band (cross-instrument
 anchor, bias ≈0.2 nm) is reserved for pure-mineral checks.

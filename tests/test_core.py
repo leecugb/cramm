@@ -275,6 +275,44 @@ def test_muscovite_guard():
         clf.invalidate_caches()
 
 
+def test_chlorite_window_arbitration():
+    """Chlorite tolerant-window arbitration: overlapping absorption_center_range
+    windows (lowFe [2.245,2.248) / clinochlore [2.247,2.252) / Fe [2.251,2.25549)).
+    A center in an overlap hits two windows -> ambiguous -> keep; only a center
+    exclusively inside another rule's window flips the attribution."""
+    from cramm.classifier import _reassign_by_absorption_center
+    e = eng()
+    rf = e.rf
+    names = list(rf.keys())
+    index_d = {n: i for i, n in enumerate(names)}
+    i_low, i_clino, i_fe = (index_d[n] for n in
+                            ("chlorite_lowFe", "clinochlore", "clinochlore_Fe"))
+    # (winner, center) -> expected winner after arbitration
+    cases = [
+        (i_clino, 2.2522, i_fe),     # exclusively in Fe window -> flip to Fe
+        (i_clino, 2.2475, i_clino),  # lowFe/clino overlap -> ambiguous -> keep
+        (i_fe,    2.2495, i_clino),  # exclusively in clino window -> flip
+        (i_fe,    2.2515, i_fe),     # clino/Fe overlap -> ambiguous -> keep
+        (i_low,   2.2460, i_low),    # inside own window only -> keep
+        (i_low,   2.2400, i_low),    # outside every window -> keep
+        (i_clino, 0.0,    i_clino),  # invalid center -> keep
+    ]
+    n, m = len(cases), len(names)
+    im = np.array([c[0] for c in cases], dtype="int64")
+    cen = np.array([c[1] for c in cases], dtype="float64")
+    FIT = np.full((n, m), 0.5)
+    fit_nan = np.zeros((n, m), dtype=bool)
+    fit_pos = np.ones(n, dtype=bool)
+    # synthetic spectrum with a genuine 2250 nm dip so the post-flip refit
+    # returns a valid center (value itself is not asserted)
+    wl = np.linspace(2.0, 2.5, 50)
+    spectrum1 = np.tile(0.5 - 0.2 * np.exp(-((wl - 2.25) / 0.02) ** 2), (n, 1))
+    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf, index_d, fit_pos)
+    for (winner, center, expected), got in zip(cases, im):
+        assert got == expected, f"winner={names[winner]} center={center}: got {names[got]}, want {names[expected]}"
+    assert (cen[cen > 0] > 2.2).all(), "kept/flipped centers must stay positive"
+
+
 def test_render_missing_color():
     """Color table missing a mineral name: render raises KeyError up front (rather than a bare KeyError at lookup)."""
     from cramm.classifier import ClassificationResult
@@ -573,6 +611,7 @@ def main():
     run("engine full-band == selected-band", test_engine_band_selection_equivalence)
     run("invalidate_caches", test_invalidate_caches)
     run("muscovite guard", test_muscovite_guard)
+    run("chlorite tolerant-window arbitration", test_chlorite_window_arbitration)
     run("render color table upfront validation", test_render_missing_color)
     run("specpr/splib validation", test_specpr_and_splib_validation)
     run("EmitReader non-EMIT error", test_emit_reader_non_emit_nc)

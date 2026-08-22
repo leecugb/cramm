@@ -294,8 +294,10 @@ def _reassign_by_absorption_center(
 ) -> None:
     """
     Wavelength-based reassignment among the rules carrying
-    ``diagnostic_features[0]["absorption_center_range"]`` (the four pure
-    muscovite rules in the bundled library).
+    ``diagnostic_features[0]["absorption_center_range"]`` (in the bundled
+    library: the four pure muscovite rules with windows around the 2.2 um
+    Al-OH band, and the three pure chlorite rules with deliberately
+    overlapping windows around the 2250 nm Fe-OH band).
 
     For each pixel whose best match ``im`` is one of those rules, the
     quadratic-fit absorption center ``mus_c`` arbitrates the final
@@ -308,9 +310,17 @@ def _reassign_by_absorption_center(
         accepted the pixel (its fit is not NaN) -> reassign: ``im`` follows
         the target rule and ``mus_c`` is refitted once with the target
         rule's feat0 continuum endpoints (single pass, no iteration);
-      - center inside several overlapping ranges (possible when a custom
-        rule library defines overlapping windows) -> ambiguous, keep the
-        original.
+      - center inside several overlapping ranges -> ambiguous, keep the
+        original. The bundled chlorite windows exploit exactly this: their
+        1 nm overlaps are tolerance zones where the intermediate
+        composition keeps its argmax attribution.
+
+    ``classify`` calls this helper twice per segment: once with
+    ``mus_center`` (muscovite family) and once with ``chl_center``
+    (chlorite family). The families self-segregate because each center
+    array is nonzero only for winners of its own family (the ``mus_c > 0``
+    member gate), and the two families' windows are ~25 nm apart so no
+    cross-family hit is possible anyway.
 
     All decisions are computed from the pre-reassignment state in one
     vectorized pass (no sequential dependence between pixels), and this
@@ -1476,6 +1486,18 @@ class MicaClassifier:
                 # parallel paths (bit-exact); see the helper's docstring.
                 _reassign_by_absorption_center(
                     im, FIT, fit_nan, mus_center[a * c : b * c],
+                    spectrum1, wl, self.rf, index_d, fit_pos,
+                )
+                # Same arbitration among the three pure-chlorite rules, driven
+                # by chl_center. Their windows deliberately overlap by 1 nm
+                # (tolerant scheme): a center landing in an overlap hits two
+                # ranges -> ambiguous -> keep the original match; only a
+                # center falling exclusively inside another rule's window
+                # flips the attribution. The two families self-segregate
+                # across the two calls because each center array is zero
+                # outside its own family (the helper's >0 gate).
+                _reassign_by_absorption_center(
+                    im, FIT, fit_nan, chl_center[a * c : b * c],
                     spectrum1, wl, self.rf, index_d, fit_pos,
                 )
                 FIT_[a * c : b * c] = FIT.flatten()[im + np.arange(len(im)) * len(self.rf)]
