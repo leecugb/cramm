@@ -285,16 +285,21 @@ This is a scene-classification feature; single-spectrum Top-N ranking is
 unaffected. Custom rule libraries opt in by adding the field; rules without
 it are never reassigned.
 
-Four white-mica-group rules carry parsed structural formulas of their
-reference spectra (O=11 anhydrous basis, from the 14-sample white-mica
-composition–band-position calibration set) as bundled metadata:
+Seven white-mica-group and chlorite rules carry parsed structural formulas
+of their reference spectra as bundled metadata:
 `reference.structural_formula` with `structural_formula_tier` (`A` =
-wet-chemistry Fe³⁺/Fe²⁺ split, `B` = total-Fe convention) on
-muscovite_medhighAl (GDS113), muscovite_Fe-rich (GDS116), illite_gds4
-(GDS4) and illite_imt1 (IMt-1). Of the four arbitration windows above,
-medhighAl and Fe-rich are thereby anchored to measured chemistry; medAl
-(CU91-250A) and lowAl (CU93-1) have no published full analysis. The
-metadata is informational only and never enters the classification math.
+wet-chemistry Fe³⁺/Fe²⁺ split, `B` = total-Fe convention). White micas
+(O=11 anhydrous basis, from the 14-sample white-mica
+composition–band-position calibration set): muscovite_medhighAl (GDS113),
+muscovite_Fe-rich (GDS116), illite_gds4 (GDS4) and illite_imt1 (IMt-1) —
+of the four arbitration windows above, medhighAl and Fe-rich are thereby
+anchored to measured chemistry; medAl (CU91-250A) and lowAl (CU93-1) have
+no published full analysis. Chlorites (O₁₀(OH)₈ basis, from the chl13
+calibration set): chlorite_lowFe (SMR-13), clinochlore (GDS158) and
+clinochlore_Fe (SC-CCa-1; chemistry from the Bartel XRF of the same CMS
+CCa-1 specimen) — the full lowFe→Fe-rich gradient is chemistry-anchored.
+The metadata is informational only and never enters the classification
+math.
 
 ## Application: reading muscovite composition from mus_center
 
