@@ -294,9 +294,9 @@ def _reassign_by_absorption_center(
         accepted the pixel (its fit is not NaN) -> reassign: ``im`` follows
         the target rule and ``mus_c`` is refitted once with the target
         rule's feat0 continuum endpoints (single pass, no iteration);
-      - center inside several overlapping ranges (the bundled lowAl /
-        Fe-rich windows are identical, so wavelength alone cannot separate
-        them) -> ambiguous, keep the original.
+      - center inside several overlapping ranges (possible when a custom
+        rule library defines overlapping windows) -> ambiguous, keep the
+        original.
 
     All decisions are computed from the pre-reassignment state in one
     vectorized pass (no sequential dependence between pixels), and this
@@ -328,7 +328,13 @@ def _reassign_by_absorption_center(
         return
     rows = np.nonzero(member)[0][uniq]          # pixel rows within the segment
     tgt_local = hits[uniq].argmax(1)            # unique hit, as group index
-    ok = (gidx[tgt_local] != im[rows]) & ~fit_nan[rows, gidx[tgt_local]]
+    # Target must (a) differ from the current match, (b) have accepted the
+    # pixel (fit not NaN), (c) have a positive fit -- a zero-but-not-NaN fit
+    # (custom rules with min_weighted_fit=None) would reassign the pixel into
+    # a state indistinguishable from background downstream (fit_pos semantic)
+    ok = (gidx[tgt_local] != im[rows]) & ~fit_nan[rows, gidx[tgt_local]] & (
+        FIT[rows, gidx[tgt_local]] > 0
+    )
     if not ok.any():
         return
     rows, tgt_local = rows[ok], tgt_local[ok]
@@ -344,8 +350,13 @@ def _reassign_by_absorption_center(
             rf[name]["diagnostic_features"][0]["continuum_endpoints"],
             mask,
         )
-        cen2[np.isnan(cen2)] = 0
-        mus_c[mask] = cen2[mask]
+        # A failed refit (collinear triple -> NaN) must not discard the
+        # pre-reassignment center: fall back to it so mus_center stays
+        # consistent with the pixel having had a valid absorption center
+        newc = cen2[mask]
+        bad = ~np.isfinite(newc)
+        newc[bad] = mus_c[mask][bad]
+        mus_c[mask] = newc
 
 
 def _precompute_feature(reference: np.ndarray, wl: np.ndarray, CONTINUUM_ENDPTS: List[float]) -> dict:

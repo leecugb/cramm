@@ -240,8 +240,9 @@ re-arbitrated by their fitted 2.2 µm absorption center (`mus_center`):
 
 The four bundled pure-muscovite rules carry calibrated windows (anchored on
 each reference spectrum's measured wv2200): medhighAl `[2.195, 2.200)`,
-medAl `[2.200, 2.206)`, lowAl / Fe-rich `[2.206, 2.220)` — the latter two
-share a window, so wavelength never overrides their mutual attribution.
+medAl `[2.200, 2.206)`, lowAl `[2.206, 2.210)`, Fe-rich `[2.210, 2.220)` —
+the four windows tile the 2.195–2.220 µm range without overlap, so every
+valid center arbitrates to exactly one subtype.
 This is a scene-classification feature; single-spectrum Top-N ranking is
 unaffected. Custom rule libraries opt in by adding the field; rules without
 it are never reassigned.
