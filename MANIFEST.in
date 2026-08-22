@@ -2,5 +2,6 @@
 include README.md
 include example_usage.py
 include regen_golden.py
+include benchmark.py
 recursive-include tests *.py *.npz
 recursive-include docs *.png

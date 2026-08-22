@@ -19,9 +19,10 @@ Algorithm documentation:
                                    filtering / constraint statistics / numerical stability
 
 How to verify:
-    python test_parallel.py 4|1    # full-scene golden regression (parallel/serial, bit-exact)
-    python check_rows_logic.py     # 14 checks of rows surviving-pixel semantics
-    python check_compiled_path.py  # compiled/direct path 302x77 bit-exact diff
+    python tests/test_parallel.py 4|1    # full-scene golden regression (parallel/serial, bit-exact)
+    python tests/check_rows_logic.py     # 16 checks of rows surviving-pixel semantics
+    python tests/check_compiled_path.py  # compiled/direct path 302x77 bit-exact diff
+    python tests/test_parallel_isolation.py  # shared-state / thread / worker isolation (no NC needed)
     python -m cramm.mica_engine -i <nc> [-o dir] [--raw]  # end-to-end CLI
 """
 
@@ -156,7 +157,12 @@ class MicaEngine:
         # column indices derived from wl would mismatch the full-band columns,
         # and the old behavior silently computed wrong results.
         # Input already reduced to selected bands (len(chanels) columns) passes through unchanged.
-        spectrum_2d = spectrum.reshape(1, -1).astype("float64") if spectrum.ndim == 1 else spectrum
+        # Uniform float64 contract for both 1-D and 2-D input: the classifier's
+        # per-feature means accumulate in float32 for float32 input, so an uncast
+        # 2-D float32 spectrum would give ulp-different results from the same
+        # spectrum passed as 1-D (copy=False: float64 input is not copied)
+        spectrum_2d = spectrum.reshape(1, -1) if spectrum.ndim == 1 else spectrum
+        spectrum_2d = spectrum_2d.astype("float64", copy=False)
         if spectrum_2d.shape[1] == len(w) and len(chanels) != len(w):
             spectrum_2d = np.ascontiguousarray(spectrum_2d[:, chanels])
         results = self._classifier.classify_spectrum(spectrum_2d, wl, w, bp, chanels, top_n)
@@ -263,7 +269,7 @@ def main():
     import time
 
     parser = argparse.ArgumentParser(
-        description="CRAMM — EMIT hyperspectral mineral identification (USGS MICA, extended)"
+        description="CRAMM — hyperspectral mineral identification (USGS MICA, extended); CLI reads EMIT L2A via the built-in reader"
     )
     parser.add_argument("--input", "-i", required=True, help="path to EMIT L2A NetCDF file")
     parser.add_argument("--output", "-o", default=".", help="output directory (default: current directory)")

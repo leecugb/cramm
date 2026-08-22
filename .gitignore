@@ -7,3 +7,11 @@ __pycache__/
 
 # Local test scene (1.8 GB, not part of the package)
 *.nc
+
+# Local tooling / credentials / generated artifacts (never commit)
+_gh_token.txt
+_api_push.py
+_md2pdf.py
+_pdf_assets/
+README.pdf
+output/

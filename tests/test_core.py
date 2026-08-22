@@ -409,6 +409,87 @@ def test_pdf_rcparams_restored():
     assert dict(mpl.rcParams) == before, "rcParams not restored"
 
 
+def test_classify_spectrum_dtype_uniformity():
+    """Facade dtype contract: the same float32 spectrum passed as 1-D vs 2-D gives identical results."""
+    e = eng()
+    spec_full, _ = ref_spectrum()
+    spec32 = spec_full[CHANELS].astype("float32")
+    r_1d = e.classify_spectrum(spec32, WL, W, BP, CHANELS, top_n=len(e.rf))
+    r_2d = e.classify_spectrum(spec32.reshape(1, -1), WL, W, BP, CHANELS, top_n=len(e.rf))
+    assert [x["name"] for x in r_1d] == [x["name"] for x in r_2d], "Top-N name lists differ"
+    for a, b in zip(r_1d, r_2d):
+        assert _bytes(a["fit"]) == _bytes(b["fit"]) and _bytes(a["fd"]) == _bytes(b["fd"])
+
+
+def test_color_tif_sampling_and_validation():
+    """Custom color LUT GeoTIFF: 10 columns sampled evenly across the actual width;
+    single-band tif raises a clear ValueError (not a bare IndexError)."""
+    try:
+        from osgeo import gdal
+    except ImportError:
+        raise SkipTest("gdal not available")
+    from cramm.renderer import ResultRenderer
+    tmp = tempfile.mkdtemp(prefix="cramm_lut_")
+    try:
+        # heritage width 283: sampling must equal the original linspace(0, 282, 10) positions
+        width = 283
+        arr = np.zeros((3, 1, width), dtype="uint8")
+        arr[0, 0, :] = np.arange(width) % 256
+        arr[1, 0, :] = (np.arange(width) * 2) % 256
+        arr[2, 0, :] = (np.arange(width) * 3) % 256
+        path = os.path.join(tmp, "lut.tif")
+        ds = gdal.GetDriverByName("GTiff").Create(path, width, 1, 3, gdal.GDT_Byte)
+        for i in range(3):
+            ds.GetRasterBand(i + 1).WriteArray(arr[i])
+        ds = None
+        renderer = ResultRenderer.from_paths(color_tif_path=path)
+        indices = np.linspace(0, width - 1, 10).astype(int)
+        assert len(renderer.table) == 10
+        for k, idx in enumerate(indices):
+            assert np.array_equal(renderer.table[k], arr[:, 0, idx]), f"sample {k} mismatch at column {idx}"
+        # single-band tif -> clear ValueError
+        bad = os.path.join(tmp, "lut_1band.tif")
+        ds = gdal.GetDriverByName("GTiff").Create(bad, width, 1, 1, gdal.GDT_Byte)
+        ds.GetRasterBand(1).WriteArray(arr[0])
+        ds = None
+        try:
+            ResultRenderer.from_paths(color_tif_path=bad)
+            raise AssertionError("single-band LUT should raise ValueError")
+        except ValueError as e:
+            assert "3-band" in str(e)
+    finally:
+        for f in os.listdir(tmp):
+            os.remove(os.path.join(tmp, f))
+        os.rmdir(tmp)
+
+
+def test_write_tiff_antimeridian_guard():
+    """write_tiff: scene crossing the antimeridian raises a clear ValueError instead of
+    building a ~360-degree raster (no output files written)."""
+    try:
+        from osgeo import gdal  # noqa: F401
+    except ImportError:
+        raise SkipTest("gdal not available")
+    from cramm.renderer import ResultRenderer
+    r, c = 4, 5
+    lon = np.linspace(179.0, 181.0, r * c).reshape(r, c)
+    lon[lon > 180] -= 360  # EMIT [-180, 180] convention -> now straddles the antimeridian
+    lat = np.linspace(30.0, 31.0, r * c).reshape(r, c)
+    img = np.zeros((r, c, 3), dtype="uint8")
+    tmp = tempfile.mkdtemp(prefix="cramm_antim_")
+    try:
+        try:
+            ResultRenderer.write_tiff(os.path.join(tmp, "scene"), lon, lat, img, img, img)
+            raise AssertionError("antimeridian-crossing scene should raise ValueError")
+        except ValueError as e:
+            assert "antimeridian" in str(e)
+        assert os.listdir(tmp) == [], "no output files should be written"
+    finally:
+        for f in os.listdir(tmp):
+            os.remove(os.path.join(tmp, f))
+        os.rmdir(tmp)
+
+
 # ----------------------------------------------------------------------------
 # C. Integration section (needs EMIT NC)
 # ----------------------------------------------------------------------------
@@ -465,6 +546,9 @@ def main():
     run("EmitReader non-EMIT error", test_emit_reader_non_emit_nc)
     run("EmitReader shape validation", test_emit_reader_shape_validation)
     run("PDF rcParams restoration", test_pdf_rcparams_restored)
+    run("classify_spectrum dtype uniformity (1-D vs 2-D)", test_classify_spectrum_dtype_uniformity)
+    run("color LUT tif sampling + validation", test_color_tif_sampling_and_validation)
+    run("write_tiff antimeridian guard", test_write_tiff_antimeridian_guard)
 
     if os.path.exists(args.nc):
         print("== C. Integration (EMIT NC) ==", flush=True)
