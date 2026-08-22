@@ -933,7 +933,9 @@
       "output_name": "muscovite_medhighAl",
       "reference": {
         "reflectance_record": 6348,
-        "wavelength_record": 60
+        "wavelength_record": 60,
+        "structural_formula": "K0.85Na0.10(Al1.85Fe3+0.05Fe2+0.05Mg0.06Ti0.02)(Si3.06Al0.94)O10(OH1.95F0.05).0.10H2O",
+        "structural_formula_tier": "A"
       },
       "diagnostic_features": [
         {
@@ -1003,7 +1005,9 @@
       "output_name": "muscovite_Fe-rich",
       "reference": {
         "reflectance_record": 6394,
-        "wavelength_record": 60
+        "wavelength_record": 60,
+        "structural_formula": "K0.88Na0.06Ca0.01(Al1.58Fe3+0.22Fe2+0.08Mg0.14Ti0.02)(Si3.11Al0.89)O10(OH1.98F0.02).0.10H2O",
+        "structural_formula_tier": "A"
       },
       "diagnostic_features": [
         {
@@ -1073,7 +1077,9 @@
       "output_name": "illite_imt1",
       "reference": {
         "reflectance_record": 4693,
-        "wavelength_record": 6
+        "wavelength_record": 6,
+        "structural_formula": "K0.68Na0.04Ca0.08(Al1.31Fe3+0.33Mg0.24Ti0.04)(Si3.55Al0.45)O10(OH)2",
+        "structural_formula_tier": "B"
       },
       "diagnostic_features": [
         {
@@ -1139,7 +1145,9 @@
       "output_name": "illite_gds4",
       "reference": {
         "reflectance_record": 4625,
-        "wavelength_record": 6
+        "wavelength_record": 6,
+        "structural_formula": "K0.71Na0.02Ca0.03Sr0.03(Al1.46Fe3+0.08Fe2+0.02Mg0.39Ti0.05)(Si3.53Al0.47)O10(OH)2.0.14H2O",
+        "structural_formula_tier": "A"
       },
       "diagnostic_features": [
         {

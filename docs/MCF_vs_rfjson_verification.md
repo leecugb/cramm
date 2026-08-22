@@ -47,6 +47,7 @@
 ### 3.2 CRAMM 纯新增(.mcf 中不存在)
 - **吸收中心仲裁窗口 `absorption_center_range`**:4 条白云母规则(medhighAl [2.195,2.20] / medAl [2.20,2.206] / lowAl [2.206,2.210] / Fe-rich [2.210,2.220] µm,互不重叠、无缝拼接)
 - **深度比约束 `max_depth_ratio_feat1_over_feat0`**:9 条规则(白云母×4 = 0.6,伊利石×2 = 0.6,高岭石-白云母混合×3 = 0.4)
+- **参考样本结构式标注 `structural_formula` / `structural_formula_tier`**:4 条规则(muscovite_medhighAl=GDS113、muscovite_Fe-rich=GDS116、illite_gds4=GDS4 为 A 级湿法双价态;illite_imt1=IMt-1 为 B 级全铁约定),来源为 14 样本白云母族成分-带位标定数据集(O=11 无水基);纯元数据,不参与分类计算
 
 ### 3.3 参考光谱寻址方式
 .mcf 指向 HyMap 预卷积库记录(换传感器需重建整套库);rf.json 指向原始 splib06b 记录 + `wavelength_map` 波长轴记录(53 条映射,4 种仪器网格),运行时高斯核重采样 → 传感器无关。
