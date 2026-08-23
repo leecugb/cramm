@@ -14,7 +14,7 @@ def run(nw):
     print(f"[load_emit] {time.time()-t0:.1f}s  spectrum={spectrum.shape} {spectrum.dtype}", flush=True)
 
     t1 = time.time()
-    orth, color, mus, chl = eng.spectrum_analysis(
+    orth, color, mus, chl, cal = eng.spectrum_analysis(
         spectrum, wl, w, bp, chanels,
         n_workers=nw,
         progress_callback=lambda p: print(f"  progress {p}% @ {time.time()-t1:.1f}s", flush=True),
@@ -25,7 +25,8 @@ def run(nw):
 
     g = np.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "golden_arrays.npz"))
     ok = True
-    for name, arr in [("orth_rgb", orth), ("color_enhanced", color), ("mus_image", mus), ("chl_image", chl)]:
+    for name, arr in [("orth_rgb", orth), ("color_enhanced", color), ("mus_image", mus),
+                      ("chl_image", chl), ("cal_image", cal)]:
         same = np.array_equal(arr, g[name])
         print(f"  {name:16s} array_equal={same}", flush=True)
         if not same:

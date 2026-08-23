@@ -3658,6 +3658,10 @@
           "depth_constraints": [
             null,
             null
+          ],
+          "absorption_center_range": [
+            2.334,
+            2.350
           ]
         },
         {
@@ -3773,6 +3777,10 @@
           "depth_constraints": [
             null,
             null
+          ],
+          "absorption_center_range": [
+            2.334,
+            2.350
           ]
         }
       ],
@@ -3876,6 +3884,10 @@
           "depth_constraints": [
             null,
             null
+          ],
+          "absorption_center_range": [
+            2.308,
+            2.328
           ]
         },
         {
@@ -3966,6 +3978,10 @@
           "depth_constraints": [
             null,
             null
+          ],
+          "absorption_center_range": [
+            2.308,
+            2.328
           ]
         }
       ],

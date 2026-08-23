@@ -313,6 +313,47 @@ def test_chlorite_window_arbitration():
     assert (cen[cen > 0] > 2.2).all(), "kept/flipped centers must stay positive"
 
 
+def test_carbonate_window_arbitration():
+    """Carbonate duplicate-window arbitration: the calcite abundant+plain pair
+    shares [2.334,2.350) and the dolomite pair shares [2.308,2.328). Any
+    in-window center therefore hits two identical ranges -> ambiguous -> keep.
+    This pins the zero-flip declarative semantics: the carbonate arbitration
+    call must NEVER reassign, whatever the center."""
+    from cramm.classifier import _reassign_by_absorption_center
+    e = eng()
+    rf = e.rf
+    names = list(rf.keys())
+    index_d = {n: i for i, n in enumerate(names)}
+    i_cab, i_cal, i_dab, i_dol, i_fec = (index_d[n] for n in (
+        "calcite_abundant", "calcite", "dolomite_abundant", "dolomite",
+        "carbonate_Fe_bearing"))
+    # (winner, center): every case must keep its winner — zero flips by design
+    cases = [
+        (i_cal, 2.3400),  # inside the calcite pair window -> 2 hits -> keep
+        (i_cab, 2.3360),  # same window from the abundant side -> keep
+        (i_dol, 2.3200),  # inside the dolomite pair window -> 2 hits -> keep
+        (i_dab, 2.3100),  # same window from the abundant side -> keep
+        (i_cal, 2.3310),  # gap between the two windows -> no hit -> keep
+        (i_dol, 2.3600),  # outside every window -> keep
+        (i_cal, 0.0),     # invalid center -> keep
+        (i_fec, 2.3350),  # Fe-carbonate has NO window; center in calcite
+                          # window is ambiguous anyway -> keep
+    ]
+    n, m = len(cases), len(names)
+    im = np.array([c[0] for c in cases], dtype="int64")
+    im0 = im.copy()
+    cen = np.array([c[1] for c in cases], dtype="float64")
+    FIT = np.full((n, m), 0.5)
+    fit_nan = np.zeros((n, m), dtype=bool)
+    fit_pos = np.ones(n, dtype=bool)
+    # synthetic spectrum with a genuine 2330 nm dip (value itself not asserted)
+    wl = np.linspace(2.0, 2.5, 50)
+    spectrum1 = np.tile(0.5 - 0.2 * np.exp(-((wl - 2.33) / 0.02) ** 2), (n, 1))
+    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf, index_d, fit_pos)
+    assert (im == im0).all(), (
+        f"carbonate arbitration must never flip: {[(names[a], names[b]) for a, b in zip(im0, im) if a != b]}")
+
+
 def test_render_missing_color():
     """Color table missing a mineral name: render raises KeyError up front (rather than a bare KeyError at lookup)."""
     from cramm.classifier import ClassificationResult
@@ -320,7 +361,7 @@ def test_render_missing_color():
     renderer = ResultRenderer.from_paths()
     bogus = ClassificationResult(
         fit=np.array([1.0]), depth=np.array([0.5]), num=np.zeros(1, dtype="uint8"),
-        mus_center=np.zeros(1), chl_center=np.zeros(1), r=1, c=1,
+        mus_center=np.zeros(1), chl_center=np.zeros(1), cal_center=np.zeros(1), r=1, c=1,
         index=["no_such_mineral"], index_d={"no_such_mineral": 0},
     )
     try:
@@ -574,19 +615,51 @@ def make_integration_tests(nc_path):
         vals = res.chl_center[has_center]
         assert (vals > 2.23).all() and (vals < 2.27).all(), "center out of 2250nm band range"
 
-        # 2) facade-level contract: raw=True returns 7 arrays, renderer colors
+        # 2) facade-level contract: raw=True returns 9 arrays, renderer colors
         # exactly the in-range pixels
         out = e.spectrum_analysis(tile, wl, w, bp, chanels, n_workers=1, raw=True)
-        assert len(out) == 7
-        orth, color, mus, chl, mus_center, chl_center2, fd = out
+        assert len(out) == 9
+        orth, color, mus, chl, cal, mus_center, chl_center2, cal_center, fd = out
         assert chl.shape == (100, 100, 3) and chl_center2.shape == (100, 100)
         colored = chl.any(axis=2)
         inrange = (chl_center2 >= 2.244) & (chl_center2 < 2.259)
         assert (colored == inrange).all(), "chl_image bins must match the [2.244, 2.259) contract"
 
+    def test_cal_center_product():
+        """Carbonate product line: cal_center contract on a carbonate-rich tile
+        (rows 950:1050, cols 950:1050 of the EMIT test scene — 5421 carbonate
+        pixels, centers spanning both the dolomite and calcite windows)."""
+        from cramm.emit_reader import EmitReader
+        e = eng()
+        spectrum, lon, lat, w, bp, wl, chanels = EmitReader.load(nc_path)
+        tile = spectrum[950:1050, 950:1050]
+
+        # 1) classify-level contract: cal_center > 0 exactly on carbonate winners
+        res = e._classifier.classify(tile, wl, w, bp, chanels, n_workers=1)
+        cal_idx = [res.index_d[n] for n in
+                   ("calcite_abundant", "calcite", "dolomite_abundant", "dolomite",
+                    "carbonate_Fe_bearing") if n in res.index_d]
+        winner = np.isin(res.num, cal_idx) & (res.fit > 0)
+        assert winner.sum() > 4000, "tile should be carbonate-rich"
+        has_center = res.cal_center > 0
+        assert (has_center <= winner).all(), "center without a carbonate win"
+        assert (winner == has_center).mean() > 0.999, "winners should all get a center"
+        vals = res.cal_center[has_center]
+        assert (vals > 2.27).all() and (vals < 2.40).all(), "center out of 2330nm band range"
+
+        # 2) facade-level contract: renderer colors exactly the in-range pixels
+        out = e.spectrum_analysis(tile, wl, w, bp, chanels, n_workers=1, raw=True)
+        assert len(out) == 9
+        orth, color, mus, chl, cal, mus_center, chl_center, cal_center2, fd = out
+        assert cal.shape == (100, 100, 3) and cal_center2.shape == (100, 100)
+        colored = cal.any(axis=2)
+        inrange = (cal_center2 >= 2.308) & (cal_center2 < 2.358)
+        assert (colored == inrange).all(), "cal_image bins must match the [2.308, 2.358) contract"
+
     return [("integration: load_emit output contract", test_load_emit_contract),
             ("integration: real-pixel classify_spectrum", test_real_pixel_classify),
-            ("integration: chl_center product line", test_chl_center_product)]
+            ("integration: chl_center product line", test_chl_center_product),
+            ("integration: cal_center product line", test_cal_center_product)]
 
 
 # ----------------------------------------------------------------------------

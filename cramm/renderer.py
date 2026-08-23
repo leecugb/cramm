@@ -4,8 +4,8 @@
 MICA result packaging
 =====================
 Consumes a ClassificationResult (raw classification output) plus a color
-table, produces four RGB images (orth_rgb / color_enhanced / mus_image /
-chl_image), and writes GeoTIFFs.
+table, produces five RGB images (orth_rgb / color_enhanced / mus_image /
+chl_image / cal_image), and writes GeoTIFFs.
 
 Decoupled from spectral analysis and image reading: this module performs no
 mineral discrimination; it is responsible only for rendering and output.
@@ -159,13 +159,13 @@ class ResultRenderer:
 
         return cls(colors_dic, table)
 
-    def render(self, result: ClassificationResult) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    def render(self, result: ClassificationResult) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """
-        Renders the four RGB images.
+        Renders the five RGB images.
 
         Returns
         -------
-        orth_rgb, color_enhanced, mus_image, chl_image : np.ndarray
+        orth_rgb, color_enhanced, mus_image, chl_image, cal_image : np.ndarray
             All are [r, c, 3] uint8
         """
         r, c = result.r, result.c
@@ -258,11 +258,28 @@ class ResultRenderer:
             _hi = _lo + 0.0015
             chl_image[(chl_center >= _lo) & (chl_center < _hi)] = self.table[_lvl]
 
+        # ---- Carbonate (carbonate 2330nm thematic map) ----
+        # Same 10-level table and short->long wavelength convention as the
+        # muscovite/chlorite maps. The cal_center absorption center within
+        # [2.308, 2.358) um is binned into 10 uniform levels of 0.005 um,
+        # tracking the 7-anchor C-O band sequence (magnesite 2311 nm <
+        # aragonite 2315 nm < Fe-dolomite 2319 nm < dolomite 2321 nm <
+        # siderite ~2327 nm < calcite 2339 nm < rhodochrosite ~2369 nm);
+        # out-of-range pixels are colored black (including non-carbonate
+        # pixels with cal_center=0)
+        cal_center = result.cal_center
+        cal_image = np.zeros([r * c, 3], dtype="uint8")
+        for _lvl in range(10):
+            _lo = 2.308 + _lvl * 0.005
+            _hi = _lo + 0.005
+            cal_image[(cal_center >= _lo) & (cal_center < _hi)] = self.table[_lvl]
+
         return (
             orth_rgb.reshape([r, c, 3]),
             color_enhanced.reshape([r, c, 3]),
             mus_image.reshape([r, c, 3]),
             chl_image.reshape([r, c, 3]),
+            cal_image.reshape([r, c, 3]),
         )
 
     @staticmethod
@@ -274,11 +291,13 @@ class ResultRenderer:
         color_enhanced: np.ndarray,
         mus_image: np.ndarray,
         chl_image: Optional[np.ndarray] = None,
+        cal_image: Optional[np.ndarray] = None,
     ) -> None:
         """Handles coordinate resampling and GeoTIFF file saving.
 
-        chl_image is optional: when given, a fourth GeoTIFF (_chl_orth.tiff)
-        is written; omitting it keeps the legacy three-file output.
+        chl_image / cal_image are optional: when given, the corresponding
+        GeoTIFFs (_chl_orth.tiff / _cal_orth.tiff) are written; omitting them
+        keeps the legacy three-file output.
         """
         from osgeo import gdal
         from pyproj import Proj
@@ -340,6 +359,8 @@ class ResultRenderer:
         _save(mus_image, "_mus_orth.tiff")
         if chl_image is not None:
             _save(chl_image, "_chl_orth.tiff")
+        if cal_image is not None:
+            _save(cal_image, "_cal_orth.tiff")
 
     # ------------------------------------------------------------------
     # Single-spectrum feature continuum-removal PDF (lazy matplotlib import)

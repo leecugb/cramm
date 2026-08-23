@@ -5,7 +5,7 @@ MICA spectral analysis core
 ===========================
 Pure core for per-pixel mineral discrimination: given a spectral cube +
 wavelengths + rule library, produce raw classification results
-(FIT / DEPTH / NUM / mus_center / chl_center), **without** any coloring or image packaging.
+(FIT / DEPTH / NUM / mus_center / chl_center / cal_center), **without** any coloring or image packaging.
 
 Dependencies: numpy only (top level). Heavy dependencies (pandas) are lazily
 imported at the point of use, so multiprocessing workers that merely import
@@ -57,6 +57,7 @@ class ClassificationResult:
     num: np.ndarray          # [r*c] uint8 argmax mineral index
     mus_center: np.ndarray   # [r*c] muscovite absorption center (0 if absent)
     chl_center: np.ndarray   # [r*c] chlorite 2250nm absorption center (0 if absent)
+    cal_center: np.ndarray   # [r*c] carbonate 2330nm absorption center (0 if absent)
     r: int
     c: int
     index: List[str]         # mineral names (order matches num indices)
@@ -89,6 +90,23 @@ CHLORITE_MINERALS = [
     "chlorite_lowFe",
     "clinochlore",
     "clinochlore_Fe",
+]
+
+# Carbonate minerals (used for cal_center quadratic fitting of the 2330 nm
+# C-O band). The calcite/dolomite abundant+plain pairs carry identical
+# absorption_center_range windows, so any in-window center hits two rules ->
+# ambiguous -> the arbitration never flips (declarative, tolerance-extreme
+# scheme); the product line's value is the continuous center layer itself
+# (7-anchor carbonate band-position sequence; aragonite/magnesite silently
+# classified as dolomite become detectable via their <2320 nm centers).
+# serpentine_antigorite_or_calcite+dolomite is excluded on purpose: its
+# reference is antigorite, not a carbonate.
+CARBONATE_MINERALS = [
+    "calcite_abundant",
+    "calcite",
+    "dolomite_abundant",
+    "dolomite",
+    "carbonate_Fe_bearing",
 ]
 
 
@@ -296,8 +314,10 @@ def _reassign_by_absorption_center(
     Wavelength-based reassignment among the rules carrying
     ``diagnostic_features[0]["absorption_center_range"]`` (in the bundled
     library: the four pure muscovite rules with windows around the 2.2 um
-    Al-OH band, and the three pure chlorite rules with deliberately
-    overlapping windows around the 2250 nm Fe-OH band).
+    Al-OH band, the three pure chlorite rules with deliberately
+    overlapping windows around the 2250 nm Fe-OH band, and the four
+    calcite/dolomite rules with duplicate windows around the 2330 nm
+    C-O band).
 
     For each pixel whose best match ``im`` is one of those rules, the
     quadratic-fit absorption center ``mus_c`` arbitrates the final
@@ -313,14 +333,18 @@ def _reassign_by_absorption_center(
       - center inside several overlapping ranges -> ambiguous, keep the
         original. The bundled chlorite windows exploit exactly this: their
         1 nm overlaps are tolerance zones where the intermediate
-        composition keeps its argmax attribution.
+        composition keeps its argmax attribution. The carbonate pairs push
+        it to the extreme: abundant+plain versions share identical windows,
+        so every in-window center is ambiguous and the call never flips
+        (declarative zero-flip scheme).
 
-    ``classify`` calls this helper twice per segment: once with
-    ``mus_center`` (muscovite family) and once with ``chl_center``
-    (chlorite family). The families self-segregate because each center
-    array is nonzero only for winners of its own family (the ``mus_c > 0``
-    member gate), and the two families' windows are ~25 nm apart so no
-    cross-family hit is possible anyway.
+    ``classify`` calls this helper three times per segment: with
+    ``mus_center`` (muscovite family), ``chl_center`` (chlorite family),
+    and ``cal_center`` (carbonate family). The families self-segregate
+    because each center array is nonzero only for winners of its own
+    family (the ``mus_c > 0`` member gate), and the families' windows are
+    ~25 nm (mus-chl) and ~52 nm (chl-cal) apart so no cross-family hit is
+    possible anyway.
 
     All decisions are computed from the pre-reassignment state in one
     vectorized pass (no sequential dependence between pixels), and this
@@ -1330,6 +1354,7 @@ class MicaClassifier:
 
         mus_center = np.zeros(r * c, dtype="float")
         chl_center = np.zeros(r * c, dtype="float")
+        cal_center = np.zeros(r * c, dtype="float")
         FIT_ = np.zeros(r * c, dtype="float")
         DEPTH_ = np.zeros(r * c, dtype="float")
         NUM_ = np.zeros(r * c, dtype="uint8")
@@ -1480,6 +1505,26 @@ class MicaClassifier:
                     center[np.isnan(center)] = 0
                     chl_center[a * c : b * c] = chl_center[a * c : b * c] + center
 
+                # Quadratic fit of the carbonate 2330 nm absorption center
+                # (cal_center: the carbonate product line analog of mus_center;
+                # band position tracks the 7-anchor C-O sequence from magnesite
+                # 2311 nm to rhodochrosite ~2369 nm). Same shared code path for
+                # serial and parallel -> bit-exact.
+                for item in CARBONATE_MINERALS:
+                    if item not in index_d:
+                        continue  # a custom rule library may not contain all built-in carbonates
+                    t_mask = (im == index_d[item]) & fit_pos
+                    if not t_mask.any():
+                        continue
+                    center = _get_quadratic_center(
+                        spectrum1,
+                        wl,
+                        self.rf[item]["diagnostic_features"][0]["continuum_endpoints"],
+                        t_mask,
+                    )
+                    center[np.isnan(center)] = 0
+                    cal_center[a * c : b * c] = cal_center[a * c : b * c] + center
+
                 # Wavelength-based reassignment among the absorption_center_range
                 # rules (the pure muscovites): mus_center arbitrates the final
                 # attribution. Single shared implementation for the serial and
@@ -1498,6 +1543,19 @@ class MicaClassifier:
                 # outside its own family (the helper's >0 gate).
                 _reassign_by_absorption_center(
                     im, FIT, fit_nan, chl_center[a * c : b * c],
+                    spectrum1, wl, self.rf, index_d, fit_pos,
+                )
+                # Carbonate arbitration, driven by cal_center. The calcite and
+                # dolomite abundant+plain pairs share identical windows, so any
+                # in-window center hits two ranges -> ambiguous -> keep: this
+                # call NEVER flips by construction (declarative tolerance-
+                # extreme). It exists so the family participates in the same
+                # arbitration contract as mus/chl; the zero-flip invariant is
+                # pinned by test_carbonate_window_arbitration. The 52 nm gap
+                # between the chl windows (<=2.25549) and the cal windows
+                # (>=2.308) keeps the families self-segregated.
+                _reassign_by_absorption_center(
+                    im, FIT, fit_nan, cal_center[a * c : b * c],
                     spectrum1, wl, self.rf, index_d, fit_pos,
                 )
                 FIT_[a * c : b * c] = FIT.flatten()[im + np.arange(len(im)) * len(self.rf)]
@@ -1550,6 +1608,6 @@ class MicaClassifier:
 
         return ClassificationResult(
             fit=FIT_, depth=DEPTH_, num=NUM_, mus_center=mus_center,
-            chl_center=chl_center,
+            chl_center=chl_center, cal_center=cal_center,
             r=r, c=c, index=index, index_d=index_d,
         )

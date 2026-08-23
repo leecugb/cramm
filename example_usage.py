@@ -41,16 +41,16 @@ def example_quickstart():
     print(f"image {spectrum.shape}, valid bands {len(chanels)}/{len(w)}")
 
     # spectral analysis: classification + rendering. n_workers=None defaults to min(cpu, 8)
-    orth_rgb, color_enhanced, mus_image, chl_image = engine.spectrum_analysis(
+    orth_rgb, color_enhanced, mus_image, chl_image, cal_image = engine.spectrum_analysis(
         spectrum, wl, w, bp, chanels,
         n_workers=4,
         progress_callback=lambda p: print(f"  {p}%"),
     )
 
-    # write 4 georeferenced GeoTIFFs (output directory created automatically)
-    engine.write_tiff("output/scene", lon, lat, orth_rgb, color_enhanced, mus_image, chl_image)
+    # write 5 georeferenced GeoTIFFs (output directory created automatically)
+    engine.write_tiff("output/scene", lon, lat, orth_rgb, color_enhanced, mus_image, chl_image, cal_image)
     # → output/scene_mapping_orth.tiff / scene_color_enhanced_orth.tiff
-    #   / scene_mus_orth.tiff / scene_chl_orth.tiff
+    #   / scene_mus_orth.tiff / scene_chl_orth.tiff / scene_cal_orth.tiff
 
 
 # ---------------------------------------------------------------------------
@@ -91,19 +91,25 @@ def example_raw():
     engine = MicaEngine()
     spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit(NC_PATH)
 
-    orth, color, mus, chl, mus_center, chl_center, fd = engine.spectrum_analysis(
+    orth, color, mus, chl, cal, mus_center, chl_center, cal_center, fd = engine.spectrum_analysis(
         spectrum, wl, w, bp, chanels, n_workers=4, raw=True,
     )
     # mus_center [r,c]: muscovite 2.2μm absorption-center wavelength (μm); 0 for non-muscovite pixels
     #            -- Al-content indicator: shorter wavelength = high Al, longer = low Al / illitization
     # chl_center [r,c]: chlorite 2250nm absorption-center wavelength (μm); 0 for non-chlorite pixels
     #            -- Fe-content indicator: longer wavelength = higher xFe (chl13 M1 calibration)
+    # cal_center [r,c]: carbonate 2330nm absorption-center wavelength (μm); 0 for non-carbonate pixels
+    #            -- species indicator along the 7-anchor C-O sequence (magnesite 2311nm ...
+    #               dolomite 2321nm ... calcite 2339nm ... rhodochrosite ~2369nm)
     # fd        [r,c]: per-pixel best fit x depth joint confidence
     print(f"muscovite pixel count: {(mus_center > 0).sum()}, absorption-center range "
           f"{mus_center[mus_center > 0].min():.4f}–{mus_center[mus_center > 0].max():.4f} μm")
     print(f"chlorite pixel count: {(chl_center > 0).sum()}, absorption-center range "
           f"{chl_center[chl_center > 0].min():.4f}–{chl_center[chl_center > 0].max():.4f} μm")
-    np.savez_compressed("output/scene_raw.npz", mus_center=mus_center, chl_center=chl_center, fd=fd)
+    print(f"carbonate pixel count: {(cal_center > 0).sum()}, absorption-center range "
+          f"{cal_center[cal_center > 0].min():.4f}–{cal_center[cal_center > 0].max():.4f} μm")
+    np.savez_compressed("output/scene_raw.npz", mus_center=mus_center, chl_center=chl_center,
+                        cal_center=cal_center, fd=fd)
 
 
 # ---------------------------------------------------------------------------
@@ -147,14 +153,14 @@ def example_components():
     clf = MicaClassifier.from_paths()          # bundled rule library + splib
     renderer = ResultRenderer.from_paths()     # bundled color table
 
-    # classify (returns ClassificationResult: fit/depth/num/mus_center/chl_center/index etc.)
+    # classify (returns ClassificationResult: fit/depth/num/mus_center/chl_center/cal_center/index etc.)
     result = clf.classify(spectrum, wl, w, bp, chanels, n_workers=4)
     print(f"mineral species identified: {(result.num.max())} / {len(result.index)} rules total")
     print(f"mineral name list: {result.index[:5]} ...")
 
-    # rendering the four maps + writing GeoTIFF are separate calls (e.g. thematic map only, custom output names)
-    orth_rgb, color_enhanced, mus_image, chl_image = renderer.render(result)
-    renderer.write_tiff("output/scene_comp", lon, lat, orth_rgb, color_enhanced, mus_image, chl_image)
+    # rendering the five maps + writing GeoTIFF are separate calls (e.g. thematic map only, custom output names)
+    orth_rgb, color_enhanced, mus_image, chl_image, cal_image = renderer.render(result)
+    renderer.write_tiff("output/scene_comp", lon, lat, orth_rgb, color_enhanced, mus_image, chl_image, cal_image)
 
 
 # ---------------------------------------------------------------------------

@@ -62,6 +62,15 @@ Everything is pure Python and GUI-free. Cross-platform:
   re-arbitrates the lowFe / clinochlore / Fe-rich attribution against
   deliberately overlapping tolerance windows — intermediate compositions
   keep their best-fit class, only clear outliers flip.
+- **Quantitative carbonate mapping** — per-pixel 2330 nm absorption-center
+  wavelength (`cal_center`) for pixels won by the five carbonate rules,
+  as a fifth thematic map and float array; band position tracks the
+  seven-anchor C–O sequence (magnesite 2311 nm → rhodochrosite ~2369 nm),
+  making species the rule library cannot tell apart (aragonite, magnesite —
+  silently classified as dolomite) visible in the continuous layer. Its
+  arbitration windows are duplicated across each abundant+plain pair, so the
+  carbonate re-attribution is declarative and never flips — the value is the
+  continuous center itself.
 - **Whole-scene and single-spectrum modes** — batch-classify an entire scene
   to GeoTIFF, or identify one spectrum (GUI point-click, field
   spectrometer) with Top-N ranking and a PDF diagnostic report.
@@ -95,13 +104,13 @@ Per-rule evaluation (77 rules, parallel across rules)
       ▼
 Best-match selection (argmax fit×depth)  +  muscovite 2.2 µm center fit
       │                                   +  chlorite 2250 nm center fit
+      │                                   +  carbonate 2330 nm center fit
       ▼
-Wavelength-arbitrated muscovite subtyping
-      │  mus_center vs. per-rule absorption_center_range windows
-      │  (lowAl / medAl / medhighAl / Fe-rich re-attribution)
+Wavelength-arbitrated subtyping (muscovite / chlorite / carbonate families)
+      │  *_center vs. per-rule absorption_center_range windows
       ▼
-Mineral map · color-enhanced map · muscovite map · chlorite map
-(+ raw float arrays: mus_center / chl_center / fd)
+Mineral map · color-enhanced map · muscovite map · chlorite map · carbonate map
+(+ raw float arrays: mus_center / chl_center / cal_center / fd)
 ```
 
 ## Installation
@@ -157,7 +166,8 @@ cramm -i EMIT_L2A_RFL_001_xxx.nc -o output [-n scene] [-w 4] [--raw]
 | `<name>_color_enhanced_orth.tiff` | Color-enhanced mineral map |
 | `<name>_mus_orth.tiff` | Muscovite 2.2 µm absorption-center thematic map |
 | `<name>_chl_orth.tiff` | Chlorite 2250 nm absorption-center thematic map |
-| `<name>_raw.npz` | *(only with `--raw`)* `mus_center` + `chl_center` [μm] + `fd` (fit×depth), float `[r, c]` |
+| `<name>_cal_orth.tiff` | Carbonate 2330 nm absorption-center thematic map |
+| `<name>_raw.npz` | *(only with `--raw`)* `mus_center` + `chl_center` + `cal_center` [μm] + `fd` (fit×depth), float `[r, c]` |
 
 ### Python API
 
@@ -168,9 +178,9 @@ engine = MicaEngine()                                    # all resources bundled
 spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit("EMIT_xxx.nc")
 
 # --- whole scene → GeoTIFF -------------------------------------------------
-orth, color, mus, chl = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
-                                                 n_workers=4)
-engine.write_tiff("output/scene", lon, lat, orth, color, mus, chl)
+orth, color, mus, chl, cal = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
+                                                      n_workers=4)
+engine.write_tiff("output/scene", lon, lat, orth, color, mus, chl, cal)
 
 # --- single spectrum (one pixel, field spectrometer, ...) ------------------
 pixel = spectrum[100, 200, :]                            # full-band [285] or selected [len(chanels)]
@@ -277,7 +287,8 @@ CRAMM also adds an optional per-feature **absorption-center window**,
 `absorption_center_range` on a rule's first diagnostic feature. After the
 best-match selection, pixels attributed to a rule carrying this field are
 re-arbitrated by their fitted absorption center (`mus_center` at 2.2 µm for
-the white-mica family, `chl_center` at 2250 nm for the chlorite family):
+the white-mica family, `chl_center` at 2250 nm for the chlorite family,
+`cal_center` at 2330 nm for the carbonate family):
 
 > If the center falls inside exactly one rule's `[lo, hi)` window, differs
 > from the current match, and that rule itself accepted the pixel, the pixel
@@ -296,7 +307,14 @@ pure-chlorite rules instead carry **overlapping** windows — lowFe
 whose 1 nm overlaps act as tolerance zones: an intermediate-composition
 pixel lands in two windows at once, is ambiguous by the rule above, and
 keeps its best-fit class (see *Application: reading chlorite Fe content
-from chl_center*).
+from chl_center*). The four calcite/dolomite rules carry **duplicate**
+windows — calcite_abundant and calcite share `[2.334, 2.350)`;
+dolomite_abundant and dolomite share `[2.308, 2.328)` — pushing the
+tolerance scheme to its extreme: every in-window center hits two identical
+ranges, is ambiguous, and keeps its match. The carbonate arbitration is
+therefore declarative and never flips (pinned by a dedicated unit test);
+the product line's value is the continuous `cal_center` layer itself (see
+*Application: reading carbonate species from cal_center*).
 This is a scene-classification feature; single-spectrum Top-N ranking is
 unaffected. Custom rule libraries opt in by adding the field; rules without
 it are never reassigned.
@@ -358,6 +376,27 @@ calibration: quantitative inversion needs chlorite ≳50 % of the pixel and a
 comparable sample preparation; the 2350 nm Mg–OH band (cross-instrument
 anchor, bias ≈0.2 nm) is reserved for pure-mineral checks.
 
+## Application: reading carbonate species from cal_center
+
+The carbonate thematic map's per-pixel `cal_center` (2330 nm C–O absorption
+position) discriminates carbonate species along the seven-anchor band
+sequence: magnesite 2311 nm < aragonite 2315 nm < Fe-dolomite 2319 nm <
+dolomite 2321 nm < siderite ~2327 nm < calcite 2339 nm < rhodochrosite
+~2369 nm (Fe²⁺ substitution blue-shifts the band by ~2 nm; Mn²⁺ red-shifts
+it). The bundled rule library covers only three of these anchors — calcite
+(WS272), dolomite (HS102.3B) and a manganoan siderite (HS271, inherited from
+USGS MICA as carbonate_Fe_bearing) — so aragonite and magnesite pixels are
+silently classified as dolomite by best fit. `cal_center` makes them
+visible: a "dolomite" pixel whose center sits at 2311–2316 nm is a
+magnesite/aragonite suspect, and the continuous layer likewise exposes
+Fe-bearing dolomite (≤2319 nm) inside the dolomite class. The calcite and
+dolomite abundant+plain pairs carry duplicate arbitration windows
+(`[2.334, 2.350)` and `[2.308, 2.328)` respectively), so the wavelength
+arbitration never reassigns a carbonate pixel — every in-window center is
+ambiguous between the twins — and the map can be read as a pure measurement
+layer: bin edges at 5 nm steps over [2.308, 2.358) µm, shorter wavelength =
+earlier anchor in the sequence above.
+
 ## Performance notes
 
 - **Precompiled rules**: continuum endpoints, band indices, the reference-side
@@ -374,7 +413,7 @@ anchor, bias ≈0.2 nm) is reserved for pure-mineral checks.
 ## Testing
 
 ```bash
-python tests/test_core.py              # 18 API contract / behavior tests
+python tests/test_core.py              # 21 API contract / behavior tests
                                        # (integration section auto-skips without the test scene)
 python tests/test_custom_rules.py      # custom rule-library verification (7 scenarios:
                                        #   rf_path / constraint & window edits / new rules / cache contract)
@@ -394,9 +433,10 @@ python tests/test_parallel.py 1        # full-scene golden regression (serial)
 **The golden baseline is platform-bound.** `tests/golden_arrays.npz` encodes
 this machine's BLAS results; ulp-level differences across BLAS builds are
 expected. On a new platform — or after an intentional classification-semantics
-change — regenerate the baseline locally with `python regen_golden.py` (runs
-both paths, asserts serial ≡ parallel, then rewrites the golden) before
-relying on `test_parallel.py`.
+change — regenerate the baseline locally with `python tests/rebaseline_golden.py`
+(runs the full scene, audits every differing pixel against the intended
+change, then atomically rewrites the golden) before relying on
+`test_parallel.py`.
 
 ## Troubleshooting
 
