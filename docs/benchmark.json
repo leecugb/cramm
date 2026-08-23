@@ -1,0 +1,108 @@
+{
+  "environment": [
+    [
+      "logical CPUs",
+      24,
+      ""
+    ],
+    [
+      "platform",
+      "Windows-11-10.0.26200-SP0",
+      ""
+    ],
+    [
+      "numpy",
+      "2.3.5",
+      ""
+    ]
+  ],
+  "load_emit": [
+    [
+      "first read [1280x1242x285, 1.85 GB]",
+      "3.75 s",
+      ""
+    ],
+    [
+      "second read (OS disk cache warm)",
+      "3.72 s",
+      ""
+    ]
+  ],
+  "get_resample": [
+    [
+      "cold (72 records -> 285 bands, Gaussian kernel)",
+      "133.4 ms",
+      ""
+    ],
+    [
+      "warm (cache hit)",
+      "0.0 ms",
+      ""
+    ]
+  ],
+  "classify_spectrum": [
+    [
+      "cold (first call: resample + rule compilation)",
+      "159.1 ms",
+      ""
+    ],
+    [
+      "warm (median of 30, compile cache hit)",
+      "9.8 ms",
+      ""
+    ],
+    [
+      "cache speedup",
+      "16.3x",
+      ""
+    ]
+  ],
+  "subset_scene": [
+    [
+      "n_workers=1: 14.14 s",
+      "13,174 px/s",
+      ""
+    ],
+    [
+      "n_workers=2: 11.06 s",
+      "16,839 px/s",
+      ""
+    ],
+    [
+      "n_workers=4: 9.13 s",
+      "20,411 px/s",
+      ""
+    ]
+  ],
+  "full_scene": [
+    [
+      "n_workers=1: 131.73 s, 1.00x vs serial",
+      "12,068 px/s",
+      ""
+    ],
+    [
+      "n_workers=2: 93.00 s, 1.42x vs serial",
+      "17,093 px/s",
+      ""
+    ],
+    [
+      "n_workers=4: 61.88 s, 2.13x vs serial",
+      "25,689 px/s",
+      ""
+    ]
+  ],
+  "write_tiff": [
+    [
+      "orthorectify + 3 GeoTIFFs",
+      "4.66 s",
+      ""
+    ]
+  ],
+  "pdf": [
+    [
+      "Top-3 feature continuum-removal PDF",
+      "2.42 s",
+      ""
+    ]
+  ]
+}
