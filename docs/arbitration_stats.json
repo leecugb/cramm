@@ -1,0 +1,212 @@
+{
+  "scene": "EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc",
+  "runtime_s": {
+    "windowed": 59.8,
+    "pure_argmax": 60.0
+  },
+  "total_flips": 62128,
+  "families": {
+    "muscovite": {
+      "muscovite_lowAl": {
+        "window": [
+          2.206,
+          2.21
+        ],
+        "winners": 54707,
+        "flips_in": 37981,
+        "flips_out": 7155,
+        "center_range": "[2.20035, 2.21378]"
+      },
+      "muscovite_medAl": {
+        "window": [
+          2.2,
+          2.206
+        ],
+        "winners": 174549,
+        "flips_in": 2136,
+        "flips_out": 38182,
+        "center_range": "[2.19949, 2.20992]"
+      },
+      "muscovite_medhighAl": {
+        "window": [
+          2.195,
+          2.2
+        ],
+        "winners": 1595,
+        "flips_in": 200,
+        "flips_out": 1473,
+        "center_range": "[2.19485, 2.20774]"
+      },
+      "muscovite_Fe-rich": {
+        "window": [
+          2.21,
+          2.22
+        ],
+        "winners": 11935,
+        "flips_in": 6506,
+        "flips_out": 13,
+        "center_range": "[2.20764, 2.22006]"
+      },
+      "illite_imt1": {
+        "window": "-",
+        "winners": 633,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.20646, 2.21812]"
+      },
+      "illite_gds4": {
+        "window": "-",
+        "winners": 235,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.20547, 2.22408]"
+      },
+      "kaolinite.5+muscoviteMedAl.5": {
+        "window": "-",
+        "winners": 638,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.20130, 2.20816]"
+      },
+      "kaolinite.5+muscoviteMedhighAl.5": {
+        "window": "-",
+        "winners": 95,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.20094, 2.20794]"
+      },
+      "kaolinite+muscovite_mix_intimate": {
+        "window": "-",
+        "winners": 3932,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.20305, 2.21172]"
+      },
+      "clinochlore_Fe.3+muscovite.7": {
+        "window": "-",
+        "winners": 643612,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.18932, 2.25503]"
+      },
+      "calcite.5+muscoviteMedHiAl.5": {
+        "window": "-",
+        "winners": 636,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.18805, 2.20782]"
+      },
+      "calcite.5+muscoviteMedAl.5": {
+        "window": "-",
+        "winners": 30909,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.18837, 2.20998]"
+      },
+      "calcite.3+muscoviteLowAl.7": {
+        "window": "-",
+        "winners": 63587,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.19123, 2.22567]"
+      },
+      "flip_pairs": {
+        "muscovite_medAl -> muscovite_lowAl": 37968,
+        "muscovite_medhighAl -> muscovite_medAl": 1473,
+        "muscovite_medAl -> muscovite_medhighAl": 200,
+        "muscovite_lowAl -> muscovite_medAl": 663,
+        "muscovite_medAl -> muscovite_Fe-rich": 14,
+        "muscovite_lowAl -> muscovite_Fe-rich": 6492,
+        "muscovite_Fe-rich -> muscovite_lowAl": 13
+      }
+    },
+    "chlorite": {
+      "chlorite_lowFe": {
+        "window": [
+          2.245,
+          2.248
+        ],
+        "winners": 50,
+        "flips_in": 50,
+        "flips_out": 0,
+        "center_range": "[2.24469, 2.24725]"
+      },
+      "clinochlore": {
+        "window": [
+          2.247,
+          2.252
+        ],
+        "winners": 13756,
+        "flips_in": 286,
+        "flips_out": 15019,
+        "center_range": "[2.24313, 2.26245]"
+      },
+      "clinochlore_Fe": {
+        "window": [
+          2.251,
+          2.25549
+        ],
+        "winners": 17279,
+        "flips_in": 14969,
+        "flips_out": 286,
+        "center_range": "[2.24905, 2.26346]"
+      },
+      "flip_pairs": {
+        "clinochlore -> clinochlore_Fe": 14969,
+        "clinochlore -> chlorite_lowFe": 50,
+        "clinochlore_Fe -> clinochlore": 286
+      }
+    },
+    "carbonate": {
+      "calcite_abundant": {
+        "window": [
+          2.334,
+          2.35
+        ],
+        "winners": 5,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.33744, 2.33889]"
+      },
+      "calcite": {
+        "window": [
+          2.334,
+          2.35
+        ],
+        "winners": 37270,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.30149, 2.35240]"
+      },
+      "dolomite_abundant": {
+        "window": [
+          2.308,
+          2.328
+        ],
+        "winners": 13594,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.31243, 2.32864]"
+      },
+      "dolomite": {
+        "window": [
+          2.308,
+          2.328
+        ],
+        "winners": 26085,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.27947, 2.32923]"
+      },
+      "carbonate_Fe_bearing": {
+        "window": "-",
+        "winners": 1718,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.31531, 2.35009]"
+      },
+      "flip_pairs": {}
+    }
+  },
+  "flips_outside_families": 0
+}
