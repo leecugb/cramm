@@ -100,13 +100,17 @@ CHLORITE_MINERALS = [
 # (7-anchor carbonate band-position sequence; aragonite/magnesite silently
 # classified as dolomite become detectable via their <2320 nm centers).
 # serpentine_antigorite_or_calcite+dolomite is excluded on purpose: its
-# reference is antigorite, not a carbonate.
+# reference is antigorite, not a carbonate. calcite.5+dolomite.5 is a
+# windowless member: it carries no absorption_center_range, so it
+# participates in the cal_center quadratic fit (its blend center lands in the
+# calcite-dolomite gap) but never in window-flip arbitration.
 CARBONATE_MINERALS = [
     "calcite_abundant",
     "calcite",
     "dolomite_abundant",
     "dolomite",
     "carbonate_Fe_bearing",
+    "calcite.5+dolomite.5",
 ]
 
 

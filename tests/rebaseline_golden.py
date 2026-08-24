@@ -10,7 +10,9 @@ dolomite abundant+plain pairs carry identical absorption_center_range
 windows, so every in-window center hits two rules -> ambiguous -> keep. The
 carbonate arbitration therefore NEVER flips by construction (pinned by
 test_carbonate_window_arbitration), and all four existing golden arrays must
-be BIT-IDENTICAL; cal_image simply joins as the fifth key.
+be BIT-IDENTICAL; only cal_image changes. Latest change: the windowless
+mixture calcite.5+dolomite.5 joined CARBONATE_MINERALS, so its winner pixels
+now carry a quadratic center (they never enter window-flip arbitration).
 """
 import os
 import sys
@@ -46,8 +48,9 @@ def main():
                       "zero-flip by construction; investigate the diff first")
 
     # 2) cal_image sanity: non-black pixels must exist (scene has ~78.7k pure
-    #    carbonate-rule winners; the ~39% scene carbonate coverage figure
-    #    counts carbonate-bearing MIXTURE rules, which carry no center)
+    #    carbonate-rule winners; carbonate-bearing mixture rules mostly carry
+    #    no center -- only calcite.5+dolomite.5 does, as a CARBONATE_MINERALS
+    #    member, adding its winner pixels to the colored set)
     nonblack = int((cal.any(axis=2)).sum())
     print(f"cal_image non-black pixels: {nonblack}")
     assert nonblack > 50_000, "cal_image unexpectedly sparse -- investigate before re-baselining"

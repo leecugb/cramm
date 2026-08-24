@@ -635,10 +635,11 @@ def make_integration_tests(nc_path):
         tile = spectrum[950:1050, 950:1050]
 
         # 1) classify-level contract: cal_center > 0 exactly on carbonate winners
+        # (cal_idx mirrors CARBONATE_MINERALS, incl. the windowless mixture
+        # calcite.5+dolomite.5, which takes part in the center fit)
+        from cramm.classifier import CARBONATE_MINERALS
         res = e._classifier.classify(tile, wl, w, bp, chanels, n_workers=1)
-        cal_idx = [res.index_d[n] for n in
-                   ("calcite_abundant", "calcite", "dolomite_abundant", "dolomite",
-                    "carbonate_Fe_bearing") if n in res.index_d]
+        cal_idx = [res.index_d[n] for n in CARBONATE_MINERALS if n in res.index_d]
         winner = np.isin(res.num, cal_idx) & (res.fit > 0)
         assert winner.sum() > 4000, "tile should be carbonate-rich"
         has_center = res.cal_center > 0
@@ -703,9 +704,10 @@ def main():
 
     if args.golden:
         print("== D. golden regression (subprocess) ==", flush=True)
+        tp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_parallel.py")
         for nw in ("4", "1"):
             print(f"-- test_parallel.py {nw} --", flush=True)
-            p = subprocess.run([sys.executable, "-X", "utf8", "test_parallel.py", nw])
+            p = subprocess.run([sys.executable, "-X", "utf8", tp, nw])
             RESULTS.append(("OK" if p.returncode == 0 else "FAIL", f"golden nw={nw}"))
 
     n_ok = sum(1 for s, _ in RESULTS if s == "OK")
