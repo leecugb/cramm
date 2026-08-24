@@ -1,0 +1,628 @@
+﻿family,kind,name,sensor,quality,flags,link_conf,expected,circular,winner,winner_fit,winner_fd,rank_expected,family_hit1,family_hit3,top3
+alunite,pure,Alunite_AL706_Na100,BECK,b,,,alunite_K_250C;alunite_Na_450C,,,,,0,0,0,
+alunite,pure,Alunite_GDS82_Na82,BECK,b,,,alunite_K_250C;alunite_Na_450C,,,,,0,0,0,
+alunite,pure,Alunite_GDS82_Na82,NIC4,bc,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.846226,0.109239,0,0,0,pyrophyllite.25+kaolinite.75:0.8462 | kaolinite_wxl:0.8100 | kaolinite_or_dickite:0.7789
+alunite,pure,Alunite_GDS82_Na82,NIC4,b,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.846226,0.109239,0,0,0,pyrophyllite.25+kaolinite.75:0.8462 | kaolinite_wxl:0.8100 | kaolinite_or_dickite:0.7789
+alunite,pure,Alunite_GDS83_Na63,BECK,b,,,alunite_K_250C;alunite_Na_450C,,,,,0,0,0,
+alunite,pure,Alunite_GDS83_Na63,NIC4,bb,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.806167,0.212343,0,0,0,pyrophyllite.25+kaolinite.75:0.8062 | kaolinite_wxl:0.7768 | buddingtonite+montmorillonite_mix_intimate:0.7327
+alunite,pure,Alunite_GDS83_Na63,NIC4,b,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.806167,0.212343,0,0,0,pyrophyllite.25+kaolinite.75:0.8062 | kaolinite_wxl:0.7768 | buddingtonite+montmorillonite_mix_intimate:0.7327
+alunite,pure,Alunite_GDS84_Na03,BECK,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.680274,0.428174,1,1,1,alunite_K_250C:0.6803
+alunite,pure,Alunite_GDS84_Na03,NIC4,aa,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.782979,0.254025,0,0,0,pyrophyllite.25+kaolinite.75:0.7830 | kaolinite_wxl:0.7443 | buddingtonite+montmorillonite_mix_intimate:0.7409
+alunite,pure,Alunite_GDS84_Na03,NIC4,a,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.782979,0.254025,0,0,0,pyrophyllite.25+kaolinite.75:0.7830 | kaolinite_wxl:0.7443 | buddingtonite+montmorillonite_mix_intimate:0.7409
+alunite,pure,Alunite_GDS95_Na_Syn_(150C),NIC4,a,,,alunite_K_250C;alunite_Na_450C,,alunite_Na_450C,0.957537,0.178934,1,1,1,alunite_Na_450C:0.9575 | pyrophyllite.25+kaolinite.75:0.8233
+alunite,pure,Alunite_GDS96_K_Syn_(250C),NIC4,a,REF,,alunite_K_250C;alunite_Na_450C,self,alunite_K_250C,1.000000,0.260302,1,1,1,alunite_K_250C:1.0000 | pyrophyllite.5+alunite.5_mix_intimate:0.9746 | alunite.5+kaolinite.5:0.8836
+alunite,pure,Alunite_GDS97_K_Syn_(150C),NIC4,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.939057,0.163892,1,1,1,alunite_K_250C:0.9391 | alunite.5+kaolinite.5:0.8837 | pyrophyllite.25+kaolinite.75:0.8180
+alunite,pure,Alunite_HS295,ASDFR,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.989411,0.271824,1,1,1,alunite_K_250C:0.9894 | pyrophyllite.5+alunite.5_mix_intimate:0.9812 | alunite.5+kaolinite.5:0.8879
+alunite,pure,Alunite_HS295.1B,ASDFR,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.990119,0.281689,1,1,1,alunite_K_250C:0.9901 | pyrophyllite.5+alunite.5_mix_intimate:0.9819 | alunite.5+kaolinite.5:0.8815
+alunite,pure,Alunite_HS295.3B,ASDFR,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.975775,0.716285,1,1,1,alunite_K_250C:0.9758 | pyrophyllite.5+alunite.5_mix_intimate:0.9626 | alunite.5+kaolinite.5:0.8488
+alunite,pure,Alunite_HS295.3B,ASDNG,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.982713,0.702776,1,1,1,alunite_K_250C:0.9827 | pyrophyllite.5+alunite.5_mix_intimate:0.9631 | alunite.5+kaolinite.5:0.8647
+alunite,pure,Alunite_HS295.3B,BECK,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.875681,0.715298,1,1,1,alunite_K_250C:0.8757 | buddingtonite+montmorillonite_mix_intimate:0.7080
+alunite,pure,Alunite_HS295.3B,NIC4,aaa,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.993145,0.595292,1,1,1,alunite_K_250C:0.9931 | pyrophyllite.5+alunite.5_mix_intimate:0.9722 | alunite.5+kaolinite.5:0.8793
+alunite,pure,Alunite_HS295.4B,ASDFR,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.961147,0.670479,1,1,1,alunite_K_250C:0.9611 | pyrophyllite.5+alunite.5_mix_intimate:0.9448 | alunite.5+kaolinite.5:0.8540
+alunite,pure,Alunite_HS295.6,ASDFR,b,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.969688,0.573291,1,1,1,alunite_K_250C:0.9697 | pyrophyllite.5+alunite.5_mix_intimate:0.9547 | alunite.5+kaolinite.5:0.8482
+alunite,pure,Alunite_RES-2_K_Syn_(450C),NIC4,a,,,alunite_K_250C;alunite_Na_450C,,alunite_K_250C,0.999490,0.288800,1,1,1,alunite_K_250C:0.9995 | pyrophyllite.5+alunite.5_mix_intimate:0.9719 | alunite.5+kaolinite.5:0.8743
+alunite,pure,Alunite_RES-3_Na_Syn_(450C),NIC4,a,REF,,alunite_K_250C;alunite_Na_450C,self,alunite_Na_450C,1.000000,0.299759,1,1,1,alunite_Na_450C:1.0000 | pyrophyllite.25+kaolinite.75:0.7260 | pyrophyllite:0.6679
+alunite,pure,Alunite_RES-4_Na_Syn_(300C),NIC4,a,,,alunite_K_250C;alunite_Na_450C,,alunite_Na_450C,0.997529,0.229769,1,1,1,alunite_Na_450C:0.9975 | pyrophyllite.25+kaolinite.75:0.7349 | pyrophyllite:0.6818
+alunite,pure,Alunite_RES-9_Summitv_(400C),ASDNG,b,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.824689,0.193675,0,0,0,pyrophyllite.25+kaolinite.75:0.8247 | kaolinite_wxl:0.7929 | kaolinite_or_dickite:0.7274
+alunite,pure,Alunite_RES-9_Summitv_(400C),NIC4,b,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.828900,0.170431,0,0,0,pyrophyllite.25+kaolinite.75:0.8289 | kaolinite_wxl:0.7920 | kaolinite_or_dickite:0.7294
+alunite,pure,Alunite_RES10_NA56%_Syn_450C,NIC4,a,,,alunite_K_250C;alunite_Na_450C,,pyrophyllite.25+kaolinite.75,0.793049,0.209265,0,0,0,pyrophyllite.25+kaolinite.75:0.7930 | kaolinite_wxl:0.7585 | kaolinite_or_dickite:0.7038
+alunite,pure,Alunite_RES12_NA78%_Syn_450C,NIC4,a,,,alunite_K_250C;alunite_Na_450C,,alunite_Na_450C,0.985145,0.283509,1,1,1,alunite_Na_450C:0.9851 | pyrophyllite.25+kaolinite.75:0.7664 | buddingtonite+montmorillonite_mix_intimate:0.6697
+alunite,pure,Alunite_SUSTDA-20,BECK,b,,,alunite_K_250C;alunite_Na_450C,,,,,0,0,0,
+alunite,pure,Alunite_SUSTDA-20,NIC4,bb,,,alunite_K_250C;alunite_Na_450C,,alunite_Na_450C,0.993812,0.243743,1,1,1,alunite_Na_450C:0.9938 | pyrophyllite.25+kaolinite.75:0.7733 | buddingtonite+montmorillonite_mix_intimate:0.6698
+buddingtonite,pure,Buddingtonite_GDS85_D-206,BECK,b,REF,,buddingtonite,self,,,,0,0,0,
+buddingtonite,pure,Buddingtonite_NHB2301,BECK,b,,,buddingtonite,,,,,0,0,0,
+calcite,pure,Calcite_CO2004,BECK,b,,,calcite;calcite_abundant,,,,,0,0,0,
+calcite,pure,Calcite_GDS304_75-150um,ASDFR,b,,,calcite;calcite_abundant,,calcite_abundant,0.998146,0.377580,1,1,1,calcite_abundant:0.9981 | calcite.5+dolomite.5:0.8994 | serpentine_antigorite_or_calcite+dolomite:0.7639
+calcite,pure,Calcite_HS48.3B,BECK,a,,,calcite;calcite_abundant,,,,,0,0,0,
+calcite,pure,Calcite_REE-bearing_WS319a,ASDFR,b,,,calcite;calcite_abundant,,calcite.5+dolomite.5,0.946939,0.464624,0,0,0,calcite.5+dolomite.5:0.9469 | carbonate_Fe_bearing:0.8919 | serpentine_antigorite_withironfeat:0.8281
+calcite,pure,Calcite_WS272,ASDNG,a,REF,,calcite;calcite_abundant,xinstr,calcite_abundant,0.997998,0.189879,1,1,1,calcite_abundant:0.9980 | calcite.5+dolomite.5:0.8973 | serpentine_antigorite_or_calcite+dolomite:0.7571
+calcite,pure,Calcite_WS272,BECK,a,REF,,calcite;calcite_abundant,self,,,,0,0,0,
+calcite,pure,Calcite_WS272,NIC4,aaa,REF,,calcite;calcite_abundant,xinstr,calcite_abundant,0.971752,0.074338,1,1,1,calcite_abundant:0.9718 | calcite.5+dolomite.5:0.8189
+chalcedony,pure,Chalcedony_CU91-6A,ASDNG,a,REF,,chalcedony,xinstr,chalcedony,0.998163,0.105079,1,1,1,chalcedony:0.9982 | hydrated_silica:0.9288 | montmorillonite_Na:0.9249
+chalcedony,pure,Chalcedony_CU91-6A,BECK,a,REF,,chalcedony,self,,,,0,0,0,
+chalcedony,pure,Chalcedony_CU91-6A_XRD,NIC4,aa,REF,,chalcedony,xinstr,,,,0,0,0,
+chlorite,pure,Chlorite_HS179.1B,ASDFR,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.777842,0.081031,1,1,1,clinochlore:0.7778 | epidote:0.7670 | serpentine_antigorite_or_calcite+dolomite:0.7392
+chlorite,pure,Chlorite_HS179.2B,ASDFR,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,epidote,0.811338,0.123654,3,0,1,epidote:0.8113 | carbonate_Fe_bearing:0.7367 | chlorite_lowFe:0.7353
+chlorite,pure,Chlorite_HS179.3B,ASDFR,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.785257,0.169051,1,1,1,clinochlore:0.7853 | chlorite_lowFe:0.7830 | epidote:0.7720
+chlorite,pure,Chlorite_HS179.3B,NIC4,bbu,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,epidote,0.754078,0.117719,2,0,1,epidote:0.7541 | clinochlore:0.7062 | serpentine_chrysotile_withsecondfeat:0.6676
+chlorite,pure,Chlorite_HS179.4B,ASDFR,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.814426,0.232585,1,1,1,clinochlore:0.8144 | chlorite_lowFe:0.8085 | serpentine_antigorite_withsecondfeat:0.7462
+chlorite,pure,Chlorite_HS179.6,ASDFR,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.886587,0.295993,1,1,1,clinochlore:0.8866 | clinochlore_Fe:0.8344 | serpentine_antigorite_withsecondfeat:0.8281
+chlorite,pure,Chlorite_HS197.3B,BECK,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Chlorite_HS197.3B,NIC4,bbb,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.971977,0.290129,1,1,1,clinochlore:0.9720 | serpentine_antigorite_or_calcite+dolomite:0.9228 | calcite.5+dolomite.5:0.9085
+chlorite,pure,Chlorite_SMR-13.a_104-150um,BECK,a,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,,,,0,0,0,
+chlorite,pure,Chlorite_SMR-13.a_104-150um,NIC4,aa,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,clinochlore,0.968187,0.332071,1,1,1,clinochlore:0.9682 | serpentine_antigorite_or_calcite+dolomite:0.9239 | calcite.5+dolomite.5:0.9147
+chlorite,pure,Chlorite_SMR-13.a_104-150um,NIC4,a,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,clinochlore,0.968187,0.332071,1,1,1,clinochlore:0.9682 | serpentine_antigorite_or_calcite+dolomite:0.9239 | calcite.5+dolomite.5:0.9147
+chlorite,pure,Chlorite_SMR-13.b_60-104um,BECK,a,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,,,,0,0,0,
+chlorite,pure,Chlorite_SMR-13.c_45-60um,BECK,a,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,,,,0,0,0,
+chlorite,pure,Chlorite_SMR-13.c_45-60um,NIC4,aa,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,clinochlore,0.959605,0.193119,1,1,1,clinochlore:0.9596 | serpentine_antigorite_or_calcite+dolomite:0.9271 | calcite.5+dolomite.5:0.9251
+chlorite,pure,Chlorite_SMR-13.d_30-45um,BECK,a,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,,,,0,0,0,
+chlorite,pure,Chlorite_SMR-13.d_30-45um,NIC4,aa,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,clinochlore,0.954620,0.170788,1,1,1,clinochlore:0.9546 | serpentine_antigorite_or_calcite+dolomite:0.9310 | calcite.5+dolomite.5:0.9291
+chlorite,pure,Chlorite_SMR-13.e_lt30um,BECK,b,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,,,,0,0,0,
+chlorite,pure,Chlorite_SMR-13.e_lt30um,NIC4,bb,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,calcite.5+dolomite.5,0.949785,0.100185,5,0,0,calcite.5+dolomite.5:0.9498 | serpentine_antigorite_or_calcite+dolomite:0.9366 | epidote:0.8480
+chlorite,pure,Clinochlore_Fe_GDS157,BECK,a,CAL13,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Clinochlore_Fe_GDS157,NIC4,aa,CAL13,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore_Fe,0.997233,0.171117,1,1,1,clinochlore_Fe:0.9972 | clinochlore:0.9597 | thuringite:0.8995
+chlorite,pure,Clinochlore_Fe_GDS157,NIC4,a,CAL13,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore_Fe,0.997233,0.171117,1,1,1,clinochlore_Fe:0.9972 | clinochlore:0.9597 | thuringite:0.8995
+chlorite,pure,Clinochlore_Fe_GDS157.b,ASDFR,a,CAL13,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore_Fe,0.996859,0.266524,1,1,1,clinochlore_Fe:0.9969 | clinochlore:0.9659 | thuringite:0.9105
+chlorite,pure,Clinochlore_Fe_SC-CCa-1.a,BECK,a,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,,,,0,0,0,
+chlorite,pure,Clinochlore_Fe_SC-CCa-1.a,NIC4,aa,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,clinochlore_Fe,1.000000,0.225880,1,1,1,clinochlore_Fe:1.0000 | clinochlore:0.9487 | thuringite:0.9279
+chlorite,pure,Clinochlore_Fe_SC-CCa-1.b,BECK,a,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,,,,0,0,0,
+chlorite,pure,Clinochlore_Fe_SC-CCa-1.b,NIC4,aa,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,clinochlore_Fe,0.999719,0.204960,1,1,1,clinochlore_Fe:0.9997 | clinochlore:0.9430 | thuringite:0.9304
+chlorite,pure,Clinochlore_Fe_SC-CCa-1.c,BECK,a,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,,,,0,0,0,
+chlorite,pure,Clinochlore_Fe_SC-CCa-1.c,NIC4,aa,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,clinochlore_Fe,0.998147,0.119027,1,1,1,clinochlore_Fe:0.9981 | clinochlore:0.9443 | thuringite:0.9173
+chlorite,pure,Clinochlore_GDS158_Flagstaff,ASDNG,b,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,clinochlore,0.991636,0.328353,1,1,1,clinochlore:0.9916 | chlorite_lowFe:0.9594 | clinochlore_Fe:0.9356
+chlorite,pure,Clinochlore_GDS158_Flagstaff,BECK,b,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,,,,0,0,0,
+chlorite,pure,Clinochlore_GDS158_Flagstaff,NIC4,bb,"REF,CAL13",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,clinochlore,1.000000,0.199299,1,1,1,clinochlore:1.0000 | clinochlore_Fe:0.9472 | epidote:0.8779
+chlorite,pure,Clinochlore_GDS159,BECK,b,CAL13,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Clinochlore_GDS159,NIC4,bb,CAL13,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,serpentine_antigorite_or_calcite+dolomite,0.927374,0.146207,4,0,0,serpentine_antigorite_or_calcite+dolomite:0.9274 | dolomite:0.8159 | calcite.5+dolomite.5:0.8024
+chlorite,pure,Clinochlore_NMNH83369,BECK,b,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Clinochlore_NMNH83369,NIC4,bbb,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,serpentine_antigorite_or_calcite+dolomite,0.942697,0.207887,4,0,0,serpentine_antigorite_or_calcite+dolomite:0.9427 | calcite.5+dolomite.5:0.8678 | dolomite:0.8460
+chlorite,pure,Clinochlore_NMNH83369,NIC4,b,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,serpentine_antigorite_or_calcite+dolomite,0.942697,0.207887,4,0,0,serpentine_antigorite_or_calcite+dolomite:0.9427 | calcite.5+dolomite.5:0.8678 | dolomite:0.8460
+chlorite,pure,Cookeite_CAr-1.a_104-150um,BECK,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Cookeite_CAr-1.a_104-150um,NIC4,bb,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,kaolinite+smectite_mix_intimate,0.841804,0.195065,0,0,0,kaolinite+smectite_mix_intimate:0.8418 | kaolinite+clay_mica_or_halloysite:0.7401 | kaolinite_or_dickite:0.7317
+chlorite,pure,Cookeite_CAr-1.b_60-104um,BECK,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Cookeite_CAr-1.b_60-104um,NIC4,bb,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,kaolinite+smectite_mix_intimate,0.840560,0.140072,0,0,0,kaolinite+smectite_mix_intimate:0.8406 | kaolinite+clay_mica_or_halloysite:0.7391 | kaolinite_or_dickite:0.7300
+chlorite,pure,Cookeite_CAr-1.b_60-104um,NIC4,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,kaolinite+smectite_mix_intimate,0.840560,0.140072,0,0,0,kaolinite+smectite_mix_intimate:0.8406 | kaolinite+clay_mica_or_halloysite:0.7391 | kaolinite_or_dickite:0.7300
+chlorite,pure,Cookeite_CAr-1.c_lt30um,BECK,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Cookeite_CAr-1.c_lt30um,NIC4,cc,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,kaolinite+smectite_mix_intimate,0.864153,0.068985,0,0,0,kaolinite+smectite_mix_intimate:0.8642 | kaolinite+clay_mica_or_halloysite:0.7514 | kaolinite_or_dickite:0.7413
+chlorite,pure,Corrensite_CorWa-1,BECK,b,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Corrensite_CorWa-1,NIC4,bc,,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,calcite.5+dolomite.5,0.932737,0.035884,0,0,0,calcite.5+dolomite.5:0.9327 | dry_veg_grass_2_3um:0.9103 | calcite:0.9025
+chlorite,pure,Prochlorite_SMR-14.a_115um,BECK,a,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Prochlorite_SMR-14.a_115um,NIC4,aa,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.988926,0.179275,1,1,1,clinochlore:0.9889 | clinochlore_Fe:0.9748 | epidote:0.8998
+chlorite,pure,Prochlorite_SMR-14.a_115um,NIC4,a,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.988926,0.179275,1,1,1,clinochlore:0.9889 | clinochlore_Fe:0.9748 | epidote:0.8998
+chlorite,pure,Prochlorite_SMR-14.b_32um,BECK,a,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Prochlorite_SMR-14.b_32um,NIC4,aa,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.979848,0.142513,1,1,1,clinochlore:0.9798 | clinochlore_Fe:0.9745 | epidote:0.9181
+chlorite,pure,Prochlorite_SMR-14.b_32um,NIC4,a,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.979848,0.142513,1,1,1,clinochlore:0.9798 | clinochlore_Fe:0.9745 | epidote:0.9181
+chlorite,pure,Prochlorite_SMR-14.c_lt30um,BECK,a,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,,,,0,0,0,
+chlorite,pure,Prochlorite_SMR-14.c_lt30um,NIC4,aa,BLACKL,,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,,clinochlore,0.969688,0.056139,1,1,1,clinochlore:0.9697 | clinochlore_Fe:0.9667 | epidote:0.9304
+chlorite,pure,Thuringite_SMR-15.a_115um,BECK,b,"REF,CAL13,BLACKL",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,,,,0,0,0,
+chlorite,pure,Thuringite_SMR-15.a_115um,NIC4,bc,"REF,CAL13,BLACKL",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,thuringite,0.998581,0.303535,1,1,1,thuringite:0.9986 | clinochlore_Fe:0.9274
+chlorite,pure,Thuringite_SMR-15.b_80um,BECK,a,"REF,CAL13,BLACKL",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,,,,0,0,0,
+chlorite,pure,Thuringite_SMR-15.b_80um,NIC4,aa,"REF,CAL13,BLACKL",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,thuringite,0.999456,0.257098,1,1,1,thuringite:0.9995 | clinochlore_Fe:0.9259
+chlorite,pure,Thuringite_SMR-15.b_80um,NIC4,a,"REF,CAL13,BLACKL",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,thuringite,0.999456,0.257098,1,1,1,thuringite:0.9995 | clinochlore_Fe:0.9259
+chlorite,pure,Thuringite_SMR-15.c_32um,NIC4,aa,"REF,CAL13,BLACKL",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,thuringite,1.000000,0.186107,1,1,1,thuringite:1.0000 | clinochlore_Fe:0.9317
+chlorite,pure,Thuringite_SMR-15.d_lt30um,BECK,a,"REF,CAL13,BLACKL",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,xinstr,,,,0,0,0,
+chlorite,pure,Thuringite_SMR-15.d_lt30um,NIC4,aa,"REF,CAL13,BLACKL",,chlorite_lowFe;clinochlore;clinochlore_Fe;thuringite,self,thuringite,0.999033,0.104509,1,1,1,thuringite:0.9990 | clinochlore_Fe:0.9319
+dolomite,pure,Dolomite_COD2005,BECK,b,,,dolomite;dolomite_abundant,,,,,0,0,0,
+dolomite,pure,Dolomite_HS102.1B,ASDNG,b,,,dolomite;dolomite_abundant,,dolomite,0.991260,0.048797,1,1,1,dolomite:0.9913 | calcite.5+dolomite.5:0.8368 | dry_veg_grass_2_3um:0.7200
+dolomite,pure,Dolomite_HS102.3B,ASDNG,b,REF,,dolomite;dolomite_abundant,xinstr,dolomite_abundant,0.998588,0.322487,1,1,1,dolomite_abundant:0.9986 | calcite.5+dolomite.5:0.8471 | serpentine_antigorite_or_calcite+dolomite:0.8276
+dolomite,pure,Dolomite_HS102.3B,BECK,b,REF,,dolomite;dolomite_abundant,self,,,,0,0,0,
+dolomite,pure,Dolomite_HS102.3B,NIC4,bbb,REF,,dolomite;dolomite_abundant,xinstr,dolomite_abundant,0.990619,0.193321,1,1,1,dolomite_abundant:0.9906 | calcite.5+dolomite.5:0.8548 | serpentine_antigorite_or_calcite+dolomite:0.8314
+dolomite,pure,Dolomite_HS102.4B,ASDNG,b,,,dolomite;dolomite_abundant,,dolomite_abundant,0.999014,0.393274,1,1,1,dolomite_abundant:0.9990 | calcite.5+dolomite.5:0.8457 | serpentine_antigorite_withironfeat:0.8257
+dolomite,pure,Dolomite_ML97-3_Ferroan,ASDFR,b,,,dolomite;dolomite_abundant,,dolomite_abundant,0.973407,0.516132,1,1,1,dolomite_abundant:0.9734 | calcite.5+dolomite.5:0.8561 | serpentine_antigorite_withironfeat:0.8316
+epidote,pure,Allanite_HS293.1B,ASDFR,b,,,epidote,,,,,0,0,0,
+epidote,pure,Allanite_HS293.2B,ASDFR,b,,,epidote,,,,,0,0,0,
+epidote,pure,Allanite_HS293.3B,ASDFR,b,,,epidote,,,,,0,0,0,
+epidote,pure,Allanite_HS293.3B,BECK,b,,,epidote,,,,,0,0,0,
+epidote,pure,Allanite_HS293.3B,NIC4,bc,,,epidote,,,,,0,0,0,
+epidote,pure,Allanite_HS293.4B,ASDFR,b,,,epidote,,,,,0,0,0,
+epidote,pure,Allanite_HS293.6,ASDFR,b,,,epidote,,,,,0,0,0,
+epidote,pure,Epidote_BR93-33a,BECK,b,,,epidote,,,,,0,0,0,
+epidote,pure,Epidote_GDS26.a_75-200um,ASDNG,b,REF,,epidote,xinstr,epidote,0.977517,0.730177,1,1,1,epidote:0.9775 | clinochlore:0.9546 | calcite.5+dolomite.5:0.8100
+epidote,pure,Epidote_GDS26.a_75-200um,BECK,b,REF,,epidote,xinstr,,,,0,0,0,
+epidote,pure,Epidote_GDS26.a_75-200um,NIC4,bbb,REF,,epidote,self,epidote,1.000000,0.579459,1,1,1,epidote:1.0000 | calcite.5+dolomite.5:0.7440 | serpentine_antigorite_or_calcite+dolomite:0.6643
+epidote,pure,Epidote_GDS26.b_lt75um,ASDNG,b,REF,,epidote,xinstr,epidote,0.996611,0.369841,1,1,1,epidote:0.9966 | calcite.5+dolomite.5:0.7462 | serpentine_antigorite_or_calcite+dolomite:0.6591
+epidote,pure,Epidote_GDS26.b_lt75um,BECK,b,REF,,epidote,xinstr,,,,0,0,0,
+epidote,pure,Epidote_GDS301_75-150um,ASDFR,b,,,epidote,,epidote,0.984877,0.671367,1,1,1,epidote:0.9849 | clinochlore:0.9395 | calcite.5+dolomite.5:0.7922
+epidote,pure,Epidote_HS328.3B,BECK,c,,,epidote,,,,,0,0,0,
+epidote,pure,Epidote_HS328.3B,NIC4,bc,,,epidote,,epidote,0.986847,0.422228,1,1,1,epidote:0.9868 | calcite.5+dolomite.5:0.6580
+epidote,pure,Zoisite_HS347.1B,ASDFR,b,,,epidote,,calcite,0.928472,0.055441,0,0,0,calcite:0.9285 | calcite.5+dolomite.5:0.7727 | dry_veg_nongrass_2_3um:0.6483
+epidote,pure,Zoisite_HS347.2B,ASDFR,b,,,epidote,,calcite,0.896456,0.125788,0,0,0,calcite:0.8965 | calcite.5+dolomite.5:0.7742 | dry_veg_nongrass_2_3um:0.7061
+epidote,pure,Zoisite_HS347.3B,ASDFR,b,,,epidote,,calcite,0.893016,0.176333,0,0,0,calcite:0.8930 | calcite.5+dolomite.5:0.8058 | dry_veg_nongrass_2_3um:0.7490
+epidote,pure,Zoisite_HS347.3B,BECK,b,,,epidote,,,,,0,0,0,
+epidote,pure,Zoisite_HS347.3B,NIC4,bcc,,,epidote,,calcite,0.890154,0.147353,2,0,1,calcite:0.8902 | epidote:0.7347 | calcite.5+dolomite.5:0.6949
+epidote,pure,Zoisite_HS347.4B,ASDFR,b,,,epidote,,calcite.5+dolomite.5,0.798914,0.195681,0,0,0,calcite.5+dolomite.5:0.7989 | dry_veg_nongrass_2_3um:0.7763 | dry_veg_grass_2_3um:0.7665
+epidote,pure,Zoisite_HS347.6,ASDFR,c,,,epidote,,clinochlore,0.913994,0.430847,2,0,1,clinochlore:0.9140 | epidote:0.8905 | calcite.5+dolomite.5:0.8009
+gypsum,pure,Gypsum_HS333.1B_(Selenite),ASDFR,a,,,gypsum,,gypsum,0.994608,0.086553,1,1,1,gypsum:0.9946 | gypsum.6+montmorilloniteNa.4:0.9017 | kaolinite+clay_mica_or_halloysite:0.8482
+gypsum,pure,Gypsum_HS333.2B_(Selenite),ASDFR,a,,,gypsum,,gypsum,0.994088,0.139421,1,1,1,gypsum:0.9941 | gypsum.6+montmorilloniteNa.4:0.8932 | kaolinite+clay_mica_or_halloysite:0.8307
+gypsum,pure,Gypsum_HS333.3B_(Selenite),ASDFR,a,REF,,gypsum,xinstr,gypsum,0.988964,0.217775,1,1,1,gypsum:0.9890 | gypsum.6+montmorilloniteNa.4:0.8734 | kaolinite+clay_mica_or_halloysite:0.8148
+gypsum,pure,Gypsum_HS333.3B_(Selenite),ASDNG,a,REF,,gypsum,xinstr,gypsum,0.989922,0.212219,1,1,1,gypsum:0.9899 | gypsum.6+montmorilloniteNa.4:0.8691 | kaolinite+clay_mica_or_halloysite:0.8082
+gypsum,pure,Gypsum_HS333.3B_(Selenite),BECK,a,REF,,gypsum,xinstr,,,,0,0,0,
+gypsum,pure,Gypsum_HS333.3B_(Selenite),NIC4,aaa,REF,,gypsum,self,gypsum,1.000000,0.143708,1,1,1,gypsum:1.0000 | gypsum.6+montmorilloniteNa.4:0.8863 | kaolinite+clay_mica_or_halloysite:0.8165
+gypsum,pure,Gypsum_HS333.4B_(Selenite),ASDFR,a,,,gypsum,,gypsum,0.977610,0.262948,1,1,1,gypsum:0.9776 | gypsum.6+montmorilloniteNa.4:0.8457 | kaolinite+clay_mica_or_halloysite:0.7940
+gypsum,pure,Gypsum_SU2202,BECK,a,,,gypsum,,,,,0,0,0,
+illite,pure,Ammonio-Illite-Smect_GDS87,BECK,b,,,illite_gds4;illite_imt1,,,,,0,0,0,
+illite,pure,Ammonio-Illite-Smect_GDS87,NIC4,bb,,,illite_gds4;illite_imt1,,buddingtonite+montmorillonite_mix_intimate,0.816212,0.138716,0,0,0,buddingtonite+montmorillonite_mix_intimate:0.8162 | kaolinite+smectite_mix_intimate:0.8131 | kaolinite_or_dickite:0.7645
+illite,pure,Illite_GDS4.2_Marblehead,ASDNG,b,"REF,MUS14,BECK14",,illite_gds4;illite_imt1,xinstr,illite_gds4,0.994280,0.202820,1,1,1,illite_gds4:0.9943 | illite_imt1:0.9307 | clinochlore_Fe.3+muscovite.7:0.8583
+illite,pure,Illite_GDS4_Marblehead,ASDNG,b,"REF,MUS14,BECK14",,illite_gds4;illite_imt1,xinstr,illite_gds4,0.994550,0.310421,1,1,1,illite_gds4:0.9945 | illite_imt1:0.9359 | clinochlore_Fe.3+muscovite.7:0.8627
+illite,pure,Illite_GDS4_Marblehead,BECK,b,"REF,MUS14,BECK14",,illite_gds4;illite_imt1,self,,,,0,0,0,
+illite,pure,Illite_GDS4_Marblehead,NIC4,bb,"REF,MUS14,BECK14",,illite_gds4;illite_imt1,xinstr,illite_gds4,0.990215,0.128572,1,1,1,illite_gds4:0.9902 | illite_imt1:0.9229 | clinochlore_Fe.3+muscovite.7:0.8457
+illite,pure,Illite_IL101_(2M2),BECK,b,,,illite_gds4;illite_imt1,,,,,0,0,0,
+illite,pure,Illite_IL105_(1Md),BECK,b,,,illite_gds4;illite_imt1,,,,,0,0,0,
+illite,pure,Illite_IMt-1.a,ASDNG,b,"REF,MUS14",,illite_gds4;illite_imt1,xinstr,illite_imt1,0.987664,0.121850,1,1,1,illite_imt1:0.9877 | clinochlore_Fe.3+muscovite.7:0.9640 | illite_gds4:0.9397
+illite,pure,Illite_IMt-1.a,BECK,b,"REF,MUS14",,illite_gds4;illite_imt1,self,,,,0,0,0,
+illite,pure,Illite_IMt-1.a,NIC4,bb,"REF,MUS14",,illite_gds4;illite_imt1,xinstr,illite_imt1,0.983756,0.074642,1,1,1,illite_imt1:0.9838 | clinochlore_Fe.3+muscovite.7:0.9596 | illite_gds4:0.9405
+illite,pure,Illite_IMt-1.b_lt2um,ASDNG,a,"REF,MUS14",,illite_gds4;illite_imt1,xinstr,illite_imt1,0.990623,0.108112,1,1,1,illite_imt1:0.9906 | clinochlore_Fe.3+muscovite.7:0.9618 | illite_gds4:0.9337
+illite,pure,Illite_IMt-1.b_lt2um,BECK,a,"REF,MUS14",,illite_gds4;illite_imt1,self,,,,0,0,0,
+illite,pure,Illite_IMt-1.b_lt2um,NIC4,aa,"REF,MUS14",,illite_gds4;illite_imt1,xinstr,illite_imt1,0.989389,0.079298,1,1,1,illite_imt1:0.9894 | clinochlore_Fe.3+muscovite.7:0.9644 | muscovite_lowAl:0.9362
+jarosite,pure,Ammonio-Jarosite_SCF-NHJ,BECK,a,,,jarosite_K;jarosite_Na,,,,,0,0,0,
+jarosite,pure,Ammonio-Jarosite_SCF-NHJ,NIC4,a,,,jarosite_K;jarosite_Na,,buddingtonite,0.651935,0.069385,0,0,0,buddingtonite:0.6519
+jarosite,pure,Jarosite_GDS100_Na_90C_Syn,BECK,a,,,jarosite_K;jarosite_Na,,,,,0,0,0,
+jarosite,pure,Jarosite_GDS100_Na_90C_Syn,NIC4,aa,,,jarosite_K;jarosite_Na,,jarosite_Na,0.822096,0.082292,1,1,1,jarosite_Na:0.8221 | jarosite_K:0.7011
+jarosite,pure,Jarosite_GDS101_Na_200C_Syn,BECK,a,,,jarosite_K;jarosite_Na,,,,,0,0,0,
+jarosite,pure,Jarosite_GDS101_Na_200C_Syn,NIC4,aa,,,jarosite_K;jarosite_Na,,jarosite_Na,0.997191,0.220553,1,1,1,jarosite_Na:0.9972 | jarosite_K:0.9234
+jarosite,pure,Jarosite_GDS24_Na,BECK,b,REF,,jarosite_K;jarosite_Na,xinstr,,,,0,0,0,
+jarosite,pure,Jarosite_GDS24_Na,NIC4,bbb,REF,,jarosite_K;jarosite_Na,self,jarosite_Na,1.000000,0.293587,1,1,1,jarosite_Na:1.0000 | jarosite_K:0.9390
+jarosite,pure,Jarosite_GDS635_Na_Cyprus,ASDNG,a,,,jarosite_K;jarosite_Na,,jarosite_Na,0.993108,0.417989,1,1,1,jarosite_Na:0.9931 | jarosite_K:0.9353 | jarosite+muscovite_mix_intimate:0.6599
+jarosite,pure,Jarosite_GDS636_K_Penalt325um,ASDNG,a,,,jarosite_K;jarosite_Na,,jarosite_K,0.990531,0.247371,1,1,1,jarosite_K:0.9905 | jarosite_Na:0.9316 | jarosite+muscovite_mix_intimate:0.7701
+jarosite,pure,Jarosite_GDS732_K_200CSyn6hr,ASDNG,b,,,jarosite_K;jarosite_Na,,jarosite_K,0.993178,0.250910,1,1,1,jarosite_K:0.9932 | jarosite_Na:0.9410 | jarosite+muscovite_mix_intimate:0.7174
+jarosite,pure,Jarosite_GDS98_K_90C_Syn,BECK,a,,,jarosite_K;jarosite_Na,,,,,0,0,0,
+jarosite,pure,Jarosite_GDS98_K_90C_Syn,NIC4,aa,,,jarosite_K;jarosite_Na,,jarosite_Na,0.847233,0.108991,1,1,1,jarosite_Na:0.8472 | jarosite_K:0.7559
+jarosite,pure,Jarosite_GDS98_K_90C_Syn,NIC4,a,,,jarosite_K;jarosite_Na,,jarosite_Na,0.847233,0.108991,1,1,1,jarosite_Na:0.8472 | jarosite_K:0.7559
+jarosite,pure,Jarosite_GDS99_K_200C_Syn,BECK,a,REF,,jarosite_K;jarosite_Na,xinstr,,,,0,0,0,
+jarosite,pure,Jarosite_GDS99_K_200C_Syn,NIC4,aa,REF,,jarosite_K;jarosite_Na,self,jarosite_K,0.997481,0.324477,1,1,1,jarosite_K:0.9975 | jarosite_Na:0.9447
+jarosite,pure,Jarosite_GDS99_K_200C_Syn,NIC4,a,REF,,jarosite_K;jarosite_Na,self,jarosite_K,0.997481,0.324477,1,1,1,jarosite_K:0.9975 | jarosite_Na:0.9447
+jarosite,pure,Jarosite_JR2501_(K),BECK,b,,,jarosite_K;jarosite_Na,,,,,0,0,0,
+jarosite,pure,Jarosite_NMNH95074-1_(Na),BECK,b,,,jarosite_K;jarosite_Na,,,,,0,0,0,
+jarosite,pure,Jarosite_NMNH95074-1_(Na),NIC4,bb,,,jarosite_K;jarosite_Na,,jarosite_Na,0.996907,0.290941,1,1,1,jarosite_Na:0.9969 | jarosite_K:0.9366
+jarosite,pure,Jarosite_SJ-1_H3O_10-20%,BECK,b,,,jarosite_K;jarosite_Na,,,,,0,0,0,
+jarosite,pure,Jarosite_SJ-1_H3O_10-20%,NIC4,bb,,,jarosite_K;jarosite_Na,,jarosite_Na,0.855058,0.143948,1,1,1,jarosite_Na:0.8551 | jarosite_K:0.7884
+jarosite,pure,Jarosite_SJ-1_H3O_20%_Syn,NIC4,b,,,jarosite_K;jarosite_Na,,jarosite_Na,0.855057,0.143948,1,1,1,jarosite_Na:0.8551 | jarosite_K:0.7884
+jarosite,pure,Jarosite_WS368_(Pb),BECK,c,,,jarosite_K;jarosite_Na,,,,,0,0,0,
+kaolinite,pure,Dickite_NMNH106242,ASDNG,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,xinstr,kaolinite_or_dickite,0.993870,0.527045,1,1,1,kaolinite_or_dickite:0.9939 | kaolinite_pxl:0.9245 | kaolinite_wxl:0.9083
+kaolinite,pure,Dickite_NMNH106242,BECK,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,xinstr,,,,0,0,0,
+kaolinite,pure,Dickite_NMNH106242,NIC4,bb,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,self,kaolinite_or_dickite,1.000000,0.446644,1,1,1,kaolinite_or_dickite:1.0000 | kaolinite_pxl:0.9237 | kaolinite_wxl:0.8895
+kaolinite,pure,Dickite_NMNH106242,NIC4,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,self,kaolinite_or_dickite,1.000000,0.446644,1,1,1,kaolinite_or_dickite:1.0000 | kaolinite_pxl:0.9237 | kaolinite_wxl:0.8895
+kaolinite,pure,Dickite_NMNH46967,BECK,a,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Halloysite_CM13,BECK,b,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Halloysite_CM13,NIC4,bbb,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,kaolinite+clay_mica_or_halloysite,0.992466,0.394724,1,1,1,kaolinite+clay_mica_or_halloysite:0.9925 | kaolinite_pxl:0.9854 | kaolinite.5+muscoviteMedhighAl.5:0.9823
+kaolinite,pure,Halloysite_KLH503,BECK,b,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Halloysite_NMNH106236,BECK,a,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Halloysite_NMNH106237,ASDNG,a,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,xinstr,kaolinite+clay_mica_or_halloysite,0.990611,0.696916,1,1,1,kaolinite+clay_mica_or_halloysite:0.9906 | kaolinite.5+muscoviteMedhighAl.5:0.9679 | kaolinite.5+muscoviteMedAl.5:0.9649
+kaolinite,pure,Halloysite_NMNH106237,BECK,a,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,xinstr,,,,0,0,0,
+kaolinite,pure,Halloysite_NMNH106237,NIC4,aaa,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,self,kaolinite+clay_mica_or_halloysite,1.000000,0.482613,1,1,1,kaolinite+clay_mica_or_halloysite:1.0000 | kaolinite.5+muscoviteMedAl.5:0.9879 | kaolinite.5+muscoviteMedhighAl.5:0.9720
+kaolinite,pure,Halloysite_NMNH106237,NIC4,a,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,self,kaolinite+clay_mica_or_halloysite,1.000000,0.482613,1,1,1,kaolinite+clay_mica_or_halloysite:1.0000 | kaolinite.5+muscoviteMedAl.5:0.9879 | kaolinite.5+muscoviteMedhighAl.5:0.9720
+kaolinite,pure,Kaolinite_CM3,BECK,a,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Kaolinite_CM3,NIC4,aa,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,kaolinite_pxl,0.997121,0.260694,1,1,1,kaolinite_pxl:0.9971 | kaolinite_wxl:0.9841 | kaolinite.5+muscoviteMedhighAl.5:0.9651
+kaolinite,pure,Kaolinite_CM5,BECK,b,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Kaolinite_CM5,NIC4,bb,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,kaolinite_pxl,0.997327,0.296810,1,1,1,kaolinite_pxl:0.9973 | kaolinite_wxl:0.9874 | kaolinite.5+muscoviteMedhighAl.5:0.9678
+kaolinite,pure,Kaolinite_CM7,BECK,b,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Kaolinite_CM7,NIC4,bb,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,kaolinite_pxl,0.999101,0.286766,1,1,1,kaolinite_pxl:0.9991 | kaolinite.5+muscoviteMedhighAl.5:0.9733 | kaolinite_wxl:0.9730
+kaolinite,pure,Kaolinite_CM9,ASDNG,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,xinstr,kaolinite_wxl,0.994825,0.420415,1,1,1,kaolinite_wxl:0.9948 | kaolinite_pxl:0.9567 | pyrophyllite.25+kaolinite.75:0.9467
+kaolinite,pure,Kaolinite_CM9,BECK,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,xinstr,,,,0,0,0,
+kaolinite,pure,Kaolinite_CM9,NIC4,bbb,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,self,kaolinite_wxl,1.000000,0.396937,1,1,1,kaolinite_wxl:1.0000 | kaolinite_pxl:0.9748 | pyrophyllite.25+kaolinite.75:0.9414
+kaolinite,pure,Kaolinite_CM9,NIC4,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,self,kaolinite_wxl,1.000000,0.396937,1,1,1,kaolinite_wxl:1.0000 | kaolinite_pxl:0.9748 | pyrophyllite.25+kaolinite.75:0.9414
+kaolinite,pure,Kaolinite_GDS11_lt63um,BECK,b,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Kaolinite_GDS11_lt63um,NIC4,bb,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,kaolinite_wxl,0.994697,0.293231,1,1,1,kaolinite_wxl:0.9947 | kaolinite_pxl:0.9897 | kaolinite.5+muscoviteMedhighAl.5:0.9511
+kaolinite,pure,Kaolinite_KGa-1_(wxl),ASDNG,b,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,kaolinite_wxl,0.997316,0.279872,1,1,1,kaolinite_wxl:0.9973 | kaolinite_pxl:0.9838 | kaolinite.5+muscoviteMedhighAl.5:0.9509
+kaolinite,pure,Kaolinite_KGa-1_(wxl),BECK,b,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Kaolinite_KGa-1_(wxl),NIC4,bb,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,kaolinite_pxl,0.993692,0.284546,1,1,1,kaolinite_pxl:0.9937 | kaolinite_wxl:0.9910 | kaolinite.5+muscoviteMedhighAl.5:0.9575
+kaolinite,pure,Kaolinite_KGa-2_(pxl),ASDNG,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,xinstr,kaolinite_pxl,0.994555,0.336780,1,1,1,kaolinite_pxl:0.9946 | kaolinite_wxl:0.9857 | kaolinite.5+muscoviteMedhighAl.5:0.9694
+kaolinite,pure,Kaolinite_KGa-2_(pxl),BECK,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,xinstr,,,,0,0,0,
+kaolinite,pure,Kaolinite_KGa-2_(pxl),NIC4,bbb,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,self,kaolinite_pxl,1.000000,0.278934,1,1,1,kaolinite_pxl:1.0000 | kaolinite_wxl:0.9751 | kaolinite.5+muscoviteMedhighAl.5:0.9724
+kaolinite,pure,Kaolinite_KGa-2_(pxl),NIC4,b,REF,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,self,kaolinite_pxl,1.000000,0.278934,1,1,1,kaolinite_pxl:1.0000 | kaolinite_wxl:0.9751 | kaolinite.5+muscoviteMedhighAl.5:0.9724
+kaolinite,pure,Kaolinite_KL502_(pxl),BECK,b,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+kaolinite,pure,Nacrite_GDS88,BECK,c,,,kaolinite+clay_mica_or_halloysite;kaolinite_or_dickite;kaolinite_pxl;kaolinite_wxl,,,,,0,0,0,
+muscovite,pure,Glauconite_HS313.1B,ASDFR,c,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,carbonate_Fe_bearing,0.811095,0.129872,0,0,0,carbonate_Fe_bearing:0.8111
+muscovite,pure,Glauconite_HS313.3B,ASDFR,c,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,carbonate_Fe_bearing,0.851981,0.181972,0,0,0,carbonate_Fe_bearing:0.8520
+muscovite,pure,Glauconite_HS313.3B,BECK,c,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Glauconite_HS313.3B,NIC4,ccc,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Glauconite_HS313.4B,ASDFR,c,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,carbonate_Fe_bearing,0.857866,0.171835,0,0,0,carbonate_Fe_bearing:0.8579
+muscovite,pure,Glauconite_HS313.6,ASDFR,c,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,carbonate_Fe_bearing,0.848826,0.156524,0,0,0,carbonate_Fe_bearing:0.8488 | dry_veg_nongrass_2_3um:0.6431 | calcite:0.6418
+muscovite,pure,Margarite_GDS106,BECK,c,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Margarite_GDS106,NIC4,cb,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_medhighAl,0.828073,0.132152,1,1,1,muscovite_medhighAl:0.8281 | calcite.5+muscoviteMedHiAl.5:0.7518 | muscovite_medAl:0.7512
+muscovite,pure,Muscovite_CU93-1_low-Al_Phyl,NIC4,b,REF,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,self,muscovite_lowAl,1.000000,0.173700,1,1,1,muscovite_lowAl:1.0000 | muscovite_Fe-rich:0.9494 | clinochlore_Fe.3+muscovite.7:0.9472
+muscovite,pure,Muscovite_GDS107,BECK,a,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_GDS107,NIC4,aa,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_medAl,0.994030,0.167080,1,1,1,muscovite_medAl:0.9940 | muscovite_medhighAl:0.9621 | kaolinite+muscovite_mix_intimate:0.9252
+muscovite,pure,Muscovite_GDS108,BECK,b,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_GDS108,NIC4,bb,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_medhighAl,0.985555,0.173789,1,1,1,muscovite_medhighAl:0.9856 | muscovite_medAl:0.9618 | kaolinite+muscovite_mix_intimate:0.8653
+muscovite,pure,Muscovite_GDS111_Guatemala,BECK,a,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_GDS111_Guatemala,NIC4,aaa,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_Fe-rich,0.880581,0.123048,1,1,1,muscovite_Fe-rich:0.8806 | illite_imt1:0.8302 | clinochlore_Fe.3+muscovite.7:0.7664
+muscovite,pure,Muscovite_GDS113_Ruby,ASDNG,a,"REF,MUS14",,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,xinstr,muscovite_medhighAl,0.995518,0.249321,1,1,1,muscovite_medhighAl:0.9955 | muscovite_medAl:0.9516 | kaolinite+muscovite_mix_intimate:0.8759
+muscovite,pure,Muscovite_GDS113_Ruby,BECK,a,"REF,MUS14",,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,xinstr,,,,0,0,0,
+muscovite,pure,Muscovite_GDS113_Ruby,NIC4,aaa,"REF,MUS14",,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,self,muscovite_medhighAl,1.000000,0.158491,1,1,1,muscovite_medhighAl:1.0000 | muscovite_medAl:0.9460 | kaolinite+muscovite_mix_intimate:0.8573
+muscovite,pure,Muscovite_GDS113a_Ruby,ASDNG,a,"REF,MUS14",,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,xinstr,muscovite_medhighAl,0.995970,0.247235,1,1,1,muscovite_medhighAl:0.9960 | muscovite_medAl:0.9508 | kaolinite+muscovite_mix_intimate:0.8744
+muscovite,pure,Muscovite_GDS114_Marshall,BECK,a,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_GDS114_Marshall,NIC4,aaa,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_lowAl,0.977570,0.131000,1,1,1,muscovite_lowAl:0.9776 | muscovite_Fe-rich:0.9425 | clinochlore_Fe.3+muscovite.7:0.9344
+muscovite,pure,Muscovite_GDS116_Tanzania,ASDNG,a,"REF,MUS14",,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,xinstr,muscovite_Fe-rich,0.993450,0.269661,1,1,1,muscovite_Fe-rich:0.9935 | clinochlore_Fe.3+muscovite.7:0.9658 | muscovite_lowAl:0.9620
+muscovite,pure,Muscovite_GDS116_Tanzania,BECK,a,"REF,MUS14",,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,xinstr,,,,0,0,0,
+muscovite,pure,Muscovite_GDS116_Tanzania,NIC4,aaa,"REF,MUS14",,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,self,muscovite_Fe-rich,1.000000,0.142272,1,1,1,muscovite_Fe-rich:1.0000 | clinochlore_Fe.3+muscovite.7:0.9552 | muscovite_lowAl:0.9512
+muscovite,pure,Muscovite_GDS116a_Tanzania,ASDNG,a,"REF,MUS14",,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,xinstr,muscovite_Fe-rich,0.992783,0.280984,1,1,1,muscovite_Fe-rich:0.9928 | clinochlore_Fe.3+muscovite.7:0.9657 | muscovite_lowAl:0.9613
+muscovite,pure,Muscovite_GDS117_Isinglas,BECK,a,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_GDS117_Isingles,NIC4,aaa,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_medAl,0.987089,0.161530,1,1,1,muscovite_medAl:0.9871 | muscovite_medhighAl:0.9634 | kaolinite+muscovite_mix_intimate:0.9057
+muscovite,pure,Muscovite_GDS118_Capitan,BECK,a,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_GDS118_Capitan,NIC4,aaa,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_Fe-rich,0.989217,0.125031,1,1,1,muscovite_Fe-rich:0.9892 | muscovite_lowAl:0.9718 | clinochlore_Fe.3+muscovite.7:0.9614
+muscovite,pure,Muscovite_GDS119_Mt_Alamo,BECK,a,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_GDS119_Mt_Alamo,NIC4,aa,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_medAl,0.989137,0.148193,1,1,1,muscovite_medAl:0.9891 | muscovite_medhighAl:0.9372 | muscovite_lowAl:0.9212
+muscovite,pure,Muscovite_GDS120_Pegma_M.,BECK,a,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_GDS120_Pegma_M.,NIC4,aa,MUS14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_medAl,0.980246,0.135603,1,1,1,muscovite_medAl:0.9802 | muscovite_medhighAl:0.9255 | muscovite_lowAl:0.9176
+muscovite,pure,Muscovite_HS146.1B,ASDFR,a,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_lowAl,0.987209,0.184507,1,1,1,muscovite_lowAl:0.9872 | muscovite_Fe-rich:0.9543 | clinochlore_Fe.3+muscovite.7:0.9426
+muscovite,pure,Muscovite_HS146.3B,ASDFR,a,BECK14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_lowAl,0.983875,0.319366,1,1,1,muscovite_lowAl:0.9839 | muscovite_Fe-rich:0.9567 | clinochlore_Fe.3+muscovite.7:0.9493
+muscovite,pure,Muscovite_HS146.3B,BECK,a,BECK14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_HS146.3B,NIC4,aaa,BECK14,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_lowAl,0.992055,0.174400,1,1,1,muscovite_lowAl:0.9921 | muscovite_Fe-rich:0.9695 | clinochlore_Fe.3+muscovite.7:0.9534
+muscovite,pure,Muscovite_HS146.4B,ASDFR,a,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_lowAl,0.979088,0.310767,1,1,1,muscovite_lowAl:0.9791 | muscovite_Fe-rich:0.9471 | clinochlore_Fe.3+muscovite.7:0.9438
+muscovite,pure,Muscovite_HS24.3,BECK,b,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Muscovite_HS24.3,NIC4,bbu,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,muscovite_Fe-rich,0.998745,0.148808,1,1,1,muscovite_Fe-rich:0.9987 | muscovite_lowAl:0.9629 | clinochlore_Fe.3+muscovite.7:0.9591
+muscovite,pure,Muscovite_IL107,BECK,b,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+muscovite,pure,Paragonite_GDS109,BECK,a,,,muscovite_Fe-rich;muscovite_lowAl;muscovite_medAl;muscovite_medhighAl,,,,,0,0,0,
+opal,pure,Opal_TM8896_(Hyalite),ASDNG,a,REF,,hydrated_silica,xinstr,hydrated_silica,0.996440,0.229498,1,1,1,hydrated_silica:0.9964 | chalcedony:0.9586 | montmorillonite_Ca:0.8921
+opal,pure,Opal_TM8896_(Hyalite),BECK,a,REF,,hydrated_silica,xinstr,,,,0,0,0,
+opal,pure,Opal_TM8896_(Hyalite),NIC4,aa,REF,,hydrated_silica,self,hydrated_silica,1.000000,0.115208,1,1,1,hydrated_silica:1.0000 | chalcedony:0.9396 | montmorillonite_Ca:0.9079
+opal,pure,Opal_WS732,BECK,a,,,hydrated_silica,,,,,0,0,0,
+pyrophyllite,pure,Pyrophyllite_PYS1A_fine_gr,BECK,a,REF,,pyrophyllite,xinstr,,,,0,0,0,
+pyrophyllite,pure,Pyrophyllite_PYS1A_fine_gr,NIC4,aaa,REF,,pyrophyllite,self,pyrophyllite,0.989334,0.241282,1,1,1,pyrophyllite:0.9893 | topaz:0.8212
+pyrophyllite,pure,Pyrophyllite_PYS1A_gt250um,ASDNG,a,REF,,pyrophyllite,xinstr,pyrophyllite,0.947620,0.761724,1,1,1,pyrophyllite:0.9476 | topaz:0.7902
+pyrophyllite,pure,Pyrophyllite_PYS1A_lt5um,ASDNG,a,REF,,pyrophyllite,xinstr,pyrophyllite,0.997897,0.383845,1,1,1,pyrophyllite:0.9979 | topaz:0.8512
+pyrophyllite,pure,Pyrophyllite_PYS1A_lt850um,ASDNG,a,REF,,pyrophyllite,xinstr,pyrophyllite,0.979520,0.605969,1,1,1,pyrophyllite:0.9795 | topaz:0.6908
+pyrophyllite,pure,Pyrophyllite_PYS1A_lt850um,BECK,a,REF,,pyrophyllite,xinstr,,,,0,0,0,
+pyrophyllite,pure,Pyrophyllite_PYS1A_lt850um,NIC4,aaa,REF,,pyrophyllite,self,pyrophyllite,1.000000,0.476079,1,1,1,pyrophyllite:1.0000 | topaz:0.7031
+pyrophyllite,pure,Pyrophyllite_PYS1A_lt850um,NIC4,a,REF,,pyrophyllite,self,pyrophyllite,1.000000,0.476079,1,1,1,pyrophyllite:1.0000 | topaz:0.7031
+pyrophyllite,pure,Pyrophyllite_SU1421,BECK,b,,,pyrophyllite,,,,,0,0,0,
+serpentine,pure,Antigorite_NMNH17958,BECK,b,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,,,,0,0,0,
+serpentine,pure,Antigorite_NMNH96917.a_gt250,ASDNG,b,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,xinstr,serpentine_antigorite_withsecondfeat,0.995105,0.557819,1,1,1,serpentine_antigorite_withsecondfeat:0.9951 | serpentine_antigorite_withironfeat:0.9951 | serpentine_antigorite_or_calcite+dolomite:0.9951
+serpentine,pure,Antigorite_NMNH96917.a_gt250,BECK,b,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,self,,,,0,0,0,
+serpentine,pure,Antigorite_NMNH96917.a_gt250,NIC4,bb,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,xinstr,serpentine_antigorite_withsecondfeat,0.977694,0.331259,1,1,1,serpentine_antigorite_withsecondfeat:0.9777 | serpentine_antigorite_or_calcite+dolomite:0.9777 | calcite.5+dolomite.5:0.9195
+serpentine,pure,Antigorite_NMNH96917.b_165,NIC4,bb,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,xinstr,serpentine_antigorite_withsecondfeat,0.947444,0.392147,1,1,1,serpentine_antigorite_withsecondfeat:0.9474 | serpentine_antigorite_or_calcite+dolomite:0.9474 | calcite.5+dolomite.5:0.9270
+serpentine,pure,Antigorite_NMNH96917.b_165um,ASDNG,b,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,xinstr,serpentine_antigorite_withsecondfeat,0.931919,0.271490,1,1,1,serpentine_antigorite_withsecondfeat:0.9319 | serpentine_antigorite_withironfeat:0.9319 | serpentine_antigorite_or_calcite+dolomite:0.9319
+serpentine,pure,Antigorite_NMNH96917.b_165um,BECK,b,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,self,,,,0,0,0,
+serpentine,pure,Antigorite_NMNH96917.c_120,NIC4,bb,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,xinstr,serpentine_antigorite_withsecondfeat,0.913135,0.287081,1,1,1,serpentine_antigorite_withsecondfeat:0.9131 | serpentine_antigorite_or_calcite+dolomite:0.9131 | calcite.5+dolomite.5:0.8864
+serpentine,pure,Antigorite_NMNH96917.c_120um,BECK,b,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,self,,,,0,0,0,
+serpentine,pure,Antigorite_NMNH96917.d_70um,BECK,b,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,self,,,,0,0,0,
+serpentine,pure,Antigorite_NMNH96917.d_70um,NIC4,bb,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,xinstr,serpentine_antigorite_withsecondfeat,0.871727,0.214452,1,1,1,serpentine_antigorite_withsecondfeat:0.8717 | serpentine_antigorite_or_calcite+dolomite:0.8717 | serpentine_chrysotile_withsecondfeat:0.8434
+serpentine,pure,Antigorite_NMNH96917.e_32um,BECK,b,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,self,,,,0,0,0,
+serpentine,pure,Antigorite_NMNH96917.e_32um,NIC4,bb,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,xinstr,serpentine_chrysotile_withsecondfeat,0.865061,0.174644,1,1,1,serpentine_chrysotile_withsecondfeat:0.8651 | serpentine_chrysotile:0.8651 | serpentine_antigorite_withsecondfeat:0.8436
+serpentine,pure,Antigorite_NMNH96917.f_lt30um,BECK,b,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,self,,,,0,0,0,
+serpentine,pure,Chrysotile_HS323.1B,ASDNG,a,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,xinstr,serpentine_chrysotile_withsecondfeat,0.983443,0.166363,1,1,1,serpentine_chrysotile_withsecondfeat:0.9834 | serpentine_chrysotile:0.9834 | calcite.5+dolomite.5:0.7245
+serpentine,pure,Chrysotile_HS323.1B,BECK,a,REF,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,self,,,,0,0,0,
+serpentine,pure,Chrysotile_ML99-12A_Coar_Fib,ASDFR,b,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,serpentine_antigorite_withsecondfeat,0.980752,0.382196,1,1,1,serpentine_antigorite_withsecondfeat:0.9808 | serpentine_antigorite_withironfeat:0.9808 | serpentine_antigorite_or_calcite+dolomite:0.9807
+serpentine,pure,Chrysotile_ML99-12C_Fine_Fib,ASDFR,b,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,serpentine_chrysotile_withsecondfeat,0.940106,0.245761,1,1,1,serpentine_chrysotile_withsecondfeat:0.9401 | serpentine_chrysotile:0.9401 | calcite.5+dolomite.5:0.8570
+serpentine,pure,Lizardite_NMNHR4687.a_280um,BECK,a,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,,,,0,0,0,
+serpentine,pure,Lizardite_NMNHR4687.b_165um,BECK,a,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,,,,0,0,0,
+serpentine,pure,Lizardite_NMNHR4687.b_165um,NIC4,aa,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,serpentine_chrysotile_withsecondfeat,0.926658,0.310694,1,1,1,serpentine_chrysotile_withsecondfeat:0.9267 | serpentine_chrysotile:0.9267 | calcite.5+dolomite.5:0.8358
+serpentine,pure,Lizardite_NMNHR4687.c_70um,BECK,a,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,,,,0,0,0,
+serpentine,pure,Lizardite_NMNHR4687.c_70um,NIC4,aa,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,serpentine_chrysotile_withsecondfeat,0.942178,0.269042,1,1,1,serpentine_chrysotile_withsecondfeat:0.9422 | serpentine_chrysotile:0.9422 | calcite.5+dolomite.5:0.8141
+serpentine,pure,Lizardite_NMNHR4687.d_lt30um,BECK,b,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,,,,0,0,0,
+serpentine,pure,Lizardite_NMNHR4687.d_lt30um,NIC4,cb,,,serpentine_antigorite_or_calcite+dolomite;serpentine_antigorite_withironfeat;serpentine_antigorite_withsecondfeat;serpentine_chrysotile;serpentine_chrysotile_withsecondfeat,,serpentine_chrysotile,0.954561,0.174548,1,1,1,serpentine_chrysotile:0.9546 | calcite.5+dolomite.5:0.8031 | serpentine_antigorite_withsecondfeat:0.7573
+siderite,pure,Siderite_HS271.1B,ASDFR,a,,,carbonate_Fe_bearing,,carbonate_Fe_bearing,0.837082,0.045163,1,1,1,carbonate_Fe_bearing:0.8371
+siderite,pure,Siderite_HS271.2B,ASDFR,a,,,carbonate_Fe_bearing,,carbonate_Fe_bearing,0.973061,0.208496,1,1,1,carbonate_Fe_bearing:0.9731 | calcite:0.9506 | calcite.5+dolomite.5:0.8893
+siderite,pure,Siderite_HS271.3B,ASDFR,a,REF,,carbonate_Fe_bearing,xinstr,carbonate_Fe_bearing,0.996320,0.394827,1,1,1,carbonate_Fe_bearing:0.9963 | calcite.5+dolomite.5:0.9234 | serpentine_antigorite_withironfeat:0.7947
+siderite,pure,Siderite_HS271.3B,ASDNG,a,REF,,carbonate_Fe_bearing,xinstr,carbonate_Fe_bearing,0.994008,0.375183,1,1,1,carbonate_Fe_bearing:0.9940 | calcite.5+dolomite.5:0.9226 | serpentine_antigorite_withironfeat:0.7948
+siderite,pure,Siderite_HS271.3B,BECK,a,REF,,carbonate_Fe_bearing,self,,,,0,0,0,
+siderite,pure,Siderite_HS271.3B,NIC4,aa,REF,,carbonate_Fe_bearing,xinstr,calcite,0.959133,0.091149,0,0,0,calcite:0.9591 | calcite.5+dolomite.5:0.8803 | dry_veg_nongrass_2_3um:0.7429
+siderite,pure,Siderite_HS271.4B,ASDFR,a,,,carbonate_Fe_bearing,,carbonate_Fe_bearing,0.974682,0.357275,1,1,1,carbonate_Fe_bearing:0.9747 | calcite:0.9644 | calcite_abundant:0.9644
+smectite,pure,Ammonio-Smectite_GDS86,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Beidellite_GDS124,ASDFR,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Beidellite_GDS124,NIC4,bbb,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,kaolinite_or_dickite,0.687496,0.120934,0,0,0,kaolinite_or_dickite:0.6875
+smectite,pure,Hectorite_SHCa-1,ASDNG,c,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,,,,0,0,0,
+smectite,pure,Hectorite_SHCa-1,BECK,c,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,,,,0,0,0,
+smectite,pure,Hectorite_SHCa-1.Ac-B,BECK,b,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,,,,0,0,0,
+smectite,pure,Hectorite_SHCa-1.Ac-B,NIC4,bb,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,self,hectorite,1.000000,0.208527,1,1,1,hectorite:1.0000 | tremolite_or_talc:0.8574 | talc_or_tremolite:0.8444
+smectite,pure,Montmorillonite_CM20,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Montmorillonite_CM20,NIC4,bc,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,montmorillonite_Na,0.951129,0.170747,1,1,1,montmorillonite_Na:0.9511 | montmorillonite_Ca:0.8817
+smectite,pure,Montmorillonite_CM26,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Montmorillonite_CM26,NIC4,bc,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,montmorillonite_Na,0.999614,0.181069,1,1,1,montmorillonite_Na:0.9996 | muscovite_medAl:0.9130 | muscovite_lowAl:0.9113
+smectite,pure,Montmorillonite_CM27,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Montmorillonite_CM27,NIC4,bb,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,montmorillonite_Na,0.985334,0.195869,1,1,1,montmorillonite_Na:0.9853 | kaolinite+muscovite_mix_intimate:0.9345 | muscovite_medAl:0.9046
+smectite,pure,Montmorillonite_SAz-1,ASDNG,b,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,montmorillonite_Ca,0.992931,0.191482,1,1,1,montmorillonite_Ca:0.9929
+smectite,pure,Montmorillonite_SAz-1,BECK,b,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,,,,0,0,0,
+smectite,pure,Montmorillonite_SAz-1,NIC4,bb,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,self,montmorillonite_Ca,1.000000,0.190463,1,1,1,montmorillonite_Ca:1.0000 | montmorillonite_Na:0.6960
+smectite,pure,Montmorillonite_SCa-2.a,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Montmorillonite_SCa-2.b,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Montmorillonite_SCa-2.b,NIC4,bb,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,montmorillonite_Ca,0.984386,0.192973,1,1,1,montmorillonite_Ca:0.9844 | illite_imt1:0.8172
+smectite,pure,Montmorillonite_STx-1,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Montmorillonite_STx-1,NIC4,bb,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,montmorillonite_Ca,0.992995,0.295744,1,1,1,montmorillonite_Ca:0.9930 | illite_gds4:0.8552 | illite_imt1:0.8295
+smectite,pure,Montmorillonite_SWy-1,ASDNG,b,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,montmorillonite_Na,0.997428,0.191692,1,1,1,montmorillonite_Na:0.9974 | muscovite_Fe-rich:0.7803 | montmorillonite_Ca:0.7410
+smectite,pure,Montmorillonite_SWy-1,BECK,b,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,,,,0,0,0,
+smectite,pure,Montmorillonite_SWy-1,NIC4,bcc,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,self,montmorillonite_Na,1.000000,0.164333,1,1,1,montmorillonite_Na:1.0000 | muscovite_lowAl:0.9094 | kaolinite+muscovite_mix_intimate:0.9087
+smectite,pure,Nontronite_NG-1.a,ASDNG,b,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,nontronite,0.993385,0.205053,1,1,1,nontronite:0.9934
+smectite,pure,Nontronite_NG-1.a,BECK,b,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,,,,0,0,0,
+smectite,pure,Nontronite_NG-1.a,NIC4,cd,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,self,nontronite,0.995182,0.213788,1,1,1,nontronite:0.9952
+smectite,pure,Nontronite_NG-1.b_lt2um_fr,BECK,b,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,xinstr,,,,0,0,0,
+smectite,pure,Nontronite_NG-1.b_lt2um_fr,NIC4,bb,REF,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,self,nontronite,1.000000,0.234887,1,1,1,nontronite:1.0000
+smectite,pure,Nontronite_SWa-1.a,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Nontronite_SWa-1.a,NIC4,bbb,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,nontronite,0.932597,0.125799,1,1,1,nontronite:0.9326
+smectite,pure,Nontronite_SWa-1.b_lt2um,BECK,a,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Nontronite_SWa-1.b_lt2um,NIC4,aa,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,nontronite,0.924314,0.139624,1,1,1,nontronite:0.9243
+smectite,pure,Saponite_SapCa-1,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Saponite_SapCa-1.AcB,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Saponite_SapCa-1.AcB,NIC4,bbb,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,talc_or_tremolite,0.952095,0.244062,0,0,0,talc_or_tremolite:0.9521
+smectite,pure,Sauconite_GDS135,BECK,b,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+smectite,pure,Sauconite_GDS135,NIC4,bbu,,,hectorite;montmorillonite_Ca;montmorillonite_Na;nontronite,,,,,0,0,0,
+soils,mixture,Acid_Mine_Dr_Assemb1-Fe3+,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Acid_Mine_Dr_Assemb2-Fe3+,ASDFR,b,,,,,,,,0,0,0,
+soils,natural,Actinolite-Hornfels_BR93-5a,BECK,c,,,,,,,,0,0,0,
+soils,natural,Actinolite-Tremolit_BR93-22C,BECK,b,,,,,,,,0,0,0,
+soils,natural,Actinolite_Dolomit_BR93-60B,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Alun.33+Kaol.33+Musc.33_AMX2,ASDNG,a,,,,,alunite.5+kaolinite.5,0.954251,0.259039,0,0,0,alunite.5+kaolinite.5:0.9543 | alunite.25+kaolinite.75:0.9510 | pyrophyllite.25+kaolinite.75:0.8461
+soils,mixture,Alun.33+Kaol.33+Musc.33_AMX2,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Alun0.3+Musc0.4+Pyro0.3_AMX1,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Alun366+.50PyroPYS1A_GDS222,BECK,b,MIXREF,direct,pyrophyllite.5+alunite.5_mix_intimate,self,,,,0,0,0,
+soils,mixture,Alun_Na+Kaol+Hemat_MV00-11a,ASDFR,c,,,,,pyrophyllite.25+kaolinite.75,0.901355,0.242557,0,0,0,pyrophyllite.25+kaolinite.75:0.9014 | kaolinite_wxl:0.8949 | kaolinite_pxl:0.8411
+soils,mixture,Alunite+Dickite_MV99-6-26b,ASDFR,c,,,,,alunite_Na_450C,0.914531,0.293532,0,0,0,alunite_Na_450C:0.9145 | pyrophyllite.25+kaolinite.75:0.9084
+soils,mixture,Alunite+Pyrophyl_SD1093A,BECK,b,,,,,,,,0,0,0,
+soils,natural,Alunite-K_CU91-217G1_HiTemp,ASDFR,b,,,,,alunite_K_250C,0.981140,0.490373,0,0,0,alunite_K_250C:0.9811 | pyrophyllite.5+alunite.5_mix_intimate:0.9692 | alunite.5+kaolinite.5:0.8737
+soils,mixture,Alunite.5+MuscCU91-250A_AMX4,ASDNG,a,,,,,alunite.5+kaolinite.5,0.911580,0.265372,0,0,0,alunite.5+kaolinite.5:0.9116 | alunite_K_250C:0.7993 | pyrophyllite.25+kaolinite.75:0.7479
+soils,mixture,Alunite.5+MuscCU91-250A_AMX4,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Alunite0.35K+.65Na_CU91-217H,ASDFR,b,,,,,buddingtonite+montmorillonite_mix_intimate,0.769252,0.290824,0,0,0,buddingtonite+montmorillonite_mix_intimate:0.7693 | pyrophyllite.25+kaolinite.75:0.7670 | kaolinite_wxl:0.7468
+soils,mixture,Alunite0.35K+.65Na_CU91-217H,NIC4,b,,,,,alunite_Na_450C,0.956818,0.461775,0,0,0,alunite_Na_450C:0.9568 | pyrophyllite.25+kaolinite.75:0.7662 | buddingtonite+montmorillonite_mix_intimate:0.7588
+soils,mixture,Alunite0.5+Kaol_KGa-1_AMX3,ASDNG,b,,exact,alunite.5+kaolinite.5,,alunite.5+kaolinite.5,0.990124,0.359328,1,1,1,alunite.5+kaolinite.5:0.9901 | alunite.25+kaolinite.75:0.9739 | alunite_K_250C:0.9240
+soils,mixture,Alunite0.5+Kaol_KGa-1_AMX3,BECK,b,,exact,alunite.5+kaolinite.5,,,,,0,0,0,
+soils,mixture,Alunite0.5+Kaol_KGa-1_AMX3,NIC4,bbb,,exact,alunite.5+kaolinite.5,,alunite.5+kaolinite.5,0.996227,0.303376,1,1,1,alunite.5+kaolinite.5:0.9962 | alunite.25+kaolinite.75:0.9941 | pyrophyllite.25+kaolinite.75:0.9359
+soils,mixture,Alunite0.66K+.34Na_CU91-217A,NIC4,b,,,,,alunite_K_250C,0.960367,0.337829,0,0,0,alunite_K_250C:0.9604 | pyrophyllite.5+alunite.5_mix_intimate:0.9554 | alunite.5+kaolinite.5:0.9245
+soils,mixture,Alunite0.73K+.27Na_CU91-217D,NIC4,a,,,,,alunite_K_250C,0.974367,0.212987,0,0,0,alunite_K_250C:0.9744 | pyrophyllite.5+alunite.5_mix_intimate:0.9739 | alunite.5+kaolinite.5:0.9012
+soils,natural,Alunite_K-Na_CU91-217H1_LowT,ASDFR,b,,,,,buddingtonite+montmorillonite_mix_intimate,0.769252,0.290824,0,0,0,buddingtonite+montmorillonite_mix_intimate:0.7693 | pyrophyllite.25+kaolinite.75:0.7670 | kaolinite_wxl:0.7468
+soils,natural,Alunite_K_CU98-5C_MedTemp,ASDFR,b,,,,,alunite_K_250C,0.989663,0.309002,0,0,0,alunite_K_250C:0.9897 | pyrophyllite.5+alunite.5_mix_intimate:0.9749 | alunite.5+kaolinite.5:0.8829
+soils,mixture,Alunite_NH4+Jaro_NMNH145596A,ASDFR,b,,,,,buddingtonite,0.915895,0.358615,0,0,0,buddingtonite:0.9159 | buddingtonite+montmorillonite_mix_intimate:0.6770
+soils,mixture,Alunite_NH4+Jaro_NMNH145596A,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Alunite_NH4+Jaro_NMNH145596A,NIC4,bb,,,,,buddingtonite,0.919602,0.266137,0,0,0,buddingtonite:0.9196 | buddingtonite+montmorillonite_mix_intimate:0.6897
+soils,natural,Basalt_fresh_BR93-46B,BECK,b,,,,,,,,0,0,0,
+soils,natural,Basalt_weathered_BR93-43,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Beidellite+Montmor_GDS123,ASDFR,b,,,,,kaolinite+smectite_mix_intimate,0.916344,0.209304,0,0,0,kaolinite+smectite_mix_intimate:0.9163 | muscovite_medhighAl:0.7969 | kaolinite+clay_mica_or_halloysite:0.7826
+soils,mixture,Beidellite+Montmor_GDS123,NIC4,bbb,,,,,muscovite_medhighAl,0.886270,0.131727,0,0,0,muscovite_medhighAl:0.8863 | kaolinite.5+muscoviteMedAl.5:0.8662 | muscovite_medAl:0.8283
+soils,natural,Biotite-Chlorite_Mx_BR93-36A,BECK,b,,,,,,,,0,0,0,
+soils,natural,Blue_Efflorscnt_Min_SU93-300,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Buddingtnt+Na-Mont_CU93-260B,NIC4,b,MIXREF,direct,buddingtonite+montmorillonite_mix_intimate,self,buddingtonite+montmorillonite_mix_intimate,1.000000,0.095846,1,1,1,buddingtonite+montmorillonite_mix_intimate:1.0000 | montmorillonite_Na:0.9091 | kaolinite+smectite_mix_intimate:0.8008
+soils,natural,BurnArea_TopSurface_WRF00-02,ASDFR,b,,,,,,,,0,0,0,
+soils,natural,BurnArea_Traverse_WRF00-01,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Calc.25+Dolo.25+Ca-Mont_AMX7,ASDNG,b,,approx,calcite.18+dolomite.22+montmorilloniteCa.6,,calcite.18+dolomite.22+montmorilloniteCa.6,0.987540,0.077481,1,1,1,calcite.18+dolomite.22+montmorilloniteCa.6:0.9875 | dolomite.5+montmorilloniteCa.5:0.9058 | calcite.25+montmorilloniteCa.75:0.7799
+soils,mixture,Calc.25+Dolo.25+Ca-Mont_AMX7,BECK,b,,approx,calcite.18+dolomite.22+montmorilloniteCa.6,,,,,0,0,0,
+soils,mixture,Calc.25+Dolo.25+Na-Mon_AMX18,ASDNG,b,,approx,calcite.18+dolomite.22+montmorilloniteNa.6,,calcite.18+dolomite.22+montmorilloniteNa.6,0.992242,0.076734,1,1,1,calcite.18+dolomite.22+montmorilloniteNa.6:0.9922 | montmorillonite_Na:0.9179 | dolomite.5+montmorilloniteNa.5:0.8756
+soils,mixture,Calc.25+Dolo.25+Na-Mon_AMX18,BECK,b,,approx,calcite.18+dolomite.22+montmorilloniteNa.6,,,,,0,0,0,
+soils,mixture,Calcite+.33Muscov_AMX5_Ruby,BECK,a,,approx,calcite.5+muscoviteMedHiAl.5,,,,,0,0,0,
+soils,mixture,Calcite+Talc_PC99-1G,ASDFR,c,,,,,talc_or_tremolite,0.955495,0.277446,0,0,0,talc_or_tremolite:0.9555 | serpentine_antigorite_withironfeat:0.7814 | serpentine_antigorite_or_calcite+dolomite:0.7814
+soils,mixture,Calcite.33+Ca-Mont.67_AMX19,ASDNG,b,,approx,calcite.25+montmorilloniteCa.75,,calcite.25+montmorilloniteCa.75,0.994221,0.080423,1,1,1,calcite.25+montmorilloniteCa.75:0.9942 | calcite.18+dolomite.22+montmorilloniteCa.6:0.8820 | calcite.3+muscoviteLowAl.7:0.7956
+soils,mixture,Calcite.33+Ca-Mont.67_AMX19,BECK,b,,approx,calcite.25+montmorilloniteCa.75,,,,,0,0,0,
+soils,mixture,Calcite.33+Epidote.67_GDS311,ASDFR,a,,,,,epidote,0.988777,0.574341,0,0,0,epidote:0.9888 | clinochlore:0.9264 | calcite.5+dolomite.5:0.8085
+soils,mixture,Calcite.33+Na-Mont.67_AMX44,ASDNG,b,,approx,calcite.25+montmorilloniteNa.75,,calcite.25+montmorilloniteNa.75,0.995141,0.085499,1,1,1,calcite.25+montmorilloniteNa.75:0.9951 | calcite.8+montmorilloniteNa.2_mix_intimate:0.9862 | muscovite_medAl:0.9561
+soils,mixture,Calcite.5+.Ca-Mont.5_AMX6,ASDNG,b,,,,,calcite.25+montmorilloniteCa.75,0.969349,0.074816,0,0,0,calcite.25+montmorilloniteCa.75:0.9693 | calcite.18+dolomite.22+montmorilloniteCa.6:0.9093 | calcite.3+muscoviteLowAl.7:0.7732
+soils,mixture,Calcite.5+.Ca-Mont.5_AMX6,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Calcite.5+.Na-Mont.5_AMX43,ASDNG,b,,,,,calcite.25+montmorilloniteNa.75,0.992280,0.079202,0,0,0,calcite.25+montmorilloniteNa.75:0.9923 | calcite.8+montmorilloniteNa.2_mix_intimate:0.9815 | calcite.3+muscoviteLowAl.7:0.9338
+soils,mixture,Calcite.5+Dolomite.5_AMX8,ASDNG,b,,exact,calcite.5+dolomite.5,,calcite.5+dolomite.5,0.992094,0.218255,1,1,1,calcite.5+dolomite.5:0.9921 | serpentine_antigorite_or_calcite+dolomite:0.9185 | dolomite_abundant:0.9132
+soils,mixture,Calcite.5+Dolomite.5_AMX8,BECK,b,,exact,calcite.5+dolomite.5,,,,,0,0,0,
+soils,mixture,Calcite.67+Epidote.33_GDS310,ASDFR,a,,,,,epidote,0.983068,0.479266,0,0,0,epidote:0.9831 | clinochlore:0.9073 | calcite.5+dolomite.5:0.8363
+soils,mixture,Calcite.7+Kaolin-wxl.3_AMX9,ASDNG,a,,,,,kaolinite.2+calcite.8_mix_intimate,0.955804,0.097663,0,0,0,kaolinite.2+calcite.8_mix_intimate:0.9558 | pyrophyllite.25+kaolinite.75:0.9513 | calcite_abundant:0.8540
+soils,mixture,Calcite.7+Kaolin-wxl.3_AMX9,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Calcite.8+Ca-Montmor.2_AMX15,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Calcite.80+Mont_Swy-1_GDS212,ASDNG,a,"REF,MIXREF",direct,calcite.8+montmorilloniteNa.2_mix_intimate,xinstr,calcite.8+montmorilloniteNa.2_mix_intimate,0.983655,0.068171,1,1,1,calcite.8+montmorilloniteNa.2_mix_intimate:0.9837 | calcite.25+montmorilloniteNa.75:0.9773 | muscovite_medAl:0.9335
+soils,mixture,Calcite.80+Mont_Swy-1_GDS212,BECK,a,"REF,MIXREF",direct,calcite.8+montmorilloniteNa.2_mix_intimate,xinstr,,,,0,0,0,
+soils,mixture,Calcite.80wt+Kaol_CM9_GDS213,ASDNG,a,"REF,MIXREF",direct,kaolinite.2+calcite.8_mix_intimate,xinstr,kaolinite.2+calcite.8_mix_intimate,0.988538,0.101705,1,1,1,kaolinite.2+calcite.8_mix_intimate:0.9885 | pyrophyllite.25+kaolinite.75:0.9430 | calcite.5+muscoviteMedHiAl.5:0.8222
+soils,mixture,Calcite.80wt+Kaol_CM9_GDS213,BECK,a,"REF,MIXREF",direct,kaolinite.2+calcite.8_mix_intimate,xinstr,,,,0,0,0,
+soils,mixture,Chabazite+Thom+Wair_HS193.3B,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Chabazite+Thom+Wair_HS193.3B,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Chabazite+Thom+Wair_HS193.3B,NIC4,bb,,,,,,,,0,0,0,
+soils,mixture,Chl.33+Epid.33+Cal.33_GDS319,ASDFR,a,,,,,epidote,0.966697,0.352007,0,0,0,epidote:0.9667 | clinochlore:0.9548 | clinochlore_Fe:0.9370
+soils,mixture,Chlor+Goethite_CU93-4B_Phyl,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Chlor.2+Epid.2+Calc.6_GDS314,ASDFR,a,,,,,epidote,0.970093,0.322047,0,0,0,epidote:0.9701 | clinochlore:0.9428 | clinochlore_Fe:0.9189
+soils,mixture,Chlor.2+Epid.6+Calc.2_GDS312,ASDFR,a,,,,,epidote,0.983857,0.466497,0,0,0,epidote:0.9839 | clinochlore:0.9345 | carbonate_Fe_bearing:0.8899
+soils,mixture,Chlor.6+Epid.2+Calc.2_GDS313,ASDFR,a,,,,,clinochlore_Fe,0.980882,0.293261,0,0,0,clinochlore_Fe:0.9809 | clinochlore:0.9706 | epidote:0.9166
+soils,mixture,Chlorit.33+Calcite.67_GDS315,ASDFR,a,,,,,clinochlore,0.970066,0.242797,0,0,0,clinochlore:0.9701 | clinochlore_Fe:0.9658 | epidote:0.9179
+soils,mixture,Chlorite+Muscovite_CU93-65A,ASDNG,a,MIXREF,direct,chlorite+muscovite_mix_intimate,xinstr,chlorite+muscovite_mix_intimate,0.996735,0.366406,1,1,1,chlorite+muscovite_mix_intimate:0.9967 | muscovite_medhighAl:0.9015
+soils,mixture,Chlorite+Muscovite_CU93-65A,BECK,a,MIXREF,direct,chlorite+muscovite_mix_intimate,self,,,,0,0,0,
+soils,mixture,Chlorite.33+Epidot.67_GDS318,ASDFR,a,,,,,epidote,0.976584,0.427258,0,0,0,epidote:0.9766 | clinochlore:0.9437 | clinochlore_Fe:0.9243
+soils,mixture,Chlorite.67+Calcit.33_GDS316,ASDFR,a,,,,,clinochlore_Fe,0.990542,0.255694,0,0,0,clinochlore_Fe:0.9905 | clinochlore:0.9756 | thuringite:0.8801
+soils,mixture,Chlorite.67+Epidot.33_GDS317,ASDFR,a,,,,,clinochlore_Fe,0.974279,0.314921,0,0,0,clinochlore_Fe:0.9743 | clinochlore:0.9702 | epidote:0.9289
+soils,natural,Chlorite_Phyllite_CU91-238A,BECK,b,,,,,,,,0,0,0,
+soils,natural,Chlorite_Serpentine_BR93-22B,BECK,b,,,,,,,,0,0,0,
+soils,natural,ClinozoisiteEpidote_HS299.1B,ASDFR,b,,,,,epidote,0.960341,0.201627,0,0,0,epidote:0.9603 | clinochlore:0.7982
+soils,natural,ClinozoisiteEpidote_HS299.2B,ASDFR,b,,,,,epidote,0.963997,0.356586,0,0,0,epidote:0.9640 | clinochlore:0.8197
+soils,natural,ClinozoisiteEpidote_HS299.2B,BECK,b,,,,,,,,0,0,0,
+soils,natural,ClinozoisiteEpidote_HS299.2B,NIC4,bc,,,,,epidote,0.944367,0.262671,0,0,0,epidote:0.9444
+soils,natural,ClinozoisiteEpidote_HS299.4B,ASDFR,b,,,,,clinochlore_Fe,0.971056,0.717814,0,0,0,clinochlore_Fe:0.9711 | clinochlore:0.9534 | epidote:0.8878
+soils,natural,ClinozoisiteEpidote_HS299.6,ASDFR,b,,,,,clinochlore_Fe,0.957478,0.712805,0,0,0,clinochlore_Fe:0.9575 | clinochlore:0.9388 | thuringite:0.8818
+soils,natural,Cordierite-QtzMus_HS346.1B,ASDFR,c,,,,,,,,0,0,0,
+soils,natural,Cordierite-QtzMus_HS346.2B,ASDFR,c,,,,,montmorillonite_Na,0.935284,0.040363,0,0,0,montmorillonite_Na:0.9353 | kaolinite+smectite_mix_intimate:0.7846 | kaolinite+clay_mica_or_halloysite:0.7107
+soils,natural,Cordierite-QtzMus_HS346.3B,ASDFR,c,,,,,muscovite_medAl,0.954282,0.093303,0,0,0,muscovite_medAl:0.9543 | kaolinite+muscovite_mix_intimate:0.9061 | muscovite_medhighAl:0.8934
+soils,natural,Cordierite-QtzMus_HS346.3B,BECK,c,,,,,,,,0,0,0,
+soils,natural,Cordierite-QtzMus_HS346.3B,NIC4,ccc,,,,,muscovite_medAl,0.976051,0.092079,0,0,0,muscovite_medAl:0.9761 | muscovite_lowAl:0.9222 | muscovite_medhighAl:0.9134
+soils,natural,Cordierite-QtzMus_HS346.4B,ASDFR,c,,,,,muscovite_medAl,0.945143,0.153648,0,0,0,muscovite_medAl:0.9451 | kaolinite+muscovite_mix_intimate:0.9186 | muscovite_medhighAl:0.8768
+soils,natural,Covellite-Pyrite_HS477.2B,ASDNG,b,,,,,,,,0,0,0,
+soils,natural,Covellite-Pyrite_HS477.2B,BECK,b,,,,,,,,0,0,0,
+soils,natural,Covellite-Pyrite_HS477.2B,NIC4,bbb,,,,,,,,0,0,0,
+soils,natural,Covellite-Pyrite_HS477.4B,ASDFR,b,,,,,,,,0,0,0,
+soils,natural,Covellite-Pyrite_HS477.6,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Dic.4+msc.3+gyp.2+jr.1_AMX20,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Dickite+others_CU91-219B,NIC4,a,,,,,kaolinite_or_dickite,0.978593,0.400187,0,0,0,kaolinite_or_dickite:0.9786 | kaolinite_pxl:0.9292 | kaolinite_wxl:0.9036
+soils,mixture,Dolomit+Calcite+Talc_PC99-1E,ASDFR,c,,,,,calcite.5+dolomite.5,0.952559,0.229444,0,0,0,calcite.5+dolomite.5:0.9526 | serpentine_antigorite_or_calcite+dolomite:0.9348 | calcite:0.8549
+soils,mixture,Dolomite.5+Ca-Mont.5_AMX10,ASDNG,b,,exact,dolomite.5+montmorilloniteCa.5,,dolomite.5+montmorilloniteCa.5,0.992171,0.100969,1,1,1,dolomite.5+montmorilloniteCa.5:0.9922 | calcite.18+dolomite.22+montmorilloniteCa.6:0.8442 | dolomite:0.7791
+soils,mixture,Dolomite.5+Ca-Mont.5_AMX10,BECK,b,,exact,dolomite.5+montmorilloniteCa.5,,,,,0,0,0,
+soils,mixture,Dolomite.5+Na-Mont.5_AMX21,ASDNG,b,,exact,dolomite.5+montmorilloniteNa.5,,dolomite.5+montmorilloniteNa.5,0.980557,0.092093,1,1,1,dolomite.5+montmorilloniteNa.5:0.9806 | montmorillonite_Na:0.8498 | calcite.18+dolomite.22+montmorilloniteNa.6:0.8274
+soils,mixture,Dolomite.5+Na-Mont.5_AMX21,BECK,b,,exact,dolomite.5+montmorilloniteNa.5,,,,,0,0,0,
+soils,mixture,Erionite+Merlinoite_GDS144,BECK,c,,,,,,,,0,0,0,
+soils,mixture,Erionite+Merlinoite_GDS144,NIC4,bb,,,,,,,,0,0,0,
+soils,mixture,Erionite+Offretite_GDS72,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Erionite+Offretite_GDS72,NIC4,bb,,,,,,,,0,0,0,
+soils,natural,Fe-Hydroxide_SU93-106_amorph,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Goeth+qtz.5+Jarosite.5_AMX11,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Goethite0.02+Quartz_GDS240,BECK,a,,,,,,,,0,0,0,
+soils,natural,Goethite_Phyllite_CU91-236A,ASDFR,b,,,,,kaolinite+smectite_mix_intimate,0.957022,0.119035,0,0,0,kaolinite+smectite_mix_intimate:0.9570 | kaolinite_pxl:0.9455 | kaolinite_or_dickite:0.9328
+soils,mixture,Gyp+jar+ill_BRCM1_Marysvale,ASDFR,b,,,,,jarosite+muscovite_mix_intimate,0.935124,0.173479,0,0,0,jarosite+muscovite_mix_intimate:0.9351 | gypsum.6+montmorilloniteNa.4:0.8528 | montmorillonite_Na:0.8486
+soils,mixture,Gyp.3+jr.1+msc.4+dic.2_AMX22,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Gyp.4+jr20+msc.2+dic.2_AMX23,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Gyp.5+Kjar.3+hAlmsc.2_AMX24,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Halloysite+Kaolinite_CM29,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Halloysite+Kaolinite_CM29,NIC4,aaa,,,,,kaolinite_pxl,0.990555,0.381205,0,0,0,kaolinite_pxl:0.9906 | kaolinite.5+muscoviteMedhighAl.5:0.9835 | kaolinite+clay_mica_or_halloysite:0.9816
+soils,natural,Halloysite_CU91-242D,ASDFR,b,,,,,kaolinite+clay_mica_or_halloysite,0.972430,0.188735,0,0,0,kaolinite+clay_mica_or_halloysite:0.9724 | kaolinite_pxl:0.9155 | kaolinite+smectite_mix_intimate:0.9148
+soils,mixture,Hematite.02+Quartz.98_GDS76,BECK,a,,,,,,,,0,0,0,
+soils,natural,Hematitic_Alt._Tuff_CU91-223,ASDFR,b,,,,,kaolinite_wxl,0.993451,0.275306,0,0,0,kaolinite_wxl:0.9935 | kaolinite_pxl:0.9764 | kaolinite.5+muscoviteMedhighAl.5:0.9420
+soils,natural,Hydrated_Volc_Tuff_CU01-4A,ASDFR,c,,,,,montmorillonite_Ca,0.926946,0.129583,0,0,0,montmorillonite_Ca:0.9269 | montmorillonite_Na:0.7488
+soils,mixture,Illite_CU00-5B_Hi-Al+Quartz,ASDFR,a,,,,,kaolinite.5+muscoviteMedAl.5,0.924430,0.512372,0,0,0,kaolinite.5+muscoviteMedAl.5:0.9244 | muscovite_medhighAl:0.9211 | muscovite_medAl:0.8760
+soils,natural,Jarosite_Rhyolite_CU91-20A,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Kalun+kaol+gth_mv2-ar3,ASDFR,b,,,,,alunite_K_250C,0.966336,0.430337,0,0,0,alunite_K_250C:0.9663 | pyrophyllite.5+alunite.5_mix_intimate:0.9483 | alunite.5+kaolinite.5:0.9430
+soils,mixture,Kaol+Muscov_intimate_CU93-5C,ASDNG,a,MIXREF,direct,kaolinite+muscovite_mix_intimate,xinstr,kaolinite+muscovite_mix_intimate,0.991669,0.244884,1,1,1,kaolinite+muscovite_mix_intimate:0.9917 | kaolinite.5+muscoviteMedAl.5:0.9662 | muscovite_medAl:0.9421
+soils,mixture,Kaol+Muscov_intimate_CU93-5C,BECK,a,MIXREF,direct,kaolinite+muscovite_mix_intimate,self,,,,0,0,0,
+soils,mixture,Kaol.5+MuscCU91-250A_AMX13,ASDNG,b,,exact,kaolinite.5+muscoviteMedAl.5,,kaolinite.5+muscoviteMedAl.5,0.995954,0.260837,1,1,1,kaolinite.5+muscoviteMedAl.5:0.9960 | kaolinite.5+muscoviteMedhighAl.5:0.9719 | kaolinite+muscovite_mix_intimate:0.9166
+soils,mixture,Kaol.5+MuscCU91-250A_AMX13,BECK,b,,exact,kaolinite.5+muscoviteMedAl.5,,,,,0,0,0,
+soils,mixture,Kaol.5+MuscCU91-250A_AMX13,NIC4,b,,exact,kaolinite.5+muscoviteMedAl.5,,kaolinite.5+muscoviteMedAl.5,0.997046,0.255311,1,1,1,kaolinite.5+muscoviteMedAl.5:0.9970 | kaolinite.5+muscoviteMedhighAl.5:0.9705 | kaolinite+muscovite_mix_intimate:0.9140
+soils,mixture,Kaol_Wxl+0.5Musc_Ruby_AMX12,ASDNG,a,,exact,kaolinite.5+muscoviteMedhighAl.5,,kaolinite.5+muscoviteMedhighAl.5,0.980317,0.307970,1,1,1,kaolinite.5+muscoviteMedhighAl.5:0.9803 | kaolinite.5+muscoviteMedAl.5:0.9738 | muscovite_medhighAl:0.8754
+soils,mixture,Kaol_Wxl+0.5Musc_Ruby_AMX12,BECK,a,,exact,kaolinite.5+muscoviteMedhighAl.5,,,,,0,0,0,
+soils,mixture,Kaol_Wxl+0.5Musc_Ruby_AMX12,NIC4,a,,exact,kaolinite.5+muscoviteMedhighAl.5,,kaolinite.5+muscoviteMedhighAl.5,0.999933,0.264102,1,1,1,kaolinite.5+muscoviteMedhighAl.5:0.9999 | kaolinite.5+muscoviteMedAl.5:0.9582 | kaolinite+muscovite_mix_intimate:0.7997
+soils,mixture,Kaol_wxl+others_CU00-19A,ASDFR,b,,,,,kaolinite_pxl,0.989815,0.251993,0,0,0,kaolinite_pxl:0.9898 | kaolinite+clay_mica_or_halloysite:0.9769 | kaolinite_wxl:0.9656
+soils,mixture,Kaol_wxl+others_CU91-200A,ASDFR,b,,,,,kaolinite_pxl,0.990428,0.195496,0,0,0,kaolinite_pxl:0.9904 | kaolinite+clay_mica_or_halloysite:0.9765 | kaolinite.5+muscoviteMedhighAl.5:0.9732
+soils,mixture,Kaolin-Smect_KLF511_.12Kaol,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Kaolin-Smect_KLF511_.12Kaol,NIC4,cc,,,,,kaolinite+smectite_mix_intimate,0.960204,0.107292,0,0,0,kaolinite+smectite_mix_intimate:0.9602 | kaolinite+clay_mica_or_halloysite:0.8883 | montmorillonite_Na:0.8311
+soils,mixture,Kaolin_Smect_H89-FR-2_.5Kao,NIC4,bb,MIXREF,direct,kaolinite+smectite_mix_intimate,self,kaolinite+smectite_mix_intimate,1.000000,0.187283,1,1,1,kaolinite+smectite_mix_intimate:1.0000 | kaolinite+clay_mica_or_halloysite:0.9610 | kaolinite_pxl:0.9233
+soils,mixture,Kaolin_Smect_H89-FR-2_.5Kaol,BECK,b,MIXREF,direct,kaolinite+smectite_mix_intimate,xinstr,,,,0,0,0,
+soils,mixture,Kaolin_Smect_H89-FR-5_.3Kaol,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Kaolin_Smect_KLF506_.95Kaol,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Kaolin_Smect_KLF506_.95kaol,NIC4,bb,,,,,kaolinite+clay_mica_or_halloysite,0.987147,0.192007,0,0,0,kaolinite+clay_mica_or_halloysite:0.9871 | kaolinite_pxl:0.9838 | kaolinite.5+muscoviteMedhighAl.5:0.9766
+soils,mixture,Kaolin_Smect_KLF508_.85Kaol,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Kaolin_Smect_KLF508_.85Kaol,NIC4,bb,,,,,kaolinite+smectite_mix_intimate,0.985161,0.295436,0,0,0,kaolinite+smectite_mix_intimate:0.9852 | kaolinite.5+muscoviteMedhighAl.5:0.9711 | kaolinite+clay_mica_or_halloysite:0.9681
+soils,mixture,Kaolwxl.75+Alun_HS295_AMX14,ASDNG,b,,exact,alunite.25+kaolinite.75,,alunite.25+kaolinite.75,0.992265,0.440808,1,1,1,alunite.25+kaolinite.75:0.9923 | alunite.5+kaolinite.5:0.9904 | pyrophyllite.25+kaolinite.75:0.9414
+soils,mixture,Kaolwxl.75+Alun_HS295_AMX14,BECK,b,,exact,alunite.25+kaolinite.75,,,,,0,0,0,
+soils,natural,Limestone_CU02-11A,ASDFR,a,,,,,calcite_abundant,0.989072,0.369822,0,0,0,calcite_abundant:0.9891 | calcite.5+dolomite.5:0.8639 | serpentine_antigorite_or_calcite+dolomite:0.7080
+soils,mixture,Magnesite+Hydromag_HS47.1B,ASDFR,a,,,,,,,,0,0,0,
+soils,mixture,Magnesite+Hydromag_HS47.2B,ASDFR,a,,,,,,,,0,0,0,
+soils,mixture,Magnesite+Hydromag_HS47.3B,ASDFR,a,,,,,,,,0,0,0,
+soils,mixture,Magnesite+Hydromag_HS47.3B,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Magnesite+Hydromag_HS47.3B,NIC4,aa,,,,,,,,0,0,0,
+soils,mixture,Magnesite+Hydromag_HS47.4B,ASDFR,a,,,,,,,,0,0,0,
+soils,natural,Magnetite_skarn_BR93-5B,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Mesolite+Hydroxyapop_GDS6,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Mesolite+Hydroxyapop_GDS6,NIC4,bc,,,,,pyrophyllite.25+kaolinite.75,0.788708,0.032561,0,0,0,pyrophyllite.25+kaolinite.75:0.7887 | kaolinite+smectite_mix_intimate:0.6647
+soils,mixture,Microcline+others_HS107.3B,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Microcline+others_HS107.3B,NIC4,aaa,,,,,muscovite_medhighAl,0.967540,0.092715,0,0,0,muscovite_medhighAl:0.9675 | muscovite_medAl:0.8521 | kaolinite+muscovite_mix_intimate:0.7346
+soils,mixture,Montmorillonite+Illite_CM37,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Montmorillonite+Illite_CM42,BECK,b,,,,,,,,0,0,0,
+soils,natural,Montmorillonite-Na_CU93-52A,BECK,c,,,,,,,,0,0,0,
+soils,mixture,Mordenite+Clinopt._GDS151,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Mordenite+Clinopt._GDS151,NIC4,bbu,,,,,,,,0,0,0,
+soils,mixture,Muscov+Jaros_CU93-314_coatng,ASDNG,b,MIXREF,direct,jarosite+muscovite_mix_intimate,xinstr,jarosite+muscovite_mix_intimate,0.991943,0.245866,1,1,1,jarosite+muscovite_mix_intimate:0.9919 | montmorillonite_Na:0.7614 | montmorillonite_Ca:0.7182
+soils,mixture,Muscov+Jaros_CU93-314_coatng,BECK,b,MIXREF,direct,jarosite+muscovite_mix_intimate,self,,,,0,0,0,
+soils,mixture,Muscovite+Chlorite_CU91-253D,NIC4,a,,,,,muscovite_medhighAl,0.966977,0.191127,0,0,0,muscovite_medhighAl:0.9670 | muscovite_medAl:0.8876 | muscovite_lowAl:0.6975
+soils,mixture,Muscovite+Pyrophyl_JH_PYRP1,ASDFR,b,,,,,kaolinite.5+muscoviteMedhighAl.5,0.868540,0.334295,0,0,0,kaolinite.5+muscoviteMedhighAl.5:0.8685 | kaolinite.5+muscoviteMedAl.5:0.8153 | pyrophyllite.25+kaolinite.75:0.7643
+soils,natural,Muscovite-low-Al_CU98-8H,ASDFR,b,,,,,muscovite_lowAl,0.996877,0.139391,0,0,0,muscovite_lowAl:0.9969 | muscovite_medAl:0.9332 | clinochlore_Fe.3+muscovite.7:0.9327
+soils,natural,Muscovite-medhi-Al_CU91-252D,ASDFR,c,,,,,muscovite_medhighAl,0.980944,0.271354,0,0,0,muscovite_medhighAl:0.9809 | muscovite_medAl:0.9718 | kaolinite+muscovite_mix_intimate:0.9098
+soils,natural,Muscovite-medhi-Al_CU91-252D,ASDNG,c,,,,,muscovite_medhighAl,0.988946,0.104171,0,0,0,muscovite_medhighAl:0.9889 | muscovite_medAl:0.9577 | chlorite+muscovite_mix_intimate:0.9013
+soils,natural,Muscovite-medlowAl_CU91-250A,ASDFR,b,REF,,,xinstr,muscovite_medAl,0.985364,0.292356,0,0,0,muscovite_medAl:0.9854 | kaolinite+muscovite_mix_intimate:0.9743 | muscovite_medhighAl:0.9228
+soils,natural,Muscovite-medlowAl_CU91-250A,ASDNG,b,REF,,,xinstr,muscovite_medAl,0.996822,0.207646,0,0,0,muscovite_medAl:0.9968 | kaolinite+muscovite_mix_intimate:0.9486 | muscovite_medhighAl:0.9348
+soils,natural,Muscovite-medlowAl_CU91-250A,NIC4,b,REF,,,self,muscovite_medAl,1.000000,0.203084,0,0,0,muscovite_medAl:1.0000 | muscovite_medhighAl:0.9466 | kaolinite+muscovite_mix_intimate:0.9396
+soils,mixture,Natrolite+Zeolite_HS168.1B,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Natrolite+Zeolite_HS168.2B,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Natrolite+Zeolite_HS168.3B,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Natrolite+Zeolite_HS168.3B,NIC4,bbb,,,,,,,,0,0,0,
+soils,mixture,Natrolite+Zeolite_HS168.4B,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Nontronite+others_CU00-13A,ASDFR,b,,,,,nontronite,0.943157,0.152693,0,0,0,nontronite:0.9432
+soils,natural,Opalized_Tuff_CU00-15E,ASDFR,b,,,,,chalcedony,0.922478,0.081417,0,0,0,chalcedony:0.9225 | montmorillonite_Na:0.9171 | hydrated_silica:0.8111
+soils,mixture,Phlogopite_Sand_Mix_BR93-20,BECK,a,,,,,,,,0,0,0,
+soils,natural,Pyrite_LV95-6A_Weath_on_Tail,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Pyrophyl+Muscovite_JH_PYRM1,ASDFR,b,,,,,pyrophyllite.25+kaolinite.75,0.893183,0.363341,0,0,0,pyrophyllite.25+kaolinite.75:0.8932 | kaolinite.2+calcite.8_mix_intimate:0.8205 | kaolinite_or_dickite:0.7863
+soils,mixture,Pyrophyl.25+wxlKaol.75_AMX17,ASDNG,b,,exact,pyrophyllite.25+kaolinite.75,,pyrophyllite,0.954626,0.272368,2,0,1,pyrophyllite:0.9546 | pyrophyllite.25+kaolinite.75:0.6690
+soils,mixture,Pyrophyl.25+wxlKaol.75_AMX17,BECK,b,,exact,pyrophyllite.25+kaolinite.75,,,,,0,0,0,
+soils,mixture,Pyrophyl.25+wxlKaol.75_AMX17,NIC4,b,,exact,pyrophyllite.25+kaolinite.75,,pyrophyllite.25+kaolinite.75,0.999920,0.345128,1,1,1,pyrophyllite.25+kaolinite.75:0.9999 | kaolinite_wxl:0.9460 | kaolinite_pxl:0.8913
+soils,mixture,Pyrophyl.50+Ca-Mont.50_AMX16,ASDNG,a,,,,,pyrophyllite,0.954626,0.272368,0,0,0,pyrophyllite:0.9546 | pyrophyllite.25+kaolinite.75:0.6690
+soils,mixture,Pyrophyl.50+Ca-Mont.50_AMX16,BECK,a,,,,,,,,0,0,0,
+soils,natural,Pyroxene_Basalt_CU01-20A,ASDFR,a,,,,,,,,0,0,0,
+soils,natural,Sand_DWO-3-DEL2a_no_vis.oil,ASDFR,a,,,,,,,,0,0,0,
+soils,natural,Sand_DWO-3-DEL2ar1_no_oil,ASDFR,a,,,,,,,,0,0,0,
+soils,natural,Sand_DWO-3-DEL2ar2_wet_noOil,ASDFR,a,,,,,,,,0,0,0,
+soils,natural,Sand_DWO-3-DEL2b_wet_no_oil,ASDFR,a,,,,,vegetation_npv_and_green,0.759888,0.166860,0,0,0,vegetation_npv_and_green:0.7599
+soils,natural,Sand_DWO-3-DEL2c_no_vis.oil,ASDFR,a,,,,,,,,0,0,0,
+soils,natural,Sand_DWO-3-DEL2d_wet_no_oil,ASDFR,a,,,,,,,,0,0,0,
+soils,natural,Sand_GrndIsle1_no_oil,ASDFR,a,,,,,,,,0,0,0,
+soils,natural,Sand_GrndIsle2_no_visibl_oil,ASDFR,a,,,,,,,,0,0,0,
+soils,mixture,Sanidine+albite_NMNH103200,BECK,c,,,,,,,,0,0,0,
+soils,mixture,Sanidine+albite_NMNH103200,NIC4,bb,,,,,,,,0,0,0,
+soils,natural,Stonewall_Playa_CU93-52A_a11,BECK,a,,,,,,,,0,0,0,
+soils,natural,Stonewall_Playa_Dry_Mud_2001,ASDFR,a,,,,,montmorillonite_Na,0.971078,0.050567,0,0,0,montmorillonite_Na:0.9711 | montmorillonite_Ca:0.8245
+soils,mixture,Talc+Clinochlore_HS327.3B,ASDFR,a,,,,,chlorite_lowFe,0.937551,0.360266,0,0,0,chlorite_lowFe:0.9376 | serpentine_antigorite_withironfeat:0.9304 | serpentine_antigorite_or_calcite+dolomite:0.9304
+soils,mixture,Talc+Clinochlore_HS327.3B,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Talc+Clinochlore_HS327.3B,NIC4,aaa,,,,,serpentine_antigorite_or_calcite+dolomite,0.927680,0.303643,0,0,0,serpentine_antigorite_or_calcite+dolomite:0.9277 | dolomite:0.8736 | calcite.5+dolomite.5:0.8148
+soils,mixture,Teepleite+Trona_NMNH102798,BECK,a,,,,,,,,0,0,0,
+soils,mixture,Teepleite+Trona_NMNH102798,NIC4,aau,,,,,,,,0,0,0,
+soils,natural,White_Crust_LV30_starkeyite,ASDFR,c,,,,,,,,0,0,0,
+soils,mixture,Xenotime+Monazite_REE_WS384,ASDFR,a,,,,,chalcedony,0.662547,0.067469,0,0,0,chalcedony:0.6625 | dolomite.5+montmorilloniteNa.5:0.6595 | calcite.18+dolomite.22+montmorilloniteNa.6:0.6521
+soils,mixture,Zincite+Franklin_HS147.1B,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Zincite+Franklin_HS147.2B,ASDFR,b,,,,,,,,0,0,0,
+soils,mixture,Zincite+Franklin_HS147.3B,ASDFR,b,,,,,carbonate_Fe_bearing,0.727033,0.076418,0,0,0,carbonate_Fe_bearing:0.7270
+soils,mixture,Zincite+Franklin_HS147.3B,BECK,b,,,,,,,,0,0,0,
+soils,mixture,Zincite+Franklin_HS147.3B,NIC4,bb,,,,,,,,0,0,0,
+soils,mixture,Zincite+Franklin_HS147.4B,ASDFR,b,,,,,,,,0,0,0,
+talc,pure,Talc_GDS23,ASDNG,a,REF,,talc_or_tremolite;tremolite_or_talc,xinstr,talc_or_tremolite,0.993396,0.655790,1,1,1,talc_or_tremolite:0.9934 | tremolite_or_talc:0.9590 | hectorite:0.8254
+talc,pure,Talc_GDS23_74-250um,NIC4,aaa,REF,,talc_or_tremolite;tremolite_or_talc,self,talc_or_tremolite,1.000000,0.686187,1,1,1,talc_or_tremolite:1.0000 | tremolite_or_talc:0.9586 | hectorite:0.8486
+talc,pure,Talc_GDS23_74-250um_fr,BECK,a,REF,,talc_or_tremolite;tremolite_or_talc,xinstr,,,,0,0,0,
+talc,pure,Talc_HS21.1B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,talc_or_tremolite,0.972850,0.255566,1,1,1,talc_or_tremolite:0.9729 | tremolite_or_talc:0.9641 | hectorite:0.8906
+talc,pure,Talc_HS21.2B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,talc_or_tremolite,0.980192,0.327384,1,1,1,talc_or_tremolite:0.9802 | tremolite_or_talc:0.9697 | hectorite:0.8930
+talc,pure,Talc_HS21.3B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,talc_or_tremolite,0.978348,0.399692,1,1,1,talc_or_tremolite:0.9783 | tremolite_or_talc:0.9606 | hectorite:0.8751
+talc,pure,Talc_HS21.3B,BECK,b,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+talc,pure,Talc_HS21.3B,NIC4,bbb,,,talc_or_tremolite;tremolite_or_talc,,talc_or_tremolite,0.969141,0.275489,1,1,1,talc_or_tremolite:0.9691 | tremolite_or_talc:0.9371 | hectorite:0.8915
+talc,pure,Talc_HS21.4B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,talc_or_tremolite,0.964323,0.547262,1,1,1,talc_or_tremolite:0.9643 | tremolite_or_talc:0.9080 | hectorite:0.8184
+talc,pure,Talc_TL2702,BECK,a,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+talc,pure,Talc_WS659,BECK,b,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+talc,pure,Talc_WS659,NIC4,bbb,,,talc_or_tremolite;tremolite_or_talc,,talc_or_tremolite,0.986416,0.304604,1,1,1,talc_or_tremolite:0.9864 | tremolite_or_talc:0.9596 | hectorite:0.9160
+topaz,pure,Topaz_Cameron_Cone_#42,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Cameron_Cone_#42,NIC4,bb,,,topaz,,topaz,0.873604,0.187717,1,1,1,topaz:0.8736
+topaz,pure,Topaz_Crystal_Park_#2,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Crystal_Park_#2,NIC4,bb,,,topaz,,topaz,0.901692,0.181188,1,1,1,topaz:0.9017
+topaz,pure,Topaz_Glen_Cove_#6,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Glen_Cove_#6,NIC4,bb,,,topaz,,topaz,0.879553,0.195242,1,1,1,topaz:0.8796
+topaz,pure,Topaz_Glen_Cove_#8,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Glen_Cove_#8,NIC4,bb,,,topaz,,topaz,0.884723,0.188020,1,1,1,topaz:0.8847
+topaz,pure,Topaz_HS184.1B,ASDFR,b,,,topaz,,topaz,0.984771,0.203067,1,1,1,topaz:0.9848
+topaz,pure,Topaz_HS184.1B,ASDNG,b,,,topaz,,topaz,0.950206,0.179072,1,1,1,topaz:0.9502
+topaz,pure,Topaz_HS184.2B,ASDFR,b,,,topaz,,topaz,0.994627,0.351412,1,1,1,topaz:0.9946
+topaz,pure,Topaz_HS184.3B,ASDFR,b,REF,,topaz,xinstr,topaz,0.998682,0.578300,1,1,1,topaz:0.9987
+topaz,pure,Topaz_HS184.3B,ASDNG,b,REF,,topaz,xinstr,topaz,0.995799,0.615012,1,1,1,topaz:0.9958
+topaz,pure,Topaz_HS184.3B,BECK,b,REF,,topaz,self,,,,0,0,0,
+topaz,pure,Topaz_HS184.3B,NIC4,bc,REF,,topaz,xinstr,topaz,0.945110,0.404139,1,1,1,topaz:0.9451
+topaz,pure,Topaz_HS184.4B,ASDFR,b,,,topaz,,topaz,0.990509,0.660407,1,1,1,topaz:0.9905
+topaz,pure,Topaz_HS184.4B,ASDNG,b,,,topaz,,topaz,0.993797,0.698739,1,1,1,topaz:0.9938
+topaz,pure,Topaz_Harris_Park_#17,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Harris_Park_#17,NIC4,bb,,,topaz,,topaz,0.885746,0.164654,1,1,1,topaz:0.8857
+topaz,pure,Topaz_Harris_Park_#3,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Harris_Park_#9,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Harris_Park_#9,NIC4,bb,,,topaz,,topaz,0.878834,0.147477,1,1,1,topaz:0.8788
+topaz,pure,Topaz_Jos_#22,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Jos_#22,NIC4,bb,,,topaz,,topaz,0.912606,0.263191,1,1,1,topaz:0.9126
+topaz,pure,Topaz_Little_3_Mine_#41,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Little_3_Mine_#41,NIC4,bb,,,topaz,,topaz,0.933372,0.280141,1,1,1,topaz:0.9334
+topaz,pure,Topaz_Mt_Antero_#5,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Tarryalls_#4,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Tarryalls_#4,NIC4,bb,,,topaz,,topaz,0.901957,0.181503,1,1,1,topaz:0.9020
+topaz,pure,Topaz_Wigwam_Area_#10,NIC4,bb,,,topaz,,topaz,0.885476,0.176763,1,1,1,topaz:0.8855
+topaz,pure,Topaz_Wigwam_Area_#16,NIC4,bb,,,topaz,,topaz,0.886116,0.151282,1,1,1,topaz:0.8861
+topaz,pure,Topaz_Wigwam_Area_2_#12,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Wigwam_Area_2_#12,NIC4,bb,,,topaz,,topaz,0.880480,0.137187,1,1,1,topaz:0.8805
+topaz,pure,Topaz_Wigwam_Area_3_#13,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Wigwam_Area_3_#13,NIC4,bb,,,topaz,,topaz,0.893080,0.191309,1,1,1,topaz:0.8931
+topaz,pure,Topaz_Wigwam_Area_4_#14,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Wigwam_Area_4_#14,NIC4,bb,,,topaz,,topaz,0.880728,0.163804,1,1,1,topaz:0.8807
+topaz,pure,Topaz_Wigwam_Area_5_#15,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Wigwam_Area_5_#15,NIC4,bb,,,topaz,,topaz,0.898637,0.169779,1,1,1,topaz:0.8986
+topaz,pure,Topaz_Wigwam_Area_6_#16,BECK,b,,,topaz,,,,,0,0,0,
+topaz,pure,Topaz_Wigwam_Area_A_#10,BECK,b,,,topaz,,,,,0,0,0,
+tremolite,pure,Actinolite_HS116.1B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.951798,0.117602,1,1,1,tremolite_or_talc:0.9518 | talc_or_tremolite:0.9276 | hectorite:0.7878
+tremolite,pure,Actinolite_HS116.2B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.919831,0.165753,1,1,1,tremolite_or_talc:0.9198 | talc_or_tremolite:0.8804 | dolomite_abundant:0.8109
+tremolite,pure,Actinolite_HS116.3B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.945093,0.370651,1,1,1,tremolite_or_talc:0.9451 | talc_or_tremolite:0.9195 | hectorite:0.7664
+tremolite,pure,Actinolite_HS116.3B,BECK,b,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+tremolite,pure,Actinolite_HS116.4B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.941573,0.517552,1,1,1,tremolite_or_talc:0.9416 | talc_or_tremolite:0.9213 | hectorite:0.7543
+tremolite,pure,Actinolite_HS22.1B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.941100,0.088065,1,1,1,tremolite_or_talc:0.9411 | talc_or_tremolite:0.9097 | dolomite_abundant:0.7014
+tremolite,pure,Actinolite_HS22.2B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.928400,0.141499,1,1,1,tremolite_or_talc:0.9284 | talc_or_tremolite:0.8887 | dolomite_abundant:0.7814
+tremolite,pure,Actinolite_HS22.3B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.911736,0.260562,1,1,1,tremolite_or_talc:0.9117 | talc_or_tremolite:0.8791 | dolomite_abundant:0.8333
+tremolite,pure,Actinolite_HS22.3B,BECK,b,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+tremolite,pure,Actinolite_HS22.3B,NIC4,bbb,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.890460,0.178836,1,1,1,tremolite_or_talc:0.8905 | talc_or_tremolite:0.8374 | dolomite_abundant:0.8028
+tremolite,pure,Actinolite_HS22.4B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.887078,0.324096,1,1,1,tremolite_or_talc:0.8871 | dolomite_abundant:0.8714 | dolomite:0.8713
+tremolite,pure,Actinolite_HS315.1B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.983737,0.128467,1,1,1,tremolite_or_talc:0.9837 | talc_or_tremolite:0.9554 | hectorite:0.8489
+tremolite,pure,Actinolite_HS315.2B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.980368,0.236115,1,1,1,tremolite_or_talc:0.9804 | talc_or_tremolite:0.9554 | hectorite:0.8388
+tremolite,pure,Actinolite_HS315.4B,ASDFR,b,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.970579,0.528352,1,1,1,tremolite_or_talc:0.9706 | talc_or_tremolite:0.9517 | hectorite:0.8163
+tremolite,pure,Actinolite_HS315.4B,BECK,b,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+tremolite,pure,Actinolite_HS315.4B,NIC4,bbb,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.958682,0.358028,1,1,1,tremolite_or_talc:0.9587 | talc_or_tremolite:0.9543 | hectorite:0.8007
+tremolite,pure,Actinolite_NMNH80714,BECK,b,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+tremolite,pure,Actinolite_NMNHR16485,BECK,b,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+tremolite,pure,Actinolite_NMNHR16485,NIC4,bbb,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.961705,0.136751,1,1,1,tremolite_or_talc:0.9617 | talc_or_tremolite:0.9209 | hectorite:0.8124
+tremolite,pure,Tremolite_HS18.1B,ASDFR,c,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.995937,0.140277,1,1,1,tremolite_or_talc:0.9959 | talc_or_tremolite:0.9598 | hectorite:0.8871
+tremolite,pure,Tremolite_HS18.2B,ASDFR,c,,,talc_or_tremolite;tremolite_or_talc,,tremolite_or_talc,0.992718,0.251141,1,1,1,tremolite_or_talc:0.9927 | talc_or_tremolite:0.9633 | hectorite:0.8671
+tremolite,pure,Tremolite_HS18.3,BECK,c,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+tremolite,pure,Tremolite_HS18.3B,ASDFR,c,REF,,talc_or_tremolite;tremolite_or_talc,xinstr,tremolite_or_talc,0.987357,0.422285,1,1,1,tremolite_or_talc:0.9874 | talc_or_tremolite:0.9611 | hectorite:0.8507
+tremolite,pure,Tremolite_HS18.3B,NIC4,ccc,REF,,talc_or_tremolite;tremolite_or_talc,self,tremolite_or_talc,1.000000,0.389538,1,1,1,tremolite_or_talc:1.0000 | talc_or_tremolite:0.9594 | hectorite:0.8889
+tremolite,pure,Tremolite_HS18.4B,ASDFR,c,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,
+tremolite,pure,Tremolite_NMNH117611.HCL,NIC4,bb,,,talc_or_tremolite;tremolite_or_talc,,hectorite,0.894496,0.098960,2,0,1,hectorite:0.8945 | tremolite_or_talc:0.8160
+tremolite,pure,Tremolite_NMNH117611.HCl,BECK,b,,,talc_or_tremolite;tremolite_or_talc,,,,,0,0,0,

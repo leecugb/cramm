@@ -1,0 +1,207 @@
+report-only mode: reading cached docs/library_validation_results.csv (use --reclassify to re-run the 627 classifications)
+
+================ pure mineral records ================
+NOTE on the BECK stratum (docs/diagnose_beck_resample.py):
+  splib07a serves BECK records at ~10 nm SWIR sampling, coarser than
+  the EMIT ~7.5 nm FWHM, so the strict-FWHM resample kernel leaves
+  holes at the 2.0-2.5 um diagnostic bands and NO rule fires. This
+  is a validation-pipeline grid artifact, not a classifier defect:
+  all 72 bundled splib06b references (Beckman ones stored at 1 nm)
+  resample to 0% zeros. Valid strata = NIC4 / ASDFR / ASDNG.
+
+-- SELF-ID control (circular) by sensor --
+  BECK   n= 21  winner-hit=  0 (  0.0%)  <-- grid artifact
+  NIC4   n= 38  winner-hit= 38 (100.0%)
+
+-- cross-instrument same-sample by sensor --
+  ASDFR  n=  4  winner-hit=  4 (100.0%)
+  ASDNG  n= 33  winner-hit= 32 ( 97.0%)
+  BECK   n= 28  winner-hit=  0 (  0.0%)  <-- grid artifact
+  NIC4   n= 18  winner-hit= 15 ( 83.3%)
+
+-- LEAVE-SAMPLE-OUT --
+  all sensors            n=265  winner-hit=120 ( 45.3%)  top3-hit=125  (understated: includes BECK artifact)
+  excluding BECK (valid) n=161  winner-hit=118 ( 73.3%)  top3-hit=123  <-- headline
+
+-- LSO by sensor --
+  ASDFR  n= 62  winner-hit= 44 ( 71.0%)  top3-hit= 46
+  ASDNG  n= 10  winner-hit=  9 ( 90.0%)  top3-hit=  9
+  BECK   n=104  winner-hit=  2 (  1.9%)  top3-hit=  2  <-- grid artifact
+  NIC4   n= 89  winner-hit= 65 ( 73.0%)  top3-hit= 68
+
+-- LSO by family (valid strata, BECK excluded) --
+  alunite        n= 22  winner-hit= 13 ( 59.1%)  top3-hit= 13
+  calcite        n=  2  winner-hit=  1 ( 50.0%)  top3-hit=  1
+  chlorite       n= 16  winner-hit=  8 ( 50.0%)  top3-hit= 10
+  dolomite       n=  3  winner-hit=  3 (100.0%)  top3-hit=  3
+  epidote        n= 14  winner-hit=  2 ( 14.3%)  top3-hit=  4
+  gypsum         n=  3  winner-hit=  3 (100.0%)  top3-hit=  3
+  illite         n=  1  winner-hit=  0 (  0.0%)  top3-hit=  0
+  jarosite       n= 11  winner-hit= 10 ( 90.9%)  top3-hit= 10
+  kaolinite      n=  7  winner-hit=  7 (100.0%)  top3-hit=  7
+  muscovite      n= 19  winner-hit= 14 ( 73.7%)  top3-hit= 14
+  serpentine     n=  5  winner-hit=  5 (100.0%)  top3-hit=  5
+  siderite       n=  3  winner-hit=  3 (100.0%)  top3-hit=  3
+  smectite       n= 11  winner-hit=  7 ( 63.6%)  top3-hit=  7
+  talc           n=  6  winner-hit=  6 (100.0%)  top3-hit=  6
+  topaz          n= 20  winner-hit= 20 (100.0%)  top3-hit= 20
+  tremolite      n= 18  winner-hit= 16 ( 88.9%)  top3-hit= 17
+
+blacklisted (informational)  n= 11  winner-hit=  5 ( 45.5%)
+
+-- genuine LSO misses (valid strata; BECK excluded as artifact) --
+  alunite       Alunite_GDS82_Na82                         NIC4   -> pyrophyllite.25+kaolinite.75 (fit=0.846226)
+  alunite       Alunite_GDS82_Na82                         NIC4   -> pyrophyllite.25+kaolinite.75 (fit=0.846226)
+  alunite       Alunite_GDS83_Na63                         NIC4   -> pyrophyllite.25+kaolinite.75 (fit=0.806167)
+  alunite       Alunite_GDS83_Na63                         NIC4   -> pyrophyllite.25+kaolinite.75 (fit=0.806167)
+  alunite       Alunite_GDS84_Na03                         NIC4   -> pyrophyllite.25+kaolinite.75 (fit=0.782979)
+  alunite       Alunite_GDS84_Na03                         NIC4   -> pyrophyllite.25+kaolinite.75 (fit=0.782979)
+  alunite       Alunite_RES-9_Summitv_(400C)               ASDNG  -> pyrophyllite.25+kaolinite.75 (fit=0.824689)
+  alunite       Alunite_RES-9_Summitv_(400C)               NIC4   -> pyrophyllite.25+kaolinite.75 (fit=0.828900)
+  alunite       Alunite_RES10_NA56%_Syn_450C               NIC4   -> pyrophyllite.25+kaolinite.75 (fit=0.793049)
+  calcite       Calcite_REE-bearing_WS319a                 ASDFR  -> calcite.5+dolomite.5 (fit=0.946939)
+  chlorite      Chlorite_HS179.2B                          ASDFR  -> epidote (fit=0.811338)
+  chlorite      Chlorite_HS179.3B                          NIC4   -> epidote (fit=0.754078)
+  chlorite      Clinochlore_GDS159                         NIC4   -> serpentine_antigorite_or_calcite+dolomite (fit=0.927374)
+  chlorite      Cookeite_CAr-1.a_104-150um                 NIC4   -> kaolinite+smectite_mix_intimate (fit=0.841804)
+  chlorite      Cookeite_CAr-1.b_60-104um                  NIC4   -> kaolinite+smectite_mix_intimate (fit=0.840560)
+  chlorite      Cookeite_CAr-1.b_60-104um                  NIC4   -> kaolinite+smectite_mix_intimate (fit=0.840560)
+  chlorite      Cookeite_CAr-1.c_lt30um                    NIC4   -> kaolinite+smectite_mix_intimate (fit=0.864153)
+  chlorite      Corrensite_CorWa-1                         NIC4   -> calcite.5+dolomite.5 (fit=0.932737)
+  epidote       Allanite_HS293.1B                          ASDFR  -> (no rule fired) (fit=)
+  epidote       Allanite_HS293.2B                          ASDFR  -> (no rule fired) (fit=)
+  epidote       Allanite_HS293.3B                          ASDFR  -> (no rule fired) (fit=)
+  epidote       Allanite_HS293.3B                          NIC4   -> (no rule fired) (fit=)
+  epidote       Allanite_HS293.4B                          ASDFR  -> (no rule fired) (fit=)
+  epidote       Allanite_HS293.6                           ASDFR  -> (no rule fired) (fit=)
+  epidote       Zoisite_HS347.1B                           ASDFR  -> calcite (fit=0.928472)
+  epidote       Zoisite_HS347.2B                           ASDFR  -> calcite (fit=0.896456)
+  epidote       Zoisite_HS347.3B                           ASDFR  -> calcite (fit=0.893016)
+  epidote       Zoisite_HS347.3B                           NIC4   -> calcite (fit=0.890154)
+  epidote       Zoisite_HS347.4B                           ASDFR  -> calcite.5+dolomite.5 (fit=0.798914)
+  epidote       Zoisite_HS347.6                            ASDFR  -> clinochlore (fit=0.913994)
+  illite        Ammonio-Illite-Smect_GDS87                 NIC4   -> buddingtonite+montmorillonite_mix_intimate (fit=0.816212)
+  jarosite      Ammonio-Jarosite_SCF-NHJ                   NIC4   -> buddingtonite (fit=0.651935)
+  muscovite     Glauconite_HS313.1B                        ASDFR  -> carbonate_Fe_bearing (fit=0.811095)
+  muscovite     Glauconite_HS313.3B                        ASDFR  -> carbonate_Fe_bearing (fit=0.851981)
+  muscovite     Glauconite_HS313.3B                        NIC4   -> (no rule fired) (fit=)
+  muscovite     Glauconite_HS313.4B                        ASDFR  -> carbonate_Fe_bearing (fit=0.857866)
+  muscovite     Glauconite_HS313.6                         ASDFR  -> carbonate_Fe_bearing (fit=0.848826)
+  smectite      Beidellite_GDS124                          ASDFR  -> (no rule fired) (fit=)
+  smectite      Beidellite_GDS124                          NIC4   -> kaolinite_or_dickite (fit=0.687496)
+  smectite      Saponite_SapCa-1.AcB                       NIC4   -> talc_or_tremolite (fit=0.952095)
+  smectite      Sauconite_GDS135                           NIC4   -> (no rule fired) (fit=)
+  tremolite     Tremolite_HS18.4B                          ASDFR  -> (no rule fired) (fit=)
+  tremolite     Tremolite_NMNH117611.HCL                   NIC4   -> hectorite (fit=0.894496)
+
+================ rule-linked mixtures ================
+(BECK rows are grid-artifact no-fires; hit rates below exclude both
+ circular self-ID rows and the compromised BECK stratum.)
+  direct  n=14  valid(non-circ,non-BECK)= 5  winner==linked rule: 5   top3: 5
+    Alun366+.50PyroPYS1A_GDS222                  BECK   -> (no rule fired) ()  <-- grid artifact
+    Buddingtnt+Na-Mont_CU93-260B                 NIC4   -> buddingtonite+montmorillonite_mix_intimate (1.000000)
+    Calcite.80+Mont_Swy-1_GDS212                 ASDNG  -> calcite.8+montmorilloniteNa.2_mix_intimate (0.983655)
+    Calcite.80+Mont_Swy-1_GDS212                 BECK   -> (no rule fired) ()  <-- grid artifact
+    Calcite.80wt+Kaol_CM9_GDS213                 ASDNG  -> kaolinite.2+calcite.8_mix_intimate (0.988538)
+    Calcite.80wt+Kaol_CM9_GDS213                 BECK   -> (no rule fired) ()  <-- grid artifact
+    Chlorite+Muscovite_CU93-65A                  ASDNG  -> chlorite+muscovite_mix_intimate (0.996735)
+    Chlorite+Muscovite_CU93-65A                  BECK   -> (no rule fired) ()  <-- grid artifact
+    Kaol+Muscov_intimate_CU93-5C                 ASDNG  -> kaolinite+muscovite_mix_intimate (0.991669)
+    Kaol+Muscov_intimate_CU93-5C                 BECK   -> (no rule fired) ()  <-- grid artifact
+    Kaolin_Smect_H89-FR-2_.5Kao                  NIC4   -> kaolinite+smectite_mix_intimate (1.000000)
+    Kaolin_Smect_H89-FR-2_.5Kaol                 BECK   -> (no rule fired) ()  <-- grid artifact
+    Muscov+Jaros_CU93-314_coatng                 ASDNG  -> jarosite+muscovite_mix_intimate (0.991943)
+    Muscov+Jaros_CU93-314_coatng                 BECK   -> (no rule fired) ()  <-- grid artifact
+  exact   n=20  valid(non-circ,non-BECK)=12  winner==linked rule: 11   top3: 12
+    Alunite0.5+Kaol_KGa-1_AMX3                   ASDNG  -> alunite.5+kaolinite.5 (0.990124)
+    Alunite0.5+Kaol_KGa-1_AMX3                   BECK   -> (no rule fired) ()  <-- grid artifact
+    Alunite0.5+Kaol_KGa-1_AMX3                   NIC4   -> alunite.5+kaolinite.5 (0.996227)
+    Calcite.5+Dolomite.5_AMX8                    ASDNG  -> calcite.5+dolomite.5 (0.992094)
+    Calcite.5+Dolomite.5_AMX8                    BECK   -> (no rule fired) ()  <-- grid artifact
+    Dolomite.5+Ca-Mont.5_AMX10                   ASDNG  -> dolomite.5+montmorilloniteCa.5 (0.992171)
+    Dolomite.5+Ca-Mont.5_AMX10                   BECK   -> (no rule fired) ()  <-- grid artifact
+    Dolomite.5+Na-Mont.5_AMX21                   ASDNG  -> dolomite.5+montmorilloniteNa.5 (0.980557)
+    Dolomite.5+Na-Mont.5_AMX21                   BECK   -> (no rule fired) ()  <-- grid artifact
+    Kaol.5+MuscCU91-250A_AMX13                   ASDNG  -> kaolinite.5+muscoviteMedAl.5 (0.995954)
+    Kaol.5+MuscCU91-250A_AMX13                   BECK   -> (no rule fired) ()  <-- grid artifact
+    Kaol.5+MuscCU91-250A_AMX13                   NIC4   -> kaolinite.5+muscoviteMedAl.5 (0.997046)
+    Kaol_Wxl+0.5Musc_Ruby_AMX12                  ASDNG  -> kaolinite.5+muscoviteMedhighAl.5 (0.980317)
+    Kaol_Wxl+0.5Musc_Ruby_AMX12                  BECK   -> (no rule fired) ()  <-- grid artifact
+    Kaol_Wxl+0.5Musc_Ruby_AMX12                  NIC4   -> kaolinite.5+muscoviteMedhighAl.5 (0.999933)
+    Kaolwxl.75+Alun_HS295_AMX14                  ASDNG  -> alunite.25+kaolinite.75 (0.992265)
+    Kaolwxl.75+Alun_HS295_AMX14                  BECK   -> (no rule fired) ()  <-- grid artifact
+    Pyrophyl.25+wxlKaol.75_AMX17                 ASDNG  -> pyrophyllite (0.954626)  <-- miss
+    Pyrophyl.25+wxlKaol.75_AMX17                 BECK   -> (no rule fired) ()  <-- grid artifact
+    Pyrophyl.25+wxlKaol.75_AMX17                 NIC4   -> pyrophyllite.25+kaolinite.75 (0.999920)
+  approx  n= 8  valid(non-circ,non-BECK)= 4  winner==linked rule: 4   top3: 4
+    Calc.25+Dolo.25+Ca-Mont_AMX7                 ASDNG  -> calcite.18+dolomite.22+montmorilloniteCa.6 (0.987540)
+    Calc.25+Dolo.25+Ca-Mont_AMX7                 BECK   -> (no rule fired) ()  <-- grid artifact
+    Calc.25+Dolo.25+Na-Mon_AMX18                 ASDNG  -> calcite.18+dolomite.22+montmorilloniteNa.6 (0.992242)
+    Calc.25+Dolo.25+Na-Mon_AMX18                 BECK   -> (no rule fired) ()  <-- grid artifact
+    Calcite+.33Muscov_AMX5_Ruby                  BECK   -> (no rule fired) ()  <-- grid artifact
+    Calcite.33+Ca-Mont.67_AMX19                  ASDNG  -> calcite.25+montmorilloniteCa.75 (0.994221)
+    Calcite.33+Ca-Mont.67_AMX19                  BECK   -> (no rule fired) ()  <-- grid artifact
+    Calcite.33+Na-Mont.67_AMX44                  ASDNG  -> calcite.25+montmorilloniteNa.75 (0.995141)
+
+================ natural soils (recorded) ==========
+(BECK rows returning '(no rule fired)' are the grid artifact.)
+  Actinolite-Hornfels_BR93-5a                  BECK   -> (no rule fired) ()
+  Actinolite-Tremolit_BR93-22C                 BECK   -> (no rule fired) ()
+  Actinolite_Dolomit_BR93-60B                  BECK   -> (no rule fired) ()
+  Alunite-K_CU91-217G1_HiTemp                  ASDFR  -> alunite_K_250C (0.981140)
+  Alunite_K-Na_CU91-217H1_LowT                 ASDFR  -> buddingtonite+montmorillonite_mix_intimate (0.769252)
+  Alunite_K_CU98-5C_MedTemp                    ASDFR  -> alunite_K_250C (0.989663)
+  Basalt_fresh_BR93-46B                        BECK   -> (no rule fired) ()
+  Basalt_weathered_BR93-43                     BECK   -> (no rule fired) ()
+  Biotite-Chlorite_Mx_BR93-36A                 BECK   -> (no rule fired) ()
+  Blue_Efflorscnt_Min_SU93-300                 BECK   -> (no rule fired) ()
+  BurnArea_TopSurface_WRF00-02                 ASDFR  -> (no rule fired) ()
+  BurnArea_Traverse_WRF00-01                   ASDFR  -> (no rule fired) ()
+  Chlorite_Phyllite_CU91-238A                  BECK   -> (no rule fired) ()
+  Chlorite_Serpentine_BR93-22B                 BECK   -> (no rule fired) ()
+  ClinozoisiteEpidote_HS299.1B                 ASDFR  -> epidote (0.960341)
+  ClinozoisiteEpidote_HS299.2B                 ASDFR  -> epidote (0.963997)
+  ClinozoisiteEpidote_HS299.2B                 BECK   -> (no rule fired) ()
+  ClinozoisiteEpidote_HS299.2B                 NIC4   -> epidote (0.944367)
+  ClinozoisiteEpidote_HS299.4B                 ASDFR  -> clinochlore_Fe (0.971056)
+  ClinozoisiteEpidote_HS299.6                  ASDFR  -> clinochlore_Fe (0.957478)
+  Cordierite-QtzMus_HS346.1B                   ASDFR  -> (no rule fired) ()
+  Cordierite-QtzMus_HS346.2B                   ASDFR  -> montmorillonite_Na (0.935284)
+  Cordierite-QtzMus_HS346.3B                   ASDFR  -> muscovite_medAl (0.954282)
+  Cordierite-QtzMus_HS346.3B                   BECK   -> (no rule fired) ()
+  Cordierite-QtzMus_HS346.3B                   NIC4   -> muscovite_medAl (0.976051)
+  Cordierite-QtzMus_HS346.4B                   ASDFR  -> muscovite_medAl (0.945143)
+  Covellite-Pyrite_HS477.2B                    ASDNG  -> (no rule fired) ()
+  Covellite-Pyrite_HS477.2B                    BECK   -> (no rule fired) ()
+  Covellite-Pyrite_HS477.2B                    NIC4   -> (no rule fired) ()
+  Covellite-Pyrite_HS477.4B                    ASDFR  -> (no rule fired) ()
+  Covellite-Pyrite_HS477.6                     ASDFR  -> (no rule fired) ()
+  Fe-Hydroxide_SU93-106_amorph                 BECK   -> (no rule fired) ()
+  Goethite_Phyllite_CU91-236A                  ASDFR  -> kaolinite+smectite_mix_intimate (0.957022)
+  Halloysite_CU91-242D                         ASDFR  -> kaolinite+clay_mica_or_halloysite (0.972430)
+  Hematitic_Alt._Tuff_CU91-223                 ASDFR  -> kaolinite_wxl (0.993451)
+  Hydrated_Volc_Tuff_CU01-4A                   ASDFR  -> montmorillonite_Ca (0.926946)
+  Jarosite_Rhyolite_CU91-20A                   BECK   -> (no rule fired) ()
+  Limestone_CU02-11A                           ASDFR  -> calcite_abundant (0.989072)
+  Magnetite_skarn_BR93-5B                      BECK   -> (no rule fired) ()
+  Montmorillonite-Na_CU93-52A                  BECK   -> (no rule fired) ()
+  Muscovite-low-Al_CU98-8H                     ASDFR  -> muscovite_lowAl (0.996877)
+  Muscovite-medhi-Al_CU91-252D                 ASDFR  -> muscovite_medhighAl (0.980944)
+  Muscovite-medhi-Al_CU91-252D                 ASDNG  -> muscovite_medhighAl (0.988946)
+  Muscovite-medlowAl_CU91-250A                 ASDFR  -> muscovite_medAl (0.985364)
+  Muscovite-medlowAl_CU91-250A                 ASDNG  -> muscovite_medAl (0.996822)
+  Muscovite-medlowAl_CU91-250A                 NIC4   -> muscovite_medAl (1.000000)
+  Opalized_Tuff_CU00-15E                       ASDFR  -> chalcedony (0.922478)
+  Pyrite_LV95-6A_Weath_on_Tail                 BECK   -> (no rule fired) ()
+  Pyroxene_Basalt_CU01-20A                     ASDFR  -> (no rule fired) ()
+  Sand_DWO-3-DEL2a_no_vis.oil                  ASDFR  -> (no rule fired) ()
+  Sand_DWO-3-DEL2ar1_no_oil                    ASDFR  -> (no rule fired) ()
+  Sand_DWO-3-DEL2ar2_wet_noOil                 ASDFR  -> (no rule fired) ()
+  Sand_DWO-3-DEL2b_wet_no_oil                  ASDFR  -> vegetation_npv_and_green (0.759888)
+  Sand_DWO-3-DEL2c_no_vis.oil                  ASDFR  -> (no rule fired) ()
+  Sand_DWO-3-DEL2d_wet_no_oil                  ASDFR  -> (no rule fired) ()
+  Sand_GrndIsle1_no_oil                        ASDFR  -> (no rule fired) ()
+  Sand_GrndIsle2_no_visibl_oil                 ASDFR  -> (no rule fired) ()
+  Stonewall_Playa_CU93-52A_a11                 BECK   -> (no rule fired) ()
+  Stonewall_Playa_Dry_Mud_2001                 ASDFR  -> montmorillonite_Na (0.971078)
+  White_Crust_LV30_starkeyite                  ASDFR  -> (no rule fired) ()
