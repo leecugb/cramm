@@ -3,6 +3,7 @@
 [![PyPI](https://img.shields.io/pypi/v/cramm)](https://pypi.org/project/cramm/)
 [![Python](https://img.shields.io/pypi/pyversions/cramm)](https://pypi.org/project/cramm/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/leecugb/cramm/blob/main/LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22024483.svg)](https://doi.org/10.5281/zenodo.22024483)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
 **General-purpose hyperspectral mineral identification toolkit** — built on
@@ -33,10 +34,10 @@ CRAMM extends MICA in three ways:
    muscovite pixels, CRAMM fits the per-pixel 2.2 µm absorption-center
    wavelength (`mus_center`) — a quantitative composition proxy whose
    thermodynamic basis (Tschermak substitution vs. wv2200 on a
-   GEMS/MINES23.1 reaction-path phase diagram) lets each fitted pixel be
-   read as muscovite chemistry, formation temperature and fluid K⁺/H⁺
-   conditions. See *Application: reading muscovite composition from
-   mus_center*.
+   GEMS/MINES23.1 reaction-path phase diagram) turns each fitted pixel
+   into a calibrated constraint on muscovite chemistry and on its
+   position in the T–log(aK⁺/aH⁺) plane. See *Application: reading
+   muscovite composition from mus_center*.
 
 Everything is pure Python and GUI-free. Cross-platform:
 **Windows / Linux / macOS** · Python **3.9 – 3.13**
@@ -348,11 +349,17 @@ X_Ts → Al₂O₃ wt% → λ = −3.1·Al₂O₃ + 2308):
 ![Tschermak substitution degree vs. wv2200 in the muscovite field](docs/muscovite_wv2200_phase_diagram.png)
 
 X_Ts rises from ~0 on the high-T / low-K⁺ side to 0.35+ on the low-T / high-K⁺
-side, and the wv2200 contours (magenta, 2190→2215 nm) run nearly parallel to
-the X_Ts contours (dark blue). Each `mus_center` value fitted from an image
-pixel therefore maps directly onto this diagram, inverting muscovite
-composition — and with it formation temperature and fluid K⁺/H⁺ conditions —
-from orbit.
+side. The wv2200 contours (magenta, 2190→2215 nm) are derived by chaining the
+empirical wavelength–composition calibration through the modelled X_Ts field,
+so they track the X_Ts contours (dark blue) by construction. Each `mus_center`
+value fitted from an image pixel therefore selects one isopleth on this
+diagram: muscovite composition (X_Ts) is read directly, while in the
+T–log(aK⁺/aH⁺) plane the value defines a one-dimensional constraint locus,
+not a unique point. Pinning down both formation temperature and fluid K⁺/H⁺
+requires a second independent constraint — e.g. the `chl_center` of a
+coexisting chlorite read on the companion diagram, under a same-pressure,
+same-fluid equilibrium assumption. The diagram is an interpretive framework
+for the product, not a ground-validated inversion.
 
 ## Application: reading chlorite Fe content from chl_center
 
