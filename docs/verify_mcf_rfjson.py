@@ -18,8 +18,8 @@ import re
 import sys
 from pathlib import Path
 
-MCF = Path(r"D:\mcf\mica_cmds_group2_hymap2_2014_v6a_FOR_RELEASE.mcf")
-RFJ = Path(r"D:\CRAMM\cramm\data\rf.json")
+MCF = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(r"D:\mcf\mica_cmds_group2_hymap2_2014_v6a_FOR_RELEASE.mcf")
+RFJ = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(r"D:\CRAMM\cramm\data\rf.json")
 NULL = -99.99
 TOL = 5e-4  # .mcf 4 位小数 vs rf.json 有效数字
 
