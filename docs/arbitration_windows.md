@@ -1,6 +1,6 @@
 # 波长仲裁窗口速查表（归档）
 
-> 归档日期：2026-08-24 ｜ 基线：commit 1711e20（thuringite 并入绿泥石族）
+> 归档日期：2026-08-24 ｜ 基线：commit 10f06af（族锁定；窗口数据自 1711e20 thuringite 并入起未变）
 > 数据来源：`cramm/data/rf.json` 实测 ｜ 仲裁语义：`cramm/classifier.py::_reassign_by_absorption_center`
 
 ## 仲裁器判定逻辑（三族共用）
