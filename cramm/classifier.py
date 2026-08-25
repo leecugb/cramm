@@ -316,19 +316,35 @@ def _reassign_by_absorption_center(
     rf: Dict,
     index_d: Dict[str, int],
     fit_pos: np.ndarray,
+    family: List[str],
 ) -> None:
     """
-    Wavelength-based reassignment among the rules carrying
-    ``diagnostic_features[0]["absorption_center_range"]`` (in the bundled
-    library: the four pure muscovite rules with windows around the 2.2 um
-    Al-OH band, the four pure chlorite rules with deliberately
-    overlapping windows around the 2250 nm Fe-OH band, and the four
-    calcite/dolomite rules with duplicate windows around the 2330 nm
-    C-O band).
+    Wavelength-based reassignment among the windowed members of ONE
+    mineral family. ``family`` locks the arbitration group to the
+    caller's member list (the pure muscovites / chlorites / carbonates);
+    within it, only rules carrying
+    ``diagnostic_features[0]["absorption_center_range"]`` participate
+    (windowless members — the illites, the kaolinite/calcite x muscovite
+    mixtures, carbonate_Fe_bearing, calcite.5+dolomite.5 — are never
+    arbitrated). The three bundled families are:
 
-    For each pixel whose best match ``im`` is one of those rules, the
-    quadratic-fit absorption center ``mus_c`` arbitrates the final
-    attribution:
+      - muscovite: four pure rules with seamless windows around the
+        2.2 um Al-OH band;
+      - chlorite: four pure rules with deliberately overlapping windows
+        around the 2250 nm Fe-OH band;
+      - carbonate: four calcite/dolomite rules with duplicate windows
+        around the 2330 nm C-O band.
+
+    Inter-family segregation is STRUCTURAL, not emergent: each call can
+    only ever reassign among its own family's rules, no matter what
+    windows a (custom) rule library carries. The ``mus_c > 0`` member
+    gate and the ~25 nm (mus-chl) / ~42 nm (chl-cal) window spacing
+    remain as defense in depth, but the locked group is what guarantees
+    a muscovite pixel can never flip to a chlorite rule.
+
+    For each pixel whose best match ``im`` is one of the family's
+    windowed rules, the quadratic-fit absorption center ``mus_c``
+    arbitrates the final attribution:
 
       - center invalid (0 after the NaN->0 fold) or outside every range
         -> keep the original match (conservative);
@@ -339,19 +355,20 @@ def _reassign_by_absorption_center(
         rule's feat0 continuum endpoints (single pass, no iteration);
       - center inside several overlapping ranges -> ambiguous, keep the
         original. The bundled chlorite windows exploit exactly this: their
-        1 nm overlaps are tolerance zones where the intermediate
+        overlaps are tolerance zones where the intermediate
         composition keeps its argmax attribution. The carbonate pairs push
         it to the extreme: abundant+plain versions share identical windows,
         so every in-window center is ambiguous and the call never flips
         (declarative zero-flip scheme).
 
     ``classify`` calls this helper three times per segment: with
-    ``mus_center`` (muscovite family), ``chl_center`` (chlorite family),
-    and ``cal_center`` (carbonate family). The families self-segregate
-    because each center array is nonzero only for winners of its own
-    family (the ``mus_c > 0`` member gate), and the families' windows are
-    ~25 nm (mus-chl) and ~52 nm (chl-cal) apart so no cross-family hit is
-    possible anyway.
+    ``mus_center`` + MUSCOVITE_MINERALS, ``chl_center`` +
+    CHLORITE_MINERALS, and ``cal_center`` + CARBONATE_MINERALS.
+
+    Custom rule libraries opt in per family: append the new rule's name
+    to the corresponding module-level family list AND give it
+    ``absorption_center_range``; a window on a rule outside every family
+    list is ignored (the family lock takes precedence).
 
     All decisions are computed from the pre-reassignment state in one
     vectorized pass (no sequential dependence between pixels), and this
@@ -361,14 +378,17 @@ def _reassign_by_absorption_center(
     In-place: ``im`` and ``mus_c`` are modified; ``FIT`` / ``fit_nan`` are
     read-only (the caller re-derives FIT_/DEPTH_/NUM_ from the updated im).
     """
-    group = []  # (column index, rule name, lo, hi), in rule-library order
-    for name, i in index_d.items():
+    group = []  # (column index, rule name, lo, hi), in family-list order
+    for name in family:
+        i = index_d.get(name)
+        if i is None:
+            continue  # a custom rule library may lack some built-in members
         feats = rf[name].get("diagnostic_features") or []
         if not feats:
             continue
         rng = feats[0].get("absorption_center_range")
         if rng is None:
-            continue
+            continue  # windowless family member: never arbitrated
         group.append((i, name, float(rng[0]), float(rng[1])))
     if len(group) < 2:
         return
@@ -1532,38 +1552,41 @@ class MicaClassifier:
                     center[np.isnan(center)] = 0
                     cal_center[a * c : b * c] = cal_center[a * c : b * c] + center
 
-                # Wavelength-based reassignment among the absorption_center_range
-                # rules (the pure muscovites): mus_center arbitrates the final
-                # attribution. Single shared implementation for the serial and
-                # parallel paths (bit-exact); see the helper's docstring.
+                # Wavelength-based reassignment among the windowed pure
+                # muscovites (group locked to MUSCOVITE_MINERALS):
+                # mus_center arbitrates the final attribution. Single
+                # shared implementation for the serial and parallel paths
+                # (bit-exact); see the helper's docstring.
                 _reassign_by_absorption_center(
                     im, FIT, fit_nan, mus_center[a * c : b * c],
                     spectrum1, wl, self.rf, index_d, fit_pos,
+                    MUSCOVITE_MINERALS,
                 )
-                # Same arbitration among the three pure-chlorite rules, driven
-                # by chl_center. Their windows deliberately overlap by 1 nm
-                # (tolerant scheme): a center landing in an overlap hits two
-                # ranges -> ambiguous -> keep the original match; only a
-                # center falling exclusively inside another rule's window
-                # flips the attribution. The two families self-segregate
-                # across the two calls because each center array is zero
-                # outside its own family (the helper's >0 gate).
+                # Same arbitration among the four pure-chlorite rules
+                # (group locked to CHLORITE_MINERALS), driven by
+                # chl_center. Their windows deliberately overlap
+                # (tolerant scheme): a center landing in an overlap hits
+                # two ranges -> ambiguous -> keep the original match;
+                # only a center falling exclusively inside another
+                # rule's window flips the attribution.
                 _reassign_by_absorption_center(
                     im, FIT, fit_nan, chl_center[a * c : b * c],
                     spectrum1, wl, self.rf, index_d, fit_pos,
+                    CHLORITE_MINERALS,
                 )
-                # Carbonate arbitration, driven by cal_center. The calcite and
-                # dolomite abundant+plain pairs share identical windows, so any
+                # Carbonate arbitration (group locked to
+                # CARBONATE_MINERALS), driven by cal_center. The calcite
+                # and dolomite abundant+plain pairs share identical
+                # windows, so any
                 # in-window center hits two ranges -> ambiguous -> keep: this
                 # call NEVER flips by construction (declarative tolerance-
                 # extreme). It exists so the family participates in the same
                 # arbitration contract as mus/chl; the zero-flip invariant is
-                # pinned by test_carbonate_window_arbitration. The 52 nm gap
-                # between the chl windows (<=2.25549) and the cal windows
-                # (>=2.308) keeps the families self-segregated.
+                # pinned by test_carbonate_window_arbitration.
                 _reassign_by_absorption_center(
                     im, FIT, fit_nan, cal_center[a * c : b * c],
                     spectrum1, wl, self.rf, index_d, fit_pos,
+                    CARBONATE_MINERALS,
                 )
                 FIT_[a * c : b * c] = FIT.flatten()[im + np.arange(len(im)) * len(self.rf)]
                 DEPTH_[a * c : b * c] = DEPTH.flatten()[im + np.arange(len(im)) * len(self.rf)]

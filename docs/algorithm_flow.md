@@ -34,7 +34,7 @@ CRAMM 实现 USGS MICA 决策规则体系,并扩展深度比约束与白云母/�
 3. **波长仲裁亚型归属** — `absorption_center_range` 窗口(medhighAl [2.195,2.200) / medAl [2.200,2.206) / lowAl [2.206,2.210) / Fe-rich [2.210,2.220),互不重叠)对白云母像元重仲裁(`_reassign_by_absorption_center`);中心无效或出窗时保持原匹配(保守策略)。
 4. **绿泥石 2250 nm 吸收中心二次拟合** — `chl_center`,四条纯绿泥石规则(chlorite_lowFe / clinochlore / clinochlore_Fe / thuringite)胜出像元,用胜方规则 feat0 端点拟合;作连续成分图层输出,解读走 chl13 M1 标定(LOO 1.0 nm)。
 5. **绿泥石宽容窗口仲裁** — 四规则的 `absorption_center_range` 窗口故意重叠(lowFe [2.245,2.248) / clinochlore [2.247,2.252) / Fe [2.251,2.25549) / thuringite [2.255,2.266);前三者两两重叠 1 nm,Fe 与 thuringite 缝重叠 0.49 nm):`chl_center` 落入重叠带 → 命中两窗 → 歧义 → 保持原匹配(重叠即容差区,中间成分不被强行归类);仅当中心**排他性**落入另一规则窗口时才重判,并以目标规则端点重拟合中心一次。翻转后中心仍作连续图层输出。
-6. **碳酸盐 2330 nm 吸收中心拟合 + 声明式仲裁** — `cal_center`,五条碳酸盐规则(calcite_abundant / calcite / dolomite_abundant / dolomite / carbonate_Fe_bearing)胜出像元,拟合 C–O 吸收中心;波段位置沿七锚点序列解读(菱镁矿 2311 < 文石 2315 < 铁白云石 2319 < 白云石 2321 < 菱铁矿 ~2327 < 方解石 2339 < 菱锰矿 ~2369 nm)。calcite 对共享窗口 [2.334,2.350)、dolomite 对共享 [2.308,2.328)——abundant 与平凡版窗口完全相同,任何落窗中心必命中两窗 → 恒歧义 → **零翻转纯声明式仲裁**(单测钉死);产品价值在连续图层本身(规则库静默归入 dolomite 的文石/菱镁矿在中心图层上可辨识)。与绿泥石窗口间距 52 nm,族间自隔离。
+6. **碳酸盐 2330 nm 吸收中心拟合 + 声明式仲裁** — `cal_center`,五条碳酸盐规则(calcite_abundant / calcite / dolomite_abundant / dolomite / carbonate_Fe_bearing)胜出像元,拟合 C–O 吸收中心;波段位置沿七锚点序列解读(菱镁矿 2311 < 文石 2315 < 铁白云石 2319 < 白云石 2321 < 菱铁矿 ~2327 < 方解石 2339 < 菱锰矿 ~2369 nm)。calcite 对共享窗口 [2.334,2.350)、dolomite 对共享 [2.308,2.328)——abundant 与平凡版窗口完全相同,任何落窗中心必命中两窗 → 恒歧义 → **零翻转纯声明式仲裁**(单测钉死);产品价值在连续图层本身(规则库静默归入 dolomite 的文石/菱镁矿在中心图层上可辨识)。与绿泥石窗口间距 42 nm,且仲裁组按族锁定(结构保证跨族零翻转)。
 
 ## e 输出层
 

@@ -16,7 +16,7 @@
 | 12 条仲裁窗口规则（白云母 4 无缝拼接 / 绿泥石 4 重叠容差：3×1nm + Fe/thuringite 缝 0.49nm / 碳酸盐 4 重复窗） | rf.json 实测，窗口数值与 README/algorithm_flow.md 完全一致（2026-08-24 thuringite [2.255,2.266) 并入绿泥石族） | ✅ |
 | 7 条结构式元数据规则（白云母族 4 + 绿泥石族 3；tier A/B） | rf.json 实测：medhighAl/Fe-rich/illite_gds4 = A，illite_imt1 + 绿泥石×3 = B | ✅ |
 | 仲裁器数学语义（单窗翻转重拟合 / 多窗歧义保持 / 无效保守 / 向量化单趟） | `classifier.py::_reassign_by_absorption_center`（302–407 行）docstring 与实现 | ✅ |
-| 窗口间距 mus–chl 25 nm、chl–cal 52 nm，族间自隔离 | 同上 docstring + `tests/check_arbitration_independence.py` | ✅ |
+| 族间隔离为结构保证：仲裁组按族锁定（family list ∩ 带窗规则），跨族翻转不可能；窗口间距 mus–chl 25 nm、chl–cal 42 nm 作纵深防御 | `classifier.py::_reassign_by_absorption_center`（family 参数）+ `test_arbitration_family_lock` 单测 + `tests/check_arbitration_independence.py` 整景实证 | ✅ |
 | 整景 1280×1242，nw=4 分析 ~62 s | `D:/test/full_scene_timing.json`：serial 156.4 s / nw=4 61.6 s（speedup 2.54），加载 4.09 s；24 逻辑核，Python 3.13.9 | ✅ |
 | 暖调用单光谱 ~10 ms、缓存 16× | `output/benchmark_full.log`：cold 158.6 ms → warm 9.6 ms，16.5× | ✅ |
 | 参考重采样 cold 138.1 ms / warm 0.0 ms | 同上 | ✅ |
@@ -84,7 +84,7 @@
   - 白云母：**无缝拼接** [2.195,2.200)/[2.200,2.206)/[2.206,2.210)/[2.210,2.220)，锚定各参考谱实测 wv2200；13 族成员中 9 个无窗（伊利石/混合物）不仲裁；
   - 绿泥石：**故意重叠 1 nm**（容差 = chl13 标定 LOO-RMSE 1.0 nm，即重复测量噪声地板）；闭式模型 pos2250 = 2218.8·xAl + 2279.6·xFe + 2249.7·xMg；价态约定经闭集归一精确抵消；
   - 碳酸盐：**重复窗**（calcite 对 [2.334,2.350)、dolomite 对 [2.308,2.328)）→ 构造性零翻转，单测钉死；价值在连续图层 + 七锚点序列（菱镁矿 2311.3 < 文石 2315.2 < 铁白云石 2319.2 < 白云石 2321.2 < 菱铁矿 ~2327 < 方解石 2339.4 < 菱锰矿 ~2369 nm）。
-  - 族间独立性：窗口间距 25/52 nm + 成员门控双重隔离；`check_arbitration_independence.py` 全场景六向交叉翻转实证为 0。
+  - 族间独立性：仲裁组按族锁定（结构保证，`test_arbitration_family_lock` 钉死）+ 窗口间距 25/42 nm + 成员门控纵深防御；`check_arbitration_independence.py` 全场景六向交叉翻转实证为 0。
 
 ### 4.4 化学锚定元数据
 - 7 条规则 reference.structural_formula（tier A = 湿法双价态 / B = 全铁约定）；白云母 O=11 无水基（14 样本标定集）、绿泥石 O₁₀(OH)₈ 基（chl13 标定集，CCa-1 化学采用 Bartel XRF）；纯元数据不进分类计算（README 明确，防审稿人误读）。

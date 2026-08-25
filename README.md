@@ -319,8 +319,12 @@ therefore declarative and never flips (pinned by a dedicated unit test);
 the product line's value is the continuous `cal_center` layer itself (see
 *Application: reading carbonate species from cal_center*).
 This is a scene-classification feature; single-spectrum Top-N ranking is
-unaffected. Custom rule libraries opt in by adding the field; rules without
-it are never reassigned.
+unaffected. Each arbitration call locks its group to one mineral family
+(`MUSCOVITE_MINERALS` / `CHLORITE_MINERALS` / `CARBONATE_MINERALS` ∩
+windowed rules), so cross-family flips are structurally impossible
+(pinned by a dedicated unit test). Custom rule libraries opt in per
+family: append the new rule to the corresponding family list AND give it
+the field; rules without it are never reassigned.
 
 Seven white-mica-group and chlorite rules carry parsed structural formulas
 of their reference spectra as bundled metadata:

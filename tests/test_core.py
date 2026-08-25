@@ -281,7 +281,7 @@ def test_chlorite_window_arbitration():
     / thuringite [2.255,2.266)).
     A center in an overlap hits two windows -> ambiguous -> keep; only a center
     exclusively inside another rule's window flips the attribution."""
-    from cramm.classifier import _reassign_by_absorption_center
+    from cramm.classifier import _reassign_by_absorption_center, CHLORITE_MINERALS
     e = eng()
     rf = e.rf
     names = list(rf.keys())
@@ -313,7 +313,8 @@ def test_chlorite_window_arbitration():
     # returns a valid center (value itself is not asserted)
     wl = np.linspace(2.0, 2.5, 50)
     spectrum1 = np.tile(0.5 - 0.2 * np.exp(-((wl - 2.25) / 0.02) ** 2), (n, 1))
-    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf, index_d, fit_pos)
+    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf, index_d, fit_pos,
+                                   CHLORITE_MINERALS)
     for (winner, center, expected), got in zip(cases, im):
         assert got == expected, f"winner={names[winner]} center={center}: got {names[got]}, want {names[expected]}"
     assert (cen[cen > 0] > 2.2).all(), "kept/flipped centers must stay positive"
@@ -325,7 +326,7 @@ def test_carbonate_window_arbitration():
     in-window center therefore hits two identical ranges -> ambiguous -> keep.
     This pins the zero-flip declarative semantics: the carbonate arbitration
     call must NEVER reassign, whatever the center."""
-    from cramm.classifier import _reassign_by_absorption_center
+    from cramm.classifier import _reassign_by_absorption_center, CARBONATE_MINERALS
     e = eng()
     rf = e.rf
     names = list(rf.keys())
@@ -355,9 +356,49 @@ def test_carbonate_window_arbitration():
     # synthetic spectrum with a genuine 2330 nm dip (value itself not asserted)
     wl = np.linspace(2.0, 2.5, 50)
     spectrum1 = np.tile(0.5 - 0.2 * np.exp(-((wl - 2.33) / 0.02) ** 2), (n, 1))
-    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf, index_d, fit_pos)
+    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf, index_d, fit_pos,
+                                   CARBONATE_MINERALS)
     assert (im == im0).all(), (
         f"carbonate arbitration must never flip: {[(names[a], names[b]) for a, b in zip(im0, im) if a != b]}")
+
+
+def test_arbitration_family_lock():
+    """The family argument locks the arbitration group structurally: a
+    winner can only ever be reassigned among its own family's rules, no
+    matter where its center lands. A chlorite winner whose center falls
+    inside a MUSCOVITE window (2.2 um) must keep its match (and vice
+    versa) — cross-family flips are impossible by construction, not by
+    window-spacing luck."""
+    from cramm.classifier import (_reassign_by_absorption_center,
+                                  CHLORITE_MINERALS, MUSCOVITE_MINERALS)
+    e = eng()
+    rf = e.rf
+    names = list(rf.keys())
+    index_d = {n: i for i, n in enumerate(names)}
+    i_clino, i_fe = index_d["clinochlore"], index_d["clinochlore_Fe"]
+    i_medal, i_lowal = index_d["muscovite_medAl"], index_d["muscovite_lowAl"]
+    n, m = 2, len(names)
+    FIT = np.full((n, m), 0.5)
+    fit_nan = np.zeros((n, m), dtype=bool)
+    fit_pos = np.ones(n, dtype=bool)
+    wl = np.linspace(2.0, 2.5, 50)
+    spectrum1 = np.tile(0.5 - 0.2 * np.exp(-((wl - 2.25) / 0.02) ** 2), (n, 1))
+
+    # Chlorite call: centers inside muscovite-only territory must not flip
+    im = np.array([i_clino, i_fe], dtype="int64")
+    cen = np.array([2.2005, 2.2080])  # medAl-only and lowAl-only windows
+    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf,
+                                   index_d, fit_pos, CHLORITE_MINERALS)
+    assert im[0] == i_clino and im[1] == i_fe, (
+        "chlorite winners must ignore muscovite windows (family lock)")
+
+    # Muscovite call: centers inside chlorite-only territory must not flip
+    im = np.array([i_medal, i_lowal], dtype="int64")
+    cen = np.array([2.2490, 2.2600])  # clinochlore-only and thuringite-only
+    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf,
+                                   index_d, fit_pos, MUSCOVITE_MINERALS)
+    assert im[0] == i_medal and im[1] == i_lowal, (
+        "muscovite winners must ignore chlorite windows (family lock)")
 
 
 def test_render_missing_color():

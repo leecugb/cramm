@@ -1,9 +1,13 @@
 """Empirical independence check: muscovite vs chlorite vs carbonate arbitration.
 
-The three _reassign_by_absorption_center calls share one auto-discovered
-group (all rules carrying feat0 absorption_center_range). Independence holds
-if (a) family member lists are disjoint (code-level, checked separately), and
-(b) no center ever reaches another family's windows:
+Since the family-lock change (2026-08-24) each
+_reassign_by_absorption_center call builds its group ONLY from its own
+family list (MUSCOVITE/CHLORITE/CARBONATE_MINERALS ∩ windowed rules), so
+cross-family flips are structurally impossible. This script remains as
+defense-in-depth evidence that the pre-lock assumptions also held
+empirically:
+    (a) family member lists are disjoint (code-level, checked separately),
+    (b) no center ever reaches another family's windows:
     - mus winner with mus_center >= 2.245 would flip INTO a chlorite rule
     - chl winner with chl_center <  2.220 would flip INTO a muscovite rule
     - chl winner with chl_center >= 2.308 would touch a carbonate window
