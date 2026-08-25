@@ -38,7 +38,7 @@ for 相对 NOT 特征:
 | 1 | `_diagnostic_feature` rows 子集:4 个返回值在子集位置逐比特一致、子集外全 NaN | check_rows_logic §1(calcite 全特征) | ✅ |
 | 2 | `_get_fit` / not_abs / not_rel:子集排除集 = 全集 ∩ 子集 | check_rows_logic §2–3 | ✅ |
 | 3 | 累积不变性:被拒像元 fit 已为 NaN,NaN+x=NaN;活像元累加序列与全量相同 | 链路透析 | ✅ |
-| 4 | alive 语义 `~isnan(r)`:权重 0 → r=r2×0=0.0(非 NaN)存活——22 条规则携带零权重特征(含全部 4 条绿泥石、calcite/dolomite_abundant);实测 7,524 像元经零权重特征存活(clinochlore 3,831、thuringite 2,756、chlorite_lowFe 867、alunite_K_250C 62、gypsum 8) | check_alive_restriction §2 | ✅ |
+| 4 | alive 语义 `~isnan(r)`:权重 0 → r=r2×0=0.0(非 NaN)存活——22 条规则携带零权重特征(含全部 4 条绿泥石、calcite/dolomite_abundant),系 USGS .mcf 原始设计(零权重特征只作约束滤波、不参与打分,权重已经字段级核验一致);`~isnan(r)` 存活判据是对该设计的正确承接,非缺陷。实测 7,524 像元经零权重特征存活(clinochlore 3,831、thuringite 2,756、chlorite_lowFe 867、alunite_K_250C 62、gypsum 8) | check_alive_restriction §2 | ✅ |
 | 5 | 早停 `len(alive)==0`:`_feat_raw` 长度与 depth-ratio 的 `len>=2` 守卫协同;全量下等价(后续特征必全 NaN,`_valid` 全 False) | 链路透析 | ✅ |
 | 6 | not_rel 阈值 `RELATIVE_FEATURE_DEPTH[rows]`:rows ⊆ 第 1 特征存活集 → 全非 NaN,物理深度比较有效 | 链路透析 + check_rows_logic §3 | ✅ |
 | 7 | 深度比约束:全长 `_feat_raw` 数组,`_valid` 三条件守卫;不更新 alive_rows 但其后无 rows 受限计算 | 链路透析 | ✅ |
