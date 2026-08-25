@@ -39,13 +39,13 @@
 
 ## 3. 设计性差异(有意为之,非错误)
 
-### 3.1 混合物:实物混合光谱 → 端元线性合成(13 条)
+### 3.1 混合物:实物混合光谱 → 端元线性合成(19 条)
 .mcf 指向 splib06b 中的实物混合物光谱(AMX/GDS 系列);CRAMM 改为端元线性合成(`mix_*` + `mixtures` 权重表),换取传感器无关的运行时重采样。其中:
 - `calcite.8+montmorilloniteNa.2`(GDS212)与 `kaolinite.2+calcite.8`(GDS213):CRAMM 直接引用同一实物谱 ×1.0,**完全等价**;
 - ⚠️ `kaolinite.5+muscoviteMedAl.5` 与 `alunite.5+kaolinite.5`:mcf 实物谱用 **KGa-1**(结晶好)高岭石,CRAMM 合成用 **KGa-2 (pxl)**(结晶差)——端元替换,2.17/2.21µm 双峰锐度不同,是有意的参考谱选择差异,论文中应注明。
 
 ### 3.2 CRAMM 纯新增(.mcf 中不存在)
-- **吸收中心仲裁窗口 `absorption_center_range`**:4 条白云母规则(medhighAl [2.195,2.20] / medAl [2.20,2.206] / lowAl [2.206,2.210] / Fe-rich [2.210,2.220] µm,互不重叠、无缝拼接)
+- **吸收中心仲裁窗口 `absorption_center_range`**:12 条规则,三族——白云母 4 条无缝拼接(medhighAl [2.195,2.200) / medAl [2.200,2.206) / lowAl [2.206,2.210) / Fe-rich [2.210,2.220) µm);绿泥石 4 条容差重叠(lowFe [2.245,2.248) / clinochlore [2.247,2.252) / clinochlore_Fe [2.251,2.25549) / thuringite [2.255,2.266) µm);碳酸盐 4 条重复窗(calcite 对 [2.334,2.350)、dolomite 对 [2.308,2.328) µm,声明式零翻转)
 - **深度比约束 `max_depth_ratio_feat1_over_feat0`**:9 条规则(白云母×4 = 0.6,伊利石×2 = 0.6,高岭石-白云母混合×3 = 0.4)
 - **参考样本结构式标注 `structural_formula` / `structural_formula_tier`**:7 条规则。白云母族 4 条(muscovite_medhighAl=GDS113、muscovite_Fe-rich=GDS116、illite_gds4=GDS4 为 A 级湿法双价态;illite_imt1=IMt-1 为 B 级全铁约定),O=11 无水基,来源为 14 样本白云母族成分-带位标定数据集;绿泥石族 3 条(chlorite_lowFe=SMR-13、clinochlore=GDS158、clinochlore_Fe=SC-CCa-1/CCa-1),O₁₀(OH)₈ 基(无水 O=14),全部 B 级(Fe₂O₃(T) 报出、价态不分,绿泥石库无 FeO 分项;闭集归一使价态约定对带位建模零影响),来源为 chl13 绿泥石标定数据集,其中 CCa-1 化学采用 ECO clinochl_2 附属 Bartel XRF(splib 源表化学为错位数据)。纯元数据,不参与分类计算
 
@@ -59,3 +59,17 @@ cd D:\CRAMM
 python docs/verify_mcf_rfjson.py
 ```
 输出:`不一致项` 中除 §2 的 6 条样品标题假阴性外应为空。
+
+## 5. 数据级核验(2026-08-25,Linux 备份机)
+
+`docs/verify_reference_spectra.py`:用 CRAMM 生产高斯卷积(_resample_)把 rf.json 引用的 splib06b 原始谱(混合物按权重线性合成)重采样到 HyMap2 126 通道,与 .mcf 配套卷积库 `splib06b_cv_hymap2_2014_126ch` 逐规则比对光谱本身(报告:`/media/lee/共享14/backup/mcf/verify_reference_spectra_report.txt`):
+
+- **52 条纯谱一致规则**:相关度中位 0.99972——CRAMM 的运行时卷积精确复现 USGS 预卷积库;
+- **6 条已声明偏差**:illite_imt1 corr 0.96241(Nicolet vs Beckman 实测差异,最大);chlorite_lowFe corr **0.99998**——.mcf 注释写 W5R4Naa_,但其 REFERENCE_SPECPR_RECORD 实际指向的卷积库记录(cv#1015)就是 W1R1Ba,与 rf.json 相同测量:**注释文本陈旧,数据级并无偏差**;antigorite ×3 corr 0.99794、GDS222 corr 0.99661,同样品不同仪器的预期差异;
+- **19 条混合物规则**:相关度中位 0.99474,端元线性合成与实物混合谱高度吻合;最差 calcite.8+montmorilloniteNa.2 corr 0.91926(RMSE 仅 0.027,低反射区相关度敏感);
+- 身份核对:56 条 cv 记录标题与 .mcf SPECPR 标题一致;2 条不同——chlorite_lowFe(上述注释陈旧)与 chalcedony(同一样品 CU91-6A,标题截断写法差异)。
+
+复现:
+```
+python3 docs/verify_reference_spectra.py <mcf路径> <卷积库路径> [报告输出]
+```
