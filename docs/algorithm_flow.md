@@ -20,7 +20,7 @@ CRAMM 实现 USGS MICA 决策规则体系,并扩展深度比约束与白云母/�
 
 ## c 决策规则核心层
 
-对每条规则(77 条,跨规则 `multiprocessing` 并行,spawn 上下文,BLAS 单线程固定 → 串行≡并行位级一致):
+对每条规则(77 条,跨规则 `multiprocessing` 并行,spawn 上下文;逐像元法方程 k 求解为无 BLAS 的 np.einsum,结果与行数/线程池无关 → 串行≡并行位级一致,worker BLAS 单线程固定作为纵深防御保留):
 
 1. **连续统去除** — diagnostic features 的特征区间连续统去除。
 2. **2×2 闭式最小二乘** — 拟合参考-像元组合,得 fit (r²) 与 absorption depth(`_fit_r2_depth`)。

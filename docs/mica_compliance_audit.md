@@ -40,7 +40,7 @@
 1. **k0 > 0 掩膜**:负斜率像元在 r² 计算前排除——保守护栏;IDL 对应行为不可考,但没有任何规则的约束按负斜率情形标定,实际影响为零;
 2. **`fd > minimum_fit_depth` 用严格大于**,其余阈值为 ≥——边界概率为零,无实际后果;
 3. 闭式最小二乘承自前代 Python 移植 mica_app.py(代码注释),非直接译自 IDL;公式本身为标准 OLS 闭式解;
-4. 活像元限制、编译路径、串行/并行等优化均有逐比特等价性测试钉死(check_compiled_path / check_rows_logic / golden 套件),不构成算法偏离。
+4. 活像元限制、编译路径、串行/并行等优化均有逐比特等价性测试钉死(check_alive_restriction / check_compiled_path / check_rows_logic / golden 套件),不构成算法偏离。其中活像元限制在 2026-08-25 的专项审计中发现并修复了一个 BLAS 层面的等价性缺陷(k 求解 dgemm 行数/线程依赖 → 改无 BLAS einsum),详见 [rows_logic_audit.md](rows_logic_audit.md)。
 
 ## 文档修正(本轮已改)
 

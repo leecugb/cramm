@@ -561,9 +561,19 @@ def _fit_r2_depth(
         k0 = np.zeros(len(con)) * np.nan
         k1 = np.zeros(len(con)) * np.nan
     else:
-        k = B.dot(con.T)
-        k0 = k[0]
-        k1 = k[1]
+        # np.einsum (pure C loop, no BLAS): each pixel's k0/k1 depends only on
+        # its own row -- independent of the row count m, the row-subset
+        # composition, and the BLAS thread count. The previous B.dot(con.T)
+        # went through BLAS dgemm, whose kernel/blocking selection varies with
+        # m and thread pool (empirically: MKL2025 switches kernels below
+        # m~150 and reblocks under multithreading), so identical pixels could
+        # receive ulp-different k0/k1 in subset vs full calls -- breaking the
+        # bit-exactness of the alive-pixel restriction vs full computation
+        # and of the serial (default threads) vs parallel (1-thread workers)
+        # paths. einsum costs only ~1.2-1.9x the dgemm call here.
+        k = np.einsum("mj,kj->mk", con, B)
+        k0 = k[:, 0]
+        k1 = k[:, 1]
     mask_fit = k0 > 0
     con_mf = con[mask_fit]
     cm = con_mf.mean(1)
@@ -612,10 +622,11 @@ def _diagnostic_feature(
         earlier features in the discrimination chain have no effect on the
         final verdict for this mineral (NaN propagates through accumulation and
         constraints), so they are skipped. All computations are row-independent
-        (mean/sum along axis=1, element-wise operations, B.dot independent per
-        column), so the subset result is bit-exact identical to the full
-        computation; the output is still an N-length array with NaN at
-        non-participating positions.
+        (mean/sum along axis=1, element-wise operations, and a BLAS-free
+        np.einsum normal-equation solve in _fit_r2_depth -- BLAS dgemm results
+        vary with the row count and thread pool), so the subset result is
+        bit-exact identical to the full computation; the output is still an
+        N-length array with NaN at non-participating positions.
 
     pre : dict, optional
         Compiled product of _precompute_feature (reference-side constants).

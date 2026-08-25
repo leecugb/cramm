@@ -418,8 +418,11 @@ earlier anchor in the sequence above.
   `(wavelengths, FWHM, valid-band)` configuration and reused across all pixels
   and calls.
 - **Parallelism**: scene classification fans out across the 77 rules with
-  `multiprocessing` (spawn context); BLAS is pinned to a single thread so the
-  parallel path stays bit-identical to the serial one.
+  `multiprocessing` (spawn context). The per-pixel normal-equation solve
+  (`k0`/`k1`) is a BLAS-free `np.einsum`, so results are independent of the
+  pixel-row count and the BLAS thread pool — the parallel path is bit-identical
+  to the serial one structurally, not by BLAS-configuration luck (worker BLAS
+  pinning to a single thread is retained as defense in depth).
 - **Typical runtime**: a full scene (e.g. an EMIT granule, ≈1280×1242 pixels)
   classifies in about a minute with a few workers on a desktop; a warm
   single-spectrum call is ≈10 ms.
@@ -437,6 +440,8 @@ python tests/test_parallel_isolation.py # shared-state isolation (6 checks: work
 # The suites below need the EMIT test scene in the working directory
 # (file name defined in each script's NC constant):
 python tests/check_rows_logic.py       # rows alive-pixel semantics (16 checks)
+python tests/check_alive_restriction.py # end-to-end A/B: rows-on vs forced-full computation,
+                                       #   77 rules + classify + compiled path, bit-level diff
 python tests/test_single_spectrum.py   # single-spectrum identification (7 tests:
                                        #   self-ID / noise robustness / determinism / ...)
 python tests/check_compiled_path.py    # compiled vs direct path, 302 pixels × 77 rules, bit-level diff
