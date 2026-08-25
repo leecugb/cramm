@@ -103,7 +103,7 @@ Per-rule evaluation (77 rules, parallel across rules)
       │  not-absorption / not-related features: exclusion filters
       │  continuum & depth-ratio constraints
       ▼
-Best-match selection (argmax fit×depth)  +  muscovite 2.2 µm center fit
+Best-match selection (argmax weighted fit)  +  muscovite 2.2 µm center fit
       │                                   +  chlorite 2250 nm center fit
       │                                   +  carbonate 2330 nm center fit
       ▼
