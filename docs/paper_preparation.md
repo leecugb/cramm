@@ -13,7 +13,7 @@
 | rf.json = 77 规则 + 19 mixtures + 53 wavelength_map | `cramm/data/rf.json` 实测（顶层 keys: rf/mixtures/wavelength_map） | ✅ |
 | 与官方 .mcf（2014 v6a）逐字段核验零不一致 | `docs/MCF_vs_rfjson_verification.md`：77 条目集合、142 诊断特征、1,136 连续统约束槽、80 处 NOT 引用、77×4 材料级约束、64 条纯谱参考身份、77 类别颜色 RGB 逐值一致 | ✅ |
 | 9 条深度比规则（0.6×6 + 0.4×3） | rf.json 实测，名单与 README 一致 | ✅ |
-| 11 条仲裁窗口规则（白云母 4 无缝拼接 / 绿泥石 3 重叠 1nm / 碳酸盐 4 重复窗） | rf.json 实测，窗口数值与 README/algorithm_flow.md 完全一致 | ✅ |
+| 12 条仲裁窗口规则（白云母 4 无缝拼接 / 绿泥石 4 重叠容差：3×1nm + Fe/thuringite 缝 0.49nm / 碳酸盐 4 重复窗） | rf.json 实测，窗口数值与 README/algorithm_flow.md 完全一致（2026-08-24 thuringite [2.255,2.266) 并入绿泥石族） | ✅ |
 | 7 条结构式元数据规则（白云母族 4 + 绿泥石族 3；tier A/B） | rf.json 实测：medhighAl/Fe-rich/illite_gds4 = A，illite_imt1 + 绿泥石×3 = B | ✅ |
 | 仲裁器数学语义（单窗翻转重拟合 / 多窗歧义保持 / 无效保守 / 向量化单趟） | `classifier.py::_reassign_by_absorption_center`（302–407 行）docstring 与实现 | ✅ |
 | 窗口间距 mus–chl 25 nm、chl–cal 52 nm，族间自隔离 | 同上 docstring + `tests/check_arbitration_independence.py` | ✅ |

@@ -82,14 +82,17 @@ MUSCOVITE_MINERALS = [
 ]
 
 # Pure-chlorite minerals (used for chl_center quadratic fitting of the 2250 nm
-# Fe-OH band). Only the three pure references are included: the chlorite-bearing
+# Fe-OH band). Only the four pure references are included: the chlorite-bearing
 # mixture rules are excluded on purpose — their band position reflects the
 # mixture, not the chlorite composition (chl13 application boundary: band-
-# position inversion is quantitative only for chlorite >= ~50%)
+# position inversion is quantitative only for chlorite >= ~50%). thuringite
+# carries the Fe-richest window ([2.255, 2.266), rf.json), extending the
+# arbitration sequence beyond clinochlore_Fe's [2.251, 2.25549).
 CHLORITE_MINERALS = [
     "chlorite_lowFe",
     "clinochlore",
     "clinochlore_Fe",
+    "thuringite",
 ]
 
 # Carbonate minerals (used for cal_center quadratic fitting of the 2330 nm
@@ -318,7 +321,7 @@ def _reassign_by_absorption_center(
     Wavelength-based reassignment among the rules carrying
     ``diagnostic_features[0]["absorption_center_range"]`` (in the bundled
     library: the four pure muscovite rules with windows around the 2.2 um
-    Al-OH band, the three pure chlorite rules with deliberately
+    Al-OH band, the four pure chlorite rules with deliberately
     overlapping windows around the 2250 nm Fe-OH band, and the four
     calcite/dolomite rules with duplicate windows around the 2330 nm
     C-O band).

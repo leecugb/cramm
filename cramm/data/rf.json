@@ -2679,6 +2679,10 @@
           "depth_constraints": [
             null,
             null
+          ],
+          "absorption_center_range": [
+            2.255,
+            2.266
           ]
         },
         {

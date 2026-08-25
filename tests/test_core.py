@@ -277,7 +277,8 @@ def test_muscovite_guard():
 
 def test_chlorite_window_arbitration():
     """Chlorite tolerant-window arbitration: overlapping absorption_center_range
-    windows (lowFe [2.245,2.248) / clinochlore [2.247,2.252) / Fe [2.251,2.25549)).
+    windows (lowFe [2.245,2.248) / clinochlore [2.247,2.252) / Fe [2.251,2.25549)
+    / thuringite [2.255,2.266)).
     A center in an overlap hits two windows -> ambiguous -> keep; only a center
     exclusively inside another rule's window flips the attribution."""
     from cramm.classifier import _reassign_by_absorption_center
@@ -285,8 +286,9 @@ def test_chlorite_window_arbitration():
     rf = e.rf
     names = list(rf.keys())
     index_d = {n: i for i, n in enumerate(names)}
-    i_low, i_clino, i_fe = (index_d[n] for n in
-                            ("chlorite_lowFe", "clinochlore", "clinochlore_Fe"))
+    i_low, i_clino, i_fe, i_thu = (index_d[n] for n in
+                                   ("chlorite_lowFe", "clinochlore",
+                                    "clinochlore_Fe", "thuringite"))
     # (winner, center) -> expected winner after arbitration
     cases = [
         (i_clino, 2.2522, i_fe),     # exclusively in Fe window -> flip to Fe
@@ -296,6 +298,10 @@ def test_chlorite_window_arbitration():
         (i_low,   2.2460, i_low),    # inside own window only -> keep
         (i_low,   2.2400, i_low),    # outside every window -> keep
         (i_clino, 0.0,    i_clino),  # invalid center -> keep
+        (i_fe,    2.2600, i_thu),    # exclusively in thuringite window -> flip
+        (i_thu,   2.2535, i_fe),     # thuringite winner, center in Fe-only zone -> flip
+        (i_fe,    2.2552, i_fe),     # Fe/thuringite overlap -> ambiguous -> keep
+        (i_thu,   2.2620, i_thu),    # inside own window only -> keep
     ]
     n, m = len(cases), len(names)
     im = np.array([c[0] for c in cases], dtype="int64")
@@ -604,9 +610,11 @@ def make_integration_tests(nc_path):
         tile = spectrum[440:540, 160:260]
 
         # 1) classify-level contract: chl_center > 0 exactly on chlorite winners
+        # (chl_idx mirrors CHLORITE_MINERALS, incl. thuringite since it joined
+        # the center-fit family with its [2.255, 2.266) window)
+        from cramm.classifier import CHLORITE_MINERALS
         res = e._classifier.classify(tile, wl, w, bp, chanels, n_workers=1)
-        chl_idx = [res.index_d[n] for n in
-                   ("chlorite_lowFe", "clinochlore", "clinochlore_Fe") if n in res.index_d]
+        chl_idx = [res.index_d[n] for n in CHLORITE_MINERALS if n in res.index_d]
         winner = np.isin(res.num, chl_idx) & (res.fit > 0)
         assert winner.sum() > 1000, "tile should be chlorite-rich"
         has_center = res.chl_center > 0

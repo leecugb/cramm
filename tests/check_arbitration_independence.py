@@ -7,7 +7,7 @@ if (a) family member lists are disjoint (code-level, checked separately), and
     - mus winner with mus_center >= 2.245 would flip INTO a chlorite rule
     - chl winner with chl_center <  2.220 would flip INTO a muscovite rule
     - chl winner with chl_center >= 2.308 would touch a carbonate window
-    - cal winner with cal_center <  2.25549 would touch a chlorite window
+    - cal winner with cal_center <  2.266 would touch a chlorite window
       (cal winners can never flip: the calcite/dolomite duplicate windows
       make every in-window center ambiguous — zero-flip by construction)
 Direct stale-center detectors for cross-family flips:
@@ -58,7 +58,7 @@ def main():
 
     kc = res.cal_center[is_cal & (res.cal_center > 0)]
     print(f"cal_center on cal winners: n={len(kc)} min={kc.min():.5f} max={kc.max():.5f}")
-    print(f"  < 2.25549 (would touch chlorite windows): {(kc < 2.25549).sum()}")
+    print(f"  < 2.266 (would touch chlorite windows): {(kc < 2.266).sum()}")
     print(f"  < 2.308 (below every carbonate window):   {(kc < 2.308).sum()}")
 
     x1 = is_chl & (res.mus_center > 0)

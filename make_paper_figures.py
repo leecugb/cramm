@@ -317,17 +317,19 @@ def fig_carbonate():
 def fig_chlorite():
     refs = [("chlorite_lowFe  SMR-13.a (rec 2047)", 2047, OI["green"]),
             ("clinochlore  GDS158 (rec 2253)", 2253, OI["blue"]),
-            ("clinochlore_Fe  SC-CCa-1.a (rec 2371)", 2371, OI["vermillion"])]
+            ("clinochlore_Fe  SC-CCa-1.a (rec 2371)", 2371, OI["vermillion"]),
+            ("thuringite  SMR-15.c (rec 9262)", 9262, OI["purple"])]
     windows = [("chlorite_lowFe", 2.245, 2.248, OI["green"]),
                ("clinochlore", 2.247, 2.252, OI["blue"]),
-               ("clinochlore_Fe", 2.251, 2.25549, OI["vermillion"])]
+               ("clinochlore_Fe", 2.251, 2.25549, OI["vermillion"]),
+               ("thuringite", 2.255, 2.266, OI["purple"])]
 
     fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.8),
                              gridspec_kw={"width_ratios": [1.25, 1, 0.95]})
     ax = axes[0]
     offset = 0.0
     short = {2047: "SMR-13.a (low-Fe)", 2253: "GDS158",
-             2371: "SC-CCa-1.a (Fe-rich)"}
+             2371: "SC-CCa-1.a (Fe-rich)", 9262: "SMR-15.c (thuringite)"}
     for label, rec, col in refs:
         wav, spec, _ = get_splib_record(rec)
         w, cr = continuum_remove(wav, spec, 2.20, 2.40)
@@ -344,7 +346,7 @@ def fig_chlorite():
     ax.set_xlabel("wavelength (nm)")
     ax.set_ylabel("continuum-removed reflectance (offset)")
     ax.set_xlim(2200, 2400)
-    ax.set_ylim(0.45, 2.55)
+    ax.set_ylim(0.45, 3.2)
     ax.set_title("a  rule reference spectra\n(markers: 2250 nm band min)",
                  loc="left", fontsize=8)
 
@@ -357,13 +359,13 @@ def fig_chlorite():
         ax.text(lo * 1000 - 0.6, y, name.replace("chlorite_", "chl_"),
                 ha="right", va="center", fontsize=6.5)
         y += 1.0
-    for lo, hi in ((2.247, 2.248), (2.251, 2.252)):
+    for lo, hi in ((2.247, 2.248), (2.251, 2.252), (2.255, 2.25549)):
         ax.axvspan(lo * 1000, hi * 1000, color=OI["orange"], alpha=0.35)
-    ax.annotate("1 nm overlap = tolerance zone\n(pixel keeps its argmax label)",
-                xy=(2251.5, 1.5), xytext=(2256.5, 1.7), fontsize=6.5,
+    ax.annotate("overlap = tolerance zone\n(pixel keeps its argmax label)",
+                xy=(2251.5, 1.5), xytext=(2257.5, 1.7), fontsize=6.5,
                 arrowprops=dict(arrowstyle="->", lw=0.6))
-    ax.set_xlim(2240, 2262)
-    ax.set_ylim(-1.0, 2.8)
+    ax.set_xlim(2240, 2268)
+    ax.set_ylim(-1.0, 3.8)
     ax.set_yticks([])
     ax.set_xlabel("Fe/Mg absorption center (nm)")
     ax.set_title("b  deliberately overlapping windows", loc="left", fontsize=8)
@@ -378,8 +380,9 @@ def fig_chlorite():
     ax.plot(lim, lim, "--", color="#999999", lw=0.8)
     ax.plot(pred, df.pos2250, "o", color=OI["blue"], ms=4, mew=0)
     for s, x, y in zip(df.sid, pred, df.pos2250):
-        if s in ("SMR-13", "GDS158", "CCa-1"):
-            ax.annotate(s, (x, y), textcoords="offset points", xytext=(4, 4),
+        if s in ("SMR-13", "GDS158", "CCa-1", "SMR-15"):
+            off = (-38, -2) if s == "SMR-15" else (4, 4)  # SMR-15: top-right corner, keep inside axes
+            ax.annotate(s, (x, y), textcoords="offset points", xytext=off,
                         fontsize=6, color="#555555")
     ax.set_xlim(lim); ax.set_ylim(lim)
     ax.set_xlabel("model pos2250 (nm)")
