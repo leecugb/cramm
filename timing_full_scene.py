@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-"""整景影像处理耗时测试:加载 + 串行/并行分类,结果写入 D:/test。"""
+"""整景影像处理耗时测试:加载 + 串行/并行分类。
+
+输出目录由环境变量 TIMING_OUT_DIR 指定(默认 D:/test);
+并行档位由 TIMING_WORKERS 指定(默认 "1,4",逗号分隔)。"""
 import json
 import os
 import platform
@@ -10,7 +13,7 @@ import numpy as np
 from cramm import MicaEngine
 
 NC = "./EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc"
-OUT_DIR = r"D:/test"
+OUT_DIR = os.environ.get("TIMING_OUT_DIR", r"D:/test")
 
 
 def main():
