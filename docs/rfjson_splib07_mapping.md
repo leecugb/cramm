@@ -64,7 +64,7 @@
 | carbonate_Fe_bearing | 8623 | Siderite HS271.3B            W1R1Ba AREF | `Siderite_HS271.3B` ASDFRa AREF<br>`Siderite_HS271.3B` ASDNGa AREF<br>`Siderite_HS271.3B` BECKa AREF<br>`Siderite_HS271.3B` NIC4aa RREF |
 | calcite.18+dolomite.22+montmorilloniteNa.6 | mix_7781 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
 | calcite.18+dolomite.22+montmorilloniteCa.6 | mix_7811 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
-| calcite.8+montmorilloniteNa.2_mix_intimate | mix_7785 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
+| calcite.8+montmorilloniteNa.2_mix_intimate | 10466 | Calcite.80+Mont_Swy-1 GDS212 W1R1Ba AREF（物理混合，经 mix 权重 1.0 引用） | `Calcite.80+Mont_Swy-1_GDS212` ASDNGa AREF<br>`Calcite.80+Mont_Swy-1_GDS212` BECKa AREF |
 | calcite.25+montmorilloniteCa.75 | mix_7787 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
 | calcite.25+montmorilloniteNa.75 | mix_7791 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
 | calcite.5+muscoviteMedHiAl.5 | mix_7795 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
@@ -72,7 +72,7 @@
 | calcite.3+muscoviteLowAl.7 | mix_7803 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
 | dolomite.5+montmorilloniteNa.5 | mix_7711 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
 | dolomite.5+montmorilloniteCa.5 | mix_7715 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
-| kaolinite.2+calcite.8_mix_intimate | mix_7807 | 合成混合（rf.json 内置，无 splib06b 记录） | —（合成） |
+| kaolinite.2+calcite.8_mix_intimate | 10477 | Calcite.80wt+Kaol_CM9 GDS213 W1R1Ba AREF（物理混合，经 mix 权重 1.0 引用） | `Calcite.80wt+Kaol_CM9_GDS213` ASDNGa AREF<br>`Calcite.80wt+Kaol_CM9_GDS213` BECKa AREF |
 | chalcedony | 1900 | Chalcedony CU91-6A           W1R1Ba AREF | `Chalcedony_CU91-6A` ASDNGa AREF<br>`Chalcedony_CU91-6A` BECKa AREF<br>`Chalcedony_CU91-6A_XRD` NIC4aa RREF |
 | hydrated_silica | 7243 | Opal TM8896 (Hyalite)      W5R4Naa_ RREF | `Opal_TM8896_(Hyalite)` ASDNGa AREF<br>`Opal_TM8896_(Hyalite)` BECKa AREF<br>`Opal_TM8896_(Hyalite)` NIC4aa RREF |
 | tremolite_or_talc | 9744 | Tremolite HS18.3B          W9R4Nccc RREF | `Tremolite_HS18.3B` ASDFRc AREF<br>`Tremolite_HS18.3B` NIC4ccc RREF |
@@ -84,12 +84,14 @@
 | serpentine_antigorite_withsecondfeat | 1265 | Antigorite NMNH96917.a >250  W1R1Bb AREF | `Antigorite_NMNH96917.a_gt250` ASDNGb AREF<br>`Antigorite_NMNH96917.a_gt250` BECKb AREF<br>`Antigorite_NMNH96917.a_gt250` NIC4bb RREF<br>`Antigorite_NMNH96917.b_165um` ASDNGb AREF<br>`Antigorite_NMNH96917.b_165um` BECKb AREF<br>`Antigorite_NMNH96917.b_165` NIC4bb RREF<br>`Antigorite_NMNH96917.c_120um` BECKb AREF<br>`Antigorite_NMNH96917.c_120` NIC4bb RREF<br>`Antigorite_NMNH96917.d_70um` BECKb AREF<br>`Antigorite_NMNH96917.d_70um` NIC4bb RREF<br>`Antigorite_NMNH96917.e_32um` BECKb AREF<br>`Antigorite_NMNH96917.e_32um` NIC4bb RREF<br>`Antigorite_NMNH96917.f_lt30um` BECKb AREF |
 | topaz | 9412 | Topaz HS184.3B               W1R1Bc AREF | `Topaz_HS184.3B` ASDFRb AREF<br>`Topaz_HS184.3B` ASDNGb AREF<br>`Topaz_HS184.3B` BECKb AREF<br>`Topaz_HS184.3B` NIC4bc RREF |
 
-统计：58 条规则在 splib07 找到同名样品记录，0 条未找到：
+统计：60 条规则在 splib07 找到同名样品记录，0 条未找到：
 
 ## 备注
 
 - 样品名后缀变体（如 GDS113a、SMR-13.c）是同一样品的不同制备/粒径记录，一并列出。
 - splib07 检索用 `name=` 子串匹配；`Clinochlore_Fe_SC-CCa-1.a` 的 sample_id 是 `Fe`，此处按全名子串 `SC-CCa-1` 检索。
-- 19 条 `mix_*` 规则为 rf.json 内置线性合成谱，splib07 中无对应物理记录。
+- 19 条 `mix_*` 规则中 17 条为 rf.json 内置线性合成谱；例外的 2 条权重 1.0 规则实为**物理实测混合**（见下条）。
+- **2 条权重 1.0 的 mix 规则是物理混合**：`calcite.8+montmorilloniteNa.2_mix_intimate`→GDS212（80wt% WS272+20wt% SWy-1，Intimate）、`kaolinite.2+calcite.8_mix_intimate`→GDS213（80wt% WS272+20wt% CM9，Intimate），splib07 有同名实测记录（ASDNGa/BECKa AREF）。
+- 17 条线性合成规则中 8 条在 splib07 有**同配方计算混合**对应（AMX 系列 Areal）：mix_7821↔AMX8、mix_7715↔AMX10、mix_7711↔AMX21、mix_7745↔AMX12、mix_7737↔AMX17（端元+比例全同）；mix_7741↔AMX13、mix_7703↔AMX3（高岭石端元 KGa-1 vs KGa-2 不同）、mix_7707↔AMX14（明矾石 HS295 vs GDS96 不同）。其余 9 条无对应。
 - **AMX 系列是计算混合而非实测物理混合**（2026-08-29 元数据核实）：`Kaol.5+MuscCU91-250A_AMX13`、`Alunite.5+MuscCU91-250A_AMX4` 等的 HTMLmetadata 明确标注 `MIXTURE_TYPE: Areal` + `SAMPLE_DESCRIPTION: Calculated areal (linear) mixture ...`，与 rf.json 的 `mix_*` 线性合成谱性质相同，不能作为物理混合 ground truth。注意 AMX13 的高岭石端元是 KGa-1（不是 CM9）、AMX4 的明矾石端元是 HS295.3B。
 - 真正意义的实测混合样品是 CU93 系列天然混合岩石（如 `Chlorite+Muscovite_CU93-65A`，`MIXTURE_TYPE: Intimate`，Cuprite Harkless 组天然千枚岩）。

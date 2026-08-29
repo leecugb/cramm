@@ -98,8 +98,17 @@ missing = []
 for name in rules:
     rec = rules[name]["reference"]["reflectance_record"]
     if str(rec).startswith("mix_"):
-        title = "合成混合（rf.json 内置，无 splib06b 记录）"
-        found = None
+        # weight-1.0 mixes alias a single real splib06b record (physical
+        # intimate mixtures GDS212/GDS213); resolve through d['mixtures']
+        comp = d["mixtures"].get(str(rec), {})
+        if len(comp) == 1 and list(comp.values())[0] == 1.0:
+            rec = int(list(comp.keys())[0])
+            title = dic.loc[rec, "ititl"].strip() + "（物理混合，经 mix 权重 1.0 引用）"
+            token = "GDS212" if rec == 10466 else "GDS213"
+            found = search(token)
+        else:
+            title = "合成混合（rf.json 内置，无 splib06b 记录）"
+            found = None
     else:
         title = dic.loc[int(rec), "ititl"].strip() if int(rec) in dic.index else "??"
         token = TOKENS.get(name)
@@ -123,7 +132,9 @@ lines.append("## 备注")
 lines.append("")
 lines.append("- 样品名后缀变体（如 GDS113a、SMR-13.c）是同一样品的不同制备/粒径记录，一并列出。")
 lines.append("- splib07 检索用 `name=` 子串匹配；`Clinochlore_Fe_SC-CCa-1.a` 的 sample_id 是 `Fe`，此处按全名子串 `SC-CCa-1` 检索。")
-lines.append("- 19 条 `mix_*` 规则为 rf.json 内置线性合成谱，splib07 中无对应物理记录。")
+lines.append("- 19 条 `mix_*` 规则中 17 条为 rf.json 内置线性合成谱；例外的 2 条权重 1.0 规则实为**物理实测混合**（见下条）。")
+lines.append("- **2 条权重 1.0 的 mix 规则是物理混合**：`calcite.8+montmorilloniteNa.2_mix_intimate`→GDS212（80wt% WS272+20wt% SWy-1，Intimate）、`kaolinite.2+calcite.8_mix_intimate`→GDS213（80wt% WS272+20wt% CM9，Intimate），splib07 有同名实测记录（ASDNGa/BECKa AREF）。")
+lines.append("- 17 条线性合成规则中 8 条在 splib07 有**同配方计算混合**对应（AMX 系列 Areal）：mix_7821↔AMX8、mix_7715↔AMX10、mix_7711↔AMX21、mix_7745↔AMX12、mix_7737↔AMX17（端元+比例全同）；mix_7741↔AMX13、mix_7703↔AMX3（高岭石端元 KGa-1 vs KGa-2 不同）、mix_7707↔AMX14（明矾石 HS295 vs GDS96 不同）。其余 9 条无对应。")
 lines.append("- **AMX 系列是计算混合而非实测物理混合**（2026-08-29 元数据核实）：`Kaol.5+MuscCU91-250A_AMX13`、`Alunite.5+MuscCU91-250A_AMX4` 等的 HTMLmetadata 明确标注 `MIXTURE_TYPE: Areal` + `SAMPLE_DESCRIPTION: Calculated areal (linear) mixture ...`，与 rf.json 的 `mix_*` 线性合成谱性质相同，不能作为物理混合 ground truth。注意 AMX13 的高岭石端元是 KGa-1（不是 CM9）、AMX4 的明矾石端元是 HS295.3B。")
 lines.append("- 真正意义的实测混合样品是 CU93 系列天然混合岩石（如 `Chlorite+Muscovite_CU93-65A`，`MIXTURE_TYPE: Intimate`，Cuprite Harkless 组天然千枚岩）。")
 

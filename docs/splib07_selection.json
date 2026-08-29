@@ -1,0 +1,1576 @@
+{
+ "master_grid": {
+  "lo_um": 0.35,
+  "hi_um": 2.5,
+  "step_um": 0.001
+ },
+ "strategy": "D1-A same instrument+type; best quality then best r within group; coverage = engine _resample_ on real EMIT grid, no new NaN bands vs 06b inside feature span",
+ "references": {
+  "12539": {
+   "rules": [
+    "vegetation_green"
+   ],
+   "splib06b_title": "Engelmann-Spruce ES-Needls-1 W1R1Fa AREF",
+   "splib07_record": "Engelmann-Spruce_ES-Needls-1_ASDFRa_AREF",
+   "splib07_name": "Engelmann-Spruce_ES-Needls-1",
+   "sensor": "ASDFR",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "vegetation_green": {
+     "span": [
+      0.522,
+      1.3
+     ],
+     "covered": true,
+     "emit_bands_in_span": 105,
+     "emit_bands_06b_valid": 105,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "13411": {
+   "rules": [
+    "vegetation_npv_and_green"
+   ],
+   "splib06b_title": "Rangeland C04-170 S30% G24%  W1R1Fa AREF",
+   "splib07_record": "Rangeland_C04-170_S30%_G24%_ASDFRa_AREF",
+   "splib07_name": "Rangeland_C04-170_S30%_G24%",
+   "sensor": "ASDFR",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "vegetation_npv_and_green": {
+     "span": [
+      0.522,
+      2.416
+     ],
+     "covered": true,
+     "emit_bands_in_span": 255,
+     "emit_bands_06b_valid": 226,
+     "emit_bands_gained": 29
+    }
+   }
+  },
+  "11541": {
+   "rules": [
+    "snow_melting"
+   ],
+   "splib06b_title": "Melting_snow mSnw1a          W1R1Fa AREF",
+   "splib07_record": "Melting_snow_mSnw01a_ASDFRa_AREF",
+   "splib07_name": "Melting_snow_mSnw01a",
+   "sensor": "ASDFR",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "snow_melting": {
+     "span": [
+      0.895,
+      1.345
+     ],
+     "covered": true,
+     "emit_bands_in_span": 60,
+     "emit_bands_06b_valid": 60,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "11589": {
+   "rules": [
+    "snow_slush"
+   ],
+   "splib06b_title": "Melting_snow mSnw9  (slush)  W1R1Fa AREF",
+   "splib07_record": "Melting_snow_mSnw09_(slush)_ASDFRa_AREF",
+   "splib07_name": "Melting_snow_mSnw09_(slush)",
+   "sensor": "ASDFR",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "snow_slush": {
+     "span": [
+      0.87,
+      1.345
+     ],
+     "covered": true,
+     "emit_bands_in_span": 64,
+     "emit_bands_06b_valid": 64,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "11607": {
+   "rules": [
+    "water"
+   ],
+   "splib06b_title": "Seawater_Coast_Chl SW1       W1R1Ba AREF",
+   "splib07_record": "Seawater_Coast_Chl_SW1_BECKa_AREF",
+   "splib07_name": "Seawater_Coast_Chl_SW1",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "water": {
+     "span": [
+      0.42,
+      2.28
+     ],
+     "covered": true,
+     "emit_bands_in_span": 250,
+     "emit_bands_06b_valid": 250,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "11647": {
+   "rules": [
+    "water_sediment_high"
+   ],
+   "splib06b_title": "Water+Montmor SWy-2+5.01g/l  W1R1Fa AREF",
+   "splib07_record": "Water+Montmor_SWy-2+5.01g-l_ASDFRa_AREF",
+   "splib07_name": "Water+Montmor_SWy-2+5.01g-l",
+   "sensor": "ASDFR",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "water_sediment_high": {
+     "span": [
+      0.685,
+      1.085
+     ],
+     "covered": true,
+     "emit_bands_in_span": 54,
+     "emit_bands_06b_valid": 54,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "11629": {
+   "rules": [
+    "water_sediment_low"
+   ],
+   "splib06b_title": "Water+Montmor SWy-2+0.5g/l   W1R1Fa AREF",
+   "splib07_record": "Water+Montmor_SWy-2+0.50g-l_ASDFRa_AREF",
+   "splib07_name": "Water+Montmor_SWy-2+0.50g-l",
+   "sensor": "ASDFR",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "water_sediment_low": {
+     "span": [
+      0.68,
+      1.082
+     ],
+     "covered": true,
+     "emit_bands_in_span": 54,
+     "emit_bands_06b_valid": 54,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "12658": {
+   "rules": [
+    "dry_veg_grass",
+    "dry_veg_grass_2_3um"
+   ],
+   "splib06b_title": "Grass_Golden_Dry GDS480      W1R1Fa AREF",
+   "splib07_record": "Grass_Golden_Dry_GDS480_ASDFRa_AREF",
+   "splib07_name": "Grass_Golden_Dry_GDS480",
+   "sensor": "ASDFR",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "dry_veg_grass": {
+     "span": [
+      2.02,
+      2.415
+     ],
+     "covered": true,
+     "emit_bands_in_span": 53,
+     "emit_bands_06b_valid": 53,
+     "emit_bands_gained": 0
+    },
+    "dry_veg_grass_2_3um": {
+     "span": [
+      2.21,
+      2.415
+     ],
+     "covered": true,
+     "emit_bands_in_span": 28,
+     "emit_bands_06b_valid": 28,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "12794": {
+   "rules": [
+    "dry_veg_nongrass",
+    "dry_veg_nongrass_2_3um"
+   ],
+   "splib06b_title": "Lodgepole-Pine LP-Needles-3  W1R1Fa AREF",
+   "splib07_record": "Lodgepole-Pine_LP-Needles-3_ASDFRa_AREF",
+   "splib07_name": "Lodgepole-Pine_LP-Needles-3",
+   "sensor": "ASDFR",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.8839,
+   "coverage": {
+    "dry_veg_nongrass": {
+     "span": [
+      2.02,
+      2.425
+     ],
+     "covered": true,
+     "emit_bands_in_span": 54,
+     "emit_bands_06b_valid": 54,
+     "emit_bands_gained": 0
+    },
+    "dry_veg_nongrass_2_3um": {
+     "span": [
+      2.21,
+      2.425
+     ],
+     "covered": true,
+     "emit_bands_in_span": 29,
+     "emit_bands_06b_valid": 29,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "6258": {
+   "rules": [
+    "muscovite_lowAl"
+   ],
+   "splib06b_title": "Muscovite CU93-1 low-Al Phyl W2R4Nb RREF",
+   "splib07_record": "Muscovite_CU93-1_low-Al_Phyl_NIC4b_RREF",
+   "splib07_name": "Muscovite_CU93-1_low-Al_Phyl",
+   "sensor": "NIC4",
+   "quality": "b",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "muscovite_lowAl": {
+     "span": [
+      2.13,
+      2.42
+     ],
+     "covered": true,
+     "emit_bands_in_span": 40,
+     "emit_bands_06b_valid": 40,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "11117": {
+   "rules": [
+    "muscovite_medAl"
+   ],
+   "splib06b_title": "Muscovite CU91-250A med Al   W2R4Nb RREF",
+   "splib07_record": "Muscovite-medlowAl_CU91-250A_NIC4b_RREF",
+   "splib07_name": "Muscovite-medlowAl_CU91-250A",
+   "sensor": "NIC4",
+   "quality": "b",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "muscovite_medAl": {
+     "span": [
+      2.1284,
+      2.41
+     ],
+     "covered": true,
+     "emit_bands_in_span": 38,
+     "emit_bands_06b_valid": 38,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "6348": {
+   "rules": [
+    "muscovite_medhighAl"
+   ],
+   "splib06b_title": "Muscovite GDS113 Ruby      W9R4Nbbb RREF",
+   "splib07_record": "Muscovite_GDS113_Ruby_NIC4aaa_RREF",
+   "splib07_name": "Muscovite_GDS113_Ruby",
+   "sensor": "NIC4",
+   "quality": "aaa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "muscovite_medhighAl": {
+     "span": [
+      2.118,
+      2.415
+     ],
+     "covered": true,
+     "emit_bands_in_span": 40,
+     "emit_bands_06b_valid": 40,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "6394": {
+   "rules": [
+    "muscovite_Fe-rich"
+   ],
+   "splib06b_title": "Muscovite GDS116 Tanzania  W9R4Naaa RREF",
+   "splib07_record": "Muscovite_GDS116_Tanzania_NIC4aaa_RREF",
+   "splib07_name": "Muscovite_GDS116_Tanzania",
+   "sensor": "NIC4",
+   "quality": "aaa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "muscovite_Fe-rich": {
+     "span": [
+      2.13,
+      2.44
+     ],
+     "covered": true,
+     "emit_bands_in_span": 42,
+     "emit_bands_06b_valid": 42,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "4693": {
+   "rules": [
+    "illite_imt1"
+   ],
+   "splib06b_title": "Illite IMt-1.b <2um          W1R1Ba AREF",
+   "splib07_record": "Illite_IMt-1.b_lt2um_BECKa_AREF",
+   "splib07_name": "Illite_IMt-1.b_lt2um",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "illite_imt1": {
+     "span": [
+      2.13,
+      2.415
+     ],
+     "covered": true,
+     "emit_bands_in_span": 39,
+     "emit_bands_06b_valid": 39,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "4625": {
+   "rules": [
+    "illite_gds4"
+   ],
+   "splib06b_title": "Illite GDS4 (Marblehead)     W1R1Bb AREF",
+   "splib07_record": "Illite_GDS4_Marblehead_BECKb_AREF",
+   "splib07_name": "Illite_GDS4_Marblehead",
+   "sensor": "BECK",
+   "quality": "b",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.9973,
+   "coverage": {
+    "illite_gds4": {
+     "span": [
+      2.13,
+      2.415
+     ],
+     "covered": true,
+     "emit_bands_in_span": 39,
+     "emit_bands_06b_valid": 39,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "5088": {
+   "rules": [
+    "kaolinite_wxl"
+   ],
+   "splib06b_title": "Kaolinite CM9              W9R4Nbbb RREF",
+   "splib07_record": "Kaolinite_CM9_NIC4bbb_RREF",
+   "splib07_name": "Kaolinite_CM9",
+   "sensor": "NIC4",
+   "quality": "bbb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "kaolinite_wxl": {
+     "span": [
+      2.07,
+      2.267
+     ],
+     "covered": true,
+     "emit_bands_in_span": 27,
+     "emit_bands_06b_valid": 27,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "5167": {
+   "rules": [
+    "kaolinite_pxl"
+   ],
+   "splib06b_title": "Kaolinite KGa-2 (pxl)      W9R4Nbbb RREF",
+   "splib07_record": "Kaolinite_KGa-2_(pxl)_NIC4bbb_RREF",
+   "splib07_name": "Kaolinite_KGa-2_(pxl)",
+   "sensor": "NIC4",
+   "quality": "bbb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "kaolinite_pxl": {
+     "span": [
+      2.07,
+      2.275
+     ],
+     "covered": true,
+     "emit_bands_in_span": 28,
+     "emit_bands_06b_valid": 28,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "3869": {
+   "rules": [
+    "kaolinite+clay_mica_or_halloysite"
+   ],
+   "splib06b_title": "Halloysite NMNH106237      W9R4Naaa RREF",
+   "splib07_record": "Halloysite_NMNH106237_NIC4aaa_RREF",
+   "splib07_name": "Halloysite_NMNH106237",
+   "sensor": "NIC4",
+   "quality": "aaa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "kaolinite+clay_mica_or_halloysite": {
+     "span": [
+      2.07,
+      2.28
+     ],
+     "covered": true,
+     "emit_bands_in_span": 29,
+     "emit_bands_06b_valid": 29,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "2872": {
+   "rules": [
+    "kaolinite_or_dickite"
+   ],
+   "splib06b_title": "Dickite NMNH106242         W5R4Nbb_ RREF",
+   "splib07_record": "Dickite_NMNH106242_NIC4bb_RREF",
+   "splib07_name": "Dickite_NMNH106242",
+   "sensor": "NIC4",
+   "quality": "bb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "kaolinite_or_dickite": {
+     "span": [
+      2.07,
+      2.265
+     ],
+     "covered": true,
+     "emit_bands_in_span": 27,
+     "emit_bands_06b_valid": 27,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "1632": {
+   "rules": [
+    "buddingtonite"
+   ],
+   "splib06b_title": "Buddingtonite GDS85 D-206    W1R1Bb AREF",
+   "splib07_record": "Buddingtonite_GDS85_D-206_BECKb_AREF",
+   "splib07_name": "Buddingtonite_GDS85_D-206",
+   "sensor": "BECK",
+   "quality": "b",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "buddingtonite": {
+     "span": [
+      1.93,
+      2.306
+     ],
+     "covered": true,
+     "emit_bands_in_span": 51,
+     "emit_bands_06b_valid": 51,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "10350": {
+   "rules": [
+    "buddingtonite+montmorillonite_mix_intimate"
+   ],
+   "splib06b_title": "Buddingtnt+Na-Mont CU93-260B W2R4Nb RREF",
+   "splib07_record": "Buddingtnt+Na-Mont_CU93-260B_NIC4b_RREF",
+   "splib07_name": "Buddingtnt+Na-Mont_CU93-260B",
+   "sensor": "NIC4",
+   "quality": "b",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "buddingtonite+montmorillonite_mix_intimate": {
+     "span": [
+      2.04,
+      2.3
+     ],
+     "covered": true,
+     "emit_bands_in_span": 35,
+     "emit_bands_06b_valid": 35,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "596": {
+   "rules": [
+    "alunite_K_250C"
+   ],
+   "splib06b_title": "Alunite GDS96 K  Syn (250C)  W2R4Na RREF",
+   "splib07_record": "Alunite_GDS96_K_Syn_(250C)_NIC4a_RREF",
+   "splib07_name": "Alunite_GDS96_K_Syn_(250C)",
+   "sensor": "NIC4",
+   "quality": "a",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "alunite_K_250C": {
+     "span": [
+      1.44,
+      2.26
+     ],
+     "covered": true,
+     "emit_bands_in_span": 110,
+     "emit_bands_06b_valid": 110,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "655": {
+   "rules": [
+    "alunite_Na_450C"
+   ],
+   "splib06b_title": "Alunite RES-3 Na Syn (450C)  W2R4Na RREF",
+   "splib07_record": "Alunite_RES-3_Na_Syn_(450C)_NIC4a_RREF",
+   "splib07_name": "Alunite_RES-3_Na_Syn_(450C)",
+   "sensor": "NIC4",
+   "quality": "a",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "alunite_Na_450C": {
+     "span": [
+      1.463,
+      2.27
+     ],
+     "covered": true,
+     "emit_bands_in_span": 108,
+     "emit_bands_06b_valid": 108,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "7893": {
+   "rules": [
+    "pyrophyllite"
+   ],
+   "splib06b_title": "Pyrophyllite PYS1A <850um    W2R4Na RREF",
+   "splib07_record": "Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF",
+   "splib07_name": "Pyrophyllite_PYS1A_lt850um",
+   "sensor": "NIC4",
+   "quality": "aaa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "pyrophyllite": {
+     "span": [
+      2.1,
+      2.24
+     ],
+     "covered": true,
+     "emit_bands_in_span": 19,
+     "emit_bands_06b_valid": 19,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "4819": {
+   "rules": [
+    "jarosite_Na"
+   ],
+   "splib06b_title": "Jarosite GDS24 Na          W9R4Nbbb RREF",
+   "splib07_record": "Jarosite_GDS24_Na_NIC4bbb_RREF",
+   "splib07_name": "Jarosite_GDS24_Na",
+   "sensor": "NIC4",
+   "quality": "bbb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "jarosite_Na": {
+     "span": [
+      2.069,
+      2.357
+     ],
+     "covered": true,
+     "emit_bands_in_span": 39,
+     "emit_bands_06b_valid": 39,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "4875": {
+   "rules": [
+    "jarosite_K"
+   ],
+   "splib06b_title": "Jarosite GDS99 K 200C Syn    W2R4Na RREF",
+   "splib07_record": "Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF",
+   "splib07_name": "Jarosite_GDS99_K_200C_Syn",
+   "sensor": "NIC4",
+   "quality": "aa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.9827,
+   "coverage": {
+    "jarosite_K": {
+     "span": [
+      2.069,
+      2.357
+     ],
+     "covered": true,
+     "emit_bands_in_span": 39,
+     "emit_bands_06b_valid": 39,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "6200": {
+   "rules": [
+    "montmorillonite_Na"
+   ],
+   "splib06b_title": "Montmorillonite SWy-1      W9R4Nbcc RREF",
+   "splib07_record": "Montmorillonite_SWy-1_NIC4bcc_RREF",
+   "splib07_name": "Montmorillonite_SWy-1",
+   "sensor": "NIC4",
+   "quality": "bcc",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "montmorillonite_Na": {
+     "span": [
+      2.118,
+      2.287
+     ],
+     "covered": true,
+     "emit_bands_in_span": 23,
+     "emit_bands_06b_valid": 23,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "6120": {
+   "rules": [
+    "montmorillonite_Ca"
+   ],
+   "splib06b_title": "Montmorillonite SAz-1      W5R4Nbb_ RREF",
+   "splib07_record": "Montmorillonite_SAz-1_NIC4bb_RREF",
+   "splib07_name": "Montmorillonite_SAz-1",
+   "sensor": "NIC4",
+   "quality": "bb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "montmorillonite_Ca": {
+     "span": [
+      2.14,
+      2.287
+     ],
+     "covered": true,
+     "emit_bands_in_span": 20,
+     "emit_bands_06b_valid": 20,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "6772": {
+   "rules": [
+    "nontronite"
+   ],
+   "splib06b_title": "Nontronite NG-1.b <2um fr  W5R4Nbb_ RREF",
+   "splib07_record": "Nontronite_NG-1.b_lt2um_fr_NIC4bb_RREF",
+   "splib07_name": "Nontronite_NG-1.b_lt2um_fr",
+   "sensor": "NIC4",
+   "quality": "bb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "nontronite": {
+     "span": [
+      2.23,
+      2.35
+     ],
+     "covered": true,
+     "emit_bands_in_span": 16,
+     "emit_bands_06b_valid": 16,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "3913": {
+   "rules": [
+    "hectorite"
+   ],
+   "splib06b_title": "Hectorite SHCa-1.Ac-B      W5R4Nbb_ RREF",
+   "splib07_record": "Hectorite_SHCa-1.Ac-B_NIC4bb_RREF",
+   "splib07_name": "Hectorite_SHCa-1.Ac-B",
+   "sensor": "NIC4",
+   "quality": "bb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "hectorite": {
+     "span": [
+      2.25,
+      2.44
+     ],
+     "covered": true,
+     "emit_bands_in_span": 25,
+     "emit_bands_06b_valid": 25,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "3767": {
+   "rules": [
+    "gypsum"
+   ],
+   "splib06b_title": "Gypsum HS333.3B (Selenite) W9R4Naaa RREF",
+   "splib07_record": "Gypsum_HS333.3B_(Selenite)_NIC4aaa_RREF",
+   "splib07_name": "Gypsum_HS333.3B_(Selenite)",
+   "sensor": "NIC4",
+   "quality": "aaa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "gypsum": {
+     "span": [
+      1.5,
+      2.325
+     ],
+     "covered": true,
+     "emit_bands_in_span": 111,
+     "emit_bands_06b_valid": 111,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "2047": {
+   "rules": [
+    "chlorite_lowFe"
+   ],
+   "splib06b_title": "Chlorite SMR-13.a 104-150    W1R1Ba AREF",
+   "splib07_record": "Chlorite_SMR-13.a_104-150um_BECKa_AREF",
+   "splib07_name": "Chlorite_SMR-13.a_104-150um",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "chlorite_lowFe": {
+     "span": [
+      0.51,
+      2.445
+     ],
+     "covered": true,
+     "emit_bands_in_span": 260,
+     "emit_bands_06b_valid": 260,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "2253": {
+   "rules": [
+    "clinochlore"
+   ],
+   "splib06b_title": "Clinochlore GDS158 Flagst  W5R4Nbb_ RREF",
+   "splib07_record": "Clinochlore_GDS158_Flagstaff_NIC4bb_RREF",
+   "splib07_name": "Clinochlore_GDS158_Flagstaff",
+   "sensor": "NIC4",
+   "quality": "bb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "clinochlore": {
+     "span": [
+      2.16,
+      2.44
+     ],
+     "covered": true,
+     "emit_bands_in_span": 38,
+     "emit_bands_06b_valid": 38,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "2371": {
+   "rules": [
+    "clinochlore_Fe"
+   ],
+   "splib06b_title": "Clinochlore_Fe SC-CCa-1.a  W5R4Naa_ RREF",
+   "splib07_record": "Clinochlore_Fe_SC-CCa-1.a_NIC4aa_RREF",
+   "splib07_name": "Clinochlore_Fe_SC-CCa-1.a",
+   "sensor": "NIC4",
+   "quality": "aa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "clinochlore_Fe": {
+     "span": [
+      2.175,
+      2.445
+     ],
+     "covered": true,
+     "emit_bands_in_span": 36,
+     "emit_bands_06b_valid": 36,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "9262": {
+   "rules": [
+    "thuringite"
+   ],
+   "splib06b_title": "Thuringite SMR-15.c  32um  W5R4Naa_ RREF",
+   "splib07_record": "Thuringite_SMR-15.c_32um_NIC4aa_RREF",
+   "splib07_name": "Thuringite_SMR-15.c_32um",
+   "sensor": "NIC4",
+   "quality": "aa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "thuringite": {
+     "span": [
+      2.19,
+      2.455
+     ],
+     "covered": true,
+     "emit_bands_in_span": 35,
+     "emit_bands_06b_valid": 35,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "3152": {
+   "rules": [
+    "epidote"
+   ],
+   "splib06b_title": "Epidote GDS26.a 75-200um   W9R4Nbbb RREF",
+   "splib07_record": "Epidote_GDS26.a_75-200um_NIC4bbb_RREF",
+   "splib07_name": "Epidote_GDS26.a_75-200um",
+   "sensor": "NIC4",
+   "quality": "bbb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "epidote": {
+     "span": [
+      2.19,
+      2.445
+     ],
+     "covered": true,
+     "emit_bands_in_span": 34,
+     "emit_bands_06b_valid": 34,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "10131": {
+   "rules": [
+    "pyrophyllite.5+alunite.5_mix_intimate"
+   ],
+   "splib06b_title": "Alun366+.50PyroPYS1A GDS222  W1R1Bb AREF",
+   "splib07_record": "Alun366+.50PyroPYS1A_GDS222_BECKb_AREF",
+   "splib07_name": "Alun366+.50PyroPYS1A_GDS222",
+   "sensor": "BECK",
+   "quality": "b",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.9999,
+   "coverage": {
+    "pyrophyllite.5+alunite.5_mix_intimate": {
+     "span": [
+      1.44,
+      2.374
+     ],
+     "covered": true,
+     "emit_bands_in_span": 125,
+     "emit_bands_06b_valid": 125,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "10851": {
+   "rules": [
+    "kaolinite+muscovite_mix_intimate"
+   ],
+   "splib06b_title": "Kaol+Musc_intimate CU93-5C   W1R1Ba AREF",
+   "splib07_record": "Kaol+Muscov_intimate_CU93-5C_BECKa_AREF",
+   "splib07_name": "Kaol+Muscov_intimate_CU93-5C",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "kaolinite+muscovite_mix_intimate": {
+     "span": [
+      2.105,
+      2.42
+     ],
+     "covered": true,
+     "emit_bands_in_span": 43,
+     "emit_bands_06b_valid": 43,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "10930": {
+   "rules": [
+    "kaolinite+smectite_mix_intimate"
+   ],
+   "splib06b_title": "Kaolin_Smect H89-FR-2 .5K  W5R4Nbb_ RREF",
+   "splib07_record": "Kaolin_Smect_H89-FR-2_.5Kao_NIC4bb_RREF",
+   "splib07_name": "Kaolin_Smect_H89-FR-2_.5Kao",
+   "sensor": "NIC4",
+   "quality": "bb",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "kaolinite+smectite_mix_intimate": {
+     "span": [
+      2.098,
+      2.285
+     ],
+     "covered": true,
+     "emit_bands_in_span": 25,
+     "emit_bands_06b_valid": 25,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "11106": {
+   "rules": [
+    "jarosite+muscovite_mix_intimate"
+   ],
+   "splib06b_title": "Muscov+Jaros CU93-314 coatng W1R1Bb AREF",
+   "splib07_record": "Muscov+Jaros_CU93-314_coatng_BECKb_AREF",
+   "splib07_name": "Muscov+Jaros_CU93-314_coatng",
+   "sensor": "BECK",
+   "quality": "b",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "jarosite+muscovite_mix_intimate": {
+     "span": [
+      0.706,
+      2.325
+     ],
+     "covered": true,
+     "emit_bands_in_span": 218,
+     "emit_bands_06b_valid": 218,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "10552": {
+   "rules": [
+    "chlorite+muscovite_mix_intimate"
+   ],
+   "splib06b_title": "Chlorite+Muscovite CU93-65A  W1R1Ba AREF",
+   "splib07_record": "Chlorite+Muscovite_CU93-65A_BECKa_AREF",
+   "splib07_name": "Chlorite+Muscovite_CU93-65A",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "chlorite+muscovite_mix_intimate": {
+     "span": [
+      0.781,
+      2.415
+     ],
+     "covered": true,
+     "emit_bands_in_span": 220,
+     "emit_bands_06b_valid": 220,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "1751": {
+   "rules": [
+    "calcite_abundant",
+    "calcite"
+   ],
+   "splib06b_title": "Calcite WS272                W1R1Ba AREF",
+   "splib07_record": "Calcite_WS272_BECKa_AREF",
+   "splib07_name": "Calcite_WS272",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.9999,
+   "coverage": {
+    "calcite_abundant": {
+     "span": [
+      2.09,
+      2.406
+     ],
+     "covered": true,
+     "emit_bands_in_span": 43,
+     "emit_bands_06b_valid": 43,
+     "emit_bands_gained": 0
+    },
+    "calcite": {
+     "span": [
+      2.178,
+      2.406
+     ],
+     "covered": true,
+     "emit_bands_in_span": 31,
+     "emit_bands_06b_valid": 31,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "2986": {
+   "rules": [
+    "dolomite_abundant",
+    "dolomite"
+   ],
+   "splib06b_title": "Dolomite HS102.3B            W1R1Bb AREF",
+   "splib07_record": "Dolomite_HS102.3B_BECKb_AREF",
+   "splib07_name": "Dolomite_HS102.3B",
+   "sensor": "BECK",
+   "quality": "b",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.9999,
+   "coverage": {
+    "dolomite_abundant": {
+     "span": [
+      2.06,
+      2.387
+     ],
+     "covered": true,
+     "emit_bands_in_span": 44,
+     "emit_bands_06b_valid": 44,
+     "emit_bands_gained": 0
+    },
+    "dolomite": {
+     "span": [
+      2.158,
+      2.387
+     ],
+     "covered": true,
+     "emit_bands_in_span": 31,
+     "emit_bands_06b_valid": 31,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "8623": {
+   "rules": [
+    "carbonate_Fe_bearing"
+   ],
+   "splib06b_title": "Siderite HS271.3B            W1R1Ba AREF",
+   "splib07_record": "Siderite_HS271.3B_BECKa_AREF",
+   "splib07_name": "Siderite_HS271.3B",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "carbonate_Fe_bearing": {
+     "span": [
+      0.73,
+      2.416
+     ],
+     "covered": true,
+     "emit_bands_in_span": 227,
+     "emit_bands_06b_valid": 227,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "10466": {
+   "rules": [
+    "calcite.8+montmorilloniteNa.2_mix_intimate"
+   ],
+   "splib06b_title": "Calcite.80+Mont_Swy-1 GDS212 W1R1Ba AREF",
+   "splib07_record": "Calcite.80+Mont_Swy-1_GDS212_BECKa_AREF",
+   "splib07_name": "Calcite.80+Mont_Swy-1_GDS212",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "calcite.8+montmorilloniteNa.2_mix_intimate": {
+     "span": [
+      2.125,
+      2.406
+     ],
+     "covered": true,
+     "emit_bands_in_span": 38,
+     "emit_bands_06b_valid": 38,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "10477": {
+   "rules": [
+    "kaolinite.2+calcite.8_mix_intimate"
+   ],
+   "splib06b_title": "Calcite.80wt+Kaol_CM9 GDS213 W1R1Ba AREF",
+   "splib07_record": "Calcite.80wt+Kaol_CM9_GDS213_BECKa_AREF",
+   "splib07_name": "Calcite.80wt+Kaol_CM9_GDS213",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.9999,
+   "coverage": {
+    "kaolinite.2+calcite.8_mix_intimate": {
+     "span": [
+      2.09,
+      2.42
+     ],
+     "covered": true,
+     "emit_bands_in_span": 45,
+     "emit_bands_06b_valid": 45,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "1900": {
+   "rules": [
+    "chalcedony"
+   ],
+   "splib06b_title": "Chalcedony CU91-6A           W1R1Ba AREF",
+   "splib07_record": "Chalcedony_CU91-6A_BECKa_AREF",
+   "splib07_name": "Chalcedony_CU91-6A",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "chalcedony": {
+     "span": [
+      2.119,
+      2.39
+     ],
+     "covered": true,
+     "emit_bands_in_span": 37,
+     "emit_bands_06b_valid": 37,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "7243": {
+   "rules": [
+    "hydrated_silica"
+   ],
+   "splib06b_title": "Opal TM8896 (Hyalite)      W5R4Naa_ RREF",
+   "splib07_record": "Opal_TM8896_(Hyalite)_NIC4aa_RREF",
+   "splib07_name": "Opal_TM8896_(Hyalite)",
+   "sensor": "NIC4",
+   "quality": "aa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "hydrated_silica": {
+     "span": [
+      2.116,
+      2.39
+     ],
+     "covered": true,
+     "emit_bands_in_span": 37,
+     "emit_bands_06b_valid": 37,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "9744": {
+   "rules": [
+    "tremolite_or_talc"
+   ],
+   "splib06b_title": "Tremolite HS18.3B          W9R4Nccc RREF",
+   "splib07_record": "Tremolite_HS18.3B_NIC4ccc_RREF",
+   "splib07_name": "Tremolite_HS18.3B",
+   "sensor": "NIC4",
+   "quality": "ccc",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "tremolite_or_talc": {
+     "span": [
+      2.21,
+      2.445
+     ],
+     "covered": true,
+     "emit_bands_in_span": 32,
+     "emit_bands_06b_valid": 32,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "9092": {
+   "rules": [
+    "talc_or_tremolite"
+   ],
+   "splib06b_title": "Talc GDS23 74-250um        W9R4Naaa RREF",
+   "splib07_record": "Talc_GDS23_74-250um_NIC4aaa_RREF",
+   "splib07_name": "Talc_GDS23_74-250um",
+   "sensor": "NIC4",
+   "quality": "aaa",
+   "mtype": "RREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "talc_or_tremolite": {
+     "span": [
+      2.23,
+      2.42
+     ],
+     "covered": true,
+     "emit_bands_in_span": 26,
+     "emit_bands_06b_valid": 26,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "1265": {
+   "rules": [
+    "serpentine_antigorite_or_calcite+dolomite",
+    "serpentine_antigorite_withironfeat",
+    "serpentine_antigorite_withsecondfeat"
+   ],
+   "splib06b_title": "Antigorite NMNH96917.a >250  W1R1Bb AREF",
+   "splib07_record": "Antigorite_NMNH96917.a_gt250_BECKb_AREF",
+   "splib07_name": "Antigorite_NMNH96917.a_gt250",
+   "sensor": "BECK",
+   "quality": "b",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 1.0,
+   "coverage": {
+    "serpentine_antigorite_or_calcite+dolomite": {
+     "span": [
+      2.175,
+      2.42
+     ],
+     "covered": true,
+     "emit_bands_in_span": 33,
+     "emit_bands_06b_valid": 33,
+     "emit_bands_gained": 0
+    },
+    "serpentine_antigorite_withironfeat": {
+     "span": [
+      0.79,
+      2.42
+     ],
+     "covered": true,
+     "emit_bands_in_span": 220,
+     "emit_bands_06b_valid": 220,
+     "emit_bands_gained": 0
+    },
+    "serpentine_antigorite_withsecondfeat": {
+     "span": [
+      2.05,
+      2.42
+     ],
+     "covered": true,
+     "emit_bands_in_span": 50,
+     "emit_bands_06b_valid": 50,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "2196": {
+   "rules": [
+    "serpentine_chrysotile",
+    "serpentine_chrysotile_withsecondfeat"
+   ],
+   "splib06b_title": "Chrysotile HS323.1B          W1R1Ba AREF",
+   "splib07_record": "Chrysotile_HS323.1B_BECKa_AREF",
+   "splib07_name": "Chrysotile_HS323.1B",
+   "sensor": "BECK",
+   "quality": "a",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.9999,
+   "coverage": {
+    "serpentine_chrysotile": {
+     "span": [
+      2.185,
+      2.43
+     ],
+     "covered": true,
+     "emit_bands_in_span": 33,
+     "emit_bands_06b_valid": 33,
+     "emit_bands_gained": 0
+    },
+    "serpentine_chrysotile_withsecondfeat": {
+     "span": [
+      2.05,
+      2.43
+     ],
+     "covered": true,
+     "emit_bands_in_span": 51,
+     "emit_bands_06b_valid": 51,
+     "emit_bands_gained": 0
+    }
+   }
+  },
+  "9412": {
+   "rules": [
+    "topaz"
+   ],
+   "splib06b_title": "Topaz HS184.3B               W1R1Bc AREF",
+   "splib07_record": "Topaz_HS184.3B_BECKb_AREF",
+   "splib07_name": "Topaz_HS184.3B",
+   "sensor": "BECK",
+   "quality": "b",
+   "mtype": "AREF",
+   "instrument_match": true,
+   "r_vs_06b": 0.9996,
+   "coverage": {
+    "topaz": {
+     "span": [
+      2.0,
+      2.14
+     ],
+     "covered": true,
+     "emit_bands_in_span": 19,
+     "emit_bands_06b_valid": 19,
+     "emit_bands_gained": 0
+    }
+   }
+  }
+ },
+ "synthetic_mixes": [
+  {
+   "rule": "pyrophyllite.25+kaolinite.75",
+   "mix_id": "mix_7737",
+   "endmembers": {
+    "7893": "Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF",
+    "5088": "Kaolinite_CM9_NIC4bbb_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "gypsum.6+montmorilloniteNa.4",
+   "mix_id": "mix_7723",
+   "endmembers": {
+    "3767": "Gypsum_HS333.3B_(Selenite)_NIC4aaa_RREF",
+    "6200": "Montmorillonite_SWy-1_NIC4bcc_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "alunite.5+kaolinite.5",
+   "mix_id": "mix_7703",
+   "endmembers": {
+    "596": "Alunite_GDS96_K_Syn_(250C)_NIC4a_RREF",
+    "5167": "Kaolinite_KGa-2_(pxl)_NIC4bbb_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "alunite.25+kaolinite.75",
+   "mix_id": "mix_7707",
+   "endmembers": {
+    "596": "Alunite_GDS96_K_Syn_(250C)_NIC4a_RREF",
+    "5088": "Kaolinite_CM9_NIC4bbb_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "kaolinite.5+muscoviteMedAl.5",
+   "mix_id": "mix_7741",
+   "endmembers": {
+    "5167": "Kaolinite_KGa-2_(pxl)_NIC4bbb_RREF",
+    "11117": "Muscovite-medlowAl_CU91-250A_NIC4b_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "kaolinite.5+muscoviteMedhighAl.5",
+   "mix_id": "mix_7745",
+   "endmembers": {
+    "5088": "Kaolinite_CM9_NIC4bbb_RREF",
+    "6348": "Muscovite_GDS113_Ruby_NIC4aaa_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "clinochlore_Fe.3+muscovite.7",
+   "mix_id": "mix_7749",
+   "endmembers": {
+    "2371": "Clinochlore_Fe_SC-CCa-1.a_NIC4aa_RREF",
+    "6258": "Muscovite_CU93-1_low-Al_Phyl_NIC4b_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "calcite.5+dolomite.5",
+   "mix_id": "mix_7821",
+   "endmembers": {
+    "1751": "Calcite_WS272_BECKa_AREF",
+    "2986": "Dolomite_HS102.3B_BECKb_AREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "calcite.18+dolomite.22+montmorilloniteNa.6",
+   "mix_id": "mix_7781",
+   "endmembers": {
+    "1751": "Calcite_WS272_BECKa_AREF",
+    "2986": "Dolomite_HS102.3B_BECKb_AREF",
+    "6200": "Montmorillonite_SWy-1_NIC4bcc_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "calcite.18+dolomite.22+montmorilloniteCa.6",
+   "mix_id": "mix_7811",
+   "endmembers": {
+    "1751": "Calcite_WS272_BECKa_AREF",
+    "2986": "Dolomite_HS102.3B_BECKb_AREF",
+    "6120": "Montmorillonite_SAz-1_NIC4bb_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "calcite.25+montmorilloniteCa.75",
+   "mix_id": "mix_7787",
+   "endmembers": {
+    "1751": "Calcite_WS272_BECKa_AREF",
+    "6120": "Montmorillonite_SAz-1_NIC4bb_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "calcite.25+montmorilloniteNa.75",
+   "mix_id": "mix_7791",
+   "endmembers": {
+    "1751": "Calcite_WS272_BECKa_AREF",
+    "6200": "Montmorillonite_SWy-1_NIC4bcc_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "calcite.5+muscoviteMedHiAl.5",
+   "mix_id": "mix_7795",
+   "endmembers": {
+    "1751": "Calcite_WS272_BECKa_AREF",
+    "6348": "Muscovite_GDS113_Ruby_NIC4aaa_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "calcite.5+muscoviteMedAl.5",
+   "mix_id": "mix_7799",
+   "endmembers": {
+    "1751": "Calcite_WS272_BECKa_AREF",
+    "11117": "Muscovite-medlowAl_CU91-250A_NIC4b_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "calcite.3+muscoviteLowAl.7",
+   "mix_id": "mix_7803",
+   "endmembers": {
+    "1751": "Calcite_WS272_BECKa_AREF",
+    "6258": "Muscovite_CU93-1_low-Al_Phyl_NIC4b_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "dolomite.5+montmorilloniteNa.5",
+   "mix_id": "mix_7711",
+   "endmembers": {
+    "2986": "Dolomite_HS102.3B_BECKb_AREF",
+    "6200": "Montmorillonite_SWy-1_NIC4bcc_RREF"
+   },
+   "all_selected": true
+  },
+  {
+   "rule": "dolomite.5+montmorilloniteCa.5",
+   "mix_id": "mix_7715",
+   "endmembers": {
+    "2986": "Dolomite_HS102.3B_BECKb_AREF",
+    "6120": "Montmorillonite_SAz-1_NIC4bb_RREF"
+   },
+   "all_selected": true
+  }
+ ],
+ "adjudications": [
+  {
+   "rule": "dry_veg_nongrass(+_2_3um)",
+   "issue": "splib07 LP-Needles-3 sole record r=0.884 (re-measurement)",
+   "decision": "accept splib07 record; caveat documented"
+  }
+ ]
+}
