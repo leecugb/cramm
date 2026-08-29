@@ -180,6 +180,35 @@ def _hyper_read_specpr(filename: str) -> "pd.DataFrame":  # type: ignore[name-de
     return dic
 
 
+def _read_rf07_npz(filename: str) -> "pd.DataFrame":  # type: ignore[name-defined]
+    """Read a baked splib07-track reference bundle (rf07_spectra.npz).
+
+    Returns a dic3-shaped DataFrame: one row per record (index = the splib06b
+    record number the v07 rule file keeps as its reference/mixture key
+    namespace) plus row -1 holding the shared 1 nm master wavelength grid
+    (350-2500 nm). Every spectrum row is aligned to that grid; out-of-range
+    samples are NaN and are dropped by _resample_'s ``temp > 0`` filter
+    exactly like the deletion zeros of splib06b, so the resample path needs
+    no NaN special-casing.
+    """
+    import json
+    import pandas as pd
+    z = np.load(filename, allow_pickle=False)
+    grid = np.asarray(z["grid"], dtype="float64")
+    spectra = z["spectra"]
+    meta = json.loads(str(z["meta"][0]))
+    if spectra.shape != (len(meta), len(grid)):
+        raise ValueError(
+            f"{filename}: spectra shape {spectra.shape} inconsistent with "
+            f"meta ({len(meta)}) x grid ({len(grid)})")
+    if len(grid) < 2 or not (np.diff(grid) > 0).all():
+        raise ValueError(f"{filename}: master grid is not strictly increasing")
+    dic = pd.DataFrame({"data": {int(m["splib06b_rec"]): spectra[i]
+                                 for i, m in enumerate(meta)}})
+    dic.loc[-1] = [grid]  # -1 = shared master-grid wavelength row (v07 convention)
+    return dic
+
+
 def _resample_(bands: np.ndarray, data: np.ndarray, w: np.ndarray, bp: np.ndarray) -> np.ndarray:
     """
     Gaussian-resample spectral data onto target bands.
@@ -1143,10 +1172,14 @@ class MicaClassifier:
         ----------
         rf_path : str, optional
             Path to the rf.json rule library. None uses the package-bundled
-            cramm/data/rf.json.
+            cramm/data/rf.json. A rule file with a top-level
+            "reference_source" key (v07 track) pins its own baked npz
+            reference bundle instead of splib06b.
         splib_path : str, optional
-            Path to the USGS splib06b binary library. None uses the
-            package-bundled cramm/data/splib06b.
+            Path to the USGS splib06b binary library, or to a baked v07
+            master-grid npz. None uses the package-bundled resource selected
+            by the rule file (splib06b for rf.json, its reference_source
+            bundle otherwise).
         """
         import json
         from pathlib import Path
@@ -1161,14 +1194,20 @@ class MicaClassifier:
         rf = mica_data["rf"]
         mixtures = mica_data.get("mixtures", {})
         wavelength_map = mica_data.get("wavelength_map", {})
+        # v07 track marker: rule file pins its reference bundle (baked 1 nm
+        # master-grid npz); absence keeps the legacy splib06b specpr path.
+        reference_source = mica_data.get("reference_source")
 
         if splib_path is None:
             # Package-bundled copy
-            splib_path = Path(__file__).parent / "data" / "splib06b"
+            splib_path = Path(__file__).parent / "data" / (reference_source or "splib06b")
         splib_p = Path(splib_path)
         if not splib_p.exists():
             raise FileNotFoundError(f"{splib_p} not found.")
-        dic3 = _hyper_read_specpr(str(splib_p))
+        if reference_source is not None or str(splib_p).lower().endswith(".npz"):
+            dic3 = _read_rf07_npz(str(splib_p))
+        else:
+            dic3 = _hyper_read_specpr(str(splib_p))
 
         # Build the set of record numbers needed for resampling. int guard on
         # every source: JSON object keys are strings, and mixture component ids
