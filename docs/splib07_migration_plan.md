@@ -1,6 +1,7 @@
 # rf.json 参考光谱迁移 splib07 方案
 
-> 日期：2026-08-29 ｜ 状态：提案（未实施）
+> 日期：2026-08-29 ｜ 状态：**已实施（v1.2.0，2026-08-29）**——阶段 1–5 全部完成；
+> 实证文档：`docs/splib07_selection.md`、`docs/splib07_export_audit.md`、`docs/splib07_dualrun_diff.md`、`docs/MCF_vs_rf07_diff.md`
 > 依据：`docs/rfjson_splib07_mapping.md`（77 规则样品级映射）、`docs/rfjson_splib07_verification.md`（51/51 光谱核实）
 
 ## 0. 前提判断

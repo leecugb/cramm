@@ -1,0 +1,26 @@
+# Changelog
+
+## v1.2.0 — splib07 reference track (2026-08-29)
+
+新增 **splib07 参考谱轨道**，与既有 rf.json 轨道并存（双轨制）：
+
+- `cramm/data/rf_splib07.json`：77 条规则与 19 条混合配方同 rf.json **逐比特一致**
+  （诊断参数原样继承 .mcf v6a 启用态），仅参考光谱来源换成 USGS splib07 同名样品记录
+  （53 条唯一实物参考，D1-A 同仪器+同测量类型选谱，50/51 r≥0.99）。
+- `cramm/data/rf07_spectra.npz`：53 条参考谱烘焙于统一 1 nm 主网格（350–2500 nm），
+  分段线性、量程外 NaN、内部删除带桥接；运行时零外部依赖（不需要 splib06b/splib07）。
+- 引擎：`MicaClassifier.from_paths` 支持规则文件顶层 `reference_source` 标记
+  （或显式 `.npz` splib_path）加载烘焙参考包；`MicaEngine(rf_path=...)` 选择轨道，
+  **默认仍 rf.json，既有行为不变**（`docs/MCF_vs_rfjson_verification.md` 结论不受影响）。
+- 混合谱不烘焙：沿用 `get_resample` 既有"先传感器网格重采样端元、后加权合成"口径自动重算。
+- 审计与实证（docs/）：选谱与特征覆盖校验、导出审计（BECK 稠密化在高斯核下非无损，
+  max|Δ|≤1.03e-1 且有界）、全场景双跑差异普查（mus 1.43% / chl 0.005% / cal 0.078%，
+  差异集中于族间仲裁边缘，可归因）、`.mcf` 差异声明（`docs/MCF_vs_rf07_diff.md`）。
+- 测试：`tests/test_rf07_export.py`（npz 与 splib07 源逐位一致）、
+  `tests/test_rf07_engine.py`（引擎分支契约 + 串并行逐比特）、
+  `tests/test_parallel_v07.py` + `tests/golden_arrays_v07.npz`（v07 全场景黄金基线）。
+
+## v1.1.0
+
+（此前版本：USGS MICA 纯 Python 重实现 + 深度比约束扩展 + 白云母/绿泥石/碳酸盐
+吸收中心产品线；详见 git 历史。）

@@ -257,6 +257,23 @@ content. If you modify `engine.rf` after any classification call, you must call
 `invalidate_caches()` (or build a new engine) — otherwise results silently use
 the old reference-side constants.
 
+### splib07 reference track (v1.2.0)
+
+```python
+engine = MicaEngine(rf_path="cramm/data/rf_splib07.json")   # splib07 references
+engine = MicaEngine()                                       # default: rf.json (unchanged)
+```
+
+`cramm/data/rf_splib07.json` carries the **same 77 rules and 19 mixtures as
+rf.json, bit-identical** — only the reference spectra are rebuilt from USGS
+splib07 (same-sample records, same instrument/measurement type preferred),
+baked onto a shared 1 nm master grid (350–2500 nm) in
+`cramm/data/rf07_spectra.npz`; no splib06b or external library is needed at
+runtime. rf.json stays the default and remains the bit-fidelity baseline
+against USGS .mcf v6a; the v07 track is audited end-to-end (per-record
+correlations, export audit, full-scene dual-run census) in
+`docs/MCF_vs_rf07_diff.md`.
+
 ## Enhancements over USGS MICA
 
 CRAMM extends the original USGS MICA decision rules with an optional per-rule
@@ -442,7 +459,12 @@ python tests/test_single_spectrum.py   # single-spectrum identification (7 tests
 python tests/check_compiled_path.py    # compiled vs direct path, 302 pixels × 77 rules, bit-level diff
 python tests/test_parallel.py 4        # full-scene golden regression (parallel)
 python tests/test_parallel.py 1        # full-scene golden regression (serial)
+python tests/test_parallel_v07.py 4    # same, for the splib07 reference track
 ```
+
+`tests/test_rf07_export.py` and `tests/test_rf07_engine.py` cover the v07
+track without the scene (npz bit-exactness vs splib07 sources, engine-branch
+contracts, serial/parallel bit-exactness on a synthetic cube).
 
 **The golden baseline is platform-bound.** `tests/golden_arrays.npz` encodes
 this machine's BLAS results; ulp-level differences across BLAS builds are
@@ -470,6 +492,7 @@ cramm/
   classifier.py     # MICA core: resampling / compiled rules / serial & parallel classification
   renderer.py       # rendering: three maps / GeoTIFF / single-spectrum PDF diagnostics
   data/             # rf.json + splib06b + color_table.json
+                    #   + rf_splib07.json + rf07_spectra.npz (v1.2.0 splib07 track)
 tests/              # bit-exact verification suite + API contract tests
 example_usage.py    # five usage-scenario examples
 ```
