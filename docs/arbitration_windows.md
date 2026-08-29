@@ -1,6 +1,6 @@
 # 波长仲裁窗口速查表（归档）
 
-> 归档日期：2026-08-24 ｜ 基线：commit 10f06af（族锁定；窗口数据自 1711e20 thuringite 并入起未变）
+> 归档日期：2026-08-26 ｜ 基线：绿泥石窗口改为无缝拼接（此前为 1711e20 起的容差重叠方案，2026-08-26 重置）
 > 数据来源：`cramm/data/rf.json` 实测 ｜ 仲裁语义：`cramm/classifier.py::_reassign_by_absorption_center`
 
 ## 仲裁器判定逻辑（三族共用）
@@ -27,30 +27,30 @@
 四窗无重叠铺满 2.195–2.220，任何有效中心恰中一窗 → 必仲裁到唯一亚型。
 无窗成员（不参与仲裁）：illite_imt1、illite_gds4、5 条 kaolinite/calcite×muscovite 混合规则、clinochlore_Fe.3+muscovite.7。
 
-## 绿泥石族（2250 nm Fe–OH 带）：容差重叠，中间成分保持
+## 绿泥石族（2250 nm Fe–OH 带）：无缝拼接，每中心唯一归属
 
-| 规则 | 窗口 [µm) | 宽度 | 重叠 |
-|---|---|---|---|
-| chlorite_lowFe | [2.245, 2.248) | 3.0 nm | 与 clinochlore 重叠 1 nm |
-| clinochlore | [2.247, 2.252) | 5.0 nm | 与 lowFe / Fe 各重叠 1 nm |
-| clinochlore_Fe | [2.251, 2.25549) | 4.49 nm | 与 clinochlore 重叠 1 nm；与 thuringite 重叠 0.49 nm |
-| thuringite | [2.255, 2.266) | 11.0 nm | 与 clinochlore_Fe 重叠 0.49 nm |
+| 规则 | 窗口 [µm) | 宽度 |
+|---|---|---|
+| chlorite_lowFe | [2.245, 2.248) | 3.0 nm |
+| clinochlore | [2.248, 2.252) | 4.0 nm |
+| clinochlore_Fe | [2.252, 2.256) | 4.0 nm |
+| thuringite | [2.256, 2.266) | 10.0 nm |
 
-- 覆盖 2.245–2.266 µm，按 Fe 含量递增（SMR-13.a → GDS158 → CCa-1 → SMR-15.c）
-- 三段重叠容差带：[2.247,2.248)、[2.251,2.252)、[2.255,2.25549)——落入即歧义保持
-- 四段排他区：[2.245,2.247) lowFe、[2.248,2.251) clinochlore、[2.252,2.255) clinochlore_Fe、[2.25549,2.266) thuringite——排他落入才翻转
+- 四窗无重叠铺满 2.245–2.266 µm，按 Fe 含量递增（SMR-13.a → GDS158 → CCa-1 → SMR-15.c）
+- 任何有效中心恰中一窗 → 必仲裁到唯一亚型（与白云母族同构）；出窗 / 无效中心保守保持
+- 2026-08-26 起生效：旧方案为容差重叠（[2.245,2.248) / [2.247,2.252) / [2.251,2.25549) / [2.255,2.266)，重叠带歧义保持），现改为确定性平铺
 - 混合规则 chlorite+muscovite_mix_intimate、clinochlore_Fe.3+muscovite.7 无窗（带位反映混合而非成分）
+- 已知规则内在不对称：chlorite_lowFe 独有 feat2(VNIR, w=0.3）对其实打分存在 ~0.19 系统性惩罚（官方 .mcf 继承，行为不变，实测归档见 `docs/lowfe_feat2_bias.md`)；低铁归属低估由本族仲裁窗口事后部分纠偏
 
-### 典型判别示例：thuringite 赢家中心落入 [2.251, 2.252)
+### 典型判别示例：thuringite 赢家中心落入 clinochlore_Fe 窗
 
-中心 2.2515 µm → 同时命中 clinochlore 与 clinochlore_Fe 两窗（自身窗未中）→ 命中数 2 → 歧义 → **保持 thuringite**。
-仲裁器只数命中数、不看是谁的窗；目标归属不唯一时信任 argmax。对照：
+中心 2.2535 µm → 仅命中 clinochlore_Fe 一窗（自身窗未中）→ 排他落入 → **翻转 clinochlore_Fe + 重拟合**。对照：
 
 - 2.249（仅中 clinochlore）→ 翻转 clinochlore + 重拟合
-- 2.2515（中两窗）→ 歧义保持
+- 2.2535（仅中 clinochlore_Fe）→ 翻转 clinochlore_Fe + 重拟合
 - 2.256（仅中自身 thuringite）→ 保持
 
-单测钉死：tests/test_core.py 绿泥石仲裁用例组（含 2.2552 缝重叠保持例）。
+单测钉死：tests/test_core.py 绿泥石仲裁用例组（含 2.2475 翻 lowFe、2.2515 翻 clinochlore 例）。
 
 ## 碳酸盐族（2330 nm C–O 带）：重复窗，声明式零翻转
 

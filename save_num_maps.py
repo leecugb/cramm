@@ -49,7 +49,7 @@ def main():
 
     assert res_a.index == res_b.index
     flips = int((res_a.num != res_b.num).sum())
-    print(f"total flips: {flips} (expect 62128)", flush=True)
+    print(f"total flips: {flips} (expect 63032)", flush=True)
     np.savez_compressed(
         OUT,
         num_a=res_a.num.reshape(res_a.r, res_a.c).astype(np.int32),

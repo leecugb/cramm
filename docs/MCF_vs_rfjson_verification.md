@@ -45,7 +45,7 @@
 - ⚠️ `kaolinite.5+muscoviteMedAl.5` 与 `alunite.5+kaolinite.5`:mcf 实物谱用 **KGa-1**(结晶好)高岭石,CRAMM 合成用 **KGa-2 (pxl)**(结晶差)——端元替换,2.17/2.21µm 双峰锐度不同,是有意的参考谱选择差异,论文中应注明。
 
 ### 3.2 CRAMM 纯新增(.mcf 中不存在)
-- **吸收中心仲裁窗口 `absorption_center_range`**:12 条规则,三族——白云母 4 条无缝拼接(medhighAl [2.195,2.200) / medAl [2.200,2.206) / lowAl [2.206,2.210) / Fe-rich [2.210,2.220) µm);绿泥石 4 条容差重叠(lowFe [2.245,2.248) / clinochlore [2.247,2.252) / clinochlore_Fe [2.251,2.25549) / thuringite [2.255,2.266) µm);碳酸盐 4 条重复窗(calcite 对 [2.334,2.350)、dolomite 对 [2.308,2.328) µm,声明式零翻转)
+- **吸收中心仲裁窗口 `absorption_center_range`**:12 条规则,三族——白云母 4 条无缝拼接(medhighAl [2.195,2.200) / medAl [2.200,2.206) / lowAl [2.206,2.210) / Fe-rich [2.210,2.220) µm);绿泥石 4 条无缝拼接(lowFe [2.245,2.248) / clinochlore [2.248,2.252) / clinochlore_Fe [2.252,2.256) / thuringite [2.256,2.266) µm);碳酸盐 4 条重复窗(calcite 对 [2.334,2.350)、dolomite 对 [2.308,2.328) µm,声明式零翻转)
 - **深度比约束 `max_depth_ratio_feat1_over_feat0`**:9 条规则(白云母×4 = 0.6,伊利石×2 = 0.6,高岭石-白云母混合×3 = 0.4)
 - **参考样本结构式标注 `structural_formula` / `structural_formula_tier`**:7 条规则。白云母族 4 条(muscovite_medhighAl=GDS113、muscovite_Fe-rich=GDS116、illite_gds4=GDS4 为 A 级湿法双价态;illite_imt1=IMt-1 为 B 级全铁约定),O=11 无水基,来源为 14 样本白云母族成分-带位标定数据集;绿泥石族 3 条(chlorite_lowFe=SMR-13、clinochlore=GDS158、clinochlore_Fe=SC-CCa-1/CCa-1),O₁₀(OH)₈ 基(无水 O=14),全部 B 级(Fe₂O₃(T) 报出、价态不分,绿泥石库无 FeO 分项;闭集归一使价态约定对带位建模零影响),来源为 chl13 绿泥石标定数据集,其中 CCa-1 化学采用 ECO clinochl_2 附属 Bartel XRF(splib 源表化学为错位数据)。纯元数据,不参与分类计算
 

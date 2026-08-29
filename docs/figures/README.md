@@ -8,8 +8,8 @@ hand-edited content.
 | Figure | Panels | Data sources |
 |---|---|---|
 | `fig_product_panels` | a mineral map · b color-enhanced map · c mus_center map · d chl_center map · e cal_center map | orthorectified GeoTIFFs of the full scene (production run archived in `D:/test/`, 2026-08-23) |
-| `fig_muscovite_arbitration` | a subtype map before arbitration (pure argmax) · b after (window arbitration) · c arbitrated mus_center distribution vs the four seamless windows · d flip-pair census | `data/num_ab.npz` (two-pass protocol of `arbitration_stats.py`, flips = 62,128 ✓ matches the archived census), `docs/arbitration_stats.json` |
-| `fig_chlorite_windows` | a the three rule reference spectra (continuum-removed; markers = 2250 nm band minima) · b deliberately overlapping windows (1 nm tolerance zones) · c chl13 calibration scatter (measured vs closed-form model) | bundled splib06b records 2047 / 2253 / 2371; `data/chl13_features.csv` (13-sample calibration archive) |
+| `fig_muscovite_arbitration` | a subtype map before arbitration (pure argmax) · b after (window arbitration) · c arbitrated mus_center distribution vs the four seamless windows · d flip-pair census | `data/num_ab.npz` (two-pass protocol of `arbitration_stats.py`, flips = 63,032 ✓ matches the archived census), `docs/arbitration_stats.json` |
+| `fig_chlorite_windows` | a the four rule reference spectra (continuum-removed; markers = 2250 nm band minima) · b tiling arbitration windows (seamless, deterministic) · c chl13 calibration scatter (measured vs closed-form model) | bundled splib06b records 2047 / 2253 / 2371 / 9262; `data/chl13_features.csv` (13-sample calibration archive) |
 | `fig_carbonate_anchors` | a the three rule reference spectra vs the documented seven-anchor C–O sequence, with the two duplicate arbitration windows · b scene cal_center histogram (5 nm bins) with windows | bundled splib06b records 1751 / 2986 / 8623; raw cal_center array of the production run |
 | `fig_performance_scaling` | a full-scene wall time vs workers · b speedup/throughput vs workers | `docs/benchmark.json` (authoritative 2026-08-23 run) |
 | `fig_scene_location` | granule footprint with corner coordinates | the L2A product's own per-pixel lon/lat arrays — no external data |
@@ -24,8 +24,8 @@ Honesty notes (keep these with the figures):
   manganoan — its minimum (~2333–2340 nm depending on continuum choice) is
   red-shifted from the pure-siderite anchor (~2327 nm).
 - `fig_chlorite_windows` panel c: 0.73 nm is the in-sample RMSE of the
-  closed-form model; the 1.0 nm figure quoted for the tolerance-window width
-  is the LOO-RMSE from the calibration archive.
+  closed-form model; the 1.0 nm figure quoted alongside it is the LOO-RMSE
+  from the calibration archive.
 - `fig_scene_location`: drawn without coastlines/borders because no basemap
   dataset was reachable at generation time. The footprint itself is exact
   (from the granule's geolocation fields): center ≈ 99.65°E, 41.03°N —

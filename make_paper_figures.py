@@ -6,7 +6,7 @@ Data sources (all in-repo or produced by archived scripts):
   - D:/test EMIT_*_orth.tiff       -> fig_products (five-panel product figure)
   - docs/figures/data/num_ab.npz   -> fig_muscovite_arbitration (before/after + histogram)
                                       (produced by save_num_maps.py, two-pass protocol of
-                                       arbitration_stats.py; flips verified = 62,128)
+                                       arbitration_stats.py; flips verified = 63,032)
   - D:/test raw npz / num_ab.npz   -> center histograms
   - cramm bundled splib06b         -> reference spectra (fig_carbonate, fig_chlorite)
   - docs/arbitration_stats.json    -> flip-pair counts
@@ -320,9 +320,9 @@ def fig_chlorite():
             ("clinochlore_Fe  SC-CCa-1.a (rec 2371)", 2371, OI["vermillion"]),
             ("thuringite  SMR-15.c (rec 9262)", 9262, OI["purple"])]
     windows = [("chlorite_lowFe", 2.245, 2.248, OI["green"]),
-               ("clinochlore", 2.247, 2.252, OI["blue"]),
-               ("clinochlore_Fe", 2.251, 2.25549, OI["vermillion"]),
-               ("thuringite", 2.255, 2.266, OI["purple"])]
+               ("clinochlore", 2.248, 2.252, OI["blue"]),
+               ("clinochlore_Fe", 2.252, 2.256, OI["vermillion"]),
+               ("thuringite", 2.256, 2.266, OI["purple"])]
 
     fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.8),
                              gridspec_kw={"width_ratios": [1.25, 1, 0.95]})
@@ -350,7 +350,7 @@ def fig_chlorite():
     ax.set_title("a  rule reference spectra\n(markers: 2250 nm band min)",
                  loc="left", fontsize=8)
 
-    # (b) window topology schematic: 1 nm overlaps = tolerance zones
+    # (b) window topology schematic: seamless tiling, deterministic arbitration
     ax = axes[1]
     y = 0.0
     for name, lo, hi, col in windows:
@@ -359,16 +359,16 @@ def fig_chlorite():
         ax.text(lo * 1000 - 0.6, y, name.replace("chlorite_", "chl_"),
                 ha="right", va="center", fontsize=6.5)
         y += 1.0
-    for lo, hi in ((2.247, 2.248), (2.251, 2.252), (2.255, 2.25549)):
-        ax.axvspan(lo * 1000, hi * 1000, color=OI["orange"], alpha=0.35)
-    ax.annotate("overlap = tolerance zone\n(pixel keeps its argmax label)",
-                xy=(2251.5, 1.5), xytext=(2257.5, 1.7), fontsize=6.5,
+    for seam in (2.248, 2.252, 2.256):
+        ax.axvline(seam * 1000, color="#555555", lw=0.6, ls=":")
+    ax.annotate("seamless tiling:\nevery in-range center hits\nexactly one window",
+                xy=(2252.0, 1.5), xytext=(2257.5, 1.5), fontsize=6.5,
                 arrowprops=dict(arrowstyle="->", lw=0.6))
     ax.set_xlim(2240, 2268)
     ax.set_ylim(-1.0, 3.8)
     ax.set_yticks([])
     ax.set_xlabel("Fe/Mg absorption center (nm)")
-    ax.set_title("b  deliberately overlapping windows", loc="left", fontsize=8)
+    ax.set_title("b  tiling arbitration windows", loc="left", fontsize=8)
 
     # (c) chl13 calibration: measured vs closed-form model pos2250
     import pandas as pd

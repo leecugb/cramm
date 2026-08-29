@@ -2,9 +2,9 @@
 
 Scene: `EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc` (1280x1242)
 Method: production rf.json (all windows) vs the same rules with every `absorption_center_range` stripped (pure argmax MICA); every NUM diff is a production flip by `_reassign_by_absorption_center`.
-Runtime: windowed 59.8s, pure-argmax 60.0s (n_workers=4).
+Runtime: windowed 358.7s, pure-argmax 251.9s (n_workers=4; wall times are machine-load dependent — the controlled benchmark measurement is 59.8s vs 60.0s, docs/benchmark.json).
 
-**Total flips: 62128**
+**Total flips: 63032**
 
 ## muscovite family
 
@@ -37,14 +37,17 @@ flip pairs (pure-argmax attribution -> arbitrated attribution):
 
 | rule | window | winners (A) | flips in | flips out | center range (um) |
 |---|---|---|---|---|---|
-| chlorite_lowFe | [2.245, 2.248] | 50 | 50 | 0 | [2.24469, 2.24725] |
-| clinochlore | [2.247, 2.252] | 13756 | 286 | 15019 | [2.24313, 2.26245] |
-| clinochlore_Fe | [2.251, 2.25549] | 17279 | 14969 | 286 | [2.24905, 2.26346] |
+| chlorite_lowFe | [2.245, 2.248] | 133 | 133 | 0 | [2.24469, 2.24853] |
+| clinochlore | [2.248, 2.252] | 13790 | 706 | 15405 | [2.24313, 2.25749] |
+| clinochlore_Fe | [2.252, 2.256] | 16964 | 15172 | 804 | [2.24905, 2.25718] |
+| thuringite | [2.256, 2.266] | 198 | 198 | 0 | [2.25570, 2.26350] |
 
 flip pairs (pure-argmax attribution -> arbitrated attribution):
-- clinochlore -> clinochlore_Fe: 14969
-- clinochlore_Fe -> clinochlore: 286
-- clinochlore -> chlorite_lowFe: 50
+- clinochlore -> clinochlore_Fe: 15172
+- clinochlore_Fe -> clinochlore: 706
+- clinochlore -> chlorite_lowFe: 133
+- clinochlore -> thuringite: 100
+- clinochlore_Fe -> thuringite: 98
 
 ## carbonate family
 
@@ -55,6 +58,7 @@ flip pairs (pure-argmax attribution -> arbitrated attribution):
 | dolomite_abundant | [2.308, 2.328] | 13594 | 0 | 0 | [2.31243, 2.32864] |
 | dolomite | [2.308, 2.328] | 26085 | 0 | 0 | [2.27947, 2.32923] |
 | carbonate_Fe_bearing | - | 1718 | 0 | 0 | [2.31531, 2.35009] |
+| calcite.5+dolomite.5 | - | 68206 | 0 | 0 | [2.29991, 2.34436] |
 
 no flips involving this family.
 

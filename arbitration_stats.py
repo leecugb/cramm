@@ -84,7 +84,9 @@ def main():
     lines.append(f"Method: production rf.json (all windows) vs the same rules with every "
                  f"`absorption_center_range` stripped (pure argmax MICA); every NUM diff is a "
                  f"production flip by `_reassign_by_absorption_center`.")
-    lines.append(f"Runtime: windowed {t_a:.1f}s, pure-argmax {t_b:.1f}s (n_workers=4).\n")
+    lines.append(f"Runtime: windowed {t_a:.1f}s, pure-argmax {t_b:.1f}s (n_workers=4; "
+                 f"wall times are machine-load dependent -- the controlled benchmark "
+                 f"measurement is 59.8s vs 60.0s, docs/benchmark.json).\n")
     lines.append(f"**Total flips: {int(flip_mask.sum())}**\n")
 
     for fam, (members, cen_attr) in FAMILIES.items():

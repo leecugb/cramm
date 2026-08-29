@@ -61,8 +61,8 @@ Everything is pure Python and GUI-free. Cross-platform:
   as a fourth thematic map and float array; a continuous Fe-content proxy
   anchored by the chl13 calibration (LOO 1.0 nm). The same center also
   re-arbitrates the lowFe / clinochlore / Fe-rich / thuringite attribution
-  against deliberately overlapping tolerance windows — intermediate
-  compositions keep their best-fit class, only clear outliers flip.
+  against calibrated wavelength windows that tile the 2.245–2.266 µm range
+  without overlap, so every in-range center arbitrates to exactly one subtype.
 - **Quantitative carbonate mapping** — per-pixel 2330 nm absorption-center
   wavelength (`cal_center`) for pixels won by the five carbonate rules,
   as a fifth thematic map and float array; band position tracks the
@@ -303,13 +303,11 @@ each reference spectrum's measured wv2200): medhighAl `[2.195, 2.200)`,
 medAl `[2.200, 2.206)`, lowAl `[2.206, 2.210)`, Fe-rich `[2.210, 2.220)` —
 the four windows tile the 2.195–2.220 µm range without overlap, so every
 valid center arbitrates to exactly one subtype. The four bundled
-pure-chlorite rules instead carry **overlapping** windows — lowFe
-`[2.245, 2.248)`, clinochlore `[2.247, 2.252)`, Fe-rich `[2.251, 2.25549)`,
-thuringite `[2.255, 2.266)` — whose overlaps (1 nm between the first
-three, 0.49 nm at the Fe-rich/thuringite seam) act as tolerance zones: an
-intermediate-composition
-pixel lands in two windows at once, is ambiguous by the rule above, and
-keeps its best-fit class (see *Application: reading chlorite Fe content
+pure-chlorite rules likewise carry **tiling** windows — lowFe
+`[2.245, 2.248)`, clinochlore `[2.248, 2.252)`, Fe-rich `[2.252, 2.256)`,
+thuringite `[2.256, 2.266)` — covering the 2.245–2.266 µm range without
+overlap, so every in-range `chl_center` also arbitrates deterministically
+to exactly one subtype (see *Application: reading chlorite Fe content
 from chl_center*). The four calcite/dolomite rules carry **duplicate**
 windows — calcite_abundant and calcite share `[2.334, 2.350)`;
 dolomite_abundant and dolomite share `[2.308, 2.328)` — pushing the
@@ -375,17 +373,14 @@ set (13 samples spanning xFe 0.014–0.553) the closed-form model
 `pos2250 = 2218.8·xAl + 2279.6·xFe + 2249.7·xMg` reproduces band positions
 with LOO-RMSE 1.0 nm — at the repeat-measurement noise floor — and the
 calibration is immune to the Fe²⁺/Fe³⁺ reporting convention (closure
-normalization cancels it exactly). Unlike the muscovite subtypes — whose
-windows tile their range without overlap — the four chlorite rules carry
-**deliberately overlapping tolerance windows**: lowFe `[2.245, 2.248)`,
-clinochlore `[2.247, 2.252)`, Fe-rich `[2.251, 2.25549)`, thuringite
-`[2.255, 2.266)` µm. A `chl_center`
-landing in an overlap hits two windows, is declared ambiguous, and keeps
-its argmax attribution (the four references are points on a composition
-continuum, so intermediate compositions must not be forced into a class);
-only a center falling exclusively inside another rule's window flips the
-attribution, with the center refitted once against the target rule's
-endpoints. Practical limits from the
+normalization cancels it exactly). Like the muscovite subtypes, the four
+chlorite rules carry **tiling windows** without overlap: lowFe `[2.245, 2.248)`,
+clinochlore `[2.248, 2.252)`, Fe-rich `[2.252, 2.256)`, thuringite
+`[2.256, 2.266)` µm. Every in-range `chl_center`
+therefore hits exactly one window and arbitrates deterministically to one
+subtype, with the center refitted once against the target rule's
+endpoints; only an invalid center or one outside every window keeps the
+argmax attribution. Practical limits from the
 calibration: quantitative inversion needs chlorite ≳50 % of the pixel and a
 comparable sample preparation; the 2350 nm Mg–OH band (cross-instrument
 anchor, bias ≈0.2 nm) is reserved for pure-mineral checks.

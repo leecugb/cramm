@@ -86,8 +86,8 @@ MUSCOVITE_MINERALS = [
 # mixture rules are excluded on purpose — their band position reflects the
 # mixture, not the chlorite composition (chl13 application boundary: band-
 # position inversion is quantitative only for chlorite >= ~50%). thuringite
-# carries the Fe-richest window ([2.255, 2.266), rf.json), extending the
-# arbitration sequence beyond clinochlore_Fe's [2.251, 2.25549).
+# carries the Fe-richest window ([2.256, 2.266), rf.json), extending the
+# arbitration sequence beyond clinochlore_Fe's [2.252, 2.256).
 CHLORITE_MINERALS = [
     "chlorite_lowFe",
     "clinochlore",

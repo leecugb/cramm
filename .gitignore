@@ -12,6 +12,8 @@ __pycache__/
 _gh_token.txt
 _api_push.py
 _md2pdf.py
+_inspect_*.py
+_plot_*.py
 _pdf_assets/
 README.pdf
 output/

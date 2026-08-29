@@ -1,10 +1,10 @@
 {
   "scene": "EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc",
   "runtime_s": {
-    "windowed": 59.8,
-    "pure_argmax": 60.0
+    "windowed": 358.7,
+    "pure_argmax": 251.9
   },
-  "total_flips": 62128,
+  "total_flips": 63032,
   "families": {
     "muscovite": {
       "muscovite_lowAl": {
@@ -126,35 +126,47 @@
           2.245,
           2.248
         ],
-        "winners": 50,
-        "flips_in": 50,
+        "winners": 133,
+        "flips_in": 133,
         "flips_out": 0,
-        "center_range": "[2.24469, 2.24725]"
+        "center_range": "[2.24469, 2.24853]"
       },
       "clinochlore": {
         "window": [
-          2.247,
+          2.248,
           2.252
         ],
-        "winners": 13756,
-        "flips_in": 286,
-        "flips_out": 15019,
-        "center_range": "[2.24313, 2.26245]"
+        "winners": 13790,
+        "flips_in": 706,
+        "flips_out": 15405,
+        "center_range": "[2.24313, 2.25749]"
       },
       "clinochlore_Fe": {
         "window": [
-          2.251,
-          2.25549
+          2.252,
+          2.256
         ],
-        "winners": 17279,
-        "flips_in": 14969,
-        "flips_out": 286,
-        "center_range": "[2.24905, 2.26346]"
+        "winners": 16964,
+        "flips_in": 15172,
+        "flips_out": 804,
+        "center_range": "[2.24905, 2.25718]"
+      },
+      "thuringite": {
+        "window": [
+          2.256,
+          2.266
+        ],
+        "winners": 198,
+        "flips_in": 198,
+        "flips_out": 0,
+        "center_range": "[2.25570, 2.26350]"
       },
       "flip_pairs": {
-        "clinochlore -> clinochlore_Fe": 14969,
-        "clinochlore -> chlorite_lowFe": 50,
-        "clinochlore_Fe -> clinochlore": 286
+        "clinochlore -> clinochlore_Fe": 15172,
+        "clinochlore -> thuringite": 100,
+        "clinochlore -> chlorite_lowFe": 133,
+        "clinochlore_Fe -> thuringite": 98,
+        "clinochlore_Fe -> clinochlore": 706
       }
     },
     "carbonate": {
@@ -204,6 +216,13 @@
         "flips_in": 0,
         "flips_out": 0,
         "center_range": "[2.31531, 2.35009]"
+      },
+      "calcite.5+dolomite.5": {
+        "window": "-",
+        "winners": 68206,
+        "flips_in": 0,
+        "flips_out": 0,
+        "center_range": "[2.29991, 2.34436]"
       },
       "flip_pairs": {}
     }
