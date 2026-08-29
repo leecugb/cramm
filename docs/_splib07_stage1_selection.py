@@ -254,7 +254,9 @@ for rec, s in selection.items():
     L.append(f"| {rec} | {', '.join(s['rules'])} | {s['splib06b_title']} | "
              f"`{s['splib07_record']}` | {s['r_vs_06b']} | {flag} |")
 L.append("")
-L.append(f"唯一实物参考谱 {len(selection)} 条；仪器匹配且特征全覆盖 {n_ok} 条。")
+L.append(f"唯一实物参考谱 {len(selection)} 条（51 条规则直接引用 + 2 条仅经权重 1.0 混合别名的 GDS212/213）；"
+         f"仪器匹配且特征全覆盖 {n_ok} 条。规则面口径：77 条规则消费 70 条唯一重采样参考"
+         f"（51 直接 + 19 混合，7 条为复用——6 组共享）。")
 L.append("")
 L.append("## 覆盖失败明细" if problems else "## 覆盖失败：无")
 for u, nm, span, missing in problems:

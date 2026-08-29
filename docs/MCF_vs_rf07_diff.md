@@ -8,6 +8,8 @@ rf_splib07.json 的 **77 条规则与 19 条混合配方同 rf.json 逐比特一
 
 因此 rf_splib07.json **不是**对 .mcf 的逐位保真移植——它是同规则、新参考的 v1.2.0 轨道；rf.json 保持不动，继续作为 .mcf 零差异保真基线。两轨道并存，由 `MicaEngine(rf_path=...)` 选择。
 
+**计数口径**：77 条规则 → 70 条唯一规则面参考（51 条直接引用 + 19 条混合谱；7 条复用——dry_veg_grass/dry_veg_nongrass/calcite/dolomite/serpentine_chrysotile 各 2 规则共享、serpentine_antigorite 3 规则共享）→ 53 条唯一实物记录（51 + 2 条仅经权重 1.0 别名引用的 GDS212/213）。
+
 ## 参考谱差异（53 条唯一实物参考）
 
 r = splib07 记录与 06b 原记录在 0.35–2.5 µm 公共网格上的 Pearson 相关（选谱阶段计算，同仪器同测量类型优先）。

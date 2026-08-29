@@ -60,7 +60,7 @@
 | 2196 | serpentine_chrysotile, serpentine_chrysotile_withsecondfeat | Chrysotile HS323.1B          W1R1Ba AREF | `Chrysotile_HS323.1B_BECKa_AREF` | 0.9999 | ✓ |
 | 9412 | topaz | Topaz HS184.3B               W1R1Bc AREF | `Topaz_HS184.3B_BECKb_AREF` | 0.9996 | ✓ |
 
-唯一实物参考谱 53 条；仪器匹配且特征全覆盖 53 条。
+唯一实物参考谱 53 条（51 条规则直接引用 + 2 条仅经权重 1.0 混合别名的 GDS212/213）；仪器匹配且特征全覆盖 53 条。规则面口径：77 条规则消费 70 条唯一重采样参考（51 直接 + 19 混合，7 条为复用——6 组共享）。
 
 ## 覆盖失败：无
 

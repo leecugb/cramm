@@ -5,8 +5,8 @@
 
 Covers:
   1. v07 rule file loads with zero splib06b dependency; get_resample exposes
-     exactly the 53 physical ids + 19 mixture ids; every rule's reference
-     resolves.
+     53 physical ids + 19 mixture ids; every rule's reference resolves; the
+     77 rule slots consume exactly 70 unique references (7 shared).
   2. Mixture synthesis is the same weighted sum of resampled endmembers as
      the legacy track (bit-exact recomputation).
   3. _resample_ fast path on the master grid (NaN-masked data) vs the slow
@@ -52,15 +52,23 @@ def test_load_and_resample_keys():
     resampled = clf.get_resample(W, BP)
     int_ids = {k for k in resampled if isinstance(k, int)}
     mix_ids = {k for k in resampled if not isinstance(k, int)}
+    # three counting levels:
+    #   53 physical records = 51 directly rule-referenced + 2 alias-only
+    #     (GDS212/213, reached only through weight-1.0 mixtures)
+    #   70 rule-facing unique references = 51 direct + 19 mixtures
+    #   77 rule slots = 70 + 7 shared references (6 sharing groups)
     assert len(int_ids) == 53, f"expected 53 physical ids, got {len(int_ids)}"
     assert mix_ids == set(clf.mixtures), "mixture keys mismatch"
     # every rule reference resolves to a resampled spectrum
+    rule_refs = set()
     for name, rule in clf.rf.items():
         rec = rule["reference"]["reflectance_record"]
         key = rec if isinstance(rec, int) else str(rec)
         assert key in resampled, f"{name}: reference {key} not resampled"
+        rule_refs.add(key)
         arr = resampled[key][CHANELS]
         assert (~np.isnan(arr)).sum() > 100, f"{name}: reference nearly empty on valid bands"
+    assert len(rule_refs) == 70, f"expected 70 rule-facing references, got {len(rule_refs)}"
 
 
 def test_mixture_synthesis_bitexact():
