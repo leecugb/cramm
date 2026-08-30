@@ -27,11 +27,14 @@ def test_npz_structure():
     assert grid.shape == (2151,)
     np.testing.assert_allclose(grid, np.arange(0.35, 2.5 + 5e-4, 0.001), rtol=0, atol=1e-12)
     assert spectra.shape == (len(keys), 2151)
-    assert len(set(keys)) == len(keys) == 53
+    assert len(set(keys)) == len(keys) == 58
     assert len(meta) == len(keys)
-    # selection table and npz must cover exactly the same records
+    # selection table (references + AMX aliases) and npz must cover exactly
+    # the same records
     sel = json.load(open(SELECTION, encoding="utf-8"))
-    assert set(keys) == {s["splib07_record"] for s in sel["references"].values()}
+    sel_keys = {s["splib07_record"] for s in sel["references"].values()}
+    amx_keys = {a["amx_record"] for a in sel["amx_mixture_aliases"]}
+    assert set(keys) == sel_keys | amx_keys
 
 
 def test_baked_matches_source_bitexact():

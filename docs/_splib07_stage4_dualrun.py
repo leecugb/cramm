@@ -66,7 +66,7 @@ def main():
     L = []
     L.append("# splib07 迁移 · 阶段4 全场景双跑差异普查")
     L.append("")
-    L.append("> 日期：2026-08-29 ｜ 脚本：`docs/_splib07_stage4_dualrun.py` ｜ 场景：EMIT_L2A_RFL_001_20220819T061448_2223104_025")
+    L.append("> 日期：2026-08-30（AMX 别名后重建 v07 黄金）｜ 脚本：`docs/_splib07_stage4_dualrun.py` ｜ 场景：EMIT_L2A_RFL_001_20220819T061448_2223104_025")
     L.append("> 双轨：legacy=rf.json+splib06b（与 golden_arrays.npz 逐位一致，已验证）；v07=rf_splib07.json+rf07_spectra.npz。")
     L.append("")
     L.append("## 五图层差异普查")

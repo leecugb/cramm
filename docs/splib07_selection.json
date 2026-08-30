@@ -1409,16 +1409,99 @@
    }
   }
  },
- "synthetic_mixes": [
+ "amx_mixture_aliases": [
   {
-   "rule": "pyrophyllite.25+kaolinite.75",
-   "mix_id": "mix_7737",
-   "endmembers": {
-    "7893": "Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF",
-    "5088": "Kaolinite_CM9_NIC4bbb_RREF"
+   "mix_id": "mix_7821",
+   "rule": "calcite.5+dolomite.5",
+   "recipe": {
+    "1751": 0.5,
+    "2986": 0.5
    },
-   "all_selected": true
+   "amx_record": "Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF",
+   "amx_name": "Calcite.5+Dolomite.5_AMX8",
+   "synthetic_rec": 90008,
+   "sensor": "ASDNG",
+   "quality": "b",
+   "mtype": "AREF",
+   "r_vs_synth_v07": 0.9944,
+   "maxdiff_vs_synth_v07": 0.0636,
+   "r_vs_synth_06b": 0.9946,
+   "new_nan_bands_vs_synth": 0
   },
+  {
+   "mix_id": "mix_7715",
+   "rule": "dolomite.5+montmorilloniteCa.5",
+   "recipe": {
+    "2986": 0.5,
+    "6120": 0.5
+   },
+   "amx_record": "Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF",
+   "amx_name": "Dolomite.5+Ca-Mont.5_AMX10",
+   "synthetic_rec": 90010,
+   "sensor": "ASDNG",
+   "quality": "b",
+   "mtype": "AREF",
+   "r_vs_synth_v07": 0.9655,
+   "maxdiff_vs_synth_v07": 0.0667,
+   "r_vs_synth_06b": 0.9653,
+   "new_nan_bands_vs_synth": 0
+  },
+  {
+   "mix_id": "mix_7711",
+   "rule": "dolomite.5+montmorilloniteNa.5",
+   "recipe": {
+    "2986": 0.5,
+    "6200": 0.5
+   },
+   "amx_record": "Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF",
+   "amx_name": "Dolomite.5+Na-Mont.5_AMX21",
+   "synthetic_rec": 90021,
+   "sensor": "ASDNG",
+   "quality": "b",
+   "mtype": "AREF",
+   "r_vs_synth_v07": 0.9618,
+   "maxdiff_vs_synth_v07": 0.0695,
+   "r_vs_synth_06b": 0.9616,
+   "new_nan_bands_vs_synth": 0
+  },
+  {
+   "mix_id": "mix_7745",
+   "rule": "kaolinite.5+muscoviteMedhighAl.5",
+   "recipe": {
+    "5088": 0.5,
+    "6348": 0.5
+   },
+   "amx_record": "Kaol_Wxl+0.5Musc_Ruby_AMX12_ASDNGa_AREF",
+   "amx_name": "Kaol_Wxl+0.5Musc_Ruby_AMX12",
+   "synthetic_rec": 90012,
+   "sensor": "ASDNG",
+   "quality": "a",
+   "mtype": "AREF",
+   "r_vs_synth_v07": 0.9758,
+   "maxdiff_vs_synth_v07": 0.2074,
+   "r_vs_synth_06b": 0.9757,
+   "new_nan_bands_vs_synth": 0
+  },
+  {
+   "mix_id": "mix_7737",
+   "rule": "pyrophyllite.25+kaolinite.75",
+   "recipe": {
+    "7893": 0.25,
+    "5088": 0.75
+   },
+   "amx_record": "Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF",
+   "amx_name": "Pyrophyl.25+wxlKaol.75_AMX17",
+   "synthetic_rec": 90017,
+   "sensor": "ASDNG",
+   "quality": "b",
+   "mtype": "AREF",
+   "r_vs_synth_v07": 0.9182,
+   "maxdiff_vs_synth_v07": 0.1909,
+   "r_vs_synth_06b": 0.9181,
+   "new_nan_bands_vs_synth": 0
+  }
+ ],
+ "synthetic_mixes": [
   {
    "rule": "gypsum.6+montmorilloniteNa.4",
    "mix_id": "mix_7723",
@@ -1456,29 +1539,11 @@
    "all_selected": true
   },
   {
-   "rule": "kaolinite.5+muscoviteMedhighAl.5",
-   "mix_id": "mix_7745",
-   "endmembers": {
-    "5088": "Kaolinite_CM9_NIC4bbb_RREF",
-    "6348": "Muscovite_GDS113_Ruby_NIC4aaa_RREF"
-   },
-   "all_selected": true
-  },
-  {
    "rule": "clinochlore_Fe.3+muscovite.7",
    "mix_id": "mix_7749",
    "endmembers": {
     "2371": "Clinochlore_Fe_SC-CCa-1.a_NIC4aa_RREF",
     "6258": "Muscovite_CU93-1_low-Al_Phyl_NIC4b_RREF"
-   },
-   "all_selected": true
-  },
-  {
-   "rule": "calcite.5+dolomite.5",
-   "mix_id": "mix_7821",
-   "endmembers": {
-    "1751": "Calcite_WS272_BECKa_AREF",
-    "2986": "Dolomite_HS102.3B_BECKb_AREF"
    },
    "all_selected": true
   },
@@ -1546,24 +1611,6 @@
     "6258": "Muscovite_CU93-1_low-Al_Phyl_NIC4b_RREF"
    },
    "all_selected": true
-  },
-  {
-   "rule": "dolomite.5+montmorilloniteNa.5",
-   "mix_id": "mix_7711",
-   "endmembers": {
-    "2986": "Dolomite_HS102.3B_BECKb_AREF",
-    "6200": "Montmorillonite_SWy-1_NIC4bcc_RREF"
-   },
-   "all_selected": true
-  },
-  {
-   "rule": "dolomite.5+montmorilloniteCa.5",
-   "mix_id": "mix_7715",
-   "endmembers": {
-    "2986": "Dolomite_HS102.3B_BECKb_AREF",
-    "6120": "Montmorillonite_SAz-1_NIC4bb_RREF"
-   },
-   "all_selected": true
   }
  ],
  "adjudications": [
@@ -1571,6 +1618,16 @@
    "rule": "dry_veg_nongrass(+_2_3um)",
    "issue": "splib07 LP-Needles-3 sole record r=0.884 (re-measurement)",
    "decision": "accept splib07 record; caveat documented"
+  },
+  {
+   "rule": "5 条 AMX 直接映射混合规则",
+   "issue": "AMX 计算混合谱与按 .mcf 配方从新端元合成的谱存在有界差异（AMX 由 USGS 用其自择端元记录预先计算，r=0.918–0.994），但样品与配比和 .mcf 配方一致",
+   "decision": "采纳 AMX 实物记录，以权重 1.0 别名接入（合成 rec id 90008+）"
+  },
+  {
+   "rule": "mix_7703 / mix_7741 / mix_7707",
+   "issue": "AMX3/AMX13 的高岭石端元为 KGa-1（.mcf 用 KGa-2=rec 5167）、AMX14 的矾石端元为 HS295（.mcf 用 GDS96=rec 596）——端元样品不一致",
+   "decision": "拒绝映射，维持按 .mcf 配方端元合成"
   }
  ]
 }

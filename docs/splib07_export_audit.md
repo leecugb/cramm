@@ -1,8 +1,9 @@
 # splib07 迁移 · 阶段2 导出审计
 
-> 日期：2026-08-29 ｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`
+> 日期：2026-08-30（AMX 别名增补）｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`
 > 审计口径：原生有效样本 vs 1 nm 主网格烘焙谱，分别经引擎 `_resample_` 重采样到真实 EMIT 网格后比较。
 > NIC4 ~0.93 nm→1 nm 轻微降采样的影响即体现在 max|Δ| 列；filled = 烘焙按构造填掉的 FWHM 空洞（遗产改善）；new holes 必须为 0。
+> 记录构成：53 条选谱参考 + 5 条 AMX 计算混合记录（90008+ 合成 rec id，权重 1.0 别名接入）= 58 条。
 
 | 记录 | 传感器 | r | max\|Δ\| | 填洞数 | 新增空洞 |
 |---|---|---|---|---|---|
@@ -59,6 +60,23 @@
 | `Antigorite_NMNH96917.a_gt250_BECKb_AREF` | BECK | 0.999756 | 1.68e-02 | 19 | 0 |
 | `Chrysotile_HS323.1B_BECKa_AREF` | BECK | 0.999032 | 1.80e-02 | 19 | 0 |
 | `Topaz_HS184.3B_BECKb_AREF` | BECK | 0.996156 | 1.03e-01 | 19 | 0 |
+| `Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF` | ASDNG | 1.000000 | 4.51e-08 | 0 | 0 |
+| `Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF` | ASDNG | 1.000000 | 6.71e-08 | 0 | 0 |
+| `Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF` | ASDNG | 1.000000 | 6.20e-08 | 0 | 0 |
+| `Kaol_Wxl+0.5Musc_Ruby_AMX12_ASDNGa_AREF` | ASDNG | 1.000000 | 2.72e-07 | 0 | 0 |
+| `Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF` | ASDNG | 1.000000 | 2.49e-07 | 0 | 0 |
+
+## AMX 计算混合记录（5 条别名）
+
+5 条 .mcf 混合配方在 splib07 有同样品同配比的 AMX 预计算面积混合记录，烘焙后以权重 1.0 别名接入（见阶段 1 选别与 `docs/MCF_vs_rf07_diff.md`）。AMX 由 USGS 用其自择端元记录预先计算，与本表端元的数值加权和存在有界差异：
+
+| mix_id | 规则 | AMX 记录 | r(v07 合成) | max\|Δ\| | r(06b 合成) |
+|---|---|---|---|---|---|
+| mix_7821 | calcite.5+dolomite.5 | `Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF` | 0.9944 | 0.0636 | 0.9946 |
+| mix_7715 | dolomite.5+montmorilloniteCa.5 | `Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF` | 0.9655 | 0.0667 | 0.9653 |
+| mix_7711 | dolomite.5+montmorilloniteNa.5 | `Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF` | 0.9618 | 0.0695 | 0.9616 |
+| mix_7745 | kaolinite.5+muscoviteMedhighAl.5 | `Kaol_Wxl+0.5Musc_Ruby_AMX12_ASDNGa_AREF` | 0.9758 | 0.2074 | 0.9757 |
+| mix_7737 | pyrophyllite.25+kaolinite.75 | `Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF` | 0.9182 | 0.1909 | 0.9181 |
 
 ## 完整性核验
 

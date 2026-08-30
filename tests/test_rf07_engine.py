@@ -5,10 +5,12 @@
 
 Covers:
   1. v07 rule file loads with zero splib06b dependency; get_resample exposes
-     53 physical ids + 19 mixture ids; every rule's reference resolves; the
+     58 physical ids + 19 mixture ids; every rule's reference resolves; the
      77 rule slots consume exactly 70 unique references (7 shared).
   2. Mixture synthesis is the same weighted sum of resampled endmembers as
-     the legacy track (bit-exact recomputation).
+     the legacy track (bit-exact recomputation); the 5 AMX-aliased mixes are
+     weight-1.0 aliases of baked AMX records, so the identity holds for them
+     trivially.
   3. _resample_ fast path on the master grid (NaN-masked data) vs the slow
      boolean reference implementation: bit-exact.
   4. Serial vs parallel spectrum_analysis on a synthetic cube under the v07
@@ -53,11 +55,13 @@ def test_load_and_resample_keys():
     int_ids = {k for k in resampled if isinstance(k, int)}
     mix_ids = {k for k in resampled if not isinstance(k, int)}
     # three counting levels:
-    #   53 physical records = 51 directly rule-referenced + 2 alias-only
+    #   58 physical records = 51 directly rule-referenced + 2 alias-only
     #     (GDS212/213, reached only through weight-1.0 mixtures)
+    #     + 5 AMX calculated-mixture records (90008/90010/90012/90017/90021,
+    #     reached through weight-1.0 aliases of mix_7821/7715/7711/7745/7737)
     #   70 rule-facing unique references = 51 direct + 19 mixtures
     #   77 rule slots = 70 + 7 shared references (6 sharing groups)
-    assert len(int_ids) == 53, f"expected 53 physical ids, got {len(int_ids)}"
+    assert len(int_ids) == 58, f"expected 58 physical ids, got {len(int_ids)}"
     assert mix_ids == set(clf.mixtures), "mixture keys mismatch"
     # every rule reference resolves to a resampled spectrum
     rule_refs = set()
@@ -75,7 +79,13 @@ def test_mixture_synthesis_bitexact():
     e = eng07()
     clf = e._classifier
     resampled = clf.get_resample(W, BP)
+    amx_alias = {"mix_7821", "mix_7715", "mix_7711", "mix_7745", "mix_7737"}
     for mix_id, components in clf.mixtures.items():
+        if mix_id in amx_alias:
+            # weight-1.0 alias of a baked AMX physical record (90000+ id)
+            assert len(components) == 1
+            comp_id, weight = next(iter(components.items()))
+            assert weight == 1.0 and int(comp_id) >= 90000
         expect = np.zeros_like(W, dtype="float64")
         for comp_id, weight in components.items():
             expect = expect + resampled[int(comp_id)] * weight

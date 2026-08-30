@@ -1,16 +1,19 @@
-# Stage 2 of splib07 migration: bake the 53 selected splib07 records onto the
-# 1 nm master grid (350-2500 nm) and export cramm/data/rf07_spectra.npz.
+# Stage 2 of splib07 migration: bake the 53 selected splib07 records plus the
+# 5 AMX calculated-mixture records (direct counterparts of 5 .mcf mix recipes)
+# onto the 1 nm master grid (350-2500 nm) and export cramm/data/rf07_spectra.npz.
 #
 # Format (D2 addendum):
 #   grid    (2151,) float64   master wavelength grid, um
-#   keys    (53,)   str       "<name>_<sensor><quality>_<mtype>" (rf_splib07.json refs)
-#   spectra (53, 2151) float64 piecewise-linear bake; NaN outside the record's
+#   keys    (58,)   str       "<name>_<sensor><quality>_<mtype>" (rf_splib07.json refs)
+#   spectra (58, 2151) float64 piecewise-linear bake; NaN outside the record's
 #                             valid sample range; interior deletion gaps bridged
 #   meta    ()      str       JSON list of per-record provenance
 #
-# Mixtures are NOT baked: rf.json synthesizes them AFTER resampling the
-# endmembers to the sensor grid (get_resample); the v07 engine branch keeps
-# the exact same order, so only physical records live in the npz.
+# Mixtures are NOT baked EXCEPT the 5 AMX aliases: rf.json synthesizes mixes
+# AFTER resampling the endmembers to the sensor grid (get_resample); the v07
+# engine branch keeps the exact same order for the 12 synthesized mixes, while
+# the 5 AMX-aliased mixes resolve to their baked AMX record via a weight-1.0
+# alias (GDS212/213 precedent), so they live in the npz as physical records.
 #
 # Audit (docs/splib07_export_audit.md): for every record, native-vs-baked
 # resampled onto the real EMIT grid via the engine kernel -- max abs diff,
@@ -99,6 +102,40 @@ for rec06, s in SEL["references"].items():
     new_holes = int((~np.isnan(rn) & np.isnan(rb)).sum())
     audit.append((key, s["sensor"], r, maxd, filled, new_holes))
 
+# ---- AMX calculated-mixture records (aliased by 5 mix rules) ----
+for a in SEL["amx_mixture_aliases"]:
+    key = a["amx_record"]
+    if key not in by_key:
+        raise KeyError(f"splib07 AMX record not found: {key}")
+    spec = lib.load(by_key[key])
+    wl, sp = valid_samples(spec)
+    baked = bake(wl, sp)
+    keys.append(key)
+    spectra.append(baked)
+    meta.append({
+        "key": key,
+        "splib07": {"name": a["amx_name"], "sensor": a["sensor"],
+                    "quality": a["quality"], "mtype": a["mtype"]},
+        "splib06b_rec": a["synthetic_rec"],
+        "splib06b_title": f"AMX calculated mixture, alias of {a['mix_id']}",
+        "amx_alias_of": a["mix_id"],
+        "amx_recipe": a["recipe"],
+        "rules": [a["rule"]],
+        "r_vs_06b": a["r_vs_synth_06b"],
+        "r_vs_synth_v07": a["r_vs_synth_v07"],
+        "native_valid_samples": int(len(wl)),
+        "native_range_um": [round(float(wl[0]), 4), round(float(wl[-1]), 4)],
+        "baked_valid_points": int((~np.isnan(baked)).sum()),
+    })
+    rn = resample_native(wl, sp)
+    rb = _resample_(GRID, baked, EMIT_W, EMIT_BP)
+    both = ~np.isnan(rn) & ~np.isnan(rb)
+    r = float(np.corrcoef(rn[both], rb[both])[0, 1]) if both.sum() > 10 else None
+    maxd = float(np.abs(rn[both] - rb[both]).max()) if both.any() else None
+    filled = int((np.isnan(rn) & ~np.isnan(rb)).sum())
+    new_holes = int((~np.isnan(rn) & np.isnan(rb)).sum())
+    audit.append((key, a["sensor"], r, maxd, filled, new_holes))
+
 spectra = np.vstack(spectra)
 out_npz = r"d:\CRAMM\cramm\data\rf07_spectra.npz"
 np.savez(out_npz,
@@ -117,8 +154,7 @@ print(f"wrote {out_npz}: {len(keys)} records x {len(GRID)} grid points, "
 #     integrity failure; report the worst as information.
 worst_aligned = 0.0
 worst_rep, worst_rep_key = 0.0, None
-for rec06, s in SEL["references"].items():
-    key = s["splib07_record"]
+for key in keys:
     wl, sp = valid_samples(lib.load(by_key[key]))
     m = (wl >= GRID[0]) & (wl <= GRID[-1])
     i = keys.index(key)
@@ -138,9 +174,10 @@ print(f"non-aligned reproduction max|diff| at kink points: {worst_rep:.3e} ({wor
 L = []
 L.append("# splib07 迁移 · 阶段2 导出审计")
 L.append("")
-L.append("> 日期：2026-08-29 ｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`")
+L.append("> 日期：2026-08-30（AMX 别名增补）｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`")
 L.append("> 审计口径：原生有效样本 vs 1 nm 主网格烘焙谱，分别经引擎 `_resample_` 重采样到真实 EMIT 网格后比较。")
 L.append("> NIC4 ~0.93 nm→1 nm 轻微降采样的影响即体现在 max|Δ| 列；filled = 烘焙按构造填掉的 FWHM 空洞（遗产改善）；new holes 必须为 0。")
+L.append("> 记录构成：53 条选谱参考 + 5 条 AMX 计算混合记录（90008+ 合成 rec id，权重 1.0 别名接入）= 58 条。")
 L.append("")
 L.append("| 记录 | 传感器 | r | max\\|Δ\\| | 填洞数 | 新增空洞 |")
 L.append("|---|---|---|---|---|---|")
@@ -150,6 +187,18 @@ for key, sensor, r, maxd, filled, holes in audit:
     if holes:
         bad += 1
     L.append(f"| `{key}` | {sensor} | {r:.6f} | {maxd:.2e} | {filled} | {holes}{flag} |")
+L.append("")
+L.append("## AMX 计算混合记录（5 条别名）")
+L.append("")
+L.append("5 条 .mcf 混合配方在 splib07 有同样品同配比的 AMX 预计算面积混合记录，"
+         "烘焙后以权重 1.0 别名接入（见阶段 1 选别与 `docs/MCF_vs_rf07_diff.md`）。"
+         "AMX 由 USGS 用其自择端元记录预先计算，与本表端元的数值加权和存在有界差异：")
+L.append("")
+L.append("| mix_id | 规则 | AMX 记录 | r(v07 合成) | max\\|Δ\\| | r(06b 合成) |")
+L.append("|---|---|---|---|---|---|")
+for a in SEL["amx_mixture_aliases"]:
+    L.append(f"| {a['mix_id']} | {a['rule']} | `{a['amx_record']}` | "
+             f"{a['r_vs_synth_v07']} | {a['maxdiff_vs_synth_v07']} | {a['r_vs_synth_06b']} |")
 L.append("")
 L.append("## 完整性核验")
 L.append("")
