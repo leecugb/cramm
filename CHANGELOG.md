@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.2.4 — AMX 变体审计：撤 AMX17 别名、AMX12 改接 NIC4a（2026-08-31）
+
+- **根因**：USGS 按仪器分别计算 AMX 面积混合谱——BECK/NIC4 变体与同仪器端元的
+  配方合成 r=1.0000（配方保真），但 v1.2.1 的"同质量优先 ASDNG（恒等烘焙）"
+  策略未逐变体验证配方保真度。用户报告 27 号规则没有正确匹配，属实。
+- **撤销 mix_7737↔AMX17 别名**（27 号 pyrophyllite.25+kaolinite.75）：
+  AMX17_ASDNGb 与配方合成 r 仅 0.805（与任何 ASDNG 端元组合最高 0.956，
+  该变体不遵循配方）；NIC4b 变体配方保真（对配方合成 r=0.998，与同仪器端元
+  合成 1.0000；独立佐证：`docs/library_validation_report.txt` 中 AMX17 仅
+  NIC4 变体以 0.9999 命中本规则），但引擎端元合成
+  （0.25×PYS1A_NIC4+0.75×CM9_NIC4）与 AMX17_NIC4b 本身 r=0.9983——
+  别名无额外保真度，按 AMX3/13/14 先例回到引擎端元合成。
+- **mix_7745↔AMX12 改接 NIC4a 变体**（kaolinite.5+muscoviteMedhighAl.5）：
+  对配方合成 r 0.897（ASDNGa）→ 0.985（NIC4a）。
+- AMX 别名 5→4 条，npz 实物记录 58→57；AMX 别名对配方合成最小 r 0.9182→0.9618；
+  线性合成规则 12→13 条（规则面口径不变：77 规则 / 70 唯一规则面参考）。
+- `golden_arrays_v07.npz` 已按更正后轨道重建；legacy 轨道不受影响（rf.json 不动）。
+
 ## v1.2.3 — illite_gds4 splib07 记录换全覆盖重测版（2026-08-31）
 
 - **illite_gds4（splib06b rec 4625）参考谱更换**：原按 D1-A 同仪器策略选

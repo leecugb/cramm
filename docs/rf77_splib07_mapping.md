@@ -28,7 +28,7 @@
 | 24 | alunite_K_250C | rec 596 | Alunite_GDS96_K_Syn_(250C)_NIC4a_RREF |
 | 25 | alunite_Na_450C | rec 655 | Alunite_RES-3_Na_Syn_(450C)_NIC4a_RREF |
 | 26 | pyrophyllite | rec 7893 | Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF |
-| 27 | pyrophyllite.25+kaolinite.75 | mix 0.25x7893+0.75x5088 | Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF [AMX] |
+| 27 | pyrophyllite.25+kaolinite.75 | mix 0.25x7893+0.75x5088 | synth 0.25xPyrophyllite+0.75xKaolinite |
 | 28 | jarosite_Na | rec 4819 | Jarosite_GDS24_Na_NIC4bbb_RREF |
 | 29 | jarosite_K | rec 4875 | Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF |
 | 30 | montmorillonite_Na | rec 6200 | Montmorillonite_SWy-1_NIC4bcc_RREF |
@@ -46,7 +46,7 @@
 | 42 | alunite.5+kaolinite.5 | mix 0.5x596+0.5x5167 | synth 0.5xAlunite+0.5xKaolinite |
 | 43 | alunite.25+kaolinite.75 | mix 0.25x596+0.75x5088 | synth 0.25xAlunite+0.75xKaolinite |
 | 44 | kaolinite.5+muscoviteMedAl.5 | mix 0.5x5167+0.5x11117 | synth 0.5xKaolinite+0.5xMuscovite-medlowAl |
-| 45 | kaolinite.5+muscoviteMedhighAl.5 | mix 0.5x5088+0.5x6348 | Kaol_Wxl+0.5Musc_Ruby_AMX12_ASDNGa_AREF [AMX] |
+| 45 | kaolinite.5+muscoviteMedhighAl.5 | mix 0.5x5088+0.5x6348 | Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF [AMX] |
 | 46 | kaolinite+muscovite_mix_intimate | rec 10851 | Kaol+Muscov_intimate_CU93-5C_BECKa_AREF |
 | 47 | kaolinite+smectite_mix_intimate | rec 10930 | Kaolin_Smect_H89-FR-2_.5Kao_NIC4bb_RREF |
 | 48 | jarosite+muscovite_mix_intimate | rec 11106 | Muscov+Jaros_CU93-314_coatng_BECKb_AREF |

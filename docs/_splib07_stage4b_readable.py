@@ -37,7 +37,7 @@ def label(rgb, layer):
 L = []
 L.append("# splib07 迁移 · 阶段4 全场景双跑差异普查")
 L.append("")
-L.append("> 日期：2026-08-30（AMX 别名后重建 v07 黄金）｜ 脚本：`docs/_splib07_stage4_dualrun.py`（双跑）+ `docs/_splib07_stage4b_readable.py`（类别解码）")
+L.append("> 日期：2026-08-31（AMX 变体审计后重建 v07 黄金：撤 AMX17 别名、AMX12 改接 NIC4a）｜ 脚本：`docs/_splib07_stage4_dualrun.py`（双跑）+ `docs/_splib07_stage4b_readable.py`（类别解码）")
 L.append("> 场景：EMIT_L2A_RFL_001_20220819T061448_2223104_025（1280×1242，1,589,760 像元）")
 L.append("> 双轨：legacy=rf.json+splib06b（与 golden_arrays.npz 逐位一致，已验证）；v07=rf_splib07.json+rf07_spectra.npz。")
 L.append("> 图层语义：orth_rgb = 硬分类胜出类彩色图（非真彩色场景合成）；color_enhanced = HSI 增强（受 fit/depth 连续量调制，对微小拟合分差异敏感）；"

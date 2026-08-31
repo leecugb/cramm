@@ -230,17 +230,25 @@ for rec, users in rec_rules.items():
         "coverage": cov,
     }
 
-# synthetic mixes: 5 have a recipe-exact calculated areal mixture in splib07
-# (AMX series) and are aliased to it; the other 12 stay engine-synthesized.
+# synthetic mixes: 4 have a recipe-exact calculated areal mixture in splib07
+# (AMX series) and are aliased to it; the other 13 stay engine-synthesized.
+# 2026-08-31 variant audit: USGS computes each AMX mixture PER INSTRUMENT
+# (BECK/NIC4 variants reproduce the recipe synthesis from same-instrument
+# endmembers at r=1.0000). The earlier blanket "prefer ASDNG for identity
+# bake" policy is wrong where the ASDNG variant itself deviates from the
+# recipe: AMX17_ASDNGb matches its own recipe synthesis at only r=0.805
+# (NIC4b: 0.998) and was REJECTED (mix_7737 back to endmember synthesis);
+# AMX12 was switched ASDNGa -> NIC4a (r 0.897 -> 0.985 vs recipe synthesis).
 AMX_MAP = OrderedDict([  # mix_id -> (splib07 record key, synthetic rec id)
     ("mix_7821", ("Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF", 90008)),
     ("mix_7715", ("Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF", 90010)),
     ("mix_7711", ("Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF", 90021)),
-    ("mix_7745", ("Kaol_Wxl+0.5Musc_Ruby_AMX12_ASDNGa_AREF", 90012)),
-    ("mix_7737", ("Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF", 90017)),
+    ("mix_7745", ("Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF", 90012)),
 ])
-# instrument policy: among same-quality AMX variants prefer ASDNG -- integer-nm
-# grid makes the master-grid bake an identity copy (BECK 10 nm would not be).
+# instrument policy: among AMX variants verified against the recipe synthesis
+# (see audit above), prefer ASDNG when it is recipe-faithful -- integer-nm grid
+# makes the master-grid bake an identity copy (BECK 10 nm would not be);
+# otherwise take the recipe-faithful variant (AMX12 -> NIC4a).
 by_key = {f"{r.name}_{r.sensor}{r.quality}_{r.mtype}": r for r in lib.records}
 amx_report = []
 for mix_id, (key, synth_rec) in AMX_MAP.items():
@@ -309,11 +317,24 @@ out = {
                   "红边+液态水吸收），并非对应记录——v1.2.0/v1.2.1 曾按名称精确匹配"
                   "误选后者并裁决'仅存重测记录'，该裁决依据错误",
          "decision": "映射更正为 LP-Needles-2_ASDFRa_AREF（同样品族、同仪器 ASDFRa AREF）"},
-        {"rule": "5 条 AMX 直接映射混合规则",
+        {"rule": "4 条 AMX 直接映射混合规则",
          "issue": "AMX 计算混合谱与按 .mcf 配方从新端元合成的谱存在有界差异"
-                  "（AMX 由 USGS 用其自择端元记录预先计算，r=0.918–0.994），"
-                  "但样品与配比和 .mcf 配方一致",
-         "decision": "采纳 AMX 实物记录，以权重 1.0 别名接入（合成 rec id 90008+）"},
+                  "（AMX 由 USGS 用其自择端元记录预先计算，r=0.96–0.99），"
+                  "但样品与配比和 .mcf 配方一致；2026-08-31 变体审计确认 USGS "
+                  "按仪器分别计算 AMX 混合（BECK/NIC4 变体与同仪器端元合成 "
+                  "r=1.0000），下列 4 条选定变体均经配方合成核对",
+         "decision": "采纳 AMX 实物记录，以权重 1.0 别名接入（合成 rec id 90008+）；"
+                     "AMX12 由 ASDNGa 改接 NIC4a 变体（对配方合成 r 0.897→0.985）"},
+        {"rule": "mix_7737（pyrophyllite.25+kaolinite.75，27 号规则）",
+         "issue": "v1.2.1–v1.2.3 按'同质量优先 ASDNG'策略别名的 "
+                  "Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF 与配方合成 r 仅 0.805"
+                  "（用户报告 27 号没有正确匹配，属实）——USGS 按仪器分别计算 AMX，"
+                  "其 ASDNG 变体不遵循配方（与任何 ASDNG 端元组合最高 r=0.956），"
+                  "而 NIC4b 变体与配方合成 r=0.998、与同仪器端元合成 r=1.0000；"
+                  "引擎端元合成（0.25×PYS1A_NIC4+0.75×CM9_NIC4）与 AMX17_NIC4b "
+                  "本身 r=0.9983，别名不带来额外保真度",
+         "decision": "拒绝 AMX17 别名，mix_7737 回到引擎端元合成"
+                     "（同 AMX3/13/14 拒绝先例）；npz 记录 58→57"},
         {"rule": "mix_7703 / mix_7741 / mix_7707",
          "issue": "AMX3/AMX13 的高岭石端元为 KGa-1（.mcf 用 KGa-2=rec 5167）、"
                   "AMX14 的矾石端元为 HS295（.mcf 用 GDS96=rec 596）——端元样品不一致",
@@ -328,7 +349,8 @@ L = []
 L.append("# splib07 迁移 · 阶段1 选谱表与特征覆盖校验")
 L.append("")
 L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正：LP-Needles-3→LP-Needles-2；"
-         "illite_gds4 覆盖裁决：BECKb→ASDNGb，恢复 1.4 µm 真实数据）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`")
+         "illite_gds4 覆盖裁决：BECKb→ASDNGb，恢复 1.4 µm 真实数据；"
+         "AMX 变体审计：撤 AMX17 别名、AMX12 改接 NIC4a）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`")
 L.append("> 策略 D1-A：同仪器+同测量类型优先，组内质量最高、r 最高者胜出。")
 L.append("> 覆盖判据（引擎口径）：splib07 记录先按 D2 增补烘焙到 1 nm 主网格"
          "（分段线性插值、量程外 NaN、内部删除带线性桥接——烘焙后 Beckman 10 nm 采样的"
@@ -349,15 +371,18 @@ for rec, s in selection.items():
 L.append("")
 L.append(f"唯一实物参考谱 {len(selection)} 条（51 条规则直接引用 + 2 条仅经权重 1.0 混合别名的 GDS212/213）；"
          f"仪器匹配（或裁决覆盖）且特征全覆盖 {n_ok} 条。规则面口径：77 条规则消费 70 条唯一重采样参考"
-         f"（51 直接 + 19 混合，7 条为复用——6 组共享）。另有 5 条 AMX 计算混合记录见下节，"
-         f"npz 实物记录合计 58 条。")
+         f"（51 直接 + 19 混合，7 条为复用——6 组共享）。另有 4 条 AMX 计算混合记录见下节，"
+         f"npz 实物记录合计 57 条。")
 L.append("")
-L.append("## AMX 直接映射混合谱（5 条）")
+L.append("## AMX 直接映射混合谱（4 条）")
 L.append("")
-L.append("splib07 AMX 系列为 USGS 预先计算的面积（线性）混合谱。以下 5 条与 .mcf 配方的"
-         "**样品和配比一致**，按 D2 同口径烘焙进 npz（合成 rec id 90000+AMX 编号），"
-         "规则文件中以权重 1.0 别名引用（同 GDS212/213 先例），不再由引擎端元合成。")
-L.append("仪器策略：同质量优先 ASDNG——整数 nm 网格使主网格烘焙为恒等拷贝。")
+L.append("splib07 AMX 系列为 USGS 预先计算的面积（线性）混合谱，**按仪器分别计算**"
+         "（BECK/NIC4 变体与同仪器端元的配方合成 r=1.0000）。以下 4 条与 .mcf 配方的"
+         "**样品和配比一致**且选定变体经配方合成核对，按 D2 同口径烘焙进 npz"
+         "（合成 rec id 90000+AMX 编号），规则文件中以权重 1.0 别名引用"
+         "（同 GDS212/213 先例），不再由引擎端元合成。")
+L.append("仪器策略：选定变体必须对配方合成保真；保真前提下优先 ASDNG"
+         "（整数 nm 网格使主网格烘焙为恒等拷贝），否则取保真变体（AMX12→NIC4a）。")
 L.append("")
 L.append("| mix_id | 规则 | 配方 | AMX 记录 | r(v07 合成) | max\\|Δ\\| | r(06b 合成) | 新增 NaN |")
 L.append("|---|---|---|---|---|---|---|---|")
@@ -368,11 +393,13 @@ for a in amx_report:
              f"{a['r_vs_synth_06b']} | {a['new_nan_bands_vs_synth']} |")
 L.append("")
 L.append("r<1 的原因：AMX 由 USGS 用其自择端元记录预先计算，并非本选谱表端元的数值加权和"
-         "（对 06b 端元合成同样 r≈0.92–0.99，差异不来自 06b→07 重测）。差异有界且记录在此。")
+         "（对 06b 端元合成同样 r≈0.96–0.99，差异不来自 06b→07 重测）。差异有界且记录在此。")
 L.append("")
-L.append("**拒绝的 3 条 AMX 映射**（端元样品与 .mcf 配方不一致，维持端元合成）："
-         "AMX3/AMX13 用 KGa-1 ≠ 5167(KGa-2)（mix_7703/mix_7741）；"
-         "AMX14 用 HS295 ≠ 596(GDS96)（mix_7707）。")
+L.append("**拒绝的 4 条 AMX 映射**：AMX3/AMX13 用 KGa-1 ≠ 5167(KGa-2)（mix_7703/mix_7741）、"
+         "AMX14 用 HS295 ≠ 596(GDS96)（mix_7707）——端元样品不一致，维持端元合成；"
+         "AMX17 端元正确但 ASDNG 变体不遵循配方（对配方合成 r=0.805，NIC4b 变体 0.998），"
+         "而 NIC4b 变体与引擎自身端元合成 r=0.9983——别名无额外保真度，"
+         "mix_7737 维持端元合成。")
 L.append("")
 L.append("## 覆盖失败明细" if problems else "## 覆盖失败：无")
 for u, nm, span, missing in problems:
@@ -380,7 +407,7 @@ for u, nm, span, missing in problems:
              f"{len(missing)} 个 NaN 波段（06b 有值）："
              + ", ".join(f"{m:.4f}" for m in missing[:12]) + (" …" if len(missing) > 12 else ""))
 L.append("")
-L.append("## 合成混合端元检查（12 条线性合成规则；另 5 条已别名至 AMX 实物记录）")
+L.append("## 合成混合端元检查（13 条线性合成规则；另 4 条已别名至 AMX 实物记录）")
 L.append("")
 n_syn = sum(1 for s in synth_report if s["all_selected"])
 L.append(f"全部端元均已选定 splib07 记录的规则：{n_syn}/{len(synth_report)}")

@@ -1524,37 +1524,28 @@
     "5088": 0.5,
     "6348": 0.5
    },
-   "amx_record": "Kaol_Wxl+0.5Musc_Ruby_AMX12_ASDNGa_AREF",
+   "amx_record": "Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF",
    "amx_name": "Kaol_Wxl+0.5Musc_Ruby_AMX12",
    "synthetic_rec": 90012,
-   "sensor": "ASDNG",
+   "sensor": "NIC4",
    "quality": "a",
    "mtype": "AREF",
-   "r_vs_synth_v07": 0.9758,
-   "maxdiff_vs_synth_v07": 0.2074,
-   "r_vs_synth_06b": 0.9757,
-   "new_nan_bands_vs_synth": 0
-  },
-  {
-   "mix_id": "mix_7737",
-   "rule": "pyrophyllite.25+kaolinite.75",
-   "recipe": {
-    "7893": 0.25,
-    "5088": 0.75
-   },
-   "amx_record": "Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF",
-   "amx_name": "Pyrophyl.25+wxlKaol.75_AMX17",
-   "synthetic_rec": 90017,
-   "sensor": "ASDNG",
-   "quality": "b",
-   "mtype": "AREF",
-   "r_vs_synth_v07": 0.9182,
-   "maxdiff_vs_synth_v07": 0.1909,
-   "r_vs_synth_06b": 0.9181,
+   "r_vs_synth_v07": 1.0,
+   "maxdiff_vs_synth_v07": 0.0189,
+   "r_vs_synth_06b": 1.0,
    "new_nan_bands_vs_synth": 0
   }
  ],
  "synthetic_mixes": [
+  {
+   "rule": "pyrophyllite.25+kaolinite.75",
+   "mix_id": "mix_7737",
+   "endmembers": {
+    "7893": "Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF",
+    "5088": "Kaolinite_CM9_NIC4bbb_RREF"
+   },
+   "all_selected": true
+  },
   {
    "rule": "gypsum.6+montmorilloniteNa.4",
    "mix_id": "mix_7723",
@@ -1678,9 +1669,14 @@
    "decision": "映射更正为 LP-Needles-2_ASDFRa_AREF（同样品族、同仪器 ASDFRa AREF）"
   },
   {
-   "rule": "5 条 AMX 直接映射混合规则",
-   "issue": "AMX 计算混合谱与按 .mcf 配方从新端元合成的谱存在有界差异（AMX 由 USGS 用其自择端元记录预先计算，r=0.918–0.994），但样品与配比和 .mcf 配方一致",
-   "decision": "采纳 AMX 实物记录，以权重 1.0 别名接入（合成 rec id 90008+）"
+   "rule": "4 条 AMX 直接映射混合规则",
+   "issue": "AMX 计算混合谱与按 .mcf 配方从新端元合成的谱存在有界差异（AMX 由 USGS 用其自择端元记录预先计算，r=0.96–0.99），但样品与配比和 .mcf 配方一致；2026-08-31 变体审计确认 USGS 按仪器分别计算 AMX 混合（BECK/NIC4 变体与同仪器端元合成 r=1.0000），下列 4 条选定变体均经配方合成核对",
+   "decision": "采纳 AMX 实物记录，以权重 1.0 别名接入（合成 rec id 90008+）；AMX12 由 ASDNGa 改接 NIC4a 变体（对配方合成 r 0.897→0.985）"
+  },
+  {
+   "rule": "mix_7737（pyrophyllite.25+kaolinite.75，27 号规则）",
+   "issue": "v1.2.1–v1.2.3 按'同质量优先 ASDNG'策略别名的 Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF 与配方合成 r 仅 0.805（用户报告 27 号没有正确匹配，属实）——USGS 按仪器分别计算 AMX，其 ASDNG 变体不遵循配方（与任何 ASDNG 端元组合最高 r=0.956），而 NIC4b 变体与配方合成 r=0.998、与同仪器端元合成 r=1.0000；引擎端元合成（0.25×PYS1A_NIC4+0.75×CM9_NIC4）与 AMX17_NIC4b 本身 r=0.9983，别名不带来额外保真度",
+   "decision": "拒绝 AMX17 别名，mix_7737 回到引擎端元合成（同 AMX3/13/14 拒绝先例）；npz 记录 58→57"
   },
   {
    "rule": "mix_7703 / mix_7741 / mix_7707",

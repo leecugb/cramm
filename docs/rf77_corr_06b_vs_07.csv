@@ -15,7 +15,7 @@ idx,rule,splib07_record,r,max_abs_diff,n_common_bands
 14,muscovite_medhighAl,Muscovite_GDS113_Ruby_NIC4aaa_RREF,1.000000,0.000000,1126
 15,muscovite_Fe-rich,Muscovite_GDS116_Tanzania_NIC4aaa_RREF,1.000000,0.000000,1126
 16,illite_imt1,Illite_IMt-1.b_lt2um_BECKa_AREF,0.999991,0.001842,2151
-17,illite_gds4,Illite_GDS4_Marblehead_BECKb_AREF,0.997299,0.039827,2151
+17,illite_gds4,Illite_GDS4_Marblehead_ASDNGb_AREF,0.970862,0.076216,2150
 18,kaolinite_wxl,Kaolinite_CM9_NIC4bbb_RREF,1.000000,0.000003,1150
 19,kaolinite_pxl,Kaolinite_KGa-2_(pxl)_NIC4bbb_RREF,1.000000,0.000002,1131
 20,kaolinite+clay_mica_or_halloysite,Halloysite_NMNH106237_NIC4aaa_RREF,1.000000,0.000001,1136
@@ -25,7 +25,7 @@ idx,rule,splib07_record,r,max_abs_diff,n_common_bands
 24,alunite_K_250C,Alunite_GDS96_K_Syn_(250C)_NIC4a_RREF,1.000000,0.000001,1201
 25,alunite_Na_450C,Alunite_RES-3_Na_Syn_(450C)_NIC4a_RREF,1.000000,0.000001,1201
 26,pyrophyllite,Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF,1.000000,0.047042,1158
-27,pyrophyllite.25+kaolinite.75,Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF [AMX],0.917392,0.285540,1149
+27,pyrophyllite.25+kaolinite.75,synth 0.25xPyrophyllite+0.75xKaolinite,0.999990,0.011755,1150
 28,jarosite_Na,Jarosite_GDS24_Na_NIC4bbb_RREF,1.000000,0.000000,1076
 29,jarosite_K,Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF,0.982700,0.089394,1076
 30,montmorillonite_Na,Montmorillonite_SWy-1_NIC4bcc_RREF,1.000000,0.000000,1121
@@ -43,7 +43,7 @@ idx,rule,splib07_record,r,max_abs_diff,n_common_bands
 42,alunite.5+kaolinite.5,synth 0.5xAlunite+0.5xKaolinite,1.000000,0.000001,1131
 43,alunite.25+kaolinite.75,synth 0.25xAlunite+0.75xKaolinite,1.000000,0.000002,1150
 44,kaolinite.5+muscoviteMedAl.5,synth 0.5xKaolinite+0.5xMuscovite-medlowAl,1.000000,0.000001,1131
-45,kaolinite.5+muscoviteMedhighAl.5,Kaol_Wxl+0.5Musc_Ruby_AMX12_ASDNGa_AREF [AMX],0.975288,0.207620,1125
+45,kaolinite.5+muscoviteMedhighAl.5,Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF [AMX],0.999996,0.015086,1126
 46,kaolinite+muscovite_mix_intimate,Kaol+Muscov_intimate_CU93-5C_BECKa_AREF,0.999985,0.004982,2151
 47,kaolinite+smectite_mix_intimate,Kaolin_Smect_H89-FR-2_.5Kao_NIC4bb_RREF,1.000000,0.000000,1131
 48,jarosite+muscovite_mix_intimate,Muscov+Jaros_CU93-314_coatng_BECKb_AREF,0.999987,0.003498,2151
