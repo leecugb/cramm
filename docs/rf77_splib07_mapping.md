@@ -18,7 +18,7 @@
 | 14 | muscovite_medhighAl | rec 6348 | Muscovite_GDS113_Ruby_NIC4aaa_RREF |
 | 15 | muscovite_Fe-rich | rec 6394 | Muscovite_GDS116_Tanzania_NIC4aaa_RREF |
 | 16 | illite_imt1 | rec 4693 | Illite_IMt-1.b_lt2um_BECKa_AREF |
-| 17 | illite_gds4 | rec 4625 | Illite_GDS4_Marblehead_BECKb_AREF |
+| 17 | illite_gds4 | rec 4625 | Illite_GDS4_Marblehead_ASDNGb_AREF |
 | 18 | kaolinite_wxl | rec 5088 | Kaolinite_CM9_NIC4bbb_RREF |
 | 19 | kaolinite_pxl | rec 5167 | Kaolinite_KGa-2_(pxl)_NIC4bbb_RREF |
 | 20 | kaolinite+clay_mica_or_halloysite | rec 3869 | Halloysite_NMNH106237_NIC4aaa_RREF |
