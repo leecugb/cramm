@@ -37,7 +37,7 @@ def label(rgb, layer):
 L = []
 L.append("# splib07 迁移 · 阶段4 全场景双跑差异普查")
 L.append("")
-L.append("> 日期：2026-08-31（AMX 变体审计后重建 v07 黄金：AMX12 改接 NIC4a、AMX17 改接 NIC4b 并重新别名 90017）｜ 脚本：`docs/_splib07_stage4_dualrun.py`（双跑）+ `docs/_splib07_stage4b_readable.py`（类别解码）")
+L.append("> 日期：2026-08-31（跨传感器变体审计后重建 v07 黄金：AMX8 改接 BECKb、jarosite_K 改接 NIC4a）｜ 脚本：`docs/_splib07_stage4_dualrun.py`（双跑）+ `docs/_splib07_stage4b_readable.py`（类别解码）")
 L.append("> 场景：EMIT_L2A_RFL_001_20220819T061448_2223104_025（1280×1242，1,589,760 像元）")
 L.append("> 双轨：legacy=rf.json+splib06b（与 golden_arrays.npz 逐位一致，已验证）；v07=rf_splib07.json+rf07_spectra.npz。")
 L.append("> 图层语义：orth_rgb = 硬分类胜出类彩色图（非真彩色场景合成）；color_enhanced = HSI 增强（受 fit/depth 连续量调制，对微小拟合分差异敏感）；"
@@ -91,22 +91,19 @@ L.append("- 流失 3,068 像元的 94.7%（2,907）来自 `clinochlore_Fe.3+musc
 L.append("- AMX 别名对 mus 图影响极小（增/减与接入前 18,779/3,038 相比仅 +8/+30）：被别名的 ")
 L.append("  `kaolinite.5+muscoviteMedhighAl.5`（AMX12）在本场景不是主要胜出类。")
 L.append("")
-L.append("### cal_image（差异 0.078%→0.297%，AMX 碳酸盐混合接入的直接效应）")
+L.append("### cal_image（差异 0.123%；AMX8 改接 BECKb 后 v1.2.1–v1.2.5 的 bin 平移效应消除）")
 L.append("")
-L.append("- 最大单一迁移是 **bin 级平移 1,637 像元（Lv2 [2.318–2.323) → Lv3 [2.323–2.328) µm）**。")
-L.append("  机制**不是**参考谱中心漂移——AMX8 与端元合成谱在同窗口下的吸收中心仅差 +0.3 nm")
-L.append("  （2.32611 vs 2.32583 µm）。这 1,630 个像元在 legacy 与 AMX 前 v07 中胜出类均为")
-L.append("  `dolomite_abundant`；AMX8 替换混合参考后，`calcite.5+dolomite.5` 在拟合分近持平的")
-L.append("  仲裁边缘反超。cal_center 是按**胜出规则的连续统窗口**对像元谱做二次拟合")
-L.append("  （`dolomite_abundant` [2.158,2.188|2.357,2.387] vs 混合规则 [2.18,2.205|2.37,2.395]），")
-L.append("  新窗口右肩长波化使同一像元的拟合最小值跨过 2.323 µm bin 界——同族归属不变。")
-L.append("- 隔离 AMX 效应（AMX 前后两版 v07 黄金直接对比）：cal 3,669 像元（0.231%）、mus 43、")
-L.append("  chl 7、orth_rgb 20,501（1.290%）——双跑 cal 差异 0.297% 的绝大部分即 AMX 别名本身。")
-L.append("- 类别翻转同样集中于 AMX 碳酸盐混合族：新增 1,086 像元中 688 为 ")
-L.append("  `dolomite.5+montmorilloniteNa.5`→`calcite.5+dolomite.5`（AMX21 让位于 AMX8）；")
-L.append("  流失 1,591 像元中 436 为 `calcite.5+dolomite.5`→`calcite.18+dolomite.22+montmorilloniteNa.6`、")
-L.append("  278 为 `calcite.5+dolomite.5`→`epidote`——均为 AMX8 与端元合成谱的有界差异（r=0.994）")
-L.append("  在族间仲裁边缘的重排，全部停留在碳酸盐/绿泥石族内。")
+L.append("- v1.2.1–v1.2.5 期间的最大单一迁移（**1,637 像元 Lv2 [2.318–2.323) → Lv3 [2.323–2.328) µm "
+         "bin 级平移**）**已消失**。该效应源于 AMX8_ASDNGb 与 legacy 端元合成谱的有界差异"
+         "（r=0.994）：`calcite.5+dolomite.5` 在仲裁边缘反超 `dolomite_abundant` 后，"
+         "吸收中心按新胜出规则的连续统窗口重拟合跨过 2.323 µm bin 界。AMX8 改接 BECKb 变体"
+         "（端元 Calcite WS272/Dolomite HS102 均为 BECK 测量）后与 legacy 配方合成在 EMIT 网格上"
+         "**逐点一致**（max|Δ|=0.0，见 `docs/MCF_vs_rf07_diff.md` AMX 表），反超不再发生："
+         "cal 差异 0.296%→0.123%、orth_rgb 3.133%→1.956%。")
+L.append("- 剩余差异以**碳酸盐族检出边缘翻转**为主（最大单项：未检出→Lv3 553、Lv5→未检出 359、"
+         "Lv6→未检出 272 像元），由 AMX10/AMX21（仍 ASDNGb，r=0.96 有界差异）与碳酸盐参考"
+         "重测（方解石/白云石/菱铁矿）驱动；无跨族迁移、无参考谱中心漂移"
+         "（cal_center Δ 中位数=0，max 0.014 µm）。")
 L.append("")
 L.append("### 参考谱层面排除异常")
 L.append("")
@@ -114,8 +111,9 @@ L.append("白云母族四条 NIC4 参考在 2.14–2.24 µm 特征区偏差 ≤�
 L.append("AMX 记录逐条 r 值与 max|Δ| 见 `docs/MCF_vs_rf07_diff.md` 混合谱处理节——漂移由混合族间")
 L.append("拟合分微小重排驱动，非参考谱异常。")
 L.append("")
-L.append("**结论：双轨差异有界、可归因、集中于族间仲裁边缘；mus 1.433%（AMX 接入前后基本持平）、")
-L.append("chl 近乎零漂移（94 像元）、cal 0.297%（AMX8/10/21 接入的预期效应，以同族 bin 平移为主）。")
+L.append("**结论：双轨差异有界、可归因、集中于族间仲裁边缘；mus 1.431%（AMX 接入前后基本持平）、")
+L.append("chl 近乎零漂移（87 像元）、cal 0.123%（AMX8 改接 BECKb 后 v1.2.1–v1.2.5 的 bin 平移")
+L.append("效应消除，较 v1.2.5 的 0.296% 减半；orth_rgb 1.956%）。")
 L.append("v07 轨道可接受，遗留轨道继续作为 .mcf 保真基线。**")
 L.append("")
 

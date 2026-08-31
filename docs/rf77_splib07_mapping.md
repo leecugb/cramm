@@ -30,7 +30,7 @@
 | 26 | pyrophyllite | rec 7893 | Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF |
 | 27 | pyrophyllite.25+kaolinite.75 | mix 0.25x7893+0.75x5088 | Pyrophyl.25+wxlKaol.75_AMX17_NIC4b_AREF [AMX] |
 | 28 | jarosite_Na | rec 4819 | Jarosite_GDS24_Na_NIC4bbb_RREF |
-| 29 | jarosite_K | rec 4875 | Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF |
+| 29 | jarosite_K | rec 4875 | Jarosite_GDS99_K_200C_Syn_NIC4a_RREF |
 | 30 | montmorillonite_Na | rec 6200 | Montmorillonite_SWy-1_NIC4bcc_RREF |
 | 31 | montmorillonite_Ca | rec 6120 | Montmorillonite_SAz-1_NIC4bb_RREF |
 | 32 | nontronite | rec 6772 | Nontronite_NG-1.b_lt2um_fr_NIC4bb_RREF |
@@ -56,7 +56,7 @@
 | 52 | calcite | rec 1751 | Calcite_WS272_BECKa_AREF |
 | 53 | dolomite_abundant | rec 2986 | Dolomite_HS102.3B_BECKb_AREF |
 | 54 | dolomite | rec 2986 | Dolomite_HS102.3B_BECKb_AREF |
-| 55 | calcite.5+dolomite.5 | mix 0.5x1751+0.5x2986 | Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF [AMX] |
+| 55 | calcite.5+dolomite.5 | mix 0.5x1751+0.5x2986 | Calcite.5+Dolomite.5_AMX8_BECKb_AREF [AMX] |
 | 56 | carbonate_Fe_bearing | rec 8623 | Siderite_HS271.3B_BECKa_AREF |
 | 57 | calcite.18+dolomite.22+montmorilloniteNa.6 | mix 0.18x1751+0.22x2986+0.6x6200 | synth 0.18xCalcite+0.22xDolomite+0.6xMontmorillonite |
 | 58 | calcite.18+dolomite.22+montmorilloniteCa.6 | mix 0.18x1751+0.22x2986+0.6x6120 | synth 0.18xCalcite+0.22xDolomite+0.6xMontmorillonite |

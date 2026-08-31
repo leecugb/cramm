@@ -119,6 +119,15 @@ RECORD_OVERRIDE = {
     # windows at 2.2/2.35 um are essentially identical across both records,
     # so classification impact is confined to the reference-spectrum level.
     4625: "Illite_GDS4_Marblehead_ASDNGb_AREF",
+    # 06b rec 4875 (Jarosite GDS99 K 200C Syn, W2R4Na RREF): D1-A ranks the
+    # NIC4aa re-measurement above NIC4a on the quality letter (aa > a), but the
+    # 06b combined record is tagged W2R4N*a* -- its NIC4 source measurement IS
+    # the quality-a record, and the cross-sensor variant audit confirms it:
+    # NIC4a matches the 06b original at r=1.0000 (NIC4aa only 0.9827, a genuine
+    # re-measurement difference) and starts earlier (1.300 vs 1.424 um).
+    # 2026-08-31 adjudication: heritage measurement beats quality letter
+    # (same class of correction as LP-Needles-2 and the AMX variant audit).
+    4875: "Jarosite_GDS99_K_200C_Syn_NIC4a_RREF",
 }
 
 
@@ -241,17 +250,22 @@ for rec, users in rec_rules.items():
 # to alias mix_7737 to the recipe-faithful AMX17_NIC4b variant instead
 # (measured areal mixture, r=0.999996 vs the v07 endmember synthesis);
 # AMX12 was switched ASDNGa -> NIC4a (r 0.897 -> 0.985 vs recipe synthesis).
+# Same-audit follow-up: AMX8's endmembers (Calcite WS272 BECKa + Dolomite
+# HS102 BECKb) are BECK measurements, so the recipe-faithful variant is
+# AMX8_BECKb (r=1.0000 vs recipe synthesis; ASDNGb: 0.9946) -- switched
+# 2026-08-31 per the fidelity-first policy.
 AMX_MAP = OrderedDict([  # mix_id -> (splib07 record key, synthetic rec id)
-    ("mix_7821", ("Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF", 90008)),
+    ("mix_7821", ("Calcite.5+Dolomite.5_AMX8_BECKb_AREF", 90008)),
     ("mix_7715", ("Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF", 90010)),
     ("mix_7711", ("Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF", 90021)),
     ("mix_7745", ("Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF", 90012)),
     ("mix_7737", ("Pyrophyl.25+wxlKaol.75_AMX17_NIC4b_AREF", 90017)),
 ])
 # instrument policy: among AMX variants verified against the recipe synthesis
-# (see audit above), prefer ASDNG when it is recipe-faithful -- integer-nm grid
-# makes the master-grid bake an identity copy (BECK 10 nm would not be);
-# otherwise take the recipe-faithful variant (AMX12 -> NIC4a, AMX17 -> NIC4b).
+# (see audit above), the variant computed from the SAME instrument as the
+# selected endmembers wins (AMX8 -> BECKb: BECK endmembers; AMX12 -> NIC4a,
+# AMX17 -> NIC4b: NIC4 endmembers); ASDNG is kept only where the endmembers
+# span instruments and its variant is the best available (AMX10/AMX21).
 by_key = {f"{r.name}_{r.sensor}{r.quality}_{r.mtype}": r for r in lib.records}
 amx_report = []
 for mix_id, (key, synth_rec) in AMX_MAP.items():
@@ -320,6 +334,15 @@ out = {
                   "红边+液态水吸收），并非对应记录——v1.2.0/v1.2.1 曾按名称精确匹配"
                   "误选后者并裁决'仅存重测记录'，该裁决依据错误",
          "decision": "映射更正为 LP-Needles-2_ASDFRa_AREF（同样品族、同仪器 ASDFRa AREF）"},
+        {"rule": "jarosite_K（29 号规则，rec 4875）",
+         "issue": "D1-A 按质量字母（aa>a）选了 Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF"
+                  "（r=0.9827），但 06b 原记录标记 W2R4Na——其 NIC4 源测量正是 "
+                  "quality a 记录；跨传感器变体审计证实 NIC4a 与 06b 原记录 "
+                  "r=1.0000（NIC4aa 的 0.9827 为真实重测差异），且覆盖起点更早"
+                  "（1.300 vs 1.424 µm）",
+         "decision": "覆盖裁决（RECORD_OVERRIDE）：改接 NIC4a 变体——遗产测量一致性"
+                     "优先于质量字母（同 LP-Needles-2、AMX 变体更正同类）；"
+                     "29 号规则 r 0.9827→1.0000"},
         {"rule": "5 条 AMX 直接映射混合规则",
          "issue": "AMX 计算混合谱与按 .mcf 配方从新端元合成的谱存在有界差异"
                   "（AMX 由 USGS 用其自择端元记录预先计算，r=0.96–0.99），"
@@ -327,8 +350,9 @@ out = {
                   "按仪器分别计算 AMX 混合（BECK/NIC4 变体与同仪器端元合成 "
                   "r=1.0000），下列 5 条选定变体均经配方合成核对",
          "decision": "采纳 AMX 实物记录，以权重 1.0 别名接入（合成 rec id 90008+）；"
-                     "AMX12 由 ASDNGa 改接 NIC4a 变体（对配方合成 r 0.897→0.985）、"
-                     "AMX17 由 ASDNGb 改接 NIC4b 变体（r 0.805→0.998）"},
+                     "AMX8 由 ASDNGb 改接 BECKb 变体（端元均为 BECK 测量，"
+                     "对配方合成 r 0.995→1.0000）、AMX12 由 ASDNGa 改接 NIC4a "
+                     "（r 0.897→0.985）、AMX17 由 ASDNGb 改接 NIC4b（r 0.805→0.998）"},
         {"rule": "mix_7737（pyrophyllite.25+kaolinite.75，27 号规则）",
          "issue": "v1.2.1–v1.2.3 按'同质量优先 ASDNG'策略别名的 "
                   "Pyrophyl.25+wxlKaol.75_AMX17_ASDNGb_AREF 与配方合成 r 仅 0.805"
@@ -356,7 +380,8 @@ L.append("# splib07 迁移 · 阶段1 选谱表与特征覆盖校验")
 L.append("")
 L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正：LP-Needles-3→LP-Needles-2；"
          "illite_gds4 覆盖裁决：BECKb→ASDNGb，恢复 1.4 µm 真实数据；"
-         "AMX 变体审计：AMX12 改接 NIC4a、AMX17 改接 NIC4b 并重新别名）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`")
+         "AMX 变体审计：AMX8 改接 BECKb、AMX12 改接 NIC4a、AMX17 改接 NIC4b；"
+         "jarosite_K 覆盖裁决：NIC4aa→NIC4a）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`")
 L.append("> 策略 D1-A：同仪器+同测量类型优先，组内质量最高、r 最高者胜出。")
 L.append("> 覆盖判据（引擎口径）：splib07 记录先按 D2 增补烘焙到 1 nm 主网格"
          "（分段线性插值、量程外 NaN、内部删除带线性桥接——烘焙后 Beckman 10 nm 采样的"
@@ -387,9 +412,9 @@ L.append("splib07 AMX 系列为 USGS 预先计算的面积（线性）混合谱�
          "**样品和配比一致**且选定变体经配方合成核对，按 D2 同口径烘焙进 npz"
          "（合成 rec id 90000+AMX 编号），规则文件中以权重 1.0 别名引用"
          "（同 GDS212/213 先例），不再由引擎端元合成。")
-L.append("仪器策略：选定变体必须对配方合成保真；保真前提下优先 ASDNG"
-         "（整数 nm 网格使主网格烘焙为恒等拷贝），否则取保真变体"
-         "（AMX12→NIC4a、AMX17→NIC4b）。")
+L.append("仪器策略：选定变体必须对配方合成保真——与选定端元同仪器的变体胜出"
+         "（AMX8→BECKb：BECK 端元；AMX12→NIC4a、AMX17→NIC4b：NIC4 端元）；"
+         "端元跨仪器时取最优可得变体（AMX10/AMX21 保持 ASDNGb）。")
 L.append("")
 L.append("| mix_id | 规则 | 配方 | AMX 记录 | r(v07 合成) | max\\|Δ\\| | r(06b 合成) | 新增 NaN |")
 L.append("|---|---|---|---|---|---|---|---|")

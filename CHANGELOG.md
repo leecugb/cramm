@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.2.6 — 跨传感器变体审计：jarosite_K 改接 NIC4a、AMX8 改接 BECKb（2026-08-31）
+
+- **审计**：对 npz 引用的全部 splib07 记录枚举同样品跨传感器变体（`_inspect_variant_audit.py`），
+  53 条选谱参考中 43 条已是最优变体，AMX12/17 已 r=1.0000、AMX10/21 无更优变体；
+  两处真实优化点经裁决采纳。
+- **jarosite_K（29 号规则，rec 4875）NIC4aa→NIC4a**：D1-A 按质量字母（aa>a）误排——
+  06b 原记录标记 W2R4N**a**，其 NIC4 源测量即 quality a 记录，NIC4a 与 06b r=**1.0000**
+  （NIC4aa 的 0.9827 为真实重测差异），且覆盖起点更早（1.300 vs 1.424 µm）。
+  经 RECORD_OVERRIDE 改接；29 号规则 r 0.9827→1.0000，53 条实物参考中 r<0.99 仅剩
+  illite_gds4（0.9708，1.4 µm 覆盖裁决的已接受代价）。
+- **AMX8（55 号规则，mix_7821）ASDNGb→BECKb**：端元 Calcite WS272/Dolomite HS102
+  均为 BECK 测量，USGS 按仪器分别计算 AMX——同仪器的 BECKb 变体对配方合成
+  r=**1.0000**（ASDNGb 0.9946），且覆盖更宽（0.229–2.976 µm）。仪器策略定稿：
+  与选定端元同仪器的变体胜出；端元跨仪器时取最优可得变体（AMX10/21 保持 ASDNGb）。
+- 计数口径不变：58 条 npz 实物记录 / 5 条 AMX 别名（合成 rec id 不变）。
+- `golden_arrays_v07.npz` 已按更正后轨道重建；legacy 轨道不受影响（rf.json 不动）。
+
 ## v1.2.5 — 27 号规则改接 AMX17_NIC4b 实测混合记录（2026-08-31）
 
 - **mix_7737↔AMX17 重新别名，改接 NIC4b 变体**（27 号 pyrophyllite.25+kaolinite.75）：

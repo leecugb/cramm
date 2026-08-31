@@ -1,6 +1,6 @@
 # splib07 迁移 · 阶段2 导出审计
 
-> 日期：2026-08-31（AMX17 重接 NIC4b 后重烘）｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`
+> 日期：2026-08-31（AMX8 改接 BECKb、jarosite_K 改接 NIC4a 后重烘）｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`
 > 审计口径：原生有效样本 vs 1 nm 主网格烘焙谱，分别经引擎 `_resample_` 重采样到真实 EMIT 网格后比较。
 > NIC4 ~0.93 nm→1 nm 轻微降采样的影响即体现在 max|Δ| 列；filled = 烘焙按构造填掉的 FWHM 空洞（遗产改善）；new holes 必须为 0。
 > 记录构成：53 条选谱参考 + 5 条 AMX 计算混合记录（90008+ 合成 rec id，权重 1.0 别名接入）= 58 条。
@@ -32,7 +32,7 @@
 | `Alunite_RES-3_Na_Syn_(450C)_NIC4a_RREF` | NIC4 | 0.999955 | 8.54e-03 | 0 | 0 |
 | `Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF` | NIC4 | 0.999968 | 7.14e-03 | 0 | 0 |
 | `Jarosite_GDS24_Na_NIC4bbb_RREF` | NIC4 | 0.999996 | 9.66e-04 | 0 | 0 |
-| `Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF` | NIC4 | 0.999996 | 2.14e-03 | 0 | 0 |
+| `Jarosite_GDS99_K_200C_Syn_NIC4a_RREF` | NIC4 | 0.999960 | 1.20e-02 | 0 | 0 |
 | `Montmorillonite_SWy-1_NIC4bcc_RREF` | NIC4 | 0.999995 | 7.64e-04 | 0 | 0 |
 | `Montmorillonite_SAz-1_NIC4bb_RREF` | NIC4 | 0.999995 | 1.20e-03 | 0 | 0 |
 | `Nontronite_NG-1.b_lt2um_fr_NIC4bb_RREF` | NIC4 | 0.999993 | 5.15e-04 | 0 | 0 |
@@ -60,7 +60,7 @@
 | `Antigorite_NMNH96917.a_gt250_BECKb_AREF` | BECK | 0.999756 | 1.68e-02 | 19 | 0 |
 | `Chrysotile_HS323.1B_BECKa_AREF` | BECK | 0.999032 | 1.80e-02 | 19 | 0 |
 | `Topaz_HS184.3B_BECKb_AREF` | BECK | 0.996156 | 1.03e-01 | 19 | 0 |
-| `Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF` | ASDNG | 1.000000 | 4.51e-08 | 0 | 0 |
+| `Calcite.5+Dolomite.5_AMX8_BECKb_AREF` | BECK | 0.999383 | 1.50e-02 | 19 | 0 |
 | `Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF` | ASDNG | 1.000000 | 6.71e-08 | 0 | 0 |
 | `Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF` | ASDNG | 1.000000 | 6.20e-08 | 0 | 0 |
 | `Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF` | NIC4 | 0.999994 | 2.26e-03 | 0 | 0 |
@@ -72,7 +72,7 @@
 
 | mix_id | 规则 | AMX 记录 | r(v07 合成) | max\|Δ\| | r(06b 合成) |
 |---|---|---|---|---|---|
-| mix_7821 | calcite.5+dolomite.5 | `Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF` | 0.9944 | 0.0636 | 0.9946 |
+| mix_7821 | calcite.5+dolomite.5 | `Calcite.5+Dolomite.5_AMX8_BECKb_AREF` | 1.0 | 0.0 | 1.0 |
 | mix_7715 | dolomite.5+montmorilloniteCa.5 | `Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF` | 0.9655 | 0.0667 | 0.9653 |
 | mix_7711 | dolomite.5+montmorilloniteNa.5 | `Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF` | 0.9618 | 0.0695 | 0.9616 |
 | mix_7745 | kaolinite.5+muscoviteMedhighAl.5 | `Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF` | 1.0 | 0.0189 | 1.0 |
@@ -87,4 +87,4 @@
 
 无损证明仅对线性插值型重采样成立。引擎 `_resample_` 是按 FWHM 窗内样本做高斯加权平均（权重按窗内样本归一），粗采样窗内仅 1–2 个样本时其加权均值 ≠ 稠密插值样本的加权均值（≈真卷积）。因此 BECK 10 nm→1 nm 烘焙**改变**高斯核重采样结果：EMIT 网格上 max|Δ| 普遍 ≤2e-2，最大 1.03e-1（Topaz_HS184.3B，2.0–2.16 µm 陡沿，r=0.9962）。烘焙谱更接近真实仪器卷积，但与现行 06b 粗采样口径存在有界行为差——列入阶段 4 双跑仲裁。
 
-NIC4 降采样最大偏差：8.54e-03（`Alunite_RES-3_Na_Syn_(450C)_NIC4a_RREF`，r=0.999955）
+NIC4 降采样最大偏差：1.20e-02（`Jarosite_GDS99_K_200C_Syn_NIC4a_RREF`，r=0.999960）

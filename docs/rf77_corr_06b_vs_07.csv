@@ -27,7 +27,7 @@ idx,rule,splib07_record,r,max_abs_diff,n_common_bands
 26,pyrophyllite,Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF,1.000000,0.047042,1158
 27,pyrophyllite.25+kaolinite.75,Pyrophyl.25+wxlKaol.75_AMX17_NIC4b_AREF [AMX],0.999996,0.022630,1150
 28,jarosite_Na,Jarosite_GDS24_Na_NIC4bbb_RREF,1.000000,0.000000,1076
-29,jarosite_K,Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF,0.982700,0.089394,1076
+29,jarosite_K,Jarosite_GDS99_K_200C_Syn_NIC4a_RREF,1.000000,0.000001,1201
 30,montmorillonite_Na,Montmorillonite_SWy-1_NIC4bcc_RREF,1.000000,0.000000,1121
 31,montmorillonite_Ca,Montmorillonite_SAz-1_NIC4bb_RREF,1.000000,0.000000,1121
 32,nontronite,Nontronite_NG-1.b_lt2um_fr_NIC4bb_RREF,1.000000,0.000000,1111
@@ -53,7 +53,7 @@ idx,rule,splib07_record,r,max_abs_diff,n_common_bands
 52,calcite,Calcite_WS272_BECKa_AREF,0.999918,0.007380,2151
 53,dolomite_abundant,Dolomite_HS102.3B_BECKb_AREF,0.999942,0.007901,2151
 54,dolomite,Dolomite_HS102.3B_BECKb_AREF,0.999942,0.007901,2151
-55,calcite.5+dolomite.5,Calcite.5+Dolomite.5_AMX8_ASDNGb_AREF [AMX],0.994592,0.066386,2150
+55,calcite.5+dolomite.5,Calcite.5+Dolomite.5_AMX8_BECKb_AREF [AMX],0.999958,0.006321,2151
 56,carbonate_Fe_bearing,Siderite_HS271.3B_BECKa_AREF,0.999997,0.002679,2151
 57,calcite.18+dolomite.22+montmorilloniteNa.6,synth 0.18xCalcite+0.22xDolomite+0.6xMontmorillonite,0.999983,0.002592,1121
 58,calcite.18+dolomite.22+montmorilloniteCa.6,synth 0.18xCalcite+0.22xDolomite+0.6xMontmorillonite,0.999988,0.002592,1121
