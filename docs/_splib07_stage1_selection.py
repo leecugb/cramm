@@ -106,6 +106,22 @@ def resample07(spec07):
     return _resample_(MASTER_GRID, bake07(spec07), EMIT_W, EMIT_BP)
 
 
+# Manual record overrides: keyed by splib06b rec, forces a specific splib07
+# record key regardless of the D1-A scoring (rationale in adjudications).
+RECORD_OVERRIDE = {
+    # 06b rec 4625 (Illite GDS4, R1Bb/BECKb): D1-A same-instrument policy picks
+    # the BECKb record, but USGS deleted the 1.35-1.42 um water band from it in
+    # splib07 (06b has 100 valid samples there; BECKb keeps only 5, so the npz
+    # bake bridges the band linearly). The same-sample ASDNGb re-measurement
+    # has real 1.4 um OH-band data (101 samples) and an integer-nm grid
+    # (identity bake). 2026-08-31 adjudication: accept lower full-range r
+    # (0.9973 -> 0.9708) in exchange for real 1.4 um data; the rule feature
+    # windows at 2.2/2.35 um are essentially identical across both records,
+    # so classification impact is confined to the reference-spectrum level.
+    4625: "Illite_GDS4_Marblehead_ASDNGb_AREF",
+}
+
+
 def want_instrument(title06):
     if "R1B" in title06:
         return [("BECK", "AREF")]
@@ -177,7 +193,15 @@ for rec, users in rec_rules.items():
         rr = compare06(wl06, sp06, lib.load(r))
         scored.append((inst, -qrank(r.quality), -(rr or 0), r, rr))
     scored.sort(key=lambda t: (t[0], t[1], t[2], t[3].name))
-    inst, _, _, best, r_val = scored[0]
+    if rec in RECORD_OVERRIDE:
+        okey = RECORD_OVERRIDE[rec]
+        pick = [t for t in scored
+                if f"{t[3].name}_{t[3].sensor}{t[3].quality}_{t[3].mtype}" == okey]
+        if not pick:
+            raise SystemExit(f"override target not among candidates for rec {rec}: {okey}")
+        inst, _, _, best, r_val = pick[0]
+    else:
+        inst, _, _, best, r_val = scored[0]
     res06 = resample06(rec)
     res07 = resample07(lib.load(best))
     cov = {}
@@ -201,6 +225,7 @@ for rec, users in rec_rules.items():
         "splib07_name": best.name,
         "sensor": best.sensor, "quality": best.quality, "mtype": best.mtype,
         "instrument_match": inst == 0,
+        "record_override": rec in RECORD_OVERRIDE,
         "r_vs_06b": round(r_val, 4) if r_val else None,
         "coverage": cov,
     }
@@ -267,6 +292,16 @@ out = {
     "amx_mixture_aliases": amx_report,
     "synthetic_mixes": synth_report,
     "adjudications": [
+        {"rule": "illite_gds4",
+         "issue": "D1-A 同仪器策略选中的 Illite_GDS4_Marblehead_BECKb_AREF 在 splib07 "
+                  "中被 USGS 删除了 1.35–1.42 µm 水汽吸收带（06b 该区间有 100 个有效采样，"
+                  "BECKb 仅剩 5 个，npz 烘焙只能线性桥接）；同样品的 "
+                  "Illite_GDS4_Marblehead_ASDNGb_AREF 重测记录在该区间有 101 个真实采样，"
+                  "且为整数 nm 网格（主网格烘焙恒等）。代价：全段 r 0.9973→0.9708，"
+                  "整体反射率水平略偏高；规则实际使用的 2.2/2.35 µm 特征窗内两记录"
+                  "与 06b 几乎重合，分类行为影响可忽略（1.4 µm 不在任何规则特征窗内）",
+         "decision": "覆盖裁决（RECORD_OVERRIDE）：选用 ASDNGb 全覆盖记录，"
+                     "接受同仪器策略偏离，换取 1.4 µm OH 带真实数据"},
         {"rule": "dry_veg_nongrass(+_2_3um)",
          "issue": "USGS 在 splib07 重排了 LP-Needles 系列编号：与 06b 'LP-Needles-3'"
                   "（rec 12794，干针叶）谱形一致的是 splib07 LP-Needles-2（r=0.999995）；"
@@ -292,7 +327,8 @@ with open(r"d:\CRAMM\docs\splib07_selection.json", "w", encoding="utf-8") as f:
 L = []
 L.append("# splib07 迁移 · 阶段1 选谱表与特征覆盖校验")
 L.append("")
-L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正：LP-Needles-3→LP-Needles-2）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`")
+L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正：LP-Needles-3→LP-Needles-2；"
+         "illite_gds4 覆盖裁决：BECKb→ASDNGb，恢复 1.4 µm 真实数据）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`")
 L.append("> 策略 D1-A：同仪器+同测量类型优先，组内质量最高、r 最高者胜出。")
 L.append("> 覆盖判据（引擎口径）：splib07 记录先按 D2 增补烘焙到 1 nm 主网格"
          "（分段线性插值、量程外 NaN、内部删除带线性桥接——烘焙后 Beckman 10 nm 采样的"
@@ -305,14 +341,14 @@ L.append("|---|---|---|---|---|---|")
 n_ok = 0
 for rec, s in selection.items():
     cov_all = all(v["covered"] for v in s["coverage"].values())
-    if cov_all and s["instrument_match"]:
+    if cov_all and (s["instrument_match"] or s["record_override"]):
         n_ok += 1
     flag = "✓" if cov_all else "**✗**"
     L.append(f"| {rec} | {', '.join(s['rules'])} | {s['splib06b_title']} | "
              f"`{s['splib07_record']}` | {s['r_vs_06b']} | {flag} |")
 L.append("")
 L.append(f"唯一实物参考谱 {len(selection)} 条（51 条规则直接引用 + 2 条仅经权重 1.0 混合别名的 GDS212/213）；"
-         f"仪器匹配且特征全覆盖 {n_ok} 条。规则面口径：77 条规则消费 70 条唯一重采样参考"
+         f"仪器匹配（或裁决覆盖）且特征全覆盖 {n_ok} 条。规则面口径：77 条规则消费 70 条唯一重采样参考"
          f"（51 直接 + 19 混合，7 条为复用——6 组共享）。另有 5 条 AMX 计算混合记录见下节，"
          f"npz 实物记录合计 58 条。")
 L.append("")

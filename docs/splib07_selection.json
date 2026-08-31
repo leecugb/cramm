@@ -17,6 +17,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "vegetation_green": {
@@ -42,6 +43,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "vegetation_npv_and_green": {
@@ -67,6 +69,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "snow_melting": {
@@ -92,6 +95,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "snow_slush": {
@@ -117,6 +121,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "water": {
@@ -142,6 +147,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "water_sediment_high": {
@@ -167,6 +173,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "water_sediment_low": {
@@ -193,6 +200,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "dry_veg_grass": {
@@ -229,6 +237,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "dry_veg_nongrass": {
@@ -264,6 +273,7 @@
    "quality": "b",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "muscovite_lowAl": {
@@ -289,6 +299,7 @@
    "quality": "b",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "muscovite_medAl": {
@@ -314,6 +325,7 @@
    "quality": "aaa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "muscovite_medhighAl": {
@@ -339,6 +351,7 @@
    "quality": "aaa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "muscovite_Fe-rich": {
@@ -364,6 +377,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "illite_imt1": {
@@ -383,13 +397,14 @@
     "illite_gds4"
    ],
    "splib06b_title": "Illite GDS4 (Marblehead)     W1R1Bb AREF",
-   "splib07_record": "Illite_GDS4_Marblehead_BECKb_AREF",
+   "splib07_record": "Illite_GDS4_Marblehead_ASDNGb_AREF",
    "splib07_name": "Illite_GDS4_Marblehead",
-   "sensor": "BECK",
+   "sensor": "ASDNG",
    "quality": "b",
    "mtype": "AREF",
-   "instrument_match": true,
-   "r_vs_06b": 0.9973,
+   "instrument_match": false,
+   "record_override": true,
+   "r_vs_06b": 0.9708,
    "coverage": {
     "illite_gds4": {
      "span": [
@@ -414,6 +429,7 @@
    "quality": "bbb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "kaolinite_wxl": {
@@ -439,6 +455,7 @@
    "quality": "bbb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "kaolinite_pxl": {
@@ -464,6 +481,7 @@
    "quality": "aaa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "kaolinite+clay_mica_or_halloysite": {
@@ -489,6 +507,7 @@
    "quality": "bb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "kaolinite_or_dickite": {
@@ -514,6 +533,7 @@
    "quality": "b",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "buddingtonite": {
@@ -539,6 +559,7 @@
    "quality": "b",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "buddingtonite+montmorillonite_mix_intimate": {
@@ -564,6 +585,7 @@
    "quality": "a",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "alunite_K_250C": {
@@ -589,6 +611,7 @@
    "quality": "a",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "alunite_Na_450C": {
@@ -614,6 +637,7 @@
    "quality": "aaa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "pyrophyllite": {
@@ -639,6 +663,7 @@
    "quality": "bbb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "jarosite_Na": {
@@ -664,6 +689,7 @@
    "quality": "aa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 0.9827,
    "coverage": {
     "jarosite_K": {
@@ -689,6 +715,7 @@
    "quality": "bcc",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "montmorillonite_Na": {
@@ -714,6 +741,7 @@
    "quality": "bb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "montmorillonite_Ca": {
@@ -739,6 +767,7 @@
    "quality": "bb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "nontronite": {
@@ -764,6 +793,7 @@
    "quality": "bb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "hectorite": {
@@ -789,6 +819,7 @@
    "quality": "aaa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "gypsum": {
@@ -814,6 +845,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "chlorite_lowFe": {
@@ -839,6 +871,7 @@
    "quality": "bb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "clinochlore": {
@@ -864,6 +897,7 @@
    "quality": "aa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "clinochlore_Fe": {
@@ -889,6 +923,7 @@
    "quality": "aa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "thuringite": {
@@ -914,6 +949,7 @@
    "quality": "bbb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "epidote": {
@@ -939,6 +975,7 @@
    "quality": "b",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 0.9999,
    "coverage": {
     "pyrophyllite.5+alunite.5_mix_intimate": {
@@ -964,6 +1001,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "kaolinite+muscovite_mix_intimate": {
@@ -989,6 +1027,7 @@
    "quality": "bb",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "kaolinite+smectite_mix_intimate": {
@@ -1014,6 +1053,7 @@
    "quality": "b",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "jarosite+muscovite_mix_intimate": {
@@ -1039,6 +1079,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "chlorite+muscovite_mix_intimate": {
@@ -1065,6 +1106,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 0.9999,
    "coverage": {
     "calcite_abundant": {
@@ -1101,6 +1143,7 @@
    "quality": "b",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 0.9999,
    "coverage": {
     "dolomite_abundant": {
@@ -1136,6 +1179,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "carbonate_Fe_bearing": {
@@ -1161,6 +1205,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "calcite.8+montmorilloniteNa.2_mix_intimate": {
@@ -1186,6 +1231,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 0.9999,
    "coverage": {
     "kaolinite.2+calcite.8_mix_intimate": {
@@ -1211,6 +1257,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "chalcedony": {
@@ -1236,6 +1283,7 @@
    "quality": "aa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "hydrated_silica": {
@@ -1261,6 +1309,7 @@
    "quality": "ccc",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "tremolite_or_talc": {
@@ -1286,6 +1335,7 @@
    "quality": "aaa",
    "mtype": "RREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "talc_or_tremolite": {
@@ -1313,6 +1363,7 @@
    "quality": "b",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 1.0,
    "coverage": {
     "serpentine_antigorite_or_calcite+dolomite": {
@@ -1359,6 +1410,7 @@
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 0.9999,
    "coverage": {
     "serpentine_chrysotile": {
@@ -1394,6 +1446,7 @@
    "quality": "b",
    "mtype": "AREF",
    "instrument_match": true,
+   "record_override": false,
    "r_vs_06b": 0.9996,
    "coverage": {
     "topaz": {
@@ -1614,6 +1667,11 @@
   }
  ],
  "adjudications": [
+  {
+   "rule": "illite_gds4",
+   "issue": "D1-A 同仪器策略选中的 Illite_GDS4_Marblehead_BECKb_AREF 在 splib07 中被 USGS 删除了 1.35–1.42 µm 水汽吸收带（06b 该区间有 100 个有效采样，BECKb 仅剩 5 个，npz 烘焙只能线性桥接）；同样品的 Illite_GDS4_Marblehead_ASDNGb_AREF 重测记录在该区间有 101 个真实采样，且为整数 nm 网格（主网格烘焙恒等）。代价：全段 r 0.9973→0.9708，整体反射率水平略偏高；规则实际使用的 2.2/2.35 µm 特征窗内两记录与 06b 几乎重合，分类行为影响可忽略（1.4 µm 不在任何规则特征窗内）",
+   "decision": "覆盖裁决（RECORD_OVERRIDE）：选用 ASDNGb 全覆盖记录，接受同仪器策略偏离，换取 1.4 µm OH 带真实数据"
+  },
   {
    "rule": "dry_veg_nongrass(+_2_3um)",
    "issue": "USGS 在 splib07 重排了 LP-Needles 系列编号：与 06b 'LP-Needles-3'（rec 12794，干针叶）谱形一致的是 splib07 LP-Needles-2（r=0.999995）；splib07 自有的 LP-Needles-3 是新测的健康绿叶谱（r=0.884，红边+液态水吸收），并非对应记录——v1.2.0/v1.2.1 曾按名称精确匹配误选后者并裁决'仅存重测记录'，该裁决依据错误",

@@ -8,7 +8,7 @@ refs = SEL["references"]
 L = []
 L.append("# .mcf 与 rf_splib07.json 差异声明")
 L.append("")
-L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、"
+L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正；illite_gds4 覆盖裁决：BECKb→ASDNGb）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、"
          "`docs/splib07_export_audit.md`（烘焙审计）、`docs/splib07_dualrun_diff.md`（场景双跑）")
 L.append("")
 L.append("## 结论")
@@ -18,7 +18,9 @@ L.append("rf_splib07.json 的 **77 条规则同 rf.json 逐比特一致**（诊�
          "差异有两类，均已逐条裁决并记录：")
 L.append("")
 L.append("1. **参考光谱来源**：splib06b 记录 → splib07 同名样品记录"
-         "（53 条唯一实物参考，D1-A 同仪器+同测量类型选谱）；")
+         "（53 条唯一实物参考，D1-A 同仪器+同测量类型选谱；"
+         "1 条裁决覆盖偏离同仪器策略：illite_gds4 改用同样品 ASDNGb 记录以恢复 "
+         "1.4 µm 带真实数据）；")
 L.append("2. **5 条混合配方改接 AMX 实物记录**：splib07 AMX 系列中与 .mcf 配方同样品同配比的"
          "计算混合谱，烘焙后以权重 1.0 别名接入（GDS212/213 先例）——19 条混合配方中 "
          "14 条与 rf.json 逐比特一致（12 条线性合成 + 2 条 GDS 别名），5 条为 AMX 别名。")
@@ -43,12 +45,19 @@ for rec, s in refs.items():
 n_hi = sum(1 for s in refs.values() if (s["r_vs_06b"] or 0) >= 0.99)
 L.append("")
 L.append(f"53 条中 {n_hi} 条 r≥0.99（绝大多数 ≥0.9995）；"
-         "最低为 jarosite_K（GDS99，r=0.9827）与 illite_gds4（GDS4，r=0.9973），"
+         "最低为 illite_gds4（GDS4，r=0.9708）与 jarosite_K（GDS99，r=0.9827），"
          "均为 splib07 重测差异，裁决接受。"
-         "**2026-08-31 更正**：dry_veg_nongrass（rec 12794）曾按名称精确匹配误选 "
+         "**2026-08-31 更正（一）**：dry_veg_nongrass（rec 12794）曾按名称精确匹配误选 "
          "splib07 LP-Needles-3（r=0.8839）——该记录实为 USGS 新测的健康绿叶谱；"
          "06b 'LP-Needles-3' 的真正对应是 splib07 **LP-Needles-2**（编号重排，"
-         "r=0.999995），已更正映射并重建 v07 黄金基线。")
+         "r=0.999995），已更正映射并重建 v07 黄金基线。"
+         "**2026-08-31 更正（二）**：illite_gds4（rec 4625）原按同仪器策略选 "
+         "Illite_GDS4_Marblehead_BECKb_AREF（r=0.9973），但 splib07 删除了其 "
+         "1.35–1.42 µm 水汽吸收带（06b 有 100 个有效采样，BECKb 仅剩 5 个，"
+         "npz 中线性桥接）；裁决改用同样品全覆盖记录 "
+         "**Illite_GDS4_Marblehead_ASDNGb_AREF**（1.4 µm 带 101 个真实采样、"
+         "整数 nm 网格恒等烘焙，全段 r=0.9708）——规则特征窗（2.2/2.35 µm）内"
+         "两记录与 06b 几乎重合，分类行为影响可忽略，已重建 v07 黄金基线。")
 L.append("")
 L.append("## 混合谱处理")
 L.append("")

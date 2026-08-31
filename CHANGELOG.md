@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.2.3 — illite_gds4 splib07 记录换全覆盖重测版（2026-08-31）
+
+- **illite_gds4（splib06b rec 4625）参考谱更换**：原按 D1-A 同仪器策略选
+  `Illite_GDS4_Marblehead_BECKb_AREF`（r=0.9973），但 splib07 删除了其
+  1.35–1.42 µm 水汽吸收带（06b 该区间有 100 个有效采样，BECKb 仅剩 5 个，
+  npz 中只能线性桥接）。经裁决改用同样品重测记录
+  **`Illite_GDS4_Marblehead_ASDNGb_AREF`**：1.4 µm 带有 101 个真实采样，
+  整数 nm 网格使 1 nm 主网格烘焙为恒等拷贝；代价为全段 r 降至 0.9708
+  （整体反射率水平略偏高）。规则特征窗（2.2/2.35 µm）内两记录与 06b
+  几乎重合，1.4 µm 不在任何规则特征窗内，分类行为影响可忽略。
+- 实现为 stage1 选谱脚本的 `RECORD_OVERRIDE` 机制（4625→ASDNGb，
+  裁决理由内嵌注释并写入 `splib07_selection.json/md`）；`rf07_spectra.npz`
+  重烘（58 条记录中换 1 条），53 条实物参考中 r<0.99 的现为
+  illite_gds4（0.9708）与 jarosite_K（0.9827）两条。
+- `golden_arrays_v07.npz` 已按更正后轨道重建；legacy 轨道不受影响（rf.json 不动）。
+
 ## v1.2.2 — dry_veg_nongrass splib07 映射更正（2026-08-31）
 
 - **修正 v1.2.0 起存在的选谱错误**：dry_veg_nongrass（splib06b rec 12794，

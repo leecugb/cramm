@@ -1,12 +1,12 @@
 # .mcf 与 rf_splib07.json 差异声明
 
-> 日期：2026-08-31（dry_veg_nongrass 映射更正）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、`docs/splib07_export_audit.md`（烘焙审计）、`docs/splib07_dualrun_diff.md`（场景双跑）
+> 日期：2026-08-31（dry_veg_nongrass 映射更正；illite_gds4 覆盖裁决：BECKb→ASDNGb）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、`docs/splib07_export_audit.md`（烘焙审计）、`docs/splib07_dualrun_diff.md`（场景双跑）
 
 ## 结论
 
 rf_splib07.json 的 **77 条规则同 rf.json 逐比特一致**（诊断特征参数、约束、权重原样继承 .mcf v6a 启用态，核验见 `docs/MCF_vs_rfjson_verification.md`）；差异有两类，均已逐条裁决并记录：
 
-1. **参考光谱来源**：splib06b 记录 → splib07 同名样品记录（53 条唯一实物参考，D1-A 同仪器+同测量类型选谱）；
+1. **参考光谱来源**：splib06b 记录 → splib07 同名样品记录（53 条唯一实物参考，D1-A 同仪器+同测量类型选谱；1 条裁决覆盖偏离同仪器策略：illite_gds4 改用同样品 ASDNGb 记录以恢复 1.4 µm 带真实数据）；
 2. **5 条混合配方改接 AMX 实物记录**：splib07 AMX 系列中与 .mcf 配方同样品同配比的计算混合谱，烘焙后以权重 1.0 别名接入（GDS212/213 先例）——19 条混合配方中 14 条与 rf.json 逐比特一致（12 条线性合成 + 2 条 GDS 别名），5 条为 AMX 别名。
 
 因此 rf_splib07.json **不是**对 .mcf 的逐位保真移植——它是同规则、新参考的 v1.2.0 轨道；rf.json 保持不动，继续作为 .mcf 零差异保真基线。两轨道并存，由 `MicaEngine(rf_path=...)` 选择。
@@ -33,7 +33,7 @@ r = splib07 记录与 06b 原记录在 0.35–2.5 µm 公共网格上的 Pearson
 | 6348 | Muscovite GDS113 Ruby      W9R4Nbbb RREF | `Muscovite_GDS113_Ruby_NIC4aaa_RREF` | 1.0 |
 | 6394 | Muscovite GDS116 Tanzania  W9R4Naaa RREF | `Muscovite_GDS116_Tanzania_NIC4aaa_RREF` | 1.0 |
 | 4693 | Illite IMt-1.b <2um          W1R1Ba AREF | `Illite_IMt-1.b_lt2um_BECKa_AREF` | 1.0 |
-| 4625 | Illite GDS4 (Marblehead)     W1R1Bb AREF | `Illite_GDS4_Marblehead_BECKb_AREF` | 0.9973 |
+| 4625 | Illite GDS4 (Marblehead)     W1R1Bb AREF | `Illite_GDS4_Marblehead_ASDNGb_AREF` | 0.9708 |
 | 5088 | Kaolinite CM9              W9R4Nbbb RREF | `Kaolinite_CM9_NIC4bbb_RREF` | 1.0 |
 | 5167 | Kaolinite KGa-2 (pxl)      W9R4Nbbb RREF | `Kaolinite_KGa-2_(pxl)_NIC4bbb_RREF` | 1.0 |
 | 3869 | Halloysite NMNH106237      W9R4Naaa RREF | `Halloysite_NMNH106237_NIC4aaa_RREF` | 1.0 |
@@ -73,7 +73,7 @@ r = splib07 记录与 06b 原记录在 0.35–2.5 µm 公共网格上的 Pearson
 | 2196 | Chrysotile HS323.1B          W1R1Ba AREF | `Chrysotile_HS323.1B_BECKa_AREF` | 0.9999 |
 | 9412 | Topaz HS184.3B               W1R1Bc AREF | `Topaz_HS184.3B_BECKb_AREF` | 0.9996 |
 
-53 条中 52 条 r≥0.99（绝大多数 ≥0.9995）；最低为 jarosite_K（GDS99，r=0.9827）与 illite_gds4（GDS4，r=0.9973），均为 splib07 重测差异，裁决接受。**2026-08-31 更正**：dry_veg_nongrass（rec 12794）曾按名称精确匹配误选 splib07 LP-Needles-3（r=0.8839）——该记录实为 USGS 新测的健康绿叶谱；06b 'LP-Needles-3' 的真正对应是 splib07 **LP-Needles-2**（编号重排，r=0.999995），已更正映射并重建 v07 黄金基线。
+53 条中 51 条 r≥0.99（绝大多数 ≥0.9995）；最低为 illite_gds4（GDS4，r=0.9708）与 jarosite_K（GDS99，r=0.9827），均为 splib07 重测差异，裁决接受。**2026-08-31 更正（一）**：dry_veg_nongrass（rec 12794）曾按名称精确匹配误选 splib07 LP-Needles-3（r=0.8839）——该记录实为 USGS 新测的健康绿叶谱；06b 'LP-Needles-3' 的真正对应是 splib07 **LP-Needles-2**（编号重排，r=0.999995），已更正映射并重建 v07 黄金基线。**2026-08-31 更正（二）**：illite_gds4（rec 4625）原按同仪器策略选 Illite_GDS4_Marblehead_BECKb_AREF（r=0.9973），但 splib07 删除了其 1.35–1.42 µm 水汽吸收带（06b 有 100 个有效采样，BECKb 仅剩 5 个，npz 中线性桥接）；裁决改用同样品全覆盖记录 **Illite_GDS4_Marblehead_ASDNGb_AREF**（1.4 µm 带 101 个真实采样、整数 nm 网格恒等烘焙，全段 r=0.9708）——规则特征窗（2.2/2.35 µm）内两记录与 06b 几乎重合，分类行为影响可忽略，已重建 v07 黄金基线。
 
 ## 混合谱处理
 

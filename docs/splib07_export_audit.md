@@ -21,7 +21,7 @@
 | `Muscovite_GDS113_Ruby_NIC4aaa_RREF` | NIC4 | 0.999992 | 9.79e-04 | 0 | 0 |
 | `Muscovite_GDS116_Tanzania_NIC4aaa_RREF` | NIC4 | 0.999997 | 6.64e-04 | 0 | 0 |
 | `Illite_IMt-1.b_lt2um_BECKa_AREF` | BECK | 0.999918 | 5.95e-03 | 19 | 0 |
-| `Illite_GDS4_Marblehead_BECKb_AREF` | BECK | 0.999460 | 1.15e-02 | 29 | 0 |
+| `Illite_GDS4_Marblehead_ASDNGb_AREF` | ASDNG | 1.000000 | 4.00e-08 | 0 | 0 |
 | `Kaolinite_CM9_NIC4bbb_RREF` | NIC4 | 0.999989 | 4.27e-03 | 0 | 0 |
 | `Kaolinite_KGa-2_(pxl)_NIC4bbb_RREF` | NIC4 | 0.999992 | 3.54e-03 | 0 | 0 |
 | `Halloysite_NMNH106237_NIC4aaa_RREF` | NIC4 | 0.999996 | 3.06e-03 | 0 | 0 |
