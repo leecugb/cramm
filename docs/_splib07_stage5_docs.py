@@ -8,7 +8,7 @@ refs = SEL["references"]
 L = []
 L.append("# .mcf 与 rf_splib07.json 差异声明")
 L.append("")
-L.append("> 日期：2026-08-30（AMX 别名增补）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、"
+L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、"
          "`docs/splib07_export_audit.md`（烘焙审计）、`docs/splib07_dualrun_diff.md`（场景双跑）")
 L.append("")
 L.append("## 结论")
@@ -43,8 +43,12 @@ for rec, s in refs.items():
 n_hi = sum(1 for s in refs.values() if (s["r_vs_06b"] or 0) >= 0.99)
 L.append("")
 L.append(f"53 条中 {n_hi} 条 r≥0.99（绝大多数 ≥0.9995）；"
-         "最低为 dry_veg_nongrass（LP-Needles-3，r=0.8839）——splib07 仅存重测记录，"
-         "裁决接受并在此声明（同 `docs/rfjson_splib07_verification.md`）。")
+         "最低为 jarosite_K（GDS99，r=0.9827）与 illite_gds4（GDS4，r=0.9973），"
+         "均为 splib07 重测差异，裁决接受。"
+         "**2026-08-31 更正**：dry_veg_nongrass（rec 12794）曾按名称精确匹配误选 "
+         "splib07 LP-Needles-3（r=0.8839）——该记录实为 USGS 新测的健康绿叶谱；"
+         "06b 'LP-Needles-3' 的真正对应是 splib07 **LP-Needles-2**（编号重排，"
+         "r=0.999995），已更正映射并重建 v07 黄金基线。")
 L.append("")
 L.append("## 混合谱处理")
 L.append("")
@@ -75,7 +79,7 @@ L.append("1. **烘焙口径**（`docs/splib07_export_audit.md`）：1 nm 主网�
          "最大 1.03e-1 于 Topaz 陡沿，r≥0.996），NIC4 ~0.93→1 nm 降采样最大 8.5e-3。"
          "烘焙同时按构造消除 BECK 粗采样的 FWHM 窗空洞（遗产空洞填平，新增空洞为 0）。")
 L.append("2. **场景双跑**（`docs/splib07_dualrun_diff.md`，EMIT 全场景 1,589,760 像元）："
-         "分类图差异 mus 1.433% / chl 0.006% / cal 0.297%；吸收中心连续层 Δ 中位数=0"
+         "分类图差异 mus 1.433% / chl 0.006% / cal 0.296%；吸收中心连续层 Δ 中位数=0"
          "（max 1.9 nm mus / 24.7 nm cal）；99.3% 的 mus 图新增像元是方解石（+混合）→方解石+白云母混合的"
          "族间仲裁边缘漂移；cal 差异放大（0.078%→0.297%）几乎全部是 AMX8/10/21 接入的直接效应"
          "（AMX 前后 v07 黄金对比：cal 0.231%）——最大单一迁移为 1,630 个像元由 `dolomite_abundant`"

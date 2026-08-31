@@ -223,13 +223,13 @@
     "dry_veg_nongrass_2_3um"
    ],
    "splib06b_title": "Lodgepole-Pine LP-Needles-3  W1R1Fa AREF",
-   "splib07_record": "Lodgepole-Pine_LP-Needles-3_ASDFRa_AREF",
-   "splib07_name": "Lodgepole-Pine_LP-Needles-3",
+   "splib07_record": "Lodgepole-Pine_LP-Needles-2_ASDFRa_AREF",
+   "splib07_name": "Lodgepole-Pine_LP-Needles-2",
    "sensor": "ASDFR",
    "quality": "a",
    "mtype": "AREF",
    "instrument_match": true,
-   "r_vs_06b": 0.8839,
+   "r_vs_06b": 1.0,
    "coverage": {
     "dry_veg_nongrass": {
      "span": [
@@ -1616,8 +1616,8 @@
  "adjudications": [
   {
    "rule": "dry_veg_nongrass(+_2_3um)",
-   "issue": "splib07 LP-Needles-3 sole record r=0.884 (re-measurement)",
-   "decision": "accept splib07 record; caveat documented"
+   "issue": "USGS 在 splib07 重排了 LP-Needles 系列编号：与 06b 'LP-Needles-3'（rec 12794，干针叶）谱形一致的是 splib07 LP-Needles-2（r=0.999995）；splib07 自有的 LP-Needles-3 是新测的健康绿叶谱（r=0.884，红边+液态水吸收），并非对应记录——v1.2.0/v1.2.1 曾按名称精确匹配误选后者并裁决'仅存重测记录'，该裁决依据错误",
+   "decision": "映射更正为 LP-Needles-2_ASDFRa_AREF（同样品族、同仪器 ASDFRa AREF）"
   },
   {
    "rule": "5 条 AMX 直接映射混合规则",

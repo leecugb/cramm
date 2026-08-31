@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.2 — dry_veg_nongrass splib07 映射更正（2026-08-31）
+
+- **修正 v1.2.0 起存在的选谱错误**：dry_veg_nongrass（splib06b rec 12794，
+  占 2 个规则槽）此前按名称精确匹配选了 splib07 `LP-Needles-3_ASDFRa_AREF`
+  （r=0.8839，裁决为"仅存重测记录"）。经核查，splib07 的 LP-Needles-3 是 USGS
+  **新测的健康绿叶谱**（红边+液态水吸收），并非对应记录；06b 'LP-Needles-3'
+  的真正对应是 splib07 **`LP-Needles-2_ASDFRa_AREF`**（编号重排，r=0.999995）。
+- 选谱 token 更正（Needles-3→Needles-2，`_splib07_tokens.py` 附编号错位注释），
+  `rf07_spectra.npz` 重烘（58 条记录中换 1 条），53 条实物参考中 r<0.999 的
+  仅剩 jarosite_K（0.9827）与 illite_gds4（0.9973）两条重测差异。
+- `golden_arrays_v07.npz` 已按更正后轨道重建；legacy 轨道不受影响（rf.json 不动）。
+
 ## v1.2.1 — AMX 计算混合谱接入 splib07 轨道（2026-08-30）
 
 - 19 条混合配方中的 5 条在 splib07 有**同样品同配比**的 AMX 预计算面积混合记录，

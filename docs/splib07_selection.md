@@ -1,6 +1,6 @@
 # splib07 迁移 · 阶段1 选谱表与特征覆盖校验
 
-> 日期：2026-08-30（AMX 别名增补）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`
+> 日期：2026-08-31（dry_veg_nongrass 映射更正：LP-Needles-3→LP-Needles-2）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`
 > 策略 D1-A：同仪器+同测量类型优先，组内质量最高、r 最高者胜出。
 > 覆盖判据（引擎口径）：splib07 记录先按 D2 增补烘焙到 1 nm 主网格（分段线性插值、量程外 NaN、内部删除带线性桥接——烘焙后 Beckman 10 nm 采样的FWHM 窗空洞按构造消失），再与 06b 原始谱一同经引擎 `_resample_` 重采样到真实 EMIT 波段网格；规则特征区间内，splib07 在 06b 非 NaN 的每个 EMIT 波段必须同样非 NaN——继承自 06b 的空洞（删水带等）视为遗产，仅新增空洞判失败。
 
@@ -14,7 +14,7 @@
 | 11647 | water_sediment_high | Water+Montmor SWy-2+5.01g/l  W1R1Fa AREF | `Water+Montmor_SWy-2+5.01g-l_ASDFRa_AREF` | 1.0 | ✓ |
 | 11629 | water_sediment_low | Water+Montmor SWy-2+0.5g/l   W1R1Fa AREF | `Water+Montmor_SWy-2+0.50g-l_ASDFRa_AREF` | 1.0 | ✓ |
 | 12658 | dry_veg_grass, dry_veg_grass_2_3um | Grass_Golden_Dry GDS480      W1R1Fa AREF | `Grass_Golden_Dry_GDS480_ASDFRa_AREF` | 1.0 | ✓ |
-| 12794 | dry_veg_nongrass, dry_veg_nongrass_2_3um | Lodgepole-Pine LP-Needles-3  W1R1Fa AREF | `Lodgepole-Pine_LP-Needles-3_ASDFRa_AREF` | 0.8839 | ✓ |
+| 12794 | dry_veg_nongrass, dry_veg_nongrass_2_3um | Lodgepole-Pine LP-Needles-3  W1R1Fa AREF | `Lodgepole-Pine_LP-Needles-2_ASDFRa_AREF` | 1.0 | ✓ |
 | 6258 | muscovite_lowAl | Muscovite CU93-1 low-Al Phyl W2R4Nb RREF | `Muscovite_CU93-1_low-Al_Phyl_NIC4b_RREF` | 1.0 | ✓ |
 | 11117 | muscovite_medAl | Muscovite CU91-250A med Al   W2R4Nb RREF | `Muscovite-medlowAl_CU91-250A_NIC4b_RREF` | 1.0 | ✓ |
 | 6348 | muscovite_medhighAl | Muscovite GDS113 Ruby      W9R4Nbbb RREF | `Muscovite_GDS113_Ruby_NIC4aaa_RREF` | 1.0 | ✓ |
@@ -87,6 +87,6 @@ r<1 的原因：AMX 由 USGS 用其自择端元记录预先计算，并非本选
 
 ## 逐条裁决
 
-- **dry_veg_nongrass(+_2_3um)**：splib07 LP-Needles-3 sole record r=0.884 (re-measurement) → accept splib07 record; caveat documented
+- **dry_veg_nongrass(+_2_3um)**：USGS 在 splib07 重排了 LP-Needles 系列编号：与 06b 'LP-Needles-3'（rec 12794，干针叶）谱形一致的是 splib07 LP-Needles-2（r=0.999995）；splib07 自有的 LP-Needles-3 是新测的健康绿叶谱（r=0.884，红边+液态水吸收），并非对应记录——v1.2.0/v1.2.1 曾按名称精确匹配误选后者并裁决'仅存重测记录'，该裁决依据错误 → 映射更正为 LP-Needles-2_ASDFRa_AREF（同样品族、同仪器 ASDFRa AREF）
 - **5 条 AMX 直接映射混合规则**：AMX 计算混合谱与按 .mcf 配方从新端元合成的谱存在有界差异（AMX 由 USGS 用其自择端元记录预先计算，r=0.918–0.994），但样品与配比和 .mcf 配方一致 → 采纳 AMX 实物记录，以权重 1.0 别名接入（合成 rec id 90008+）
 - **mix_7703 / mix_7741 / mix_7707**：AMX3/AMX13 的高岭石端元为 KGa-1（.mcf 用 KGa-2=rec 5167）、AMX14 的矾石端元为 HS295（.mcf 用 GDS96=rec 596）——端元样品不一致 → 拒绝映射，维持按 .mcf 配方端元合成

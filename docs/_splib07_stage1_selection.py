@@ -268,8 +268,12 @@ out = {
     "synthetic_mixes": synth_report,
     "adjudications": [
         {"rule": "dry_veg_nongrass(+_2_3um)",
-         "issue": "splib07 LP-Needles-3 sole record r=0.884 (re-measurement)",
-         "decision": "accept splib07 record; caveat documented"},
+         "issue": "USGS 在 splib07 重排了 LP-Needles 系列编号：与 06b 'LP-Needles-3'"
+                  "（rec 12794，干针叶）谱形一致的是 splib07 LP-Needles-2（r=0.999995）；"
+                  "splib07 自有的 LP-Needles-3 是新测的健康绿叶谱（r=0.884，"
+                  "红边+液态水吸收），并非对应记录——v1.2.0/v1.2.1 曾按名称精确匹配"
+                  "误选后者并裁决'仅存重测记录'，该裁决依据错误",
+         "decision": "映射更正为 LP-Needles-2_ASDFRa_AREF（同样品族、同仪器 ASDFRa AREF）"},
         {"rule": "5 条 AMX 直接映射混合规则",
          "issue": "AMX 计算混合谱与按 .mcf 配方从新端元合成的谱存在有界差异"
                   "（AMX 由 USGS 用其自择端元记录预先计算，r=0.918–0.994），"
@@ -288,7 +292,7 @@ with open(r"d:\CRAMM\docs\splib07_selection.json", "w", encoding="utf-8") as f:
 L = []
 L.append("# splib07 迁移 · 阶段1 选谱表与特征覆盖校验")
 L.append("")
-L.append("> 日期：2026-08-30（AMX 别名增补）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`")
+L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正：LP-Needles-3→LP-Needles-2）｜ 脚本：`docs/_splib07_stage1_selection.py` ｜ 数据：`docs/splib07_selection.json`")
 L.append("> 策略 D1-A：同仪器+同测量类型优先，组内质量最高、r 最高者胜出。")
 L.append("> 覆盖判据（引擎口径）：splib07 记录先按 D2 增补烘焙到 1 nm 主网格"
          "（分段线性插值、量程外 NaN、内部删除带线性桥接——烘焙后 Beckman 10 nm 采样的"

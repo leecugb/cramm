@@ -12,8 +12,13 @@ TOKENS = OrderedDict([
     ("water_sediment_low", "Water+Montmor"),
     ("dry_veg_grass", "GDS480"),
     ("dry_veg_grass_2_3um", "GDS480"),
-    ("dry_veg_nongrass", "Needles-3"),
-    ("dry_veg_nongrass_2_3um", "Needles-3"),
+    # USGS renumbered the LP-Needles series in splib07: the record whose
+    # spectrum matches 06b "LP-Needles-3" (dry needles, rec 12794) is named
+    # LP-Needles-2 in splib07 (r=0.999995); splib07's own LP-Needles-3 is a
+    # NEW green/healthy-needle measurement (r=0.884, red edge + liquid-water
+    # bands) and is NOT the counterpart. Token therefore points at Needles-2.
+    ("dry_veg_nongrass", "Needles-2"),
+    ("dry_veg_nongrass_2_3um", "Needles-2"),
     ("muscovite_lowAl", "CU93-1"),
     ("muscovite_medAl", "CU91-250A"),
     ("muscovite_medhighAl", "GDS113"),

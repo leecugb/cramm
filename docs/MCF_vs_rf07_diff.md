@@ -1,6 +1,6 @@
 # .mcf 与 rf_splib07.json 差异声明
 
-> 日期：2026-08-30（AMX 别名增补）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、`docs/splib07_export_audit.md`（烘焙审计）、`docs/splib07_dualrun_diff.md`（场景双跑）
+> 日期：2026-08-31（dry_veg_nongrass 映射更正）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、`docs/splib07_export_audit.md`（烘焙审计）、`docs/splib07_dualrun_diff.md`（场景双跑）
 
 ## 结论
 
@@ -27,7 +27,7 @@ r = splib07 记录与 06b 原记录在 0.35–2.5 µm 公共网格上的 Pearson
 | 11647 | Water+Montmor SWy-2+5.01g/l  W1R1Fa AREF | `Water+Montmor_SWy-2+5.01g-l_ASDFRa_AREF` | 1.0 |
 | 11629 | Water+Montmor SWy-2+0.5g/l   W1R1Fa AREF | `Water+Montmor_SWy-2+0.50g-l_ASDFRa_AREF` | 1.0 |
 | 12658 | Grass_Golden_Dry GDS480      W1R1Fa AREF | `Grass_Golden_Dry_GDS480_ASDFRa_AREF` | 1.0 |
-| 12794 | Lodgepole-Pine LP-Needles-3  W1R1Fa AREF | `Lodgepole-Pine_LP-Needles-3_ASDFRa_AREF` | 0.8839 |
+| 12794 | Lodgepole-Pine LP-Needles-3  W1R1Fa AREF | `Lodgepole-Pine_LP-Needles-2_ASDFRa_AREF` | 1.0 |
 | 6258 | Muscovite CU93-1 low-Al Phyl W2R4Nb RREF | `Muscovite_CU93-1_low-Al_Phyl_NIC4b_RREF` | 1.0 |
 | 11117 | Muscovite CU91-250A med Al   W2R4Nb RREF | `Muscovite-medlowAl_CU91-250A_NIC4b_RREF` | 1.0 |
 | 6348 | Muscovite GDS113 Ruby      W9R4Nbbb RREF | `Muscovite_GDS113_Ruby_NIC4aaa_RREF` | 1.0 |
@@ -73,7 +73,7 @@ r = splib07 记录与 06b 原记录在 0.35–2.5 µm 公共网格上的 Pearson
 | 2196 | Chrysotile HS323.1B          W1R1Ba AREF | `Chrysotile_HS323.1B_BECKa_AREF` | 0.9999 |
 | 9412 | Topaz HS184.3B               W1R1Bc AREF | `Topaz_HS184.3B_BECKb_AREF` | 0.9996 |
 
-53 条中 51 条 r≥0.99（绝大多数 ≥0.9995）；最低为 dry_veg_nongrass（LP-Needles-3，r=0.8839）——splib07 仅存重测记录，裁决接受并在此声明（同 `docs/rfjson_splib07_verification.md`）。
+53 条中 52 条 r≥0.99（绝大多数 ≥0.9995）；最低为 jarosite_K（GDS99，r=0.9827）与 illite_gds4（GDS4，r=0.9973），均为 splib07 重测差异，裁决接受。**2026-08-31 更正**：dry_veg_nongrass（rec 12794）曾按名称精确匹配误选 splib07 LP-Needles-3（r=0.8839）——该记录实为 USGS 新测的健康绿叶谱；06b 'LP-Needles-3' 的真正对应是 splib07 **LP-Needles-2**（编号重排，r=0.999995），已更正映射并重建 v07 黄金基线。
 
 ## 混合谱处理
 
@@ -94,7 +94,7 @@ r<1 的原因：AMX 由 USGS 用其自择端元记录预先计算，并非本选
 ## 行为差异实证
 
 1. **烘焙口径**（`docs/splib07_export_audit.md`）：1 nm 主网格分段线性烘焙对 ASD/整数对齐记录为逐位恒等；高斯核重采样下 BECK 10 nm→1 nm 稠密化**非无损**（EMIT 网格 max|Δ| 普遍 ≤2e-2，最大 1.03e-1 于 Topaz 陡沿，r≥0.996），NIC4 ~0.93→1 nm 降采样最大 8.5e-3。烘焙同时按构造消除 BECK 粗采样的 FWHM 窗空洞（遗产空洞填平，新增空洞为 0）。
-2. **场景双跑**（`docs/splib07_dualrun_diff.md`，EMIT 全场景 1,589,760 像元）：分类图差异 mus 1.433% / chl 0.006% / cal 0.297%；吸收中心连续层 Δ 中位数=0（max 1.9 nm mus / 24.7 nm cal）；99.3% 的 mus 图新增像元是方解石（+混合）→方解石+白云母混合的族间仲裁边缘漂移；cal 差异放大（0.078%→0.297%）几乎全部是 AMX8/10/21 接入的直接效应（AMX 前后 v07 黄金对比：cal 0.231%）——最大单一迁移为 1,630 个像元由 `dolomite_abundant`翻转至 `calcite.5+dolomite.5` 后、吸收中心按新胜出规则连续统窗口重拟合跨过 2.323 µm bin 界的同族 bin 级平移（AMX8 与端元合成谱中心仅差 +0.3 nm，非参考谱中心漂移）。差异有界、可归因。
+2. **场景双跑**（`docs/splib07_dualrun_diff.md`，EMIT 全场景 1,589,760 像元）：分类图差异 mus 1.433% / chl 0.006% / cal 0.296%；吸收中心连续层 Δ 中位数=0（max 1.9 nm mus / 24.7 nm cal）；99.3% 的 mus 图新增像元是方解石（+混合）→方解石+白云母混合的族间仲裁边缘漂移；cal 差异放大（0.078%→0.297%）几乎全部是 AMX8/10/21 接入的直接效应（AMX 前后 v07 黄金对比：cal 0.231%）——最大单一迁移为 1,630 个像元由 `dolomite_abundant`翻转至 `calcite.5+dolomite.5` 后、吸收中心按新胜出规则连续统窗口重拟合跨过 2.323 µm bin 界的同族 bin 级平移（AMX8 与端元合成谱中心仅差 +0.3 nm，非参考谱中心漂移）。差异有界、可归因。
 
 ## 既有结论不变
 

@@ -15,7 +15,7 @@
 | `Water+Montmor_SWy-2+5.01g-l_ASDFRa_AREF` | ASDFR | 1.000000 | 2.48e-08 | 0 | 0 |
 | `Water+Montmor_SWy-2+0.50g-l_ASDFRa_AREF` | ASDFR | 1.000000 | 3.26e-09 | 0 | 0 |
 | `Grass_Golden_Dry_GDS480_ASDFRa_AREF` | ASDFR | 1.000000 | 3.14e-08 | 0 | 0 |
-| `Lodgepole-Pine_LP-Needles-3_ASDFRa_AREF` | ASDFR | 1.000000 | 9.67e-08 | 0 | 0 |
+| `Lodgepole-Pine_LP-Needles-2_ASDFRa_AREF` | ASDFR | 1.000000 | 6.77e-08 | 0 | 0 |
 | `Muscovite_CU93-1_low-Al_Phyl_NIC4b_RREF` | NIC4 | 0.999998 | 6.04e-04 | 0 | 0 |
 | `Muscovite-medlowAl_CU91-250A_NIC4b_RREF` | NIC4 | 0.999995 | 9.12e-04 | 0 | 0 |
 | `Muscovite_GDS113_Ruby_NIC4aaa_RREF` | NIC4 | 0.999992 | 9.79e-04 | 0 | 0 |
