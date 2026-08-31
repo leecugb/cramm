@@ -28,7 +28,7 @@
 | 24 | alunite_K_250C | rec 596 | Alunite_GDS96_K_Syn_(250C)_NIC4a_RREF |
 | 25 | alunite_Na_450C | rec 655 | Alunite_RES-3_Na_Syn_(450C)_NIC4a_RREF |
 | 26 | pyrophyllite | rec 7893 | Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF |
-| 27 | pyrophyllite.25+kaolinite.75 | mix 0.25x7893+0.75x5088 | synth 0.25xPyrophyllite+0.75xKaolinite |
+| 27 | pyrophyllite.25+kaolinite.75 | mix 0.25x7893+0.75x5088 | Pyrophyl.25+wxlKaol.75_AMX17_NIC4b_AREF [AMX] |
 | 28 | jarosite_Na | rec 4819 | Jarosite_GDS24_Na_NIC4bbb_RREF |
 | 29 | jarosite_K | rec 4875 | Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF |
 | 30 | montmorillonite_Na | rec 6200 | Montmorillonite_SWy-1_NIC4bcc_RREF |

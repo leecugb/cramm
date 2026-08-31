@@ -25,7 +25,7 @@ idx,rule,splib07_record,r,max_abs_diff,n_common_bands
 24,alunite_K_250C,Alunite_GDS96_K_Syn_(250C)_NIC4a_RREF,1.000000,0.000001,1201
 25,alunite_Na_450C,Alunite_RES-3_Na_Syn_(450C)_NIC4a_RREF,1.000000,0.000001,1201
 26,pyrophyllite,Pyrophyllite_PYS1A_lt850um_NIC4aaa_RREF,1.000000,0.047042,1158
-27,pyrophyllite.25+kaolinite.75,synth 0.25xPyrophyllite+0.75xKaolinite,0.999990,0.011755,1150
+27,pyrophyllite.25+kaolinite.75,Pyrophyl.25+wxlKaol.75_AMX17_NIC4b_AREF [AMX],0.999996,0.022630,1150
 28,jarosite_Na,Jarosite_GDS24_Na_NIC4bbb_RREF,1.000000,0.000000,1076
 29,jarosite_K,Jarosite_GDS99_K_200C_Syn_NIC4aa_RREF,0.982700,0.089394,1076
 30,montmorillonite_Na,Montmorillonite_SWy-1_NIC4bcc_RREF,1.000000,0.000000,1121

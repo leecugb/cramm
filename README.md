@@ -268,11 +268,11 @@ engine = MicaEngine()                                       # default: rf.json (
 bit-identical** — only the reference spectra are rebuilt from USGS splib07
 (same-sample records, same instrument/measurement type preferred), baked onto
 a shared 1 nm master grid (350–2500 nm) in `cramm/data/rf07_spectra.npz`
-(57 records); no splib06b or external library is needed at runtime. Of the 19
-mixtures, 15 recipes are bit-identical to rf.json (13 engine-synthesized + 2
-weight-1.0 aliases of the measured GDS212/213 records) and 4 are weight-1.0
+(58 records); no splib06b or external library is needed at runtime. Of the 19
+mixtures, 14 recipes are bit-identical to rf.json (12 engine-synthesized + 2
+weight-1.0 aliases of the measured GDS212/213 records) and 5 are weight-1.0
 aliases of splib07's AMX calculated-mixture records with the same endmember
-samples and ratios (mix_7821/7715/7711/7745, synthetic record ids
+samples and ratios (mix_7821/7715/7711/7745/7737, synthetic record ids
 90008+). rf.json stays the default and remains the bit-fidelity baseline
 against USGS .mcf v6a; the v07 track is audited end-to-end (per-record
 correlations, export audit, full-scene dual-run census) in

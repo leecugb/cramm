@@ -1,9 +1,9 @@
 # splib07 迁移 · 阶段2 导出审计
 
-> 日期：2026-08-30（AMX 别名增补）｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`
+> 日期：2026-08-31（AMX17 重接 NIC4b 后重烘）｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`
 > 审计口径：原生有效样本 vs 1 nm 主网格烘焙谱，分别经引擎 `_resample_` 重采样到真实 EMIT 网格后比较。
 > NIC4 ~0.93 nm→1 nm 轻微降采样的影响即体现在 max|Δ| 列；filled = 烘焙按构造填掉的 FWHM 空洞（遗产改善）；new holes 必须为 0。
-> 记录构成：53 条选谱参考 + 4 条 AMX 计算混合记录（90008+ 合成 rec id，权重 1.0 别名接入）= 57 条。
+> 记录构成：53 条选谱参考 + 5 条 AMX 计算混合记录（90008+ 合成 rec id，权重 1.0 别名接入）= 58 条。
 
 | 记录 | 传感器 | r | max\|Δ\| | 填洞数 | 新增空洞 |
 |---|---|---|---|---|---|
@@ -64,6 +64,7 @@
 | `Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF` | ASDNG | 1.000000 | 6.71e-08 | 0 | 0 |
 | `Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF` | ASDNG | 1.000000 | 6.20e-08 | 0 | 0 |
 | `Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF` | NIC4 | 0.999994 | 2.26e-03 | 0 | 0 |
+| `Pyrophyl.25+wxlKaol.75_AMX17_NIC4b_AREF` | NIC4 | 0.999992 | 2.65e-03 | 0 | 0 |
 
 ## AMX 计算混合记录（5 条别名）
 
@@ -75,6 +76,7 @@
 | mix_7715 | dolomite.5+montmorilloniteCa.5 | `Dolomite.5+Ca-Mont.5_AMX10_ASDNGb_AREF` | 0.9655 | 0.0667 | 0.9653 |
 | mix_7711 | dolomite.5+montmorilloniteNa.5 | `Dolomite.5+Na-Mont.5_AMX21_ASDNGb_AREF` | 0.9618 | 0.0695 | 0.9616 |
 | mix_7745 | kaolinite.5+muscoviteMedhighAl.5 | `Kaol_Wxl+0.5Musc_Ruby_AMX12_NIC4a_AREF` | 1.0 | 0.0189 | 1.0 |
+| mix_7737 | pyrophyllite.25+kaolinite.75 | `Pyrophyl.25+wxlKaol.75_AMX17_NIC4b_AREF` | 1.0 | 0.034 | 1.0 |
 
 ## 完整性核验
 

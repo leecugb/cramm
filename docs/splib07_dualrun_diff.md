@@ -1,6 +1,6 @@
 # splib07 迁移 · 阶段4 全场景双跑差异普查
 
-> 日期：2026-08-31（AMX 变体审计后重建 v07 黄金：撤 AMX17 别名、AMX12 改接 NIC4a）｜ 脚本：`docs/_splib07_stage4_dualrun.py`（双跑）+ `docs/_splib07_stage4b_readable.py`（类别解码）
+> 日期：2026-08-31（AMX 变体审计后重建 v07 黄金：AMX12 改接 NIC4a、AMX17 改接 NIC4b 并重新别名 90017）｜ 脚本：`docs/_splib07_stage4_dualrun.py`（双跑）+ `docs/_splib07_stage4b_readable.py`（类别解码）
 > 场景：EMIT_L2A_RFL_001_20220819T061448_2223104_025（1280×1242，1,589,760 像元）
 > 双轨：legacy=rf.json+splib06b（与 golden_arrays.npz 逐位一致，已验证）；v07=rf_splib07.json+rf07_spectra.npz。
 > 图层语义：orth_rgb = 硬分类胜出类彩色图（非真彩色场景合成）；color_enhanced = HSI 增强（受 fit/depth 连续量调制，对微小拟合分差异敏感）；mus/chl/cal_image = 吸收中心 10 级分级专题图（Lv0→Lv9 = 短波→长波）。
@@ -9,8 +9,8 @@
 
 | 图层 | 相同像元 | 差异像元 | 差异占比 |
 |---|---|---|---|
-| orth_rgb | 1539959 | 49801 | 3.133% |
-| color_enhanced | 1007430 | 582330 | 36.630% |
+| orth_rgb | 1539960 | 49800 | 3.133% |
+| color_enhanced | 1007431 | 582329 | 36.630% |
 | mus_image | 1567012 | 22748 | 1.431% |
 | chl_image | 1589666 | 94 | 0.006% |
 | cal_image | 1585047 | 4713 | 0.296% |

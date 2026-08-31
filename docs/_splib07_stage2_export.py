@@ -174,10 +174,10 @@ print(f"non-aligned reproduction max|diff| at kink points: {worst_rep:.3e} ({wor
 L = []
 L.append("# splib07 迁移 · 阶段2 导出审计")
 L.append("")
-L.append("> 日期：2026-08-30（AMX 别名增补）｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`")
+L.append("> 日期：2026-08-31（AMX17 重接 NIC4b 后重烘）｜ 脚本：`docs/_splib07_stage2_export.py` ｜ 产物：`cramm/data/rf07_spectra.npz`")
 L.append("> 审计口径：原生有效样本 vs 1 nm 主网格烘焙谱，分别经引擎 `_resample_` 重采样到真实 EMIT 网格后比较。")
 L.append("> NIC4 ~0.93 nm→1 nm 轻微降采样的影响即体现在 max|Δ| 列；filled = 烘焙按构造填掉的 FWHM 空洞（遗产改善）；new holes 必须为 0。")
-L.append("> 记录构成：53 条选谱参考 + 4 条 AMX 计算混合记录（90008+ 合成 rec id，权重 1.0 别名接入）= 57 条。")
+L.append("> 记录构成：53 条选谱参考 + 5 条 AMX 计算混合记录（90008+ 合成 rec id，权重 1.0 别名接入）= 58 条。")
 L.append("")
 L.append("| 记录 | 传感器 | r | max\\|Δ\\| | 填洞数 | 新增空洞 |")
 L.append("|---|---|---|---|---|---|")

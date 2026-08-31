@@ -9,7 +9,7 @@ L = []
 L.append("# .mcf 与 rf_splib07.json 差异声明")
 L.append("")
 L.append("> 日期：2026-08-31（dry_veg_nongrass 映射更正；illite_gds4 覆盖裁决：BECKb→ASDNGb；"
-         "AMX 变体审计：撤 AMX17 别名、AMX12 改接 NIC4a）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、"
+         "AMX 变体审计：AMX12 改接 NIC4a、AMX17 改接 NIC4b 并重新别名）｜ 数据：`docs/splib07_selection.json`（逐条 r 值）、"
          "`docs/splib07_export_audit.md`（烘焙审计）、`docs/splib07_dualrun_diff.md`（场景双跑）")
 L.append("")
 L.append("## 结论")
@@ -22,18 +22,18 @@ L.append("1. **参考光谱来源**：splib06b 记录 → splib07 同名样品�
          "（53 条唯一实物参考，D1-A 同仪器+同测量类型选谱；"
          "1 条裁决覆盖偏离同仪器策略：illite_gds4 改用同样品 ASDNGb 记录以恢复 "
          "1.4 µm 带真实数据）；")
-L.append("2. **4 条混合配方改接 AMX 实物记录**：splib07 AMX 系列中与 .mcf 配方同样品同配比、"
+L.append("2. **5 条混合配方改接 AMX 实物记录**：splib07 AMX 系列中与 .mcf 配方同样品同配比、"
          "且仪器变体经配方合成核对的计算混合谱，烘焙后以权重 1.0 别名接入（GDS212/213 先例）"
-         "——19 条混合配方中 15 条与 rf.json 逐比特一致（13 条线性合成 + 2 条 GDS 别名），"
-         "4 条为 AMX 别名。")
+         "——19 条混合配方中 14 条与 rf.json 逐比特一致（12 条线性合成 + 2 条 GDS 别名），"
+         "5 条为 AMX 别名。")
 L.append("")
 L.append("因此 rf_splib07.json **不是**对 .mcf 的逐位保真移植——它是同规则、新参考的 v1.2.0 轨道；"
          "rf.json 保持不动，继续作为 .mcf 零差异保真基线。两轨道并存，由 `MicaEngine(rf_path=...)` 选择。")
 L.append("")
 L.append("**计数口径**：77 条规则 → 70 条唯一规则面参考（51 条直接引用 + 19 条混合谱；"
          "7 条复用——dry_veg_grass/dry_veg_nongrass/calcite/dolomite/serpentine_chrysotile 各 2 规则共享、"
-         "serpentine_antigorite 3 规则共享）→ 57 条唯一实物记录（51 + 2 条仅经权重 1.0 别名引用的 "
-         "GDS212/213 + 4 条 AMX 计算混合记录，合成 rec id 90008/90010/90012/90021）。")
+         "serpentine_antigorite 3 规则共享）→ 58 条唯一实物记录（51 + 2 条仅经权重 1.0 别名引用的 "
+         "GDS212/213 + 5 条 AMX 计算混合记录，合成 rec id 90008/90010/90012/90017/90021）。")
 L.append("")
 L.append("## 参考谱差异（53 条唯一实物参考）")
 L.append("")
@@ -63,12 +63,12 @@ L.append(f"53 条中 {n_hi} 条 r≥0.99（绝大多数 ≥0.9995）；"
 L.append("")
 L.append("## 混合谱处理")
 L.append("")
-L.append("- **13 条线性合成规则**：不烘焙——引擎在传感器网格重采样端元后才加权合成"
+L.append("- **12 条线性合成规则**：不烘焙——引擎在传感器网格重采样端元后才加权合成"
          "（`get_resample` 既有顺序），v07 轨道沿用同一口径，端元换为新参考即自动重算，"
          "无第二套插值代码。")
 L.append("- **2 条权重 1.0 别名规则**（`calcite.8+montmorilloniteNa.2_mix_intimate`→GDS212、"
          "`kaolinite.2+calcite.8_mix_intimate`→GDS213）：直接引用 splib07 同名**实测**物理混合记录。")
-L.append("- **4 条 AMX 别名规则**：配方与 splib07 AMX 预计算面积混合记录同样品同配比，"
+L.append("- **5 条 AMX 别名规则**：配方与 splib07 AMX 预计算面积混合记录同样品同配比，"
          "且选定仪器变体经配方合成核对（USGS 按仪器分别计算 AMX），"
          "烘焙后以权重 1.0 别名接入（合成 rec id 90000+AMX 编号），不再由端元合成。")
 L.append("")
@@ -80,13 +80,15 @@ for a in SEL["amx_mixture_aliases"]:
 L.append("")
 L.append("r<1 的原因：AMX 由 USGS 用其自择端元记录预先计算，并非本选谱表端元的数值加权和"
          "（对 06b 端元合成同样 r≈0.96–0.99，差异不来自 06b→07 重测）；max\\|Δ\\| 为 EMIT 网格上"
-         "与 v07 端元合成谱的最大绝对差。**拒绝的 4 条 AMX 映射**：AMX3/AMX13 用 "
+         "与 v07 端元合成谱的最大绝对差。**拒绝的 3 条 AMX 映射**：AMX3/AMX13 用 "
          "KGa-1 ≠ 5167(KGa-2)（mix_7703/mix_7741）、AMX14 用 HS295 ≠ 596(GDS96)（mix_7707）"
-         "——端元样品不一致，维持端元合成；**AMX17**（mix_7737）端元正确但其 ASDNG 变体"
-         "不遵循配方（对配方合成 r=0.805；NIC4b 变体 0.998、与同仪器端元合成 1.0000，"
-         "独立佐证：`docs/library_validation_report.txt` 中 AMX17 仅 NIC4 变体以 0.9999 "
-         "命中本规则），而 NIC4b 变体与引擎自身端元合成 r=0.9983——别名无额外保真度，"
-         "2026-08-31 撤销别名、mix_7737 回到端元合成；**AMX12**（mix_7745）同日由 ASDNGa "
+         "——端元样品不一致，维持端元合成。**AMX17**（mix_7737，27 号规则）端元正确但其 "
+         "ASDNGb 变体不遵循配方（对配方合成 r=0.805，与任何 ASDNG 端元组合最高 0.956），"
+         "NIC4b 变体配方保真（对配方合成 r=0.998、与同仪器端元合成 1.0000；独立佐证："
+         "`docs/library_validation_report.txt` 中 AMX17 仅 NIC4 变体以 0.9999 命中本规则）；"
+         "v1.2.4 曾撤销别名回到端元合成，v1.2.5 经用户裁决改接实测混合记录 "
+         "**AMX17_NIC4b**（Record=13116，合成 rec id 90017，与 v07 端元合成 r=0.999996）"
+         "——实测面积混合物理上优先于线性合成；**AMX12**（mix_7745）同日由 ASDNGa "
          "改接 NIC4a 变体（对配方合成 r 0.897→0.985）。")
 L.append("")
 L.append("## 行为差异实证")
