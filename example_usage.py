@@ -34,7 +34,7 @@ NC_PATH = "./EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc"
 def example_quickstart():
     from cramm import MicaEngine
 
-    engine = MicaEngine()  # bundled rf.json + splib06b spectral library + color table
+    engine = MicaEngine()  # bundled 1nm rule library + spectra + color table
 
     # load EMIT L2A NetCDF: reflectance cube (float32), lon/lat, band params, valid bands
     spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit(NC_PATH)
@@ -136,7 +136,7 @@ def example_custom_rules():
         print(f"  {r['name']:<40s} fit={r['fit']:.4f}")
 
     # custom rules can also come from a JSON file: MicaEngine(rf_path="my_rules.json")
-    # format: see cramm/data/rf.json (top level {"rf": {...}, "mixtures": {...}, "wavelength_map": {...}})
+    # format: see cramm/data/temp_rf_notfeatures_renamed.json (top level {"rf": {...}, "mixtures": {...}, "wavelength_map": {...}})
 
 
 # ---------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-"""Custom rule-library verification: after modifying rf.json — via rf_path at
+"""Custom rule-library verification: after modifying the 1nm rule library — via rf_path at
 construction or in-place mutation + invalidate_caches — the program must
 execute the NEW rules.
 
@@ -108,10 +108,12 @@ def assigned_names(result):
 def test_rf_path_construction():
     """A trimmed library loaded via rf_path: only those rules participate."""
     e_full = fresh_engine()
-    keep = [MEDAL, "illite_imt1", "kaolinite_wxl"]
-    doc = json.loads(json.dumps({"rf": {k: e_full.rf[k] for k in keep},
-                                 "mixtures": e_full.mixtures,
-                                 "wavelength_map": e_full.wavelength_map}))
+    keep = [MEDAL, "illite_imt1", "kaolinite_wxl",
+            # NOT-features dependencies of kaolinite_wxl (must co-exist in a
+            # trimmed 1 nm rule library — the 1 nm track enforces that every
+            # not_(abs/rel)_features entry resolves to a rule in rf.keys())
+            MEDHIGH, "alunite_K_250C", "alunite_Na_450C"]
+    doc = json.loads(json.dumps({"rf": {k: e_full.rf[k] for k in keep}}))
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
         json.dump(doc, f)
         tmp = f.name

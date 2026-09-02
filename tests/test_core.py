@@ -15,7 +15,7 @@ Usage:
     python test_core.py --nc <path>    # specify EMIT NetCDF
     python test_core.py --golden       # additionally run test_parallel.py 4 and 1 in subprocesses
 
-The unit section only needs the package-bundled cramm/data (rf.json + splib06b); no EMIT image needed.
+The unit section only needs the package-bundled 1nm rule library + spectra bundle (cramm/data/rf77_splib07_1nm.npz); no EMIT image needed.
 """
 import os
 import subprocess
@@ -74,7 +74,7 @@ def eng():
     global _ENG, W, BP, CHANELS, WL
     if _ENG is None:
         from cramm.mica_engine import MicaEngine
-        _ENG = MicaEngine()  # package-bundled rf.json + splib06b
+        _ENG = MicaEngine()  # bundled 1nm rule library + spectra bundle
         W = np.linspace(0.381, 2.508, 285)
         BP = np.full(285, 0.0074)
         # simulate bad bands: cut out two segments (EMIT-like water-vapor absorption regions)
@@ -87,7 +87,7 @@ def ref_spectrum():
     """Take a real reference spectrum (with bad-band gaps zeroed) as test input, plus small noise."""
     e = eng()
     resampled1 = e.get_resample(W, BP)
-    rid = sorted(k for k in resampled1 if isinstance(k, int))[5]
+    rid = sorted(resampled1.keys())[5]
     rng = np.random.default_rng(7)
     spec = resampled1[rid] + rng.normal(0, 0.003, len(W))
     return np.maximum(spec, 1e-4), resampled1[rid]
@@ -98,13 +98,17 @@ def ref_spectrum():
 # ----------------------------------------------------------------------------
 
 def test_resample_fast_vs_slow():
-    """_resample_ searchsorted fast path vs original boolean slow path, bit-exact (real splib record)."""
+    """_resample_ searchsorted fast path vs original boolean slow path, bit-exact (real 1nm record)."""
     from cramm.classifier import _resample_
     e = eng()
-    rid = sorted(e.ids)[3]
-    wave_rec = e.wavelength_map[str(rid)]
-    bands = e.dic3.loc[wave_rec, "data"]
-    data = e.dic3.loc[rid, "data"]
+    # 1nm rule-face bundle: (grid, rule_names, rule_labels, spectra)
+    grid, rule_names, _labels, spectra = e._classifier._1nm_bundle
+    # pick a deterministic rule-name (4th in sorted order)
+    rule_name = sorted(e.rf.keys())[3]
+    name_to_row = {str(n): i for i, n in enumerate(rule_names)}
+    row = name_to_row[rule_name]
+    bands = np.asarray(grid, dtype="float64")
+    data = np.asarray(spectra[row], dtype="float64")
 
     fast = _resample_(bands, data, W, BP)
 
@@ -171,7 +175,7 @@ def test_endpoint_exc_compile_and_freshness():
     from cramm.classifier import InvalidRangeError, _diagnostic_feature, _precompute_feature
     e = eng()
     resampled1 = e.get_resample(W, BP)
-    rid = sorted(k for k in resampled1 if isinstance(k, int))[0]
+    rid = sorted(resampled1.keys())[0]
     ref = resampled1[rid][CHANELS]
 
     pre = _precompute_feature(ref, WL, [9.0, 9.1, 9.2, 9.3])  # beyond band range -> no channels
@@ -419,19 +423,9 @@ def test_render_missing_color():
         assert "color table is missing" in str(e) and "no_such_mineral" in str(e)
 
 
-def test_specpr_and_splib_validation():
-    """Empty/corrupt specpr -> ValueError; nonexistent splib path -> FileNotFoundError."""
-    from cramm.classifier import MicaClassifier, _hyper_read_specpr
-    with tempfile.NamedTemporaryFile(suffix=".bin", delete=False) as f:
-        empty = f.name
-    try:
-        try:
-            _hyper_read_specpr(empty)
-            raise AssertionError("empty file should raise ValueError")
-        except ValueError as e:
-            assert "specpr" in str(e)  # size guard or "no spectral records parsed"
-    finally:
-        os.remove(empty)
+def test_splib_validation():
+    """Nonexistent splib path -> FileNotFoundError."""
+    from cramm.classifier import MicaClassifier
     try:
         MicaClassifier.from_paths(splib_path="no_such_splib.bin")
         raise AssertionError("should raise FileNotFoundError")
@@ -737,7 +731,7 @@ def main():
     run("muscovite guard", test_muscovite_guard)
     run("chlorite tiling-window arbitration", test_chlorite_window_arbitration)
     run("render color table upfront validation", test_render_missing_color)
-    run("specpr/splib validation", test_specpr_and_splib_validation)
+    run("splib validation", test_splib_validation)
     run("EmitReader non-EMIT error", test_emit_reader_non_emit_nc)
     run("EmitReader shape validation", test_emit_reader_shape_validation)
     run("PDF rcParams restoration", test_pdf_rcparams_restored)

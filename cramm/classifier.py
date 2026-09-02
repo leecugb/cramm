@@ -16,7 +16,6 @@ from __future__ import annotations
 
 import multiprocessing as mp
 import os
-import struct
 import sys
 import tempfile
 import threading
@@ -30,17 +29,23 @@ import numpy as np
 # Exception types
 # =============================================================================
 
-class InvalidRangeError(BaseException):
+class InvalidRangeError(Exception):
+    """The feature's continuum window covers no valid channels."""
+
     def __str__(self):
         return "the spectrum range of this feature contains no channels"
 
 
-class InvalidLeftEndPointError(BaseException):
+class InvalidLeftEndPointError(Exception):
+    """The left-endpoint window covers no channels."""
+
     def __str__(self):
         return "this left end point range covers no channels"
 
 
-class InvalidRightEndPointError(BaseException):
+class InvalidRightEndPointError(Exception):
+    """The right-endpoint window covers no channels."""
+
     def __str__(self):
         return "this right end point range covers no channels"
 
@@ -86,7 +91,7 @@ MUSCOVITE_MINERALS = [
 # mixture rules are excluded on purpose — their band position reflects the
 # mixture, not the chlorite composition (chl13 application boundary: band-
 # position inversion is quantitative only for chlorite >= ~50%). thuringite
-# carries the Fe-richest window ([2.256, 2.266), rf.json), extending the
+# carries the Fe-richest window ([2.256, 2.266), 1nm rule library), extending the
 # arbitration sequence beyond clinochlore_Fe's [2.252, 2.256).
 CHLORITE_MINERALS = [
     "chlorite_lowFe",
@@ -121,92 +126,31 @@ CARBONATE_MINERALS = [
 # Pure-function algorithm layer (zero state dependency)
 # =============================================================================
 
-def _hyper_read_specpr(filename: str) -> "pd.DataFrame":  # type: ignore[name-defined]
-    """Read a USGS specpr binary spectral library."""
-    import pandas as pd
-    with open(filename, "rb") as f:
-        n = f.seek(0, 2)
-        f.seek(0)
-        if n < 1536 or n % 1536:
-            raise ValueError(
-                f"{filename}: size {n} is not a positive multiple of the 1536-byte "
-                f"specpr record (truncated or not a specpr file)")
-        f.read(1536)
-        firstTime = 1
-        dtype = [
-            ("ID", "i4"),
-            ("ititl", "str"),
-            ("usernm", "str"),
-            ("itchan", "i4"),
-            ("irwav", "i4"),
-            ("irespt", "i4"),
-            ("irecno", "i4"),
-            ("data", "object"),
-        ]
-        dic = pd.DataFrame(np.array([], dtype=dtype))
-        dic.set_index("ID", inplace=True)
-        record = None
-        for i in range(int(n / 1536 - 1)):
-            f.read(3)
-            firstTwoBits = ord(f.read(1)) & 3
-            if (firstTwoBits == 2) or (firstTwoBits == 3):
-                f.read(1532)
-            elif firstTwoBits == 0:
-                if not firstTime:
-                    dic.loc[record["irecno"]] = record.values()
-                record = {}
-                firstTime = 0
-                record["ititl"] = f.read(40).decode("utf-8")
-                record["usernm"] = f.read(8).decode("utf-8")
-                f.read(28)
-                record["itchan"] = struct.unpack(">1i", f.read(4))[0]
-                f.read(8)
-                f.read(8)
-                record["irwav"] = struct.unpack(">1i", f.read(4))[0]
-                record["irespt"] = struct.unpack(">1i", f.read(4))[0]
-                record["irecno"] = struct.unpack(">1i", f.read(4))[0]
-                f.read(400)
-                data = np.array(struct.unpack(">256f", f.read(1024)))
-                data[data < -1e34] = 0
-                record["data"] = data
-            else:
-                cData = np.array(struct.unpack(">383f", f.read(1532)))
-                cData[cData < -1e34] = 0
-                data = np.hstack([data, cData])
-                record["data"] = data
-        if record is None:
-            raise ValueError(f"{filename}: no spectral records parsed (empty file or unsupported format)")
-        dic.loc[record["irecno"]] = record.values()
-    return dic
+def _read_1nm_npz(filename: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Read the splib07 rule-face 1 nm reference bundle (rf77_splib07_1nm.npz).
 
-
-def _read_rf07_npz(filename: str) -> "pd.DataFrame":  # type: ignore[name-defined]
-    """Read a baked splib07-track reference bundle (rf07_spectra.npz).
-
-    Returns a dic3-shaped DataFrame: one row per record (index = the splib06b
-    record number the v07 rule file keeps as its reference/mixture key
-    namespace) plus row -1 holding the shared 1 nm master wavelength grid
-    (350-2500 nm). Every spectrum row is aligned to that grid; out-of-range
-    samples are NaN and are dropped by _resample_'s ``temp > 0`` filter
-    exactly like the deletion zeros of splib06b, so the resample path needs
-    no NaN special-casing.
+    Returns (grid, rule_names, rule_labels, spectra) directly from the npz:
+      - grid: [2151] float64, 0.350 .. 2.500 um in 1 nm steps
+      - rule_names: [77] object(str), one entry per rule (matches rf.keys() order
+        in temp_rf_notfeatures_renamed.json — the 1nm rule library)
+      - rule_labels: [77] object(str), provenance tags (record / [AMX] /
+        [alias] / synth)
+      - spectra: [77, 2151] float64, rows aligned to rule_names; out-of-range
+        entries are NaN and are naturally dropped by _resample_'s ``temp > 0``
+        filter exactly like deletion zeros in legacy splib06b.
     """
-    import json
-    import pandas as pd
     z = np.load(filename, allow_pickle=False)
     grid = np.asarray(z["grid"], dtype="float64")
-    spectra = z["spectra"]
-    meta = json.loads(str(z["meta"][0]))
-    if spectra.shape != (len(meta), len(grid)):
+    rule = np.asarray(z["rule"], dtype=object)
+    label = np.asarray(z["label"], dtype=object)
+    spectra = np.asarray(z["spectra"], dtype="float64")
+    if spectra.shape != (len(rule), len(grid)):
         raise ValueError(
             f"{filename}: spectra shape {spectra.shape} inconsistent with "
-            f"meta ({len(meta)}) x grid ({len(grid)})")
+            f"rule ({len(rule)}) x grid ({len(grid)})")
     if len(grid) < 2 or not (np.diff(grid) > 0).all():
         raise ValueError(f"{filename}: master grid is not strictly increasing")
-    dic = pd.DataFrame({"data": {int(m["splib06b_rec"]): spectra[i]
-                                 for i, m in enumerate(meta)}})
-    dic.loc[-1] = [grid]  # -1 = shared master-grid wavelength row (v07 convention)
-    return dic
+    return grid, rule, label, spectra
 
 
 def _resample_(bands: np.ndarray, data: np.ndarray, w: np.ndarray, bp: np.ndarray) -> np.ndarray:
@@ -228,8 +172,8 @@ def _resample_(bands: np.ndarray, data: np.ndarray, w: np.ndarray, bp: np.ndarra
       - Window located via searchsorted binary search O(log n), replacing the
         per-band full-array boolean scan O(n)
       - Fast-path precondition: the positive part of bands is strictly
-        increasing (always true for splib06b -- all non-increasing points come
-        from the leading/trailing padding segments zeroed by deletion markers),
+        increasing (all non-increasing points come from the leading/trailing
+        padding segments zeroed by deletion markers),
         and every window lower bound x - y/2 > 0 (always true for EMIT bands;
         a window can never contain a 0-wavelength padding point); otherwise
         fall back to the original boolean path. Both paths sum over exactly
@@ -886,8 +830,17 @@ def _judge_reference_entry(
         (verified by the check_compiled_path.py differential test).
     """
     # When compiled is provided, the reference-side constants are precomputed;
-    # no need to consult resampled1
-    reference = None if compiled is not None else resampled1[rf["reference"]["reflectance_record"]][chanels]
+    # no need to consult resampled1.
+    #
+    # The main reference is keyed by rf["output_name"] (the rule's own name).
+    # On the 1 nm rule-face track the canonical key in resampled1 already IS
+    # the rule name, and we install an int-record alias for owners so
+    # int-keyed references still resolve. output_name is the canonical lookup
+    # that the 1 nm mica_core notebook/standalone used, keeping us bit-exact
+    # with that baseline.
+    reference = (
+        None if compiled is not None else resampled1[rf["output_name"]][chanels]
+    )
     fit = np.zeros(len(spectrum))
     depth = np.zeros(len(spectrum))
     fd = np.zeros(len(spectrum))
@@ -1109,43 +1062,69 @@ def _cleanup_temp(path: str) -> None:
 
 class MicaClassifier:
     """
-    Per-pixel mineral discrimination core.
+    Per-pixel mineral discrimination core (1 nm rule-face track).
 
     Parameters
     ----------
     rf : dict
-        Mineral rule library (the "rf" of rf.json).
-    mixtures : dict
-        Mixed-spectrum recipes.
-    wavelength_map : dict
-        Record number -> wavelength record mapping.
-    dic3 : pandas.DataFrame
-        USGS splib06b spectral library.
-    ids : set
-        Set of record numbers needed for resampling.
+        Mineral rule library (the "rf" key of temp_rf_notfeatures_renamed.json).
+        Every ``reference.reflectance_record`` and every
+        ``not_(abs/rel)_features[].reflectance_record`` is a rule-name **string**
+        in ``rf.keys()`` -- the rule name is the sole link between the expert
+        rules and the reference spectra library.
+    reference_1nm_bundle : tuple
+        ``(grid, rule_names, rule_labels, spectra)`` as returned by
+        :func:`_read_1nm_npz`. ``rule_names`` is indexed by rule-name string.
 
     Notes
     -----
-    The keys of the resampling and compiled-rule caches contain only the band
-    configuration (w, bp, wl, chanels), not the rule-library contents:
-    **after modifying self.rf / self.mixtures / self.dic3 in place you must
-    call invalidate_caches()** (or simply create a new instance), otherwise
-    classify_spectrum / classify keep using the old reference-side constants
-    and results are silently wrong.
+    The cache keys contain only the band configuration (w, bp, wl, chanels),
+    not the rule-library contents: **after modifying self.rf /
+    self._1nm_bundle in place you must call invalidate_caches()** (or simply
+    create a new instance), otherwise classify_spectrum / classify keep using
+    the old reference-side constants and results are silently wrong.
     """
 
-    def __init__(self, rf: Dict, mixtures: Dict, wavelength_map: Dict, dic3, ids: set):
+    def __init__(
+        self,
+        rf: Dict,
+        reference_1nm_bundle: Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray],
+    ):
+        """
+        Parameters
+        ----------
+        rf : dict
+            Mineral rule library. Every ``reflectance_record`` field is a
+            rule-name string in ``rf.keys()``; the rule name is the sole key
+            into the resampled reference-spectra dict.
+        reference_1nm_bundle : tuple
+            ``(grid, rule_names, rule_labels, spectra)`` as returned by
+            :func:`_read_1nm_npz`.
+        """
         self.rf = rf
-        self.mixtures = mixtures
-        self.wavelength_map = wavelength_map
-        self.dic3 = dic3
-        self.ids = ids
-        # get_resample memoization cache (keyed by (w, bp) content)
+        # Early rule-count guard: classify() uses uint8 NUM_ indexing, so
+        # >256 rules would silently overflow. Fail at construction rather than
+        # mid-classify (where the error surfaces only inside a long-running
+        # segment loop, with no actionable context).
+        if len(rf) > 256:
+            raise ValueError(
+                f"rule library has {len(rf)} minerals, exceeding the uint8 "
+                f"index limit of 256 (NUM_ dtype); trim the rule library or "
+                f"upgrade ClassificationResult.num dtype")
+        self.track = "1nm"
+        self._1nm_bundle = reference_1nm_bundle
+        # get_resample memoization cache (keyed by (w content, bp content))
         self._resample_cache_key: Optional[Tuple[bytes, bytes]] = None
-        self._resample_cache: Optional[Dict[int, np.ndarray]] = None
-        # _get_compiled_rules compilation cache (keyed by (w, bp, wl, chanels) content)
+        self._resample_cache: Optional[Dict[str, np.ndarray]] = None
+        # _get_compiled_rules compilation cache (keyed by (resample_key, wl, chanels))
         self._compiled_key: Optional[tuple] = None
         self._compiled_rules: Optional[Dict[str, dict]] = None
+        # rf fingerprint snapshot at cache-build time (best-effort stale-cache
+        # detection: catches ``clf.rf = new_dict`` reassignment, but NOT in-place
+        # mutation ``clf.rf["x"] = ...`` or ``clf.rf["new"] = ...`` — those still
+        # require an explicit invalidate_caches() call; the latter deliberately
+        # raises KeyError as a stale-trap, validated by test_cache_contract).
+        self._rf_fp_at_build: Optional[int] = None
 
     def invalidate_caches(self) -> None:
         """
@@ -1153,17 +1132,23 @@ class MicaClassifier:
 
         The cache keys contain only the band configuration (w, bp, wl,
         chanels), not the rule-library contents -- after modifying self.rf /
-        self.mixtures / self.dic3 in place you must call this method (or simply
-        create a new MicaClassifier instance), otherwise subsequent evaluations
-        reuse the old constants and results are silently wrong.
+        self._1nm_bundle in place you must call this method
+        (or simply create a new MicaClassifier instance), otherwise subsequent
+        evaluations reuse the old constants and results are silently wrong.
         """
         self._resample_cache_key = None
         self._resample_cache = None
         self._compiled_key = None
         self._compiled_rules = None
+        self._rf_fp_at_build = None
 
     @classmethod
-    def from_paths(cls, rf_path: Optional[str] = None, splib_path: Optional[str] = None) -> "MicaClassifier":
+    def from_paths(
+        cls,
+        rf_path: Optional[str] = None,
+        splib_path: Optional[str] = None,
+        reference_track: Optional[str] = None,
+    ) -> "MicaClassifier":
         """
         Load all resources from paths and construct the classifier
         (self-contained, no manual loading needed).
@@ -1171,99 +1156,183 @@ class MicaClassifier:
         Parameters
         ----------
         rf_path : str, optional
-            Path to the rf.json rule library. None uses the package-bundled
-            cramm/data/rf.json. A rule file with a top-level
-            "reference_source" key (v07 track) pins its own baked npz
-            reference bundle instead of splib06b.
+            Path to the 1 nm rule library (temp_rf_notfeatures_renamed.json
+            or an equivalent rewrite whose not-feature reflectance_record
+            fields are rule-name strings). None uses the package-bundled
+            copy at cramm/data/temp_rf_notfeatures_renamed.json.
         splib_path : str, optional
-            Path to the USGS splib06b binary library, or to a baked v07
-            master-grid npz. None uses the package-bundled resource selected
-            by the rule file (splib06b for rf.json, its reference_source
-            bundle otherwise).
+            Path to a rule-face 1 nm npz bundle (rf77_splib07_1nm.npz or
+            equivalent). None uses the package-bundled copy at
+            cramm/data/rf77_splib07_1nm.npz.
+        reference_track : ignored
+            Kept for API compatibility; the classifier always runs the
+            1 nm rule-face track.
         """
         import json
         from pathlib import Path
 
+        if reference_track not in (None, "1nm"):
+            raise ValueError(
+                f"reference_track must be None or '1nm' (only the 1 nm track "
+                f"is supported), got {reference_track!r}")
+
         if rf_path is None:
-            rf_path = Path(__file__).parent / "data" / "rf.json"
+            # Package-bundled 1 nm rule library (cramm/data/). The rule file
+            # is NOT searched in CWD any more; users wanting a custom rule
+            # library must pass rf_path=... explicitly.
+            rf_path = Path(__file__).parent / "data" / "temp_rf_notfeatures_renamed.json"
+            if not rf_path.exists():
+                raise FileNotFoundError(
+                    "Package-bundled 1 nm rule library not found: "
+                    f"{rf_path}. The 1 nm track needs a rule library whose "
+                    "not-feature reflectance_record fields are rule-name "
+                    "strings; provide rf_path=... pointing at such a file.")
         rf_p = Path(rf_path)
         if not rf_p.exists():
             raise FileNotFoundError(f"{rf_p} not found.")
         with rf_p.open("r", encoding="utf-8") as f:
             mica_data = json.load(f)
         rf = mica_data["rf"]
-        mixtures = mica_data.get("mixtures", {})
-        wavelength_map = mica_data.get("wavelength_map", {})
-        # v07 track marker: rule file pins its reference bundle (baked 1 nm
-        # master-grid npz); absence keeps the legacy splib06b specpr path.
-        reference_source = mica_data.get("reference_source")
 
         if splib_path is None:
-            # Package-bundled copy
-            splib_path = Path(__file__).parent / "data" / (reference_source or "splib06b")
+            # Package-bundled 1 nm rule-face spectra (cramm/data/).
+            candidate = Path(__file__).parent / "data" / "rf77_splib07_1nm.npz"
+            if not candidate.exists():
+                raise FileNotFoundError(
+                    "Package-bundled 1 nm rule-face spectra not found: "
+                    f"{candidate}. Pass splib_path=... pointing at a rule-face "
+                    "1 nm npz bundle.")
+            splib_path = candidate
         splib_p = Path(splib_path)
         if not splib_p.exists():
             raise FileNotFoundError(f"{splib_p} not found.")
-        if reference_source is not None or str(splib_p).lower().endswith(".npz"):
-            dic3 = _read_rf07_npz(str(splib_p))
-        else:
-            dic3 = _hyper_read_specpr(str(splib_p))
 
-        # Build the set of record numbers needed for resampling. int guard on
-        # every source: JSON object keys are strings, and mixture component ids
-        # arrive via the mixtures loop below as int(comp_id) -- a stray string
-        # here would crash sorted(self.ids) with an opaque TypeError.
-        ids: set = set()
-        for value in rf.values():
-            ref = value["reference"]["reflectance_record"]
-            if isinstance(ref, int):
-                ids.add(ref)
-            for feat in value.get("not_absolute_features", []):
-                rec = feat["reflectance_record"]
-                if isinstance(rec, int):
-                    ids.add(rec)
-            for feat in value.get("not_relative_features", []):
-                rec = feat["reflectance_record"]
-                if isinstance(rec, int):
-                    ids.add(rec)
-        for components in mixtures.values():
-            for comp_id in components.keys():
-                ids.add(int(comp_id))
+        # ---- 1 nm (rule-face) track ----
+        bundle = _read_1nm_npz(str(splib_p))
+        grid_1nm, rule_1nm, label_1nm, spectra_1nm = bundle  # noqa: F841 (label kept for debugging/inspect)
+        # Validation: every rf key must exist in rule_1nm (1-to-1 mapping)
+        missing_rf_keys = [k for k in rf.keys() if k not in rule_1nm]
+        if missing_rf_keys:
+            raise ValueError(
+                f"{splib_p.name}: rule-name references missing from 1 nm bundle: "
+                f"{missing_rf_keys[:5]}{'...' if len(missing_rf_keys) > 5 else ''}")
+        # Validation: every reflectance_record field MUST be a rule-name
+        # **string** in rf.keys() -- the rule name is the sole link between
+        # the expert rules and the reference spectra library. Raw int
+        # records or mix_XXXX strings here mean the user passed an
+        # un-renamed file (the original .mcf-derived json prior to
+        # temp_rf_notfeatures_renamed.json); raising immediately with a
+        # diagnostic list avoids silent wrong-track behavior.
+        all_bad = []
+        for rname, value in rf.items():
+            rec = value["reference"]["reflectance_record"]
+            if not isinstance(rec, str) or rec not in rf:
+                all_bad.append(
+                    f"reference of {rname}: expected rule-name string in "
+                    f"rf.keys(), got {type(rec).__name__}: {rec!r}")
+            for ftype in ("not_absolute_features", "not_relative_features"):
+                for feat in value.get(ftype, []):
+                    r = feat["reflectance_record"]
+                    if not isinstance(r, str) or r not in rf:
+                        all_bad.append(
+                            f"{ftype} of {rname}: expected rule-name string in "
+                            f"rf.keys(), got {type(r).__name__}: {r!r}")
+        if all_bad:
+            raise ValueError(
+                "The 1 nm track requires a rule library matching the 1 nm "
+                "rule-face contract. Load temp_rf_notfeatures_renamed.json "
+                "(every reflectance_record field is a rule-name string in "
+                "rf.keys(); the rule name is the sole link to the reference "
+                "spectra library). "
+                f"Found {len(all_bad)} nonconforming references. First few:\n  - "
+                + "\n  - ".join(all_bad[:8]))
+        return cls(rf, reference_1nm_bundle=bundle)
 
-        return cls(rf, mixtures, wavelength_map, dic3, ids)
-
-    def get_resample(self, w: np.ndarray, bp: np.ndarray) -> Dict[int, np.ndarray]:
+    def get_resample(self, w: np.ndarray, bp: np.ndarray) -> Dict[str, np.ndarray]:
         """
-        Resample all reference spectra (including linear synthesis of mixture
-        minerals) onto the EMIT wavelengths/FWHM.
+        Resample all reference spectra onto the target wavelengths/FWHM.
 
-        Results are memoized by (w, bp) content: repeated calls under the same
-        sensor band configuration (e.g. consecutive single-spectrum
-        identifications in the GUI, multi-scene batch processing of the same
-        batch) hit the cache directly. Callers must not modify the returned
-        dict; after modifying self.rf / self.mixtures / self.dic3 in place,
-        call invalidate_caches() first.
+        The rule name is the sole key into the dict: every rule in ``self.rf``
+        takes its pre-baked spectrum from the 1 nm bundle row indexed by the
+        rule name. Custom rules added by in-place mutation (cloned
+        ``zz_test_*`` names not present in the bundle) inherit the spectrum
+        of their source rule via ``reference.reflectance_record`` (which is
+        itself a rule-name string after the id-purge migration).
+
+        Results are memoized by ``(w content, bp content)``; call
+        :meth:`invalidate_caches` after mutating ``self.rf`` /
+        ``self._1nm_bundle``. As a best-effort safety net, reassignment of
+        ``self.rf`` to a different dict object (different ``id()``) is
+        detected automatically and the cache is dropped; in-place mutation
+        (``self.rf["x"] = ...`` or ``self.rf["new"] = ...``) is **not**
+        detected — the former silently keeps stale results, the latter
+        raises ``KeyError`` from the compiled-rules cache (a deliberate
+        stale-trap, see ``test_cache_contract``). Both require an explicit
+        :meth:`invalidate_caches` call.
         """
-        key = (np.ascontiguousarray(w).tobytes(), np.ascontiguousarray(bp).tobytes())
-        if self._resample_cache_key == key:
+        # Stale-cache check: if rf has been reassigned to a different dict
+        # object since the cache was built (id() changed), drop the cache.
+        # id() alone is unsafe because CPython may reuse a freed id, but in
+        # practice the old dict is usually still referenced (e.g. via
+        # MicaEngine.rf alias), making collisions practically impossible.
+        # Deliberately does NOT catch in-place mutation (value or key
+        # addition) — that is a documented stale-trap; see the docstring
+        # above and test_cache_contract.
+        if self._resample_cache is not None and self._rf_fp_at_build is not None:
+            if id(self.rf) != self._rf_fp_at_build:
+                self.invalidate_caches()
+
+        cache_key = (
+            np.ascontiguousarray(w).tobytes(),
+            np.ascontiguousarray(bp).tobytes(),
+        )
+        if self._resample_cache_key == cache_key:
             return self._resample_cache
-        resampled1: Dict[int, np.ndarray] = {}
-        for i in sorted(self.ids):  # sorted: deterministic iteration order (was an unordered set)
-            wave_rec = self.wavelength_map[str(i)]
-            resampled1[i] = _resample_(
-                self.dic3.loc[wave_rec, "data"], self.dic3.loc[i, "data"], w, bp
-            )
-        for mix_id in sorted(self.mixtures):
-            components = self.mixtures[mix_id]
-            result = np.zeros_like(w, dtype="float64")
-            for comp_id, weight in components.items():
-                comp_id = int(comp_id)
-                if comp_id not in resampled1:
-                    raise KeyError(f"Mixture {mix_id} depends on unresolved component {comp_id}")
-                result = result + resampled1[comp_id] * weight
-            resampled1[mix_id] = result
-        self._resample_cache_key = key
+
+        resampled1: Dict[str, np.ndarray] = {}
+        grid_1nm, rule_1nm, _label_1nm, spectra_1nm = self._1nm_bundle
+        name_to_row: Dict[str, int] = {str(n): i for i, n in enumerate(rule_1nm)}
+
+        # Two-pass resolution: pass 1 installs every rule that has a direct
+        # row in the 1 nm bundle; pass 2 resolves custom rules (clones not in
+        # the bundle) via reference.reflectance_record, iterating until no
+        # further progress (handles clone-of-clone chains). This removes the
+        # implicit dependence on rf.keys() insertion order that the original
+        # single-pass loop had (a clone whose owner name sorted later would
+        # spuriously raise KeyError("cyclic / missing")).
+        pending: List[str] = []
+        for canon_id in self.rf.keys():
+            row = name_to_row.get(canon_id)
+            if row is not None:
+                resampled1[canon_id] = _resample_(grid_1nm, spectra_1nm[row], w, bp)
+            else:
+                pending.append(canon_id)
+
+        while pending:
+            progressed = False
+            still_pending: List[str] = []
+            for canon_id in pending:
+                owner = self.rf[canon_id]["reference"]["reflectance_record"]
+                if owner in resampled1:
+                    resampled1[canon_id] = resampled1[owner]
+                    progressed = True
+                else:
+                    still_pending.append(canon_id)
+            pending = still_pending
+            if not progressed:
+                break
+
+        if pending:
+            canon_id = pending[0]
+            owner = self.rf[canon_id]["reference"]["reflectance_record"]
+            raise KeyError(
+                f"get_resample: rule {canon_id!r} has no row in the "
+                f"1 nm bundle and its reference {owner!r} is not resolvable "
+                f"(cyclic / missing reference).")
+
+        self._resample_cache_key = cache_key
         self._resample_cache = resampled1
+        self._rf_fp_at_build = id(self.rf)
         return resampled1
 
     def _get_compiled_rules(
@@ -1271,17 +1340,18 @@ class MicaClassifier:
     ) -> Dict[str, dict]:
         """
         Compile the reference-side constants of all rules (cached, keyed by
-        (w, bp, wl, chanels) content).
+        ``(w, bp, wl, chanels)`` content — the composite key here reuses
+        :meth:`get_resample`'s cache key as its base.
 
         For repeated single-spectrum evaluation scenarios such as
         classify_spectrum: reference-spectrum masks / continuum con_ /
         closed-form least-squares matrix B / depth factors / endpoint indices
         and other input-spectrum-independent computations are done only once.
         The compiled product drives the compiled path of
-        _judge_reference_entry, bit-exact identical to direct evaluation
-        (verified by the check_compiled_path.py differential test). Callers
-        must not modify the returned dict; after modifying self.rf in place,
-        call invalidate_caches() first.
+        :func:`_judge_reference_entry`, bit-exact identical to direct
+        evaluation (verified by the check_compiled_path.py differential test).
+        Callers must not modify the returned dict; after modifying ``self.rf``
+        in place, call :meth:`invalidate_caches` first.
         """
         resampled1 = self.get_resample(w, bp)  # memoized; also ensures _resample_cache_key is ready
         key = (
@@ -1293,7 +1363,11 @@ class MicaClassifier:
             return self._compiled_rules
         rules: Dict[str, dict] = {}
         for name, rf in self.rf.items():
-            ref = resampled1[rf["reference"]["reflectance_record"]][chanels]
+            # Main reference: use rf["output_name"] as the canonical lookup
+            # (matches the non-compiled path in _judge_reference_entry and
+            # therefore produces bit-exact identical compiled constants vs
+            # direct evaluation).
+            ref = resampled1[rf["output_name"]][chanels]
             diag = [
                 (
                     _precompute_feature(ref, wl, f["continuum_endpoints"]),
@@ -1413,7 +1487,7 @@ class MicaClassifier:
         process are safe -- the r2-chain scratch buffer is thread-local and
         the parallel path's BLAS-env window is serialized by a process-wide
         lock (parallel calls from different threads run one after another).
-        Do NOT mutate self.rf / self.mixtures / the caches while a call is
+        Do NOT mutate self.rf / the caches while a call is
         running (segment tasks are re-enumerated from self.rf per segment).
         Caller scripts using n_workers > 1 need the standard
         ``if __name__ == "__main__":`` guard (spawn re-imports __main__).
@@ -1423,11 +1497,10 @@ class MicaClassifier:
 
         index = list(self.rf.keys())
         index_d = {name: i for i, name in enumerate(index)}
-        if len(index) > 256:
-            raise ValueError(
-                f"rule library has {len(index)} minerals, exceeding the uint8 index limit of 256 (NUM_ dtype); "
-                f"trim the rule library or upgrade ClassificationResult.num dtype"
-            )
+        # Rule-count guard lives in __init__ now (fail-fast at construction,
+        # not mid-classify); kept here as a defensive assertion in case a
+        # caller mutated self.rf between construction and this call.
+        assert len(index) <= 256, "rule count > 256 slipped past __init__ guard"
 
         mus_center = np.zeros(r * c, dtype="float")
         chl_center = np.zeros(r * c, dtype="float")

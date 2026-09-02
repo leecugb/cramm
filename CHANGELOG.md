@@ -1,5 +1,109 @@
 # Changelog
 
+## v1.4.1 — 代码审阅后的 bug 修复（2026-09-02）
+
+代码级审阅后修复的 P1/P2 项,bit-exact 保留(`test_parallel` 5/5 array_equal,
+`test_single_spectrum` Top-1 fit=0.9441 不变,41/41 测试通过)。
+
+- **自定义异常继承层级修复**:`InvalidRangeError` / `InvalidLeftEndPointError` /
+  `InvalidRightEndPointError` 由 `BaseException` 改为 `Exception` 子类。原实现会
+  穿透 `except Exception`(在第三方 wrapper 如 tqdm 进度条中无法被捕获),修复后
+  既可被 `except` 显式元组捕获,也可被 `except Exception` 兜底。
+- **类型注解修复**:`MicaClassifier._resample_cache` 由 `Optional[Dict, np.ndarray]
+  # type: ignore[assignment]` 修正为 `Optional[Dict[str, np.ndarray]]`(移除
+  `type: ignore` 掩盖);`MicaClassifier.get_resample` 与 `MicaEngine.get_resample`
+  返回类型由 `Dict[int, np.ndarray]` 修正为 `Dict[str, np.ndarray]`(id 删除后
+  key 已是 rule-name 字符串)。
+- **get_resample 克隆 fallback 改两趟装载**:原单趟循环依赖 `rf.keys()` 插入顺序
+  保证 owner 先于 clone 被处理,克隆规则名若字典序在 owner 之后会误报
+  `KeyError("cyclic / missing reference")`。改为 pass 1 装载所有 bundle 内有
+  行的规则,pass 2 用 `while pending` 迭代解析克隆链(支持 clone-of-clone
+  链式继承),无进展时才抛错。彻底消除对字典顺序的隐式依赖。
+- **rf 重赋值自动失效缓存**:`get_resample` 入口新增 `id(self.rf)` 快照检测,
+  若 rf 被重赋值为不同 dict 对象(`clf.rf = new_dict`),自动调用
+  `invalidate_caches()` 丢弃旧缓存。best-effort 设计:id-only 检测不捕获
+  in-place mutation(`clf.rf["x"] = ...` 或 `clf.rf["new"] = ...`),后者保留
+  原有"stale-trap / KeyError"契约(由 `test_cache_contract` 文档化)。
+- **规则数 ≤ 256 提前校验**:`MicaClassifier.__init__` 现在构造时即校验
+  `len(rf) <= 256`(`classify` 中 `NUM_` 用 `uint8`),避免在长段循环中段失败。
+  原 `classify` 内的检查降级为防御性 `assert`(捕获构造与调用间的 in-place
+  添加)。
+
+## v1.4.0 — 规则名作为专家规则与参考光谱库的唯一链接（2026-09-02）
+
+- **id 字段彻底删除**:JSON 数据中 58 处 `reference.reflectance_record` 的 int
+  记录号、19 处 `mix_XXXX` 混合谱逻辑标签,全部替换为 owning rule-name 字符串;
+  顶层 `mixtures` 配方表删除。`temp_rf_notfeatures_renamed.json` 现仅含 `rf` 一个
+  顶层键,每条规则的 `reference` / `not_absolute_features` / `not_relative_features`
+  的 `reflectance_record` 都是 `rf.keys()` 中的 rule-name 字符串。
+- **代码层 id 逻辑全删**:`MicaClassifier.__init__` 删除 `wavelength_map` / `dic3` /
+  `ids` / `output_name_aliases` 四个参数;`from_paths` 删除 `own_rec_to_rule`、
+  `extra_aliases`、`_resolve_ref` int 分支、synthetic `wavelength_map` 构建、
+  `aliases` 装配,验证逻辑简化为"每个 reflectance_record 必须是 rf.keys() 中的
+  rule-name 字符串"。
+- **get_resample 极简化**:删除 `_output_name_aliases` int 别名装载循环、
+  `mix_to_rule` 反推、`mix_id` 别名安装循环(~30 行)。`resampled1` 现仅含
+  rule-name → ndarray 的纯净映射,克隆规则通过 `reference.reflectance_record`
+  (已是 rule-name 字符串)直接继承源规则谱。
+- **API 兼容别名删除**:`MicaEngine` 不再暴露 `.ids` / `.wavelength_map` / `.dic3`
+  别名;`renderer.py` 改走 `rf["output_name"]` 而非 `reference.reflectance_record`
+  访问主参考谱。
+- **测试更新**:`test_core.py` 三处 `sorted(k for k in resampled1 if isinstance(k, int))`
+  改为 `sorted(resampled1.keys())`;`test_custom_rules.py` 不再向 trimmed JSON 写
+  `wavelength_map` 字段。
+- **bit-exact 保留**:EMIT 场景全部 5 个渲染数组与 v1.3.1 基线 bit-identical
+  (`test_parallel` 5/5 array_equal,无需重新基线 golden);`test_single_spectrum`
+  Top-1 fit=0.9441 不变;41/41 测试通过。
+
+## v1.3.1 — get_resample 用 npz 预烘焙谱作为权威（2026-09-02）
+
+- **性能优化**:`MicaClassifier.get_resample` 直接从 1nm bundle 按 rule-name
+  取预烘焙谱,删除运行时端元线性合成 + orphan fallback 路径(~80 行)。
+  19 条混合规则的谱在 npz 打包时已烘焙好,运行时不再查 `mixtures` 配方表。
+- **bit-exact 保留**:对 EMIT 场景全部 5 个渲染数组与旧基线 bit-identical
+  (4 条与 npz 偏离的混合规则未进入 Top-1 像素)。`test_single_spectrum` 的
+  Top-1 fit=0.9441 不变;`test_parallel` 5/5 array_equal。
+- **自定义规则兼容**:克隆 / 裁剪规则库场景通过 `_output_name_aliases` +
+  `reference.reflectance_record` 直接查找 fallback 路径继承源规则谱,
+  `test_custom_rules` 7/7 通过。
+- **`mixtures` 字段语义**:运行时不再读取,仅作端元配方的文档 / introspection
+  用途;`get_resample` 仅用 `mix_to_rule` 字典安装 `mix_XXXX` → owning rule 的
+  谱别名,以便 `resampled1["mix_7737"]` 等访问路径继续可用。
+- **golden 重基线**:`tests/golden_arrays.npz` 原子替换,审计 0 diff pixel。
+
+## v1.3.0 — 仅保留 1nm rule-face 轨道,删除 legacy / rf07 轨道（2026-09-02）
+
+- **重大重构**:分类器仅运行 1nm rule-face 轨道,`cramm.classifier` /
+  `cramm.mica_engine` / `mica_core_v07_1nm.py` 全部移除 legacy splib06b 与
+  rf07 轨道分支,数值路径 BIT-EXACT 与原 1nm 轨道一致。
+- **API 兼容**:`MicaEngine(reference_track=…)` 与
+  `MicaClassifier.from_paths(reference_track=…)` 的 `reference_track` 参数保留,
+  但被忽略;传入非 `None` / `"1nm"` 的值会抛 `ValueError`。
+- **删除数据文件**:`cramm/data/rf.json`、`cramm/data/rf_splib07.json`、
+  `cramm/data/splib06b`(21MB specpr 二进制)、`cramm/data/rf07_spectra.npz`
+  全部移除;唯一规则库 `cramm/data/temp_rf_notfeatures_renamed.json`、唯一参考谱束
+  `cramm/data/rf77_splib07_1nm.npz`(打包入 wheel 的 package-data)。
+- **删除测试**:`tests/test_rf07_export.py`、`tests/test_rf07_engine.py`
+  (依赖被删除的 rf07 npz 与 `rf_splib07.json`)。
+- **删除一次性迁移脚本**:`docs/_splib07_stage*.py`、
+  `docs/_map_rf_to_splib07_step*.py`、`docs/_verify_rf_splib07.py`、
+  `docs/_splib07_tokens.py`、`docs/verify_reference_spectra.py`、
+  `docs/verify_mcf_rfjson.py`(全部依赖已删除的 `_hyper_read_specpr` /
+  `dic3` / `rf.json`)。
+- **`make_paper_figures.py::get_splib_record` 重写**:不再走 `eng.dic3`
+  (1nm-only 架构下为 `None`),改用 `eng._classifier._1nm_bundle` + int→rule-name
+  别名翻译。
+- **缓存键简化**:`get_resample` / `_get_compiled_rules` 的缓存键不再内嵌 track。
+- **`pyproject.toml` `package-data`**:仅保留 `data/color_table.json`;
+  后续追加 `data/temp_rf_notfeatures_renamed.json` 与
+  `data/rf77_splib07_1nm.npz`(配置文件移入 `cramm/data/` 目录)。
+- **规则库清理**:删除 `temp_rf_notfeatures_renamed.json` 中的死字段
+  `wavelength_record`(reference 与 not_features 各级)与顶层 `wavelength_map`
+  (53 条仪器网格映射);1nm 轨道不读取这些字段,代码内合成恒等映射
+  仅供 API 兼容。规则库顶层 keys 由 `rf/mixtures/wavelength_map` 简化为
+  `rf/mixtures`。
+- **`PROJECT_CONTEXT.md` / `README.md`**:全篇重写以反映 1nm-only 架构。
+
 ## v1.2.6 — 跨传感器变体审计：jarosite_K 改接 NIC4a、AMX8 改接 BECKb（2026-08-31）
 
 - **审计**：对 npz 引用的全部 splib07 记录枚举同样品跨传感器变体（`_inspect_variant_audit.py`），

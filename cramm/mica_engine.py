@@ -71,9 +71,10 @@ class MicaEngine:
     Parameters
     ----------
     rf_path : str
-        Path to the rf.json rule library.
+        Path to the rule library (cramm/data/temp_rf_notfeatures_renamed.json
+        or an equivalent rewrite).
     splib_path : str
-        Path to the USGS splib06b binary library.
+        Path to the 1 nm rule-face npz bundle (cramm/data/rf77_splib07_1nm.npz).
     color_txt_path : str
         Path to the mineral RGB color table text file.
     color_tif_path : str
@@ -86,22 +87,32 @@ class MicaEngine:
         splib_path: Optional[str] = None,
         color_txt_path: Optional[str] = None,
         color_tif_path: Optional[str] = None,
+        *,
+        reference_track: Optional[str] = None,
     ):
-        self.rf_path = Path(rf_path) if rf_path else None  # None → built-in cramm/data/rf.json
-        self.splib_path = Path(splib_path) if splib_path else None  # None → built-in cramm/data/splib06b
+        """
+        Facade over :class:`cramm.classifier.MicaClassifier` +
+        :class:`cramm.renderer.ResultRenderer`.
+
+        Parameters
+        ----------
+        reference_track : ignored
+            Kept for API compatibility; the classifier always runs the 1 nm
+            rule-face track.
+        """
+        self.rf_path = Path(rf_path) if rf_path else None  # None → built-in rule library
+        self.splib_path = Path(splib_path) if splib_path else None  # None → bundled cramm/data/rf77_splib07_1nm.npz
         self.color_txt_path = Path(color_txt_path) if color_txt_path else None  # None → built-in cramm/data/color_table.json
         self.color_tif_path = Path(color_tif_path) if color_tif_path else None  # None → built-in DEFAULT_MUS_TABLE
+        self.reference_track = reference_track
 
         # Components load their own resources (from_paths of the core library)
-        self._classifier = MicaClassifier.from_paths(rf_path, splib_path)
+        self._classifier = MicaClassifier.from_paths(
+            rf_path, splib_path, reference_track=reference_track)
         self._renderer = ResultRenderer.from_paths(color_txt_path, color_tif_path)
 
         # Backward-compatible attribute aliases (for external code accessing resources directly)
         self.rf = self._classifier.rf
-        self.mixtures = self._classifier.mixtures
-        self.wavelength_map = self._classifier.wavelength_map
-        self.dic3 = self._classifier.dic3
-        self.ids = self._classifier.ids
         self.colors_dic = self._renderer.colors_dic
         self.table = self._renderer.table
 
@@ -114,8 +125,13 @@ class MicaEngine:
         """Load an EMIT NetCDF file (delegated to EmitReader)."""
         return EmitReader.load(pathname)
 
-    def get_resample(self, w: np.ndarray, bp: np.ndarray) -> Dict[int, np.ndarray]:
-        """Resample all reference spectra to the EMIT wavelengths/FWHM (delegated to MicaClassifier)."""
+    def get_resample(self, w: np.ndarray, bp: np.ndarray) -> Dict[str, np.ndarray]:
+        """Resample all reference spectra to the EMIT wavelengths/FWHM (delegated to MicaClassifier).
+
+        Keys are rule-name strings (the sole link to the reference spectra
+        library after the v1.4.0 id purge); values are float64 resampled
+        spectra indexed by EMIT band.
+        """
         return self._classifier.get_resample(w, bp)
 
     def invalidate_caches(self) -> None:

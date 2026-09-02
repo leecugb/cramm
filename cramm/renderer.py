@@ -479,7 +479,7 @@ class ResultRenderer:
                     name = r["name"]; rule = rf[name]
                     features = []; diag_depths = []
                     for feat in rule.get("diagnostic_features", []):
-                        ref = resampled1[rule["reference"]["reflectance_record"]][chanels]
+                        ref = resampled1[rule["output_name"]][chanels]
                         info = _compute_feature(spectrum1, ref, wl, feat["continuum_endpoints"])
                         diag_depths.append(info["depth"] if info else np.nan)
                         features.append({"info": info, "type": "diagnostic", "endpoints": feat["continuum_endpoints"],

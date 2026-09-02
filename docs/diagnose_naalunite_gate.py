@@ -10,7 +10,6 @@ Rule fires iff  gate R2 >= 0.65  AND  weighted-fit (== feature2 R2) >= 0.64.
 
 We read the RAW R2 of each feature (FEATURE_WEIGHT=1, FIT_CONSTRAINTS=None).
 """
-import json
 import sys
 
 import numpy as np
@@ -60,7 +59,7 @@ def main():
     eng = MicaEngine()
     _, _, _, w, bp, wl, chanels = eng.load_emit(NC)
     refs = eng.get_resample(w, bp)
-    rf = json.load(open("cramm/data/rf.json", encoding="utf-8"))["rf"]
+    rf = eng.rf  # 1nm rule library loaded by the engine
 
     lib = USGSLibrary()
     index = {}

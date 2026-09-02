@@ -10,9 +10,10 @@
 the USGS MICA (Material Identification and Characterization Algorithm)
 decision-rule system. The classification core is **sensor-agnostic**: it works
 on any VNIR–SWIR reflectance cube given its band configuration (center
-wavelengths, FWHM, valid-band mask), because the bundled splib06b reference
-spectra are resampled to the sensor's bands at runtime. EMIT L2A is simply the
-built-in data reader — one supported input type, not the defining one.
+wavelengths, FWHM, valid-band mask), because the bundled 1 nm rule-face
+reference spectra are resampled to the sensor's bands at runtime. EMIT L2A is
+simply the built-in data reader — one supported input type, not the defining
+one.
 
 CRAMM extends MICA in three ways:
 
@@ -85,8 +86,9 @@ Everything is pure Python and GUI-free. Cross-platform:
   processes.
 - **Bit-exact discipline** — serial and parallel paths produce identical
   bytes; every change is guarded by a dual-path golden regression suite.
-- **Self-contained** — the rule library (`rf.json`), the USGS `splib06b`
-  spectral library, and the mineral color table are bundled inside the wheel.
+- **Self-contained** — the rule library (`cramm/data/temp_rf_notfeatures_renamed.json`),
+  the 1 nm rule-face spectra bundle (`cramm/data/rf77_splib07_1nm.npz`), and the
+  mineral color table are bundled inside the wheel.
 
 ## How it works
 
@@ -95,7 +97,7 @@ Hyperspectral reflectance cube (any VNIR–SWIR sensor)
       │  built-in: load_emit (EMIT L2A NetCDF, bad-band removal)
       │  or your own loader → (spectrum, wl, w, bp, chanels)
       ▼
-Reference resampling ── splib06b records ──► sensor wavelengths/FWHM
+Reference resampling ── 1nm rule-face spectra ──► sensor wavelengths/FWHM
       │                                        (Gaussian kernel, cached)
       ▼
 Per-rule evaluation (77 rules, parallel across rules)
@@ -240,7 +242,7 @@ More scenarios — float (`raw=True`) output, custom rule libraries, the
 | `spectrum_analysis(spectrum, wl, w, bp, chanels, ...)` | Classify a whole scene → 4 uint8 RGB images; `raw=True` adds `mus_center` + `chl_center` + `fd` float arrays. Supports `progress_callback`, `log_callback`, `cancel_flag`, `n_workers` |
 | `classify_spectrum(spectrum, wl, w, bp, chanels, top_n=10, pdf_path=None)` | Identify one spectrum → Top-N `[{"name", "fit", "fd"}]` |
 | `write_tiff(prefix, lon, lat, orth, color, mus, chl=None)` | Orthorectify (pyresample) and write the GeoTIFFs; `chl` is optional (omit for legacy 3-file output); requires GDAL |
-| `get_resample(w, bp)` | All reference spectra resampled to the sensor bands `{record_id: spectrum}` (cached) |
+| `get_resample(w, bp)` | All reference spectra resampled to the sensor bands `{rule_name: spectrum}` (cached; keys are rule-name strings — the sole link to the reference library after the v1.4.0 id purge) |
 | `invalidate_caches()` | **Required** after mutating `engine.rf` in place — see below |
 
 ### Custom rule libraries
@@ -257,26 +259,45 @@ content. If you modify `engine.rf` after any classification call, you must call
 `invalidate_caches()` (or build a new engine) — otherwise results silently use
 the old reference-side constants.
 
-### splib07 reference track (v1.2.0)
+**Schema note (v1.4.0+):** the rule library is id-free. Every
+`reference.reflectance_record` (and every `not_(abs/rel)_features[*].reflectance_record`)
+must be a rule-name string drawn from the top-level `rf` keys; the loader
+verifies this contract at construction and rejects any non-string or
+unresolved reference. Custom rules cloning an existing rule set
+`reference.reflectance_record` to the source rule's name — the spectrum is
+then inherited from the 1 nm bundle row indexed by that name (the clone
+itself has no row in the bundle).
 
-```python
-engine = MicaEngine(rf_path="cramm/data/rf_splib07.json")   # splib07 references
-engine = MicaEngine()                                       # default: rf.json (unchanged)
-```
+**Cache contract (v1.4.1+):** reassigning `engine.rf` to a different dict
+object (`engine.rf = new_dict`) is detected automatically via an `id()`
+snapshot and the cache is dropped; in-place value mutation
+(`engine.rf["x"] = ...`) and in-place key addition (`engine.rf["new"] = ...`)
+are **not** detected — the former silently keeps stale results, the latter
+raises `KeyError` from the compiled-rules cache (a deliberate stale-trap).
+Both require an explicit `invalidate_caches()` call.
 
-`cramm/data/rf_splib07.json` carries the **same 77 rules as rf.json,
-bit-identical** — only the reference spectra are rebuilt from USGS splib07
-(same-sample records, same instrument/measurement type preferred), baked onto
-a shared 1 nm master grid (350–2500 nm) in `cramm/data/rf07_spectra.npz`
-(58 records); no splib06b or external library is needed at runtime. Of the 19
-mixtures, 14 recipes are bit-identical to rf.json (12 engine-synthesized + 2
-weight-1.0 aliases of the measured GDS212/213 records) and 5 are weight-1.0
-aliases of splib07's AMX calculated-mixture records with the same endmember
-samples and ratios (mix_7821/7715/7711/7745/7737, synthetic record ids
-90008+). rf.json stays the default and remains the bit-fidelity baseline
-against USGS .mcf v6a; the v07 track is audited end-to-end (per-record
-correlations, export audit, full-scene dual-run census) in
-`docs/MCF_vs_rf07_diff.md`.
+### 1 nm rule-face track
+
+The classifier runs the **1 nm rule-face track** exclusively — reference
+spectra baked onto a shared 1 nm master grid (350–2500 nm) in
+`cramm/data/rf77_splib07_1nm.npz` (77 rule-face rows); no splib06b / specpr / external
+library is needed at runtime. The rule library
+`cramm/data/temp_rf_notfeatures_renamed.json` carries the **same 77 rules** as the
+historical USGS `.mcf` v6a. As of v1.4.0 the rule library is **id-free**:
+every `reference.reflectance_record` (and every
+`not_(abs/rel)_features` `reflectance_record`) is a rule-name string drawn
+from `rf.keys()` — the rule name is the sole link between the rule library
+and the 1 nm bundle. Of the 19 rules whose spectra were historically
+engine-synthesized from multi-endmember recipes (`mixtures`), 14 are
+bit-identical to the legacy library (12 engine-synthesized + 2
+weight-1.0 aliases of measured GDS212/213 records) and 5 are weight-1.0 aliases
+of splib07's AMX calculated-mixture records (mix_7821/7715/7711/7745/7737);
+all 19 now ship as **pre-baked rows** in the npz bundle, so runtime
+synthesis is no longer needed and the `mixtures` top-level key has been
+removed from the JSON.
+The `reference_track` parameter on `MicaEngine` / `MicaClassifier.from_paths`
+is kept for API compatibility but ignored; passing anything other than
+`None` / `"1nm"` raises `ValueError`.
 
 ## Enhancements over USGS MICA
 
@@ -463,12 +484,7 @@ python tests/test_single_spectrum.py   # single-spectrum identification (7 tests
 python tests/check_compiled_path.py    # compiled vs direct path, 302 pixels × 77 rules, bit-level diff
 python tests/test_parallel.py 4        # full-scene golden regression (parallel)
 python tests/test_parallel.py 1        # full-scene golden regression (serial)
-python tests/test_parallel_v07.py 4    # same, for the splib07 reference track
 ```
-
-`tests/test_rf07_export.py` and `tests/test_rf07_engine.py` cover the v07
-track without the scene (npz bit-exactness vs splib07 sources, engine-branch
-contracts, serial/parallel bit-exactness on a synthetic cube).
 
 **The golden baseline is platform-bound.** `tests/golden_arrays.npz` encodes
 this machine's BLAS results; ulp-level differences across BLAS builds are
@@ -495,8 +511,8 @@ cramm/
   emit_reader.py    # EMIT L2A NetCDF reader + bad-band removal (float32 contract)
   classifier.py     # MICA core: resampling / compiled rules / serial & parallel classification
   renderer.py       # rendering: three maps / GeoTIFF / single-spectrum PDF diagnostics
-  data/             # rf.json + splib06b + color_table.json
-                    #   + rf_splib07.json + rf07_spectra.npz (v1.2.0 splib07 track)
+  data/             # color_table.json + temp_rf_notfeatures_renamed.json + rf77_splib07_1nm.npz
+                    # (color table / id-free rule library / 1nm pre-baked spectra)
 tests/              # bit-exact verification suite + API contract tests
 example_usage.py    # five usage-scenario examples
 ```
@@ -511,5 +527,6 @@ example_usage.py    # five usage-scenario examples
 
 The decision rules implement the USGS MICA system
 (Kokaly et al., `russet`-era rule set); reference spectra come from the USGS
-splib06b spectral library (Clark et al., 2007). The bundled test scene uses
+splib07a spectral library (Clark et al., 2017; 1 nm rule-face grid baked into
+`cramm/data/rf77_splib07_1nm.npz`). The bundled test scene uses
 EMIT L2A products, courtesy of NASA/JPL.

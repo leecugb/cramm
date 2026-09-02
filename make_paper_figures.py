@@ -8,7 +8,7 @@ Data sources (all in-repo or produced by archived scripts):
                                       (produced by save_num_maps.py, two-pass protocol of
                                        arbitration_stats.py; flips verified = 63,032)
   - D:/test raw npz / num_ab.npz   -> center histograms
-  - cramm bundled splib06b         -> reference spectra (fig_carbonate, fig_chlorite)
+  - cramm bundled 1nm rule-face bundle -> reference spectra (fig_carbonate, fig_chlorite)
   - docs/arbitration_stats.json    -> flip-pair counts
 
 Palette: Okabe-Ito (colorblind-safe), categorical hues in fixed order.
@@ -66,13 +66,23 @@ def save(fig, name):
 
 
 def get_splib_record(recno):
-    """Return (wavelength_um, reflectance) for a splib06b record via the engine."""
+    """Return (wavelength_um, reflectance) for a 1nm rule-face record via the engine.
+
+    In the 1nm-only architecture, integer record numbers are translated to
+    owning rule names via the engine's `_output_name_aliases` and looked up in
+    the bundled 1nm grid (350-2500 nm @ 1nm). `eng.dic3` is no longer available.
+    """
     from cramm import MicaEngine
     eng = MicaEngine()
-    d = eng.dic3
-    row = d[d["irecno"] == recno].iloc[0]
-    wv = d[d["irecno"] == row["irwav"]].iloc[0]["data"]
-    return np.asarray(wv, float), np.asarray(row["data"], float), str(row["ititl"]).strip()
+    # 1nm rule-face bundle: (grid, rule_names, rule_labels, spectra)
+    grid, rule_names, _labels, spectra = eng._classifier._1nm_bundle
+    name_to_row = {str(n): i for i, n in enumerate(rule_names)}
+    # int record -> owning rule name via output_name_aliases
+    rule_name = eng._classifier._output_name_aliases.get(int(recno))
+    if rule_name is None or str(rule_name) not in name_to_row:
+        raise KeyError(f"record {recno} not resolvable to a 1nm rule-face row")
+    row = name_to_row[str(rule_name)]
+    return np.asarray(grid, float), np.asarray(spectra[row], float), str(rule_name).strip()
 
 
 def continuum_remove(wav, spec, lo, hi):
@@ -252,7 +262,7 @@ def fig_carbonate():
                ("Fe-dolomite", 2319.2), ("dolomite", 2321.2),
                ("siderite (pure)", 2327.0), ("calcite", 2339.4),
                ("rhodochrosite", 2369.0)]
-    # the three rule references bundled with CRAMM (splib06b Beckman grid)
+    # the three rule references bundled with CRAMM (1nm rule-face bundle)
     refs = [("calcite WS272 (rec 1751)", 1751, OI["blue"]),
             ("dolomite HS102.3B (rec 2986)", 2986, OI["green"]),
             ("siderite HS271.3B (rec 8623,\nMn-bearing)", 8623, OI["vermillion"])]
