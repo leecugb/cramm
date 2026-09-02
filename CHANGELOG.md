@@ -1,5 +1,30 @@
 # Changelog
 
+## v1.4.2 — 1nm 迁移边缘修复(代码审阅第 2 轮,2026-09-02)
+
+针对 v1.4.1 1nm-only 迁移边缘的 6 项缺陷修复,bit-exact 保留(32/32 测试通过,
+数值路径零改动——仅校验、错误信息与注释)。
+
+- **make_paper_figures.get_splib_record 修复**:原实现调用本次迁移已删除的
+  `_output_name_aliases`,所有论文图脚本必崩 `AttributeError`。改为经
+  `docs/splib07_selection.json` 的 recno→rule 迁移映射表解析(2047/2253/2371/9262
+  验证通过)。
+- **output_name 契约校验 + 文档化**:`output_name` 是主参考唯一查找键
+  (`_judge_reference_entry` / `_get_compiled_rules` / renderer 三处),此前
+  `from_paths` 不校验——缺失时 classify 崩 KeyError,指向其他规则时静默用错谱。
+  现校验每条规则 `output_name` 必须为 rf 内规则名字符串,类 docstring 补充契约。
+- **>256 规则守卫恢复为 ValueError 并前移**:v1.4.1 将其降级为 `assert`,
+  `python -O` 下被剥除后 uint8 `NUM_` 静默回绕(300→44),像素归错矿物。现恢复
+  真正的 `ValueError` 且前移到 resample 之前(原位置需先跑完整个 257 规则重采样
+  才报错)。
+- **过时注释修正(2 处)**:`_judge_reference_entry` 注释声称的"int-record 别名"
+  机制已被本次迁移故意删除(finding 1 正是被此类注释误导写出的),改为如实描述;
+  `example_usage.py` 自定义规则文件格式注释删除已不存在的 `mixtures` /
+  `wavelength_map` 顶层键说明。
+- **legacy splib06b 报错信息明确化**:迁移自 ≤1.2.x 的用户传 splib06b 二进制,
+  原得到 opaque 的 pickle 报错;现明确提示"legacy splib06b binary library was
+  dropped in v1.4.0"并指向 1nm npz bundle。
+
 ## v1.4.1 — 代码审阅后的 bug 修复（2026-09-02）
 
 代码级审阅后修复的 P1/P2 项,bit-exact 保留(`test_parallel` 5/5 array_equal,

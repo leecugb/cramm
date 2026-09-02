@@ -833,11 +833,11 @@ def _judge_reference_entry(
     # no need to consult resampled1.
     #
     # The main reference is keyed by rf["output_name"] (the rule's own name).
-    # On the 1 nm rule-face track the canonical key in resampled1 already IS
-    # the rule name, and we install an int-record alias for owners so
-    # int-keyed references still resolve. output_name is the canonical lookup
-    # that the 1 nm mica_core notebook/standalone used, keeping us bit-exact
-    # with that baseline.
+    # On the 1 nm rule-face track the rule name is the sole key into
+    # resampled1 (int-record aliases no longer exist -- raw int
+    # reflectance_record fields are rejected at from_paths). output_name is
+    # the canonical lookup that the 1 nm mica_core notebook/standalone used,
+    # keeping us bit-exact with that baseline.
     reference = (
         None if compiled is not None else resampled1[rf["output_name"]][chanels]
     )
@@ -1071,7 +1071,9 @@ class MicaClassifier:
         Every ``reference.reflectance_record`` and every
         ``not_(abs/rel)_features[].reflectance_record`` is a rule-name **string**
         in ``rf.keys()`` -- the rule name is the sole link between the expert
-        rules and the reference spectra library.
+        rules and the reference spectra library. Each rule's ``output_name``
+        (also a rule-name string in ``rf.keys()``) is the canonical key under
+        which its main reference spectrum is looked up at classification time.
     reference_1nm_bundle : tuple
         ``(grid, rule_names, rule_labels, spectra)`` as returned by
         :func:`_read_1nm_npz`. ``rule_names`` is indexed by rule-name string.
@@ -1208,7 +1210,14 @@ class MicaClassifier:
             raise FileNotFoundError(f"{splib_p} not found.")
 
         # ---- 1 nm (rule-face) track ----
-        bundle = _read_1nm_npz(str(splib_p))
+        try:
+            bundle = _read_1nm_npz(str(splib_p))
+        except Exception as exc:
+            raise ValueError(
+                f"{splib_p.name}: not a readable 1 nm rule-face npz bundle "
+                f"({type(exc).__name__}: {exc}). Note: the legacy splib06b "
+                f"binary library was dropped in v1.4.0 -- pass the rule-face "
+                f"1 nm npz (rf77_splib07_1nm.npz or equivalent).") from exc
         grid_1nm, rule_1nm, label_1nm, spectra_1nm = bundle  # noqa: F841 (label kept for debugging/inspect)
         # Validation: every rf key must exist in rule_1nm (1-to-1 mapping)
         missing_rf_keys = [k for k in rf.keys() if k not in rule_1nm]
@@ -1230,6 +1239,16 @@ class MicaClassifier:
                 all_bad.append(
                     f"reference of {rname}: expected rule-name string in "
                     f"rf.keys(), got {type(rec).__name__}: {rec!r}")
+            # output_name is the canonical main-reference lookup key used by
+            # _judge_reference_entry / _get_compiled_rules / renderer -- it
+            # must be a rule-name string in rf.keys(), otherwise classification
+            # crashes with KeyError or (worse) silently uses another rule's
+            # spectrum as this rule's main reference.
+            out = value.get("output_name")
+            if not isinstance(out, str) or out not in rf:
+                all_bad.append(
+                    f"output_name of {rname}: expected rule-name string in "
+                    f"rf.keys(), got {type(out).__name__}: {out!r}")
             for ftype in ("not_absolute_features", "not_relative_features"):
                 for feat in value.get(ftype, []):
                     r = feat["reflectance_record"]
@@ -1492,15 +1511,22 @@ class MicaClassifier:
         Caller scripts using n_workers > 1 need the standard
         ``if __name__ == "__main__":`` guard (spawn re-imports __main__).
         """
-        resampled1 = self.get_resample(w, bp)
-        r, c, s = spectrum.shape
-
         index = list(self.rf.keys())
         index_d = {name: i for i, name in enumerate(index)}
-        # Rule-count guard lives in __init__ now (fail-fast at construction,
-        # not mid-classify); kept here as a defensive assertion in case a
-        # caller mutated self.rf between construction and this call.
-        assert len(index) <= 256, "rule count > 256 slipped past __init__ guard"
+        # Rule-count guard lives in __init__ (fail-fast at construction), but
+        # a caller may have grown self.rf in place afterwards (the documented
+        # mutation flow is: mutate, then invalidate_caches()). NUM_ is uint8,
+        # so >256 rules would silently wrap indices mod 256 and attribute
+        # pixels to the wrong minerals -- must be a real raise, not an
+        # assert (python -O strips asserts), and must precede the resample.
+        if len(index) > 256:
+            raise ValueError(
+                f"rule library has {len(index)} minerals, exceeding the uint8 "
+                f"index limit of 256 (NUM_ dtype); trim the rule library or "
+                f"upgrade ClassificationResult.num dtype")
+
+        resampled1 = self.get_resample(w, bp)
+        r, c, s = spectrum.shape
 
         mus_center = np.zeros(r * c, dtype="float")
         chl_center = np.zeros(r * c, dtype="float")

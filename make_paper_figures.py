@@ -68,17 +68,23 @@ def save(fig, name):
 def get_splib_record(recno):
     """Return (wavelength_um, reflectance) for a 1nm rule-face record via the engine.
 
-    In the 1nm-only architecture, integer record numbers are translated to
-    owning rule names via the engine's `_output_name_aliases` and looked up in
-    the bundled 1nm grid (350-2500 nm @ 1nm). `eng.dic3` is no longer available.
+    In the 1nm-only architecture, integer splib06b record numbers are
+    translated to owning rule names via docs/splib07_selection.json (the
+    migration's recno -> rule mapping) and looked up in the bundled 1nm grid
+    (350-2500 nm @ 1nm). `eng.dic3` is no longer available.
     """
+    import json
     from cramm import MicaEngine
     eng = MicaEngine()
     # 1nm rule-face bundle: (grid, rule_names, rule_labels, spectra)
     grid, rule_names, _labels, spectra = eng._classifier._1nm_bundle
     name_to_row = {str(n): i for i, n in enumerate(rule_names)}
-    # int record -> owning rule name via output_name_aliases
-    rule_name = eng._classifier._output_name_aliases.get(int(recno))
+    # int record -> owning rule name via the migration selection table
+    sel_path = os.path.join("docs", "splib07_selection.json")
+    sel = json.load(open(sel_path, encoding="utf-8"))
+    entry = sel["references"].get(str(int(recno)))
+    rules = entry["rules"] if entry else []
+    rule_name = rules[0] if rules else None
     if rule_name is None or str(rule_name) not in name_to_row:
         raise KeyError(f"record {recno} not resolvable to a 1nm rule-face row")
     row = name_to_row[str(rule_name)]
