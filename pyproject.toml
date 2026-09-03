@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CRAMM"
+version = "1.5.0"
+description = "CRAMM — general-purpose hyperspectral mineral identification toolkit (USGS MICA, extended: depth-ratio rules + quantitative muscovite mapping; sensor-agnostic, EMIT L2A built in)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Shijie Li" }]
+keywords = ["hyperspectral", "EMIT", "mineral", "MICA", "USGS", "remote-sensing"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+# All hard dependencies have prebuilt PyPI wheels on Windows/Linux/macOS
+# (the package itself is pure Python), so pip install cramm works out of the box
+# on all three platforms.
+dependencies = [
+    "numpy",
+    "pandas",
+    "netCDF4",
+    "pyproj",
+    "pyresample",
+    "threadpoolctl",
+]
+
+[project.optional-dependencies]
+# GDAL: PyPI ships official wheels for Windows only; Linux/macOS need a system
+# libgdal (recommended: conda install -c conda-forge gdal, then
+# pip install cramm --no-deps). renderer.write_tiff / GeoTIFF output depends on
+# it; when missing only that feature is unavailable (lazy import), so it stays
+# optional — cross-platform pip install must not be blocked by a GDAL source build.
+tiff = ["gdal"]
+pdf = ["matplotlib"]          # single-spectrum feature PDF (plot_features_pdf)
+all = ["gdal", "matplotlib"]
+
+[project.scripts]
+cramm = "cramm.mica_engine:main"
+
+[project.urls]
+Homepage = "https://github.com/leecugb/cramm"
+Repository = "https://github.com/leecugb/cramm"
+Issues = "https://github.com/leecugb/cramm/issues"
+
+[tool.setuptools]
+packages = ["cramm"]
+
+[tool.setuptools.package-data]
+cramm = [
+    "data/color_table.json",
+    "data/temp_rf_notfeatures_renamed.json",
+    "data/rf77_splib07_1nm.npz",
+]

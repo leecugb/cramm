@@ -1,0 +1,19 @@
+# Build artifacts
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+
+# Local test scene (1.8 GB, not part of the package)
+*.nc
+
+# Local tooling / credentials / generated artifacts (never commit)
+_gh_token.txt
+_api_push.py
+_md2pdf.py
+_inspect_*.py
+_plot_*.py
+_pdf_assets/
+README.pdf
+output/
