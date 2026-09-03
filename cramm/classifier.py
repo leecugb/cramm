@@ -166,7 +166,7 @@ def _resample_(bands: np.ndarray, data: np.ndarray, w: np.ndarray, bp: np.ndarra
         if the window has no valid sample the output is NaN (downstream
         _diagnostic_feature excludes NaN bands)
 
-    Performance optimizations (bit-exact vs. the pre-optimization version):
+    Performance optimizations:
       - data.astype("double") hoisted out of the band loop (the original
         implementation repeated it 285 times per record)
       - Window located via searchsorted binary search O(log n), replacing the
@@ -177,10 +177,19 @@ def _resample_(bands: np.ndarray, data: np.ndarray, w: np.ndarray, bp: np.ndarra
         and every window lower bound x - y/2 > 0 (always true for EMIT bands;
         a window can never contain a 0-wavelength padding point); otherwise
         fall back to the original boolean path. Both paths sum over exactly
-        the same subset of elements in the same order, so results are
-        bit-exact identical.
-      - sigma computed as a per-band scalar (**0.5 first, then squared),
-        matching the floating-point operation sequence of the original
+        the same subset of elements in the same order.
+
+    Bit-exactness note (2026-09-02 audit): the vectorized sigma computation
+    ``(halfs**2 / np.log(2)) ** 0.5`` is special-cased by numpy's pow ufunc
+    to ``sqrt``, while the original per-band scalar ``** 0.5`` used libm
+    ``pow``; the two can differ by 1 ulp at isolated bands (observed: EMIT
+    band 231, FWHM 8.734 nm -> 24/77x285 resampled values differ by
+    1.11e-16, all other bands bit-identical). The same 1-ulp caveat applies
+    to the fast-vs-slow path equivalence. This is inconsequential for
+    classification (relative magnitude 1e-16 on reference spectra) and does
+    not affect the golden regression chain, which is produced and verified
+    with this same implementation -- but the historical "bit-exact vs the
+    pre-optimization version" claim holds only up to this 1-ulp exception.
     """
     data64 = data.astype("double")  # hoist once (the original repeated it inside the band loop)
     res1 = np.empty(len(w), dtype="float64")
