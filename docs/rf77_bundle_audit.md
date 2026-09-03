@@ -52,16 +52,22 @@ label 三类标记:实物记录名(51 直接引用 + 7 复用共享)、`[AMX]`(5
 | G | **12 条合成混合行 = 端元行按旧 rf.json mixtures 配比加权和,max\|Δ\|=0.00e+00 bit-exact,NaN 掩码完全一致**(旧 rf.json 取自 git 历史 11b0f53) | ✅ |
 | H | `docs/rf77_splib07_1nm.csv` 镜像:网格/规则序/label 全一致;数值差 max 5e-7 = csv 6 位小数舍入(cosmetic) | ✅ |
 | J | 全部有限值 ∈ (0, 0.968],无非正样本 | ✅ |
+| K | **splib07 原生谱 → 烘焙行保真**(需本机 usgs_splib 包 + splib07 库):58 条选定记录全部在库,按 stage2 同口径重新烘焙后与 npz 对照——**65/65 实物规则行 max\|Δ\|=0.000e+00 bit-exact,NaN 掩码全等**(2026-09-02,本机 `/home/lee/Downloads/usgs_splib07` 2457 条记录) | ✅ |
 
 复跑方式:仓库根目录 `python docs/_audit_rf77_bundle.py`,退出码 0 = ALL PASS。
+K 组为可选段(无 usgs_splib 包或库时自动 SKIP,不影响 A–J 离线核心)。
 
 ## 三、风险与缺口
 
 1. **P1 — 生成脚本不可复现**:stage3(58→77)烘焙脚本**从未提交进 git**(本机
    Untitled1.ipynb 只有读取代码);stage1/2 脚本可从 git 历史(11b0f53)恢复,但硬编码
-   `D:\` 路径、依赖本机 `D:\usgs_splib07` 库、外部 `usgs_splib` 模块和已删除的 splib06b
-   `dic3`。**当前 Linux 机器无法重新生成此 npz**。缓解:本审计脚本可离线验证其完整性;
-   建议从 Windows 机器找回 stage3 脚本或按 stage2 + 已验证的加权逻辑重写后提交。
+   `D:\` 路径、依赖外部 `usgs_splib` 模块和已删除的 splib06b `dic3`。
+   **2026-09-02 更新:此风险已大幅缓解**——本机已确认装有 usgs_splib v1.3.0(源码备份
+   于 `/media/lee/共享14/backup/my/usgs_splib`)和完整 splib07 库
+   (`/home/lee/Downloads/usgs_splib07`),K 组验证证明 npz 全部 65 条实物行可由
+   本机库 bit-exact 重新烘焙,12 条 synth 行由端元加权 bit-exact 重构——**npz 已可在
+   本机完整复现**(唯一不能复验的是与 splib06b 的相关性对比,06b 库已删除)。剩余缺口:
+   stage1 选谱的 D1-A 打分/裁决过程本身仍不可重跑(依赖 06b)。
 2. **P2 — provenance 外挂**:58 记录版 npz 曾内置 meta(每记录来源),77 行版只有
    label 字符串;完整溯源依赖 `docs/splib07_selection.json` 存活(已随仓库管理)。
 3. **P3 — 合成口径语义变化(已接受的既有决策)**:旧引擎口径"端元先重采样到传感器
@@ -77,7 +83,7 @@ label 三类标记:实物记录名(51 直接引用 + 7 复用共享)、`[AMX]`(5
 - 生成逻辑叙述复原自:`git show 11b0f53:docs/_splib07_stage1_selection.py` /
   `..._stage2_export.py`(已删脚本)、提交 7d3b2df 提交信息、`docs/splib07_selection.json`
   (含 adjudications 裁决记录)、`docs/SESSION_HANDOFF.md`(已删,11b0f53)。
-- 数值验证全部基于仓库内现存产物 + git 历史,无需外部光谱库。
-- 实物行的"splib07 原生谱 → 1nm 烘焙"环节(插值保真、覆盖审计)当年由 stage2 导出审计
-  (`docs/splib07_export_audit.md`,已删)覆盖:整数 nm 对齐记录烘焙恒等(回读 max|diff|
-  ≤1e-12)、新增空洞 0;本机无 splib07 库,该环节不在本次复验范围内。
+- 数值验证全部基于仓库内现存产物 + git 历史 + 本机 splib07 库(K 组),无需 splib06b。
+- 实物行的"splib07 原生谱 → 1nm 烘焙"环节当年由 stage2 导出审计(`docs/splib07_export_audit.md`,
+  已删)首次覆盖;**2026-09-02 已由本审计 K 组在本机复验:65/65 行 bit-exact**,该环节不再
+  是未覆盖缺口。

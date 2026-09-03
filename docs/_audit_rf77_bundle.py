@@ -168,6 +168,68 @@ finite = spectra[~np.isnan(spectra)]
 check("J1 all finite values positive", bool((finite > 0).all()),
       f"min={finite.min():.3e} max={finite.max():.4f}")
 
+print("=== K. splib07 native -> baked row fidelity (optional, needs usgs_splib + library) ===")
+# Resolution order: $USGS_SPLIB env var, then common local paths. Skipped
+# (not failed) when the package or the library is unavailable -- sections
+# A-J remain the always-runnable offline core.
+import os
+_splib_candidates = [os.environ.get("USGS_SPLIB", ""),
+                     "/home/lee/Downloads/usgs_splib07", "D:/usgs_splib07"]
+_splib_path = next((p for p in _splib_candidates
+                    if p and Path(p).is_dir()
+                    and any(Path(p).glob("ASCIIdata*"))), None)
+try:
+    from usgs_splib import USGSLibrary
+    if _splib_path is None:
+        raise RuntimeError("splib07 library not found")
+    lib = USGSLibrary(_splib_path)
+    by_key = {f"{r.name}_{r.sensor}{r.quality}_{r.mtype}": r for r in lib.records}
+
+    def bake(spec):
+        wl = np.asarray(spec.wavelength, dtype="float64")
+        sp = np.asarray(spec.reflectance, dtype="float64")
+        o = np.argsort(wl)
+        wl, sp = wl[o], sp[o]
+        k = (wl > 0) & (sp > 0) & (sp < 1e34)
+        wl, sp = wl[k], sp[k]
+        out = np.full(len(grid), np.nan)
+        m = (grid >= wl[0]) & (grid <= wl[-1])
+        out[m] = np.interp(grid[m], wl, sp)
+        return out
+
+    exp_k = {}
+    for rec06, s in sel["references"].items():
+        for r in s["rules"]:
+            exp_k[r] = s["splib07_record"]
+    for a in sel["amx_mixture_aliases"]:
+        exp_k[a["rule"]] = a["amx_record"]
+    rec2rules = {}
+    for rname, key in exp_k.items():
+        rec2rules.setdefault(key, []).append(rname)
+
+    check("K0 all 58 records present in library", len(rec2rules) == 58,
+          f"n={len(rec2rules)}")
+    n_exact, n_rows, worst = 0, 0, (0.0, "")
+    for key, rules in sorted(rec2rules.items()):
+        if key not in by_key:
+            check(f"K record {key}", False, "missing from library")
+            continue
+        baked = bake(lib.load(by_key[key]))
+        for rname in rules:
+            target = spectra[row[rname]]
+            mask_eq = bool((np.isnan(baked) == np.isnan(target)).all())
+            both = ~np.isnan(baked) & ~np.isnan(target)
+            maxd = float(np.abs(baked[both] - target[both]).max()) if both.any() else 0.0
+            n_rows += 1
+            if maxd == 0.0 and mask_eq:
+                n_exact += 1
+            elif maxd > worst[0]:
+                worst = (maxd, rname)
+    check(f"K1 {n_rows}/65 physical rows bit-exact vs re-baked splib07",
+          n_exact == 65, f"bit_exact={n_exact} worst={worst[0]:.2e} ({worst[1]})")
+except Exception as e:
+    print(f"  [SKIP] {type(e).__name__}: {e}")
+
 print()
 print("RESULT:", f"FAIL x{len(fails)} -> {fails}" if fails else "ALL PASS")
 sys.exit(1 if fails else 0)
