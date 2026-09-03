@@ -326,45 +326,81 @@ def test_chlorite_window_arbitration():
 
 
 def test_carbonate_window_arbitration():
-    """Carbonate duplicate-window arbitration: the calcite abundant+plain pair
-    shares [2.334,2.350) and the dolomite pair shares [2.308,2.328). Any
-    in-window center therefore hits two identical ranges -> ambiguous -> keep.
-    This pins the zero-flip declarative semantics: the carbonate arbitration
-    call must NEVER reassign, whatever the center."""
-    from cramm.classifier import _reassign_by_absorption_center, CARBONATE_MINERALS
+    """Carbonate per-tier pair arbitration (v1.5.0): the abundant pair
+    (calcite_abundant vs dolomite_abundant) and the plain pair (calcite vs
+    dolomite) each form their own arbitration group. Within a pair the
+    windows are disjoint (dolomite [2.308,2.328), calcite [2.334,2.350)),
+    so a center landing exclusively inside the OTHER tier-mate's window
+    flips the attribution; the abundant/plain axis never flips because the
+    two sub-family groups are disjoint (an abundant winner is not a member
+    of the plain call and vice versa). Dead-zone / out-of-window / invalid
+    centers keep the argmax winner, as do windowless members
+    (carbonate_Fe_bearing, calcite.5+dolomite.5)."""
+    from cramm.classifier import (_reassign_by_absorption_center,
+                                  CARBONATE_ABUNDANT_MINERALS,
+                                  CARBONATE_PLAIN_MINERALS)
     e = eng()
     rf = e.rf
     names = list(rf.keys())
     index_d = {n: i for i, n in enumerate(names)}
-    i_cab, i_cal, i_dab, i_dol, i_fec = (index_d[n] for n in (
+    i_cab, i_cal, i_dab, i_dol, i_fec, i_mix = (index_d[n] for n in (
         "calcite_abundant", "calcite", "dolomite_abundant", "dolomite",
-        "carbonate_Fe_bearing"))
-    # (winner, center): every case must keep its winner — zero flips by design
-    cases = [
-        (i_cal, 2.3400),  # inside the calcite pair window -> 2 hits -> keep
-        (i_cab, 2.3360),  # same window from the abundant side -> keep
-        (i_dol, 2.3200),  # inside the dolomite pair window -> 2 hits -> keep
-        (i_dab, 2.3100),  # same window from the abundant side -> keep
-        (i_cal, 2.3310),  # gap between the two windows -> no hit -> keep
-        (i_dol, 2.3600),  # outside every window -> keep
-        (i_cal, 0.0),     # invalid center -> keep
-        (i_fec, 2.3350),  # Fe-carbonate has NO window; center in calcite
-                          # window is ambiguous anyway -> keep
-    ]
-    n, m = len(cases), len(names)
-    im = np.array([c[0] for c in cases], dtype="int64")
-    im0 = im.copy()
-    cen = np.array([c[1] for c in cases], dtype="float64")
-    FIT = np.full((n, m), 0.5)
-    fit_nan = np.zeros((n, m), dtype=bool)
-    fit_pos = np.ones(n, dtype=bool)
+        "carbonate_Fe_bearing", "calcite.5+dolomite.5"))
+    m = len(names)
     # synthetic spectrum with a genuine 2330 nm dip (value itself not asserted)
     wl = np.linspace(2.0, 2.5, 50)
-    spectrum1 = np.tile(0.5 - 0.2 * np.exp(-((wl - 2.33) / 0.02) ** 2), (n, 1))
-    _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl, rf, index_d, fit_pos,
-                                   CARBONATE_MINERALS)
-    assert (im == im0).all(), (
-        f"carbonate arbitration must never flip: {[(names[a], names[b]) for a, b in zip(im0, im) if a != b]}")
+
+    def arb(rows, family):
+        n = len(rows)
+        im = np.array([r[0] for r in rows], dtype="int64")
+        cen = np.array([r[1] for r in rows], dtype="float64")
+        FIT = np.full((n, m), 0.5)
+        fit_nan = np.zeros((n, m), dtype=bool)
+        fit_pos = np.ones(n, dtype=bool)
+        spectrum1 = np.tile(0.5 - 0.2 * np.exp(-((wl - 2.33) / 0.02) ** 2), (n, 1))
+        _reassign_by_absorption_center(im, FIT, fit_nan, cen, spectrum1, wl,
+                                       rf, index_d, fit_pos, family)
+        return im
+
+    # Plain pair: cross-window centers flip within the tier
+    im = arb([(i_cal, 2.3200),   # calcite winner, center in dolomite window
+              (i_dol, 2.3400),   # dolomite winner, center in calcite window
+              (i_cal, 2.3310),   # dead zone between the windows -> keep
+              (i_dol, 2.3600),   # outside every window -> keep
+              (i_cal, 0.0),      # invalid center -> keep
+              (i_cab, 2.3200),   # abundant winner: NOT a member of the
+                                 # plain call -> tier axis never flips
+              ], CARBONATE_PLAIN_MINERALS)
+    assert im[0] == i_dol, "calcite winner with dolomite-window center must flip to dolomite"
+    assert im[1] == i_cal, "dolomite winner with calcite-window center must flip to calcite"
+    assert im[2] == i_cal and im[3] == i_dol and im[4] == i_cal, \
+        "dead-zone / out-of-window / invalid centers must keep the winner"
+    assert im[5] == i_cab, "abundant winner must ignore the plain pair (tier lock)"
+
+    # Abundant pair: same semantics one tier up
+    im = arb([(i_dab, 2.3400),   # dolomite_abundant winner, calcite window
+              (i_cab, 2.3200),   # calcite_abundant winner, dolomite window
+              (i_cal, 2.3200),   # plain winner: not a member -> keep
+              (i_fec, 2.3350),   # windowless: not in any sub-family -> keep
+              (i_mix, 2.3310),   # windowless blend, dead zone -> keep
+              ], CARBONATE_ABUNDANT_MINERALS)
+    assert im[0] == i_cab, "dolomite_abundant winner with calcite-window center must flip"
+    assert im[1] == i_dab, "calcite_abundant winner with dolomite-window center must flip"
+    assert im[2] == i_cal and im[3] == i_fec and im[4] == i_mix, \
+        "plain/windowless winners must ignore the abundant pair"
+
+    # Target-fit gate: a flip candidate whose target rejected it (fit NaN)
+    # must keep its winner even with a uniquely-hit center
+    im = np.array([i_cal], dtype="int64")
+    cen = np.array([2.3200])
+    FIT2 = np.full((1, m), 0.5)
+    fit_nan2 = np.zeros((1, m), dtype=bool)
+    fit_nan2[0, i_dol] = True
+    spectrum1 = np.tile(0.5 - 0.2 * np.exp(-((wl - 2.33) / 0.02) ** 2), (1, 1))
+    _reassign_by_absorption_center(im, FIT2, fit_nan2, cen, spectrum1, wl,
+                                   rf, index_d, np.ones(1, dtype=bool),
+                                   CARBONATE_PLAIN_MINERALS)
+    assert im[0] == i_cal, "target fit NaN must block the flip"
 
 
 def test_arbitration_family_lock():

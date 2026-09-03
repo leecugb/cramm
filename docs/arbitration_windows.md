@@ -52,20 +52,29 @@
 
 单测钉死：tests/test_core.py 绿泥石仲裁用例组（含 2.2475 翻 lowFe、2.2515 翻 clinochlore 例）。
 
-## 碳酸盐族（2330 nm C–O 带）：重复窗，声明式零翻转
+## 碳酸盐族（2330 nm C–O 带）：按丰度层对内竞争（v1.5.0 起）
 
-| 规则 | 窗口 [µm) | 类型 |
+| 规则 | 窗口 [µm) | 仲裁组 |
 |---|---|---|
-| calcite_abundant | [2.334, 2.350) | 重复窗 |
-| calcite | [2.334, 2.350) | 与 abundant 完全相同 |
-| dolomite_abundant | [2.308, 2.328) | 重复窗 |
-| dolomite | [2.308, 2.328) | 与 abundant 完全相同 |
+| calcite_abundant | [2.334, 2.350) | abundant 对 |
+| dolomite_abundant | [2.308, 2.328) | abundant 对 |
+| calcite | [2.334, 2.350) | plain 对 |
+| dolomite | [2.308, 2.328) | plain 对 |
 | carbonate_Fe_bearing | 无窗 | 不参与仲裁 |
 | calcite.5+dolomite.5 | 无窗 | 不参与仲裁 |
 
-容差机制的极端形式：abundant 与平凡版窗口完全相同，任何落窗中心必中两窗 → 恒歧义 → 永不翻转（专门单测钉死）。
-产品价值在连续 `cal_center` 图层本身：被规则库静默归入 dolomite 的文石（2315 nm）、菱镁矿（2311 nm）在中心图层上可辨识。
-七锚点解读序列：magnesite 2311 < aragonite 2315 < Fe-dolomite 2319 < dolomite 2321 < siderite ~2327 < calcite 2339 < rhodochrosite ~2369 nm。
+- **v1.5.0 起**:`classify` 的碳酸盐仲裁由一次全族调用拆为两次**按丰度层**调用
+  （CARBONATE_ABUNDANT_MINERALS / CARBONATE_PLAIN_MINERALS)。对内两窗互斥，
+  带位正式仲裁 dolomite↔calcite 翻转;丰度轴由子族互不相交结构性锁定,永不跨层。
+- 两窗之间 6 nm 死区 [2.328, 2.334):siderite-ish 中心(~2327 nm 锚点)保持 argmax 赢家。
+- EMIT 025 实测:abundant 对双向零候选(事实零翻转);plain 对 calcite→dolomite
+  翻转 1599 像元(0.10% 全场景),反向为零;门控挡回 817(dolomite fit 拒绝)。
+- **v1.5.0 前**:abundant+plain 对共享完全相同窗口,任何落窗中心必中两窗 →
+  恒歧义 → 声明式零翻转(旧语义,仅作历史记录)。
+- 产品价值主力仍在连续 `cal_center` 图层:被规则库静默归入 dolomite 的文石(2315 nm)、
+  菱镁矿(2311 nm)在中心图层上可辨识。
+  七锚点解读序列:magnesite 2311 < aragonite 2315 < Fe-dolomite 2319 < dolomite 2321
+  < siderite ~2327 < calcite 2339 < rhodochrosite ~2369 nm。
 
 ## 族间隔离：结构保证（family lock）
 
@@ -73,7 +82,8 @@
 
 - 白云母调用：group = MUSCOVITE_MINERALS ∩ 带窗 = medhighAl / medAl / lowAl / Fe-rich
 - 绿泥石调用：group = CHLORITE_MINERALS ∩ 带窗 = lowFe / clinochlore / clinochlore_Fe / thuringite
-- 碳酸盐调用：group = CARBONATE_MINERALS ∩ 带窗 = calcite/dolomite abundant+plain 四条
+- 碳酸盐调用（v1.5.0 起两次）:group = CARBONATE_ABUNDANT_MINERALS ∩ 带窗 = abundant 对；
+  group = CARBONATE_PLAIN_MINERALS ∩ 带窗 = plain 对（此前为单次全族四规则）
 
 跨族翻转由此**在结构上不可能**（不再依赖「中心数组仅本族非零 + 窗口间距」的涌现性质——两者仍作为纵深防御保留）。单测 `test_arbitration_family_lock` 钉死：绿泥石赢家中心落入白云母窗口（反之亦然）必须保持原匹配。
 

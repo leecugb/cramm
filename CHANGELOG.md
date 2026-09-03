@@ -1,5 +1,32 @@
 # Changelog
 
+## v1.5.0 — 碳酸盐仲裁启用按丰度层对内竞争（2026-09-02）
+
+碳酸盐仲裁由"重复窗声明式零翻转"改为**按丰度层分对内竞争**：新增
+`CARBONATE_ABUNDANT_MINERALS`（calcite_abundant vs dolomite_abundant）与
+`CARBONATE_PLAIN_MINERALS`（calcite vs dolomite）两个子族列表，`classify` 的
+碳酸盐仲裁由一次全族调用拆为两次对内调用。对内两窗互斥
+（dolomite [2.308, 2.328) vs calcite [2.334, 2.350)），带位正式参与
+dolomite↔calcite 归属裁决；**丰度轴仍由 fit 独立决定**——两个子族仲裁组互不相交，
+跨层翻转在结构上不可能。6 nm 死区 [2.328, 2.334) 继续收容 siderite-ish 中心
+（~2327 nm 锚点）保持 argmax 赢家；carbonate_Fe_bearing / calcite.5+dolomite.5
+维持无窗。规则库零改动（窗口沿用），仲裁器零改动（复用族锁定机制）。
+
+- **影响面（EMIT 025 全场景实测）**：abundant 对双向零候选（事实零翻转）；
+  plain 对 calcite→dolomite 翻转 **1599 像元**（0.10% 全场景 / 2.1% 碳酸盐赢家，
+  中心分布 2.314–2.328，中位数 2.326），dolomite→calcite 零翻转；门控挡回
+  817 候选（目标规则 fit 拒绝，100% 倒在 min_weighted_fit=0.64 /
+  fit×depth≥0.045)。翻转像元重拟合 100% 仍在目标窗内、0 个 NaN 回退。
+- **设计依据**：评估发现翻转候选的带位（2.314–2.328）显著偏离方解石锚点
+  （2339 nm)，且 calcite fit 中位数 0.907 与全体赢家 0.915 相当——fit 证据与
+  带位证据真正冲突的"双认领歧义像元"，由带位做决胜；形状证据反对者
+  （dolomite r2<0.64）由目标 fit 门控挡回。
+- **测试**：`test_carbonate_window_arbitration` 重写为钉死新语义（对内翻窗翻转、
+  跨层锁定、死区/出窗/无效保持、目标 fit NaN 门控）；32/32 pytest 通过。
+- **黄金链 rebaseline**：orth_rgb 恰 1599 像元类别翻转（calcite→dolomite 配色）；
+  color_enhanced 同源着色变化（同 1599 drastic）；cal_image 68 像元重拟合跨档；
+  mus/chl 图层零变化。串/并行 5/5 array_equal。
+
 ## v1.4.2 — 1nm 迁移边缘修复(代码审阅第 2 轮,2026-09-02)
 
 针对 v1.4.1 1nm-only 迁移边缘的 6 项缺陷修复,bit-exact 保留(32/32 测试通过,

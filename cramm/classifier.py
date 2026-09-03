@@ -101,17 +101,23 @@ CHLORITE_MINERALS = [
 ]
 
 # Carbonate minerals (used for cal_center quadratic fitting of the 2330 nm
-# C-O band). The calcite/dolomite abundant+plain pairs carry identical
-# absorption_center_range windows, so any in-window center hits two rules ->
-# ambiguous -> the arbitration never flips (declarative, tolerance-extreme
-# scheme); the product line's value is the continuous center layer itself
-# (7-anchor carbonate band-position sequence; aragonite/magnesite silently
-# classified as dolomite become detectable via their <2320 nm centers).
+# C-O band). The family carries the full member list for the center layer;
+# ARBITRATION runs per abundance tier (v1.5.0): the abundant pair competes
+# among themselves and the plain pair among themselves — within each pair the
+# windows are disjoint ([2.308, 2.328) vs [2.334, 2.350)), so band position
+# arbitrates dolomite<->calcite flips while the abundant/plain axis stays
+# decided by fit alone (a pixel can never flip across tiers: the two
+# sub-family lists are disjoint arbitration groups). The 6 nm dead zone
+# [2.328, 2.334) between the windows keeps siderite-ish centers (~2327 nm
+# anchor) with their argmax winner; carbonate_Fe_bearing and
+# calcite.5+dolomite.5 stay windowless (position cannot discriminate the
+# former from calcite; the latter's blend center lands in the dead zone by
+# design). The continuous cal_center layer remains the product line's
+# primary value (7-anchor carbonate band-position sequence;
+# aragonite/magnesite silently classified as dolomite become detectable via
+# their <2320 nm centers).
 # serpentine_antigorite_or_calcite+dolomite is excluded on purpose: its
-# reference is antigorite, not a carbonate. calcite.5+dolomite.5 is a
-# windowless member: it carries no absorption_center_range, so it
-# participates in the cal_center quadratic fit (its blend center lands in the
-# calcite-dolomite gap) but never in window-flip arbitration.
+# reference is antigorite, not a carbonate.
 CARBONATE_MINERALS = [
     "calcite_abundant",
     "calcite",
@@ -119,6 +125,18 @@ CARBONATE_MINERALS = [
     "dolomite",
     "carbonate_Fe_bearing",
     "calcite.5+dolomite.5",
+]
+
+# Carbonate arbitration sub-families (per abundance tier, v1.5.0): classify
+# calls _reassign_by_absorption_center once per sub-family instead of once
+# for the whole CARBONATE_MINERALS group.
+CARBONATE_ABUNDANT_MINERALS = [
+    "calcite_abundant",
+    "dolomite_abundant",
+]
+CARBONATE_PLAIN_MINERALS = [
+    "calcite",
+    "dolomite",
 ]
 
 
@@ -314,8 +332,10 @@ def _reassign_by_absorption_center(
         2.2 um Al-OH band;
       - chlorite: four pure rules with deliberately overlapping windows
         around the 2250 nm Fe-OH band;
-      - carbonate: four calcite/dolomite rules with duplicate windows
-        around the 2330 nm C-O band.
+      - carbonate: two per-tier pairs (abundant / plain) with disjoint
+        windows around the 2330 nm C-O band (v1.5.0: band position
+        arbitrates dolomite<->calcite within a tier; the abundant/plain
+        axis remains fit-decided because the tier groups are disjoint);
 
     Inter-family segregation is STRUCTURAL, not emergent: each call can
     only ever reassign among its own family's rules, no matter what
@@ -338,14 +358,17 @@ def _reassign_by_absorption_center(
       - center inside several overlapping ranges -> ambiguous, keep the
         original. The bundled chlorite windows exploit exactly this: their
         overlaps are tolerance zones where the intermediate
-        composition keeps its argmax attribution. The carbonate pairs push
-        it to the extreme: abundant+plain versions share identical windows,
-        so every in-window center is ambiguous and the call never flips
-        (declarative zero-flip scheme).
+        composition keeps its argmax attribution. (The pre-v1.5.0
+        carbonate duplicate-window scheme pushed this to the extreme —
+        identical abundant+plain windows made every in-window center
+        ambiguous, a declarative zero-flip; v1.5.0 replaced it with
+        per-tier pair arbitration, see CARBONATE_ABUNDANT_MINERALS /
+        CARBONATE_PLAIN_MINERALS.)
 
-    ``classify`` calls this helper three times per segment: with
+    ``classify`` calls this helper four times per segment: with
     ``mus_center`` + MUSCOVITE_MINERALS, ``chl_center`` +
-    CHLORITE_MINERALS, and ``cal_center`` + CARBONATE_MINERALS.
+    CHLORITE_MINERALS, and ``cal_center`` + CARBONATE_ABUNDANT_MINERALS /
+    CARBONATE_PLAIN_MINERALS (one call per carbonate abundance tier).
 
     Custom rule libraries opt in per family: append the new rule's name
     to the corresponding module-level family list AND give it
@@ -1732,19 +1755,28 @@ class MicaClassifier:
                     spectrum1, wl, self.rf, index_d, fit_pos,
                     CHLORITE_MINERALS,
                 )
-                # Carbonate arbitration (group locked to
-                # CARBONATE_MINERALS), driven by cal_center. The calcite
-                # and dolomite abundant+plain pairs share identical
-                # windows, so any
-                # in-window center hits two ranges -> ambiguous -> keep: this
-                # call NEVER flips by construction (declarative tolerance-
-                # extreme). It exists so the family participates in the same
-                # arbitration contract as mus/chl; the zero-flip invariant is
-                # pinned by test_carbonate_window_arbitration.
+                # Carbonate arbitration (v1.5.0): one call per abundance
+                # tier — the abundant pair (calcite_abundant vs
+                # dolomite_abundant) and the plain pair (calcite vs
+                # dolomite) each form their own locked arbitration group.
+                # Within a pair the windows are disjoint
+                # ([2.308, 2.328) vs [2.334, 2.350)), so band position
+                # arbitrates dolomite<->calcite flips; the abundant/plain
+                # axis can never flip because the two groups are disjoint
+                # (a pixel's winner belongs to at most one tier's group).
+                # The 6 nm dead zone [2.328, 2.334) keeps siderite-ish
+                # centers with their argmax winner. Driven by cal_center;
+                # same shared implementation for serial and parallel
+                # (bit-exact).
                 _reassign_by_absorption_center(
                     im, FIT, fit_nan, cal_center[a * c : b * c],
                     spectrum1, wl, self.rf, index_d, fit_pos,
-                    CARBONATE_MINERALS,
+                    CARBONATE_ABUNDANT_MINERALS,
+                )
+                _reassign_by_absorption_center(
+                    im, FIT, fit_nan, cal_center[a * c : b * c],
+                    spectrum1, wl, self.rf, index_d, fit_pos,
+                    CARBONATE_PLAIN_MINERALS,
                 )
                 FIT_[a * c : b * c] = FIT.flatten()[im + np.arange(len(im)) * len(self.rf)]
                 DEPTH_[a * c : b * c] = DEPTH.flatten()[im + np.arange(len(im)) * len(self.rf)]
