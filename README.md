@@ -65,14 +65,15 @@ Everything is pure Python and GUI-free. Cross-platform:
   against calibrated wavelength windows that tile the 2.245–2.266 µm range
   without overlap, so every in-range center arbitrates to exactly one subtype.
 - **Quantitative carbonate mapping** — per-pixel 2330 nm absorption-center
-  wavelength (`cal_center`) for pixels won by the five carbonate rules,
+  wavelength (`cal_center`) for pixels won by the six carbonate rules,
   as a fifth thematic map and float array; band position tracks the
   seven-anchor C–O sequence (magnesite 2311 nm → rhodochrosite ~2369 nm),
   making species the rule library cannot tell apart (aragonite, magnesite —
-  silently classified as dolomite) visible in the continuous layer. Its
-  arbitration windows are duplicated across each abundant+plain pair, so the
-  carbonate re-attribution is declarative and never flips — the value is the
-  continuous center itself.
+  silently classified as dolomite) visible in the continuous layer. The
+  same center also arbitrates the dolomite ↔ calcite attribution **within
+  each abundance tier** (v1.5.0): the abundant pair and the plain pair
+  compete separately against disjoint windows, a 6 nm dead zone shelters
+  siderite-ish centers, and the abundance axis never crosses.
 - **Whole-scene and single-spectrum modes** — batch-classify an entire scene
   to GeoTIFF, or identify one spectrum (GUI point-click, field
   spectrometer) with Top-N ranking and a PDF diagnostic report.
@@ -350,18 +351,25 @@ pure-chlorite rules likewise carry **tiling** windows — lowFe
 thuringite `[2.256, 2.266)` — covering the 2.245–2.266 µm range without
 overlap, so every in-range `chl_center` also arbitrates deterministically
 to exactly one subtype (see *Application: reading chlorite Fe content
-from chl_center*). The four calcite/dolomite rules carry **duplicate**
-windows — calcite_abundant and calcite share `[2.334, 2.350)`;
-dolomite_abundant and dolomite share `[2.308, 2.328)` — pushing the
-tolerance scheme to its extreme: every in-window center hits two identical
-ranges, is ambiguous, and keeps its match. The carbonate arbitration is
-therefore declarative and never flips (pinned by a dedicated unit test);
-the product line's value is the continuous `cal_center` layer itself (see
-*Application: reading carbonate species from cal_center*).
+from chl_center*). The four calcite/dolomite rules form two abundance
+tiers — calcite_abundant vs dolomite_abundant, and calcite vs dolomite —
+which since v1.5.0 are arbitrated in **two separate per-tier calls**.
+Within each tier the windows are disjoint (dolomite `[2.308, 2.328)` vs
+calcite `[2.334, 2.350)`), so an in-window center arbitrates
+deterministically to the other mineral of the pair; the two tiers never
+mix, locking the abundance axis (abundant vs plain) structurally. A 6 nm
+dead zone `[2.328, 2.334)` between the windows conservatively keeps
+siderite-ish centers (~2327 nm anchor) on their argmax winner. On the
+EMIT test scene this flipped 1599 pixels (0.10 % of the scene)
+calcite→dolomite, with zero reverse flips and zero abundant-tier flips
+(pinned by a dedicated unit test; see *Application: reading carbonate
+species from cal_center*).
 This is a scene-classification feature; single-spectrum Top-N ranking is
 unaffected. Each arbitration call locks its group to one mineral family
-(`MUSCOVITE_MINERALS` / `CHLORITE_MINERALS` / `CARBONATE_MINERALS` ∩
-windowed rules), so cross-family flips are structurally impossible
+(`MUSCOVITE_MINERALS` / `CHLORITE_MINERALS` — and for carbonates, one
+abundance tier per call: `CARBONATE_ABUNDANT_MINERALS` or
+`CARBONATE_PLAIN_MINERALS` — ∩ windowed rules), so cross-family and
+cross-tier flips are structurally impossible
 (pinned by a dedicated unit test). Custom rule libraries opt in per
 family: append the new rule to the corresponding family list AND give it
 the field; rules without it are never reassigned.
@@ -440,13 +448,17 @@ USGS MICA as carbonate_Fe_bearing) — so aragonite and magnesite pixels are
 silently classified as dolomite by best fit. `cal_center` makes them
 visible: a "dolomite" pixel whose center sits at 2311–2316 nm is a
 magnesite/aragonite suspect, and the continuous layer likewise exposes
-Fe-bearing dolomite (≤2319 nm) inside the dolomite class. The calcite and
-dolomite abundant+plain pairs carry duplicate arbitration windows
-(`[2.334, 2.350)` and `[2.308, 2.328)` respectively), so the wavelength
-arbitration never reassigns a carbonate pixel — every in-window center is
-ambiguous between the twins — and the map can be read as a pure measurement
-layer: bin edges at 5 nm steps over [2.308, 2.358) µm, shorter wavelength =
-earlier anchor in the sequence above.
+Fe-bearing dolomite (≤2319 nm) inside the dolomite class. Since v1.5.0 the
+wavelength arbitration does reassign carbonate pixels — but only within an
+abundance tier: a "calcite" pixel whose center falls in the dolomite window
+`[2.308, 2.328)` flips to dolomite (and vice versa within the pair), while
+abundant and plain never cross, and the 6 nm dead zone `[2.328, 2.334)`
+keeps siderite-ish centers on their argmax winner. On the EMIT test scene
+this produced 1599 calcite→dolomite flips (0.10 % of the scene; flipped
+centers 2314–2328 nm, i.e. Fe-bearing-dolomite band positions), zero
+reverse flips and zero abundant-tier flips. The map bins the
+post-arbitration centers at 5 nm steps over [2.308, 2.358) µm, shorter
+wavelength = earlier anchor in the sequence above.
 
 ## Performance notes
 
