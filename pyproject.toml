@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "CRAMM"
-version = "1.5.0"
+version = "1.5.0.post1"
 description = "CRAMM — general-purpose hyperspectral mineral identification toolkit (USGS MICA, extended: depth-ratio rules + quantitative muscovite mapping; sensor-agnostic, EMIT L2A built in)"
 readme = "README.md"
 requires-python = ">=3.9"
