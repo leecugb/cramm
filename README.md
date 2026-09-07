@@ -435,6 +435,28 @@ calibration: quantitative inversion needs chlorite ≳50 % of the pixel and a
 comparable sample preparation; the 2350 nm Mg–OH band (cross-instrument
 anchor, bias ≈0.2 nm) is reserved for pure-mineral checks.
 
+The companion phase diagram below — a GEMS/MINES23.1 titration reaction-path
+model of the same system, now with a four-endmember chlorite solid solution
+(clinochlore, chlorite-Mg, daphnite, amesite) — maps the predicted wv2250
+position across the chlorite stability field via the endmember bridge
+wv2250 = 2243.7·X(Clin*) + 2255.5·X(Daph) + 2263.4·X(Ames), where X(Clin*)
+merges the spectrally indistinguishable clinochlore and chlorite-Mg:
+
+![Chlorite wv2250 absorption position in the chlorite stability field](https://raw.githubusercontent.com/leecugb/cramm/main/docs/chlorite_wv2250_phase_diagram.png)
+
+Fe-rich compositions (daphnite/amesite, wv2250 ≳ 2252 nm) dominate the
+low-T / high-K⁺ side of the field, while Mg-rich clinochlore (≲2248 nm) is
+confined to the high-T roof and the K-feldspar-proximal edge. The magenta
+dashed line bounds the calibration coverage (X(Daph) ≤ 0.51, X(Ames) ≤ 0.28;
+RMSE ≈ 1.2 nm inside) — predictions outside it are extrapolations. Like
+`mus_center` on the muscovite diagram, each fitted `chl_center` selects one
+isopleth here: a one-dimensional constraint locus in the
+T–log(aK⁺/aH⁺) plane, not a unique point. Reading both diagrams for
+coexisting muscovite and chlorite under a same-pressure, same-fluid
+equilibrium assumption is what pins down formation temperature and fluid
+K⁺/H⁺ together. The diagram is an interpretive framework for the product,
+not a ground-validated inversion.
+
 ## Application: reading carbonate species from cal_center
 
 The carbonate thematic map's per-pixel `cal_center` (2330 nm C–O absorption
