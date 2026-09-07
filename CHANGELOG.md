@@ -1,6 +1,22 @@
 # Changelog
 
-## v1.5.0.post3 — README 插图迁移 jsDelivr CDN（2026-09-07）
+## v1.5.0.post4 — 两张相图按预审意见修订(2026-09-07)
+
+仅文档/图件更新,代码零变化。两张 GEMS 相图(muscovite wv2200 /
+chlorite wv2250)经三轮互盲预审后重绘,信息披露升级:
+
+- 两图均补:相区区内标注(Kaolinite/Pyrophyllite/Andalusite/K-feldspar)、
+  数据驱动的转变温度标注、模型身份脚注(GEMS/MINES23.1、P = 1 kbar、
+  经验链来源)、x 轴物理解读方向注释;统一坐标范围、幅面与版式。
+- 白云母图:新增 USGS 链标定覆盖线(Al₂O₃ = 36 wt% 品红虚线,低 X_Ts 侧
+  为外推);等值线发夹裁枝经逐点叠散点核验确认为掩膜边缘插值伪影,
+  裁枝规则在图内脚注披露;填色与等值线两图层统一转换链顺序,严格互洽。
+- 绿泥石图:标题改为 occurrence field (model),脚注声明 wv2250 即
+  Pos2250_CR(连续统去除口径)及填色域为模型出现凸包(多边形边非相界);
+  色标改整数刻度并与 2 nm 等值线对齐。
+- README 两处图注同步补:压力、裁枝披露、覆盖线、独立运行声明、CR 口径。
+
+## v1.5.0.post3 — README 插图迁移 jsDelivr CDN(2026-09-07)
 
 仅打包元数据更新，代码零变化：三张 README 插图由 raw.githubusercontent.com
 改挂 jsDelivr CDN(`cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/...`)。
