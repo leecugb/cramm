@@ -412,8 +412,9 @@ T–log(aK⁺/aH⁺) plane the value defines a one-dimensional constraint locus,
 not a unique point. Pinning down both formation temperature and fluid K⁺/H⁺
 requires a second independent constraint — e.g. the `chl_center` of a
 coexisting chlorite read on the companion diagram, under a same-pressure,
-same-fluid equilibrium assumption. The diagram is an interpretive framework
-for the product, not a ground-validated inversion.
+same-fluid equilibrium assumption. This diagram is the reference scale for
+putting the `mus_center` product to use — an interpretive framework, not a
+ground-validated inversion.
 
 ## Application: reading chlorite Fe content from chl_center
 
@@ -454,8 +455,9 @@ isopleth here: a one-dimensional constraint locus in the
 T–log(aK⁺/aH⁺) plane, not a unique point. Reading both diagrams for
 coexisting muscovite and chlorite under a same-pressure, same-fluid
 equilibrium assumption is what pins down formation temperature and fluid
-K⁺/H⁺ together. The diagram is an interpretive framework for the product,
-not a ground-validated inversion.
+K⁺/H⁺ together. This diagram is the reference scale for putting the
+`chl_center` product to use — an interpretive framework, not a
+ground-validated inversion.
 
 ## Application: reading carbonate species from cal_center
 
