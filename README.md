@@ -229,7 +229,7 @@ Each PDF page dissects one candidate rule — every diagnostic / not-absorption
 continuum-removed profile (squares) against the input (circles), and the
 full constraint audit (k0/k1, r², raw depth, weights, thresholds):
 
-![Single-spectrum diagnostic PDF: per-rule feature dissection](https://raw.githubusercontent.com/leecugb/cramm/main/docs/single_spectrum_diagnostic.png)
+![Single-spectrum diagnostic PDF: per-rule feature dissection](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/single_spectrum_diagnostic.png)
 
 More scenarios — float (`raw=True`) output, custom rule libraries, the
 `invalidate_caches()` contract, component-level calls — in
@@ -400,7 +400,7 @@ degree X_Ts = X(Fe-Celadonite)+X(Celadonite) in the muscovite stability field
 with the corresponding wv2200 position (USGS conversion chain:
 X_Ts → Al₂O₃ wt% → λ = −3.1·Al₂O₃ + 2308):
 
-![Tschermak substitution degree vs. wv2200 in the muscovite field](https://raw.githubusercontent.com/leecugb/cramm/main/docs/muscovite_wv2200_phase_diagram.png)
+![Tschermak substitution degree vs. wv2200 in the muscovite field](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/muscovite_wv2200_phase_diagram.png)
 
 X_Ts rises from ~0 on the high-T / low-K⁺ side to 0.35+ on the low-T / high-K⁺
 side. The wv2200 contours (magenta, 2190→2215 nm) are derived by chaining the
@@ -442,7 +442,7 @@ position across the chlorite stability field via the endmember bridge
 wv2250 = 2243.7·X(Clin*) + 2255.5·X(Daph) + 2263.4·X(Ames), where X(Clin*)
 merges the spectrally indistinguishable clinochlore and chlorite-Mg:
 
-![Chlorite wv2250 absorption position in the chlorite stability field](https://raw.githubusercontent.com/leecugb/cramm/main/docs/chlorite_wv2250_phase_diagram.png)
+![Chlorite wv2250 absorption position in the chlorite stability field](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/chlorite_wv2250_phase_diagram.png)
 
 Fe-rich compositions (daphnite/amesite, wv2250 ≳ 2252 nm) dominate the
 low-T / high-K⁺ side of the field, while Mg-rich clinochlore (≲2248 nm) is
