@@ -395,17 +395,24 @@ math.
 The muscovite thematic map's per-pixel `mus_center` (2.2 µm Al-OH absorption
 position) is a quantitative proxy for muscovite chemistry. The phase diagram
 below — a GEMS/MINES23.1 titration reaction-path model of the
-K₂O–Al₂O₃–SiO₂–H₂O–HCl–FeO–MgO system — overlays the Tschermak substitution
+K₂O–Al₂O₃–SiO₂–H₂O–HCl–FeO–MgO system at P = 1 kbar — overlays the Tschermak
+substitution
 degree X_Ts = X(Fe-Celadonite)+X(Celadonite) in the muscovite stability field
 with the corresponding wv2200 position (USGS conversion chain:
 X_Ts → Al₂O₃ wt% → λ = −3.1·Al₂O₃ + 2308):
 
-![Tschermak substitution degree vs. wv2200 in the muscovite field](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/muscovite_wv2200_phase_diagram.png)
+![Tschermak substitution and wv2200 absorption position in the muscovite field (model)](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/muscovite_wv2200_phase_diagram.png)
 
 X_Ts rises from ~0 on the high-T / low-K⁺ side to 0.35+ on the low-T / high-K⁺
-side. The wv2200 contours (magenta, 2190→2215 nm) are derived by chaining the
+side. The wv2200 contours (magenta, 2190→2215 nm, levels spanning the
+2nd–98th percentile of the model field) are derived by chaining the
 empirical wavelength–composition calibration through the modelled X_Ts field,
-so they track the X_Ts contours (dark blue) by construction. Each `mus_center`
+so they track the X_Ts contours (dark blue) by construction; hairpin
+artefacts along the mask edge — contour branches without support in the
+model scatter, verified point-by-point — are removed, as disclosed on the
+figure. The dashed magenta line marks the USGS chain's calibration limit
+(Al₂O₃ = 36 wt%): the low-X_Ts side of the field (wv2200 ≲ 2196 nm) is
+extrapolation beyond the calibration range. Each `mus_center`
 value fitted from an image pixel therefore selects one isopleth on this
 diagram: muscovite composition (X_Ts) is read directly, while in the
 T–log(aK⁺/aH⁺) plane the value defines a one-dimensional constraint locus,
@@ -437,19 +444,23 @@ comparable sample preparation; the 2350 nm Mg–OH band (cross-instrument
 anchor, bias ≈0.2 nm) is reserved for pure-mineral checks.
 
 The companion phase diagram below — a GEMS/MINES23.1 titration reaction-path
-model of the same system, now with a four-endmember chlorite solid solution
+model of the same system at the same pressure (P = 1 kbar), an independent
+titration run with a four-endmember chlorite solid solution
 (clinochlore, chlorite-Mg, daphnite, amesite) — maps the predicted wv2250
-position across the chlorite stability field via the endmember bridge
+position across the chlorite occurrence field via the endmember bridge
 wv2250 = 2243.7·X(Clin*) + 2255.5·X(Daph) + 2263.4·X(Ames), where X(Clin*)
 merges the spectrally indistinguishable clinochlore and chlorite-Mg:
 
-![Chlorite wv2250 absorption position in the chlorite stability field](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/chlorite_wv2250_phase_diagram.png)
+![Chlorite wv2250 absorption position in the chlorite occurrence field (model)](https://cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/chlorite_wv2250_phase_diagram.png)
 
 Fe-rich compositions (daphnite/amesite, wv2250 ≳ 2252 nm) dominate the
 low-T / high-K⁺ side of the field, while Mg-rich clinochlore (≲2248 nm) is
 confined to the high-T roof and the K-feldspar-proximal edge. The magenta
 dashed line bounds the calibration coverage (X(Daph) ≤ 0.51, X(Ames) ≤ 0.28;
-RMSE ≈ 1.2 nm inside) — predictions outside it are extrapolations. Like
+RMSE ≈ 1.2 nm inside) — predictions outside it are extrapolations. wv2250 is
+the continuum-removed absorption position (Pos2250_CR in the calibration
+documents), and the filled domain is the convex hull of chlorite occurrence
+in the model, so its polygon edges are not phase boundaries. Like
 `mus_center` on the muscovite diagram, each fitted `chl_center` selects one
 isopleth here: a one-dimensional constraint locus in the
 T–log(aK⁺/aH⁺) plane, not a unique point. Reading both diagrams for
