@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.5.0.post3 — README 插图迁移 jsDelivr CDN（2026-09-07）
+
+仅打包元数据更新，代码零变化：三张 README 插图由 raw.githubusercontent.com
+改挂 jsDelivr CDN(`cdn.jsdelivr.net/gh/leecugb/cramm@main/docs/...`)。
+raw.githubusercontent.com 在部分网络被间歇性封锁，导致 PyPI 页面
+（不代理图片，浏览器直连源站）新图无法加载；jsDelivr 多 CDN 加速可稳定
+访问，同时自带缓存刷新（等效 cache-bust）。
+
 ## v1.5.0.post2 — README 新增绿泥石相图（2026-09-07）
 
 仅打包元数据更新，代码零变化：README "reading chlorite Fe content from
