@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.5.0.post2 — README 新增绿泥石相图（2026-09-07）
+
+仅打包元数据更新，代码零变化：README "reading chlorite Fe content from
+chl_center" 一节新增绿泥石 wv2250 相图伴生图（GEMS user_tk 4EM Pos2250
+等值线场，英文标注版，raw.githubusercontent.com 绝对 URL),PyPI 项目页
+随本版同步显示。
+
 ## v1.5.0.post1 — README 图片链接修复（2026-09-05）
 
 仅打包元数据修复，代码零变化：README 两处插图由相对路径改为
