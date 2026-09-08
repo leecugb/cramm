@@ -71,7 +71,7 @@ class MicaEngine:
     Parameters
     ----------
     rf_path : str
-        Path to the rule library (cramm/data/temp_rf_notfeatures_renamed.json
+        Path to the rule library (cramm/data/rf.json
         or an equivalent rewrite).
     splib_path : str
         Path to the 1 nm rule-face npz bundle (cramm/data/rf77_splib07_1nm.npz).

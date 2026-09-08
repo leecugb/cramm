@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.5.0.post5 — 规则库文件正名 + 最小核验集公开(2026-09-07)
+
+仅数据文件名/文档更新,数值路径零变化(32/32 pytest 通过,bundle 审计 ALL PASS)。
+
+- **规则库文件正名**:`cramm/data/temp_rf_notfeatures_renamed.json` 更名为
+  `cramm/data/rf.json`(splib07 迁移收尾——该文件自 v1.3.0 起即唯一规则库,
+  临时名不再名实相符)。引擎加载路径、`pyproject.toml` package-data、示例与
+  文档同步更新。
+- **`docs/verify_mcf_rfjson.py` 恢复**:从 git 历史重建的 .mcf↔rf.json 逐字段
+  核验脚本,适配 v1.4.0 规则库结构并声明豁免(参考谱/NOT 指针 = rule-name
+  键,核验解析性与自指拓扑;样品身份证据链由 selection.json + 相关系数表 +
+  迁移核验报告承载;wavelength_map/mixtures 顶层表按设计已删)。
+  当前规则库实测:77/77 条目、142 特征、1136 连续统槽、80 NOT 引用,
+  **0 不一致**。
+- **`docs/_audit_rf77_bundle.py` 降级容错**:D/F1/G/H/K 组在公开最小仓库
+  (无 selection.json/csv、git 历史不含 11b0f53)下由 FAIL 改为 SKIP,
+  核心组 A/B/C/E/F2/J 恒可运行;完整仓库行为不变(含 K 组 65/65 逐比特)。
+- **最小核验集进入公开仓库**:verify 脚本 + bundle 审计脚本 + 审计报告
+  `docs/rf77_bundle_audit.md` 随本版推送公开 docs/。
+
 ## v1.5.0.post4 — 两张相图按预审意见修订(2026-09-07)
 
 仅文档/图件更新,代码零变化。两张 GEMS 相图(muscovite wv2200 /
@@ -122,7 +142,7 @@ dolomite↔calcite 归属裁决；**丰度轴仍由 fit 独立决定**——两�
 
 - **id 字段彻底删除**:JSON 数据中 58 处 `reference.reflectance_record` 的 int
   记录号、19 处 `mix_XXXX` 混合谱逻辑标签,全部替换为 owning rule-name 字符串;
-  顶层 `mixtures` 配方表删除。`temp_rf_notfeatures_renamed.json` 现仅含 `rf` 一个
+  顶层 `mixtures` 配方表删除。`rf.json` 现仅含 `rf` 一个
   顶层键,每条规则的 `reference` / `not_absolute_features` / `not_relative_features`
   的 `reflectance_record` 都是 `rf.keys()` 中的 rule-name 字符串。
 - **代码层 id 逻辑全删**:`MicaClassifier.__init__` 删除 `wavelength_map` / `dic3` /
@@ -170,7 +190,7 @@ dolomite↔calcite 归属裁决；**丰度轴仍由 fit 独立决定**——两�
   但被忽略;传入非 `None` / `"1nm"` 的值会抛 `ValueError`。
 - **删除数据文件**:`cramm/data/rf.json`、`cramm/data/rf_splib07.json`、
   `cramm/data/splib06b`(21MB specpr 二进制)、`cramm/data/rf07_spectra.npz`
-  全部移除;唯一规则库 `cramm/data/temp_rf_notfeatures_renamed.json`、唯一参考谱束
+  全部移除;唯一规则库 `cramm/data/rf.json`、唯一参考谱束
   `cramm/data/rf77_splib07_1nm.npz`(打包入 wheel 的 package-data)。
 - **删除测试**:`tests/test_rf07_export.py`、`tests/test_rf07_engine.py`
   (依赖被删除的 rf07 npz 与 `rf_splib07.json`)。
@@ -184,9 +204,9 @@ dolomite↔calcite 归属裁决；**丰度轴仍由 fit 独立决定**——两�
   别名翻译。
 - **缓存键简化**:`get_resample` / `_get_compiled_rules` 的缓存键不再内嵌 track。
 - **`pyproject.toml` `package-data`**:仅保留 `data/color_table.json`;
-  后续追加 `data/temp_rf_notfeatures_renamed.json` 与
+  后续追加 `data/rf.json` 与
   `data/rf77_splib07_1nm.npz`(配置文件移入 `cramm/data/` 目录)。
-- **规则库清理**:删除 `temp_rf_notfeatures_renamed.json` 中的死字段
+- **规则库清理**:删除 `rf.json` 中的死字段
   `wavelength_record`(reference 与 not_features 各级)与顶层 `wavelength_map`
   (53 条仪器网格映射);1nm 轨道不读取这些字段,代码内合成恒等映射
   仅供 API 兼容。规则库顶层 keys 由 `rf/mixtures/wavelength_map` 简化为
