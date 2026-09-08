@@ -14,7 +14,7 @@
   全波段中心波长、FWHM、有效波段索引。
 - 内置 EMIT L2A 读取器(`emit_reader.py`):float32、填充值归零、**坏波段剔除**
   (逐波段正均值 < 0.02 → 该波段从 chanels 移除);其他传感器自备加载器走同一契约。
-- 规则库 `cramm/data/temp_rf_notfeatures_renamed.json`:77 条决策规则,与官方
+- 规则库 `cramm/data/rf.json`:77 条决策规则,与官方
   `.mcf` v6a 启用态**字段级一致**;v1.4.0 起 id-free,规则名是规则库与参考谱束的唯一链接。
 - 参考谱束 `cramm/data/rf77_splib07_1nm.npz`:77×2151,350–2500 nm 1 nm 主网格,
   splib07 选谱(选谱审计见 `splib07_selection.md`);19 条混合规则的谱在打包期预烘焙,

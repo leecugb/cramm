@@ -14,7 +14,7 @@
 |---|---|---|---|
 | 1 | `D:\CRAMM\EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc` | 同 | **EMIT 黄金回归输入**;所有 BIT-EXACT 验证都用同一 cube 的 crop 500:600, 300:400 |
 | 2 | `cramm/data/rf77_splib07_1nm.npz` | `cramm/data/` 下 | 1nm rule-face 参考谱束(77 rule × 2151 band @ 1nm);唯一参考源 |
-| 3 | `cramm/data/temp_rf_notfeatures_renamed.json` | `cramm/data/` 下 | **唯一**规则库(not_(abs/rel)_feature reflectance_record = 规则名字符串;reference.reflectance_record 仍保留 int,from_paths 经 alias 自动转译) |
+| 3 | `cramm/data/rf.json` | `cramm/data/` 下 | **唯一**规则库(not_(abs/rel)_feature reflectance_record = 规则名字符串;reference.reflectance_record 仍保留 int,from_paths 经 alias 自动转译) |
 | 4 | `D:\CRAMM\_mica_v07_result.npz` | 仓库根 | **1nm 轨道黄金基线**(notebook + 原独立脚本执行产物,作为 CLI 包装层验收基准) |
 
 **Python 环境(新电脑安装要求)**:
@@ -103,7 +103,7 @@ sys.exit(0 if ok else 1)
 
 ## 四、常见坑(迁移后第一处排查)
 
-1. **1nm 轨道报 ValueError(Found N int record references)**:你传了原版 `rf.json` 而非 `temp_rf_notfeatures_renamed.json`。not_feature 的 reflectance_record 在 1nm 轨道必须是规则名字符串。
+1. **1nm 轨道报 ValueError(Found N int record references)**:你传了原版 `rf.json` 而非 `rf.json`。not_feature 的 reflectance_record 在 1nm 轨道必须是规则名字符串。
 2. **get_resample KeyError: 'dry_veg_grass_2_3um' / 'pyrophyllite.25+kaolinite.75'**:alias 没挂好。确认 `from_paths` 中:
    - 混合物合成后要 walk `rf`,把 `rf[rname]["ref"] == mix_id` 的 19 条 mixture-backed 规则也挂上 `resampled1[rname] = result`(共享引用)。
    - `extra_aliases[int_rec] = owner_rule-name` 必须在 from_paths 阶段建立。
@@ -125,7 +125,7 @@ from cramm.classifier import MicaClassifier
 from cramm.emit_reader import EmitReader
 
 cls = MicaClassifier.from_paths(
-    rf_path="cramm/data/temp_rf_notfeatures_renamed.json",
+    rf_path="cramm/data/rf.json",
     splib_path="cramm/data/rf77_splib07_1nm.npz",
 )
 spectrum, _lon, _lat, w, bp, wl, chanels = EmitReader.load(

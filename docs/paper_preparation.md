@@ -1,7 +1,7 @@
 # CRAMM 论文写作准备档案
 
 > 目标期刊：**Computers & Geosciences**（开源软件 + 算法论文）
-> 建档日期：2026-08-23 ｜ 建档方式：对 D:\CRAMM 全仓库素材逐一核实（README、docs/、cramm/classifier.py、temp_rf_notfeatures_renamed.json、tests/、benchmark 日志、git 历史）
+> 建档日期：2026-08-23 ｜ 建档方式：对 D:\CRAMM 全仓库素材逐一核实（README、docs/、cramm/classifier.py、rf.json、tests/、benchmark 日志、git 历史）
 > 用户提供的"项目事实"已逐条核对：**除一处数字口径存疑外全部属实**（见 §8 缺口清单）。
 
 ---
@@ -10,11 +10,11 @@
 
 | 事实 | 出处 | 状态 |
 |---|---|---|
-| rf.json = 77 规则 + 19 mixtures | `cramm/data/temp_rf_notfeatures_renamed.json` 实测（顶层 keys: rf/mixtures） | ✅ |
+| rf.json = 77 规则 + 19 mixtures | `cramm/data/rf.json` 实测（顶层 keys: rf/mixtures） | ✅ |
 | 与官方 .mcf（2014 v6a）逐字段核验零不一致 | 历史核验（已删除的 `docs/MCF_vs_rfjson_verification.md`）：77 条目集合、142 诊断特征、1,136 连续统约束槽、80 处 NOT 引用、77×4 材料级约束、64 条纯谱参考身份、77 类别颜色 RGB 逐值一致 | ✅ |
-| 9 条深度比规则（0.6×6 + 0.4×3） | temp_rf_notfeatures_renamed.json 实测，名单与 README 一致 | ✅ |
-| 12 条仲裁窗口规则（白云母 4 无缝拼接 / 绿泥石 4 重叠容差：3×1nm + Fe/thuringite 缝 0.49nm / 碳酸盐 4 重复窗） | temp_rf_notfeatures_renamed.json 实测，窗口数值与 README/algorithm_flow.md 完全一致（2026-08-24 thuringite [2.255,2.266) 并入绿泥石族） | ✅ |
-| 7 条结构式元数据规则（白云母族 4 + 绿泥石族 3；tier A/B） | temp_rf_notfeatures_renamed.json 实测：medhighAl/Fe-rich/illite_gds4 = A，illite_imt1 + 绿泥石×3 = B | ✅ |
+| 9 条深度比规则（0.6×6 + 0.4×3） | rf.json 实测，名单与 README 一致 | ✅ |
+| 12 条仲裁窗口规则（白云母 4 无缝拼接 / 绿泥石 4 重叠容差：3×1nm + Fe/thuringite 缝 0.49nm / 碳酸盐 4 重复窗） | rf.json 实测，窗口数值与 README/algorithm_flow.md 完全一致（2026-08-24 thuringite [2.255,2.266) 并入绿泥石族） | ✅ |
+| 7 条结构式元数据规则（白云母族 4 + 绿泥石族 3；tier A/B） | rf.json 实测：medhighAl/Fe-rich/illite_gds4 = A，illite_imt1 + 绿泥石×3 = B | ✅ |
 | 仲裁器数学语义（单窗翻转重拟合 / 多窗歧义保持 / 无效保守 / 向量化单趟） | `classifier.py::_reassign_by_absorption_center`（302–407 行）docstring 与实现 | ✅ |
 | 族间隔离为结构保证：仲裁组按族锁定（family list ∩ 带窗规则），跨族翻转不可能；窗口间距 mus–chl 25 nm、chl–cal 42 nm 作纵深防御 | `classifier.py::_reassign_by_absorption_center`（family 参数）+ `test_arbitration_family_lock` 单测 + `tests/check_arbitration_independence.py` 整景实证 | ✅ |
 | 整景 1280×1242，nw=4 分析 ~62 s | `D:/test/full_scene_timing.json`：serial 156.4 s / nw=4 61.6 s（speedup 2.54），加载 4.09 s；24 逻辑核，Python 3.13.9 | ✅ |
@@ -73,7 +73,7 @@
 - 数学语义一手出处：DS787 方程 1–2（R_C = R_O/R_L；D = 1 − R_C；深度不直接计算而经缩放取值）；`_fit_r2_depth` 对应深度因子设计；`_get_quadratic_center` 三点抛物线顶点 + 共线三元组 NaN 折叠。
 
 ### 4.2 规则库与核验（Methods 必有一小节 + 一张核验表）
-- rf.json 结构：77 规则（diagnostic/not_absolute/not_relative features、weighted_constraints）+ 19 mixtures（端元线性合成）。1nm-only 架构下规则库即 `cramm/data/temp_rf_notfeatures_renamed.json`，数值内容与原 rf.json 逐比特一致；旧版 wavelength_map（53 条仪器网格映射）与 wavelength_record 字段已删除（1nm 轨道不读取），代码内合成恒等映射仅供 API 兼容。
+- rf.json 结构：77 规则（diagnostic/not_absolute/not_relative features、weighted_constraints）+ 19 mixtures（端元线性合成）。1nm-only 架构下规则库即 `cramm/data/rf.json`，数值内容与原 rf.json 逐比特一致；旧版 wavelength_map（53 条仪器网格映射）与 wavelength_record 字段已删除（1nm 轨道不读取），代码内合成恒等映射仅供 API 兼容。
 - 核验表素材（历史 `docs/MCF_vs_rfjson_verification.md`，脚本 `verify_mcf_rfjson.py` 已删除）：A 条目集合 77=77；B 142 特征 + 1,136 连续统槽；C 80 处 NOT 引用；D 77×4 材料级约束；E 64 条参考身份（6 条人工复核）；G 颜色表 77=77。
 - **设计性差异须如实声明**：13 条混合物由实物混合谱改为端元线性合成；其中 kaolinite.5+muscoviteMedAl.5 与 alunite.5+kaolinite.5 的端元由 KGa-1 换成 KGa-2（双峰锐度不同）——核验文档明确标注"论文中应注明"。
 - 未移植的 .mcf 头部参数（传感器绑定项由运行时契约替代）——正好是"传感器无关"论证的一部分。

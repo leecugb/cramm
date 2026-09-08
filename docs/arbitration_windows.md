@@ -1,7 +1,7 @@
 # 波长仲裁窗口速查表（归档）
 
 > 归档日期：2026-08-26 ｜ 基线：绿泥石窗口改为无缝拼接（此前为 1711e20 起的容差重叠方案，2026-08-26 重置）
-> 数据来源：`cramm/data/temp_rf_notfeatures_renamed.json` 实测 ｜ 仲裁语义：`cramm/classifier.py::_reassign_by_absorption_center`
+> 数据来源：`cramm/data/rf.json` 实测 ｜ 仲裁语义：`cramm/classifier.py::_reassign_by_absorption_center`
 
 ## 仲裁器判定逻辑（三族共用）
 

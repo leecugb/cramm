@@ -87,7 +87,7 @@ Everything is pure Python and GUI-free. Cross-platform:
   processes.
 - **Bit-exact discipline** — serial and parallel paths produce identical
   bytes; every change is guarded by a dual-path golden regression suite.
-- **Self-contained** — the rule library (`cramm/data/temp_rf_notfeatures_renamed.json`),
+- **Self-contained** — the rule library (`cramm/data/rf.json`),
   the 1 nm rule-face spectra bundle (`cramm/data/rf77_splib07_1nm.npz`), and the
   mineral color table are bundled inside the wheel.
 
@@ -283,7 +283,7 @@ The classifier runs the **1 nm rule-face track** exclusively — reference
 spectra baked onto a shared 1 nm master grid (350–2500 nm) in
 `cramm/data/rf77_splib07_1nm.npz` (77 rule-face rows); no splib06b / specpr / external
 library is needed at runtime. The rule library
-`cramm/data/temp_rf_notfeatures_renamed.json` carries the **same 77 rules** as the
+`cramm/data/rf.json` carries the **same 77 rules** as the
 historical USGS `.mcf` v6a. As of v1.4.0 the rule library is **id-free**:
 every `reference.reflectance_record` (and every
 `not_(abs/rel)_features` `reflectance_record`) is a rule-name string drawn
@@ -558,7 +558,7 @@ cramm/
   emit_reader.py    # EMIT L2A NetCDF reader + bad-band removal (float32 contract)
   classifier.py     # MICA core: resampling / compiled rules / serial & parallel classification
   renderer.py       # rendering: three maps / GeoTIFF / single-spectrum PDF diagnostics
-  data/             # color_table.json + temp_rf_notfeatures_renamed.json + rf77_splib07_1nm.npz
+  data/             # color_table.json + rf.json + rf77_splib07_1nm.npz
                     # (color table / id-free rule library / 1nm pre-baked spectra)
 tests/              # bit-exact verification suite + API contract tests
 example_usage.py    # five usage-scenario examples

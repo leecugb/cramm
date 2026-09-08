@@ -35,7 +35,7 @@ from cramm.classifier import (  # noqa: E402
     _reassign_by_absorption_center,
 )
 
-rf = json.load(open(REPO / "cramm" / "data" / "temp_rf_notfeatures_renamed.json",
+rf = json.load(open(REPO / "cramm" / "data" / "rf.json",
                     encoding="utf-8"))["rf"]
 fails = []
 

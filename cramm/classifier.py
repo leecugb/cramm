@@ -150,7 +150,7 @@ def _read_1nm_npz(filename: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np
     Returns (grid, rule_names, rule_labels, spectra) directly from the npz:
       - grid: [2151] float64, 0.350 .. 2.500 um in 1 nm steps
       - rule_names: [77] object(str), one entry per rule (matches rf.keys() order
-        in temp_rf_notfeatures_renamed.json — the 1nm rule library)
+        in rf.json — the 1nm rule library)
       - rule_labels: [77] object(str), provenance tags (record / [AMX] /
         [alias] / synth)
       - spectra: [77, 2151] float64, rows aligned to rule_names; out-of-range
@@ -1099,7 +1099,7 @@ class MicaClassifier:
     Parameters
     ----------
     rf : dict
-        Mineral rule library (the "rf" key of temp_rf_notfeatures_renamed.json).
+        Mineral rule library (the "rf" key of rf.json).
         Every ``reference.reflectance_record`` and every
         ``not_(abs/rel)_features[].reflectance_record`` is a rule-name **string**
         in ``rf.keys()`` -- the rule name is the sole link between the expert
@@ -1190,10 +1190,10 @@ class MicaClassifier:
         Parameters
         ----------
         rf_path : str, optional
-            Path to the 1 nm rule library (temp_rf_notfeatures_renamed.json
+            Path to the 1 nm rule library (rf.json
             or an equivalent rewrite whose not-feature reflectance_record
             fields are rule-name strings). None uses the package-bundled
-            copy at cramm/data/temp_rf_notfeatures_renamed.json.
+            copy at cramm/data/rf.json.
         splib_path : str, optional
             Path to a rule-face 1 nm npz bundle (rf77_splib07_1nm.npz or
             equivalent). None uses the package-bundled copy at
@@ -1214,7 +1214,7 @@ class MicaClassifier:
             # Package-bundled 1 nm rule library (cramm/data/). The rule file
             # is NOT searched in CWD any more; users wanting a custom rule
             # library must pass rf_path=... explicitly.
-            rf_path = Path(__file__).parent / "data" / "temp_rf_notfeatures_renamed.json"
+            rf_path = Path(__file__).parent / "data" / "rf.json"
             if not rf_path.exists():
                 raise FileNotFoundError(
                     "Package-bundled 1 nm rule library not found: "
@@ -1262,7 +1262,7 @@ class MicaClassifier:
         # the expert rules and the reference spectra library. Raw int
         # records or mix_XXXX strings here mean the user passed an
         # un-renamed file (the original .mcf-derived json prior to
-        # temp_rf_notfeatures_renamed.json); raising immediately with a
+        # rf.json); raising immediately with a
         # diagnostic list avoids silent wrong-track behavior.
         all_bad = []
         for rname, value in rf.items():
@@ -1291,7 +1291,7 @@ class MicaClassifier:
         if all_bad:
             raise ValueError(
                 "The 1 nm track requires a rule library matching the 1 nm "
-                "rule-face contract. Load temp_rf_notfeatures_renamed.json "
+                "rule-face contract. Load rf.json "
                 "(every reflectance_record field is a rule-name string in "
                 "rf.keys(); the rule name is the sole link to the reference "
                 "spectra library). "

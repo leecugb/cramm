@@ -9,7 +9,7 @@ CRAMM 实现 USGS MICA 决策规则体系,并扩展深度比约束与白云母/�
 | 输入 | 说明 |
 |---|---|
 | 高光谱反射率立方体 | 任意 VNIR–SWIR 传感器;内置 EMIT L2A NetCDF 读取器(`emit_reader.py`,坏波段剔除、float32 契约)。其他传感器经同一 `(spectrum, wl, w, bp, chanels)` 七元组接入 |
-| 规则库 `temp_rf_notfeatures_renamed.json` | 77 条决策规则(黏土、云母、碳酸盐、硫酸盐、绿泥石、角闪石、铁氧化物、冰雪及混合矿物),与官方 .mcf v6a 启用态字段级一致;v1.4.0 起 id-free |
+| 规则库 `rf.json` | 77 条决策规则(黏土、云母、碳酸盐、硫酸盐、绿泥石、角闪石、铁氧化物、冰雪及混合矿物),与官方 .mcf v6a 启用态字段级一致;v1.4.0 起 id-free |
 | 1nm 参考谱束 `rf77_splib07_1nm.npz` | 77×2151 烘焙于 1 nm 主网格(splib07 选谱,19 条混合谱预烘焙),随 wheel 捆绑,运行时零外部库依赖 |
 
 ## b 预处理层

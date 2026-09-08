@@ -136,7 +136,7 @@ def example_custom_rules():
         print(f"  {r['name']:<40s} fit={r['fit']:.4f}")
 
     # custom rules can also come from a JSON file: MicaEngine(rf_path="my_rules.json")
-    # format: see cramm/data/temp_rf_notfeatures_renamed.json (top level {"rf": {...}};
+    # format: see cramm/data/rf.json (top level {"rf": {...}};
     # every reflectance_record / output_name is a rule-name string in rf.keys())
 
 

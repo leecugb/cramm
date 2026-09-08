@@ -85,7 +85,7 @@ def main() -> None:
         "--rules",
         default=None,
         help="Rule JSON whose not-(abs/rel)-feature reflectance_record uses rule names; "
-             "None uses the bundled cramm/data/temp_rf_notfeatures_renamed.json",
+             "None uses the bundled cramm/data/rf.json",
     )
     ap.add_argument(
         "--crop",
