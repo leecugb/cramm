@@ -8,4 +8,4 @@ tests/test_core.py::test_color_tif_sampling_and_validation
     warnings.warn(
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-33 passed, 2 warnings in 14.22s
+33 passed, 2 warnings in 13.53s
