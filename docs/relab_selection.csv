@@ -1,0 +1,552 @@
+﻿spec_id,specimen_id,name,family,truth_source,mineral_type,mineral_subtype,group,subdir,range_nm,instrument,has_chemistry,description
+c1at02,AT-TXH-002,Antigorite,serpentine,subtype,Phyllosilicate,Antigorite,serpentine,bdr2,300-2600,RELAB Bidirectional Spectrometer,,
+c1at03,AT-TXH-003,Antigorite,serpentine,subtype,Phyllosilicate,Antigorite,serpentine,bdr2,300-2600,RELAB Bidirectional Spectrometer,,
+c1cl14,CL-TXH-014,Chlorite,chlorite,subtype,Phyllosilicate,Chlorite,chlorite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,
+c1cr01,CR-TXH-001,Clinochrysotile,serpentine,subtype,Phyllosilicate,Serpentine Chrysotile Clinochrysotile,serpentine,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Untangled collection of string-like crystals
+c1cr02,CR-TXH-002,Cronstedtite,serpentine,subtype,Phyllosilicate,Serpentine Cronstedtite,serpentine,bdr2,300-2600,RELAB Bidirectional Spectrometer,,From Mike Zolensky
+c1cy01,CY-PLH-001,Actinolite,tremolite,subtype,Inosilicate,Actinolite,amphibole,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"IGCP Project 264, CSES # AM-3000"
+c1cy02,CY-PLH-002,Alunite,alunite,subtype,Sulfate,Alunite,alunite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Ron Lyon, Stanford, A-20  IGCP3, AL706"
+c1cy04,CY-PLH-004,Buddingtonite,buddingtonite,subtype,Tectosilicate,Buddingtonite,feldspar,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Buddingtonite - NH4-fe, Dick Erd - USGS Menlo   IGCP10, NHB2301"
+c1cy05,CY-PLH-005,Calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,CO2004
+c1cy06,CY-PLH-006,Chlorite,chlorite,subtype,Phyllosilicate,Chlorite,chlorite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,CH-2402
+c1cy07,CY-PLH-007,Dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"IGCP9, COD-2005"
+c1cy09,CY-PLH-009,Gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr2,300-2600,RELAB Bidirectional Spectrometer,,SU2202
+c1cy10,CY-PLH-010,Halloysite,kaolinite,subtype,Phyllosilicate,Halloysite,kaolinite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,KLH-503
+c1cy12,CY-PLH-012,Illite - 1Md,illite,subtype,Phyllosilicate,Illite,mica,bdr2,300-2600,RELAB Bidirectional Spectrometer,,IL105
+c1cy13,CY-PLH-013,Illite -2M,illite,subtype,Phyllosilicate,Illite,mica,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Hydrothermal carbonate replacement - in quartz vein   IL112, Kruse/Glanzmann collected"
+c1cy16,CY-PLH-016,Jarosite,jarosite,subtype,Sulfate,Jarosite,alunite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Gumma Iron Mine, Kuoni Village, Azuma Gum, Gumma Prefecture, Japan  JR2501"
+c1cy17,CY-PLH-017,Kaolinite,kaolinite,subtype,Phyllosilicate,Kaolinite,kaolinite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Clay Minerals Society KGA-1   IGCP8, KL500"
+c1cy18,CY-PLH-018,Kaolinite,kaolinite,subtype,Phyllosilicate,Kaolinite,kaolinite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Dan Taranik, CSES   IGCP7, KL502"
+c1cy20,CY-PLH-020,Nontronite,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,P. Hauff AIPEA field trip   SMN454
+c1cy21,CY-PLH-021,Nontronite,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Exact location unknown  SMN451
+c1cy22,CY-PLH-022,Pyrophyllite,pyrophyllite,subtype,Phyllosilicate,Pyrophyllite,pyrophyllite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Ron Lyon - Stanford   IGCP1, PY602"
+c1cy24,CY-PLH-024,Siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Colorado School of Mines TM 20198   COS2002
+c1cy25,CY-PLH-025,Smectite,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Clay Minerals Society ST x-1  IGCP4, SMC403"
+c1cy26,CY-PLH-026,Smectite,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Clay Minerals Society SWY-1   IGCP5, SMC402"
+c1cy27,CY-PLH-027,Talc,talc,subtype,Phyllosilicate,Talc,talc,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Exact location unknown, Co. School of Mines study collection  TL2702"
+c1cy28,CY-PLH-028,Tremolite,tremolite,subtype,Inosilicate,Tremolite,amphibole,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"St. Lawrence, NY  AMT-3001"
+c1gr01,GR-CMP-001,Calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,Calcite OFA <50 microns from C.Wagner
+c1gr02,GR-CMP-002,Montmorillonite,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,Montmorillonite UNG <100 from C.Wagner
+c1gr03,GR-CMP-003,Siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,Siderite XX03101-3 <56 from C.Wagner
+c1gr24,GR-GRK-024,Nontronite- GKL-HH43,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Heated in air at 900C
+c1hm01,HM-JFM-001,Calcite- HYD-BLT-1a,calcite,subtype,Carbonate,Calcite,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Solid calcite rock
+c1ja02a,JA-CMP-002-A,Separate 1 from JA #79634 (Calcite or Coccolite?),calcite,subtype,Carbonate,Calcite or Coccolite (?),calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Type of sample uncertain, probably a calcite"
+c1jb122,JB-CMP-122,Montmorillonite 122,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+c1jb122s,JB-JLB-122-S,Montmorillonite 122-s,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb123,JB-CMP-123,Montmorillonite 123,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+c1jb123s,JB-JLB-123-S,Montmorillonite 123-s,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb124,JB-CMP-124,Montmorillonite 124,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,Dry sieved.
+c1jb124s,JB-JLB-124-S,Montmorillonite 124-s,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb125,JB-CMP-125,Montmorillonite from Gramelkam <45 um,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,Dry sieved.
+c1jb125s,JB-JLB-125-S,Montmorillonite 125-s,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb14,JB-CMP-014,STx-1 montmorillonite,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,See JB-13
+c1jb170,JB-JLB-170,Smectite- SWa-1,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb172,JB-JLB-172,Hectorite 172,smectite,subtype,Phyllosilicate,Hectorite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb173,JB-JLB-173,Smectite 173,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb174,JB-JLB-174,Smectite 174,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb175,JB-JLB-175,Smectite 175,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimenation fractionation
+c1jb176,JB-JLB-176,Smectite 176,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb177,JB-JLB-177,Smectite 177,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Dry sieved.
+c1jb177s,JB-JLB-177-S,Smectite 177-s,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb178s,JB-JLB-178-S,Smectite #1923,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb225,JB-JLB-225,KGa Kaolinite- KGA-1,kaolinite,subtype,Phyllosilicate,KGa Kaolinite,kaolinite,bdr2,350-2550,RELAB Bidirectional Spectrometer,,Clay Minerals Society
+c1jb26,JB-CMP-026,Nontronite,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+c1jb26s,JB-JLB-026-S,Nontronite 26s,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Sedimentation fractionation
+c1jb287,JB-JLB-287,Siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Ward's
+c1jb53,JB-CMP-053,Jarosite,jarosite,subtype,Sulfate,Jarosite,alunite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,
+c1lz01,LZ-TXH-001,Lizardite,serpentine,name,Phyllosilicate,,serpentine,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine Lizardite,"
+c1pa54,PA-CMP-054,Actinolite,tremolite,name,Inosilicate,,amphibole,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Actinolite, Actinolite from Wrightwood, CA"
+c1pc02,PC-SJG-002,Calcite 1557,calcite,name,Carbonate,,calcite,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite , From a cave near Globe, Gila Co.,Arizona"
+c1pc05,PC-SJG-005,Calcite 1556,calcite,name,Carbonate,,calcite,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite ,"
+c1pc06,PC-SJG-006,Calcite 1558 b,calcite,name,Carbonate,,calcite,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite ,"
+c1pc08,PC-SJG-008,Calcite 1566,calcite,name,Carbonate,,calcite,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite ,"
+c1pc55,PC-CMP-055,Red Calcite,calcite,name,Carbonate,,calcite,bdr2,350-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite , Red Calcite purchased in gem store at Bushkill Falls, PA"
+c1pd02,PD-SJG-002,Dolomite 6524,dolomite,name,Carbonate,,dolomite,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite, 6524 Silurianfrom road cuts"
+c1pd03,PD-SJG-003,Dolomite 6252,dolomite,name,Carbonate,,dolomite,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c1pd04,PD-SJG-004,Dolomite 6526,dolomite,name,Carbonate,,dolomite,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c1pj01,PJ-RGB-001,Jarosite #951,jarosite,name,Sulfate,,alunite,bdr2,340-2600,RELAB Bidirectional Spectrometer,,"Sulfate , Ferric Sulfate Jarosite , Synthetic Jarosite"
+c1pj02,PJ-RGB-002,Jarosite 98540,jarosite,name,Sulfate,,alunite,bdr2,340-2600,RELAB Bidirectional Spectrometer,,"Sulfate , Ferric Sulfate Jarosite ,"
+c1pj03,PJ-RGB-003,Jarosite,jarosite,name,Sulfate,,alunite,bdr2,340-2600,RELAB Bidirectional Spectrometer,,"Sulfate , Ferric Jarosite , Naturally occurring"
+c1pt07,PT-CMP-007,Black Talc,talc,name,Phyllosilicate,,talc,bdr2,320-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Talc, Little Black talc slab from student collection LF 209"
+c1pt08,PT-CMP-008,484.63,talc,group,Phyllosilicate,,talc,bdr2,320-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Talc, Green talc from teaching collection LF 209"
+c1pt10,PT-CMP-010,0,talc,group,Phyllosilicate,,talc,bdr2,320-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Talc, A portion of PT-08which was powdered"
+c1pt12,PT-CMP-012,Talc-1,talc,name,Phyllosilicate,,talc,bdr2,300-2650,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Talc, Pure talc, bought from Apple Valley Minerals, Smithfield, RI  Large single crystals ground to a powder"
+c1rk91,RK-CMP-091,Actinolite #1,tremolite,name,Inosilicate,,amphibole,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Amphibole Actinolite, Actinolite powder #1"
+c1rk92,RK-CMP-092,Actinolite #2,tremolite,name,Inosilicate,,amphibole,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Amphibole Actinolite, Actinolite powder #2"
+c1rk93,RK-CMP-093,Actinolite #3,tremolite,name,Inosilicate,,amphibole,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Amphibole Actinolite, Actinolite powder #3"
+c1rk94,RK-CMP-094,Actinolite #4,tremolite,name,Inosilicate,,amphibole,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Amphibole Actinolite, Actinolite powder #4"
+c1rk95,RK-CMP-095,Actinolite #5,tremolite,name,Inosilicate,,amphibole,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Amphibole Actinolite, Actinolite powder #5"
+c1rk96,RK-CMP-096,Actinolite #6,tremolite,name,Inosilicate,,amphibole,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Calcic Amphibole Actinolite , Actinolite powder #6"
+c1rk97,RK-CMP-097,Actinolite #7,tremolite,name,Inosilicate,,amphibole,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Amphibole Actinolite, Actinolite powder #7"
+c1rs38,RS-CMP-038,Epidote,epidote,name,Sorosilicate,,clinozoisite;epidote,bdr2,320-2600,RELAB Bidirectional Spectrometer,,"Silicate (Soro) , Epidote , Ca2 3(AlFe) Si3 O12 (OH)"
+c1sa51,SA-TXH-051,Saponite,smectite,name,Phyllosilicate,,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Saponite,"
+c1sf01,SF-BFJ-001,Ground Calcite,calcite,name,Carbonate,,calcite,bdr2,300-2750,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite ,"
+c1sf03,SF-BFJ-003,CaSO4 * 2H2O,gypsum,group,Sulfate,,gypsum,bdr2,299-2750,RELAB Bidirectional Spectrometer,,"Sulfate , Calcium Sulfate (Gypsum),"
+c1sg03,SG-SJG-003,2601,gypsum,group,Sulfate,,gypsum,bdr2,320-2700,RELAB Bidirectional Spectrometer,,"Sulfate, Gypsum Alabaster,"
+c1sg04,SG-SJG-004,2602,gypsum,group,Sulfate,,gypsum,bdr2,320-2700,RELAB Bidirectional Spectrometer,,"Sulfate, Gypsum Selenite , Purchased from Minerals Unlimited"
+c1sg18,SG-SJG-018,Kaolin,kaolinite,name,Phyllosilicate,,kaolinite,bdr2,320-2750,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Kaolinite , Baker Analyzed Reagent"
+c1sg67,SG-SJG-067,10529b Calcite,calcite,name,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite , Lead Caves Calcite"
+c1sh01,SH-SJG-001,1545 Calcite,calcite,name,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Iceland Spar Calcite,"
+c1sh02,SH-SJG-002,2502 Magnesite,calcite,group,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Magnesite ,"
+c1sh03,SH-SJG-003,2506 Magnesite,calcite,group,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Magnesite ,"
+c1sh05,SH-SJG-005,6515b Siderite,siderite,name,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Siderite,"
+c1sh06,SH-SJG-006,6509 Dolomite,dolomite,name,Carbonate,,dolomite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c1sh07,SH-SJG-007,6510b Dolomite,dolomite,name,Carbonate,,dolomite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c1sh08,SH-SJG-008,6508 Dolomite,dolomite,name,Carbonate,,dolomite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c1sh18,SH-SJG-018,1508 Calcite,calcite,name,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Manganoan Calcite ,"
+c1sh19,SH-SJG-019,2507 Magnesite,calcite,group,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Nickel-Rich Magnesite ,"
+c1sh20,SH-SJG-020,4506 Smithsonite,calcite,group,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Smithsonite ,"
+c1sh36,SH-SJG-036,H-14,kaolinite,group,Phyllosilicate,,kaolinite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate, Dickite ,"
+c1sh43,SH-SJG-043,Pyrophyllite,pyrophyllite,name,Phyllosilicate,,pyrophyllite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Pyrophyllite, H-49Robbins, North Carolina"
+c1sh47,SH-SJG-047,Muscovite,muscovite,name,Phyllosilicate,,mica,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Muscovite ,"
+c1sh78,SH-SJG-078,6523 Dolomite,dolomite,name,Carbonate,,dolomite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c1sh79,SH-SJG-079,6528 Dolomite,dolomite,name,Carbonate,,dolomite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c1sh92,SH-SJG-092,Dolomite 6529,dolomite,name,Carbonate,,dolomite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,"Dolomite,"
+c1sm58,SM-CMP-058,Asbestos,serpentine,group,Phyllosilicate,,serpentine,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Asbestos Chrysotile , Fibrous serpentine (chrysotile)"
+c1sm83,SM-CMP-083,Actinolite,tremolite,name,Inosilicate,,amphibole,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Actinolite, Actinolite separate"
+c1ss11,SS-REA-011,Calcite,calcite,name,Carbonate,,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite ,"
+c1ss12,SS-REA-012,Montmorillonite,smectite,name,Phyllosilicate,,smectite-vermiculite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Montmorillonite Bentonite ,"
+c1ss14,SS-REA-014,Gypsum,gypsum,name,Sulfate,,gypsum,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Gypsum Selenite ,"
+c1xt05,XT-CMP-005,Alunite,alunite,name,Sulfate,,alunite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Alunite, 0/100 Quartz/Alunite"
+c1xt09,XT-CMP-009,Muscovite,muscovite,name,Phyllosilicate,,mica,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Muscovite, 0/100 Quartz/Muscovite"
+c1xt10,XT-CMP-010,Calcite,calcite,name,Carbonate,,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Carbonate, Calcite, Calcite end-member"
+c1xt14,XT-CMP-014,Chlorite,chlorite,name,Phyllosilicate,,chlorite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Chlorite,"
+c2at02,AT-TXH-002,Antigorite,serpentine,subtype,Phyllosilicate,Antigorite,serpentine,bdr2,300-2600,RELAB Bidirectional Spectrometer,,
+c2cl14,CL-TXH-014,Chlorite,chlorite,subtype,Phyllosilicate,Chlorite,chlorite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,
+c2cr01,CR-TXH-001,Clinochrysotile,serpentine,subtype,Phyllosilicate,Serpentine Chrysotile Clinochrysotile,serpentine,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Untangled collection of string-like crystals
+c2jb14,JB-CMP-014,STx-1 montmorillonite,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,See JB-13
+c2lz01,LZ-TXH-001,Lizardite,serpentine,name,Phyllosilicate,,serpentine,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine Lizardite,"
+c2pc14,PC-SJG-014,Calcite 1549,calcite,name,Carbonate,,calcite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite ,"
+c2pd05,PD-SJG-005,Dolomite 2501,dolomite,name,Carbonate,,dolomite,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c2pg03,PG-CMP-003,Gypsum,gypsum,name,Sulfate,,gypsum,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Gypsum, Quick look for John Mustard"
+c2pi10,PI-CMP-010,Illite,illite,name,Phyllosilicate,,mica,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Illite, Borrowed from Dick Yund Geo-Chem"
+c2rk94,RK-CMP-094,Actinolite #4,tremolite,name,Inosilicate,,amphibole,bdr2,300-3600,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Amphibole Actinolite, Actinolite powder #4"
+c2sh08,SH-SJG-008,6508 Dolomite,dolomite,name,Carbonate,,dolomite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Carbonate , Dolomite,"
+c2sm80,SM-CMP-080,Serpentinite,serpentine,group,Phyllosilicate,,serpentine,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, Serpentine hand-pick from diluted kimberlite zone"
+c2xt14,XT-CMP-014,Chlorite,chlorite,name,Phyllosilicate,,chlorite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Chlorite,"
+c3pc13,PC-SJG-013,Calcite 1531,calcite,name,Carbonate,,calcite,bdr2,320-3400,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite , Also sample in Relab C1-G1"
+c5pi10,PI-CMP-010,Illite,illite,name,Phyllosilicate,,mica,bdr2,350-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Illite, Borrowed from Dick Yund Geo-Chem"
+caca10,CA-EAC-010,Calcite- CAL110,calcite,subtype,Carbonate,Calcite,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Acquired from Ward's Scientific
+cairon,PI-CMP-010,Illite,illite,name,Phyllosilicate,,mica,bdr2,400-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Illite, Borrowed from Dick Yund Geo-Chem"
+cape50,PE-CMP-050,Epidote,epidote,name,Sorosilicate,,clinozoisite;epidote,bdr2,400-2600,RELAB Bidirectional Spectrometer,,"Silicate (Soro), Epidote ,"
+capp02,PP-CMP-002,Pyrophyllite,pyrophyllite,name,Phyllosilicate,,pyrophyllite,bdr2,300-2800,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Pyrophyllite, None"
+cbcc05,CC-JFM-005-B,Dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Wet  Crystalline hand sample purchased from Ward's.
+cbcc06,CC-JFM-006-B,Magnesite,calcite,group,Carbonate,Magnesite,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Wet  Massive hand sample purchased from Ward's.
+cbcc07,CC-JFM-007-B,Siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Wet  Crystalline hand sample with trace hematite likely as contaminant.
+cbcc08,CC-JFM-008-B,Alunite,alunite,subtype,Sulfate,Alunite,alunite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Wet  Crystalline to massive hand-sample purchased from Ward's.
+cbcc09,CC-JFM-009-B,Alunite,alunite,subtype,Sulfate,Alunite,alunite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Wet  Crystalline to massive hand-sample purchased from Ward's.
+cbcc11,CC-JFM-011-B,Jarosite,jarosite,subtype,Sulfate,Jarosite,alunite,bdr2,300-2600,RELAB Bidirectional Spectrometer,,Wet  Crystals scraped off with some contamination by gossan matrix.
+cbcc16,CC-JFM-016-B,Gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr2,300-2600,RELAB Bidirectional Spectrometer,,From SM-CMP-012.  Washed
+cbjb25,JB-CMP-025-B,Kaolinite,kaolinite,subtype,Phyllosilicate,Clay Kaolinite,kaolinite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+cbjb26,JB-CMP-026-B,Nontronite,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+ccjb25,JB-CMP-025-C,Kaolinite,kaolinite,subtype,Phyllosilicate,Clay Kaolinite,kaolinite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+ccjb26,JB-CMP-026-C,Nontronite,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+cdjb25,JB-CMP-025-D,Kaolinite,kaolinite,subtype,Phyllosilicate,Clay Kaolinite,kaolinite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+cdjb26,JB-CMP-026-D,Nontronite,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr2,300-2700,RELAB Bidirectional Spectrometer,,
+chpo84,PO-JFM-084-H,Serpentine separate <250 um,serpentine,name,Nesosilicate,Olivine,olivine,bdr2,300-2605,RELAB Bidirectional Spectrometer,,"Silicate (Neso), Olivine , H) Serpentine separate"
+s3pc13,PC-SJG-013,Calcite 1531,calcite,name,Carbonate,,calcite,bdr2,320-3400,RELAB Bidirectional Spectrometer,,"Carbonate , Calcite , Also sample in Relab C1-G1"
+c1be15,BE-JFM-015,Nontronite- Nau-2,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Reflectance spectra unmixing of hydrated and mafic minerals (Student, MDAP, Active missions: CRISM)"
+c1be16,BE-JFM-016,Nontronite- Nau-1,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Reflectance spectra unmixing of hydrated and mafic minerals (Student, MDAP, Active missions: CRISM)"
+c1be19,BE-JFM-019,Nontronite- Nau-2,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Reflectance spectra unmixing of hydrated and mafic minerals (Student, MDAP, Active missions: CRISM)"
+c1be20,BE-JFM-020,Nontronite- Nau-1,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Reflectance spectra unmixing of hydrated and mafic minerals (Student, MDAP, Active missions: CRISM)"
+c1be223,BE-JFM-223,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be224,BE-JFM-224,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be225,BE-JFM-225,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be226,BE-JFM-226,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be227,BE-JFM-227,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be228,BE-JFM-228,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be229,BE-JFM-229,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be23,BE-JFM-023,Nontronite- Nau-2,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Reflectance spectra unmixing of hydrated and mafic minerals (Student, MDAP, Active missions: CRISM)"
+c1be230,BE-JFM-230,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be231,BE-JFM-231,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"For modeling of mixtures (PGG, Active missions)"
+c1be24,BE-JFM-024,Nontronite- Nau-1,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Reflectance spectra unmixing of hydrated and mafic minerals (Student, MDAP, Active missions: CRISM)"
+c1be44,BE-JFM-044,Magnesite (CC-06B),calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Reflectance spectra unmixing of hydrated and mafic minerals (PGG, MDAP, Active missions, Student)"
+c1cc33,CC-JFM-033,Gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Powder lightly ground to remove clumps  99.7% pure CaSo4-2H2O, 20-22% LOI."
+c1cc34,CC-JFM-034,Gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Sample CC-JFM-033 packed.
+c1cc35,CC-JFM-035,Gypsum- Crust,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,CC-JFM-033 + H2O mixed and dried to form a brick.
+c1cc36,CC-JFM-036,Gypsum Crust Ground,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,CaSO4 (gypsum) crust (CC-JFM-035) reground to a powder
+c1cc37,CC-JFM-037,Gypsum Crust Packed,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Gypsum crust (CC-JFM-035) ground and packed
+c1ch16,CH-EAC-016,Chamosite- CHM102,chlorite,subtype,Phyllosilicate,Chamosite,chlorite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Obtained from Smithsonian Institution (#R4558). Dry-sieved.
+c1ea14,EA-EAC-014,Clinochore- CLI101,chlorite,subtype,Phyllosilicate,Clinochlore,chlorite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral properties of possible Mars surface materials.
+c1ea15,EA-EAC-015,Talc- TAL101,talc,subtype,Phyllosilicate,Talc,talc,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral properties of possible Mars surface materials.
+c1ea25a,EA-EAC-025-A,Clinochlore- CLI102,chlorite,subtype,Phyllosilicate,Clinochlore,chlorite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral-compositional properties of clays for Mars optical remote sensing
+c1ea26a,EA-EAC-026-A,Clinochlore- CLI103,chlorite,subtype,Phyllosilicate,Clinochlore,chlorite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral-compositional properties of clays for Mars optical remote sensing
+c1ea27a,EA-EAC-027-A,Hectorite- HEC101,smectite,subtype,Phyllosilicate,Hectorite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral-compositional properties of clays for Mars optical remote sensing
+c1ea28a,EA-EAC-028-A,Montmorillonite- MON103,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral-compositional properties of clays for Mars optical remote sensing
+c1ea30a,EA-EAC-030-A,Nontronite- NON101,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral-compositional properties of clays for Mars optical remote sensing
+c1gr21,GR-GRK-021,Nontronite- GKL-G45,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Garfield nontronite heated in air at 900C
+c1gr22,GR-GRK-022,Nontronite- GKL-SW32,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,SWa-1 nontronite heated in air at 900C
+c1ha01,HA-EAC-001,Halloysite- HAL001,kaolinite,subtype,Phyllosilicate,Halloysite,kaolinite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+c1jb225a,JB-JLB-225-A,Kaolinite- KGa-1 <125 um resieved on January 2008,kaolinite,subtype,Phyllosilicate,Kaolinite,kaolinite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb559a,JB-JLB-559-A,Antigorite Serpentine- An-0 <45 or 125 um,serpentine,subtype,Phyllosilicate,Antigorite Serpentine,serpentine,bdr3,300-2500,RELAB Bidirectional Spectrometer,,
+c1jb560a,JB-JLB-560-A,"Antigorite Serpentine- An-1, grinding reaction, 1 day",serpentine,subtype,Phyllosilicate,Antigorite Serpentine,serpentine,bdr3,300-2500,RELAB Bidirectional Spectrometer,,
+c1jb561a,JB-JLB-561-A,"Antigorite Serpentine- An-3, grinding reaction, 3 days",serpentine,subtype,Phyllosilicate,Antigorite Serpentine,serpentine,bdr3,300-2500,RELAB Bidirectional Spectrometer,,
+c1jb562a,JB-JLB-562-A,"Antigorite Serpentine- An-10, grinding reaction, 10 days",serpentine,subtype,Phyllosilicate,Antigorite Serpentine,serpentine,bdr3,300-2500,RELAB Bidirectional Spectrometer,,
+c1jb563a,JB-JLB-563-A,"Antigorite Serpentine- An-30, grinding reaction, 30 days",serpentine,subtype,Phyllosilicate,Antigorite Serpentine,serpentine,bdr3,300-2500,RELAB Bidirectional Spectrometer,,
+c1jb709,JB-JLB-709,Jarosite,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,Spectroscopy of sulfate minerals (MFRP)
+c1jb714,JB-JLB-714,Jarosite- T3: (NaH3)(Fe3)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb715,JB-JLB-715,Jarosite- T14: (NaH3)(FeAl2)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb716,JB-JLB-716,Jarosite- Tosca 14: (K0.5Na0.5H3)(Fe1.5Al1.5)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb717,JB-JLB-717,Jarosite- Tosca 12: (H3O)(Fe2.5Al0.5)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb718,JB-JLB-718,Jarosite- T4: (KH3)(Fe2.25Al0.75)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb719,JB-JLB-719,Jarosite- T8: (KH3)(Fe0.5Al2.5)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb720,JB-JLB-720,Jarosite- T10: (KH3)(FeAl2)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb721,JB-JLB-721,Jarosite- UCD#4: (Na0.7H3O0.3)(Fe2.44Al0.2)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb722,JB-JLB-722,Jarosite- T7: (NaH3)(Fe2.25Al0.75)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb723,JB-JLB-723,Jarosite- JM: (H3O)(Fe3)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb724,JB-JLB-724,Jarosite- NAJ2-3: (Na0.6H3O0.4)(Fe0.3Al1.7)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb725,JB-JLB-725,Jarosite- NAJ5-2: (Na0.53H3O0.47)(Fe1.8Al1.0)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb726,JB-JLB-726,Jarosite- UCD#6: (Na0.68H3O0.32)(Fe2.66Al0.07)(SO4)2(OH)6,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb728,JB-JLB-728,Clinochlore from Smyth,chlorite,subtype,Phyllosilicate,Clinochlore,chlorite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP)"
+c1jb732,JB-JLB-732,Chrysotile,serpentine,subtype,Phyllosilicate,Chrysotile,serpentine,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP)"
+c1jb737,JB-JLB-737,Clinochlore WC,chlorite,subtype,Phyllosilicate,Clinochlore,chlorite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb738,JB-JLB-738,Clinochlore 21-C,chlorite,subtype,Phyllosilicate,Clinochlore,chlorite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb739,JB-JLB-739,Clinochlore 21-D,chlorite,subtype,Phyllosilicate,Clinochlore,chlorite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb752,JB-JLB-752,Synthetic Jarosite A,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb753,JB-JLB-753,Synthetic Jarosite B,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb754,JB-JLB-754,Synthetic Jarosite C,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb755,JB-JLB-755,Synthetic Jarosite D,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb756,JB-JLB-756,Synthetic Jarosite E,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb757,JB-JLB-757,Synthetic Jarosite F,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb758,JB-JLB-758,Synthetic Jarosite G,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb759,JB-JLB-759,Synthetic Jarosite H,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb760,JB-JLB-760,Synthetic Jarosite I,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of sulfate minerals (MDAP, MFRP)"
+c1jb761a,JB-JLB-761-A,Ferrosaponite GDS604B,smectite,subtype,Phyllosilicate,Ferrosaponite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Chocolate clay collected by Jim Post, contributed by Gregg Swayze; Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb761b,JB-JLB-761-B,Ferrosaponite GDS604B,smectite,subtype,Phyllosilicate,Ferrosaponite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Chocolate clay collected by Jim Post, contributed by Gregg Swayze; Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb762a,JB-JLB-762-A,Ferrosaponite GDS752,smectite,subtype,Phyllosilicate,Ferrosaponite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Pit #5 collected by Jim Post, contributed by Gregg Swayze; Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb762b,JB-JLB-762-B,Ferrosaponite GDS752,smectite,subtype,Phyllosilicate,Ferrosaponite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Pit #5 collected by Jim Post, contributed by Gregg Swayze; Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb766,JB-JLB-766,"Kaolinite KGa-1b, CMS standard",kaolinite,subtype,Phyllosilicate,Kaolinite,kaolinite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb768,JB-JLB-768,Hectorite from San Bernardino Co.,smectite,subtype,Phyllosilicate,Hectorite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb778,JB-JLB-778,Ankerite,dolomite,subtype,Carbonate,Ankerite,dolomite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Ankerite rock from Melissa Lane for Spectroscopy of aqueous minerals (MDAP, MFRP, Active Missions)"
+c1jb779,JB-JLB-779,Iron Dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Fe dolomite rock gently crushed and sieved for Spectroscopy of aqueous minerals (MDAP, MFRP, Active Missions)"
+c1jb783,JB-JLB-783,Illite- CMS standard IMt-2,illite,subtype,Phyllosilicate,Illite,mica,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb790,JB-JLB-790,CMS standard nontronite Nau-1,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb790a,JB-JLB-790-A,CMS standard nontronite Nau-1,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb791a,JB-JLB-791-A,CMS standard nontronite Nau-2,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb791b,JB-JLB-791-B,CMS standard nontronite Nau-2,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb791c,JB-JLB-791-C,CMS standard nontronite Nau-2,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb791d,JB-JLB-791-D,CMS standard nontronite Nau-2,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb794a,JB-JLB-794-A,CMS standard ripidolite CCa-2,chlorite,subtype,Phyllosilicate,Ripidolite,chlorite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb794b,JB-JLB-794-B,CMS standard ripidolite CCa-2,chlorite,subtype,Phyllosilicate,Ripidolite,chlorite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb794c,JB-JLB-794-C,CMS standard ripidolite CCa-2,chlorite,subtype,Phyllosilicate,Ripidolite,chlorite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb794d,JB-JLB-794-D,CMS standard ripidolite CCa-2,chlorite,subtype,Phyllosilicate,Ripidolite,chlorite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb794e,JB-JLB-794-E,CMS standard ripidolite CCa-2,chlorite,subtype,Phyllosilicate,Ripidolite,chlorite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb794f,JB-JLB-794-F,CMS standard ripidolite CCa-2,chlorite,subtype,Phyllosilicate,Ripidolite,chlorite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of clay minerals (MDAP, MFRP, Active Missions)"
+c1jb825,JB-JLB-825,C1: Mg Calcite (25C),calcite,subtype,Carbonate,Calcite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of carbonate minerals (MDAP, MFRP, Active Missions)"
+c1jb826,JB-JLB-826,C2: Mg Calcite (35C),calcite,subtype,Carbonate,Calcite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of carbonate minerals (MDAP, MFRP, Active Missions)"
+c1jb827,JB-JLB-827,C3: Mg Calcite (35C),calcite,subtype,Carbonate,Calcite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of carbonate minerals (MDAP, MFRP, Active Missions)"
+c1jb885,JB-JLB-885,Hectorite 49-5103 by Will Gates,smectite,subtype,Phyllosilicate,Hectorite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb886,JB-JLB-886,Will Gates #1 montmorillonite from Gumeracha,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb887,JB-JLB-887,Will Gates #2 montmorillonite from Jelsovy Poltok,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb888,JB-JLB-888,Will Gates #3 montmorillonite STx-1,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb889,JB-JLB-889,Will Gates #4 montmorillonite from Otay,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb891,JB-JLB-891,Will Gates #6 montmorillonite from Ossean,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb892,JB-JLB-892,Will Gates #7 montmorillonite from 130E Arumpo,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb893,JB-JLB-893,Will Gates #8 montmorillonite from JC Lane,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb894,JB-JLB-894,Will Gates #9 montmorillonite from Miles,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb895,JB-JLB-895,Will Gates #10 montmorillonite from Yamagata,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb896,JB-JLB-896,Will Gates #11 montmorillonite from New South Whales,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb899,JB-JLB-899,Will Gates #14 montmorillonite from Camp Berteaux,smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of phyllosilicates
+c1jb900,JB-JLB-900,Smectite #15 from Redhill by Will Gates,smectite,subtype,Phyllosilicate,Smectite Fe-rich,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb901,JB-JLB-901,Smectite #16 from Andamooka by Will Gates,smectite,subtype,Phyllosilicate,Smectite Fe-rich,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb902,JB-JLB-902,Smectite #17 from Nibost by Will Gates,smectite,subtype,Phyllosilicate,Smectite Fe-rich,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb903,JB-JLB-903,Smectite #18 from Drayton by Will Gates,smectite,subtype,Phyllosilicate,Smectite Fe-rich,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb904,JB-JLB-904,Smectite #19 from Binjour Green by Will Gates,smectite,subtype,Phyllosilicate,Smectite Fe-rich,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb905,JB-JLB-905,Smectite #20 from Stebno by Will Gates,smectite,subtype,Phyllosilicate,Smectite Fe-rich,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb906,JB-JLB-906,Smectite #21 from Hrozentin by Will Gates,smectite,subtype,Phyllosilicate,Smectite Fe-rich,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb907,JB-JLB-907,Nontronite #22 from Cheney by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb908,JB-JLB-908,Nontronite #23 from Bingham by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb909,JB-JLB-909,Nontronite #24 from Giralong by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb910,JB-JLB-910,Nontronite #25 from Manito by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb911,JB-JLB-911,Nontronite #26 from Uley Mine by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb912,JB-JLB-912,Nontronite #27 from Garfield by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb913,JB-JLB-913,Nontronite #28 from Mountainville by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb914,JB-JLB-914,Nontronite #29 from Holland's Quarry by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb915,JB-JLB-915,Nontronite #30 from Uley Mine by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb916,JB-JLB-916,Nontronite #31 from Hohen Hage by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb917,JB-JLB-917,Nontronite #32 from Clausthall by Will Gates,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of Mars analog materials
+c1jb919a,JB-JLB-919-A,Beidellite sample #34 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb919b,JB-JLB-919-B,Beidellite sample #34 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb920a,JB-JLB-920-A,Beidellite sample #35 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb920b,JB-JLB-920-B,Beidellite sample #35 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb921a,JB-JLB-921-A,Beidellite sample #36 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Beidellite,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals (Beidellite Ca-saturated)
+c1jb921b,JB-JLB-921-B,Beidellite sample #36 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb922a,JB-JLB-922-A,Beidellite sample #37 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb922b,JB-JLB-922-B,Beidellite sample #37 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb923a,JB-JLB-923-A,Beidellite sample #38 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb923b,JB-JLB-923-B,Beidellite sample #38 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb924a,JB-JLB-924-A,Beidellite-montmorillonite sample #39 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb924b,JB-JLB-924-B,Beidellite-montmorillonite sample #39 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb925a,JB-JLB-925-A,Beidellite-montmorillonite sample #40 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb925b,JB-JLB-925-B,Beidellite-montmorillonite sample #40 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb926a,JB-JLB-926-A,Beidellite-montmorillonite sample #41 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb926b,JB-JLB-926-B,Beidellite-montmorillonite sample #41 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb927a,JB-JLB-927-A,Beidellite-montmorillonite sample #42 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb927b,JB-JLB-927-B,Beidellite-montmorillonite sample #42 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb928a,JB-JLB-928-A,Beidellite-montmorillonite sample #43 purified by Will Gates <125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb928b,JB-JLB-928-B,Beidellite-montmorillonite sample #43 purified by Will Gates >125 um,smectite,subtype,Phyllosilicate,Montmorillonite Beidellite Ca-saturated,smectite-vermiculite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectroscopy of clay minerals
+c1jb946a,JB-JLB-946-A,Brumado Bahia Magnesite,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Excalibur Minerals, Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb946b,JB-JLB-946-B,Brumado Bahia Magnesite,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Excalibur Minerals, Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb946c,JB-JLB-946-C,Brumado Bahia Magnesite,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Excalibur Minerals, Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb946d,JB-JLB-946-D,Brumado Bahia Magnesite,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Excalibur Minerals, Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb946e,JB-JLB-946-E,Brumado Bahia Magnesite,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Excalibur Minerals, Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c1jb991,JB-JLB-991,Rublev jarosite <125 um,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Spectroscopy of Mars analogs (MFRP, Active Missions, Prop Prep)"
+c1jba35,JB-JLB-A35,"Baker #15a (Kaolinite, Al/Si = 1/1)",kaolinite,subtype,Phyllosilicate,Kaolinite,kaolinite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,Prepared by Leslie Baker
+c1jba37,JB-JLB-A37,"Baker #16 (Nontronite, syn #4)",smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,Prepared by Leslie Baker
+c1jba46,JB-JLB-A46,Halloysite #902471,kaolinite,subtype,Phyllosilicate,Halloysite,kaolinite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,From Steve Hillier
+c1jba47,JB-JLB-A47,Halloysite #902472,kaolinite,subtype,Phyllosilicate,Halloysite,kaolinite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,From Steve Hillier
+c1jba48,JB-JLB-A48,Halloysite #902473,kaolinite,subtype,Phyllosilicate,Halloysite,kaolinite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,From Steve Hillier
+c1jba49,JB-JLB-A49,Halloysite #902474,kaolinite,subtype,Phyllosilicate,Halloysite,kaolinite,bdr3,280-2550,RELAB Bidirectional Spectrometer,,From Steve Hillier
+c1jba78,JB-JLB-A78,Jarosite MC7,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Jarosite color standard from Rublev for Melissa Lane sulfate spectroscopy
+c1jbb78,JB-JLB-B78,Jarosite 134560,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Lane sulfate spectroscopy project
+c1jbb79,JB-JLB-B79,Jarosite 132060,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Lane sulfate spectroscopy project
+c1jbb80a,JB-JLB-B80-A,Jarosite ML-S51,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Lane sulfate spectroscopy project
+c1jbb80b,JB-JLB-B80-B,Jarosite ML-S51,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Lane sulfate spectroscopy project
+c1jbb80c,JB-JLB-B80-C,Jarosite ML-S51,jarosite,subtype,Sulfate,Jarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Lane sulfate spectroscopy project
+c1jbb81,JB-JLB-B81,Hydronium jarosite R10101,jarosite,subtype,Sulfate,Jarosite Hydronium Jarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Lane sulfate spectroscopy project
+c1jbb82b,JB-JLB-B82-B,Natrojarosite 95661,jarosite,subtype,Sulfate,Jarosite Natrojarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Lane sulfate spectroscopy project
+c1jbb82c,JB-JLB-B82-C,Natrojarosite 95661,jarosite,subtype,Sulfate,Jarosite Natrojarosite,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Lane sulfate spectroscopy project
+c1jbb84a,JB-JLB-B84-A,Saponite SapCap-1,smectite,subtype,Phyllosilicate,Saponite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Roush mixture project
+c1jbb84b,JB-JLB-B84-B,Saponite SapCap-1,smectite,subtype,Phyllosilicate,Saponite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Roush mixture project
+c1jbb84c,JB-JLB-B84-C,Saponite SapCap-1,smectite,subtype,Phyllosilicate,Saponite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Roush mixture project
+c1jbe57a,JB-JLB-E57-A,Mazada calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe57b,JB-JLB-E57-B,Mazada calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe57c,JB-JLB-E57-C,Mazada calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe57d,JB-JLB-E57-D,Mazada calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe57e,JB-JLB-E57-E,Mazada calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe57f,JB-JLB-E57-F,Mazada calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe58a,JB-JLB-E58-A,Big Timber calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe58b,JB-JLB-E58-B,Big Timber calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe58c,JB-JLB-E58-C,Big Timber calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe58d,JB-JLB-E58-D,Big Timber calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe58e,JB-JLB-E58-E,Big Timber calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe58f,JB-JLB-E58-F,Big Timber calcite,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe61a,JB-JLB-E61-A,Selasvann dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe61b,JB-JLB-E61-B,Selasvann dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe61c,JB-JLB-E61-C,Selasvann dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe61d,JB-JLB-E61-D,Selasvann dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe61e,JB-JLB-E61-E,Selasvann dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe61f,JB-JLB-E61-F,Selasvann dolomite,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe62a,JB-JLB-E62-A,Antigonish Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe62b,JB-JLB-E62-B,Antigonish Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe62c,JB-JLB-E62-C,Antigonish Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe62d,JB-JLB-E62-D,Antigonish Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe62e,JB-JLB-E62-E,Antigonish Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe62f,JB-JLB-E62-F,Antigonish Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe63a,JB-JLB-E63-A,Litchfield Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe63b,JB-JLB-E63-B,Litchfield Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe63c,JB-JLB-E63-C,Litchfield Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe63d,JB-JLB-E63-D,Litchfield Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe63e,JB-JLB-E63-E,Litchfield Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe63f,JB-JLB-E63-F,Litchfield Co. siderite,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe64a,JB-JLB-E64-A,Harz gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe64b,JB-JLB-E64-B,Harz gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe64c,JB-JLB-E64-C,Harz gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe64d,JB-JLB-E64-D,Harz gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe64e,JB-JLB-E64-E,Harz gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe64f,JB-JLB-E64-F,Harz gypsum (wet-sieved),gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe64g,JB-JLB-E64-G,Harz gypsum (wet-sieved),gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe90a,JB-JLB-E90-A,Nontronite- Nau-1,smectite,name,Phyllosilicate,,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe90b,JB-JLB-E90-B,Nontronite- Nau-1,smectite,name,Phyllosilicate,,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbe90c,JB-JLB-E90-C,Nontronite- Nau-1,smectite,name,Phyllosilicate,,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,
+c1jbf41a,JB-JLB-F41-A,Green smectite,smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Fe-Rich
+c1jbf42a,JB-JLB-F42-A,Brown smectite,smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Fe-Rich
+c1jbf42c,JB-JLB-F42-C,Brown smectite,smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Fe-Rich
+c1jbf42d,JB-JLB-F42-D,Brown smectite,smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Fe-Rich
+c1jbf42e,JB-JLB-F42-E,Brown smectite,smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Fe-Rich
+c1jbf42f,JB-JLB-F42-F,Brown smectite,smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Fe-Rich
+c1jbf43a,JB-JLB-F43-A,Beige smectite,smectite,subtype,Phyllosilicate,Smectite Mg-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Mg-Rich
+c1jbf45a,JB-JLB-F45-A,Saponite PP#2 (JB1545a),smectite,subtype,Phyllosilicate,Saponite,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post
+c1jbf45b,JB-JLB-F45-B,Saponite PP#2 (JB1545b),smectite,subtype,Phyllosilicate,Saponite,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post
+c1jbf45c,JB-JLB-F45-C,Saponite PP#2 (JB1545c),smectite,subtype,Phyllosilicate,Saponite,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post
+c1jbf92a,JB-JLB-F92-A,Fe-saponite-rich soil (JB1592a),smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Smectite
+c1jbf92b,JB-JLB-F92-B,Fe-saponite-rich soil (JB1592b),smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Smectite
+c1jbf92c,JB-JLB-F92-C,Fe-saponite-rich soil (JB1592c),smectite,subtype,Phyllosilicate,Smectite Fe-Rich,smectite-vermiculite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post; Smectite
+c1jbf93a,JB-JLB-F93-A,chlorite 07 (JB1593a),chlorite,subtype,Phyllosilicate,Chlorite,chlorite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,"Collected by J. Post (Post & Plummer, 1972)"
+c1jbf93b,JB-JLB-F93-B,chlorite 07 (JB1593b),chlorite,subtype,Phyllosilicate,Chlorite,chlorite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,"Collected by J. Post (Post & Plummer, 1972)"
+c1jbf93c,JB-JLB-F93-C,chlorite 07 (JB1593c),chlorite,subtype,Phyllosilicate,Chlorite,chlorite,bdr3,300-2550,RELAB Bidirectional Spectrometer,,"Collected by J. Post (Post & Plummer, 1972)"
+c1jbf94,JB-JLB-F94,illite (JB1594),illite,subtype,Phyllosilicate,Illite,mica,bdr3,300-2550,RELAB Bidirectional Spectrometer,,Collected by J. Post
+c1jm73,JM-TGS-073,Nontronite- Nau-1,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,
+c1jm74,JM-TGS-074,Nontronite- Nau-2,smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,
+c1jm75,JM-TGS-075,Saponite,smectite,subtype,Phyllosilicate,Saponite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,
+c1jm77,JM-TGS-077,Beidellite- SBId-1,smectite,subtype,Phyllosilicate,Beidellite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,
+c1jm80,JM-TGS-080,Kaolinite- Kga-1,kaolinite,subtype,Phyllosilicate,Kaolinite,kaolinite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,Kaolinite
+c1jt106,JT-JFM-106,MT6_Calcite100 (45-75 um),calcite,subtype,Carbonate,Calcite,calcite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Calcite 45-75 um
+c1jt119,JT-JFM-119,MT19_Gypsum100 (125-250 um),gypsum,subtype,Sulfate,Gypsum Selenite,gypsum,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Gypsum 125-250 um
+c1jt120,JT-JFM-120,MT20_Calcite100 (125-250 um),calcite,subtype,Carbonate,Calcite,calcite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Calcite 125-250 um
+c1jt121,JT-JFM-121,MT21_Gypsum100 (45-75 um),gypsum,subtype,Sulfate,Gypsum Selenite,gypsum,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Gypsum 45-75 um
+c1jt122,JT-JFM-122,MT22_Montmorillonite100 (45-75 um),smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Montmorillonite 45-75 um
+c1jt123,JT-JFM-123,MT23_Montmorillonite100 (125-250 um),smectite,subtype,Phyllosilicate,Montmorillonite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Montmorillonite 125-250 um
+c1jt140,JT-JFM-140,MT40_Nontronite100 (125-250 um),smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Nontronite 125-250 um
+c1jt141,JT-JFM-141,MT41_Nontronite100 (45-75 um),smectite,subtype,Phyllosilicate,Nontronite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Nontronite 45-75 um
+c1jt150,JT-JFM-150,MT50_Silica100 (45-75 um),opal,subtype,Oxide,Hydrous Silica Opal,amorphous,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Silica 45-75 um
+c1jt151,JT-JFM-151,MT51_Silica100 (125-250 um),opal,subtype,Oxide,Hydrous Silica Opal,amorphous,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Silica 125-250 um
+c1jt160,JT-JFM-160,MT60_Kaolinite100,kaolinite,name,Phyllosilicate,,kaolinite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Kaolinite, 100% Kaolinite 125-250 um"
+c1jt161,JT-JFM-161,MT61_Kaolinite100,kaolinite,name,Phyllosilicate,,kaolinite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Kaolinite, 100% Kaolinite 45-75 um"
+c1jt180,JT-JFM-180,MT80_Serpentine100 (45-75 um),serpentine,subtype,Phyllosilicate,Serpentine,serpentine,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Serpentine 45-75 um
+c1jt181,JT-JFM-181,MT81_Serpentine100 (125-250 um),serpentine,subtype,Phyllosilicate,Serpentine,serpentine,bdr3,320-2550,RELAB Bidirectional Spectrometer,,100% Serpentine 125-250 um
+c1kr01a,KR-KMR-001-A,Gypsum sand,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1kr01b,KR-KMR-001-B,Gypsum sand,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1kr01c,KR-KMR-001-C,Gypsum sand,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1kr01d,KR-KMR-001-D,Gypsum sand,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1kr02a,KR-KMR-002-A,Ca Smectite- SAz2,smectite,subtype,Phyllosilicate,Ca Smectite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1kr02b,KR-KMR-002-B,Ca Smectite- SAz2 (clusters broken up),smectite,subtype,Phyllosilicate,Ca Smectite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1kr02b2,KR-KMR-002-B2,Ca Smectite- SAz2 (clusters broken up),smectite,subtype,Phyllosilicate,Ca Smectite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1kr02c,KR-KMR-002-C,Ca Smectite- SAz2,smectite,subtype,Phyllosilicate,Ca Smectite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1kr02d,KR-KMR-002-D,Ca Smectite- SAz2,smectite,subtype,Phyllosilicate,Ca Smectite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c1lf04,LF-NEB-004,Gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Purchased from Wards Natural Sciences. GPS coordinates estimated from Google Earth. Crushed and dry seived.
+c1lh29,LH-JFM-029,Magnesite 75-250 um,calcite,group,Carbonate,,calcite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Carbonate, Magnesite,"
+c1lh52,LH-JFM-052,PP-01 <500 um,alunite,group,Sulfate,,alunite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Sulfate, Jarosite,"
+c1mg56,MG-JFM-056,BE-21,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite
+c1mg57,MG-JFM-057,BE-46-50,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite
+c1mg58,MG-JFM-058,LV-15-21,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite
+c1mg59,MG-JFM-059,LV-concret,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite
+c1mg60,MG-JFM-060,LV-46-50,dolomite,subtype,Carbonate,Dolomite Organics,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite rich in organic matter
+c1mg61,MG-JFM-061,LV-56-60,dolomite,subtype,Carbonate,Dolomite Organics,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite rich in organic matter
+c1mg62,MG-JFM-062,LV-64-69,dolomite,subtype,Carbonate,Dolomite Organics,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite rich in organic matter
+c1mg63,MG-JFM-063,"BZ(3,4,5)",dolomite,subtype,Carbonate,Dolomite Organics,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite
+c1mg64,MG-JFM-064,Coorong,dolomite,subtype,Carbonate,Dolomite Organics,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite
+c1mg65,MG-JFM-065,LFP-6-11,dolomite,subtype,Carbonate,Dolomite Organics,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite
+c1mg66,MG-JFM-066,LFP-31-37,dolomite,subtype,Carbonate,Dolomite Organics,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Dolomite
+c1nt04,NT-MBW-004,CheWA nontronite,smectite,name,Phyllosilicate,,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Smectite Al-Bearing Nontronite, Contains trace quartz impurity based from XRD."
+c1pg06,PG-CMP-006,Selenite,gypsum,group,Sulfate,,gypsum,bdr3,350-2700,RELAB Bidirectional Spectrometer,,"Sulfate, Selenite Gypsum , Recrystalized gypsum collected by S. Pratt"
+c1pg07,PG-CMP-007,Gypsum,gypsum,name,Sulfate,,gypsum,bdr3,350-2700,RELAB Bidirectional Spectrometer,,"Sulfate, Gypsum, Collected at same time as Selenite"
+c1rk94a,RK-CMP-094-A,Actinolite #4 <45 um,tremolite,name,Inosilicate,,amphibole,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Ino), Amphibole Actinolite, Actinolite powder #4"
+c1rm145,RM-REM-145,Possible saponite <45 um,smectite,name,Phyllosilicate,,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Saponite, Green material in cavity in basalt"
+c1sp04,SP-VVB-004,1a serpentine,serpentine,name,Phyllosilicate,,serpentine,bdr3,400-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine,"
+c1sp05,SP-VVB-005,28 serpentine bulk,serpentine,name,Phyllosilicate,,serpentine,bdr3,400-2600,RELAB Bidirectional Spectrometer,,"Serpentine, Magnetite-Bearing,"
+c1sp07,SP-VVB-007,30 serpentine,serpentine,name,Phyllosilicate,,serpentine,bdr3,400-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine,"
+c1sp08,SP-VVB-008,2540 serpentine,serpentine,name,Phyllosilicate,,serpentine,bdr3,400-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine,"
+c1sp09,SP-VVB-009,K-185/1 serpentine,serpentine,name,Phyllosilicate,,serpentine,bdr3,400-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine,"
+c1sr52,SR-JFM-052,BUR-4640C,talc,group,Phyllosilicate,,talc,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Clay Talc, From ASU TES spectral library to contribute to the CRISM spectral library for Mars"
+c1sr52a,SR-JFM-052-A,BUR-4640C,talc,group,Phyllosilicate,,talc,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Clay Talc, From ASU TES spectral library to contribute to the CRISM spectral library for Mars"
+c1sr59,SR-JFM-059,BUR-1340,chlorite,group,Phyllosilicate,,chlorite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Clinochlore, From ASU TES spectral library to contribute to the CRISM spectral library for Mars"
+c1sr59a,SR-JFM-059-A,BUR-1340,chlorite,group,Phyllosilicate,,chlorite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Clinochlore, From ASU TES spectral library to contribute to the CRISM spectral library for Mars"
+c1sr64,SR-JFM-064,HS-8.4B,serpentine,group,Phyllosilicate,,serpentine,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, From ASU TES spectral library to contribute to the CRISM spectral library for Mars"
+c1sr64a,SR-JFM-064-A,HS-8.4B,serpentine,group,Phyllosilicate,,serpentine,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, From ASU TES spectral library to contribute to the CRISM spectral library for Mars"
+c1sr68,SR-JFM-068,WAR-1924,chlorite,group,Phyllosilicate,,chlorite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Chlorite, From ASU TES spectral library to contribute to the CRISM spectral library for Mars"
+c1sr68a,SR-JFM-068-A,WAR-1924,chlorite,group,Phyllosilicate,,chlorite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Chlorite, From ASU TES spectral library to contribute to the CRISM spectral library for Mars"
+c1sr80,SR-ASR-080,Serpentine #2370 Vial A Large fragments,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Shocked Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c1sr91,SR-ASR-091,Serpentine #2370 Vial S Starndard target material 125-250 um,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c1sr91a,SR-ASR-091-A,"Serpentine #2370 Vial S Starndard target material 125-250 um, ground into <63 um",serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c1wf10,WF-WHF-010,CRf-Sf2,gypsum,group,Sulfate,,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sedimentary, Gypsum Vein, ""Clean"" gypsum vein from Moenkopi Fm."
+c1wf11,WF-WHF-011,Summerville Fm. gypsum,gypsum,name,Sulfate,,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sedimentary, Gypsum Vein,"
+c1zl05,ZL-ZAL-005,Gypsum <212 um,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,320-2550,RELAB Bidirectional Spectrometer,,Gypsum <212 um
+c1zl08,ZL-ZAL-008,Magnesite <212 um,calcite,group,Carbonate,Magnesite,calcite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,Magnesite <212 um
+c1zl11,ZL-ZAL-011,Smectite <212 um,smectite,subtype,Phyllosilicate,Smectite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,Smectite <212 um
+c1zl15,ZL-ZAL-015,Siderite <212 um,siderite,subtype,Carbonate,Siderite,calcite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,Siderite <212 um
+c1zl27,ZL-ZAL-027,Lizardite <212 um,serpentine,subtype,Phyllosilicate,Serpentine Lizardite,serpentine,bdr3,320-2550,RELAB Bidirectional Spectrometer,,Lizardite <212 um
+c2cc33,CC-JFM-033,Gypsum,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Powder lightly ground to remove clumps  99.7% pure CaSo4-2H2O, 20-22% LOI."
+c2jb260,JB-JLB-260,Clay Saponite- SapCa-1,smectite,subtype,Phyllosilicate,Clay Saponite,smectite-vermiculite,bdr3,320-2550,RELAB Bidirectional Spectrometer,,R. Mancinelli lab
+c2jb946a,JB-JLB-946-A,Brumado Bahia Magnesite,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Excalibur Minerals, Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c2jb946b,JB-JLB-946-B,Brumado Bahia Magnesite,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,"Excalibur Minerals, Spectroscopy of clay mineral mixtures (MDAP, MFRP, Active Missions)"
+c2kr02b,KR-KMR-002-B,Ca Smectite- SAz2 (clusters broken up),smectite,subtype,Phyllosilicate,Ca Smectite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+c2sr30,SR-ASR-030,Original serpentine for shock experiments,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c2sr31,SR-ASR-031,Serpentine #3362 shocked at 22.0 GPa,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Shocked Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c2sr32,SR-ASR-032,Serpentine #3363 shocked at 30.0 GPa,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Shocked Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c2sr33,SR-ASR-033,Serpentine #3365 shocked at 35.8 GPa,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Shocked Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c2sr34,SR-ASR-034,Serpentine #3367 shocked at 38.8 GPa,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Shocked Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c2sr35,SR-ASR-035,Serpentine #3368 shocked at 41.4 GPa,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Shocked Serpentine, Impact dehydration study (NASA Origins / PGG)"
+c2xt05,XT-CMP-005,Alunite,alunite,name,Sulfate,,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Alunite, 0/100 Quartz/Alunite"
+c3lz01,LZ-TXH-001,Lizardite,serpentine,name,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine Lizardite,"
+cabe01,BE-EAC-001,Berthierine- BER101,serpentine,group,Phyllosilicate,Berthierine,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Smithsonian Institution (#163358)   Dry-sieved.
+cabe02,BE-EAC-002,Berthierine- BER102,serpentine,group,Phyllosilicate,Berthierine,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Obtained from Smithsonian Institution (#93555)  Dry-sieved.
+cabe03,BE-EAC-003,Beidellite- BEI101,smectite,subtype,Phyllosilicate,Beidellite,smectite-vermiculite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cabe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cacb01,CB-EAC-001-A,Ankerite- CRB101,dolomite,subtype,Carbonate,Ankerite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb03,CB-EAC-003-A,Dolomite- CRB103,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb04,CB-EAC-004-A,Gaspeite- CRB104,calcite,group,Carbonate,Gaspeite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Lemieux Township, Gaspe Nord County, Gaspe Peninsula, Quebec, Canada"
+cacb06,CB-EAC-006-A,Magnesite- CRB106,calcite,group,Carbonate,Magnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb08,CB-EAC-008-A,Siderite- CRB108,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Ivigtut, in the Arksuk Fiord, Frederikshaab District, West Greenland."
+cacb09,CB-EAC-009-A,Calcite- CRB109,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,University of Alberta GEOL330 laboratory collection
+cacb10,CB-EAC-010-A,Calcite- CRB110,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb11,CB-EAC-011-A,Calcite- CRB111,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb12,CB-EAC-012-A,Calcite- CRB112,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb13,CB-EAC-013-A,Manganocalcite- CRB113,calcite,group,Carbonate,Manganocalcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb14,CB-EAC-014-A,Magnesite- CRB114,calcite,group,Carbonate,Magnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb17,CB-EAC-017-A,Dolomite- CRB117,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb28,CB-EAC-028-A,Hydromagnesite- CRB208,calcite,group,Carbonate,Hydromagnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb35,CB-EAC-035-A,Hydromagnesite- CRB215,calcite,group,Carbonate,Hydromagnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb36,CB-EAC-036-A,Hydromagnesite- CRB216,calcite,group,Carbonate,Hydromagnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,(A) <45 um.
+cacb49,CB-EAC-049-A,Hydromagnesite- CRB315,calcite,group,Carbonate,Hydromagnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cacb63,CB-EAC-063-A,Calcite- CRB128,calcite,subtype,Carbonate,Calcite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb64,CB-EAC-064-A,Calcite- CRB130,calcite,subtype,Carbonate,Calcite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb65,CB-EAC-065-A,Calcite- CRB131,calcite,subtype,Carbonate,Calcite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb66,CB-EAC-066-A,Ankerite- CRB140,dolomite,subtype,Carbonate,Ankerite,dolomite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb67,CB-EAC-067-A,Siderite- CRB141,siderite,subtype,Carbonate,Siderite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb68,CB-EAC-068-A,Rhodochrosite- CRB142,calcite,group,Carbonate,Rhodochrosite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb69,CB-EAC-069-A,Siderite- CRB143,siderite,subtype,Carbonate,Siderite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb70,CB-EAC-070-A,Magnesite- CRB144,calcite,group,Carbonate,Magnesite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb71,CB-EAC-071-A,Siderite- CRB145,siderite,subtype,Carbonate,Siderite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb72,CB-EAC-072-A,Gaspeite- CRB147,calcite,group,Carbonate,Gaspeite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb73,CB-EAC-073-A,Siderite- CRB148,siderite,subtype,Carbonate,Siderite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb74,CB-EAC-074-A,Siderite- CRB701,siderite,subtype,Carbonate,Siderite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb77,CB-EAC-077-A,Hydrocalcite- CRB800,calcite,group,Carbonate,Hydrocalcite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cacb78,CB-EAC-078-A,Monohydrocalcite- CRB801,calcite,group,Carbonate,Monohydrocalcite,calcite,bdr3,280-2600,RELAB Bidirectional Spectrometer,,Spectral properties of carbonates
+cach15,CH-EAC-015,Chamosite- CHM101,chlorite,subtype,Phyllosilicate,Chamosite,chlorite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Obtained from Smithsonian Institution (#R4568). Dry-sieved.
+cach16,CH-EAC-016,Chamosite- CHM102,chlorite,subtype,Phyllosilicate,Chamosite,chlorite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Obtained from Smithsonian Institution (#R4558). Dry-sieved.
+cach17,CH-EAC-017,Chamosite- CHM103,chlorite,subtype,Phyllosilicate,Chamosite,chlorite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Acquired from Mineral Unlimited. Dry-sieved.
+cacr21,CR-EAC-021,Cronstedtite- CRO101,serpentine,group,Phyllosilicate,Cronstedtite,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Obtained from Smithsonian Institution (#193910)   Dry-sieved.
+cacr22,CR-EAC-022,Cronstedtite- CRO102,serpentine,group,Phyllosilicate,Cronstedtite,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Obtained from Smithsonian Institution (#R7807-4)  Dry-sieved.
+caea14,EA-EAC-014,Clinochore- CLI101,chlorite,subtype,Phyllosilicate,Clinochlore,chlorite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral properties of possible Mars surface materials.
+caea15,EA-EAC-015,Talc- TAL101,talc,subtype,Phyllosilicate,Talc,talc,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Spectral properties of possible Mars surface materials.
+caec04,EC-EAC-004,Calcite (Synthetic)- PIG004,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Calcium Carbonate CaCO3
+caec05,EC-EAC-005,Gypsum (Synthetic)- PIG005,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,Calcium sulfate Dihydrate CaSO4-2H2O
+caec06,EC-EAC-006,Talc (Synthetic)- PIG006,talc,subtype,Phyllosilicate,Talc,talc,bdr3,300-2600,RELAB Bidirectional Spectrometer,,3MgO-4SiO2-H2O
+caha01,HA-EAC-001,Halloysite- HAL001,kaolinite,subtype,Phyllosilicate,Halloysite,kaolinite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cakr01f,KR-KMR-001-F,Gypsum sand 90-150 um,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+casf21,SF-EAC-021-A,SPT107,alunite,group,Sulfate,,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Jarosite, Obtained from Smithsonian Institution (#104139-1)   Dry-sieved."
+casf22,SF-EAC-022-A,SPT108,alunite,group,Sulfate,,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Jarosite, Obtained from Smithsonian Institution (#95074-1)  Dry-sieved."
+casf27,SF-EAC-027-A,SPT113,alunite,group,Sulfate,,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Jarosite, Obtained from Minerals Unlimited  Dry-sieved."
+casf28,SF-EAC-028-A,SPT114A,alunite,group,Sulfate,,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Natrojarosite , Obtained from Minerals Unlimited  Dry-sieved."
+casf29,SF-EAC-029-A,SPT115,alunite,group,Sulfate,,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Jarosite, Obtained from Minerals Unlimited  Dry-sieved."
+casf41,SF-EAC-041-A,SPT127,gypsum,group,Sulfate,,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Gypsum, Obtained from Univ. of Winnipeg (sample #M168-39)"
+casf43,SF-EAC-043-A,SPT129,alunite,group,Sulfate,,alunite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Sulfate, Alunite , Obtained from Minerals Unlimited."
+casr06,SR-EAC-006,SRP101,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Obtained from Minerals Unlimited  Dry-sieved."
+casr07,SR-EAC-007,SRP102,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Obtained from Minerals Unlimited  Dry-sieved."
+casr11,SR-EAC-011,SRP106,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr12,SR-EAC-012,SRP107,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr13,SR-EAC-013,SRP108,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr14,SR-EAC-014,SRP109,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr15,SR-EAC-015,SRP110,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr16,SR-EAC-016,SRP111,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr17,SR-EAC-017,SRP112,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr18,SR-EAC-018,SRP113,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr19,SR-EAC-019,SRP114,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr20,SR-EAC-020,SRP115,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr21,SR-EAC-021,SRP116,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo) , Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr22,SR-EAC-022,SRP117,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr23,SR-EAC-023,SRP118,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, Spectral-compositional properties of sulfates for Mars optical remote sensing"
+casr24,SR-EAC-024,SRP119,serpentine,group,Phyllosilicate,,serpentine,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Silicate (Phyllo), Serpentine, Spectral properties of possible Mars surface materials"
+cbbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cbcb01,CB-EAC-001-B,Ankerite- CRB101,dolomite,subtype,Carbonate,Ankerite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cbcb03,CB-EAC-003-B,Dolomite- CRB103,dolomite,subtype,Carbonate,Dolomite,dolomite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cbcb04,CB-EAC-004-B,Gaspeite- CRB104,calcite,group,Carbonate,Gaspeite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Lemieux Township, Gaspe Nord County, Gaspe Peninsula, Quebec, Canada"
+cbcb06,CB-EAC-006-B,Magnesite- CRB106,calcite,group,Carbonate,Magnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cbcb08,CB-EAC-008-B,Siderite- CRB108,siderite,subtype,Carbonate,Siderite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,"Ivigtut, in the Arksuk Fiord, Frederikshaab District, West Greenland."
+cbcb09,CB-EAC-009-B,Calcite- CRB109,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,University of Alberta GEOL330 laboratory collection
+cbcb12,CB-EAC-012-B,Calcite- CRB112,calcite,subtype,Carbonate,Calcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cbcb13,CB-EAC-013-B,Manganocalcite- CRB113,calcite,group,Carbonate,Manganocalcite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cbcb28,CB-EAC-028-B,Hydromagnesite- CRB208,calcite,group,Carbonate,Hydromagnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cbcb35,CB-EAC-035-B,Hydromagnesite- CRB215,calcite,group,Carbonate,Hydromagnesite,calcite,bdr3,300-2600,RELAB Bidirectional Spectrometer,,
+cbkr01f,KR-KMR-001-F,Gypsum sand 90-150 um,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+ccbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cckr01f,KR-KMR-001-F,Gypsum sand 90-150 um,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+cdbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cdkr01f,KR-KMR-001-F,Gypsum sand 90-150 um,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+cebe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cekr01f,KR-KMR-001-F,Gypsum sand 90-150 um,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+cfbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cfkr01f,KR-KMR-001-F,Gypsum sand 90-150 um,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+cgbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cgkr01f,KR-KMR-001-F,Gypsum sand 90-150 um,gypsum,subtype,Sulfate,Gypsum,gypsum,bdr3,300-2600,RELAB Bidirectional Spectrometer,,For gypsum-SAz2 mixtures
+chbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cibe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cjbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+ckbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+clbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cmbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cnbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cobe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cpbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"
+cqbe256,BE-BLE-256,Magnesite- MGC,calcite,group,Carbonate,Magnesite,calcite,bdr3,350-2600,RELAB Bidirectional Spectrometer,,"Photometric measurements of mineral/materials found on Mars (PGG, Prop Prep)"

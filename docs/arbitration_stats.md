@@ -65,3 +65,13 @@ no flips involving this family.
 ## sanity
 
 flips not involving any arbitrated family: 0 (must be 0)
+
+## configuration note (2026-11-16)
+
+This archived census and the current-tier carbonate result reported in README
+belong to different arbitration configurations. The 63,032 total above covers
+muscovite and chlorite only. A separate current-tier run reports 1,599
+plain-tier calcite→dolomite flips, zero reverse flips and zero abundant-tier
+flips. The two records are reported separately and are not summed. The older
+"no flips involving this family" line is therefore scoped to this archived
+configuration, not to the current per-tier behavior.

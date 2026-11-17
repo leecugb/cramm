@@ -1,0 +1,382 @@
+{
+  "date": "2026-09-28",
+  "engine": "/home/lee/CRAMM/cramm/__init__.py",
+  "engine_rules": 77,
+  "grid_window_um": [
+    0.38,
+    2.55
+  ],
+  "coverage_requirement_um": [
+    0.5,
+    2.45
+  ],
+  "legs": {
+    "RELAB": {
+      "n_spectra": 551,
+      "top1_acc": 0.7114,
+      "top5_acc": 0.7713,
+      "winner_kind": {
+        "pure": 371,
+        "no_fire": 68,
+        "mixture": 107,
+        "other": 5
+      },
+      "mixture_win": {
+        "hit": 64,
+        "miss": 43
+      },
+      "per_family": {
+        "alunite": {
+          "n": 12,
+          "top1": 6,
+          "top5": 6,
+          "top1_acc": 0.5
+        },
+        "buddingtonite": {
+          "n": 1,
+          "top1": 1,
+          "top5": 1,
+          "top1_acc": 1.0
+        },
+        "calcite": {
+          "n": 47,
+          "top1": 42,
+          "top5": 43,
+          "top1_acc": 0.8936
+        },
+        "carbonate-other": {
+          "n": 58,
+          "top1": 0,
+          "top5": 0,
+          "top1_acc": 0.0
+        },
+        "chlorite": {
+          "n": 30,
+          "top1": 21,
+          "top5": 23,
+          "top1_acc": 0.7
+        },
+        "dolomite": {
+          "n": 38,
+          "top1": 28,
+          "top5": 28,
+          "top1_acc": 0.7368
+        },
+        "epidote": {
+          "n": 2,
+          "top1": 1,
+          "top5": 2,
+          "top1_acc": 0.5
+        },
+        "gypsum": {
+          "n": 41,
+          "top1": 41,
+          "top5": 41,
+          "top1_acc": 1.0
+        },
+        "illite": {
+          "n": 7,
+          "top1": 1,
+          "top5": 3,
+          "top1_acc": 0.1429
+        },
+        "jarosite": {
+          "n": 39,
+          "top1": 35,
+          "top5": 35,
+          "top1_acc": 0.8974
+        },
+        "kaolinite": {
+          "n": 21,
+          "top1": 21,
+          "top5": 21,
+          "top1_acc": 1.0
+        },
+        "muscovite": {
+          "n": 2,
+          "top1": 1,
+          "top5": 1,
+          "top1_acc": 0.5
+        },
+        "opal": {
+          "n": 2,
+          "top1": 2,
+          "top5": 2,
+          "top1_acc": 1.0
+        },
+        "pyrophyllite": {
+          "n": 3,
+          "top1": 3,
+          "top5": 3,
+          "top1_acc": 1.0
+        },
+        "serpentine": {
+          "n": 57,
+          "top1": 44,
+          "top5": 52,
+          "top1_acc": 0.7719
+        },
+        "siderite": {
+          "n": 25,
+          "top1": 10,
+          "top5": 16,
+          "top1_acc": 0.4
+        },
+        "smectite": {
+          "n": 143,
+          "top1": 115,
+          "top5": 128,
+          "top1_acc": 0.8042
+        },
+        "talc": {
+          "n": 10,
+          "top1": 9,
+          "top5": 9,
+          "top1_acc": 0.9
+        },
+        "tremolite": {
+          "n": 13,
+          "top1": 11,
+          "top5": 11,
+          "top1_acc": 0.8462
+        }
+      },
+      "confusion": {
+        "smectite→smectite": 106,
+        "serpentine→serpentine": 44,
+        "calcite→calcite": 42,
+        "gypsum→gypsum": 41,
+        "jarosite→jarosite": 34,
+        "chlorite→chlorite": 20,
+        "carbonate-other→dolomite": 17,
+        "dolomite→dolomite": 15,
+        "kaolinite→kaolinite": 14,
+        "alunite→alunite": 4,
+        "illite→muscovite": 4,
+        "chlorite→serpentine": 4,
+        "alunite→jarosite": 4,
+        "smectite→muscovite": 3,
+        "pyrophyllite→pyrophyllite": 2,
+        "opal→opal": 2,
+        "carbonate-other→serpentine": 2,
+        "buddingtonite→buddingtonite": 1,
+        "siderite→calcite": 1,
+        "calcite→dolomite": 1,
+        "tremolite→dolomite": 1,
+        "epidote→chlorite": 1,
+        "muscovite→muscovite": 1,
+        "illite→smectite": 1,
+        "epidote→epidote": 1,
+        "jarosite→alunite": 1,
+        "illite→illite": 1,
+        "smectite→dolomite": 1,
+        "siderite→chalcedony": 1,
+        "carbonate-other→calcite": 1
+      },
+      "specimen_level": {
+        "n": 508,
+        "top1_acc": 0.7323
+      }
+    },
+    "ECOSTRESS": {
+      "n_spectra": 172,
+      "top1_acc": 0.8837,
+      "top5_acc": 0.9709,
+      "winner_kind": {
+        "mixture": 30,
+        "pure": 139,
+        "other": 1,
+        "no_fire": 2
+      },
+      "mixture_win": {
+        "hit": 22,
+        "miss": 8
+      },
+      "per_family": {
+        "alunite": {
+          "n": 6,
+          "top1": 6,
+          "top5": 6,
+          "top1_acc": 1.0
+        },
+        "buddingtonite": {
+          "n": 3,
+          "top1": 3,
+          "top5": 3,
+          "top1_acc": 1.0
+        },
+        "calcite": {
+          "n": 18,
+          "top1": 18,
+          "top5": 18,
+          "top1_acc": 1.0
+        },
+        "chlorite": {
+          "n": 24,
+          "top1": 23,
+          "top5": 24,
+          "top1_acc": 0.9583
+        },
+        "dolomite": {
+          "n": 12,
+          "top1": 12,
+          "top5": 12,
+          "top1_acc": 1.0
+        },
+        "epidote": {
+          "n": 15,
+          "top1": 11,
+          "top5": 14,
+          "top1_acc": 0.7333
+        },
+        "gypsum": {
+          "n": 7,
+          "top1": 7,
+          "top5": 7,
+          "top1_acc": 1.0
+        },
+        "illite": {
+          "n": 2,
+          "top1": 2,
+          "top5": 2,
+          "top1_acc": 1.0
+        },
+        "jarosite": {
+          "n": 18,
+          "top1": 16,
+          "top5": 18,
+          "top1_acc": 0.8889
+        },
+        "kaolinite": {
+          "n": 6,
+          "top1": 6,
+          "top5": 6,
+          "top1_acc": 1.0
+        },
+        "muscovite": {
+          "n": 6,
+          "top1": 4,
+          "top5": 5,
+          "top1_acc": 0.6667
+        },
+        "pyrophyllite": {
+          "n": 3,
+          "top1": 3,
+          "top5": 3,
+          "top1_acc": 1.0
+        },
+        "serpentine": {
+          "n": 6,
+          "top1": 4,
+          "top5": 6,
+          "top1_acc": 0.6667
+        },
+        "siderite": {
+          "n": 6,
+          "top1": 2,
+          "top5": 6,
+          "top1_acc": 0.3333
+        },
+        "smectite": {
+          "n": 16,
+          "top1": 14,
+          "top5": 16,
+          "top1_acc": 0.875
+        },
+        "talc": {
+          "n": 6,
+          "top1": 5,
+          "top5": 5,
+          "top1_acc": 0.8333
+        },
+        "topaz": {
+          "n": 6,
+          "top1": 6,
+          "top5": 6,
+          "top1_acc": 1.0
+        },
+        "tremolite": {
+          "n": 12,
+          "top1": 10,
+          "top5": 10,
+          "top1_acc": 0.8333
+        }
+      },
+      "confusion": {
+        "chlorite→chlorite": 23,
+        "calcite→calcite": 17,
+        "jarosite→jarosite": 16,
+        "smectite→smectite": 14,
+        "dolomite→dolomite": 12,
+        "epidote→epidote": 11,
+        "gypsum→gypsum": 7,
+        "topaz→topaz": 6,
+        "kaolinite→kaolinite": 5,
+        "muscovite→muscovite": 4,
+        "serpentine→serpentine": 4,
+        "pyrophyllite→pyrophyllite": 3,
+        "buddingtonite→buddingtonite": 3,
+        "alunite→alunite": 3,
+        "serpentine→dolomite": 2,
+        "illite→illite": 2,
+        "epidote→chlorite": 2,
+        "jarosite→smectite": 2,
+        "chlorite→serpentine": 1,
+        "muscovite→smectite": 1,
+        "epidote→calcite": 1
+      },
+      "specimen_level": {
+        "n": 37,
+        "top1_acc": 0.9459
+      }
+    }
+  },
+  "ecostress_ood": {
+    "n": 685,
+    "grid_skipped": 1,
+    "no_fire": 427,
+    "top1_rule_counts": {
+      "calcite": 28,
+      "montmorillonite_Na": 26,
+      "kaolinite+smectite_mix_intimate": 20,
+      "muscovite_medhighAl": 18,
+      "pyrophyllite.25+kaolinite.75": 14,
+      "buddingtonite+montmorillonite_mix_intimate": 14,
+      "calcite.5+dolomite.5": 14,
+      "dolomite": 11,
+      "carbonate_Fe_bearing": 10,
+      "dry_veg_grass_2_3um": 10,
+      "jarosite+muscovite_mix_intimate": 8,
+      "chalcedony": 8,
+      "tremolite_or_talc": 6,
+      "montmorillonite_Ca": 5,
+      "nontronite": 5,
+      "buddingtonite": 5,
+      "hectorite": 5,
+      "epidote": 5,
+      "dry_veg_nongrass_2_3um": 4,
+      "clinochlore_Fe.3+muscovite.7": 4,
+      "vegetation_npv_and_green": 4,
+      "talc_or_tremolite": 4,
+      "snow_melting": 3,
+      "jarosite_Na": 3,
+      "dry_veg_nongrass": 3,
+      "dolomite_abundant": 3,
+      "gypsum": 2,
+      "calcite.25+montmorilloniteCa.75": 2,
+      "chlorite_lowFe": 2,
+      "hydrated_silica": 1,
+      "clinochlore": 1,
+      "clinochlore_Fe": 1,
+      "serpentine_antigorite_or_calcite+dolomite": 1,
+      "serpentine_antigorite_withsecondfeat": 1,
+      "dry_veg_grass": 1,
+      "serpentine_antigorite_withironfeat": 1,
+      "water_sediment_low": 1,
+      "kaolinite_wxl": 1,
+      "serpentine_chrysotile_withsecondfeat": 1,
+      "calcite.25+montmorilloniteNa.75": 1,
+      "kaolinite+clay_mica_or_halloysite": 1
+    }
+  }
+}

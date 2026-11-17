@@ -1,0 +1,1630 @@
+# 跨库验证光谱总清单(paper §4.4)
+
+> 由 docs/crosslib_benchmark.csv 与 docs/crosslib_chem_validation.csv 合并生成(2026-09-08,1.5.0 引擎复测版)。
+> 鉴定腿 = RELAB 551 + ECOSTRESS 族内 172 + ECOSTRESS OOD 685(只画像不计分);化学腿 = A 22 + B 44 + C 6。
+
+## 鉴定腿 1:RELAB 族内池(551 谱 / 508 标本 / 18 族)
+
+遴选口径 R1-R9(CMS 同材料 450 条已剔除),真值来源 subtype 359 / group 105 / name 87。
+
+### smectite(143 谱)
+
+- ✓ `c1cy20` Nontronite(标本 CY-PLH-020,真值:subtype)
+- ✓ `c1cy21` Nontronite(标本 CY-PLH-021,真值:subtype)
+- ✓ `c1cy25` Smectite(标本 CY-PLH-025,真值:subtype)
+- ✓ `c1cy26` Smectite(标本 CY-PLH-026,真值:subtype)
+- ✓ `c1gr02` Montmorillonite(标本 GR-CMP-002,真值:subtype)
+- ✗ `c1gr24` Nontronite- GKL-HH43(标本 GR-GRK-024,真值:subtype)
+- ✓ `c1jb122` Montmorillonite 122(标本 JB-CMP-122,真值:subtype)
+- ✓ `c1jb122s` Montmorillonite 122-s(标本 JB-JLB-122-S,真值:subtype)
+- ✓ `c1jb123` Montmorillonite 123(标本 JB-CMP-123,真值:subtype)
+- ~ `c1jb123s` Montmorillonite 123-s(标本 JB-JLB-123-S,真值:subtype)
+- ✓ `c1jb124` Montmorillonite 124(标本 JB-CMP-124,真值:subtype)
+- ✓ `c1jb124s` Montmorillonite 124-s(标本 JB-JLB-124-S,真值:subtype)
+- ✓ `c1jb125` Montmorillonite from Gramelkam <45 um(标本 JB-CMP-125,真值:subtype)
+- ✓ `c1jb125s` Montmorillonite 125-s(标本 JB-JLB-125-S,真值:subtype)
+- ✓ `c1jb14` STx-1 montmorillonite(标本 JB-CMP-014,真值:subtype)
+- ✓ `c1jb170` Smectite- SWa-1(标本 JB-JLB-170,真值:subtype)
+- ✓ `c1jb172` Hectorite 172(标本 JB-JLB-172,真值:subtype)
+- ✓ `c1jb173` Smectite 173(标本 JB-JLB-173,真值:subtype)
+- ✓ `c1jb174` Smectite 174(标本 JB-JLB-174,真值:subtype)
+- ✓ `c1jb175` Smectite 175(标本 JB-JLB-175,真值:subtype)
+- ✓ `c1jb176` Smectite 176(标本 JB-JLB-176,真值:subtype)
+- ✓ `c1jb177` Smectite 177(标本 JB-JLB-177,真值:subtype)
+- ✓ `c1jb177s` Smectite 177-s(标本 JB-JLB-177-S,真值:subtype)
+- ✓ `c1jb178s` Smectite #1923(标本 JB-JLB-178-S,真值:subtype)
+- ✓ `c1jb26` Nontronite(标本 JB-CMP-026,真值:subtype)
+- ✓ `c1jb26s` Nontronite 26s(标本 JB-JLB-026-S,真值:subtype)
+- ✗ `c1sa51` Saponite(标本 SA-TXH-051,真值:name)
+- ✓ `c1ss12` Montmorillonite(标本 SS-REA-012,真值:name)
+- ✓ `c2jb14` STx-1 montmorillonite(标本 JB-CMP-014,真值:subtype)
+- ✓ `cbjb26` Nontronite(标本 JB-CMP-026-B,真值:subtype)
+- ✓ `ccjb26` Nontronite(标本 JB-CMP-026-C,真值:subtype)
+- ✓ `cdjb26` Nontronite(标本 JB-CMP-026-D,真值:subtype)
+- ✓ `c1be15` Nontronite- Nau-2(标本 BE-JFM-015,真值:subtype)
+- ✓ `c1be16` Nontronite- Nau-1(标本 BE-JFM-016,真值:subtype)
+- ✓ `c1be19` Nontronite- Nau-2(标本 BE-JFM-019,真值:subtype)
+- ✓ `c1be20` Nontronite- Nau-1(标本 BE-JFM-020,真值:subtype)
+- ~ `c1be23` Nontronite- Nau-2(标本 BE-JFM-023,真值:subtype)
+- ✓ `c1be24` Nontronite- Nau-1(标本 BE-JFM-024,真值:subtype)
+- ✓ `c1ea27a` Hectorite- HEC101(标本 EA-EAC-027-A,真值:subtype)
+- ✓ `c1ea28a` Montmorillonite- MON103(标本 EA-EAC-028-A,真值:subtype)
+- ✓ `c1ea30a` Nontronite- NON101(标本 EA-EAC-030-A,真值:subtype)
+- ✗ `c1gr21` Nontronite- GKL-G45(标本 GR-GRK-021,真值:subtype)
+- ✗ `c1gr22` Nontronite- GKL-SW32(标本 GR-GRK-022,真值:subtype)
+- ~ `c1jb761a` Ferrosaponite GDS604B(标本 JB-JLB-761-A,真值:subtype)
+- ~ `c1jb761b` Ferrosaponite GDS604B(标本 JB-JLB-761-B,真值:subtype)
+- ✓ `c1jb762a` Ferrosaponite GDS752(标本 JB-JLB-762-A,真值:subtype)
+- ✓ `c1jb762b` Ferrosaponite GDS752(标本 JB-JLB-762-B,真值:subtype)
+- ✗ `c1jb768` Hectorite from San Bernardino Co.(标本 JB-JLB-768,真值:subtype)
+- ✓ `c1jb790` CMS standard nontronite Nau-1(标本 JB-JLB-790,真值:subtype)
+- ✓ `c1jb790a` CMS standard nontronite Nau-1(标本 JB-JLB-790-A,真值:subtype)
+- ✓ `c1jb791a` CMS standard nontronite Nau-2(标本 JB-JLB-791-A,真值:subtype)
+- ✓ `c1jb791b` CMS standard nontronite Nau-2(标本 JB-JLB-791-B,真值:subtype)
+- ✓ `c1jb791c` CMS standard nontronite Nau-2(标本 JB-JLB-791-C,真值:subtype)
+- ✓ `c1jb791d` CMS standard nontronite Nau-2(标本 JB-JLB-791-D,真值:subtype)
+- ✗ `c1jb885` Hectorite 49-5103 by Will Gates(标本 JB-JLB-885,真值:subtype)
+- ✓ `c1jb886` Will Gates #1 montmorillonite from Gumeracha(标本 JB-JLB-886,真值:subtype)
+- ✓ `c1jb887` Will Gates #2 montmorillonite from Jelsovy Poltok(标本 JB-JLB-887,真值:subtype)
+- ✓ `c1jb888` Will Gates #3 montmorillonite STx-1(标本 JB-JLB-888,真值:subtype)
+- ✓ `c1jb889` Will Gates #4 montmorillonite from Otay(标本 JB-JLB-889,真值:subtype)
+- ✓ `c1jb891` Will Gates #6 montmorillonite from Ossean(标本 JB-JLB-891,真值:subtype)
+- ~ `c1jb892` Will Gates #7 montmorillonite from 130E Arumpo(标本 JB-JLB-892,真值:subtype)
+- ✓ `c1jb893` Will Gates #8 montmorillonite from JC Lane(标本 JB-JLB-893,真值:subtype)
+- ✓ `c1jb894` Will Gates #9 montmorillonite from Miles(标本 JB-JLB-894,真值:subtype)
+- ✓ `c1jb895` Will Gates #10 montmorillonite from Yamagata(标本 JB-JLB-895,真值:subtype)
+- ✓ `c1jb896` Will Gates #11 montmorillonite from New South Whales(标本 JB-JLB-896,真值:subtype)
+- ✓ `c1jb899` Will Gates #14 montmorillonite from Camp Berteaux(标本 JB-JLB-899,真值:subtype)
+- ✓ `c1jb900` Smectite #15 from Redhill by Will Gates(标本 JB-JLB-900,真值:subtype)
+- ✓ `c1jb901` Smectite #16 from Andamooka by Will Gates(标本 JB-JLB-901,真值:subtype)
+- ✓ `c1jb902` Smectite #17 from Nibost by Will Gates(标本 JB-JLB-902,真值:subtype)
+- ✓ `c1jb903` Smectite #18 from Drayton by Will Gates(标本 JB-JLB-903,真值:subtype)
+- ✓ `c1jb904` Smectite #19 from Binjour Green by Will Gates(标本 JB-JLB-904,真值:subtype)
+- ✓ `c1jb905` Smectite #20 from Stebno by Will Gates(标本 JB-JLB-905,真值:subtype)
+- ✓ `c1jb906` Smectite #21 from Hrozentin by Will Gates(标本 JB-JLB-906,真值:subtype)
+- ✓ `c1jb907` Nontronite #22 from Cheney by Will Gates(标本 JB-JLB-907,真值:subtype)
+- ✓ `c1jb908` Nontronite #23 from Bingham by Will Gates(标本 JB-JLB-908,真值:subtype)
+- ✓ `c1jb909` Nontronite #24 from Giralong by Will Gates(标本 JB-JLB-909,真值:subtype)
+- ✓ `c1jb910` Nontronite #25 from Manito by Will Gates(标本 JB-JLB-910,真值:subtype)
+- ✓ `c1jb911` Nontronite #26 from Uley Mine by Will Gates(标本 JB-JLB-911,真值:subtype)
+- ✓ `c1jb912` Nontronite #27 from Garfield by Will Gates(标本 JB-JLB-912,真值:subtype)
+- ✓ `c1jb913` Nontronite #28 from Mountainville by Will Gates(标本 JB-JLB-913,真值:subtype)
+- ✓ `c1jb914` Nontronite #29 from Holland's Quarry by Will Gates(标本 JB-JLB-914,真值:subtype)
+- ✓ `c1jb915` Nontronite #30 from Uley Mine by Will Gates(标本 JB-JLB-915,真值:subtype)
+- ✓ `c1jb916` Nontronite #31 from Hohen Hage by Will Gates(标本 JB-JLB-916,真值:subtype)
+- ✓ `c1jb917` Nontronite #32 from Clausthall by Will Gates(标本 JB-JLB-917,真值:subtype)
+- ✓ `c1jb919a` Beidellite sample #34 purified by Will Gates <125 um(标本 JB-JLB-919-A,真值:subtype)
+- ✗ `c1jb919b` Beidellite sample #34 purified by Will Gates >125 um(标本 JB-JLB-919-B,真值:subtype)
+- ✓ `c1jb920a` Beidellite sample #35 purified by Will Gates <125 um(标本 JB-JLB-920-A,真值:subtype)
+- ✓ `c1jb920b` Beidellite sample #35 purified by Will Gates >125 um(标本 JB-JLB-920-B,真值:subtype)
+- ✓ `c1jb921a` Beidellite sample #36 purified by Will Gates <125 um(标本 JB-JLB-921-A,真值:subtype)
+- ✓ `c1jb921b` Beidellite sample #36 purified by Will Gates >125 um(标本 JB-JLB-921-B,真值:subtype)
+- ✓ `c1jb922a` Beidellite sample #37 purified by Will Gates <125 um(标本 JB-JLB-922-A,真值:subtype)
+- ✓ `c1jb922b` Beidellite sample #37 purified by Will Gates >125 um(标本 JB-JLB-922-B,真值:subtype)
+- ✓ `c1jb923a` Beidellite sample #38 purified by Will Gates <125 um(标本 JB-JLB-923-A,真值:subtype)
+- ~ `c1jb923b` Beidellite sample #38 purified by Will Gates >125 um(标本 JB-JLB-923-B,真值:subtype)
+- ✓ `c1jb924a` Beidellite-montmorillonite sample #39 purified by Will Gates <125 um(标本 JB-JLB-924-A,真值:subtype)
+- ✓ `c1jb924b` Beidellite-montmorillonite sample #39 purified by Will Gates >125 um(标本 JB-JLB-924-B,真值:subtype)
+- ✓ `c1jb925a` Beidellite-montmorillonite sample #40 purified by Will Gates <125 um(标本 JB-JLB-925-A,真值:subtype)
+- ✓ `c1jb925b` Beidellite-montmorillonite sample #40 purified by Will Gates >125 um(标本 JB-JLB-925-B,真值:subtype)
+- ✓ `c1jb926a` Beidellite-montmorillonite sample #41 purified by Will Gates <125 um(标本 JB-JLB-926-A,真值:subtype)
+- ✓ `c1jb926b` Beidellite-montmorillonite sample #41 purified by Will Gates >125 um(标本 JB-JLB-926-B,真值:subtype)
+- ✓ `c1jb927a` Beidellite-montmorillonite sample #42 purified by Will Gates <125 um(标本 JB-JLB-927-A,真值:subtype)
+- ✓ `c1jb927b` Beidellite-montmorillonite sample #42 purified by Will Gates >125 um(标本 JB-JLB-927-B,真值:subtype)
+- ✓ `c1jb928a` Beidellite-montmorillonite sample #43 purified by Will Gates <125 um(标本 JB-JLB-928-A,真值:subtype)
+- ✓ `c1jb928b` Beidellite-montmorillonite sample #43 purified by Will Gates >125 um(标本 JB-JLB-928-B,真值:subtype)
+- ✓ `c1jba37` Baker #16 (Nontronite, syn #4)(标本 JB-JLB-A37,真值:subtype)
+- ~ `c1jbb84a` Saponite SapCap-1(标本 JB-JLB-B84-A,真值:subtype)
+- ~ `c1jbb84b` Saponite SapCap-1(标本 JB-JLB-B84-B,真值:subtype)
+- ~ `c1jbb84c` Saponite SapCap-1(标本 JB-JLB-B84-C,真值:subtype)
+- ✓ `c1jbe90a` Nontronite- Nau-1(标本 JB-JLB-E90-A,真值:name)
+- ✓ `c1jbe90b` Nontronite- Nau-1(标本 JB-JLB-E90-B,真值:name)
+- ✓ `c1jbe90c` Nontronite- Nau-1(标本 JB-JLB-E90-C,真值:name)
+- ~ `c1jbf41a` Green smectite(标本 JB-JLB-F41-A,真值:subtype)
+- ✓ `c1jbf42a` Brown smectite(标本 JB-JLB-F42-A,真值:subtype)
+- ✓ `c1jbf42c` Brown smectite(标本 JB-JLB-F42-C,真值:subtype)
+- ✓ `c1jbf42d` Brown smectite(标本 JB-JLB-F42-D,真值:subtype)
+- ✓ `c1jbf42e` Brown smectite(标本 JB-JLB-F42-E,真值:subtype)
+- ✓ `c1jbf42f` Brown smectite(标本 JB-JLB-F42-F,真值:subtype)
+- ✗ `c1jbf43a` Beige smectite(标本 JB-JLB-F43-A,真值:subtype)
+- ✓ `c1jbf45a` Saponite PP#2 (JB1545a)(标本 JB-JLB-F45-A,真值:subtype)
+- ~ `c1jbf45b` Saponite PP#2 (JB1545b)(标本 JB-JLB-F45-B,真值:subtype)
+- ~ `c1jbf45c` Saponite PP#2 (JB1545c)(标本 JB-JLB-F45-C,真值:subtype)
+- ✗ `c1jbf92a` Fe-saponite-rich soil (JB1592a)(标本 JB-JLB-F92-A,真值:subtype)
+- ✗ `c1jbf92b` Fe-saponite-rich soil (JB1592b)(标本 JB-JLB-F92-B,真值:subtype)
+- ✗ `c1jbf92c` Fe-saponite-rich soil (JB1592c)(标本 JB-JLB-F92-C,真值:subtype)
+- ✓ `c1jm73` Nontronite- Nau-1(标本 JM-TGS-073,真值:subtype)
+- ✗ `c1jm74` Nontronite- Nau-2(标本 JM-TGS-074,真值:subtype)
+- ✗ `c1jm75` Saponite(标本 JM-TGS-075,真值:subtype)
+- ~ `c1jm77` Beidellite- SBId-1(标本 JM-TGS-077,真值:subtype)
+- ✓ `c1jt122` MT22_Montmorillonite100 (45-75 um)(标本 JT-JFM-122,真值:subtype)
+- ✓ `c1jt123` MT23_Montmorillonite100 (125-250 um)(标本 JT-JFM-123,真值:subtype)
+- ✓ `c1jt140` MT40_Nontronite100 (125-250 um)(标本 JT-JFM-140,真值:subtype)
+- ✓ `c1jt141` MT41_Nontronite100 (45-75 um)(标本 JT-JFM-141,真值:subtype)
+- ✓ `c1kr02a` Ca Smectite- SAz2(标本 KR-KMR-002-A,真值:subtype)
+- ✓ `c1kr02b` Ca Smectite- SAz2 (clusters broken up)(标本 KR-KMR-002-B,真值:subtype)
+- ✓ `c1kr02b2` Ca Smectite- SAz2 (clusters broken up)(标本 KR-KMR-002-B2,真值:subtype)
+- ✓ `c1kr02c` Ca Smectite- SAz2(标本 KR-KMR-002-C,真值:subtype)
+- ✓ `c1kr02d` Ca Smectite- SAz2(标本 KR-KMR-002-D,真值:subtype)
+- ✓ `c1nt04` CheWA nontronite(标本 NT-MBW-004,真值:name)
+- ✗ `c1rm145` Possible saponite <45 um(标本 RM-REM-145,真值:name)
+- ✗ `c1zl11` Smectite <212 um(标本 ZL-ZAL-011,真值:subtype)
+- ✓ `c2jb260` Clay Saponite- SapCa-1(标本 JB-JLB-260,真值:subtype)
+- ✓ `c2kr02b` Ca Smectite- SAz2 (clusters broken up)(标本 KR-KMR-002-B,真值:subtype)
+- ✓ `cabe03` Beidellite- BEI101(标本 BE-EAC-003,真值:subtype)
+
+### calcite(105 谱)
+
+- ✓ `c1cy05` Calcite(标本 CY-PLH-005,真值:subtype)
+- ✓ `c1gr01` Calcite(标本 GR-CMP-001,真值:subtype)
+- ~ `c1hm01` Calcite- HYD-BLT-1a(标本 HM-JFM-001,真值:subtype)
+- ✓ `c1ja02a` Separate 1 from JA #79634 (Calcite or Coccolite?)(标本 JA-CMP-002-A,真值:subtype)
+- ✓ `c1pc02` Calcite 1557(标本 PC-SJG-002,真值:name)
+- ✓ `c1pc05` Calcite 1556(标本 PC-SJG-005,真值:name)
+- ✓ `c1pc06` Calcite 1558 b(标本 PC-SJG-006,真值:name)
+- ✓ `c1pc08` Calcite 1566(标本 PC-SJG-008,真值:name)
+- ✓ `c1pc55` Red Calcite(标本 PC-CMP-055,真值:name)
+- ✓ `c1sf01` Ground Calcite(标本 SF-BFJ-001,真值:name)
+- ✓ `c1sg67` 10529b Calcite(标本 SG-SJG-067,真值:name)
+- ✓ `c1sh01` 1545 Calcite(标本 SH-SJG-001,真值:name)
+- ✗ `c1sh02` 2502 Magnesite(标本 SH-SJG-002,真值:group)
+- ✗ `c1sh03` 2506 Magnesite(标本 SH-SJG-003,真值:group)
+- ✓ `c1sh18` 1508 Calcite(标本 SH-SJG-018,真值:name)
+- ✗ `c1sh19` 2507 Magnesite(标本 SH-SJG-019,真值:group)
+- ✗ `c1sh20` 4506 Smithsonite(标本 SH-SJG-020,真值:group)
+- ✓ `c1ss11` Calcite(标本 SS-REA-011,真值:name)
+- ✓ `c1xt10` Calcite(标本 XT-CMP-010,真值:name)
+- ✓ `c2pc14` Calcite 1549(标本 PC-SJG-014,真值:name)
+- ✓ `c3pc13` Calcite 1531(标本 PC-SJG-013,真值:name)
+- ✓ `caca10` Calcite- CAL110(标本 CA-EAC-010,真值:subtype)
+- ✗ `cbcc06` Magnesite(标本 CC-JFM-006-B,真值:group)
+- ✓ `s3pc13` Calcite 1531(标本 PC-SJG-013,真值:name)
+- ✗ `c1be223` Magnesite- MGC(标本 BE-JFM-223,真值:group)
+- ✗ `c1be224` Magnesite- MGC(标本 BE-JFM-224,真值:group)
+- ✗ `c1be225` Magnesite- MGC(标本 BE-JFM-225,真值:group)
+- ✗ `c1be226` Magnesite- MGC(标本 BE-JFM-226,真值:group)
+- ✗ `c1be227` Magnesite- MGC(标本 BE-JFM-227,真值:group)
+- ✗ `c1be228` Magnesite- MGC(标本 BE-JFM-228,真值:group)
+- ✗ `c1be229` Magnesite- MGC(标本 BE-JFM-229,真值:group)
+- ✗ `c1be230` Magnesite- MGC(标本 BE-JFM-230,真值:group)
+- ✗ `c1be231` Magnesite- MGC(标本 BE-JFM-231,真值:group)
+- ✗ `c1be44` Magnesite (CC-06B)(标本 BE-JFM-044,真值:group)
+- ✗ `c1jb825` C1: Mg Calcite (25C)(标本 JB-JLB-825,真值:subtype)
+- ✗ `c1jb826` C2: Mg Calcite (35C)(标本 JB-JLB-826,真值:subtype)
+- ✗ `c1jb827` C3: Mg Calcite (35C)(标本 JB-JLB-827,真值:subtype)
+- ✗ `c1jb946a` Brumado Bahia Magnesite(标本 JB-JLB-946-A,真值:group)
+- ✗ `c1jb946b` Brumado Bahia Magnesite(标本 JB-JLB-946-B,真值:group)
+- ✗ `c1jb946c` Brumado Bahia Magnesite(标本 JB-JLB-946-C,真值:group)
+- ✗ `c1jb946d` Brumado Bahia Magnesite(标本 JB-JLB-946-D,真值:group)
+- ✗ `c1jb946e` Brumado Bahia Magnesite(标本 JB-JLB-946-E,真值:group)
+- ✓ `c1jbe57a` Mazada calcite(标本 JB-JLB-E57-A,真值:subtype)
+- ✓ `c1jbe57b` Mazada calcite(标本 JB-JLB-E57-B,真值:subtype)
+- ✓ `c1jbe57c` Mazada calcite(标本 JB-JLB-E57-C,真值:subtype)
+- ✓ `c1jbe57d` Mazada calcite(标本 JB-JLB-E57-D,真值:subtype)
+- ✓ `c1jbe57e` Mazada calcite(标本 JB-JLB-E57-E,真值:subtype)
+- ✓ `c1jbe57f` Mazada calcite(标本 JB-JLB-E57-F,真值:subtype)
+- ✓ `c1jbe58a` Big Timber calcite(标本 JB-JLB-E58-A,真值:subtype)
+- ✓ `c1jbe58b` Big Timber calcite(标本 JB-JLB-E58-B,真值:subtype)
+- ✓ `c1jbe58c` Big Timber calcite(标本 JB-JLB-E58-C,真值:subtype)
+- ✓ `c1jbe58d` Big Timber calcite(标本 JB-JLB-E58-D,真值:subtype)
+- ✓ `c1jbe58e` Big Timber calcite(标本 JB-JLB-E58-E,真值:subtype)
+- ✓ `c1jbe58f` Big Timber calcite(标本 JB-JLB-E58-F,真值:subtype)
+- ✓ `c1jt106` MT6_Calcite100 (45-75 um)(标本 JT-JFM-106,真值:subtype)
+- ✓ `c1jt120` MT20_Calcite100 (125-250 um)(标本 JT-JFM-120,真值:subtype)
+- ✓ `c1lh29` Magnesite 75-250 um(标本 LH-JFM-029,真值:group)
+- ✗ `c1zl08` Magnesite <212 um(标本 ZL-ZAL-008,真值:group)
+- ✗ `c2jb946a` Brumado Bahia Magnesite(标本 JB-JLB-946-A,真值:group)
+- ✗ `c2jb946b` Brumado Bahia Magnesite(标本 JB-JLB-946-B,真值:group)
+- ✗ `cabe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✓ `cacb04` Gaspeite- CRB104(标本 CB-EAC-004-A,真值:group)
+- ✗ `cacb06` Magnesite- CRB106(标本 CB-EAC-006-A,真值:group)
+- ✓ `cacb09` Calcite- CRB109(标本 CB-EAC-009-A,真值:subtype)
+- ✓ `cacb10` Calcite- CRB110(标本 CB-EAC-010-A,真值:subtype)
+- ✓ `cacb11` Calcite- CRB111(标本 CB-EAC-011-A,真值:subtype)
+- ✓ `cacb12` Calcite- CRB112(标本 CB-EAC-012-A,真值:subtype)
+- ✗ `cacb13` Manganocalcite- CRB113(标本 CB-EAC-013-A,真值:group)
+- ~ `cacb14` Magnesite- CRB114(标本 CB-EAC-014-A,真值:group)
+- ✗ `cacb28` Hydromagnesite- CRB208(标本 CB-EAC-028-A,真值:group)
+- ✗ `cacb35` Hydromagnesite- CRB215(标本 CB-EAC-035-A,真值:group)
+- ✗ `cacb36` Hydromagnesite- CRB216(标本 CB-EAC-036-A,真值:group)
+- ~ `cacb49` Hydromagnesite- CRB315(标本 CB-EAC-049-A,真值:group)
+- ✓ `cacb63` Calcite- CRB128(标本 CB-EAC-063-A,真值:subtype)
+- ✓ `cacb64` Calcite- CRB130(标本 CB-EAC-064-A,真值:subtype)
+- ✓ `cacb65` Calcite- CRB131(标本 CB-EAC-065-A,真值:subtype)
+- ✗ `cacb68` Rhodochrosite- CRB142(标本 CB-EAC-068-A,真值:group)
+- ✗ `cacb70` Magnesite- CRB144(标本 CB-EAC-070-A,真值:group)
+- ✗ `cacb72` Gaspeite- CRB147(标本 CB-EAC-072-A,真值:group)
+- ✗ `cacb77` Hydrocalcite- CRB800(标本 CB-EAC-077-A,真值:group)
+- ✗ `cacb78` Monohydrocalcite- CRB801(标本 CB-EAC-078-A,真值:group)
+- ✓ `caec04` Calcite (Synthetic)- PIG004(标本 EC-EAC-004,真值:subtype)
+- ✗ `cbbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✓ `cbcb04` Gaspeite- CRB104(标本 CB-EAC-004-B,真值:group)
+- ✗ `cbcb06` Magnesite- CRB106(标本 CB-EAC-006-B,真值:group)
+- ✓ `cbcb09` Calcite- CRB109(标本 CB-EAC-009-B,真值:subtype)
+- ✓ `cbcb12` Calcite- CRB112(标本 CB-EAC-012-B,真值:subtype)
+- ✓ `cbcb13` Manganocalcite- CRB113(标本 CB-EAC-013-B,真值:group)
+- ✗ `cbcb28` Hydromagnesite- CRB208(标本 CB-EAC-028-B,真值:group)
+- ✗ `cbcb35` Hydromagnesite- CRB215(标本 CB-EAC-035-B,真值:group)
+- ✗ `ccbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cdbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cebe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cfbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cgbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `chbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cibe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cjbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `ckbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `clbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cmbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cnbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cobe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cpbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+- ✗ `cqbe256` Magnesite- MGC(标本 BE-BLE-256,真值:group)
+
+### serpentine(57 谱)
+
+- ✓ `c1at02` Antigorite(标本 AT-TXH-002,真值:subtype)
+- ✓ `c1at03` Antigorite(标本 AT-TXH-003,真值:subtype)
+- ✓ `c1cr01` Clinochrysotile(标本 CR-TXH-001,真值:subtype)
+- ✗ `c1cr02` Cronstedtite(标本 CR-TXH-002,真值:subtype)
+- ✓ `c1lz01` Lizardite(标本 LZ-TXH-001,真值:name)
+- ✓ `c1sm58` Asbestos(标本 SM-CMP-058,真值:group)
+- ✓ `c2at02` Antigorite(标本 AT-TXH-002,真值:subtype)
+- ✓ `c2cr01` Clinochrysotile(标本 CR-TXH-001,真值:subtype)
+- ✓ `c2lz01` Lizardite(标本 LZ-TXH-001,真值:name)
+- ✓ `c2sm80` Serpentinite(标本 SM-CMP-080,真值:group)
+- ~ `chpo84` Serpentine separate <250 um(标本 PO-JFM-084-H,真值:name)
+- ✓ `c1jb559a` Antigorite Serpentine- An-0 <45 or 125 um(标本 JB-JLB-559-A,真值:subtype)
+- ✓ `c1jb560a` Antigorite Serpentine- An-1, grinding reaction, 1 day(标本 JB-JLB-560-A,真值:subtype)
+- ✓ `c1jb561a` Antigorite Serpentine- An-3, grinding reaction, 3 days(标本 JB-JLB-561-A,真值:subtype)
+- ✓ `c1jb562a` Antigorite Serpentine- An-10, grinding reaction, 10 days(标本 JB-JLB-562-A,真值:subtype)
+- ✓ `c1jb563a` Antigorite Serpentine- An-30, grinding reaction, 30 days(标本 JB-JLB-563-A,真值:subtype)
+- ✓ `c1jb732` Chrysotile(标本 JB-JLB-732,真值:subtype)
+- ✓ `c1jt180` MT80_Serpentine100 (45-75 um)(标本 JT-JFM-180,真值:subtype)
+- ✓ `c1jt181` MT81_Serpentine100 (125-250 um)(标本 JT-JFM-181,真值:subtype)
+- ✓ `c1sp04` 1a serpentine(标本 SP-VVB-004,真值:name)
+- ✓ `c1sp05` 28 serpentine bulk(标本 SP-VVB-005,真值:name)
+- ~ `c1sp07` 30 serpentine(标本 SP-VVB-007,真值:name)
+- ✓ `c1sp08` 2540 serpentine(标本 SP-VVB-008,真值:name)
+- ~ `c1sp09` K-185/1 serpentine(标本 SP-VVB-009,真值:name)
+- ✓ `c1sr64` HS-8.4B(标本 SR-JFM-064,真值:group)
+- ✓ `c1sr64a` HS-8.4B(标本 SR-JFM-064-A,真值:group)
+- ✓ `c1sr80` Serpentine #2370 Vial A Large fragments(标本 SR-ASR-080,真值:name)
+- ~ `c1sr91` Serpentine #2370 Vial S Starndard target material 125-250 um(标本 SR-ASR-091,真值:name)
+- ✓ `c1sr91a` Serpentine #2370 Vial S Starndard target material 125-250 um, ground into <63 um(标本 SR-ASR-091-A,真值:name)
+- ✓ `c1zl27` Lizardite <212 um(标本 ZL-ZAL-027,真值:subtype)
+- ✓ `c2sr30` Original serpentine for shock experiments(标本 SR-ASR-030,真值:name)
+- ~ `c2sr31` Serpentine #3362 shocked at 22.0 GPa(标本 SR-ASR-031,真值:name)
+- ~ `c2sr32` Serpentine #3363 shocked at 30.0 GPa(标本 SR-ASR-032,真值:name)
+- ✓ `c2sr33` Serpentine #3365 shocked at 35.8 GPa(标本 SR-ASR-033,真值:name)
+- ~ `c2sr34` Serpentine #3367 shocked at 38.8 GPa(标本 SR-ASR-034,真值:name)
+- ~ `c2sr35` Serpentine #3368 shocked at 41.4 GPa(标本 SR-ASR-035,真值:name)
+- ✓ `c3lz01` Lizardite(标本 LZ-TXH-001,真值:name)
+- ✗ `cabe01` Berthierine- BER101(标本 BE-EAC-001,真值:group)
+- ✗ `cabe02` Berthierine- BER102(标本 BE-EAC-002,真值:group)
+- ✗ `cacr21` Cronstedtite- CRO101(标本 CR-EAC-021,真值:group)
+- ✗ `cacr22` Cronstedtite- CRO102(标本 CR-EAC-022,真值:group)
+- ✓ `casr06` SRP101(标本 SR-EAC-006,真值:group)
+- ✓ `casr07` SRP102(标本 SR-EAC-007,真值:group)
+- ✓ `casr11` SRP106(标本 SR-EAC-011,真值:group)
+- ✓ `casr12` SRP107(标本 SR-EAC-012,真值:group)
+- ✓ `casr13` SRP108(标本 SR-EAC-013,真值:group)
+- ✓ `casr14` SRP109(标本 SR-EAC-014,真值:group)
+- ✓ `casr15` SRP110(标本 SR-EAC-015,真值:group)
+- ✓ `casr16` SRP111(标本 SR-EAC-016,真值:group)
+- ✓ `casr17` SRP112(标本 SR-EAC-017,真值:group)
+- ✓ `casr18` SRP113(标本 SR-EAC-018,真值:group)
+- ✓ `casr19` SRP114(标本 SR-EAC-019,真值:group)
+- ✓ `casr20` SRP115(标本 SR-EAC-020,真值:group)
+- ✓ `casr21` SRP116(标本 SR-EAC-021,真值:group)
+- ✓ `casr22` SRP117(标本 SR-EAC-022,真值:group)
+- ✓ `casr23` SRP118(标本 SR-EAC-023,真值:group)
+- ✓ `casr24` SRP119(标本 SR-EAC-024,真值:group)
+
+### gypsum(41 谱)
+
+- ✓ `c1cy09` Gypsum(标本 CY-PLH-009,真值:subtype)
+- ✓ `c1sf03` CaSO4 * 2H2O(标本 SF-BFJ-003,真值:group)
+- ✓ `c1sg03` 2601(标本 SG-SJG-003,真值:group)
+- ✓ `c1sg04` 2602(标本 SG-SJG-004,真值:group)
+- ✓ `c1ss14` Gypsum(标本 SS-REA-014,真值:name)
+- ✓ `c2pg03` Gypsum(标本 PG-CMP-003,真值:name)
+- ✓ `cbcc16` Gypsum(标本 CC-JFM-016-B,真值:subtype)
+- ✓ `c1cc33` Gypsum(标本 CC-JFM-033,真值:subtype)
+- ✓ `c1cc34` Gypsum(标本 CC-JFM-034,真值:subtype)
+- ✓ `c1cc35` Gypsum- Crust(标本 CC-JFM-035,真值:subtype)
+- ✓ `c1cc36` Gypsum Crust Ground(标本 CC-JFM-036,真值:subtype)
+- ✓ `c1cc37` Gypsum Crust Packed(标本 CC-JFM-037,真值:subtype)
+- ✓ `c1jbe64a` Harz gypsum(标本 JB-JLB-E64-A,真值:subtype)
+- ✓ `c1jbe64b` Harz gypsum(标本 JB-JLB-E64-B,真值:subtype)
+- ✓ `c1jbe64c` Harz gypsum(标本 JB-JLB-E64-C,真值:subtype)
+- ✓ `c1jbe64d` Harz gypsum(标本 JB-JLB-E64-D,真值:subtype)
+- ✓ `c1jbe64e` Harz gypsum(标本 JB-JLB-E64-E,真值:subtype)
+- ✓ `c1jbe64f` Harz gypsum (wet-sieved)(标本 JB-JLB-E64-F,真值:subtype)
+- ✓ `c1jbe64g` Harz gypsum (wet-sieved)(标本 JB-JLB-E64-G,真值:subtype)
+- ✓ `c1jt119` MT19_Gypsum100 (125-250 um)(标本 JT-JFM-119,真值:subtype)
+- ✓ `c1jt121` MT21_Gypsum100 (45-75 um)(标本 JT-JFM-121,真值:subtype)
+- ✓ `c1kr01a` Gypsum sand(标本 KR-KMR-001-A,真值:subtype)
+- ✓ `c1kr01b` Gypsum sand(标本 KR-KMR-001-B,真值:subtype)
+- ✓ `c1kr01c` Gypsum sand(标本 KR-KMR-001-C,真值:subtype)
+- ✓ `c1kr01d` Gypsum sand(标本 KR-KMR-001-D,真值:subtype)
+- ✓ `c1lf04` Gypsum(标本 LF-NEB-004,真值:subtype)
+- ✓ `c1pg06` Selenite(标本 PG-CMP-006,真值:group)
+- ✓ `c1pg07` Gypsum(标本 PG-CMP-007,真值:name)
+- ✓ `c1wf10` CRf-Sf2(标本 WF-WHF-010,真值:group)
+- ✓ `c1wf11` Summerville Fm. gypsum(标本 WF-WHF-011,真值:name)
+- ✓ `c1zl05` Gypsum <212 um(标本 ZL-ZAL-005,真值:subtype)
+- ✓ `c2cc33` Gypsum(标本 CC-JFM-033,真值:subtype)
+- ✓ `caec05` Gypsum (Synthetic)- PIG005(标本 EC-EAC-005,真值:subtype)
+- ✓ `cakr01f` Gypsum sand 90-150 um(标本 KR-KMR-001-F,真值:subtype)
+- ✓ `casf41` SPT127(标本 SF-EAC-041-A,真值:group)
+- ✓ `cbkr01f` Gypsum sand 90-150 um(标本 KR-KMR-001-F,真值:subtype)
+- ✓ `cckr01f` Gypsum sand 90-150 um(标本 KR-KMR-001-F,真值:subtype)
+- ✓ `cdkr01f` Gypsum sand 90-150 um(标本 KR-KMR-001-F,真值:subtype)
+- ✓ `cekr01f` Gypsum sand 90-150 um(标本 KR-KMR-001-F,真值:subtype)
+- ✓ `cfkr01f` Gypsum sand 90-150 um(标本 KR-KMR-001-F,真值:subtype)
+- ✓ `cgkr01f` Gypsum sand 90-150 um(标本 KR-KMR-001-F,真值:subtype)
+
+### jarosite(39 谱)
+
+- ✓ `c1cy16` Jarosite(标本 CY-PLH-016,真值:subtype)
+- ✓ `c1jb53` Jarosite(标本 JB-CMP-053,真值:subtype)
+- ✓ `c1pj01` Jarosite #951(标本 PJ-RGB-001,真值:name)
+- ✓ `c1pj02` Jarosite 98540(标本 PJ-RGB-002,真值:name)
+- ✓ `c1pj03` Jarosite(标本 PJ-RGB-003,真值:name)
+- ✓ `cbcc11` Jarosite(标本 CC-JFM-011-B,真值:subtype)
+- ✓ `c1jb709` Jarosite(标本 JB-JLB-709,真值:subtype)
+- ✓ `c1jb714` Jarosite- T3: (NaH3)(Fe3)(SO4)2(OH)6(标本 JB-JLB-714,真值:subtype)
+- ✗ `c1jb715` Jarosite- T14: (NaH3)(FeAl2)(SO4)2(OH)6(标本 JB-JLB-715,真值:subtype)
+- ✓ `c1jb716` Jarosite- Tosca 14: (K0.5Na0.5H3)(Fe1.5Al1.5)(SO4)2(OH)6(标本 JB-JLB-716,真值:subtype)
+- ✓ `c1jb717` Jarosite- Tosca 12: (H3O)(Fe2.5Al0.5)(SO4)2(OH)6(标本 JB-JLB-717,真值:subtype)
+- ✓ `c1jb718` Jarosite- T4: (KH3)(Fe2.25Al0.75)(SO4)2(OH)6(标本 JB-JLB-718,真值:subtype)
+- ✗ `c1jb719` Jarosite- T8: (KH3)(Fe0.5Al2.5)(SO4)2(OH)6(标本 JB-JLB-719,真值:subtype)
+- ✗ `c1jb720` Jarosite- T10: (KH3)(FeAl2)(SO4)2(OH)6(标本 JB-JLB-720,真值:subtype)
+- ✓ `c1jb721` Jarosite- UCD#4: (Na0.7H3O0.3)(Fe2.44Al0.2)(SO4)2(OH)6(标本 JB-JLB-721,真值:subtype)
+- ✓ `c1jb722` Jarosite- T7: (NaH3)(Fe2.25Al0.75)(SO4)2(OH)6(标本 JB-JLB-722,真值:subtype)
+- ✓ `c1jb723` Jarosite- JM: (H3O)(Fe3)(SO4)2(OH)6(标本 JB-JLB-723,真值:subtype)
+- ✗ `c1jb724` Jarosite- NAJ2-3: (Na0.6H3O0.4)(Fe0.3Al1.7)(SO4)2(OH)6(标本 JB-JLB-724,真值:subtype)
+- ✓ `c1jb725` Jarosite- NAJ5-2: (Na0.53H3O0.47)(Fe1.8Al1.0)(SO4)2(OH)6(标本 JB-JLB-725,真值:subtype)
+- ✓ `c1jb726` Jarosite- UCD#6: (Na0.68H3O0.32)(Fe2.66Al0.07)(SO4)2(OH)6(标本 JB-JLB-726,真值:subtype)
+- ✓ `c1jb752` Synthetic Jarosite A(标本 JB-JLB-752,真值:subtype)
+- ✓ `c1jb753` Synthetic Jarosite B(标本 JB-JLB-753,真值:subtype)
+- ✓ `c1jb754` Synthetic Jarosite C(标本 JB-JLB-754,真值:subtype)
+- ✓ `c1jb755` Synthetic Jarosite D(标本 JB-JLB-755,真值:subtype)
+- ✓ `c1jb756` Synthetic Jarosite E(标本 JB-JLB-756,真值:subtype)
+- ✓ `c1jb757` Synthetic Jarosite F(标本 JB-JLB-757,真值:subtype)
+- ✓ `c1jb758` Synthetic Jarosite G(标本 JB-JLB-758,真值:subtype)
+- ✓ `c1jb759` Synthetic Jarosite H(标本 JB-JLB-759,真值:subtype)
+- ✓ `c1jb760` Synthetic Jarosite I(标本 JB-JLB-760,真值:subtype)
+- ✓ `c1jb991` Rublev jarosite <125 um(标本 JB-JLB-991,真值:subtype)
+- ✓ `c1jba78` Jarosite MC7(标本 JB-JLB-A78,真值:subtype)
+- ✓ `c1jbb78` Jarosite 134560(标本 JB-JLB-B78,真值:subtype)
+- ✓ `c1jbb79` Jarosite 132060(标本 JB-JLB-B79,真值:subtype)
+- ✓ `c1jbb80a` Jarosite ML-S51(标本 JB-JLB-B80-A,真值:subtype)
+- ✓ `c1jbb80b` Jarosite ML-S51(标本 JB-JLB-B80-B,真值:subtype)
+- ✓ `c1jbb80c` Jarosite ML-S51(标本 JB-JLB-B80-C,真值:subtype)
+- ✓ `c1jbb81` Hydronium jarosite R10101(标本 JB-JLB-B81,真值:subtype)
+- ✓ `c1jbb82b` Natrojarosite 95661(标本 JB-JLB-B82-B,真值:subtype)
+- ✓ `c1jbb82c` Natrojarosite 95661(标本 JB-JLB-B82-C,真值:subtype)
+
+### dolomite(38 谱)
+
+- ✓ `c1cy07` Dolomite(标本 CY-PLH-007,真值:subtype)
+- ✓ `c1pd02` Dolomite 6524(标本 PD-SJG-002,真值:name)
+- ✓ `c1pd03` Dolomite 6252(标本 PD-SJG-003,真值:name)
+- ✓ `c1pd04` Dolomite 6526(标本 PD-SJG-004,真值:name)
+- ✓ `c1sh06` 6509 Dolomite(标本 SH-SJG-006,真值:name)
+- ✓ `c1sh07` 6510b Dolomite(标本 SH-SJG-007,真值:name)
+- ✓ `c1sh08` 6508 Dolomite(标本 SH-SJG-008,真值:name)
+- ✓ `c1sh78` 6523 Dolomite(标本 SH-SJG-078,真值:name)
+- ✓ `c1sh79` 6528 Dolomite(标本 SH-SJG-079,真值:name)
+- ✓ `c1sh92` Dolomite 6529(标本 SH-SJG-092,真值:name)
+- ✓ `c2pd05` Dolomite 2501(标本 PD-SJG-005,真值:name)
+- ✓ `c2sh08` 6508 Dolomite(标本 SH-SJG-008,真值:name)
+- ✓ `cbcc05` Dolomite(标本 CC-JFM-005-B,真值:subtype)
+- ✓ `c1jb778` Ankerite(标本 JB-JLB-778,真值:subtype)
+- ✓ `c1jb779` Iron Dolomite(标本 JB-JLB-779,真值:subtype)
+- ✓ `c1jbe61a` Selasvann dolomite(标本 JB-JLB-E61-A,真值:subtype)
+- ✓ `c1jbe61b` Selasvann dolomite(标本 JB-JLB-E61-B,真值:subtype)
+- ✓ `c1jbe61c` Selasvann dolomite(标本 JB-JLB-E61-C,真值:subtype)
+- ✓ `c1jbe61d` Selasvann dolomite(标本 JB-JLB-E61-D,真值:subtype)
+- ✓ `c1jbe61e` Selasvann dolomite(标本 JB-JLB-E61-E,真值:subtype)
+- ✓ `c1jbe61f` Selasvann dolomite(标本 JB-JLB-E61-F,真值:subtype)
+- ✗ `c1mg56` BE-21(标本 MG-JFM-056,真值:subtype)
+- ✗ `c1mg57` BE-46-50(标本 MG-JFM-057,真值:subtype)
+- ✓ `c1mg58` LV-15-21(标本 MG-JFM-058,真值:subtype)
+- ✓ `c1mg59` LV-concret(标本 MG-JFM-059,真值:subtype)
+- ✗ `c1mg60` LV-46-50(标本 MG-JFM-060,真值:subtype)
+- ✗ `c1mg61` LV-56-60(标本 MG-JFM-061,真值:subtype)
+- ✗ `c1mg62` LV-64-69(标本 MG-JFM-062,真值:subtype)
+- ✗ `c1mg63` BZ(3,4,5)(标本 MG-JFM-063,真值:subtype)
+- ✗ `c1mg64` Coorong(标本 MG-JFM-064,真值:subtype)
+- ✗ `c1mg65` LFP-6-11(标本 MG-JFM-065,真值:subtype)
+- ✗ `c1mg66` LFP-31-37(标本 MG-JFM-066,真值:subtype)
+- ✗ `cacb01` Ankerite- CRB101(标本 CB-EAC-001-A,真值:subtype)
+- ✓ `cacb03` Dolomite- CRB103(标本 CB-EAC-003-A,真值:subtype)
+- ✓ `cacb17` Dolomite- CRB117(标本 CB-EAC-017-A,真值:subtype)
+- ✓ `cacb66` Ankerite- CRB140(标本 CB-EAC-066-A,真值:subtype)
+- ✓ `cbcb01` Ankerite- CRB101(标本 CB-EAC-001-B,真值:subtype)
+- ✓ `cbcb03` Dolomite- CRB103(标本 CB-EAC-003-B,真值:subtype)
+
+### chlorite(30 谱)
+
+- ✓ `c1cl14` Chlorite(标本 CL-TXH-014,真值:subtype)
+- ✓ `c1cy06` Chlorite(标本 CY-PLH-006,真值:subtype)
+- ✗ `c1xt14` Chlorite(标本 XT-CMP-014,真值:name)
+- ~ `c2cl14` Chlorite(标本 CL-TXH-014,真值:subtype)
+- ✗ `c2xt14` Chlorite(标本 XT-CMP-014,真值:name)
+- ✗ `c1ch16` Chamosite- CHM102(标本 CH-EAC-016,真值:subtype)
+- ✓ `c1ea14` Clinochore- CLI101(标本 EA-EAC-014,真值:subtype)
+- ✗ `c1ea25a` Clinochlore- CLI102(标本 EA-EAC-025-A,真值:subtype)
+- ✓ `c1ea26a` Clinochlore- CLI103(标本 EA-EAC-026-A,真值:subtype)
+- ✓ `c1jb728` Clinochlore from Smyth(标本 JB-JLB-728,真值:subtype)
+- ~ `c1jb737` Clinochlore WC(标本 JB-JLB-737,真值:subtype)
+- ✓ `c1jb738` Clinochlore 21-C(标本 JB-JLB-738,真值:subtype)
+- ✓ `c1jb739` Clinochlore 21-D(标本 JB-JLB-739,真值:subtype)
+- ✓ `c1jb794a` CMS standard ripidolite CCa-2(标本 JB-JLB-794-A,真值:subtype)
+- ✓ `c1jb794b` CMS standard ripidolite CCa-2(标本 JB-JLB-794-B,真值:subtype)
+- ✓ `c1jb794c` CMS standard ripidolite CCa-2(标本 JB-JLB-794-C,真值:subtype)
+- ✓ `c1jb794d` CMS standard ripidolite CCa-2(标本 JB-JLB-794-D,真值:subtype)
+- ✓ `c1jb794e` CMS standard ripidolite CCa-2(标本 JB-JLB-794-E,真值:subtype)
+- ✓ `c1jb794f` CMS standard ripidolite CCa-2(标本 JB-JLB-794-F,真值:subtype)
+- ✓ `c1jbf93a` chlorite 07 (JB1593a)(标本 JB-JLB-F93-A,真值:subtype)
+- ✓ `c1jbf93b` chlorite 07 (JB1593b)(标本 JB-JLB-F93-B,真值:subtype)
+- ✓ `c1jbf93c` chlorite 07 (JB1593c)(标本 JB-JLB-F93-C,真值:subtype)
+- ✓ `c1sr59` BUR-1340(标本 SR-JFM-059,真值:group)
+- ✓ `c1sr59a` BUR-1340(标本 SR-JFM-059-A,真值:group)
+- ✓ `c1sr68` WAR-1924(标本 SR-JFM-068,真值:group)
+- ✓ `c1sr68a` WAR-1924(标本 SR-JFM-068-A,真值:group)
+- ✗ `cach15` Chamosite- CHM101(标本 CH-EAC-015,真值:subtype)
+- ✗ `cach16` Chamosite- CHM102(标本 CH-EAC-016,真值:subtype)
+- ✗ `cach17` Chamosite- CHM103(标本 CH-EAC-017,真值:subtype)
+- ✓ `caea14` Clinochore- CLI101(标本 EA-EAC-014,真值:subtype)
+
+### siderite(25 谱)
+
+- ✓ `c1cy24` Siderite(标本 CY-PLH-024,真值:subtype)
+- ~ `c1gr03` Siderite(标本 GR-CMP-003,真值:subtype)
+- ~ `c1jb287` Siderite(标本 JB-JLB-287,真值:subtype)
+- ✗ `c1sh05` 6515b Siderite(标本 SH-SJG-005,真值:name)
+- ✗ `cbcc07` Siderite(标本 CC-JFM-007-B,真值:subtype)
+- ~ `c1jbe62a` Antigonish Co. siderite(标本 JB-JLB-E62-A,真值:subtype)
+- ~ `c1jbe62b` Antigonish Co. siderite(标本 JB-JLB-E62-B,真值:subtype)
+- ✗ `c1jbe62c` Antigonish Co. siderite(标本 JB-JLB-E62-C,真值:subtype)
+- ✗ `c1jbe62d` Antigonish Co. siderite(标本 JB-JLB-E62-D,真值:subtype)
+- ✗ `c1jbe62e` Antigonish Co. siderite(标本 JB-JLB-E62-E,真值:subtype)
+- ✗ `c1jbe62f` Antigonish Co. siderite(标本 JB-JLB-E62-F,真值:subtype)
+- ✓ `c1jbe63a` Litchfield Co. siderite(标本 JB-JLB-E63-A,真值:subtype)
+- ✓ `c1jbe63b` Litchfield Co. siderite(标本 JB-JLB-E63-B,真值:subtype)
+- ✓ `c1jbe63c` Litchfield Co. siderite(标本 JB-JLB-E63-C,真值:subtype)
+- ✓ `c1jbe63d` Litchfield Co. siderite(标本 JB-JLB-E63-D,真值:subtype)
+- ✓ `c1jbe63e` Litchfield Co. siderite(标本 JB-JLB-E63-E,真值:subtype)
+- ✓ `c1jbe63f` Litchfield Co. siderite(标本 JB-JLB-E63-F,真值:subtype)
+- ✗ `c1zl15` Siderite <212 um(标本 ZL-ZAL-015,真值:subtype)
+- ✓ `cacb08` Siderite- CRB108(标本 CB-EAC-008-A,真值:subtype)
+- ✗ `cacb67` Siderite- CRB141(标本 CB-EAC-067-A,真值:subtype)
+- ~ `cacb69` Siderite- CRB143(标本 CB-EAC-069-A,真值:subtype)
+- ~ `cacb71` Siderite- CRB145(标本 CB-EAC-071-A,真值:subtype)
+- ✗ `cacb73` Siderite- CRB148(标本 CB-EAC-073-A,真值:subtype)
+- ✓ `cacb74` Siderite- CRB701(标本 CB-EAC-074-A,真值:subtype)
+- ✓ `cbcb08` Siderite- CRB108(标本 CB-EAC-008-B,真值:subtype)
+
+### kaolinite(21 谱)
+
+- ✓ `c1cy10` Halloysite(标本 CY-PLH-010,真值:subtype)
+- ✓ `c1cy17` Kaolinite(标本 CY-PLH-017,真值:subtype)
+- ✓ `c1cy18` Kaolinite(标本 CY-PLH-018,真值:subtype)
+- ✓ `c1jb225` KGa Kaolinite- KGA-1(标本 JB-JLB-225,真值:subtype)
+- ✓ `c1sg18` Kaolin(标本 SG-SJG-018,真值:name)
+- ✓ `c1sh36` H-14(标本 SH-SJG-036,真值:group)
+- ✓ `cbjb25` Kaolinite(标本 JB-CMP-025-B,真值:subtype)
+- ✓ `ccjb25` Kaolinite(标本 JB-CMP-025-C,真值:subtype)
+- ✓ `cdjb25` Kaolinite(标本 JB-CMP-025-D,真值:subtype)
+- ✓ `c1ha01` Halloysite- HAL001(标本 HA-EAC-001,真值:subtype)
+- ✓ `c1jb225a` Kaolinite- KGa-1 <125 um resieved on January 2008(标本 JB-JLB-225-A,真值:subtype)
+- ✓ `c1jb766` Kaolinite KGa-1b, CMS standard(标本 JB-JLB-766,真值:subtype)
+- ✓ `c1jba35` Baker #15a (Kaolinite, Al/Si = 1/1)(标本 JB-JLB-A35,真值:subtype)
+- ✓ `c1jba46` Halloysite #902471(标本 JB-JLB-A46,真值:subtype)
+- ✓ `c1jba47` Halloysite #902472(标本 JB-JLB-A47,真值:subtype)
+- ✓ `c1jba48` Halloysite #902473(标本 JB-JLB-A48,真值:subtype)
+- ✓ `c1jba49` Halloysite #902474(标本 JB-JLB-A49,真值:subtype)
+- ✓ `c1jm80` Kaolinite- Kga-1(标本 JM-TGS-080,真值:subtype)
+- ✓ `c1jt160` MT60_Kaolinite100(标本 JT-JFM-160,真值:name)
+- ✓ `c1jt161` MT61_Kaolinite100(标本 JT-JFM-161,真值:name)
+- ✓ `caha01` Halloysite- HAL001(标本 HA-EAC-001,真值:subtype)
+
+### tremolite(13 谱)
+
+- ✓ `c1cy01` Actinolite(标本 CY-PLH-001,真值:subtype)
+- ✓ `c1cy28` Tremolite(标本 CY-PLH-028,真值:subtype)
+- ✓ `c1pa54` Actinolite(标本 PA-CMP-054,真值:name)
+- ✓ `c1rk91` Actinolite #1(标本 RK-CMP-091,真值:name)
+- ✓ `c1rk92` Actinolite #2(标本 RK-CMP-092,真值:name)
+- ✓ `c1rk93` Actinolite #3(标本 RK-CMP-093,真值:name)
+- ✓ `c1rk94` Actinolite #4(标本 RK-CMP-094,真值:name)
+- ✗ `c1rk95` Actinolite #5(标本 RK-CMP-095,真值:name)
+- ✓ `c1rk96` Actinolite #6(标本 RK-CMP-096,真值:name)
+- ✗ `c1rk97` Actinolite #7(标本 RK-CMP-097,真值:name)
+- ✓ `c1sm83` Actinolite(标本 SM-CMP-083,真值:name)
+- ✓ `c2rk94` Actinolite #4(标本 RK-CMP-094,真值:name)
+- ✓ `c1rk94a` Actinolite #4 <45 um(标本 RK-CMP-094-A,真值:name)
+
+### alunite(12 谱)
+
+- ✓ `c1cy02` Alunite(标本 CY-PLH-002,真值:subtype)
+- ✓ `c1xt05` Alunite(标本 XT-CMP-005,真值:name)
+- ✓ `cbcc08` Alunite(标本 CC-JFM-008-B,真值:subtype)
+- ✓ `cbcc09` Alunite(标本 CC-JFM-009-B,真值:subtype)
+- ✗ `c1lh52` PP-01 <500 um(标本 LH-JFM-052,真值:group)
+- ✓ `c2xt05` Alunite(标本 XT-CMP-005,真值:name)
+- ✗ `casf21` SPT107(标本 SF-EAC-021-A,真值:group)
+- ✗ `casf22` SPT108(标本 SF-EAC-022-A,真值:group)
+- ✗ `casf27` SPT113(标本 SF-EAC-027-A,真值:group)
+- ✗ `casf28` SPT114A(标本 SF-EAC-028-A,真值:group)
+- ✗ `casf29` SPT115(标本 SF-EAC-029-A,真值:group)
+- ✓ `casf43` SPT129(标本 SF-EAC-043-A,真值:group)
+
+### talc(10 谱)
+
+- ✓ `c1cy27` Talc(标本 CY-PLH-027,真值:subtype)
+- ✓ `c1pt07` Black Talc(标本 PT-CMP-007,真值:name)
+- ✓ `c1pt08` 484.63(标本 PT-CMP-008,真值:group)
+- ✓ `c1pt10` 0(标本 PT-CMP-010,真值:group)
+- ✗ `c1pt12` Talc-1(标本 PT-CMP-012,真值:name)
+- ✓ `c1ea15` Talc- TAL101(标本 EA-EAC-015,真值:subtype)
+- ✓ `c1sr52` BUR-4640C(标本 SR-JFM-052,真值:group)
+- ✓ `c1sr52a` BUR-4640C(标本 SR-JFM-052-A,真值:group)
+- ✓ `caea15` Talc- TAL101(标本 EA-EAC-015,真值:subtype)
+- ✓ `caec06` Talc (Synthetic)- PIG006(标本 EC-EAC-006,真值:subtype)
+
+### illite(7 谱)
+
+- ~ `c1cy12` Illite - 1Md(标本 CY-PLH-012,真值:subtype)
+- ✗ `c1cy13` Illite -2M(标本 CY-PLH-013,真值:subtype)
+- ~ `c2pi10` Illite(标本 PI-CMP-010,真值:name)
+- ✗ `c5pi10` Illite(标本 PI-CMP-010,真值:name)
+- ✗ `cairon` Illite(标本 PI-CMP-010,真值:name)
+- ✓ `c1jb783` Illite- CMS standard IMt-2(标本 JB-JLB-783,真值:subtype)
+- ✗ `c1jbf94` illite (JB1594)(标本 JB-JLB-F94,真值:subtype)
+
+### pyrophyllite(3 谱)
+
+- ✓ `c1cy22` Pyrophyllite(标本 CY-PLH-022,真值:subtype)
+- ✓ `c1sh43` Pyrophyllite(标本 SH-SJG-043,真值:name)
+- ✓ `capp02` Pyrophyllite(标本 PP-CMP-002,真值:name)
+
+### epidote(2 谱)
+
+- ~ `c1rs38` Epidote(标本 RS-CMP-038,真值:name)
+- ✓ `cape50` Epidote(标本 PE-CMP-050,真值:name)
+
+### muscovite(2 谱)
+
+- ✗ `c1sh47` Muscovite(标本 SH-SJG-047,真值:name)
+- ✓ `c1xt09` Muscovite(标本 XT-CMP-009,真值:name)
+
+### opal(2 谱)
+
+- ✓ `c1jt150` MT50_Silica100 (45-75 um)(标本 JT-JFM-150,真值:subtype)
+- ✓ `c1jt151` MT51_Silica100 (125-250 um)(标本 JT-JFM-151,真值:subtype)
+
+### buddingtonite(1 谱)
+
+- ✓ `c1cy04` Buddingtonite(标本 CY-PLH-004,真值:subtype)
+
+## 鉴定腿 2:ECOSTRESS 族内池(172 谱 / 37 标本 / 18 族)
+
+mineral ∩ (vswir|all) 全池经名称正则唯一归族者;排重审计与 bundled 零同源。
+
+### chlorite(24 谱)
+
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-12a.jpl.beckman.spectrum` Clinochlore (Chlorite) (Mg,Al)_6(Si,Al)_4O_10(OH)_8
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-12a.jpl.perkin.spectrum` Clinochlore (Chlorite) (Mg,Al)_6(Si,Al)_4O_10(OH)_8
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-12c.jpl.beckman.spectrum` Chlorite (Mg,Al)_6(Si,Al)_4O_10(OH)_8
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-12c.jpl.perkin.spectrum` Chlorite (Mg,Al)_6(Si,Al)_4O_10(OH)_8
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-12e.jpl.beckman.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-12e.jpl.perkin.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-12f.jpl.beckman.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-12f.jpl.perkin.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-12a.jpl.beckman.spectrum` Clinochlore (Chlorite) (Mg,Al)_6(Si,Al)_4O_10(OH)_8
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-12a.jpl.perkin.spectrum` Clinochlore (Chlorite) (Mg,Al)_6(Si,Al)_4O_10(OH)_8
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-12c.jpl.beckman.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-12c.jpl.perkin.spectrum` Chlorite
+- ~ `mineral.silicate.phyllosilicate.fine.vswir.ps-12e.jpl.beckman.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-12e.jpl.perkin.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-12f.jpl.beckman.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-12f.jpl.perkin.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-12a.jpl.beckman.spectrum` Clinochlore (Chlorite) (Mg,Al)_6(Si,Al)_4O_10(OH)_8
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-12a.jpl.perkin.spectrum` Clinochlore (Chlorite) (Mg,Al)_6(Si,Al)_4O_10(OH)_8
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-12c.jpl.beckman.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-12c.jpl.perkin.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-12e.jpl.beckman.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-12e.jpl.perkin.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-12f.jpl.beckman.spectrum` Chlorite
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-12f.jpl.perkin.spectrum` Chlorite
+
+### calcite(18 谱)
+
+- ✓ `mineral.carbonate.none.coarse.vswir.c-3a.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.coarse.vswir.c-3a.jpl.perkin.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.coarse.vswir.c-3d.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.coarse.vswir.c-3d.jpl.perkin.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.coarse.vswir.c-3e.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.coarse.vswir.c-3e.jpl.perkin.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.fine.vswir.c-3a.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.fine.vswir.c-3a.jpl.perkin.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.fine.vswir.c-3d.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.fine.vswir.c-3d.jpl.perkin.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.fine.vswir.c-3e.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.fine.vswir.c-3e.jpl.perkin.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.medium.vswir.c-3a.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.medium.vswir.c-3a.jpl.perkin.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.medium.vswir.c-3d.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.medium.vswir.c-3d.jpl.perkin.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.medium.vswir.c-3e.jpl.beckman.spectrum` Calcite CaCO_3
+- ✓ `mineral.carbonate.none.medium.vswir.c-3e.jpl.perkin.spectrum` Calcite CaCO_3
+
+### jarosite(18 谱)
+
+- ✓ `mineral.sulfate.none.coarse.vswir.so-7a.jpl.beckman.spectrum` Jarosite KFe_3^3+(SO_4)_2(OH)_6
+- ~ `mineral.sulfate.none.coarse.vswir.so-7a.jpl.perkin.spectrum` Jarosite KFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.coarse.vswir.so-7b.jpl.beckman.spectrum` Plumbojarosite PbFe_3^3+(SO_4)_4(OH)_12
+- ✓ `mineral.sulfate.none.coarse.vswir.so-7b.jpl.perkin.spectrum` Plumbojarosite PbFe_3^3+(SO_4)_4(OH)_12
+- ✓ `mineral.sulfate.none.coarse.vswir.so-7c.jpl.beckman.spectrum` Natrojarosite NaFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.coarse.vswir.so-7c.jpl.perkin.spectrum` Natrojarosite NaFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.fine.vswir.so-7a.jpl.beckman.spectrum` Jarosite KFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.fine.vswir.so-7a.jpl.perkin.spectrum` Jarosite KFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.fine.vswir.so-7b.jpl.beckman.spectrum` Plumbojarosite PbFe_3^3+(SO_4)_4(OH)_12
+- ✓ `mineral.sulfate.none.fine.vswir.so-7b.jpl.perkin.spectrum` Plumbojarosite PbFe_3^3+(SO_4)_4(OH)_12
+- ✓ `mineral.sulfate.none.fine.vswir.so-7c.jpl.beckman.spectrum` Natrojarosite NaFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.fine.vswir.so-7c.jpl.perkin.spectrum` Natrojarosite NaFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.medium.vswir.so-7a.jpl.beckman.spectrum` Jarosite KFe_3^3+(SO_4)_2(OH)_6
+- ~ `mineral.sulfate.none.medium.vswir.so-7a.jpl.perkin.spectrum` Jarosite KFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.medium.vswir.so-7b.jpl.beckman.spectrum` Plumbojarosite PbFe_3^3+(SO_4)_4(OH)_12
+- ✓ `mineral.sulfate.none.medium.vswir.so-7b.jpl.perkin.spectrum` Plumbojarosite PbFe_3^3+(SO_4)_4(OH)_12
+- ✓ `mineral.sulfate.none.medium.vswir.so-7c.jpl.beckman.spectrum` Natrojarosite NaFe_3^3+(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.medium.vswir.so-7c.jpl.perkin.spectrum` Natrojarosite NaFe_3^3+(SO_4)_2(OH)_6
+
+### smectite(16 谱)
+
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-6b.jpl.beckman.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-6b.jpl.perkin.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ~ `mineral.silicate.phyllosilicate.fine.vswir.ps-24a.jpl.beckman.spectrum` Saponite (Ca/2,Na)_0.33(Mg,Fe^2+)_3(Si,Al)_4O_10(OH)_2.4H_2O
+- ~ `mineral.silicate.phyllosilicate.fine.vswir.ps-24a.jpl.perkin.spectrum` Saponite (Ca/2,Na)_0.33(Mg,Fe^2+)_3(Si,Al)_4O_10(OH)_2.4H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-2b.jpl.beckman.spectrum` Montmorillonite (Na,Ca)_0.33(Al,Mg)_2Si_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-2b.jpl.perkin.spectrum` Montmorillonite (Na,Ca)_0.33(Al,Mg)_2Si_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-2d.jpl.beckman.spectrum` Montmorillonite (Na,Ca)_0.33(Al,Mg)_2Si_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-2d.jpl.perkin.spectrum` Montmorillonite (Na,Ca)_0.33(Al,Mg)_2Si_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-6a.jpl.beckman.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-6a.jpl.perkin.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-6b.jpl.beckman.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-6b.jpl.perkin.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-6d.jpl.beckman.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-6d.jpl.perkin.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-6b.jpl.beckman.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-6b.jpl.perkin.spectrum` Nontronite Na_0.33Fe_2^3+(Si,Al)_4O_10(OH)_2.H_2O
+
+### epidote(15 谱)
+
+- ~ `mineral.silicate.sorosilicate.coarse.vswir.ss-1a.jpl.beckman.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ~ `mineral.silicate.sorosilicate.coarse.vswir.ss-1a.jpl.perkin.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.coarse.vswir.ss-1c.jpl.beckman.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.coarse.vswir.ss-1c.jpl.perkin.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.coarse.vswir.ss-4a.jpl.beckman.spectrum` Clinozoisite Ca_2Al_3(SiO_4)_3(OH)
+- ✓ `mineral.silicate.sorosilicate.fine.vswir.ss-1a.jpl.beckman.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.fine.vswir.ss-1a.jpl.perkin.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✗ `mineral.silicate.sorosilicate.fine.vswir.ss-1c.jpl.beckman.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ~ `mineral.silicate.sorosilicate.fine.vswir.ss-1c.jpl.perkin.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.fine.vswir.ss-4a.jpl.beckman.spectrum` Clinozoisite Ca_2Al_3(SiO_4)_3(OH)
+- ✓ `mineral.silicate.sorosilicate.medium.vswir.ss-1a.jpl.beckman.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.medium.vswir.ss-1a.jpl.perkin.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.medium.vswir.ss-1c.jpl.beckman.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.medium.vswir.ss-1c.jpl.perkin.spectrum` Epidote Ca_2(Al,Fe^3+)_3O.SiO_4.Si_2O_7.OH
+- ✓ `mineral.silicate.sorosilicate.medium.vswir.ss-4a.jpl.beckman.spectrum` Clinozoisite Ca_2Al_3(SiO_4)_3(OH)
+
+### dolomite(12 谱)
+
+- ✓ `mineral.carbonate.none.coarse.vswir.c-5a.jpl.beckman.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.coarse.vswir.c-5a.jpl.perkin.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.coarse.vswir.c-5c.jpl.beckman.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.coarse.vswir.c-5c.jpl.perkin.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.fine.vswir.c-5a.jpl.beckman.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.fine.vswir.c-5c.jpl.beckman.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.fine.vswir.c-5c.jpl.perkin.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.medium.vswir.c-5a.jpl.beckman.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.medium.vswir.c-5a.jpl.perkin.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.medium.vswir.c-5c.jpl.beckman.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.medium.vswir.c-5c.jpl.perkin.spectrum` Dolomite CaMg(CO_3)_2
+- ✓ `mineral.carbonate.none.none.vswir.c-5a.jpl.perkin.spectrum` Dolomite CaMg(CO_3)_2
+
+### tremolite(12 谱)
+
+- ✓ `mineral.silicate.inosilicate.coarse.vswir.in-4a.jpl.beckman.spectrum` Actinolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.coarse.vswir.in-4a.jpl.perkin.spectrum` Actinolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✗ `mineral.silicate.inosilicate.coarse.vswir.in-5a.jpl.beckman.spectrum` Tremolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✗ `mineral.silicate.inosilicate.coarse.vswir.in-5a.jpl.perkin.spectrum` Tremolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.fine.vswir.in-4a.jpl.beckman.spectrum` Actinolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.fine.vswir.in-4a.jpl.perkin.spectrum` Actinolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.fine.vswir.in-5a.jpl.beckman.spectrum` Tremolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.fine.vswir.in-5a.jpl.perkin.spectrum` Tremolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.medium.vswir.in-4a.jpl.beckman.spectrum` Actinolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.medium.vswir.in-4a.jpl.perkin.spectrum` Actinolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.medium.vswir.in-5a.jpl.beckman.spectrum` Tremolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+- ✓ `mineral.silicate.inosilicate.medium.vswir.in-5a.jpl.perkin.spectrum` Tremolite Ca_2(Mg,Fe^2+)_5Si_8O_22(OH)_2
+
+### gypsum(7 谱)
+
+- ✓ `mineral.sulfate.none.coarse.all.gypsumc.usgs.perknic.spectrum` Gypsum CaSO4 * 2H2O
+- ✓ `mineral.sulfate.none.coarse.vswir.so-2b.jpl.beckman.spectrum` Gypsum CaSO_4.2H_2O
+- ✓ `mineral.sulfate.none.coarse.vswir.so-2b.jpl.perkin.spectrum` Gypsum CaSO_4.2H_2O
+- ✓ `mineral.sulfate.none.fine.vswir.so-2b.jpl.beckman.spectrum` Gypsum CaSO_4.2H_2O
+- ✓ `mineral.sulfate.none.fine.vswir.so-2b.jpl.perkin.spectrum` Gypsum CaSO_4.2H_2O
+- ✓ `mineral.sulfate.none.medium.vswir.so-2b.jpl.beckman.spectrum` Gypsum CaSO_4.2H_2O
+- ✓ `mineral.sulfate.none.medium.vswir.so-2b.jpl.perkin.spectrum` Gypsum CaSO_4.2H_2O
+
+### siderite(6 谱)
+
+- ~ `mineral.carbonate.none.coarse.vswir.c-9a.jpl.beckman.spectrum` Siderite Fe^2+CO_3
+- ~ `mineral.carbonate.none.coarse.vswir.c-9a.jpl.perkin.spectrum` Siderite Fe^2+CO_3
+- ✓ `mineral.carbonate.none.fine.vswir.c-9a.jpl.beckman.spectrum` Siderite Fe^2+CO_3
+- ✓ `mineral.carbonate.none.fine.vswir.c-9a.jpl.perkin.spectrum` Siderite Fe^2+CO_3
+- ~ `mineral.carbonate.none.medium.vswir.c-9a.jpl.beckman.spectrum` Siderite Fe^2+CO_3
+- ~ `mineral.carbonate.none.medium.vswir.c-9a.jpl.perkin.spectrum` Siderite Fe^2+CO_3
+
+### topaz(6 谱)
+
+- ✓ `mineral.silicate.nesosilicate.coarse.vswir.ns-6a.jpl.beckman.spectrum` Topaz Al_2SiO_4(F,OH)_2
+- ✓ `mineral.silicate.nesosilicate.coarse.vswir.ns-6a.jpl.perkin.spectrum` Topaz Al_2SiO_4(F,OH)_2
+- ✓ `mineral.silicate.nesosilicate.fine.vswir.ns-6a.jpl.beckman.spectrum` Topaz Al_2SiO_4(F,OH)_2
+- ✓ `mineral.silicate.nesosilicate.fine.vswir.ns-6a.jpl.perkin.spectrum` Topaz Al_2SiO_4(F,OH)_2
+- ✓ `mineral.silicate.nesosilicate.medium.vswir.ns-6a.jpl.beckman.spectrum` Topaz Al_2SiO_4(F,OH)_2
+- ✓ `mineral.silicate.nesosilicate.medium.vswir.ns-6a.jpl.perkin.spectrum` Topaz Al_2SiO_4(F,OH)_2
+
+### talc(6 谱)
+
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-14a.jpl.beckman.spectrum` Talc Mg_3Si_4O_10(OH)_2
+- ✗ `mineral.silicate.phyllosilicate.coarse.vswir.ps-14a.jpl.perkin.spectrum` Talc Mg_3Si_4O_10(OH)_2
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-14a.jpl.beckman.spectrum` Talc Mg_3Si_4O_10(OH)_2
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-14a.jpl.perkin.spectrum` Talc Mg_3Si_4O_10(OH)_2
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-14a.jpl.beckman.spectrum` Talc Mg_3Si_4O_10(OH)_2
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-14a.jpl.perkin.spectrum` Talc Mg_3Si_4O_10(OH)_2
+
+### muscovite(6 谱)
+
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-16a.jpl.beckman.spectrum` Muscovite KAl_2(Si_3Al)O_10(OH,F)_2
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-16a.jpl.perkin.spectrum` Muscovite KAl_2(Si_3Al)O_10(OH,F)_2
+- ~ `mineral.silicate.phyllosilicate.fine.vswir.ps-16a.jpl.beckman.spectrum` Muscovite KAl_2(Si_3Al)O_10(OH,F)_2
+- ✗ `mineral.silicate.phyllosilicate.fine.vswir.ps-16a.jpl.perkin.spectrum` Muscovite KAl_2(Si_3Al)O_10(OH,F)_2
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-16a.jpl.beckman.spectrum` Muscovite KAl_2(Si_3Al)O_10(OH,F)_2
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-16a.jpl.perkin.spectrum` Muscovite KAl_2(Si_3Al)O_10(OH,F)_2
+
+### serpentine(6 谱)
+
+- ~ `mineral.silicate.phyllosilicate.coarse.vswir.ps-20a.jpl.beckman.spectrum` Serpentine (Mg,Fe^2+,Ni)Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-20a.jpl.perkin.spectrum` Serpentine (Mg,Fe^2+,Ni)Si_2O_5(OH)_4
+- ~ `mineral.silicate.phyllosilicate.fine.vswir.ps-20a.jpl.beckman.spectrum` Serpentine (Mg,Fe^2+,Ni)Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-20a.jpl.perkin.spectrum` Serpentine (Mg,Fe^2+,Ni)Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-20a.jpl.beckman.spectrum` Serpentine (Mg,Fe^2+,Ni)Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-20a.jpl.perkin.spectrum` Serpentine (Mg,Fe^2+,Ni)Si_2O_5(OH)_4
+
+### kaolinite(6 谱)
+
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-1a.jpl.beckman.spectrum` Kaolinite Al_2Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-1a.jpl.perkin.spectrum` Kaolinite Al_2Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-1b.jpl.beckman.spectrum` Kaolinite Al_2Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-1b.jpl.perkin.spectrum` Kaolinite Al_2Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-3a.jpl.beckman.spectrum` Dickite Al_2Si_2O_5(OH)_4
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-3a.jpl.perkin.spectrum` Dickite Al_2Si_2O_5(OH)_4
+
+### alunite(6 谱)
+
+- ✓ `mineral.sulfate.none.coarse.vswir.so-4a.jpl.beckman.spectrum` Alunite KAl_3(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.coarse.vswir.so-4a.jpl.perkin.spectrum` Alunite KAl_3(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.fine.vswir.so-4a.jpl.beckman.spectrum` Alunite KAl_3(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.fine.vswir.so-4a.jpl.perkin.spectrum` Alunite KAl_3(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.medium.vswir.so-4a.jpl.beckman.spectrum` Alunite KAl_3(SO_4)_2(OH)_6
+- ✓ `mineral.sulfate.none.medium.vswir.so-4a.jpl.perkin.spectrum` Alunite KAl_3(SO_4)_2(OH)_6
+
+### pyrophyllite(3 谱)
+
+- ✓ `mineral.silicate.phyllosilicate.coarse.vswir.ps-7a.jpl.beckman.spectrum` Pyrophyllite Al_2Si_4O_10(OH)_2
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-7a.jpl.beckman.spectrum` Pyrophyllite Al_2Si_4O_10(OH)_2
+- ✓ `mineral.silicate.phyllosilicate.medium.vswir.ps-7a.jpl.beckman.spectrum` Pyrophyllite Al_2Si_4O_10(OH)_2
+
+### buddingtonite(3 谱)
+
+- ✓ `mineral.silicate.tectosilicate.coarse.vswir.ts-11a.jpl.beckman.spectrum` Buddingtonite (Feldspar) (NH_4)AlSi_3O_8.0.5H_2O
+- ✓ `mineral.silicate.tectosilicate.fine.vswir.ts-11a.jpl.beckman.spectrum` Buddingtonite (Feldspar) (NH_4)AlSi_3O_8.0.5H_2O
+- ✓ `mineral.silicate.tectosilicate.medium.vswir.ts-11a.jpl.beckman.spectrum` Buddingtonite (Feldspar) (NH_4)AlSi_3O_8.0.5H_2O
+
+### illite(2 谱)
+
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-11a.jpl.beckman.spectrum` Illite (K,H_3O)(Al,Mg,Fe)_2(Si,Al)_4O_10((OH)_2,H_2O)
+- ✓ `mineral.silicate.phyllosilicate.fine.vswir.ps-11a.jpl.perkin.spectrum` Illite (K,H_3O)(Al,Mg,Fe)_2(Si,Al)_4O_10((OH)_2,H_2O)
+
+## 鉴定腿 3:ECOSTRESS OOD 池(685 谱,虚警画像,不计准确率)
+
+- 无规则触发(事实拒识):427 谱
+- 有规则触发:258 谱(逐谱见 crosslib_benchmark.csv `pool=ood` 行)
+
+<details><summary>OOD 全清单(685 谱)</summary>
+
+- `mineral.arsenate.none.coarse.vswir.a-1a.jpl.beckman.spectrum` Mimetite Pb_5(AsO_4)_3Cl → (无触发)
+- `mineral.arsenate.none.coarse.vswir.a-1a.jpl.perkin.spectrum` Mimetite Pb_5(AsO_4)_3Cl → (无触发)
+- `mineral.arsenate.none.coarse.vswir.a-2a.jpl.beckman.spectrum` Scorodite Fe^3+AsO_4.2H_2O → (无触发)
+- `mineral.arsenate.none.coarse.vswir.a-2a.jpl.perkin.spectrum` Scorodite Fe^3+AsO_4.2H_2O → (无触发)
+- `mineral.arsenate.none.fine.vswir.a-1a.jpl.beckman.spectrum` Mimetite Pb_5(AsO_4)_3Cl → (无触发)
+- `mineral.arsenate.none.fine.vswir.a-1a.jpl.perkin.spectrum` Mimetite Pb_5(AsO_4)_3Cl → (无触发)
+- `mineral.arsenate.none.fine.vswir.a-2a.jpl.beckman.spectrum` Scorodite Fe^3+AsO_4.2H_2O → (无触发)
+- `mineral.arsenate.none.fine.vswir.a-2a.jpl.perkin.spectrum` Scorodite Fe^3+AsO_4.2H_2O → (无触发)
+- `mineral.arsenate.none.medium.vswir.a-1a.jpl.beckman.spectrum` Mimetite Pb_5(AsO_4)_3Cl → (无触发)
+- `mineral.arsenate.none.medium.vswir.a-1a.jpl.perkin.spectrum` Mimetite Pb_5(AsO_4)_3Cl → (无触发)
+- `mineral.arsenate.none.medium.vswir.a-2a.jpl.beckman.spectrum` Scorodite Fe^3+AsO_4.2H_2O → (无触发)
+- `mineral.arsenate.none.medium.vswir.a-2a.jpl.perkin.spectrum` Scorodite Fe^3+AsO_4.2H_2O → (无触发)
+- `mineral.borate.none.coarse.all.nmnh102876-2.usgs.perknic.spectrum` Gaylussite Na2Ca(CO3)2 * 5H2O → pyrophyllite.25+kaolinite.75
+- `mineral.borate.none.coarse.all.nmnh123943.usgs.perknic.spectrum` Pinnoite MgB2O4 * 3H2O → montmorillonite_Ca
+- `mineral.borate.none.coarse.all.nmnh137833.usgs.perknic.spectrum` Inderite MgB3O3(OH)5 * 5H2O → (无触发)
+- `mineral.borate.none.coarse.all.nmnh160075.usgs.perknic.spectrum` Kaliborite KHMg2B12O16(OH)10 * 4H2O → pyrophyllite.25+kaolinite.75
+- `mineral.borate.none.coarse.all.nmnh170164.usgs.perknic.spectrum` Rivadavite Na6MgB24O40 * 22H2O → pyrophyllite.25+kaolinite.75
+- `mineral.borate.none.coarse.all.nmnh96075-3.usgs.perknic.spectrum` Meyerhofferite Ca2B6O6(OH)10 * H2O → (无触发)
+- `mineral.borate.none.coarse.all.none.usgs.perknic.spectrum` Kernite  Na2B4O6(OH)2 * 3H2O → montmorillonite_Na
+- `mineral.borate.none.coarse.all.ulexite.usgs.perknic.spectrum` Ulexite NaCaB5O6(OH)6 * 5H2O → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.coarse.vswir.b-1a.jpl.beckman.spectrum` Colemanite Ca_2B_6O_11.5H_2O → montmorillonite_Na
+- `mineral.borate.none.coarse.vswir.b-1a.jpl.perkin.spectrum` Colemanite Ca_2B_6O_11.5H_2O → montmorillonite_Na
+- `mineral.borate.none.coarse.vswir.b-2a.jpl.beckman.spectrum` Kernite Na_2B_4O_6(OH)_2.3H_2O → kaolinite+smectite_mix_intimate
+- `mineral.borate.none.coarse.vswir.b-2a.jpl.perkin.spectrum` Kernite Na_2B_4O_6(OH)_2.3H_2O → kaolinite+smectite_mix_intimate
+- `mineral.borate.none.coarse.vswir.b-3a.jpl.beckman.spectrum` Ulexite NaCaB_5O_6(OH)_6.5H_2O → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.coarse.vswir.b-3a.jpl.perkin.spectrum` Ulexite NaCaB_5O_6(OH)_6.5H_2O → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.coarse.vswir.b-4a.jpl.beckman.spectrum` Tincalconite Na_2B_4O_5(OH)_4.3H_2O → (无触发)
+- `mineral.borate.none.coarse.vswir.b-4a.jpl.perkin.spectrum` Tincalconite Na_2B_4O_5(OH)_4.3H_2O → (无触发)
+- `mineral.borate.none.coarse.vswir.b-5a.jpl.beckman.spectrum` Howlite Ca_2B_5SiO_9(OH)_5 → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.coarse.vswir.b-5a.jpl.perkin.spectrum` Howlite Ca_2B_5SiO_9(OH)_5 → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.coarse.vswir.b-6a.jpl.beckman.spectrum` Borax Na_2B_4O_5(OH)_4.8H_2O → (无触发)
+- `mineral.borate.none.coarse.vswir.b-6a.jpl.perkin.spectrum` Borax Na_2B_4O_5(OH)_4.8H_2O → (无触发)
+- `mineral.borate.none.fine.vswir.b-1a.jpl.beckman.spectrum` Colemanite Ca_2B_6O_11.5H_2O → montmorillonite_Na
+- `mineral.borate.none.fine.vswir.b-1a.jpl.perkin.spectrum` Colemanite Ca_2B_6O_11.5H_2O → montmorillonite_Na
+- `mineral.borate.none.fine.vswir.b-2a.jpl.beckman.spectrum` Kernite Na_2B_4O_6(OH)_2.3H_2O → kaolinite+smectite_mix_intimate
+- `mineral.borate.none.fine.vswir.b-2a.jpl.perkin.spectrum` Kernite Na_2B_4O_6(OH)_2.3H_2O → kaolinite+smectite_mix_intimate
+- `mineral.borate.none.fine.vswir.b-3a.jpl.beckman.spectrum` Ulexite NaCaB_5O_6(OH)_6.5H_2O → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.fine.vswir.b-3a.jpl.perkin.spectrum` Ulexite NaCaB_5O_6(OH)_6.5H_2O → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.fine.vswir.b-4a.jpl.beckman.spectrum` Tincalconite Na_2B_4O_5(OH)_4.3H_2O → (无触发)
+- `mineral.borate.none.fine.vswir.b-4a.jpl.perkin.spectrum` Tincalconite Na_2B_4O_5(OH)_4.3H_2O → (无触发)
+- `mineral.borate.none.fine.vswir.b-5a.jpl.beckman.spectrum` Howlite Ca_2B_5SiO_9(OH)_5 → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.fine.vswir.b-5a.jpl.perkin.spectrum` Howlite Ca_2B_5SiO_9(OH)_5 → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.fine.vswir.b-6a.jpl.beckman.spectrum` Borax Na_2B_4O_5(OH)_4.8H_2O → (无触发)
+- `mineral.borate.none.fine.vswir.b-6a.jpl.perkin.spectrum` Borax Na_2B_4O_5(OH)_4.8H_2O → (无触发)
+- `mineral.borate.none.medium.vswir.b-1a.jpl.beckman.spectrum` Colemanite Ca_2B_6O_11.5H_2O → montmorillonite_Na
+- `mineral.borate.none.medium.vswir.b-1a.jpl.perkin.spectrum` Colemanite Ca_2B_6O_11.5H_2O → montmorillonite_Na
+- `mineral.borate.none.medium.vswir.b-2a.jpl.beckman.spectrum` Kernite Na_2B_4O_6(OH)_2.3H_2O → kaolinite+smectite_mix_intimate
+- `mineral.borate.none.medium.vswir.b-2a.jpl.perkin.spectrum` Kernite Na_2B_4O_6(OH)_2.3H_2O → kaolinite+smectite_mix_intimate
+- `mineral.borate.none.medium.vswir.b-3a.jpl.beckman.spectrum` Ulexite NaCaB_5O_6(OH)_6.5H_2O → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.medium.vswir.b-3a.jpl.perkin.spectrum` Ulexite NaCaB_5O_6(OH)_6.5H_2O → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.medium.vswir.b-4a.jpl.beckman.spectrum` Tincalconite Na_2B_4O_5(OH)_4.3H_2O → (无触发)
+- `mineral.borate.none.medium.vswir.b-4a.jpl.perkin.spectrum` Tincalconite Na_2B_4O_5(OH)_4.3H_2O → (无触发)
+- `mineral.borate.none.medium.vswir.b-5a.jpl.beckman.spectrum` Howlite Ca_2B_5SiO_9(OH)_5 → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.medium.vswir.b-5a.jpl.perkin.spectrum` Howlite Ca_2B_5SiO_9(OH)_5 → buddingtonite+montmorillonite_mix_intimate
+- `mineral.borate.none.medium.vswir.b-6a.jpl.beckman.spectrum` Borax Na_2B_4O_5(OH)_4.8H_2O → (无触发)
+- `mineral.borate.none.medium.vswir.b-6a.jpl.perkin.spectrum` Borax Na_2B_4O_5(OH)_4.8H_2O → (无触发)
+- `mineral.carbonate.none.coarse.all.natron.usgs.perknic.spectrum` Natron Na2CO3·10H2O → snow_melting
+- `mineral.carbonate.none.coarse.all.nmnh105598.usgs.perknic.spectrum` Burkeite Na6(CO3)(SO4)2 → (无触发)
+- `mineral.carbonate.none.coarse.all.traonac.usgs.perknic.spectrum` Trona Na3(CO)(HCO3) * 2H2O → buddingtonite+montmorillonite_mix_intimate
+- `mineral.carbonate.none.coarse.vswir.c-10a.jpl.beckman.spectrum` Cerussite PbCO_3 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-10a.jpl.perkin.spectrum` Cerussite PbCO_3 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-11a.jpl.beckman.spectrum` Smithsonite PbCO_3 → calcite
+- `mineral.carbonate.none.coarse.vswir.c-11a.jpl.perkin.spectrum` Smithsonite PbCO_3 → calcite
+- `mineral.carbonate.none.coarse.vswir.c-12a.jpl.beckman.spectrum` Azurite Cu_3(CO_3)_2(OH)_2 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-12a.jpl.perkin.spectrum` Azurite Cu_3(CO_3)_2(OH)_2 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-1a.jpl.beckman.spectrum` Strontianite SrCO_3 → calcite
+- `mineral.carbonate.none.coarse.vswir.c-1a.jpl.perkin.spectrum` Strontianite SrCO_3 → calcite
+- `mineral.carbonate.none.coarse.vswir.c-2a.jpl.beckman.spectrum` Witherite BaCO_3 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-2a.jpl.perkin.spectrum` Witherite BaCO_3 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-4a.jpl.beckman.spectrum` Trona Na_3(CO_3)(HCO_3).2H_2O → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-4a.jpl.perkin.spectrum` Trona Na_3(CO_3)(HCO_3).2H_2O → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-6a.jpl.beckman.spectrum` Magnesite MgCO_3 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-6a.jpl.perkin.spectrum` Magnesite MgCO_3 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-7a.jpl.beckman.spectrum` Malachite Cu_2(CO_3)(OH)_2 → hydrated_silica
+- `mineral.carbonate.none.coarse.vswir.c-7a.jpl.perkin.spectrum` Malachite Cu_2(CO_3)(OH)_2 → (无触发)
+- `mineral.carbonate.none.coarse.vswir.c-8a.jpl.beckman.spectrum` Rhodochrosite MnCO_3 → carbonate_Fe_bearing
+- `mineral.carbonate.none.coarse.vswir.c-8a.jpl.perkin.spectrum` Rhodochrosite MnCO_3 → calcite
+- `mineral.carbonate.none.fine.vswir.c-10a.jpl.beckman.spectrum` Cerussite PbCO_3 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-10a.jpl.perkin.spectrum` Cerussite PbCO_3 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-11a.jpl.beckman.spectrum` Smithsonite PbCO_3 → calcite
+- `mineral.carbonate.none.fine.vswir.c-11a.jpl.perkin.spectrum` Smithsonite PbCO_3 → calcite
+- `mineral.carbonate.none.fine.vswir.c-12a.jpl.beckman.spectrum` Azurite Cu_3(CO_3)_2(OH)_2 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-12a.jpl.perkin.spectrum` Azurite Cu_3(CO_3)_2(OH)_2 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-1a.jpl.beckman.spectrum` Strontianite SrCO_3 → calcite
+- `mineral.carbonate.none.fine.vswir.c-1a.jpl.perkin.spectrum` Strontianite SrCO_3 → calcite
+- `mineral.carbonate.none.fine.vswir.c-2a.jpl.beckman.spectrum` Witherite BaCO_3 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-2a.jpl.perkin.spectrum` Witherite BaCO_3 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-4a.jpl.beckman.spectrum` Trona Na_3(CO_3)(HCO_3).2H_2O → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-4a.jpl.perkin.spectrum` Trona Na_3(CO_3)(HCO_3).2H_2O → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-6a.jpl.beckman.spectrum` Magnesite MgCO_3 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-6a.jpl.perkin.spectrum` Magnesite MgCO_3 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-7a.jpl.beckman.spectrum` Malachite Cu_2(CO_3)(OH)_2 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-7a.jpl.perkin.spectrum` Malachite Cu_2(CO_3)(OH)_2 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-8a.jpl.beckman.spectrum` Rhodochrosite MnCO_3 → (无触发)
+- `mineral.carbonate.none.fine.vswir.c-8a.jpl.perkin.spectrum` Rhodochrosite MnCO_3 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-10a.jpl.beckman.spectrum` Cerussite PbCO_3 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-10a.jpl.perkin.spectrum` Cerussite PbCO_3 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-11a.jpl.beckman.spectrum` Smithsonite PbCO_3 → calcite
+- `mineral.carbonate.none.medium.vswir.c-11a.jpl.perkin.spectrum` Smithsonite PbCO_3 → calcite
+- `mineral.carbonate.none.medium.vswir.c-12a.jpl.beckman.spectrum` Azurite Cu_3(CO_3)_2(OH)_2 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-12a.jpl.perkin.spectrum` Azurite Cu_3(CO_3)_2(OH)_2 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-1a.jpl.beckman.spectrum` Strontianite SrCO_3 → calcite
+- `mineral.carbonate.none.medium.vswir.c-1a.jpl.perkin.spectrum` Strontianite SrCO_3 → calcite
+- `mineral.carbonate.none.medium.vswir.c-2a.jpl.beckman.spectrum` Witherite BaCO_3 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-2a.jpl.perkin.spectrum` Witherite BaCO_3 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-4a.jpl.beckman.spectrum` Trona Na_3(CO_3)(HCO_3).2H_2O → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-4a.jpl.perkin.spectrum` Trona Na_3(CO_3)(HCO_3).2H_2O → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-6a.jpl.beckman.spectrum` Magnesite MgCO_3 → nontronite
+- `mineral.carbonate.none.medium.vswir.c-6a.jpl.perkin.spectrum` Magnesite MgCO_3 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-7a.jpl.beckman.spectrum` Malachite Cu_2(CO_3)(OH)_2 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-7a.jpl.perkin.spectrum` Malachite Cu_2(CO_3)(OH)_2 → (无触发)
+- `mineral.carbonate.none.medium.vswir.c-8a.jpl.beckman.spectrum` Rhodochrosite MnCO_3 → calcite
+- `mineral.carbonate.none.medium.vswir.c-8a.jpl.perkin.spectrum` Rhodochrosite MnCO_3 → calcite
+- `mineral.chloride.none.coarse.all.nmnh83904.usgs.perknic.spectrum` Kainite MgSO4 * KCL * 3H2O → montmorillonite_Ca
+- `mineral.chloride.none.coarse.all.nmnh98011.usgs.perknic.spectrum` Carnallite KMgCl3 * 6H2O → (无触发)
+- `mineral.element.none.coarse.vswir.e-1a.jpl.beckman.spectrum` Graphite C → (无触发)
+- `mineral.element.none.coarse.vswir.e-1a.jpl.perkin.spectrum` Graphite C → (无触发)
+- `mineral.element.none.coarse.vswir.e-2a.jpl.beckman.spectrum` Sulphur S → (无触发)
+- `mineral.element.none.coarse.vswir.e-2a.jpl.perkin.spectrum` Sulphur S → (无触发)
+- `mineral.element.none.fine.vswir.e-1a.jpl.beckman.spectrum` Graphite C → (无触发)
+- `mineral.element.none.fine.vswir.e-1a.jpl.perkin.spectrum` Graphite C → (无触发)
+- `mineral.element.none.fine.vswir.e-2a.jpl.beckman.spectrum` Sulphur S → (无触发)
+- `mineral.element.none.fine.vswir.e-2a.jpl.perkin.spectrum` Sulphur S → (无触发)
+- `mineral.element.none.medium.vswir.e-1a.jpl.beckman.spectrum` Graphite C → (无触发)
+- `mineral.element.none.medium.vswir.e-1a.jpl.perkin.spectrum` Graphite C → (无触发)
+- `mineral.element.none.medium.vswir.e-2a.jpl.beckman.spectrum` Sulphur S → (无触发)
+- `mineral.element.none.medium.vswir.e-2a.jpl.perkin.spectrum` Sulphur S → (无触发)
+- `mineral.halide.none.coarse.vswir.h-1a.jpl.beckman.spectrum` Cryolite Na_3AlF_6 → (无触发)
+- `mineral.halide.none.coarse.vswir.h-1a.jpl.perkin.spectrum` Cryolite Na_3AlF_6 → (无触发)
+- `mineral.halide.none.coarse.vswir.h-2a.jpl.beckman.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.coarse.vswir.h-2a.jpl.perkin.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.coarse.vswir.h-2b.jpl.beckman.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.coarse.vswir.h-2b.jpl.perkin.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.coarse.vswir.h-3a.jpl.beckman.spectrum` Halite NaCl → (无触发)
+- `mineral.halide.none.coarse.vswir.h-3a.jpl.perkin.spectrum` Halite NaCl → (无触发)
+- `mineral.halide.none.coarse.vswir.h-4a.jpl.beckman.spectrum` Atacamite Cu_2Cl(OH)_3 → clinochlore
+- `mineral.halide.none.coarse.vswir.h-4a.jpl.perkin.spectrum` Atacamite Cu_2Cl(OH)_3 → clinochlore_Fe
+- `mineral.halide.none.fine.vswir.h-1a.jpl.beckman.spectrum` Cryolite Na_3AlF_6 → (无触发)
+- `mineral.halide.none.fine.vswir.h-1a.jpl.perkin.spectrum` Cryolite Na_3AlF_6 → (无触发)
+- `mineral.halide.none.fine.vswir.h-2a.jpl.beckman.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.fine.vswir.h-2a.jpl.perkin.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.fine.vswir.h-2b.jpl.beckman.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.fine.vswir.h-2b.jpl.perkin.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.fine.vswir.h-3a.jpl.beckman.spectrum` Halite NaCl → (无触发)
+- `mineral.halide.none.fine.vswir.h-3a.jpl.perkin.spectrum` Halite NaCl → (无触发)
+- `mineral.halide.none.fine.vswir.h-4a.jpl.beckman.spectrum` AtacamiteCu_2Cl(OH)_3 → (无触发)
+- `mineral.halide.none.fine.vswir.h-4a.jpl.perkin.spectrum` AtacamiteCu_2Cl(OH)_3 → (无触发)
+- `mineral.halide.none.medium.vswir.h-1a.jpl.beckman.spectrum` Cryolite Na_3AlF_6 → (无触发)
+- `mineral.halide.none.medium.vswir.h-1a.jpl.perkin.spectrum` Cryolite Na_3AlF_6 → (无触发)
+- `mineral.halide.none.medium.vswir.h-2a.jpl.beckman.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.medium.vswir.h-2a.jpl.perkin.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.medium.vswir.h-2b.jpl.beckman.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.medium.vswir.h-2b.jpl.perkin.spectrum` Fluorite CaF_2 → (无触发)
+- `mineral.halide.none.medium.vswir.h-3a.jpl.beckman.spectrum` Halite NaCl → (无触发)
+- `mineral.halide.none.medium.vswir.h-3a.jpl.perkin.spectrum` Halite NaCl → (无触发)
+- `mineral.halide.none.medium.vswir.h-4a.jpl.beckman.spectrum` Atacamite Cu_2Cl(OH)_3 → serpentine_antigorite_or_calcite+dolomite
+- `mineral.halide.none.medium.vswir.h-4a.jpl.perkin.spectrum` Atacamite Cu_2Cl(OH)_3 → (无触发)
+- `mineral.hydroxide.none.coarse.vswir.oh-1a.jpl.beckman.spectrum` Brucite Mg(OH)_2 → dolomite
+- `mineral.hydroxide.none.coarse.vswir.oh-1a.jpl.perkin.spectrum` Brucite Mg(OH)_2 → dolomite
+- `mineral.hydroxide.none.fine.vswir.oh-1a.jpl.beckman.spectrum` Brucite Mg(OH)_2 → dolomite
+- `mineral.hydroxide.none.fine.vswir.oh-1a.jpl.perkin.spectrum` Brucite Mg(OH)_2 → dolomite
+- `mineral.hydroxide.none.fine.vswir.oh-2a.jpl.beckman.spectrum` Goethite alpha Fe^3+O(OH) → (无触发)
+- `mineral.hydroxide.none.fine.vswir.oh-3a.jpl.beckman.spectrum` Gibbsite Al(OH)_3 → jarosite_Na
+- `mineral.hydroxide.none.fine.vswir.oh-3a.jpl.perkin.spectrum` Gibbsite Al(OH)_3 → jarosite_Na
+- `mineral.hydroxide.none.medium.vswir.oh-1a.jpl.beckman.spectrum` Brucite Mg(OH)_2 → dolomite
+- `mineral.hydroxide.none.medium.vswir.oh-1a.jpl.perkin.spectrum` Brucite Mg(OH)_2 → dolomite
+- `mineral.oxide.none.coarse.vswir.o-11a.jpl.beckman.spectrum` Gahnite ZnAl_2O_4 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-11a.jpl.perkin.spectrum` Gahnite ZnAl_2O_4 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-15a.jpl.beckman.spectrum` Corundum Al_2O_3 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-15a.jpl.perkin.spectrum` Corundum Al_2O_3 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-1a.jpl.beckman.spectrum` Hematite alpha Fe_2O_3 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-1a.jpl.perkin.spectrum` Hematite alpha Fe_2O_3 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-2a.jpl.beckman.spectrum` Rutile TiO_2 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-2a.jpl.perkin.spectrum` Rutile TiO_2 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-3a.jpl.beckman.spectrum` Cassiterite SnO_2 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-3a.jpl.perkin.spectrum` Cassiterite SnO_2 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-4a.jpl.beckman.spectrum` Magnetite Fe^2+Fe_2^3+O_4 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-4a.jpl.perkin.spectrum` Magnetite Fe^2+Fe_2^3+O_4 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-6a.jpl.beckman.spectrum` Pyrolusite MnO_2 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-6a.jpl.perkin.spectrum` Pyrolusite MnO_2 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-7a.jpl.beckman.spectrum` Columbite Fe^2+Nb_2O_6 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-7a.jpl.perkin.spectrum` Columbite Fe^2+Nb_2O_6 → (无触发)
+- `mineral.oxide.none.coarse.vswir.o-8a.jpl.beckman.spectrum` Magnesiochromite MgCr_2O_4 → serpentine_antigorite_withsecondfeat
+- `mineral.oxide.none.coarse.vswir.o-8a.jpl.perkin.spectrum` Magnesiochromite MgCr_2O_4 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-11a.jpl.beckman.spectrum` Gahnite ZnAl_2O_4 → buddingtonite
+- `mineral.oxide.none.fine.vswir.o-11a.jpl.perkin.spectrum` Gahnite ZnAl_2O_4 → buddingtonite
+- `mineral.oxide.none.fine.vswir.o-12a.jpl.beckman.spectrum` Anatase TiO_2 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-12a.jpl.perkin.spectrum` Anatase TiO_2 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-13a.jpl.beckman.spectrum` Zincite (Zn,Mn)O → (无触发)
+- `mineral.oxide.none.fine.vswir.o-13a.jpl.perkin.spectrum` Zincite (Zn,Mn)O → jarosite_Na
+- `mineral.oxide.none.fine.vswir.o-14a.jpl.beckman.spectrum` Periclase MgO → (无触发)
+- `mineral.oxide.none.fine.vswir.o-15a.jpl.beckman.spectrum` Corundum Al_2O_3 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-15a.jpl.perkin.spectrum` Corundum Al_2O_3 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-1a.jpl.beckman.spectrum` Hematite alpha Fe_2O_3 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-1a.jpl.perkin.spectrum` Hematite alpha Fe_2O_3 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-1b.jpl.beckman.spectrum` Hematite alpha Fe_2O_3 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-1b.jpl.perkin.spectrum` Hematite alpha Fe_2O_3 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-2a.jpl.beckman.spectrum` Rutile TiO_2 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-2a.jpl.perkin.spectrum` Rutile TiO_2 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-3a.jpl.beckman.spectrum` Cassiterite SnO_2 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-3a.jpl.perkin.spectrum` Cassiterite SnO_2 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-4a.jpl.beckman.spectrum` Magnetite Fe^2+Fe_2^3+O_4 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-4a.jpl.perkin.spectrum` Magnetite Fe^2+Fe_2^3+O_4 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-6a.jpl.beckman.spectrum` Pyrolusite MnO_2 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-6a.jpl.perkin.spectrum` Pyrolusite MnO_2 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-7a.jpl.beckman.spectrum` Columbite Fe^2+Nb_2O_6 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-7a.jpl.perkin.spectrum` Columbite Fe^2+Nb_2O_6 → (无触发)
+- `mineral.oxide.none.fine.vswir.o-8a.jpl.beckman.spectrum` Magnesiochromite MgCr_2O_4 → buddingtonite
+- `mineral.oxide.none.fine.vswir.o-8a.jpl.perkin.spectrum` Magnesiochromite MgCr_2O_4 → buddingtonite
+- `mineral.oxide.none.medium.vswir.o-11a.jpl.beckman.spectrum` Gahnite ZnAl_2O_4 → buddingtonite
+- `mineral.oxide.none.medium.vswir.o-11a.jpl.perkin.spectrum` Gahnite ZnAl_2O_4 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-15a.jpl.beckman.spectrum` Corundum Al_2O_3 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-15a.jpl.perkin.spectrum` Corundum Al_2O_3 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-1a.jpl.beckman.spectrum` Hematite alpha Fe_2O_3 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-1a.jpl.perkin.spectrum` Hematite alpha Fe_2O_3 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-2a.jpl.beckman.spectrum` Rutile TiO_2 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-2a.jpl.perkin.spectrum` Rutile TiO_2 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-3a.jpl.beckman.spectrum` Cassiterite SnO_2 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-3a.jpl.perkin.spectrum` Cassiterite SnO_2 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-4a.jpl.beckman.spectrum` Magnetite Fe^2+Fe_2^3+O_4 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-4a.jpl.perkin.spectrum` Magnetite Fe^2+Fe_2^3+O_4 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-6a.jpl.beckman.spectrum` Pyrolusite MnO_2 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-6a.jpl.perkin.spectrum` Pyrolusite MnO_2 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-7a.jpl.beckman.spectrum` Columbite Fe^2+Nb_2O_6 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-7a.jpl.perkin.spectrum` Columbite Fe^2+Nb_2O_6 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-8a.jpl.beckman.spectrum` Magnesiochromite MgCr_2O_4 → (无触发)
+- `mineral.oxide.none.medium.vswir.o-8a.jpl.perkin.spectrum` Magnesiochromite MgCr_2O_4 → (无触发)
+- `mineral.phosphate.none.coarse.vswir.p-1a.jpl.beckman.spectrum` Apatite Ca_5(PO_4)_3F → dry_veg_nongrass_2_3um
+- `mineral.phosphate.none.coarse.vswir.p-1a.jpl.perkin.spectrum` Apatite Ca_5(PO_4)_3F → calcite.5+dolomite.5
+- `mineral.phosphate.none.coarse.vswir.p-2a.jpl.beckman.spectrum` Montebrasite LiAlPO_4(OH) → pyrophyllite.25+kaolinite.75
+- `mineral.phosphate.none.coarse.vswir.p-2a.jpl.perkin.spectrum` Montebrasite LiAlPO_4(OH) → gypsum
+- `mineral.phosphate.none.coarse.vswir.p-3a.jpl.beckman.spectrum` Amblygonite (Li,Na)Al(PO_4)(F,OH) → pyrophyllite.25+kaolinite.75
+- `mineral.phosphate.none.coarse.vswir.p-3a.jpl.perkin.spectrum` Amblygonite (Li,Na)Al(PO_4)(F,OH) → gypsum
+- `mineral.phosphate.none.coarse.vswir.p-4a.jpl.beckman.spectrum` Triphylite Li(Mn,Fe)PO_4 → (无触发)
+- `mineral.phosphate.none.coarse.vswir.p-4a.jpl.perkin.spectrum` Triphylite Li(Mn,Fe)PO_4 → (无触发)
+- `mineral.phosphate.none.fine.vswir.p-1a.jpl.beckman.spectrum` Apatite Ca_5(PO_4)_3F → (无触发)
+- `mineral.phosphate.none.fine.vswir.p-1a.jpl.perkin.spectrum` Apatite Ca_5(PO_4)_3F → (无触发)
+- `mineral.phosphate.none.fine.vswir.p-2a.jpl.beckman.spectrum` Montebrasite LiAlPO_4(OH) → pyrophyllite.25+kaolinite.75
+- `mineral.phosphate.none.fine.vswir.p-2a.jpl.perkin.spectrum` Montebrasite LiAlPO_4(OH) → kaolinite+smectite_mix_intimate
+- `mineral.phosphate.none.fine.vswir.p-3a.jpl.beckman.spectrum` Amblygonite (Li,Na)Al(PO_4)(F,OH) → pyrophyllite.25+kaolinite.75
+- `mineral.phosphate.none.fine.vswir.p-3a.jpl.perkin.spectrum` Amblygonite (Li,Na)Al(PO_4)(F,OH) → kaolinite+smectite_mix_intimate
+- `mineral.phosphate.none.fine.vswir.p-4a.jpl.beckman.spectrum` Triphylite Li(Mn,Fe)PO_4 → (无触发)
+- `mineral.phosphate.none.fine.vswir.p-4a.jpl.perkin.spectrum` Triphylite Li(Mn,Fe)PO_4 → (无触发)
+- `mineral.phosphate.none.medium.vswir.p-1a.jpl.beckman.spectrum` Apatite Ca_5(PO_4)_3F → dry_veg_nongrass_2_3um
+- `mineral.phosphate.none.medium.vswir.p-1a.jpl.perkin.spectrum` Apatite Ca_5(PO_4)_3F → calcite.5+dolomite.5
+- `mineral.phosphate.none.medium.vswir.p-2a.jpl.beckman.spectrum` Montebrasite LiAlPO_4(OH) → pyrophyllite.25+kaolinite.75
+- `mineral.phosphate.none.medium.vswir.p-2a.jpl.perkin.spectrum` Montebrasite LiAlPO_4(OH) → kaolinite+smectite_mix_intimate
+- `mineral.phosphate.none.medium.vswir.p-3a.jpl.beckman.spectrum` Amblygonite (Li,Na)Al(PO_4)(F,OH) → pyrophyllite.25+kaolinite.75
+- `mineral.phosphate.none.medium.vswir.p-3a.jpl.perkin.spectrum` Amblygonite (Li,Na)Al(PO_4)(F,OH) → kaolinite+smectite_mix_intimate
+- `mineral.phosphate.none.medium.vswir.p-4a.jpl.beckman.spectrum` Triphylite Li(Mn,Fe)PO_4 → (无触发)
+- `mineral.phosphate.none.medium.vswir.p-4a.jpl.perkin.spectrum` Triphylite Li(Mn,Fe)PO_4 → (无触发)
+- `mineral.silicate.cyclosilicate.coarse.vswir.cs-1a.jpl.beckman.spectrum` Tourmaline Na(Mg_3,Fe_3^2+)Al_6(BO_3)_3Si_6O_18(OH)_4 → montmorillonite_Na
+- `mineral.silicate.cyclosilicate.coarse.vswir.cs-1a.jpl.perkin.spectrum` Tourmaline Na(Mg_3,Fe_3^2+)Al_6(BO_3)_3Si_6O_18(OH)_4 → clinochlore_Fe.3+muscovite.7
+- `mineral.silicate.cyclosilicate.coarse.vswir.cs-2a.jpl.beckman.spectrum` Beryl Be_3Al_2Si_6O_18 → (无触发)
+- `mineral.silicate.cyclosilicate.coarse.vswir.cs-2a.jpl.perkin.spectrum` Beryl Be_3Al_2Si_6O_18 → (无触发)
+- `mineral.silicate.cyclosilicate.coarse.vswir.cs-3a.jpl.beckman.spectrum` Cordierite Mg_2Al_3(Si_5Al)O_18 → jarosite+muscovite_mix_intimate
+- `mineral.silicate.cyclosilicate.coarse.vswir.cs-3a.jpl.perkin.spectrum` Cordierite Mg_2Al_3(Si_5Al)O_18 → chalcedony
+- `mineral.silicate.cyclosilicate.coarse.vswir.cs-4a.jpl.beckman.spectrum` Ferroaxinite Ca_2Fe^2+Al_2BSi_4O_15(OH) → carbonate_Fe_bearing
+- `mineral.silicate.cyclosilicate.coarse.vswir.cs-4a.jpl.perkin.spectrum` Ferroaxinite Ca_2Fe^2+Al_2BSi_4O_15(OH) → carbonate_Fe_bearing
+- `mineral.silicate.cyclosilicate.fine.vswir.cs-1a.jpl.beckman.spectrum` Tourmaline Na(Mg_3,Fe_3^2+)Al_6(BO_3)_3Si_6O_18(OH)_4 → clinochlore_Fe.3+muscovite.7
+- `mineral.silicate.cyclosilicate.fine.vswir.cs-1a.jpl.perkin.spectrum` Tourmaline Na(Mg_3,Fe_3^2+)Al_6(BO_3)_3Si_6O_18(OH)_4 → montmorillonite_Ca
+- `mineral.silicate.cyclosilicate.fine.vswir.cs-2a.jpl.beckman.spectrum` Beryl Be_3Al_2Si_6O_18 → (无触发)
+- `mineral.silicate.cyclosilicate.fine.vswir.cs-2a.jpl.perkin.spectrum` Beryl Be_3Al_2Si_6O_18 → (无触发)
+- `mineral.silicate.cyclosilicate.fine.vswir.cs-3a.jpl.beckman.spectrum` Cordierite Mg_2Al_3(Si_5Al)O_18 → jarosite+muscovite_mix_intimate
+- `mineral.silicate.cyclosilicate.fine.vswir.cs-3a.jpl.perkin.spectrum` Cordierite Mg_2Al_3(Si_5Al)O_18 → jarosite+muscovite_mix_intimate
+- `mineral.silicate.cyclosilicate.fine.vswir.cs-4a.jpl.beckman.spectrum` Ferroaxinite Ca_2Fe^2+Al_2BSi_4O_15(OH) → dry_veg_nongrass
+- `mineral.silicate.cyclosilicate.fine.vswir.cs-4a.jpl.perkin.spectrum` Ferroaxinite Ca_2Fe^2+Al_2BSi_4O_15(OH) → dry_veg_grass
+- `mineral.silicate.cyclosilicate.medium.vswir.cs-1a.jpl.beckman.spectrum` Tourmaline Na(Mg_3,Fe_3^2+)Al_6(BO_3)_3Si_6O_18(OH)_4 → clinochlore_Fe.3+muscovite.7
+- `mineral.silicate.cyclosilicate.medium.vswir.cs-1a.jpl.perkin.spectrum` Tourmaline Na(Mg_3,Fe_3^2+)Al_6(BO_3)_3Si_6O_18(OH)_4 → clinochlore_Fe.3+muscovite.7
+- `mineral.silicate.cyclosilicate.medium.vswir.cs-2a.jpl.beckman.spectrum` Beryl Be_3Al_2Si_6O_18 → (无触发)
+- `mineral.silicate.cyclosilicate.medium.vswir.cs-2a.jpl.perkin.spectrum` Beryl Be_3Al_2Si_6O_18 → (无触发)
+- `mineral.silicate.cyclosilicate.medium.vswir.cs-3a.jpl.beckman.spectrum` Cordierite Mg_2Al_3(Si_5Al)O_18 → jarosite+muscovite_mix_intimate
+- `mineral.silicate.cyclosilicate.medium.vswir.cs-3a.jpl.perkin.spectrum` Cordierite Mg_2Al_3(Si_5Al)O_18 → jarosite+muscovite_mix_intimate
+- `mineral.silicate.cyclosilicate.medium.vswir.cs-4a.jpl.beckman.spectrum` Ferroaxinite Ca_2Fe^2+Al_2BSi_4O_15(OH) → dry_veg_nongrass
+- `mineral.silicate.cyclosilicate.medium.vswir.cs-4a.jpl.perkin.spectrum` Ferroaxinite Ca_2Fe^2+Al_2BSi_4O_15(OH) → dry_veg_nongrass
+- `mineral.silicate.inosilicate.coarse.vswir.in-10b.jpl.beckman.spectrum` Enstatite Mg_2(SiO_3)_2 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-10b.jpl.perkin.spectrum` Enstatite Mg_2(SiO_3)_2 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-12a.jpl.beckman.spectrum` Johannsenite Ca(Mn,Fe^2+)(SiO_3)_2 → nontronite
+- `mineral.silicate.inosilicate.coarse.vswir.in-12a.jpl.perkin.spectrum` Johannsenite Ca(Mn,Fe^2+)(SiO_3)_2 → nontronite
+- `mineral.silicate.inosilicate.coarse.vswir.in-13a.jpl.beckman.spectrum` Spodumene LiAlS_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-13a.jpl.perkin.spectrum` Spodumene LiAlS_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-1a.jpl.beckman.spectrum` Rhodonite (Mn,Ca)SiO_3 → jarosite+muscovite_mix_intimate
+- `mineral.silicate.inosilicate.coarse.vswir.in-1a.jpl.perkin.spectrum` Rhodonite (Mn,Ca)SiO_3 → jarosite+muscovite_mix_intimate
+- `mineral.silicate.inosilicate.coarse.vswir.in-2a.jpl.beckman.spectrum` Wollastonite CaSiO_3 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-2a.jpl.perkin.spectrum` Wollastonite CaSiO_3 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-3a.jpl.beckman.spectrum` Glaucophane Na_2(Mg,Fe^2+)_3Al_2Si_8O_22(OH)_2 → serpentine_antigorite_withironfeat
+- `mineral.silicate.inosilicate.coarse.vswir.in-3a.jpl.perkin.spectrum` Glaucophane Na_2(Mg,Fe^2+)_3Al_2Si_8O_22(OH)_2 → calcite.5+dolomite.5
+- `mineral.silicate.inosilicate.coarse.vswir.in-6a.jpl.beckman.spectrum` Cummingtonite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → water_sediment_low
+- `mineral.silicate.inosilicate.coarse.vswir.in-6a.jpl.perkin.spectrum` Cummingtonite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-7a.jpl.beckman.spectrum` Riebeckite Na_2(Fe^2+,Mg)_3,Fe_2^3+Si_8O_22(OH)_2 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-7a.jpl.perkin.spectrum` Riebeckite Na_2(Fe^2+,Mg)_3,Fe_2^3+Si_8O_22(OH)_2 → (无触发)
+- `mineral.silicate.inosilicate.coarse.vswir.in-8a.jpl.beckman.spectrum` Anthophyllite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → tremolite_or_talc
+- `mineral.silicate.inosilicate.coarse.vswir.in-8a.jpl.perkin.spectrum` Anthophyllite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → tremolite_or_talc
+- `mineral.silicate.inosilicate.coarse.vswir.in-9b.jpl.beckman.spectrum` Diopside CaMg(SiO_3)_2 → dolomite
+- `mineral.silicate.inosilicate.coarse.vswir.in-9b.jpl.perkin.spectrum` Diopside CaMg(SiO_3)_2 → dolomite
+- `mineral.silicate.inosilicate.fine.vswir.in-10b.jpl.beckman.spectrum` Enstatite Mg_2(SiO_3)_2 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-10b.jpl.perkin.spectrum` Enstatite Mg_2(SiO_3)_2 → hectorite
+- `mineral.silicate.inosilicate.fine.vswir.in-12a.jpl.beckman.spectrum` Johannsenite Ca(Mn,Fe^2+)(SiO_3)_2 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-12a.jpl.perkin.spectrum` Johannsenite Ca(Mn,Fe^2+)(SiO_3)_2 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-13a.jpl.beckman.spectrum` Spodumene LiAlS_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-13a.jpl.perkin.spectrum` Spodumene LiAlS_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-14a.jpl.beckman.spectrum` Hypersthene (Mg,Fe^2+)_2Si_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-14a.jpl.perkin.spectrum` Hypersthene (Mg,Fe^2+)_2Si_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-15a.jpl.beckman.spectrum` Augite (Ca,Na)(Mg,Fe,Al,Ti)(Si,Al)_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-1a.jpl.beckman.spectrum` Rhodonite (Mn,Ca)SiO_3 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-1a.jpl.perkin.spectrum` Rhodonite (Mn,Ca)SiO_3 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-2a.jpl.beckman.spectrum` Wollastonite CaSiO_3 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-2a.jpl.perkin.spectrum` Wollastonite CaSiO_3 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-3a.jpl.beckman.spectrum` Glaucophane Na_2(Mg,Fe^2+)_3Al_2Si_8O_22(OH)_2 → calcite.5+dolomite.5
+- `mineral.silicate.inosilicate.fine.vswir.in-3a.jpl.perkin.spectrum` Glaucophane Na_2(Mg,Fe^2+)_3Al_2Si_8O_22(OH)_2 → calcite.5+dolomite.5
+- `mineral.silicate.inosilicate.fine.vswir.in-6a.jpl.beckman.spectrum` Cummingtonite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-6a.jpl.perkin.spectrum` Cummingtonite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-7a.jpl.beckman.spectrum` Riebeckite Na_2(Fe^2+,Mg)_3,Fe_2^3+Si_8O_22(OH)_2 → vegetation_npv_and_green
+- `mineral.silicate.inosilicate.fine.vswir.in-7a.jpl.perkin.spectrum` Riebeckite Na_2(Fe^2+,Mg)_3,Fe_2^3+Si_8O_22(OH)_2 → vegetation_npv_and_green
+- `mineral.silicate.inosilicate.fine.vswir.in-8a.jpl.beckman.spectrum` Anthophyllite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → tremolite_or_talc
+- `mineral.silicate.inosilicate.fine.vswir.in-8a.jpl.perkin.spectrum` Anthophyllite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → tremolite_or_talc
+- `mineral.silicate.inosilicate.fine.vswir.in-9b.jpl.beckman.spectrum` Diopside CaMg(SiO_3)_2 → (无触发)
+- `mineral.silicate.inosilicate.fine.vswir.in-9b.jpl.perkin.spectrum` Diopside CaMg(SiO_3)_2 → (无触发)
+- `mineral.silicate.inosilicate.medium.vswir.in-10b.jpl.beckman.spectrum` Enstatite Mg_2(SiO_3)_2 → hectorite
+- `mineral.silicate.inosilicate.medium.vswir.in-10b.jpl.perkin.spectrum` Enstatite Mg_2(SiO_3)_2 → hectorite
+- `mineral.silicate.inosilicate.medium.vswir.in-12a.jpl.beckman.spectrum` Johannsenite Ca(Mn,Fe^2+)(SiO_3)_2 → nontronite
+- `mineral.silicate.inosilicate.medium.vswir.in-12a.jpl.perkin.spectrum` Johannsenite Ca(Mn,Fe^2+)(SiO_3)_2 → nontronite
+- `mineral.silicate.inosilicate.medium.vswir.in-13a.jpl.beckman.spectrum` Spodumene LiAlS_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.medium.vswir.in-13a.jpl.perkin.spectrum` Spodumene LiAlS_2O_6 → (无触发)
+- `mineral.silicate.inosilicate.medium.vswir.in-1a.jpl.beckman.spectrum` Rhodonite (Mn,Ca)SiO_3 → jarosite+muscovite_mix_intimate
+- `mineral.silicate.inosilicate.medium.vswir.in-1a.jpl.perkin.spectrum` Rhodonite (Mn,Ca)SiO_3 → (无触发)
+- `mineral.silicate.inosilicate.medium.vswir.in-2a.jpl.beckman.spectrum` Wollastonite CaSiO_3 → (无触发)
+- `mineral.silicate.inosilicate.medium.vswir.in-2a.jpl.perkin.spectrum` Wollastonite CaSiO_3 → (无触发)
+- `mineral.silicate.inosilicate.medium.vswir.in-3a.jpl.beckman.spectrum` Glaucophane Na_2(Mg,Fe^2+)_3Al_2Si_8O_22(OH)_2 → calcite.5+dolomite.5
+- `mineral.silicate.inosilicate.medium.vswir.in-3a.jpl.perkin.spectrum` Glaucophane Na_2(Mg,Fe^2+)_3Al_2Si_8O_22(OH)_2 → calcite.5+dolomite.5
+- `mineral.silicate.inosilicate.medium.vswir.in-6a.jpl.beckman.spectrum` Cummingtonite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → calcite
+- `mineral.silicate.inosilicate.medium.vswir.in-6a.jpl.perkin.spectrum` Cummingtonite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → epidote
+- `mineral.silicate.inosilicate.medium.vswir.in-7a.jpl.beckman.spectrum` Riebeckite Na_2(Fe^2+,Mg)_3,Fe_2^3+Si_8O_22(OH)_2 → vegetation_npv_and_green
+- `mineral.silicate.inosilicate.medium.vswir.in-7a.jpl.perkin.spectrum` Riebeckite Na_2(Fe^2+,Mg)_3,Fe_2^3+Si_8O_22(OH)_2 → vegetation_npv_and_green
+- `mineral.silicate.inosilicate.medium.vswir.in-8a.jpl.beckman.spectrum` Anthophyllite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → tremolite_or_talc
+- `mineral.silicate.inosilicate.medium.vswir.in-8a.jpl.perkin.spectrum` Anthophyllite (Mg,Fe^2+)_7Si_8O_22(OH)_2 → tremolite_or_talc
+- `mineral.silicate.inosilicate.medium.vswir.in-9b.jpl.beckman.spectrum` Diopside CaMg(SiO_3)_2 → dolomite
+- `mineral.silicate.inosilicate.medium.vswir.in-9b.jpl.perkin.spectrum` Diopside CaMg(SiO_3)_2 → dolomite
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-1a.jpl.beckman.spectrum` Fayalite Fe_2SiO_4 → calcite.5+dolomite.5
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-1a.jpl.perkin.spectrum` Fayalite Fe_2SiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-3b.jpl.beckman.spectrum` Grossular Garnet Ca_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-3b.jpl.perkin.spectrum` Grossular Garnet Ca_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-4a.jpl.beckman.spectrum` Almandine Garnet Fe_3Al_2(SiO_4)_3 → dry_veg_grass_2_3um
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-4a.jpl.perkin.spectrum` Almandine Garnet Fe_3Al_2(SiO_4)_3 → dry_veg_grass_2_3um
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-7a.jpl.beckman.spectrum` Titanite (Sphene) CaTiSiO_5 → montmorillonite_Na
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-7a.jpl.perkin.spectrum` Titanite (Sphene) CaTiSiO_5 → montmorillonite_Na
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-8a.jpl.beckman.spectrum` Sillimanite Al_2SiO_5 → kaolinite_wxl
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-9a.jpl.beckman.spectrum` Zircon ZrSiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.coarse.vswir.ns-9a.jpl.perkin.spectrum` Zircon ZrSiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-1a.jpl.beckman.spectrum` Fayalite Fe_2SiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-1a.jpl.perkin.spectrum` Fayalite Fe_2SiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-2a.jpl.beckman.spectrum` Forsterite Mg_2SiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-2a.jpl.perkin.spectrum` Forsterite Mg_2SiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-3b.jpl.beckman.spectrum` Grossular Garnet Ca_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-3b.jpl.perkin.spectrum` Grossular Garnet Ca_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-4a.jpl.beckman.spectrum` Almandine Garnet Fe_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-4a.jpl.perkin.spectrum` Almandine Garnet Fe_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-7a.jpl.beckman.spectrum` Titanite (Sphene) CaTiSiO_5 → montmorillonite_Na
+- `mineral.silicate.nesosilicate.fine.vswir.ns-7a.jpl.perkin.spectrum` Titanite (Sphene) CaTiSiO_5 → montmorillonite_Na
+- `mineral.silicate.nesosilicate.fine.vswir.ns-8a.jpl.beckman.spectrum` Sillimanite Al_2SiO_5 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-9a.jpl.beckman.spectrum` Zircon ZrSiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.fine.vswir.ns-9a.jpl.perkin.spectrum` Zircon ZrSiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.medium.vswir.ns-1a.jpl.beckman.spectrum` Fayalite Fe_2SiO_4 → carbonate_Fe_bearing
+- `mineral.silicate.nesosilicate.medium.vswir.ns-1a.jpl.perkin.spectrum` Fayalite Fe_2SiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.medium.vswir.ns-3b.jpl.beckman.spectrum` Grossular Garnet Ca_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.medium.vswir.ns-3b.jpl.perkin.spectrum` Grossular Garnet Ca_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.medium.vswir.ns-4a.jpl.beckman.spectrum` Almandine Garnet Fe_3Al_2(SiO_4)_3 → (无触发)
+- `mineral.silicate.nesosilicate.medium.vswir.ns-4a.jpl.perkin.spectrum` Almandine Garnet Fe_3Al_2(SiO_4)_3 → chalcedony
+- `mineral.silicate.nesosilicate.medium.vswir.ns-7a.jpl.beckman.spectrum` Titanite (Sphene) CaTiSiO_5 → montmorillonite_Na
+- `mineral.silicate.nesosilicate.medium.vswir.ns-7a.jpl.perkin.spectrum` Titanite (Sphene) CaTiSiO_5 → montmorillonite_Na
+- `mineral.silicate.nesosilicate.medium.vswir.ns-8a.jpl.beckman.spectrum` Sillimanite Al_2SiO_5 → pyrophyllite.25+kaolinite.75
+- `mineral.silicate.nesosilicate.medium.vswir.ns-9a.jpl.beckman.spectrum` Zircon ZrSiO_4 → (无触发)
+- `mineral.silicate.nesosilicate.medium.vswir.ns-9a.jpl.perkin.spectrum` Zircon ZrSiO_4 → (无触发)
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-10a.jpl.beckman.spectrum` Corrensite (Mg,Fe)_9(Si,Al)_8O_20(OH)_10._xH_2O → dry_veg_grass_2_3um
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-10a.jpl.perkin.spectrum` Corrensite (Mg,Fe)_9(Si,Al)_8O_20(OH)_10._xH_2O → dry_veg_grass_2_3um
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-13a.jpl.beckman.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-13a.jpl.perkin.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-13b.jpl.beckman.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-13b.jpl.perkin.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-18a.jpl.beckman.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → dolomite_abundant
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-18a.jpl.perkin.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → dolomite_abundant
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-18b.jpl.beckman.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → carbonate_Fe_bearing
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-18b.jpl.perkin.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → dry_veg_nongrass_2_3um
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-19a.jpl.beckman.spectrum` Glauconite (K,Na)(Fe^3+,Al,Mg)_2(Si,Al)_4O_10(OH)_2 → calcite
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-19a.jpl.perkin.spectrum` Glauconite (K,Na)(Fe^3+,Al,Mg)_2(Si,Al)_4O_10(OH)_2 → carbonate_Fe_bearing
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-21a.jpl.beckman.spectrum` Prehnite Ca_2Al_2Si_3O_10(OH)_2 → calcite.25+montmorilloniteCa.75
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-21a.jpl.perkin.spectrum` Prehnite Ca_2Al_2Si_3O_10(OH)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-22a.jpl.beckman.spectrum` Hydroxyapophyllite KCa_4Si_8O_20(OH,F).8H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-22a.jpl.perkin.spectrum` Hydroxyapophyllite KCa_4Si_8O_20(OH,F).8H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-23a.jpl.beckman.spectrum` Biotite K(Mg,Fe^2+)_3(Al,Fe^3+)Si_3O_10(OH,F)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-23a.jpl.perkin.spectrum` Biotite K(Mg,Fe^2+)_3(Al,Fe^3+)Si_3O_10(OH,F)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-5a.jpl.beckman.spectrum` Sepiolite Mg_4Si_6O_15(OH)_2.6H_2O → talc_or_tremolite
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-5a.jpl.perkin.spectrum` Sepiolite Mg_4Si_6O_15(OH)_2.6H_2O → talc_or_tremolite
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-9a.jpl.beckman.spectrum` Cookeite LiAl_4(Si_3Al)O_10(OH)_8 → pyrophyllite.25+kaolinite.75
+- `mineral.silicate.phyllosilicate.coarse.vswir.ps-9a.jpl.perkin.spectrum` Cookeite LiAl_4(Si_3Al)O_10(OH)_8 → pyrophyllite.25+kaolinite.75
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-10a.jpl.beckman.spectrum` Corrensite (Mg,Fe)_9(Si,Al)_8O_20(OH)_10._xH_2O → calcite.5+dolomite.5
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-10a.jpl.perkin.spectrum` Corrensite (Mg,Fe)_9(Si,Al)_8O_20(OH)_10._xH_2O → calcite.5+dolomite.5
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-13a.jpl.beckman.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-13a.jpl.perkin.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-13b.jpl.beckman.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-13b.jpl.perkin.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-18a.jpl.beckman.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → calcite.5+dolomite.5
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-18a.jpl.perkin.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → serpentine_chrysotile_withsecondfeat
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-18b.jpl.beckman.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-18b.jpl.perkin.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-19a.jpl.beckman.spectrum` Glauconite (K,Na)(Fe^3+,Al,Mg)_2(Si,Al)_4O_10(OH)_2 → carbonate_Fe_bearing
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-19a.jpl.perkin.spectrum` Glauconite (K,Na)(Fe^3+,Al,Mg)_2(Si,Al)_4O_10(OH)_2 → carbonate_Fe_bearing
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-21a.jpl.beckman.spectrum` Prehnite Ca_2Al_2Si_3O_10(OH)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-21a.jpl.perkin.spectrum` Prehnite Ca_2Al_2Si_3O_10(OH)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-22a.jpl.beckman.spectrum` Hydroxyapophyllite KCa_4Si_8O_20(OH,F).8H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-22a.jpl.perkin.spectrum` Hydroxyapophyllite KCa_4Si_8O_20(OH,F).8H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-23a.jpl.beckman.spectrum` Biotite K(Mg,Fe^2+)_3(Al,Fe^3+)Si_3O_10(OH,F)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-23a.jpl.perkin.spectrum` Biotite K(Mg,Fe^2+)_3(Al,Fe^3+)Si_3O_10(OH,F)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-4a.jpl.beckman.spectrum` Palygorskite (Mg,Al)_2Si_4O_10(OH).4H_2O → montmorillonite_Ca
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-4a.jpl.perkin.spectrum` Palygorskite (Mg,Al)_2Si_4O_10(OH).4H_2O → montmorillonite_Ca
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-5a.jpl.beckman.spectrum` Sepiolite Mg_4Si_6O_15(OH)_2.6H_2O → talc_or_tremolite
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-5a.jpl.perkin.spectrum` Sepiolite Mg_4Si_6O_15(OH)_2.6H_2O → hectorite
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-9a.jpl.beckman.spectrum` Cookeite LiAl_4(Si_3Al)O_10(OH)_8 → pyrophyllite.25+kaolinite.75
+- `mineral.silicate.phyllosilicate.fine.vswir.ps-9a.jpl.perkin.spectrum` Cookeite LiAl_4(Si_3Al)O_10(OH)_8 → kaolinite+smectite_mix_intimate
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-10a.jpl.beckman.spectrum` Corrensite (Mg,Fe)_9(Si,Al)_8O_20(OH)_10._xH_2O → dry_veg_grass_2_3um
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-10a.jpl.perkin.spectrum` Corrensite (Mg,Fe)_9(Si,Al)_8O_20(OH)_10._xH_2O → dry_veg_grass_2_3um
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-13a.jpl.beckman.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-13a.jpl.perkin.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-13b.jpl.beckman.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-13b.jpl.perkin.spectrum` Lepidolite K(Li,Al)3(Si,Al)_4O_10(F,OH)_2 → muscovite_medhighAl
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-18a.jpl.beckman.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → dolomite
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-18a.jpl.perkin.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → dolomite_abundant
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-18b.jpl.beckman.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → dry_veg_nongrass_2_3um
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-18b.jpl.perkin.spectrum` Vermiculite (Mg,Fe^2+,Al)_3(Al,Si)_4O_10(OH)_2.4H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-19a.jpl.beckman.spectrum` Glauconite (K,Na)(Fe^3+,Al,Mg)_2(Si,Al)_4O_10(OH)_2 → carbonate_Fe_bearing
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-19a.jpl.perkin.spectrum` Glauconite (K,Na)(Fe^3+,Al,Mg)_2(Si,Al)_4O_10(OH)_2 → carbonate_Fe_bearing
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-21a.jpl.beckman.spectrum` Prehnite Ca_2Al_2Si_3O_10(OH)_2 → calcite.25+montmorilloniteCa.75
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-21a.jpl.perkin.spectrum` Prehnite Ca_2Al_2Si_3O_10(OH)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-22a.jpl.beckman.spectrum` Hydroxyapophyllite KCa_4Si_8O_20(OH,F).8H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-22a.jpl.perkin.spectrum` Hydroxyapophyllite KCa_4Si_8O_20(OH,F).8H_2O → (无触发)
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-23a.jpl.beckman.spectrum` Biotite K(Mg,Fe^2+)_3(Al,Fe^3+)Si_3O_10(OH,F)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-23a.jpl.perkin.spectrum` Biotite K(Mg,Fe^2+)_3(Al,Fe^3+)Si_3O_10(OH,F)_2 → (无触发)
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-5a.jpl.beckman.spectrum` Sepiolite Mg_4Si_6O_15(OH)_2.6H_2O → talc_or_tremolite
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-5a.jpl.perkin.spectrum` Sepiolite Mg_4Si_6O_15(OH)_2.6H_2O → hectorite
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-9a.jpl.beckman.spectrum` Cookeite LiAl_4(Si_3Al)O_10(OH)_8 → pyrophyllite.25+kaolinite.75
+- `mineral.silicate.phyllosilicate.medium.vswir.ps-9a.jpl.perkin.spectrum` Cookeite LiAl_4(Si_3Al)O_10(OH)_8 → (无触发)
+- `mineral.silicate.sorosilicate.coarse.vswir.ss-2a.jpl.beckman.spectrum` Hemimorphite Zn_4Si_2O_7(OH)_2.H_2O → montmorillonite_Na
+- `mineral.silicate.sorosilicate.coarse.vswir.ss-2a.jpl.perkin.spectrum` Hemimorphite Zn_4Si_2O_7(OH)_2.H_2O → montmorillonite_Na
+- `mineral.silicate.sorosilicate.coarse.vswir.ss-3a.jpl.beckman.spectrum` Vesuvianite Ca_10(Mg,Fe^2+)_2Al_4(Si_2O_7)_2(SiO_4)_5(OH,F)_4 → calcite
+- `mineral.silicate.sorosilicate.coarse.vswir.ss-3a.jpl.perkin.spectrum` Vesuvianite Ca_10(Mg,Fe^2+)_2Al_4(Si_2O_7)_2(SiO_4)_5(OH,F)_4 → calcite
+- `mineral.silicate.sorosilicate.fine.vswir.ss-2a.jpl.beckman.spectrum` Hemimorphite Zn_4Si_2O_7(OH)_2.H_2O → montmorillonite_Na
+- `mineral.silicate.sorosilicate.fine.vswir.ss-2a.jpl.perkin.spectrum` Hemimorphite Zn_4Si_2O_7(OH)_2.H_2O → montmorillonite_Na
+- `mineral.silicate.sorosilicate.fine.vswir.ss-3a.jpl.beckman.spectrum` Vesuvianite Ca_10(Mg,Fe^2+)_2Al_4(Si_2O_7)_2(SiO_4)_5(OH,F)_4 → calcite
+- `mineral.silicate.sorosilicate.fine.vswir.ss-3a.jpl.perkin.spectrum` Vesuvianite Ca_10(Mg,Fe^2+)_2Al_4(Si_2O_7)_2(SiO_4)_5(OH,F)_4 → calcite
+- `mineral.silicate.sorosilicate.medium.vswir.ss-2a.jpl.beckman.spectrum` Hemimorphite Zn_4Si_2O_7(OH)_2.H_2O → montmorillonite_Na
+- `mineral.silicate.sorosilicate.medium.vswir.ss-2a.jpl.perkin.spectrum` Hemimorphite Zn_4Si_2O_7(OH)_2.H_2O → montmorillonite_Na
+- `mineral.silicate.sorosilicate.medium.vswir.ss-3a.jpl.beckman.spectrum` Vesuvianite Ca_10(Mg,Fe^2+)_2Al_4(Si_2O_7)_2(SiO_4)_5(OH,F)_4 → calcite
+- `mineral.silicate.sorosilicate.medium.vswir.ss-3a.jpl.perkin.spectrum` Vesuvianite Ca_10(Mg,Fe^2+)_2Al_4(Si_2O_7)_2(SiO_4)_5(OH,F)_4 → calcite
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-10a.jpl.beckman.spectrum` Sodalite Na_8Al_6Si_6O_24Cl_2 → calcite
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-10a.jpl.perkin.spectrum` Sodalite Na_8Al_6Si_6O_24Cl_2 → calcite
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-12a.jpl.beckman.spectrum` Orthoclase (Feldspar) (K,Na)AlSi_3O_8 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-12a.jpl.perkin.spectrum` Orthoclase (Feldspar) (K,Na)AlSi_3O_8 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-16a.jpl.beckman.spectrum` Nepheline (Na,K)AlSiO_4 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-17a.jpl.beckman.spectrum` Microcline (Feldspar) (K,Na)AlSi_3O_8 → muscovite_medhighAl
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-17a.jpl.perkin.spectrum` Microcline (Feldspar) (K,Na)AlSi_3O_8 → muscovite_medhighAl
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1a.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1a.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1b.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1b.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1c.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1c.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1d.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1d.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1e.jpl.beckman.spectrum` Quartz SiO_2 → chalcedony
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-1e.jpl.perkin.spectrum` Quartz SiO_2 → chalcedony
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-2a.jpl.beckman.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-2a.jpl.perkin.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-2b.jpl.beckman.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-2b.jpl.perkin.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-3a.jpl.beckman.spectrum` Oligoclase (Feldspar) (NaSi,CaAl)AlSi_2O_8 → calcite.25+montmorilloniteNa.75
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-3a.jpl.perkin.spectrum` Oligoclase (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-4a.jpl.beckman.spectrum` Andesine (Feldspar) (NaSi,CaAl)AlSi_2O_8 → kaolinite+smectite_mix_intimate
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-4a.jpl.perkin.spectrum` Andesine (Feldspar) (NaSi,CaAl)AlSi_2O_8 → montmorillonite_Na
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-5a.jpl.beckman.spectrum` Anorthite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → epidote
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-5a.jpl.perkin.spectrum` Anorthite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → epidote
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-6a.jpl.beckman.spectrum` Albite (Feldspar) (K,Na)AlSi_3O_8 → muscovite_medhighAl
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-6a.jpl.perkin.spectrum` Albite (Feldspar) (K,Na)AlSi_3O_8 → muscovite_medhighAl
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-8a.jpl.beckman.spectrum` Natrolite Na_2Al_2Si_3O_10.2H_2O → kaolinite+smectite_mix_intimate
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-8a.jpl.perkin.spectrum` Natrolite Na_2Al_2Si_3O_10.2H_2O → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-9a.jpl.beckman.spectrum` Stilbite NaCa_2Al_5Si_3O_36.14H_2O → (无触发)
+- `mineral.silicate.tectosilicate.coarse.vswir.ts-9a.jpl.perkin.spectrum` Stilbite NaCa_2Al_5Si_3O_36.14H_2O → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-10a.jpl.beckman.spectrum` Sodalite Na_8Al_6Si_6O_24Cl_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-10a.jpl.perkin.spectrum` Sodalite Na_8Al_6Si_6O_24Cl_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-12a.jpl.beckman.spectrum` Orthoclase (Feldspar) (K,Na)AlSi_3O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-12a.jpl.perkin.spectrum` Orthoclase (Feldspar) (K,Na)AlSi_3O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-13a.jpl.beckman.spectrum` Bytownite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-13a.jpl.perkin.spectrum` Bytownite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-14a.jpl.beckman.spectrum` Sanidine (Feldspar) (K,Na)AlSi_3O_8 → kaolinite+smectite_mix_intimate
+- `mineral.silicate.tectosilicate.fine.vswir.ts-14a.jpl.perkin.spectrum` Sanidine (Feldspar) (K,Na)AlSi_3O_8 → montmorillonite_Na
+- `mineral.silicate.tectosilicate.fine.vswir.ts-15a.jpl.beckman.spectrum` Chabazite CaAl_2Si_4O_12.6H_2O → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-15a.jpl.perkin.spectrum` Chabazite CaAl_2Si_4O_12.6H_2O → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-16a.jpl.beckman.spectrum` Nepheline (Na,K)AlSiO_4 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-17a.jpl.beckman.spectrum` Microcline (Feldspar) (K,Na)AlSi_3O_8 → kaolinite+smectite_mix_intimate
+- `mineral.silicate.tectosilicate.fine.vswir.ts-17a.jpl.perkin.spectrum` Microcline (Feldspar) (K,Na)AlSi_3O_8 → montmorillonite_Na
+- `mineral.silicate.tectosilicate.fine.vswir.ts-18a.jpl.beckman.spectrum` Analcime NaAlSi_2O_6.H_2O → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1a.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1a.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1b.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1b.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1c.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1c.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1d.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1d.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1e.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-1e.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-2a.jpl.beckman.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-2a.jpl.perkin.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-2b.jpl.beckman.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-2b.jpl.perkin.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-3a.jpl.beckman.spectrum` Oligoclase (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-3a.jpl.perkin.spectrum` Oligoclase (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-4a.jpl.beckman.spectrum` Andesine (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-4a.jpl.perkin.spectrum` Andesine (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-5a.jpl.beckman.spectrum` Anorthite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-5a.jpl.perkin.spectrum` Anorthite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-6a.jpl.beckman.spectrum` Albite (Feldspar) (K,Na)AlSi_3O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-6a.jpl.perkin.spectrum` Albite (Feldspar) (K,Na)AlSi_3O_8 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-7a.jpl.beckman.spectrum` Cristobalite SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-8a.jpl.beckman.spectrum` Natrolite Na_2Al_2Si_3O_10.2H_2O → kaolinite+smectite_mix_intimate
+- `mineral.silicate.tectosilicate.fine.vswir.ts-8a.jpl.perkin.spectrum` Natrolite Na_2Al_2Si_3O_10.2H_2O → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-9a.jpl.beckman.spectrum` Stilbite NaCa_2Al_5Si_3O_36.14H_2O → (无触发)
+- `mineral.silicate.tectosilicate.fine.vswir.ts-9a.jpl.perkin.spectrum` Stilbite NaCa_2Al_5Si_3O_36.14H_2O → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-10a.jpl.beckman.spectrum` Sodalite Na_8Al_6Si_6O_24Cl_2 → calcite
+- `mineral.silicate.tectosilicate.medium.vswir.ts-10a.jpl.perkin.spectrum` Sodalite Na_8Al_6Si_6O_24Cl_2 → calcite
+- `mineral.silicate.tectosilicate.medium.vswir.ts-12a.jpl.beckman.spectrum` Orthoclase (Feldspar) (K,Na)AlSi_3O_8 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-12a.jpl.perkin.spectrum` Orthoclase (Feldspar) (K,Na)AlSi_3O_8 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-16a.jpl.beckman.spectrum` Nepheline (Na,K)AlSiO_4 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-17a.jpl.beckman.spectrum` Microcline (Feldspar) (K,Na)AlSi_3O_8 → muscovite_medhighAl
+- `mineral.silicate.tectosilicate.medium.vswir.ts-17a.jpl.perkin.spectrum` Microcline (Feldspar) (K,Na)AlSi_3O_8 → muscovite_medhighAl
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1a.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1a.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1b.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1b.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1c.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1c.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1d.jpl.beckman.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1d.jpl.perkin.spectrum` Quartz SiO_2 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1e.jpl.beckman.spectrum` Quartz SiO_2 → chalcedony
+- `mineral.silicate.tectosilicate.medium.vswir.ts-1e.jpl.perkin.spectrum` Quartz SiO_2 → chalcedony
+- `mineral.silicate.tectosilicate.medium.vswir.ts-2a.jpl.beckman.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-2a.jpl.perkin.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-2b.jpl.beckman.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-2b.jpl.perkin.spectrum` Labradorite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-3a.jpl.beckman.spectrum` Oligoclase (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-3a.jpl.perkin.spectrum` Oligoclase (Feldspar) (NaSi,CaAl)AlSi_2O_8 → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-4a.jpl.beckman.spectrum` Andesine (Feldspar) (NaSi,CaAl)AlSi_2O_8 → kaolinite+smectite_mix_intimate
+- `mineral.silicate.tectosilicate.medium.vswir.ts-4a.jpl.perkin.spectrum` Andesine (Feldspar) (NaSi,CaAl)AlSi_2O_8 → montmorillonite_Na
+- `mineral.silicate.tectosilicate.medium.vswir.ts-5a.jpl.beckman.spectrum` Anorthite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → epidote
+- `mineral.silicate.tectosilicate.medium.vswir.ts-5a.jpl.perkin.spectrum` Anorthite (Feldspar) (NaSi,CaAl)AlSi_2O_8 → epidote
+- `mineral.silicate.tectosilicate.medium.vswir.ts-6a.jpl.beckman.spectrum` Albite (Feldspar) (K,Na)AlSi_3O_8 → kaolinite+smectite_mix_intimate
+- `mineral.silicate.tectosilicate.medium.vswir.ts-6a.jpl.perkin.spectrum` Albite (Feldspar) (K,Na)AlSi_3O_8 → montmorillonite_Na
+- `mineral.silicate.tectosilicate.medium.vswir.ts-8a.jpl.beckman.spectrum` Natrolite Na_2Al_2Si_3O_10.2H_2O → kaolinite+smectite_mix_intimate
+- `mineral.silicate.tectosilicate.medium.vswir.ts-8a.jpl.perkin.spectrum` Natrolite Na_2Al_2Si_3O_10.2H_2O → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-9a.jpl.beckman.spectrum` Stilbite NaCa_2Al_5Si_3O_36.14H_2O → (无触发)
+- `mineral.silicate.tectosilicate.medium.vswir.ts-9a.jpl.perkin.spectrum` Stilbite NaCa_2Al_5Si_3O_36.14H_2O → (无触发)
+- `mineral.sulfate.none.coarse.all.epsomite.usgs.perknic.spectrum` Epsomite MgSO4·7H2O → snow_melting
+- `mineral.sulfate.none.coarse.all.eugstec.usgs.perknic.spectrum` Eugsterite Na4Ca(SO4)3 * 2H2O → (无触发)
+- `mineral.sulfate.none.coarse.all.gds147.usgs.perknic.spectrum` Bloedite Na2Mg(So4)2 * 3H2O → (无触发)
+- `mineral.sulfate.none.coarse.all.hexahydr.usgs.perknic.spectrum` Hexahydrite MgSO4·6H2O → (无触发)
+- `mineral.sulfate.none.coarse.all.mirabili.usgs.perknic.spectrum` Mirabilite Na2SO4·10H2O → montmorillonite_Na
+- `mineral.sulfate.none.coarse.all.nmnh92669-4.usgs.perknic.spectrum` Polyhalite K2Ca2Mg(SO4)4 * 2H2O → (无触发)
+- `mineral.sulfate.none.coarse.all.none.usgs.perknic.spectrum` Thenardite Na2SO4 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-10a.jpl.beckman.spectrum` Anglesite PbSO_4 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-10a.jpl.perkin.spectrum` Anglesite PbSO_4 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-11a.jpl.beckman.spectrum` Antlerite Cu_3(SO_4)(OH)_4 → calcite.5+dolomite.5
+- `mineral.sulfate.none.coarse.vswir.so-11a.jpl.perkin.spectrum` Antlerite Cu_3(SO_4)(OH)_4 → chlorite_lowFe
+- `mineral.sulfate.none.coarse.vswir.so-1a.jpl.beckman.spectrum` Anhydrite CaSO_4 → kaolinite+clay_mica_or_halloysite
+- `mineral.sulfate.none.coarse.vswir.so-1a.jpl.perkin.spectrum` Anhydrite CaSO_4 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-3a.jpl.beckman.spectrum` Barite BaSO_4 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-3a.jpl.perkin.spectrum` Barite BaSO_4 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-5a.jpl.beckman.spectrum` Celestite SrSO_4 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-5a.jpl.perkin.spectrum` Celestite SrSO_4 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-6a.jpl.beckman.spectrum` Tschermigite (NH_4)Al(SO_4)_2.12H_2O → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-6a.jpl.perkin.spectrum` Tschermigite (NH_4)Al(SO_4)_2.12H_2O → snow_melting
+- `mineral.sulfate.none.coarse.vswir.so-8a.jpl.beckman.spectrum` Glauberite Na_2Ca(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-8a.jpl.perkin.spectrum` Glauberite Na_2Ca(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-9a.jpl.beckman.spectrum` Aphthitalite (K,Na)_3Na(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.coarse.vswir.so-9a.jpl.perkin.spectrum` Aphthitalite (K,Na)_3Na(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-10a.jpl.beckman.spectrum` Anglesite PbSO_4 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-10a.jpl.perkin.spectrum` Anglesite PbSO_4 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-11a.jpl.beckman.spectrum` Antlerite Cu_3(SO_4)(OH)_4 → calcite.5+dolomite.5
+- `mineral.sulfate.none.fine.vswir.so-11a.jpl.perkin.spectrum` Antlerite Cu_3(SO_4)(OH)_4 → calcite
+- `mineral.sulfate.none.fine.vswir.so-1a.jpl.beckman.spectrum` Anhydrite CaSO_4 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-1a.jpl.perkin.spectrum` Anhydrite CaSO_4 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-3a.jpl.beckman.spectrum` Barite BaSO_4 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-3a.jpl.perkin.spectrum` Barite BaSO_4 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-5a.jpl.beckman.spectrum` Celestite SrSO_4 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-5a.jpl.perkin.spectrum` Celestite SrSO_4 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-6a.jpl.beckman.spectrum` Tschermigite (NH_4)Al(SO_4)_2.12H_2O → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-6a.jpl.perkin.spectrum` Tschermigite (NH_4)Al(SO_4)_2.12H_2O → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-8a.jpl.beckman.spectrum` Glauberite Na_2Ca(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-8a.jpl.perkin.spectrum` Glauberite Na_2Ca(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-9a.jpl.beckman.spectrum` Aphthitalite (K,Na)_3Na(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.fine.vswir.so-9a.jpl.perkin.spectrum` Aphthitalite (K,Na)_3Na(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-10a.jpl.beckman.spectrum` Anglesite PbSO_4 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-10a.jpl.perkin.spectrum` Anglesite PbSO_4 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-11a.jpl.beckman.spectrum` Antlerite Cu_3(SO_4)(OH)_4 → calcite.5+dolomite.5
+- `mineral.sulfate.none.medium.vswir.so-11a.jpl.perkin.spectrum` Antlerite Cu_3(SO_4)(OH)_4 → chlorite_lowFe
+- `mineral.sulfate.none.medium.vswir.so-1a.jpl.beckman.spectrum` Anhydrite CaSO_4 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-1a.jpl.perkin.spectrum` Anhydrite CaSO_4 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-3a.jpl.beckman.spectrum` Barite BaSO_4 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-3a.jpl.perkin.spectrum` Barite BaSO_4 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-5a.jpl.beckman.spectrum` Celestite SrSO_4 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-5a.jpl.perkin.spectrum` Celestite SrSO_4 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-6a.jpl.beckman.spectrum` Tschermigite (NH_4)Al(SO_4)_2.12H_2O → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-6a.jpl.perkin.spectrum` Tschermigite (NH_4)Al(SO_4)_2.12H_2O → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-8a.jpl.beckman.spectrum` Glauberite Na_2Ca(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-8a.jpl.perkin.spectrum` Glauberite Na_2Ca(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-9a.jpl.beckman.spectrum` Aphthitalite (K,Na)_3Na(SO_4)_2 → (无触发)
+- `mineral.sulfate.none.medium.vswir.so-9a.jpl.perkin.spectrum` Aphthitalite (K,Na)_3Na(SO_4)_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-10a.jpl.beckman.spectrum` Marcasite FeS_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-10a.jpl.perkin.spectrum` Marcasite FeS_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-11a.jpl.beckman.spectrum` Molybdenite MoS_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-11a.jpl.perkin.spectrum` Molybdenite MoS_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-1a.jpl.beckman.spectrum` Sphalerite (Zn,Fe)S → chalcedony
+- `mineral.sulfide.none.coarse.vswir.s-1a.jpl.perkin.spectrum` Sphalerite (Zn,Fe)S → chalcedony
+- `mineral.sulfide.none.coarse.vswir.s-2a.jpl.beckman.spectrum` Pyrite FeS_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-2a.jpl.perkin.spectrum` Pyrite FeS_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-3a.jpl.beckman.spectrum` Realgar AsS → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-3a.jpl.perkin.spectrum` Realgar AsS → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-4a.jpl.beckman.spectrum` Chalcopyrite CuFeS_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-4a.jpl.perkin.spectrum` Chalcopyrite CuFeS_2 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-5a.jpl.beckman.spectrum` Arsenopyrite FeAsS → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-5a.jpl.perkin.spectrum` Arsenopyrite FeAsS → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-6a.jpl.beckman.spectrum` Stibnite Sb_2S_3 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-7a.jpl.beckman.spectrum` Galena PbS → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-7a.jpl.perkin.spectrum` Galena PbS → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-8a.jpl.beckman.spectrum` Chalcocite Cu_2S → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-8a.jpl.perkin.spectrum` Chalcocite Cu_2S → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-9a.jpl.beckman.spectrum` Bornite Cu_5FeS_4 → (无触发)
+- `mineral.sulfide.none.coarse.vswir.s-9a.jpl.perkin.spectrum` Bornite Cu_5FeS_4 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-10a.jpl.beckman.spectrum` Marcasite FeS_2 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-10a.jpl.perkin.spectrum` Marcasite FeS_2 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-11a.jpl.beckman.spectrum` Molybdenite MoS_2 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-11a.jpl.perkin.spectrum` Molybdenite MoS_2 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-12a.jpl.beckman.spectrum` Pyrrhotite Fe_1-xS → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-1a.jpl.beckman.spectrum` Sphalerite (Zn,Fe)S → dry_veg_grass_2_3um
+- `mineral.sulfide.none.fine.vswir.s-1a.jpl.perkin.spectrum` Sphalerite (Zn,Fe)S → dry_veg_grass_2_3um
+- `mineral.sulfide.none.fine.vswir.s-2a.jpl.beckman.spectrum` Pyrite FeS_2 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-2a.jpl.perkin.spectrum` Pyrite FeS_2 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-3a.jpl.beckman.spectrum` Realgar AsS → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-3a.jpl.perkin.spectrum` Realgar AsS → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-4a.jpl.beckman.spectrum` Chalcopyrite CuFeS_2 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-4a.jpl.perkin.spectrum` Chalcopyrite CuFeS_2 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-5a.jpl.beckman.spectrum` Arsenopyrite FeAsS → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-5a.jpl.perkin.spectrum` Arsenopyrite FeAsS → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-6a.jpl.beckman.spectrum` Stibnite Sb_2S_3 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-7a.jpl.beckman.spectrum` Galena PbS → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-7a.jpl.perkin.spectrum` Galena PbS → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-8a.jpl.beckman.spectrum` Chalcocite Cu_2S → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-8a.jpl.perkin.spectrum` Chalcocite Cu_2S → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-9a.jpl.beckman.spectrum` Bornite Cu_5FeS_4 → (无触发)
+- `mineral.sulfide.none.fine.vswir.s-9a.jpl.perkin.spectrum` Bornite Cu_5FeS_4 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-10a.jpl.beckman.spectrum` Marcasite FeS_2 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-10a.jpl.perkin.spectrum` Marcasite FeS_2 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-11a.jpl.beckman.spectrum` Molybdenite MoS_2 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-11a.jpl.perkin.spectrum` Molybdenite MoS_2 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-1a.jpl.beckman.spectrum` Sphalerite (Zn,Fe)S → dry_veg_grass_2_3um
+- `mineral.sulfide.none.medium.vswir.s-1a.jpl.perkin.spectrum` Sphalerite (Zn,Fe)S → dry_veg_grass_2_3um
+- `mineral.sulfide.none.medium.vswir.s-2a.jpl.beckman.spectrum` Pyrite FeS_2 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-2a.jpl.perkin.spectrum` Pyrite FeS_2 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-3a.jpl.beckman.spectrum` Realgar AsS → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-3a.jpl.perkin.spectrum` Realgar AsS → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-4a.jpl.beckman.spectrum` Chalcopyrite CuFeS_2 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-4a.jpl.perkin.spectrum` Chalcopyrite CuFeS_2 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-5a.jpl.beckman.spectrum` Arsenopyrite FeAsS → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-5a.jpl.perkin.spectrum` Arsenopyrite FeAsS → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-6a.jpl.beckman.spectrum` Stibnite Sb_2S_3 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-7a.jpl.beckman.spectrum` Galena PbS → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-7a.jpl.perkin.spectrum` Galena PbS → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-8a.jpl.beckman.spectrum` Chalcocite Cu_2S → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-8a.jpl.perkin.spectrum` Chalcocite Cu_2S → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-9a.jpl.beckman.spectrum` Bornite Cu_5FeS_4 → (无触发)
+- `mineral.sulfide.none.medium.vswir.s-9a.jpl.perkin.spectrum` Bornite Cu_5FeS_4 → (无触发)
+- `mineral.tungstate.none.coarse.vswir.t-1a.jpl.beckman.spectrum` Scheelite CaWO_4 → kaolinite+smectite_mix_intimate
+- `mineral.tungstate.none.coarse.vswir.t-1a.jpl.perkin.spectrum` Scheelite CaWO_4 → (无触发)
+- `mineral.tungstate.none.fine.vswir.t-1a.jpl.beckman.spectrum` Scheelite CaWO_4 → (无触发)
+- `mineral.tungstate.none.fine.vswir.t-1a.jpl.perkin.spectrum` Scheelite CaWO_4 → (无触发)
+- `mineral.tungstate.none.medium.vswir.t-1a.jpl.beckman.spectrum` Scheelite CaWO_4 → (无触发)
+- `mineral.tungstate.none.medium.vswir.t-1a.jpl.perkin.spectrum` Scheelite CaWO_4 → (无触发)
+
+</details>
+
+## 化学腿(mus_center / chl_center vs 实测化学,72 谱)
+
+### A. 白云母链(USGS splib07,22 谱 / 11 样)
+
+- ✓ `Muscovite_GDS108_BECKb_AREF` GDS108:Al2O3_wt=35.0,center=2199.10 nm
+- ✓ `Muscovite_GDS108_NIC4bb_RREF` GDS108:Al2O3_wt=35.0,center=2198.00 nm
+- ✓ `Muscovite_GDS111_Guatemala_BECKa_AREF` GDS111:Al2O3_wt=28.03,center=2220.55 nm
+- ✓ `Muscovite_GDS111_Guatemala_NIC4aaa_RREF` GDS111:Al2O3_wt=28.03,center=2219.43 nm
+- ✓ `Muscovite_GDS113_Ruby_ASDNGa_AREF` GDS113:Al2O3_wt=35.64,center=2197.32 nm
+- ✓ `Muscovite_GDS113_Ruby_BECKa_AREF` GDS113:Al2O3_wt=35.64,center=2199.24 nm
+- ✓ `Muscovite_GDS113_Ruby_NIC4aaa_RREF` GDS113:Al2O3_wt=35.64,center=2197.29 nm
+- ✓ `Muscovite_GDS113a_Ruby_ASDNGa_AREF` GDS113a:Al2O3_wt=35.64,center=2197.27 nm
+- ✓ `Muscovite_GDS114_Marshall_BECKa_AREF` GDS114:Al2O3_wt=33.09,center=2206.81 nm
+- ✓ `Muscovite_GDS114_Marshall_NIC4aaa_RREF` GDS114:Al2O3_wt=33.09,center=2205.19 nm
+- ✓ `Muscovite_GDS116_Tanzania_ASDNGa_AREF` GDS116:Al2O3_wt=31.06,center=2210.74 nm
+- ✓ `Muscovite_GDS116_Tanzania_BECKa_AREF` GDS116:Al2O3_wt=31.06,center=2212.81 nm
+- ✓ `Muscovite_GDS116_Tanzania_NIC4aaa_RREF` GDS116:Al2O3_wt=31.06,center=2212.72 nm
+- ✓ `Muscovite_GDS116a_Tanzania_ASDNGa_AREF` GDS116a:Al2O3_wt=31.06,center=2210.87 nm
+- ✓ `Muscovite_GDS117_Isinglas_BECKa_AREF` GDS117:Al2O3_wt=35.54,center=2201.10 nm
+- ✓ `Muscovite_GDS117_Isingles_NIC4aaa_RREF` GDS117:Al2O3_wt=35.54,center=2199.65 nm
+- ✓ `Muscovite_GDS118_Capitan_BECKa_AREF` GDS118:Al2O3_wt=31.31,center=2211.18 nm
+- ✓ `Muscovite_GDS118_Capitan_NIC4aaa_RREF` GDS118:Al2O3_wt=31.31,center=2208.01 nm
+- ✓ `Muscovite_GDS119_Mt_Alamo_BECKa_AREF` GDS119:Al2O3_wt=33.34,center=2203.13 nm
+- ✓ `Muscovite_GDS119_Mt_Alamo_NIC4aa_RREF` GDS119:Al2O3_wt=33.34,center=2201.00 nm
+- ✓ `Muscovite_GDS120_Pegma_M._BECKa_AREF` GDS120:Al2O3_wt=35.69,center=2202.55 nm
+- ✓ `Muscovite_GDS120_Pegma_M._NIC4aa_RREF` GDS120:Al2O3_wt=35.69,center=2200.13 nm
+
+### B. 绿泥石链(USGS splib07,44 谱 / 8 样)
+
+- ✗ `splib07a_Clinochlore_GDS159_BECKb_AREF` GDS159:Fe_frac=0.0165944023323789,center=0.00 nm
+- ✗ `splib07a_Clinochlore_GDS159_NIC4bb_RREF` GDS159:Fe_frac=0.0165944023323789,center=0.00 nm
+- ✓ `splib07a_Clinochlore_NMNH83369_BECKb_AREF` NMNH83369:Fe_frac=0.05301880404278569,center=2244.39 nm
+- ✗ `splib07a_Clinochlore_NMNH83369_NIC4bbb_RREF` NMNH83369:Fe_frac=0.05301880404278569,center=0.00 nm
+- ✗ `splib07a_Clinochlore_NMNH83369_NIC4b_RREF` NMNH83369:Fe_frac=0.05301880404278569,center=0.00 nm
+- ✓ `splib07a_Chlorite_SMR-13.a_104-150um_BECKa_AREF` SMR-13:Fe_frac=0.12234429255450854,center=2245.44 nm
+- ✓ `splib07a_Chlorite_SMR-13.a_104-150um_NIC4aa_RREF` SMR-13:Fe_frac=0.12234429255450854,center=2245.99 nm
+- ✓ `splib07a_Chlorite_SMR-13.a_104-150um_NIC4a_RREF` SMR-13:Fe_frac=0.12234429255450854,center=2245.38 nm
+- ✓ `splib07a_Chlorite_SMR-13.b_60-104um_BECKa_AREF` SMR-13:Fe_frac=0.12234429255450854,center=2244.46 nm
+- ✓ `splib07a_Chlorite_SMR-13.c_45-60um_BECKa_AREF` SMR-13:Fe_frac=0.12234429255450854,center=2245.07 nm
+- ✓ `splib07a_Chlorite_SMR-13.c_45-60um_NIC4aa_RREF` SMR-13:Fe_frac=0.12234429255450854,center=2245.56 nm
+- ✓ `splib07a_Chlorite_SMR-13.d_30-45um_BECKa_AREF` SMR-13:Fe_frac=0.12234429255450854,center=2243.92 nm
+- ✗ `splib07a_Chlorite_SMR-13.e_lt30um_BECKb_AREF` SMR-13:Fe_frac=0.12234429255450854,center=0.00 nm
+- ✗ `splib07a_Chlorite_SMR-13.e_lt30um_NIC4bb_RREF` SMR-13:Fe_frac=0.12234429255450854,center=0.00 nm
+- ✓ `splib07a_Chlorite_SMR-13.d_30-45um_NIC4aa_RREF` SMR-13:Fe_frac=0.12234429255450854,center=2245.29 nm
+- ✓ `splib07a_Clinochlore_GDS158_Flagstaff_ASDNGb_AREF` GDS158:Fe_frac=0.223694476495753,center=2248.91 nm
+- ✓ `splib07a_Clinochlore_GDS158_Flagstaff_BECKb_AREF` GDS158:Fe_frac=0.223694476495753,center=2250.57 nm
+- ✓ `splib07a_Clinochlore_GDS158_Flagstaff_NIC4bb_RREF` GDS158:Fe_frac=0.223694476495753,center=2249.12 nm
+- ✓ `splib07a_Clinochlore_Fe_SC-CCa-1.a_BECKa_AREF` SC-CCa-1:Fe_frac=0.2858883138519481,center=2251.88 nm
+- ✓ `splib07a_Clinochlore_Fe_SC-CCa-1.b_BECKa_AREF` SC-CCa-1:Fe_frac=0.2858883138519481,center=2250.94 nm
+- ✓ `splib07a_Clinochlore_Fe_SC-CCa-1.b_NIC4aa_RREF` SC-CCa-1:Fe_frac=0.2858883138519481,center=2254.76 nm
+- ✓ `splib07a_Clinochlore_Fe_SC-CCa-1.c_BECKa_AREF` SC-CCa-1:Fe_frac=0.2858883138519481,center=2247.12 nm
+- ✓ `splib07a_Clinochlore_Fe_SC-CCa-1.c_NIC4aa_RREF` SC-CCa-1:Fe_frac=0.2858883138519481,center=2255.07 nm
+- ✓ `splib07a_Clinochlore_Fe_SC-CCa-1.a_NIC4aa_RREF` SC-CCa-1:Fe_frac=0.2858883138519481,center=2254.52 nm
+- ✓ `splib07a_Clinochlore_Fe_GDS157.b_ASDFRa_AREF` GDS157:Fe_frac=0.43481441575098434,center=2253.62 nm
+- ✓ `splib07a_Clinochlore_Fe_GDS157_BECKa_AREF` GDS157:Fe_frac=0.43481441575098434,center=2255.15 nm
+- ✓ `splib07a_Clinochlore_Fe_GDS157_NIC4aa_RREF` GDS157:Fe_frac=0.43481441575098434,center=2252.59 nm
+- ✓ `splib07a_Clinochlore_Fe_GDS157_NIC4a_RREF` GDS157:Fe_frac=0.43481441575098434,center=2253.27 nm
+- ✗ `splib07a_Prochlorite_SMR-14.a_115um_BECKa_AREF` SMR-14:Fe_frac=0.5132932936593981,center=0.00 nm
+- ✓ `splib07a_Prochlorite_SMR-14.a_115um_NIC4aa_RREF` SMR-14:Fe_frac=0.5132932936593981,center=2251.81 nm
+- ✓ `splib07a_Prochlorite_SMR-14.a_115um_NIC4a_RREF` SMR-14:Fe_frac=0.5132932936593981,center=2250.30 nm
+- ✗ `splib07a_Prochlorite_SMR-14.b_32um_BECKa_AREF` SMR-14:Fe_frac=0.5132932936593981,center=0.00 nm
+- ✓ `splib07a_Prochlorite_SMR-14.b_32um_NIC4aa_RREF` SMR-14:Fe_frac=0.5132932936593981,center=2249.58 nm
+- ✓ `splib07a_Prochlorite_SMR-14.b_32um_NIC4a_RREF` SMR-14:Fe_frac=0.5132932936593981,center=2250.89 nm
+- ✗ `splib07a_Prochlorite_SMR-14.c_lt30um_BECKa_AREF` SMR-14:Fe_frac=0.5132932936593981,center=0.00 nm
+- ✓ `splib07a_Prochlorite_SMR-14.c_lt30um_NIC4aa_RREF` SMR-14:Fe_frac=0.5132932936593981,center=2248.45 nm
+- ✓ `splib07a_Thuringite_SMR-15.a_115um_BECKb_AREF` SMR-15:Fe_frac=0.5297960316826019,center=2259.93 nm
+- ✓ `splib07a_Thuringite_SMR-15.b_80um_BECKa_AREF` SMR-15:Fe_frac=0.5297960316826019,center=2257.92 nm
+- ✓ `splib07a_Thuringite_SMR-15.b_80um_NIC4aa_RREF` SMR-15:Fe_frac=0.5297960316826019,center=2259.79 nm
+- ✓ `splib07a_Thuringite_SMR-15.b_80um_NIC4a_RREF` SMR-15:Fe_frac=0.5297960316826019,center=2259.79 nm
+- ✓ `splib07a_Thuringite_SMR-15.c_32um_NIC4aa_RREF` SMR-15:Fe_frac=0.5297960316826019,center=2258.72 nm
+- ✗ `splib07a_Thuringite_SMR-15.d_lt30um_BECKa_AREF` SMR-15:Fe_frac=0.5297960316826019,center=0.00 nm
+- ✓ `splib07a_Thuringite_SMR-15.d_lt30um_NIC4aa_RREF` SMR-15:Fe_frac=0.5297960316826019,center=2259.25 nm
+- ✓ `splib07a_Thuringite_SMR-15.a_115um_NIC4bc_RREF` SMR-15:Fe_frac=0.5297960316826019,center=2259.12 nm
+
+### C. RELAB 独立绿泥石(4 样)
+
+- ✗ `c1ch16` Chamosite CHM102:Fe_frac=0.8892,center=0.00 nm (兼鉴定腿)
+- ✓ `c1ea14` Clinochlore CLI101:Fe_frac=0.1455,center=2248.33 nm (兼鉴定腿)
+- ✓ `c1sr59` BUR-1340 clinochlore:Fe_frac=0.1271,center=2247.92 nm (兼鉴定腿)
+- ✓ `c1sr68` WAR-1924 chlorite:Fe_frac=0.1170,center=2247.43 nm (兼鉴定腿)
+
+### C. RELAB 云母组(2 样,探索性)
+
+- ✗ `c1ea19a` Celadonite CEL101:Al2O3_wt=2.53,center=0.00 nm
+- ✗ `c1ea31a` Phlogopite PHL101:Al2O3_wt=13.23,center=0.00 nm
+
+## 备注
+
+- 标记:✓ = Top-1 命中 / 产品触发;~ = Top-1 miss 但 Top-5 命中;✗ = miss / 未触发。
+- C 组 c1sr59/c1sr68/c1ea14 若同时出现在 RELAB 鉴定腿 551 谱中,以"(兼鉴定腿)"标出。
+- 逐谱完整字段(Top-5 规则、fit、诊断 PDF 名):`crosslib_benchmark.csv`;化学逐谱:`crosslib_chem_validation.csv`。

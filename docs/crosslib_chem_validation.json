@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-08",
+  "engine": "/home/lee/CRAMM/cramm/__init__.py",
+  "pools": {
+    "A_muscovite_USGS": {
+      "n_spectra": 22,
+      "n_fired": 22,
+      "regression": {
+        "slope": -2.7531,
+        "intercept": 2296.638,
+        "r_pearson": -0.9665,
+        "rho_spearman": -0.8649,
+        "n": 22
+      },
+      "rmse_vs_archived_nm": 0.538,
+      "samples": [
+        "GDS108",
+        "GDS111",
+        "GDS113",
+        "GDS113a",
+        "GDS114",
+        "GDS116",
+        "GDS116a",
+        "GDS117",
+        "GDS118",
+        "GDS119",
+        "GDS120"
+      ]
+    },
+    "B_chlorite_USGS": {
+      "n_spectra": 44,
+      "n_fired": 34,
+      "regression": {
+        "slope": 24.5041,
+        "intercept": 2243.189,
+        "r_pearson": 0.7994,
+        "rho_spearman": 0.8439,
+        "n": 34
+      },
+      "rmse_vs_archived_nm": 1.809,
+      "samples": [
+        "GDS157",
+        "GDS158",
+        "GDS159",
+        "NMNH83369",
+        "SC-CCa-1",
+        "SMR-13",
+        "SMR-14",
+        "SMR-15"
+      ]
+    },
+    "C_RELAB_chlorite": {
+      "n_spectra": 4,
+      "n_fired": 3,
+      "regression": {
+        "slope": 30.4457,
+        "intercept": 2243.939,
+        "r_pearson": 0.9764,
+        "rho_spearman": 1.0,
+        "n": 3
+      },
+      "rmse_vs_archived_nm": null,
+      "samples": [
+        "BUR-1340 clinochlore",
+        "Chamosite CHM102",
+        "Clinochlore CLI101",
+        "WAR-1924 chlorite"
+      ]
+    },
+    "C_RELAB_mica": {
+      "n_spectra": 2,
+      "n_fired": 0,
+      "regression": null,
+      "rmse_vs_archived_nm": null,
+      "samples": [
+        "Celadonite CEL101",
+        "Phlogopite PHL101"
+      ]
+    }
+  }
+}

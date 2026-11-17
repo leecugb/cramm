@@ -30,3 +30,9 @@ Notes
   granule.
 - Pixel-count convention used everywhere in this repo: the scene grid is
   1280×1242 = 1,589,760 px.
+- Carbonate-count convention: suite 12's archived census and README's separate
+  current-tier carbonate run are different arbitration configurations. The
+  archived census reports 63,032 muscovite + chlorite changes, while the
+  current-tier run reports 1,599 plain-tier calcite→dolomite changes. These
+  results are reported separately and must not be summed or read as a single
+  total.

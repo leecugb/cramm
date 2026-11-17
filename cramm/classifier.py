@@ -255,6 +255,33 @@ def _resample_(bands: np.ndarray, data: np.ndarray, w: np.ndarray, bp: np.ndarra
     return res1
 
 
+def _rowcol(a: np.ndarray, rows: np.ndarray, cols: np.ndarray) -> np.ndarray:
+    """Cross-product row/column submatrix copy: one M x K fetch, equivalent to
+    ``a[np.ix_(rows, cols)]`` but without np.ix_'s per-call overhead. ``rows``
+    and ``cols`` must be 1-D integer index arrays -- np.ix_ enforced that
+    ("Cross index must be 1 dimensional"); the check preserves the guard,
+    which raw tuple broadcasting would silently skip (a 2-D rows would produce
+    a wrong-shaped selection instead of an error)."""
+    rows = np.asarray(rows)
+    cols = np.asarray(cols)
+    if rows.ndim != 1 or cols.ndim != 1:
+        raise ValueError("Cross index must be 1 dimensional")
+    return a[rows[:, None], cols]
+
+
+def _endpoint_averages(
+    spectrum: np.ndarray, rows: np.ndarray, idx_l: np.ndarray, idx_r: np.ndarray
+) -> np.ndarray:
+    """Mean reflectance at the left/right continuum-endpoint column sets per
+    row -- the shared ``y_av`` construction of _get_quadratic_center,
+    _diagnostic_feature and _get_fit, kept as one copy so the three stay
+    bit-exact in lockstep."""
+    return np.array(
+        [_rowcol(spectrum, rows, idx_l).mean(1), _rowcol(spectrum, rows, idx_r).mean(1)],
+        dtype="float64",
+    ).T
+
+
 def _get_quadratic_center(
     spectrum: np.ndarray, wl: np.ndarray, CONTINUUM_ENDPTS: List[float], mask_const: np.ndarray
 ) -> np.ndarray:
@@ -263,21 +290,18 @@ def _get_quadratic_center(
     mask_right_end = (wl <= CONTINUUM_ENDPTS[3]) & (wl >= CONTINUUM_ENDPTS[2])
     x_av = np.array([wl[mask_left_end].mean(), wl[mask_right_end].mean()], dtype="float64")
     # rows style (same principle as _diagnostic_feature): fetch data only on
-    # the rows alive in mask_const; a single np.ix_ copy replaces "copy all N
-    # columns then take a row subset"; same elements in the same order, so the
-    # result is bit-exact identical.
+    # the rows alive in mask_const; a single rows x columns cross copy (see
+    # _rowcol) replaces "copy all N columns then take a row subset"; same
+    # elements in the same order, so the result is bit-exact identical.
     rows = np.nonzero(mask_const)[0]
     idx = np.nonzero(mask)[0]
     idx_l = np.nonzero(mask_left_end)[0]
     idx_r = np.nonzero(mask_right_end)[0]
-    y_av = np.array(
-        [spectrum[np.ix_(rows, idx_l)].mean(1), spectrum[np.ix_(rows, idx_r)].mean(1)],
-        dtype="float64",
-    ).T
+    y_av = _endpoint_averages(spectrum, rows, idx_l, idx_r)
     con = y_av[:, [0]] + (y_av[:, [1]] - y_av[:, [0]]) / (x_av[1] - x_av[0]) * (
         wl[mask].reshape([1, -1]) - x_av[0]
     )
-    con = spectrum[np.ix_(rows, idx)] / con
+    con = _rowcol(spectrum, rows, idx) / con
     index = con.argmin(1)
     mas = ((index - 1) >= 0) & (index + 1 < mask.sum())
     con = con[mas]
@@ -669,9 +693,7 @@ def _diagnostic_feature(
     B = pre["B"]
     depth_factor = pre["depth_factor"]
 
-    y_av = np.array(
-        [spectrum[np.ix_(rows, idx_l)].mean(1), spectrum[np.ix_(rows, idx_r)].mean(1)], dtype="float64"
-    ).T
+    y_av = _endpoint_averages(spectrum, rows, idx_l, idx_r)
 
     mask_const = np.ones(len(rows), dtype="bool")
     if CONTINUUM_CONSTRAINTS[0] is not None:
@@ -701,8 +723,8 @@ def _diagnostic_feature(
     # Column-first indexing: select columns (~30) before rows, avoiding the
     # wasted N x 285 copy of row-first selection; the result is bit-exact
     # identical to spectrum[mask_const][:, mask]. With rows restriction, a
-    # single np.ix_ copy of M x 30 is used.
-    scol = spectrum[np.ix_(rows, idx)]
+    # single rows x columns cross copy of M x 30 is used (see _rowcol).
+    scol = _rowcol(spectrum, rows, idx)
     con = scol[mask_const] / con
     # Closed-form least squares + r2/depth chain (single implementation shared
     # with _get_fit, see _fit_r2_depth)
@@ -764,11 +786,9 @@ def _get_fit(
     B = pre["B"]
     depth_factor = pre["depth_factor"]
 
-    y_av = np.array(
-        [spectrum[np.ix_(rows, idx_l)].mean(1), spectrum[np.ix_(rows, idx_r)].mean(1)], dtype="float64"
-    ).T
+    y_av = _endpoint_averages(spectrum, rows, idx_l, idx_r)
     con = y_av[:, [0]] + (y_av[:, [1]] - y_av[:, [0]]) / (x_av[1] - x_av[0]) * wdiff.reshape([1, -1])
-    con = spectrum[np.ix_(rows, idx)] / con
+    con = _rowcol(spectrum, rows, idx) / con
     # Closed-form least squares + r2/depth chain (single implementation shared
     # with _diagnostic_feature, see _fit_r2_depth)
     r2, depth = _fit_r2_depth(con, con_, B, depth_factor)
@@ -1567,10 +1587,23 @@ class MicaClassifier:
         DEPTH_ = np.zeros(r * c, dtype="float")
         NUM_ = np.zeros(r * c, dtype="uint8")
 
-        segments = [(0, int(r / 3)), (int(r / 3), int(r * 2 / 3)), (int(r * 2 / 3), r)]
-
+        # Segments: proportional to worker count (min 3) so the per-segment
+        # FIT/DEPTH buffers and the worker-side intermediate arrays stay small
+        # regardless of n_workers -- nw=8 on 24-logical-CPU machines previously
+        # OOM'd with the fixed 3-segment split (~590 MB worker chunk).
         nw = n_workers if n_workers is not None else min(os.cpu_count() or 1, 8)
+        # Cap the segment count at the row count: with n_segments > r the tail
+        # segments are empty (a == b) yet still round-trip len(self.rf) tasks
+        # through the pool each. Per-pixel results are independent of the
+        # segmentation (bit-exact across segment counts, serial vs parallel),
+        # so the cap changes scheduling only.
+        n_segments = min(max(3, nw * 3), r)
+        segments = [(int(r * i / n_segments), int(r * (i + 1) / n_segments))
+                    for i in range(n_segments)]
         parallel = nw > 1
+        # Rule-level errors are re-reported by every segment a failing rule is
+        # submitted to; log each failing rule once per classify call instead.
+        err_logged = set()
 
         # ---- Parallel path: write the channel-selected spec_sel of the whole
         # image to disk as a memmap for read-only sharing ----
@@ -1639,6 +1672,9 @@ class MicaClassifier:
                     tasks = [(k, a_c, b_c, value) for k, (key, value) in enumerate(self.rf.items())]
                     for k, fit, fd_val, err in pool.imap_unordered(_judge_task, tasks):
                         if err is not None:
+                            if k in err_logged:
+                                continue
+                            err_logged.add(k)
                             msg = f"{index[k]}: {err}"
                             if log_callback:
                                 log_callback(msg)
@@ -1660,6 +1696,9 @@ class MicaClassifier:
                         try:
                             fit, depth = _judge_reference_entry(spectrum1, wl, value, resampled1, chanels)
                         except (InvalidRangeError, InvalidLeftEndPointError, InvalidRightEndPointError) as e:
+                            if k in err_logged:
+                                continue
+                            err_logged.add(k)
                             msg = f"{key}: {e}"
                             if log_callback:
                                 log_callback(msg)
@@ -1783,7 +1822,7 @@ class MicaClassifier:
                 NUM_[a * c : b * c] = im
 
                 if progress_callback:
-                    progress_callback(int((seg_idx + 1) / 3 * 100))
+                    progress_callback(int((seg_idx + 1) / len(segments) * 100))
         finally:
             if pool is not None:
                 if sys.exc_info()[0] is not None:

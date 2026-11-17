@@ -160,7 +160,7 @@ cramm -i EMIT_L2A_RFL_001_xxx.nc -o output [-n scene] [-w 4] [--raw]
 | `-o`, `--output` | `.` | Output directory |
 | `-n`, `--name` | input filename | Output filename prefix |
 | `-w`, `--workers` | `min(cpu, 8)` | Parallel worker processes (`1` = serial) |
-| `--raw` | off | Also save `mus_center` + `chl_center` + `fd` float arrays as `.npz` |
+| `--raw` | off | Also save `mus_center` + `chl_center` + `cal_center` + `fd` float arrays as `.npz` |
 
 **Output files** (written to `<output>/<name>*`):
 
@@ -211,7 +211,7 @@ bp = np.array([...])                       # band FWHM [µm]
 chanels = np.arange(len(w))                # valid bands (drop bad-band indices)
 wl = w[chanels]
 
-orth, color, mus, chl = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
+orth, color, mus, chl, cal = engine.spectrum_analysis(spectrum, wl, w, bp, chanels,
                                                  n_workers=4)
 ```
 
@@ -240,9 +240,9 @@ More scenarios — float (`raw=True`) output, custom rule libraries, the
 | `MicaEngine` method | Purpose |
 |---|---|
 | `load_emit(path)` | *(EMIT-specific convenience reader)* Read EMIT L2A NetCDF → `(spectrum, lon, lat, w, bp, wl, chanels)`; float32 cube, bad bands removed, fill values zeroed. Not needed for other sensors — supply the same tuple yourself |
-| `spectrum_analysis(spectrum, wl, w, bp, chanels, ...)` | Classify a whole scene → 4 uint8 RGB images; `raw=True` adds `mus_center` + `chl_center` + `fd` float arrays. Supports `progress_callback`, `log_callback`, `cancel_flag`, `n_workers` |
+| `spectrum_analysis(spectrum, wl, w, bp, chanels, ...)` | Classify a whole scene → 5 uint8 RGB images; `raw=True` adds `mus_center` + `chl_center` + `cal_center` + `fd` float arrays. Supports `progress_callback`, `log_callback`, `cancel_flag`, `n_workers` |
 | `classify_spectrum(spectrum, wl, w, bp, chanels, top_n=10, pdf_path=None)` | Identify one spectrum → Top-N `[{"name", "fit", "fd"}]` |
-| `write_tiff(prefix, lon, lat, orth, color, mus, chl=None)` | Orthorectify (pyresample) and write the GeoTIFFs; `chl` is optional (omit for legacy 3-file output); requires GDAL |
+| `write_tiff(prefix, lon, lat, orth, color, mus, chl=None, cal=None)` | Orthorectify (pyresample) and write the GeoTIFFs; `chl` and `cal` are optional (omit for legacy 3- or 4-file output); requires GDAL |
 | `get_resample(w, bp)` | All reference spectra resampled to the sensor bands `{rule_name: spectrum}` (cached; keys are rule-name strings — the sole link to the reference library after the v1.4.0 id purge) |
 | `invalidate_caches()` | **Required** after mutating `engine.rf` in place — see below |
 

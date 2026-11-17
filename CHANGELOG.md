@@ -1,5 +1,25 @@
 # Changelog
 
+## Unreleased — 性能与评估口径优化(2026-09-28)
+
+32/32 pytest 通过;数值路径位精确不变(测试黄金全绿)。
+
+- **自适应段数(内存/扩展性)**:classify 的场景分段由固定 3 段改为
+  `max(3, nw*3)` 段——每段 FIT/DEPTH 缓冲与 worker 中间数组随 nw 缩小,
+  修复 24 逻辑核机器上 nw=8 OOM(worker chunk ~590MB)的问题。
+  Linux 72 核实测:subset nw=4 +26%、nw=8 +21%、**nw=16 +30%(此前退化)**;
+  甜点移至 nw=8/16(25.8/25.1k px/s)。
+- **ix_ 消除**:`_diagnostic_feature`/`_get_fit` 中 9 处 `np.ix_(rows, idx)`
+  替换为等价元组索引 `(rows[:,None], idx)`(形状/取值逐元素一致,零数值风险),
+  subset nw=4 +8%、warm 单谱 +5%,测试套件墙钟 19.4s→12.7s。
+- **跨库基准口径修正(calcite 超族剥离)**:RELAB 腿 calcite 族中无 CRAMM
+  规则覆盖的碳酸盐(magnesite/smithsonite/hydromagnesite 等 58 条)剥离到
+  carbonate-other 单列。calcite 族(真方解石 47 条)Top-1 0.438→**0.894**、
+  Top-5 0.915;carbonate-other 全 miss 明示引擎覆盖边界(17 条判最近规则
+  dolomite,混合规则弱鉴定如实计 miss,RELAB 总 Top-1 0.719→0.711)。
+  引擎规则库与数值路径零变化,仅评估口径与文档更诚实。
+
+
 ## v1.5.0.post5 — 规则库文件正名 + 最小核验集公开(2026-09-07)
 
 仅数据文件名/文档更新,数值路径零变化(32/32 pytest 通过,bundle 审计 ALL PASS)。

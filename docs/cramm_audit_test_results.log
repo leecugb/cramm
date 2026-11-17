@@ -1,0 +1,11 @@
+.................................                                        [100%]
+=============================== warnings summary ===============================
+tests/test_core.py::test_emit_reader_non_emit_nc
+  <frozen importlib._bootstrap>:488: RuntimeWarning: numpy.ndarray size changed, may indicate binary incompatibility. Expected 16 from C header, got 96 from PyObject
+
+tests/test_core.py::test_color_tif_sampling_and_validation
+  /home/lee/miniconda3/lib/python3.13/site-packages/osgeo/gdal.py:330: FutureWarning: Neither gdal.UseExceptions() nor gdal.DontUseExceptions() has been explicitly called. In GDAL 4.0, exceptions will be enabled by default.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+33 passed, 2 warnings in 14.22s

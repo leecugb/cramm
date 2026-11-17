@@ -15,6 +15,7 @@ Proves the parallel computation logic cannot fail through shared variables:
    lock and stays bit-identical to the sequential baseline
 5. BLAS env override is restored after a parallel run (set and unset vars)
 6. the temporary memmap file is removed after a parallel run
+7. small cubes schedule no empty segments; progress is bounded and completes once
 
 Synthetic band config + package-bundled splib; cross-platform.
 """
@@ -82,7 +83,9 @@ def ref_of(e, rule_name):
 def mixed_cube(e, r=6, c=4):
     """[r, c, 285] float32 cube: rows alternate muscovite_medAl / illite_imt1
     reference spectra (covers the muscovite second pass + a plain rule).
-    r=6 -> segments (0,2),(2,4),(4,6), exercising all three segments."""
+    r=6 -> the segment count is min(max(3, 3*n_workers), r) (r capped), so
+    n_workers=3 gives 6 one-row segments; larger cubes get up to 3*n_workers
+    segments, exercising the multi-segment path."""
     a = ref_of(e, "muscovite_medAl").astype("float32")
     b = ref_of(e, "illite_imt1").astype("float32")
     rows = [(a if i % 2 == 0 else b) for i in range(r)]
@@ -246,6 +249,25 @@ def test_memmap_temp_cleanup():
 
 
 # ----------------------------------------------------------------------------
+# 7. small-cube scheduling and progress contract
+# ----------------------------------------------------------------------------
+
+def test_small_cube_progress_and_nonempty_segments():
+    """Tiny images must not schedule empty segments, and progress must stay
+    bounded with exactly one completion notification per non-empty segment."""
+    e = eng()
+    for r, nw, expected in ((1, 1, [100]), (2, 2, [50, 100])):
+        progress = []
+        cube = mixed_cube(e, r=r, c=1)
+        result = e._classifier.classify(
+            cube, WL, W, BP, CHANELS,
+            progress_callback=progress.append, n_workers=nw,
+        )
+        assert progress == expected, f"r={r}, nw={nw}: progress={progress}"
+        assert result.num.size == r
+
+
+# ----------------------------------------------------------------------------
 # main
 # ----------------------------------------------------------------------------
 
@@ -257,6 +279,7 @@ def main():
     run("concurrent parallel classify (2 threads) == baseline", test_concurrent_parallel_classify_threads)
     run("BLAS env vars restored after parallel run", test_env_vars_restored)
     run("memmap temp file cleaned up", test_memmap_temp_cleanup)
+    run("small cubes: no empty segments; bounded progress", test_small_cube_progress_and_nonempty_segments)
 
     n_ok = sum(1 for s, _ in RESULTS if s == "OK")
     n_skip = sum(1 for s, _ in RESULTS if s == "SKIP")

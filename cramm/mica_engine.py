@@ -215,7 +215,8 @@ class MicaEngine:
         Parameters
         ----------
         progress_callback : callable(int), optional
-            Emitted once per 1/3 progress segment as 33/66/100.
+            Emitted once per classification segment with an int in (0, 100];
+            the segment count scales with n_workers and is capped by image rows.
         log_callback : callable(str), optional
             Log callback replacing print.
         cancel_flag : callable() -> bool, optional

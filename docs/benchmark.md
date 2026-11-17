@@ -36,8 +36,11 @@ Serial and parallel outputs are bit-identical (guarded by
 
 - `output/benchmark_full.log` (pre-cal_center): serial 131.15 s, nw=2 90.49 s,
   nw=4 64.91 s — consistent with the authoritative run above (cal_center adds
-  no measurable cost: the carbonate arbitration never flips and the fit loop
-  covers only ~5% of pixels).
+  no measurable cost in this archived configuration: the carbonate arbitration
+  in that run never flips and the fit loop covers only ~5% of pixels). A separate
+  current-tier carbonate run reported in README gives 1,599 plain-tier
+  calcite→dolomite flips; the two configurations are reported separately and
+  are not summed.
 - `D:/test/full_scene_timing.json`: serial 156.4 s was measured under tight
   RAM (~9.6 GB free); superseded by the table above.
 - `tests/test_parallel.py 1` printed 224 s for its serial leg: that run
@@ -67,6 +70,23 @@ single author-side observation; reviewers will ask for conditions):
 - [x] MICA command file / library used for the EMIT run: **official 2014 v6a, EMIT-convolved version** (author, 2026-08-24) — i.e. the identical rule content CRAMM was verified against, so the timing comparison is also a like-for-like rule-content comparison
 - [ ] optional but strongest: one archived re-run of the PRISM classification with the log saved next to this file, converting the author-reported figure into a documented one
 
-Until those are recorded, the manuscript states the comparison with its
-conditions explicit (Section 4.3), and the abstract uses only the bounded
-wording above.
+Until those are recorded, the earlier C&G draft states the comparison with its
+conditions explicit (Section 4.3). The SoftwareX manuscript omits the
+unarchived speedup claim and reports only CRAMM's own benchmark conditions.
+
+## Linux 72-core re-run (2026-09-28, after adaptive segments + ix_ removal)
+
+Machine: Linux 5.15, 72 logical CPUs, 62 GB RAM, Python 3.13, numpy 2.4.2.
+Same scene; subset = first 150 rows (186,300 px).
+
+| n_workers | wall (subset) | throughput | vs serial |
+|---|---|---|---|
+| 1 | 24.8 s | 7,527 px/s | 1.00× |
+| 4 | 9.7 s | 19,188 px/s | 2.55× |
+| 8 | 7.2 s | 25,797 px/s | 3.43× |
+| 16 | 7.4 s | 25,149 px/s | 3.34× |
+
+Full scene nw=8: 67.0 s (23,713 px/s). Single-core throughput is lower than the
+Windows anchor (7.5k vs 12.1k px/s) — this machine's cores are slower — but the
+adaptive segmenting removes the earlier nw=16 regression and keeps nw=8 the
+sweet spot on both platforms (Windows nw=8 no longer OOMs).
