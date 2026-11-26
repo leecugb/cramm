@@ -2,7 +2,7 @@
 
 > 建档日期：2026-11-23  
 > 状态：实测案例整理中，不是已完成独立精度验收的发布基准。  
-> 名称：采用论文正文中的“二龙南金矿”；不沿用论文文件名中的“二龙包”。
+> 名称：案例统一采用“二龙南金矿”。
 
 ## 1. 案例目的
 
@@ -26,7 +26,7 @@ CHAI、USGS 白云母成分标定和 GEMS 热力学模拟属于应用扩展，�
 
 ### 2.2 ASD 岩石光谱
 
-论文方法部分所述地面测量为 ASD FieldSpec 4，350–2500 nm、2151 通道。本地数据与这一描述一致：
+案例记录的地面测量为 ASD FieldSpec 4，350–2500 nm、2151 通道。本地数据与这一描述一致：
 
 - 原始 ENVI `beishan` 光谱库含 100 条光谱；
 - `beishanv1` 是后续的 98 条筛选库，不能替代原始 100 条库进行首轮溯源；
@@ -48,7 +48,7 @@ CHAI、USGS 白云母成分标定和 GEMS 热力学模拟属于应用扩展，�
 | 绿泥石中心 | 31,016 | 1.95% |
 | 碳酸盐中心 | 147,063 | 9.25% |
 
-这些数值只描述当前产品的**输出覆盖**，不代表分类精度，也不与早期论文产品混用。运行证据见 [case_run_manifest.json](../../output/erlongnan_real_case_v1/current_full_scene_v2/case_run_manifest.json)、[scene_summary.json](../../output/erlongnan_real_case_v1/current_full_scene_v2/scene_summary.json) 和 [repeatability.json](../../output/erlongnan_real_case_v1/repeatability.json)。五个 GeoTIFF 均含投影与 60 m 仿射变换信息；显式指定 PROJ 数据路径后，已确认 CRS 为 WGS 84 / UTM zone 47N（EPSG:32647），见 [spatial_validation.json](../../output/erlongnan_real_case_v1/current_full_scene_v2/spatial_validation.json)。
+这些数值只描述当前产品的**输出覆盖**，不代表分类精度，也不与早期历史产品混用。运行证据见 [case_run_manifest.json](../../output/erlongnan_real_case_v1/current_full_scene_v2/case_run_manifest.json)、[scene_summary.json](../../output/erlongnan_real_case_v1/current_full_scene_v2/scene_summary.json) 和 [repeatability.json](../../output/erlongnan_real_case_v1/repeatability.json)。五个 GeoTIFF 均含投影与 60 m 仿射变换信息；显式指定 PROJ 数据路径后，已确认 CRS 为 WGS 84 / UTM zone 47N（EPSG:32647），见 [spatial_validation.json](../../output/erlongnan_real_case_v1/current_full_scene_v2/spatial_validation.json)。
 
 ### 2.4 原始化验连接
 
@@ -64,7 +64,7 @@ Top-1 中 13 条为 `jarosite+muscovite_mix_intimate`，5 条为蒙脱石规则�
 
 ### 2.6 历史产品差异
 
-当前复现已与论文制图所用文件及 `mcf`、`test` 两套历史产品完成数组级比较。论文制图源文件的 mapping 产品有 43.41% 像元存在 RGB 差异，`mcf` 和 `test` 的 mapping 产品均为 1.97%。这些差异混有历史配色、命名、规则和仲裁变化，不能直接解释为矿物标签改进。
+当前复现已与历史应用制图所用文件及 `mcf`、`test` 两套历史产品完成数组级比较。历史应用制图源文件的 mapping 产品有 43.41% 像元存在 RGB 差异，`mcf` 和 `test` 的 mapping 产品均为 1.97%。这些差异混有历史配色、命名、规则和仲裁变化，不能直接解释为矿物标签改进。
 
 中心产品已进一步拆分覆盖增减与共同覆盖区的数值变化。例如相对 `test`，白云母中心新增 19,659 个正值像元、消失 3,017 个；共同正值区最大变化为 1.903 nm。碳酸盐中心新增 69,191 个、消失 800 个，共同正值区最大变化为 19.100 nm。详见 [historical_comparison.md](../../output/erlongnan_real_case_v1/historical_comparison.md)。这些数字不构成精度提升证据。
 
@@ -124,5 +124,5 @@ Top-1 中 13 条为 `jarosite+muscovite_mix_intimate`，5 条为蒙脱石规则�
 - 原始输入可通过稳定 URL 或明确的数据包获得，并附 SHA-256；
 - 当前代码一键重建全部核心产品；
 - 30 件样品的光谱—坐标—化验—显微—像元关系可逐行审计；
-- 当前结果与论文历史结果的差异有独立清单；
+- 当前结果与历史应用结果的差异有独立清单；
 - 结果表述不超出岩相级、样品级和光谱尺度的证据范围。

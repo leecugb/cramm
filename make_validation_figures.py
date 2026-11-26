@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Generate the CRAMM paper figures archived under docs/figures/.
+"""Generate the CRAMM validation figures archived under docs/figures/.
 
 Data sources (all in-repo or produced by archived scripts):
   - docs/benchmark.json            -> fig_performance (scaling curve)

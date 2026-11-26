@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.6.0 — 投稿冻结版：规则审计、数学模型与 ENVI HDR 支持（2026-11-26）
+## v1.6.0 — 版本冻结：规则审计、数学模型与 ENVI HDR 支持（2026-11-26）
 
 - **规则与仲裁**：高岭石—白云母混合规则深度比上限固化为 0.55，纯白云母/伊利石保持 0.6；lowFe 窗口为 `[2.244, 2.248)`；重拟合中心非有限或越出目标窗时回退。
 - **逐像素黄金审计**：七变体对照完整归因 28,226 个标签变化、中心/RGB 差异及两个 lowFe/fallback 交互像元；基线经审计重建，串行和四进程黄金回归均通过。
@@ -119,8 +119,8 @@ dolomite↔calcite 归属裁决；**丰度轴仍由 fit 独立决定**——两�
 针对 v1.4.1 1nm-only 迁移边缘的 6 项缺陷修复,bit-exact 保留(32/32 测试通过,
 数值路径零改动——仅校验、错误信息与注释)。
 
-- **make_paper_figures.get_splib_record 修复**:原实现调用本次迁移已删除的
-  `_output_name_aliases`,所有论文图脚本必崩 `AttributeError`。改为经
+- **make_validation_figures.get_splib_record 修复**:原实现调用本次迁移已删除的
+  `_output_name_aliases`,所有验证图脚本必崩 `AttributeError`。改为经
   `docs/splib07_selection.json` 的 recno→rule 迁移映射表解析(2047/2253/2371/9262
   验证通过)。
 - **output_name 契约校验 + 文档化**:`output_name` 是主参考唯一查找键
@@ -229,7 +229,7 @@ dolomite↔calcite 归属裁决；**丰度轴仍由 fit 独立决定**——两�
   `docs/_splib07_tokens.py`、`docs/verify_reference_spectra.py`、
   `docs/verify_mcf_rfjson.py`(全部依赖已删除的 `_hyper_read_specpr` /
   `dic3` / `rf.json`)。
-- **`make_paper_figures.py::get_splib_record` 重写**:不再走 `eng.dic3`
+- **`make_validation_figures.py::get_splib_record` 重写**:不再走 `eng.dic3`
   (1nm-only 架构下为 `None`),改用 `eng._classifier._1nm_bundle` + int→rule-name
   别名翻译。
 - **缓存键简化**:`get_resample` / `_get_compiled_rules` 的缓存键不再内嵌 track。

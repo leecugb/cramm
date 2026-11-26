@@ -6,7 +6,7 @@
 - 方法复核: Module 4 明确参考谱与观测谱须具有等效采样和 FWHM；fit 为 r²；weighted fit 为特征 fit 加权和；depth 为参考特征拟合到观测谱后的 scaled depth；附录 A6 明确 weighted fit×depth 为各诊断特征 fit×depth 乘权后求和，支持 \(Q=\sum_iw_ir_i^2d_i\)，不支持改写为 \(F\cdot D\)。
 - 分发复核: 安装章节要求复制 `usgsprism_v1_envi48.sav` 到 ENVI `save_add`，因此应将软件环境准确写为 compiled PRISM/IDL byte code，而非仅依据 4 页会议论文删除编译属性。
 - 归档日期: 2026-08-24 ｜ 提取方式: pymupdf 全文抽取
-- 用途: 论文 Introduction gap 段 / Section 2 传感器绑定论证 / benchmark.md PRISM 计时 protocol 的官方环境依据
+- 用途: 算法背景 / 传感器绑定论证 / benchmark.md PRISM 计时 protocol 的官方环境依据
 
 ---
 
@@ -27,7 +27,7 @@
 4. **将编译好的 `usgsprism_v1_envi48.sav` 拷入 ENVI 的 `save_add` 目录**（典型路径 `C:\Program Files\ITT\IDL\IDL80\products\ENVI48\save_add\`）；
 5. 启动 ENVI，菜单栏出现 PRISM 六项。
 
-**要点**：分发物是 IDL 编译字节码 `.sav` 文件，不附源代码——这是论文中 "distributed only as compiled IDL byte-code" 表述的官方出处。
+**要点**：分发物是 IDL 编译字节码 `.sav` 文件，不附源代码——这是 "distributed only as compiled IDL byte-code" 软件环境说明的官方出处。
 
 ## 3. 软件结构（pp. 1–4）
 
@@ -38,14 +38,14 @@
 - MICA 命令文件为用户创建/编辑文档，定义参考谱、诊断特征连续统端点、fit/depth/连续统约束；附录 A 关键词表（目录摘录）：A1 可选 setup 关键词（p. 280）、A2 NOT 特征定义（p. 285）、A3 参考谱设置（p. 286）、A4 诊断特征定义（p. 288）、A5 NOT 特征调用（p. 291）、A6 WEIGHTED_FIT_DEPTH_CONSTRAINTS（p. 294）；
 - MICA 分析入口：Function 4.1（单谱/多谱）、Function 4.2（影像立方体）；输出每种参考材料的 fit 影像 + 综合材料图。
 
-## 4. 引用条目（论文 References 用）
+## 4. 参考文献条目
 
 - Kokaly, R.F., 2011. PRISM: Processing Routines in IDL for Spectroscopic Measurements (Installation Manual and User's Guide, Version 1.0). U.S. Geological Survey Open-File Report 2011-1155.（页数按目录约 430 p.，正式条目待核）
 - 与 IGARSS 会议论文区分：Kokaly, R.F., King, T.V.V., Hoefen, T.M., 2011. Mapping the distribution of materials in hyperspectral data using the USGS Material Identification and Characterization Algorithm (MICA). IGARSS 2011, pp. 1569–1572.（归档：`docs/kokaly2011.md`）——**两篇同为 2011，正文引用须用 Kokaly (2011) vs Kokaly et al. (2011) 区分**。
 
-## 5. 对 CRAMM 论文的直接供给
+## 5. 对 CRAMM 技术文档的直接供给
 
-| 论文位置 | 本档案供给的事实 |
+| 文档位置 | 本档案供给的事实 |
 |---|---|
 | Introduction P3（gap） | 未提供实现源代码的编译 `.sav` 字节码，以及商业 ENVI/IDL 许可环境的官方出处 |
 | Section 2 P3（传感器绑定） | Function 2.8/2.9 卷积链 = "换传感器必重建库"的官方功能证据 |
