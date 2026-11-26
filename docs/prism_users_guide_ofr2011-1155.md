@@ -2,6 +2,9 @@
 
 - 源文件: `D:\paper\PRISM User's Guide.pdf`（7 页节选：目录残页 + 正文 pp. 1–6）
 - 完整文档: Kokaly, R.F., 2011, PRISM: Processing Routines in IDL for Spectroscopic Measurements (Installation Manual and User's Guide, Version 1.0), U.S. Geological Survey Open-File Report 2011-1155（目录显示全文至 p. 430）
+- 本地全文复核来源（2026-11-25）: `/home/lee/Documents/ofr2011-1155-17oct2011.pdf`
+- 方法复核: Module 4 明确参考谱与观测谱须具有等效采样和 FWHM；fit 为 r²；weighted fit 为特征 fit 加权和；depth 为参考特征拟合到观测谱后的 scaled depth；附录 A6 明确 weighted fit×depth 为各诊断特征 fit×depth 乘权后求和，支持 \(Q=\sum_iw_ir_i^2d_i\)，不支持改写为 \(F\cdot D\)。
+- 分发复核: 安装章节要求复制 `usgsprism_v1_envi48.sav` 到 ENVI `save_add`，因此应将软件环境准确写为 compiled PRISM/IDL byte code，而非仅依据 4 页会议论文删除编译属性。
 - 归档日期: 2026-08-24 ｜ 提取方式: pymupdf 全文抽取
 - 用途: 论文 Introduction gap 段 / Section 2 传感器绑定论证 / benchmark.md PRISM 计时 protocol 的官方环境依据
 
@@ -44,6 +47,6 @@
 
 | 论文位置 | 本档案供给的事实 |
 |---|---|
-| Introduction P3（gap） | 闭源形式（编译 .sav + ENVI 4.8/IDL 8.0 许可门槛）的官方出处 |
+| Introduction P3（gap） | 未提供实现源代码的编译 `.sav` 字节码，以及商业 ENVI/IDL 许可环境的官方出处 |
 | Section 2 P3（传感器绑定） | Function 2.8/2.9 卷积链 = "换传感器必重建库"的官方功能证据 |
 | benchmark.md（PRISM 计时 protocol） | 官方环境基线：PRISM v1.0 编译/要求 ENVI 4.8 + IDL 8.0（2011 年代环境）；作者 25 min 实测所用的现代 ENVI 版本须另行声明 |

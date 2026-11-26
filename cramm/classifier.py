@@ -144,6 +144,83 @@ CARBONATE_PLAIN_MINERALS = [
 # Pure-function algorithm layer (zero state dependency)
 # =============================================================================
 
+def _validate_extension_contract(rf: Dict) -> None:
+    """Fail loudly when CRAMM extension fields cannot be executed.
+
+    Reference/rule identity validation lives in ``from_paths``. This companion
+    check covers the optional depth-ratio and arbitration fields, whose silent
+    misplacement would otherwise bypass the caller's configured logic.
+    """
+    errors = []
+    arbitration_members = set(
+        MUSCOVITE_MINERALS + CHLORITE_MINERALS + CARBONATE_MINERALS
+    )
+    for name, rule in rf.items():
+        features = rule.get("diagnostic_features") or []
+        ratio = rule.get("max_depth_ratio_feat1_over_feat0")
+        if ratio is not None:
+            if len(features) < 2:
+                errors.append(
+                    f"{name}: depth ratio requires at least two diagnostic features"
+                )
+            try:
+                ratio_value = float(ratio)
+            except (TypeError, ValueError):
+                ratio_value = np.nan
+            if not np.isfinite(ratio_value) or ratio_value < 0:
+                errors.append(f"{name}: depth-ratio threshold must be finite and >= 0")
+        for feature_index, feature in enumerate(features):
+            if "absorption_center_range" not in feature:
+                continue
+            if feature_index != 0:
+                errors.append(
+                    f"{name}: absorption_center_range is executed only on the "
+                    "first diagnostic feature"
+                )
+            if name not in arbitration_members:
+                errors.append(
+                    f"{name}: absorption_center_range has no arbitration family; "
+                    "add the rule to the appropriate family list"
+                )
+            window = feature.get("absorption_center_range")
+            try:
+                valid_window = (
+                    len(window) == 2
+                    and np.isfinite(float(window[0]))
+                    and np.isfinite(float(window[1]))
+                    and float(window[0]) < float(window[1])
+                )
+            except (TypeError, ValueError):
+                valid_window = False
+            if not valid_window:
+                errors.append(
+                    f"{name}: absorption_center_range must contain finite [lo, hi) "
+                    "values with lo < hi"
+                )
+    for family in (
+        MUSCOVITE_MINERALS,
+        CHLORITE_MINERALS,
+        CARBONATE_ABUNDANT_MINERALS,
+        CARBONATE_PLAIN_MINERALS,
+    ):
+        windowed = []
+        for name in family:
+            if name not in rf:
+                continue
+            features = rf[name].get("diagnostic_features") or []
+            if features and "absorption_center_range" in features[0]:
+                windowed.append(name)
+        if len(windowed) == 1:
+            errors.append(
+                f"{windowed[0]}: arbitration group requires at least two "
+                "windowed members; add its partner or remove the unused window"
+            )
+    if errors:
+        raise ValueError(
+            "Invalid CRAMM extension-rule contract:\n  - " + "\n  - ".join(errors)
+        )
+
+
 def _read_1nm_npz(filename: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """Read the splib07 rule-face 1 nm reference bundle (rf77_splib07_1nm.npz).
 
@@ -354,7 +431,7 @@ def _reassign_by_absorption_center(
 
       - muscovite: four pure rules with seamless windows around the
         2.2 um Al-OH band;
-      - chlorite: four pure rules with deliberately overlapping windows
+      - chlorite: four pure rules with seamless, non-overlapping windows
         around the 2250 nm Fe-OH band;
       - carbonate: two per-tier pairs (abundant / plain) with disjoint
         windows around the 2330 nm C-O band (v1.5.0: band position
@@ -364,7 +441,7 @@ def _reassign_by_absorption_center(
     Inter-family segregation is STRUCTURAL, not emergent: each call can
     only ever reassign among its own family's rules, no matter what
     windows a (custom) rule library carries. The ``mus_c > 0`` member
-    gate and the ~25 nm (mus-chl) / ~42 nm (chl-cal) window spacing
+    gate and the ~24 nm (mus-chl) / ~42 nm (chl-cal) window spacing
     remain as defense in depth, but the locked group is what guarantees
     a muscovite pixel can never flip to a chlorite rule.
 
@@ -378,16 +455,13 @@ def _reassign_by_absorption_center(
         range, different from the current match, and that rule itself
         accepted the pixel (its fit is not NaN) -> reassign: ``im`` follows
         the target rule and ``mus_c`` is refitted once with the target
-        rule's feat0 continuum endpoints (single pass, no iteration);
+        rule's feat0 continuum endpoints (single pass, no iteration); if
+        that refit is non-finite or outside the selected target window,
+        the pre-reassignment center is retained;
       - center inside several overlapping ranges -> ambiguous, keep the
-        original. The bundled chlorite windows exploit exactly this: their
-        overlaps are tolerance zones where the intermediate
-        composition keeps its argmax attribution. (The pre-v1.5.0
-        carbonate duplicate-window scheme pushed this to the extreme —
-        identical abundant+plain windows made every in-window center
-        ambiguous, a declarative zero-flip; v1.5.0 replaced it with
-        per-tier pair arbitration, see CARBONATE_ABUNDANT_MINERALS /
-        CARBONATE_PLAIN_MINERALS.)
+        original. The bundled chlorite windows tile their covered range
+        without overlap, so an in-range center has exactly one target;
+        an out-of-range center keeps the original attribution.
 
     ``classify`` calls this helper four times per segment: with
     ``mus_center`` + MUSCOVITE_MINERALS, ``chl_center`` +
@@ -396,8 +470,9 @@ def _reassign_by_absorption_center(
 
     Custom rule libraries opt in per family: append the new rule's name
     to the corresponding module-level family list AND give it
-    ``absorption_center_range``; a window on a rule outside every family
-    list is ignored (the family lock takes precedence).
+    ``absorption_center_range``. A window on a rule outside every family
+    list is rejected by ``_validate_extension_contract`` at construction
+    and cache invalidation instead of being silently ignored.
 
     All decisions are computed from the pre-reassignment state in one
     vectorized pass (no sequential dependence between pixels), and this
@@ -447,6 +522,7 @@ def _reassign_by_absorption_center(
     # so the stored center is consistent with the final attribution
     for local_i in np.unique(tgt_local):
         name = group[local_i][1]
+        lo, hi = group[local_i][2], group[local_i][3]
         mask = np.zeros(len(im), dtype=bool)
         mask[rows[tgt_local == local_i]] = True
         cen2 = _get_quadratic_center(
@@ -454,11 +530,11 @@ def _reassign_by_absorption_center(
             rf[name]["diagnostic_features"][0]["continuum_endpoints"],
             mask,
         )
-        # A failed refit (collinear triple -> NaN) must not discard the
-        # pre-reassignment center: fall back to it so mus_center stays
-        # consistent with the pixel having had a valid absorption center
+        # A non-finite refit or one that lands outside the selected target
+        # window must not create a label/center inconsistency. Fall back to
+        # the pre-reassignment center, which is known to be inside that window.
         newc = cen2[mask]
-        bad = ~np.isfinite(newc)
+        bad = ~np.isfinite(newc) | (newc < lo) | (newc >= hi)
         newc[bad] = mus_c[mask][bad]
         mus_c[mask] = newc
 
@@ -1165,6 +1241,7 @@ class MicaClassifier:
                 f"rule library has {len(rf)} minerals, exceeding the uint8 "
                 f"index limit of 256 (NUM_ dtype); trim the rule library or "
                 f"upgrade ClassificationResult.num dtype")
+        _validate_extension_contract(rf)
         self.track = "1nm"
         self._1nm_bundle = reference_1nm_bundle
         # get_resample memoization cache (keyed by (w content, bp content))
@@ -1189,12 +1266,15 @@ class MicaClassifier:
         self._1nm_bundle in place you must call this method
         (or simply create a new MicaClassifier instance), otherwise subsequent
         evaluations reuse the old constants and results are silently wrong.
+        The invalidation boundary also rejects extension fields that cannot be
+        executed (for example an orphan arbitration window).
         """
         self._resample_cache_key = None
         self._resample_cache = None
         self._compiled_key = None
         self._compiled_rules = None
         self._rf_fp_at_build = None
+        _validate_extension_contract(self.rf)
 
     @classmethod
     def from_paths(
@@ -1784,11 +1864,9 @@ class MicaClassifier:
                 )
                 # Same arbitration among the four pure-chlorite rules
                 # (group locked to CHLORITE_MINERALS), driven by
-                # chl_center. Their windows deliberately overlap
-                # (tolerant scheme): a center landing in an overlap hits
-                # two ranges -> ambiguous -> keep the original match;
-                # only a center falling exclusively inside another
-                # rule's window flips the attribution.
+                # chl_center. Their windows tile the covered range without
+                # overlap: an in-range center has exactly one target, while
+                # an out-of-range center keeps the original match.
                 _reassign_by_absorption_center(
                     im, FIT, fit_nan, chl_center[a * c : b * c],
                     spectrum1, wl, self.rf, index_d, fit_pos,

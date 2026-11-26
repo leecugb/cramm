@@ -2,7 +2,7 @@
 
 Scene: `EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc` (1280x1242)
 Method: production rf.json (all windows) vs the same rules with every `absorption_center_range` stripped (pure argmax MICA); every NUM diff is a production flip by `_reassign_by_absorption_center`.
-Runtime: windowed 358.7s, pure-argmax 251.9s (n_workers=4; wall times are machine-load dependent — the controlled benchmark measurement is 59.8s vs 60.0s, docs/benchmark.json).
+Runtime: windowed 358.7s, pure-argmax 251.9s (n_workers=4; wall times are machine-load dependent). These are production-census timings, not controlled benchmark measurements; `docs/benchmark.json` does not archive a separate windowed-versus-pure comparison.
 
 **Total flips: 63032**
 
@@ -75,3 +75,26 @@ plain-tier calcite→dolomite flips, zero reverse flips and zero abundant-tier
 flips. The two records are reported separately and are not summed. The older
 "no flips involving this family" line is therefore scoped to this archived
 configuration, not to the current per-tier behavior.
+
+## lowFe window update (2026-11-18)
+
+The archived chlorite census above used lowFe `[2.245, 2.248)`, including the
+133 clinochlore→lowFe changes. The current rule extends only the lower bound
+to `[2.244, 2.248)`. The archived counts must not be presented as the new
+configuration's result; new synthetic or scene counts are reported separately.
+Under the current engine, a controlled full-scene comparison gives 135
+clinochlore→lowFe changes with the old lower bound and 146 with the new one,
+so the window extension adds exactly 11 changes and no other label changes.
+Two of the eleven target refits initially fell just below 2.244 µm; the
+post-refit target-window guard now falls back to their pre-reassignment
+centers without changing the labels.
+
+## carbonate verification (2026-11-19)
+
+A current-engine controlled scene audit independently reproduces 1,599
+plain-tier calcite→dolomite changes with zero reverse, abundant-tier,
+cross-tier or non-carbonate changes. All 1,599 target dolomite rules pass
+full constraints and all refitted centers are consistent with the target
+window. No post-refit fallback is required. See
+`output/carbonate_arbitration_scene_v1/summary.json` and
+`refit_verification.csv`.

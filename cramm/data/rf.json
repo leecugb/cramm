@@ -2384,7 +2384,7 @@
             null
           ],
           "absorption_center_range": [
-            2.245,
+            2.244,
             2.248
           ]
         },
@@ -3068,7 +3068,7 @@
         "max_weighted_depth": null,
         "min_fit_depth_product": 0.025
       },
-      "max_depth_ratio_feat1_over_feat0": 0.4
+      "max_depth_ratio_feat1_over_feat0": 0.55
     },
     "kaolinite.5+muscoviteMedhighAl.5": {
       "output_name": "kaolinite.5+muscoviteMedhighAl.5",
@@ -3156,7 +3156,7 @@
         "max_weighted_depth": null,
         "min_fit_depth_product": 0.025
       },
-      "max_depth_ratio_feat1_over_feat0": 0.4
+      "max_depth_ratio_feat1_over_feat0": 0.55
     },
     "kaolinite+muscovite_mix_intimate": {
       "output_name": "kaolinite+muscovite_mix_intimate",
@@ -3244,7 +3244,7 @@
         "max_weighted_depth": null,
         "min_fit_depth_product": 0.025
       },
-      "max_depth_ratio_feat1_over_feat0": 0.4
+      "max_depth_ratio_feat1_over_feat0": 0.55
     },
     "kaolinite+smectite_mix_intimate": {
       "output_name": "kaolinite+smectite_mix_intimate",

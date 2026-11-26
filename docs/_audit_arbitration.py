@@ -83,13 +83,13 @@ def is_partition(ws):
 
 check("B1 白云母窗无缝拼接 [2.195,2.220)", is_partition(mus_w)
       and mus_w[0][0] == 2.195 and mus_w[-1][1] == 2.220, f"{mus_w}")
-check("B2 绿泥石窗无缝拼接 [2.245,2.266)", is_partition(chl_w)
-      and chl_w[0][0] == 2.245 and chl_w[-1][1] == 2.266, f"{chl_w}")
+check("B2 绿泥石窗无缝拼接 [2.244,2.266)", is_partition(chl_w)
+      and chl_w[0][0] == 2.244 and chl_w[-1][1] == 2.266, f"{chl_w}")
 check("B3 碳酸盐窗为两对重复窗",
       cal_w[0] == cal_w[1] and cal_w[2] == cal_w[3] and cal_w[1] != cal_w[2], f"{cal_w}")
-# 浮点减法 2.245-2.220=0.02499999999999991,判据用名义值容差而非 >= 精确阈值
-check("B4 族间窗口间距 mus→chl = 25nm, chl→cal = 42nm",
-      abs((chl_w[0][0] - mus_w[-1][1]) - 0.025) < 1e-9
+# 浮点减法存在 ulp 误差,判据用名义值容差而非 >= 精确阈值
+check("B4 族间窗口间距 mus→chl = 24nm, chl→cal = 42nm",
+      abs((chl_w[0][0] - mus_w[-1][1]) - 0.024) < 1e-9
       and abs((cal_w[0][0] - chl_w[-1][1]) - 0.042) < 1e-9,
       f"gaps={(chl_w[0][0]-mus_w[-1][1])*1000:.1f}nm,{(cal_w[0][0]-chl_w[-1][1])*1000:.1f}nm")
 
@@ -129,10 +129,22 @@ got, _ = run_arb("muscovite_medAl", 2.206, MUSCOVITE_MINERALS)
 check("C2 中心恰在拼接点 2.206 → 命中右侧 lowAl", got == "muscovite_lowAl", f"got={got}")
 got, _ = run_arb("muscovite_Fe-rich", 2.220, MUSCOVITE_MINERALS)
 check("C3 中心在族窗右端 2.220(开区间) → 出窗保持", got == "muscovite_Fe-rich", f"got={got}")
-got, _ = run_arb("chlorite_lowFe", 2.245, CHLORITE_MINERALS)
-check("C4 中心在族窗左端 2.245(闭区间) → 命中自身保持", got == "chlorite_lowFe", f"got={got}")
+got, _ = run_arb("chlorite_lowFe", 2.244, CHLORITE_MINERALS)
+check("C4 中心在族窗左端 2.244(闭区间) → 命中自身保持", got == "chlorite_lowFe", f"got={got}")
 got, _ = run_arb("thuringite", 2.266, CHLORITE_MINERALS)
 check("C5 中心在 2.266(thuringite 窗 hi,开) → 出窗保持", got == "thuringite", f"got={got}")
+got, _ = run_arb("chlorite_lowFe", 2.248, CHLORITE_MINERALS)
+check("C6 中心恰在 2.248 → 命中右侧 clinochlore", got == "clinochlore", f"got={got}")
+got, _ = run_arb("clinochlore", 2.252, CHLORITE_MINERALS)
+check("C7 中心恰在 2.252 → 命中右侧 clinochlore_Fe", got == "clinochlore_Fe", f"got={got}")
+got, _ = run_arb("clinochlore_Fe", 2.256, CHLORITE_MINERALS)
+check("C8 中心恰在 2.256 → 命中右侧 thuringite", got == "thuringite", f"got={got}")
+got, _ = run_arb("clinochlore", 2.2439, CHLORITE_MINERALS)
+check("C9 中心低于全局下限 2.244 → 保持 clinochlore", got == "clinochlore", f"got={got}")
+got, _ = run_arb("clinochlore_Fe", 2.266, CHLORITE_MINERALS)
+check("C10 中心达到全局上限 2.266 → 保持 clinochlore_Fe", got == "clinochlore_Fe", f"got={got}")
+got, _ = run_arb("clinochlore", 2.2445, CHLORITE_MINERALS)
+check("C11 中心进入新增的 2.244–2.245 区间 → 翻转 lowFe", got == "chlorite_lowFe", f"got={got}")
 
 print("=== D. 翻转门控 ===")
 got, _ = run_arb("muscovite_medhighAl", 2.203, MUSCOVITE_MINERALS,
@@ -181,6 +193,14 @@ got, _ = run_arb("dolomite_abundant", 2.340, CARBONATE_ABUNDANT_MINERALS)
 check("F5 abundant 对:dolomite_abundant 赢家中心入方解石窗 → 翻转", got == "calcite_abundant", f"got={got}")
 got, _ = run_arb("carbonate_Fe_bearing", 2.335, CARBONATE_PLAIN_MINERALS)
 check("F6 无窗成员(carbonate_Fe_bearing) → 不仲裁", got == "carbonate_Fe_bearing", f"got={got}")
+got, _ = run_arb("calcite", 2.328, CARBONATE_PLAIN_MINERALS)
+check("F7 中心恰在 dolomite 窗 hi 2.328(开) → 死区保持 calcite", got == "calcite", f"got={got}")
+got, _ = run_arb("dolomite", 2.334, CARBONATE_PLAIN_MINERALS)
+check("F8 中心恰在 calcite 窗 lo 2.334(闭) → 翻转 calcite", got == "calcite", f"got={got}")
+got, _ = run_arb("calcite", 2.350, CARBONATE_PLAIN_MINERALS)
+check("F9 中心恰在 calcite 窗 hi 2.350(开) → 出窗保持", got == "calcite", f"got={got}")
+got, _ = run_arb("calcite", 2.308, CARBONATE_PLAIN_MINERALS)
+check("F10 中心恰在 dolomite 窗 lo 2.308(闭) → 翻转 dolomite", got == "dolomite", f"got={got}")
 
 print("=== G. 重拟合 ===")
 # 真实光谱重拟合路径:用 npz 参考谱合成一个会被翻转的像元
@@ -226,10 +246,8 @@ ok = NAMES[im[0]] == "muscovite_medAl" and cen_flat[0] == 2.203
 check("G2 精确共线(平直 0.5)重拟合 NaN → 回退翻转前中心", ok,
       f"winner={NAMES[im[0]]} cen={cen_flat[0]}")
 # 近似共线观察项:常数 0.3(非 2 的幂)的端点均值有 1ulp 级噪声,con 在
-# 1±1e-16 抖动,抛物线顶点被放大为**有限**野值,不触发 NaN 回退。
-# 生产可达性:翻转门控要求目标规则 fit>0(同一 feat0 窗的 depth 约束),
-# 平直窗不可能通过 —— 仅自定义无 depth 约束规则库理论可达;且野值需恰好
-# 落入某窗才会改变归属(窗口宽度 nm 级,概率极低)。记录行为,不判 FAIL。
+# 1±1e-16 抖动,可能产生有限野值。新的目标窗后验门控会在野值越出目标窗时
+# 回退到翻转前中心 2.203，避免有限但错误的中心与标签不一致。
 flat3 = np.full((1, len(wl_g64)), 0.3)
 im = np.array([index_d["muscovite_medhighAl"]])
 FIT = np.ones((1, len(NAMES)))
@@ -239,9 +257,27 @@ _reassign_by_absorption_center(im, FIT, fit_nan, cen_flat3, flat3, wl_g64,
                                rf, index_d, np.array([True]), MUSCOVITE_MINERALS)
 mus_windows = [windows(m) for m in MUSCOVITE_MINERALS if windows(m)]
 in_any = any(lo <= cen_flat3[0] < hi for lo, hi in mus_windows)
-check("G3 近似共线(平直 0.3)重拟合顶点为有限值,且不落入任何白云母窗",
-      np.isfinite(cen_flat3[0]) and not in_any,
-      f"cen={cen_flat3[0]} (观察项:有限野值未命中窗口时无害)")
+check("G3 近似共线有限野值出目标窗 → 回退翻转前中心",
+      NAMES[im[0]] == "muscovite_medAl" and cen_flat3[0] == 2.203 and in_any,
+      f"winner={NAMES[im[0]]} cen={cen_flat3[0]} (目标窗内回退)")
+# 有限但越出目标窗的重拟合也必须回退。把 lowFe 临时窗下缘设为 2.246，
+# 预中心 2.2465 命中该窗，而 lowFe 参考谱按目标端点重估约 2.245063，出窗。
+saved_lowfe_window = rf["chlorite_lowFe"]["diagnostic_features"][0]["absorption_center_range"]
+try:
+    rf["chlorite_lowFe"]["diagnostic_features"][0]["absorption_center_range"] = [2.246, 2.248]
+    lowfe_row = z["spectra"][list(z["rule"]).index("chlorite_lowFe")]
+    spec_lowfe = np.ascontiguousarray(np.nan_to_num(lowfe_row[m][None, :], nan=0.3), dtype="float64")
+    im = np.array([index_d["clinochlore"]])
+    FIT = np.ones((1, len(NAMES)))
+    fit_nan = np.zeros((1, len(NAMES)), dtype=bool)
+    cen_out = np.array([2.2465])
+    _reassign_by_absorption_center(im, FIT, fit_nan, cen_out, spec_lowfe, wl_g64,
+                                   rf, index_d, np.array([True]), CHLORITE_MINERALS)
+    ok = NAMES[im[0]] == "chlorite_lowFe" and cen_out[0] == 2.2465
+    check("G4 重拟合有限但越出目标窗 → 回退翻转前中心", ok,
+          f"winner={NAMES[im[0]]} cen={cen_out[0]}")
+finally:
+    rf["chlorite_lowFe"]["diagnostic_features"][0]["absorption_center_range"] = saved_lowfe_window
 
 print("=== H. 族锁定 ===")
 got, _ = run_arb("chlorite_lowFe", 2.203, CHLORITE_MINERALS)

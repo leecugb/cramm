@@ -1,6 +1,8 @@
 # Kokaly 2011 — PRISM / MICA (USGS)
 
 - 源文件: D:\CRAMM\kokaly2011.pdf
+- 本地复核来源（2026-11-25）: `/home/lee/Documents/kokaly2011.pdf`
+- 复核要点: 原文明确 fit 为决定系数 r²；weighted fit 为各特征 fit 与权重乘积之和；最佳匹配取最高 weighted fit；fit×depth 用于约束；违反阈值或命中 NOT 特征时 weighted fit 置零。该 4 页会议论文本身未提供编译字节码证据；编译属性应由 PRISM 指南中的 `usgsprism_v1_envi48.sav` 安装文件佐证。
 - 页数: 4
 - 标题: MAPPING THE DISTRIBUTION OF MATERIALS IN HYPERSPECTRAL DATA USING THE USGS MATERIAL IDENTIFICATION AND CHARACTERIZATION ALGORITHM (MICA)
 

@@ -2,6 +2,8 @@
 
 配套图件:`cramm_algorithm_flowchart_nature.{svg,pdf,tiff,png}`(由 `make_algorithm_flowchart.py` 生成,Nature 期刊风格,183 mm 双栏宽)。
 
+形式化定义、公式与可执行验证见 [CRAMM 算法抽象与数学模型](cramm_mathematical_model.md)。
+
 CRAMM 实现 USGS MICA 决策规则体系,并扩展深度比约束与白云母/绿泥石/碳酸盐波长仲裁。整体为五层流水线:
 
 ## a 输入层
@@ -33,7 +35,7 @@ CRAMM 实现 USGS MICA 决策规则体系,并扩展深度比约束与白云母/�
 2. **白云母 2.2 µm 吸收中心二次拟合** — `mus_center`(`_get_quadratic_center`),化学成分代理量。
 3. **波长仲裁亚型归属** — `absorption_center_range` 窗口(medhighAl [2.195,2.200) / medAl [2.200,2.206) / lowAl [2.206,2.210) / Fe-rich [2.210,2.220),互不重叠)对白云母像元重仲裁(`_reassign_by_absorption_center`);中心无效或出窗时保持原匹配(保守策略)。
 4. **绿泥石 2250 nm 吸收中心二次拟合** — `chl_center`,四条纯绿泥石规则(chlorite_lowFe / clinochlore / clinochlore_Fe / thuringite)胜出像元,用胜方规则 feat0 端点拟合;作连续成分图层输出,解读走 chl13 M1 标定(LOO 1.0 nm)。
-5. **绿泥石平铺窗口仲裁** — 四规则的 `absorption_center_range` 窗口无缝拼接(lowFe [2.245,2.248) / clinochlore [2.248,2.252) / Fe [2.252,2.256) / thuringite [2.256,2.266),互不重叠):任何落入 2.245–2.266 µm 的 `chl_center` 恰命中一窗 → 确定性仲裁到唯一亚型,非当前匹配时重判归属并以目标规则端点重拟合中心一次;中心无效或出窗时保持原匹配(保守策略)。翻转后中心仍作连续图层输出。
+5. **绿泥石平铺窗口仲裁** — 四规则的 `absorption_center_range` 窗口无缝拼接(lowFe [2.244,2.248) / clinochlore [2.248,2.252) / Fe [2.252,2.256) / thuringite [2.256,2.266),互不重叠):任何落入 2.244–2.266 µm 的 `chl_center` 恰命中一窗 → 确定性仲裁到唯一亚型,非当前匹配时重判归属并以目标规则端点重拟合中心一次(非有限或出目标窗则回退翻转前中心);中心无效或出窗时保持原匹配(保守策略)。翻转后中心仍作连续图层输出。
 6. **碳酸盐 2330 nm 吸收中心拟合 + 按层仲裁(v1.5.0)** — `cal_center`,六条碳酸盐规则(calcite_abundant / calcite / dolomite_abundant / dolomite / carbonate_Fe_bearing / calcite.5+dolomite.5)胜出像元,拟合 C–O 吸收中心;波段位置沿七锚点序列解读(菱镁矿 2311 < 文石 2315 < 铁白云石 2319 < 白云石 2321 < 菱铁矿 ~2327 < 方解石 2339 < 菱锰矿 ~2369 nm)。仲裁按丰度层分两次调用:abundant 对(calcite_abundant vs dolomite_abundant)与 plain 对(calcite vs dolomite),对内窗口互斥(dolomite [2.308,2.328) vs calcite [2.334,2.350))→ 带位正式裁决 dolomite↔calcite 归属;6 nm 死区 [2.328,2.334) 收容 siderite-ish 中心保持 argmax;两子族互不相交 → 跨层结构不可能。EMIT 025 实测:plain 对 calcite→dolomite 翻转 1599(0.10%),反向及 abundant 对零翻转。与绿泥石窗口间距 42 nm,仲裁组按族/层锁定。
 
 ## e 输出层

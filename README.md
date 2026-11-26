@@ -62,7 +62,7 @@ Everything is pure Python and GUI-free. Cross-platform:
   as a fourth thematic map and float array; a continuous Fe-content proxy
   anchored by the chl13 calibration (LOO 1.0 nm). The same center also
   re-arbitrates the lowFe / clinochlore / Fe-rich / thuringite attribution
-  against calibrated wavelength windows that tile the 2.245–2.266 µm range
+  against calibrated wavelength windows that tile the 2.244–2.266 µm range
   without overlap, so every in-range center arbitrates to exactly one subtype.
 - **Quantitative carbonate mapping** — per-pixel 2330 nm absorption-center
   wavelength (`cal_center`) for pixels won by the six carbonate rules,
@@ -116,6 +116,11 @@ Wavelength-arbitrated subtyping (muscovite / chlorite / carbonate families)
 Mineral map · color-enhanced map · muscovite map · chlorite map · carbonate map
 (+ raw float arrays: mus_center / chl_center / cal_center / fd)
 ```
+
+The formal model defines these stages, including $F=\sum_iw_ir_i^2$,
+$D=\sum_iw_id_i$, $Q=\sum_iw_ir_i^2d_i$, and the raw-depth ratio
+$\rho=d_1/d_0$. See [CRAMM algorithm abstraction and mathematical model](docs/cramm_mathematical_model.md)
+and its executable equation checks.
 
 ## Installation
 
@@ -312,14 +317,36 @@ CRAMM extends the original USGS MICA decision rules with an optional per-rule
 > an invalid primary feature (NaN depth) are conservatively kept.
 
 For white micas the primary 2.2 µm Al-OH absorption (feat0) must dominate the
-secondary ~2.35 µm feature (feat1); a secondary absorption that is too deep
-relative to the primary indicates look-alike minerals rather than muscovite /
-illite. Nine bundled rules use this constraint:
+secondary ~2.35 µm feature (feat1). A secondary absorption that is too deep
+relative to the primary means that the spectrum should not receive a **pure**
+muscovite/illite attribution. It may instead be a white-mica mixture with
+chlorite, carbonate or epidote, or a look-alike mineral. The constraint rejects
+only the pure-rule candidate; it does not prove the absence of a white-mica
+component and does not itself emit a generic "mixture" label. The final
+attribution is determined by the remaining admissible rules. Nine bundled rules
+use this constraint:
 
 | Threshold | Rules |
 |---|---|
 | `0.6` | muscovite_lowAl, muscovite_medAl, muscovite_medhighAl, muscovite_Fe-rich, illite_imt1, illite_gds4 |
-| `0.4` | kaolinite.5+muscoviteMedAl.5, kaolinite.5+muscoviteMedhighAl.5, kaolinite+muscovite_mix_intimate |
+| `0.55` | kaolinite.5+muscoviteMedAl.5, kaolinite.5+muscoviteMedhighAl.5, kaolinite+muscovite_mix_intimate |
+
+For the kaolinite-bearing mixture rules, the threshold is likewise an **upper**
+bound: a ratio ≥ 0.55 rejects that particular mixture interpretation, because
+kaolinite/smectite mixing is expected to reduce the secondary-to-primary depth
+ratio. It does not turn the pixel into pure white mica. The three bundled
+kaolinite–muscovite references have EMIT-band ratios 0.1972–0.2375 and remain
+self-identified. The 0.55 value was selected on the extended reference-derived
+development batch (correct targeted component sets 215→229, with improvement
+in every held-out pair fold); it is not an independently validated universal
+threshold. This intentional semantic change required a reviewed golden
+rebaseline. A seven-variant per-pixel audit has now explained
+all 28,226 label changes and the two lowFe/fallback interactions, and the
+rebuilt baseline passes both serial and four-worker regressions; see
+[the audit report](docs/golden_pixel_audit_20261124.md).
+The current library has no dedicated muscovite/illite–smectite
+mixture rule; that case needs an explicit rule and reference rather than an
+implicit semantic extension.
 
 The constraint is part of the rule schema — custom rule libraries can set
 `"max_depth_ratio_feat1_over_feat0": <float>` on any rule with ≥2 diagnostic
@@ -347,8 +374,8 @@ medAl `[2.200, 2.206)`, lowAl `[2.206, 2.210)`, Fe-rich `[2.210, 2.220)` —
 the four windows tile the 2.195–2.220 µm range without overlap, so every
 valid center arbitrates to exactly one subtype. The four bundled
 pure-chlorite rules likewise carry **tiling** windows — lowFe
-`[2.245, 2.248)`, clinochlore `[2.248, 2.252)`, Fe-rich `[2.252, 2.256)`,
-thuringite `[2.256, 2.266)` — covering the 2.245–2.266 µm range without
+`[2.244, 2.248)`, clinochlore `[2.248, 2.252)`, Fe-rich `[2.252, 2.256)`,
+thuringite `[2.256, 2.266)` — covering the 2.244–2.266 µm range without
 overlap, so every in-range `chl_center` also arbitrates deterministically
 to exactly one subtype (see *Application: reading chlorite Fe content
 from chl_center*). The four calcite/dolomite rules form two abundance
@@ -373,6 +400,15 @@ cross-tier flips are structurally impossible
 (pinned by a dedicated unit test). Custom rule libraries opt in per
 family: append the new rule to the corresponding family list AND give it
 the field; rules without it are never reassigned.
+
+Construction and `invalidate_caches()` validate that these extension fields
+are executable: a depth ratio needs at least two diagnostic features and a
+finite non-negative threshold; an arbitration window must be on the first
+diagnostic feature, have finite `lo < hi` bounds, and belong to a declared
+family. An active arbitration group needs at least two windowed members.
+Invalid configurations raise `ValueError` instead of being silently
+ignored. When cloning a windowed rule only for classification, either remove
+the inherited window or add the new rule to the appropriate family list.
 
 Seven white-mica-group and chlorite rules carry parsed structural formulas
 of their reference spectra as bundled metadata:
@@ -432,7 +468,7 @@ set (13 samples spanning xFe 0.014–0.553) the closed-form model
 with LOO-RMSE 1.0 nm — at the repeat-measurement noise floor — and the
 calibration is immune to the Fe²⁺/Fe³⁺ reporting convention (closure
 normalization cancels it exactly). Like the muscovite subtypes, the four
-chlorite rules carry **tiling windows** without overlap: lowFe `[2.245, 2.248)`,
+chlorite rules carry **tiling windows** without overlap: lowFe `[2.244, 2.248)`,
 clinochlore `[2.248, 2.252)`, Fe-rich `[2.252, 2.256)`, thuringite
 `[2.256, 2.266)` µm. Every in-range `chl_center`
 therefore hits exactly one window and arbitrates deterministically to one
@@ -514,10 +550,11 @@ wavelength = earlier anchor in the sequence above.
 ## Testing
 
 ```bash
-python tests/test_core.py              # 21 API contract / behavior tests
+python tests/test_core.py              # offline API contract / behavior suite
                                        # (integration section auto-skips without the test scene)
-python tests/test_custom_rules.py      # custom rule-library verification (7 scenarios:
-                                       #   rf_path / constraint & window edits / new rules / cache contract)
+python tests/test_custom_rules.py      # custom rule-library verification (14 scenarios:
+                                       #   rf_path / constraint & window edits / new rules /
+                                       #   cache contract / executable-extension validation)
 python tests/test_parallel_isolation.py # shared-state isolation (6 checks: worker/thread
                                        #   isolation, env restore, temp-file cleanup)
 
@@ -532,6 +569,14 @@ python tests/check_compiled_path.py    # compiled vs direct path, 302 pixels × 
 python tests/test_parallel.py 4        # full-scene golden regression (parallel)
 python tests/test_parallel.py 1        # full-scene golden regression (serial)
 ```
+
+**Current verification state (2026-11-24/25):** the offline suite reports
+**40 passed, 2 warnings**. Serial and four-worker golden regressions both pass
+with all five arrays bit-identical. A seven-variant per-pixel audit explained
+all 28,226 label changes, all center/RGB differences and the two lowFe/fallback
+interaction pixels before the baseline was rebuilt. See
+[the full audit](docs/golden_pixel_audit_20261124.md) and
+[verification matrix](docs/verification_matrix.md).
 
 **The golden baseline is platform-bound.** `tests/golden_arrays.npz` encodes
 this machine's BLAS results; ulp-level differences across BLAS builds are
@@ -557,12 +602,19 @@ cramm/
   mica_engine.py    # facade: resource loading + component wiring + CLI main()
   emit_reader.py    # EMIT L2A NetCDF reader + bad-band removal (float32 contract)
   classifier.py     # MICA core: resampling / compiled rules / serial & parallel classification
-  renderer.py       # rendering: three maps / GeoTIFF / single-spectrum PDF diagnostics
+  renderer.py       # rendering: five maps / GeoTIFF / single-spectrum PDF diagnostics
   data/             # color_table.json + rf.json + rf77_splib07_1nm.npz
                     # (color table / id-free rule library / 1nm pre-baked spectra)
 tests/              # bit-exact verification suite + API contract tests
 example_usage.py    # five usage-scenario examples
+examples/erlongnan/ # real-scene + measured-ASD reproducibility example
+docs/               # mathematical model, verification matrix and audit reports
 ```
+
+The [Erlongnan example](docs/case_studies/erlongnan.md) demonstrates
+reproducible scene processing, ASD-to-EMIT resampling and traceability. It is
+not an independent accuracy benchmark; scene output coverage and
+field-spectrum assignment rates do not replace per-sample mineral truth.
 
 ## Requirements
 

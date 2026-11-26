@@ -281,9 +281,9 @@ def test_muscovite_guard():
 
 def test_chlorite_window_arbitration():
     """Chlorite tiling-window arbitration: non-overlapping absorption_center_range
-    windows (lowFe [2.245,2.248) / clinochlore [2.248,2.252) / Fe [2.252,2.256)
+    windows (lowFe [2.244,2.248) / clinochlore [2.248,2.252) / Fe [2.252,2.256)
     / thuringite [2.256,2.266)).
-    The four windows tile the 2.245-2.266 um range without overlap, so every
+    The four windows tile the 2.244-2.266 um range without overlap, so every
     in-range center hits exactly one window and arbitrates deterministically;
     only an invalid center or one outside every window keeps the match."""
     from cramm.classifier import _reassign_by_absorption_center, CHLORITE_MINERALS
@@ -298,6 +298,7 @@ def test_chlorite_window_arbitration():
     cases = [
         (i_clino, 2.2522, i_fe),     # inside Fe window -> flip to Fe
         (i_clino, 2.2475, i_low),    # inside lowFe window -> flip to lowFe
+        (i_clino, 2.2445, i_low),    # 2026-11-18 extension: [2.244,2.245) now included
         (i_fe,    2.2495, i_clino),  # inside clino window -> flip
         (i_fe,    2.2515, i_clino),  # inside clino window -> flip
         (i_low,   2.2460, i_low),    # inside own window -> keep

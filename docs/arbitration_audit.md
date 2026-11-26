@@ -1,8 +1,9 @@
 # 仲裁逻辑审计报告
 
-> 日期:2026-09-02 ｜ 审计脚本:[`docs/_audit_arbitration.py`](_audit_arbitration.py)(离线可复跑,30 项检查全部 PASS,v1.5.0 起 F 组为按层仲裁语义)
-> 对象:`cramm/classifier.py` `_reassign_by_absorption_center`(:291-416)、`_get_quadratic_center`(:240-288)、三族成员列表(:72-122)、`classify` 仲裁调用点(:1656-1748)
-> 对账文档:[`docs/arbitration_windows.md`](arbitration_windows.md)(2026-08-26 归档,本次实测与其完全一致)
+> 日期:2026-09-02 ｜ 审计脚本:[`docs/_audit_arbitration.py`](_audit_arbitration.py)(离线可复跑,历次检查全部 PASS,v1.5.0 起 F 组为按层仲裁语义)
+> 对象:`cramm/classifier.py` `_reassign_by_absorption_center`、`_get_quadratic_center`、三族成员列表与 `classify` 仲裁调用点
+> 对账文档:[`docs/arbitration_windows.md`](arbitration_windows.md)
+> **2026-11-18 更新**：lowFe 下边界由 2.245 改为 2.244 µm；本报告中的旧窗口数值属于原配置，当前脚本已增加新增区间和出窗边界回归。重拟合非有限或越出目标窗时现回退翻转前中心。
 > 结论:**仲裁逻辑正确,窗口结构与归档文档一致**;无 P1/P2 缺陷,2 项 P3 观察(见"四")。
 
 ---

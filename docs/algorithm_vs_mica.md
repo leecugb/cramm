@@ -62,7 +62,7 @@
    | 族 | 带窗成员 | 窗口结构 | 语义 |
    |---|---|---|---|
    | 白云母 | medhighAl / medAl / lowAl / Fe-rich | 无缝拼接 [2.195, 2.220) | 确定性仲裁到唯一亚型 |
-   | 绿泥石 | lowFe / clinochlore / clinochlore_Fe / thuringite | 无缝拼接 [2.245, 2.266) | 同上 |
+   | 绿泥石 | lowFe / clinochlore / clinochlore_Fe / thuringite | 无缝拼接 [2.244, 2.266) | 同上 |
    | 碳酸盐(v1.5.0) | abundant 对 + plain 对 | **按丰度层两次调用**:dolomite [2.308,2.328) vs calcite [2.334,2.350),6 nm 死区 [2.328,2.334) | 对内竞争,跨层结构不可能 |
 
 ### 5. 输出层

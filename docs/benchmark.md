@@ -18,6 +18,10 @@ from the repo root. Raw log: `docs/benchmark.log`; machine-readable:
 | 2 | 93.00 s | 17,093 px/s | 1.42× |
 | 4 | 61.88 s | 25,689 px/s | 2.13× |
 
+Throughput uses the full 1,589,760-pixel grid and the unrounded
+`perf_counter` elapsed time. Wall times are rounded only for display, so
+dividing by the displayed values can differ by a few pixels/s.
+
 Serial and parallel outputs are bit-identical (guarded by
 `tests/test_parallel.py` against `tests/golden_arrays.npz`).
 

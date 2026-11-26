@@ -14,6 +14,13 @@ Scenarios:
 6. scene level (classify): killing the winner changes the assignment
 7. scene level: modifying absorption_center_range windows changes the
    wavelength-arbitrated muscovite attribution
+8. bundled extension contract is valid
+9. depth ratio requires two diagnostic features
+10. depth-ratio threshold must be finite
+11. orphan arbitration windows are rejected
+12. arbitration windows must be on the first diagnostic feature
+13. arbitration windows require finite lo < hi bounds
+14. an active arbitration group needs at least two windowed members
 
 Pure unit suite (synthetic band config + package-bundled splib); no EMIT NC needed.
 """
@@ -180,6 +187,11 @@ def test_new_rule_execution():
     base = e.classify_spectrum(spec, WL, W, BP, CHANELS, top_n=len(e.rf))
     assert "zz_test_medAl_clone" not in names_of(base)
     e.rf["zz_test_medAl_clone"] = copy.deepcopy(e.rf[MEDAL])
+    # This scenario tests rule execution, not arbitration. The new name has no
+    # family membership, so retaining the inherited window would be an invalid
+    # orphan-window configuration under the extension contract.
+    for feature in e.rf["zz_test_medAl_clone"]["diagnostic_features"]:
+        feature.pop("absorption_center_range", None)
     e.invalidate_caches()
     res = e.classify_spectrum(spec, WL, W, BP, CHANELS, top_n=len(e.rf))
     by_name = {x["name"]: x for x in res}
@@ -277,6 +289,69 @@ def test_absorption_center_window_modification():
 
 
 # ----------------------------------------------------------------------------
+# 8-13. Extension fields must be executable, not silently ignored
+# ----------------------------------------------------------------------------
+
+def expect_contract_error(engine, text):
+    try:
+        engine.invalidate_caches()
+    except ValueError as exc:
+        assert text in str(exc), f"expected {text!r} in {exc}"
+    else:
+        raise AssertionError(f"invalid extension contract was accepted: {text}")
+
+
+def test_bundled_extension_contract():
+    e = fresh_engine()
+    e.invalidate_caches()
+    n_ratio = sum("max_depth_ratio_feat1_over_feat0" in r for r in e.rf.values())
+    n_window = sum("absorption_center_range" in r["diagnostic_features"][0]
+                   for r in e.rf.values())
+    assert (n_ratio, n_window) == (9, 12), (n_ratio, n_window)
+
+
+def test_ratio_requires_two_features():
+    e = fresh_engine()
+    e.rf["zz_ratio_one_feature"] = copy.deepcopy(e.rf[MEDAL])
+    e.rf["zz_ratio_one_feature"]["diagnostic_features"] = (
+        e.rf["zz_ratio_one_feature"]["diagnostic_features"][:1]
+    )
+    expect_contract_error(e, "at least two diagnostic features")
+
+
+def test_ratio_threshold_must_be_finite():
+    e = fresh_engine()
+    e.rf[MEDAL]["max_depth_ratio_feat1_over_feat0"] = np.nan
+    expect_contract_error(e, "finite and >= 0")
+
+
+def test_orphan_arbitration_window_is_rejected():
+    e = fresh_engine()
+    e.rf["zz_orphan_window"] = copy.deepcopy(e.rf[MEDAL])
+    expect_contract_error(e, "no arbitration family")
+
+
+def test_window_must_be_on_first_feature():
+    e = fresh_engine()
+    features = e.rf[MEDAL]["diagnostic_features"]
+    features[1]["absorption_center_range"] = features[0].pop("absorption_center_range")
+    expect_contract_error(e, "first diagnostic feature")
+
+
+def test_window_bounds_must_be_valid():
+    e = fresh_engine()
+    e.rf[MEDAL]["diagnostic_features"][0]["absorption_center_range"] = [2.206, 2.200]
+    expect_contract_error(e, "lo < hi")
+
+
+def test_single_member_arbitration_group_is_rejected():
+    e = fresh_engine()
+    for name in ("muscovite_lowAl", "muscovite_medhighAl", "muscovite_Fe-rich"):
+        e.rf.pop(name)
+    expect_contract_error(e, "at least two windowed members")
+
+
+# ----------------------------------------------------------------------------
 # main
 # ----------------------------------------------------------------------------
 
@@ -289,6 +364,13 @@ def main():
     run("cache contract: stale trap / KeyError / invalidate", test_cache_contract)
     run("scene: killing winner changes assignment", test_scene_rule_modification)
     run("scene: absorption_center_range window re-arbitration", test_absorption_center_window_modification)
+    run("bundled extension contract is valid", test_bundled_extension_contract)
+    run("depth ratio requires two features", test_ratio_requires_two_features)
+    run("depth-ratio threshold must be finite", test_ratio_threshold_must_be_finite)
+    run("orphan arbitration window is rejected", test_orphan_arbitration_window_is_rejected)
+    run("arbitration window must be on first feature", test_window_must_be_on_first_feature)
+    run("arbitration window bounds must be valid", test_window_bounds_must_be_valid)
+    run("single-member arbitration group is rejected", test_single_member_arbitration_group_is_rejected)
 
     n_ok = sum(1 for s, _ in RESULTS if s == "OK")
     n_skip = sum(1 for s, _ in RESULTS if s == "SKIP")

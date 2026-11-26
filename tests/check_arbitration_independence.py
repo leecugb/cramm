@@ -8,7 +8,7 @@ defense-in-depth evidence that the pre-lock assumptions also held
 empirically:
     (a) family member lists are disjoint (code-level, checked separately),
     (b) no center ever reaches another family's windows:
-    - mus winner with mus_center >= 2.245 would flip INTO a chlorite rule
+    - mus winner with mus_center >= 2.244 would flip INTO a chlorite rule
     - chl winner with chl_center <  2.220 would flip INTO a muscovite rule
     - chl winner with chl_center >= 2.308 would touch a carbonate window
     - cal winner with cal_center <  2.266 would touch a chlorite window
