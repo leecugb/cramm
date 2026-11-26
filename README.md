@@ -11,9 +11,9 @@ the USGS MICA (Material Identification and Characterization Algorithm)
 decision-rule system. The classification core is **sensor-agnostic**: it works
 on any VNIR–SWIR reflectance cube given its band configuration (center
 wavelengths, FWHM, valid-band mask), because the bundled 1 nm rule-face
-reference spectra are resampled to the sensor's bands at runtime. EMIT L2A is
-simply the built-in data reader — one supported input type, not the defining
-one.
+reference spectra are resampled to the sensor's bands at runtime. EMIT L2A and
+ENVI Standard HDR are built-in readers; other sensors can supply the same
+spectral contract through a custom loader.
 
 CRAMM extends MICA in three ways:
 
@@ -78,9 +78,9 @@ Everything is pure Python and GUI-free. Cross-platform:
   to GeoTIFF, or identify one spectrum (GUI point-click, field
   spectrometer) with Top-N ranking and a PDF diagnostic report.
 - **Sensor-agnostic core** — everything downstream of data loading consumes a
-  generic `(spectrum, wavelengths, FWHM, valid bands)` contract. The bundled
-  reader covers EMIT L2A NetCDF; any other sensor (airborne or spaceborne)
-  plugs in through the same seven-tuple — no rule or code changes needed.
+  generic `(spectrum, wavelengths, FWHM, valid bands)` contract. Built-in
+  readers cover EMIT L2A NetCDF and ENVI Standard HDR; other sensors plug in
+  through the same seven-tuple — no rule or code changes needed.
 - **Fast** — reference-side constants are precompiled once per band
   configuration (two-level cache; ~16× speedup on repeated single-spectrum
   calls), and scene classification parallelizes across rules with worker
@@ -96,6 +96,7 @@ Everything is pure Python and GUI-free. Cross-platform:
 ```
 Hyperspectral reflectance cube (any VNIR–SWIR sensor)
       │  built-in: load_emit (EMIT L2A NetCDF, bad-band removal)
+      │            load_envi (ENVI Standard HDR + binary)
       │  or your own loader → (spectrum, wl, w, bp, chanels)
       ▼
 Reference resampling ── 1nm rule-face spectra ──► sensor wavelengths/FWHM
@@ -152,20 +153,24 @@ pip install .            # add [all] for the optional extras
 
 ### Command line
 
-The CLI uses the built-in EMIT L2A reader; for other sensors, use the Python
-API (below) with your own loader.
+The CLI auto-detects ENVI `.hdr` files and otherwise uses the built-in EMIT
+L2A reader. Use `--format emit|envi` to override detection.
 
 ```bash
 cramm -i EMIT_L2A_RFL_001_xxx.nc -o output [-n scene] [-w 4] [--raw]
+cramm -i scene.hdr -o output [-w 4]       # ENVI Standard HDR + binary
 ```
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `-i`, `--input` | *(required)* | Path to the EMIT L2A NetCDF file |
+| `-i`, `--input` | *(required)* | Path to an EMIT L2A NetCDF or ENVI `.hdr` file |
 | `-o`, `--output` | `.` | Output directory |
 | `-n`, `--name` | input filename | Output filename prefix |
 | `-w`, `--workers` | `min(cpu, 8)` | Parallel worker processes (`1` = serial) |
 | `--raw` | off | Also save `mus_center` + `chl_center` + `cal_center` + `fd` float arrays as `.npz` |
+| `--format` | `auto` | `auto`, `emit`, or `envi` |
+| `--envi-data` | inferred | Explicit ENVI binary path |
+| `--envi-fwhm` | header | Fallback scalar FWHM in µm when absent from the header |
 
 **Output files** (written to `<output>/<name>*`):
 
@@ -176,7 +181,25 @@ cramm -i EMIT_L2A_RFL_001_xxx.nc -o output [-n scene] [-w 4] [--raw]
 | `<name>_mus_orth.tiff` | Muscovite 2.2 µm absorption-center thematic map |
 | `<name>_chl_orth.tiff` | Chlorite 2250 nm absorption-center thematic map |
 | `<name>_cal_orth.tiff` | Carbonate 2330 nm absorption-center thematic map |
-| `<name>_raw.npz` | *(only with `--raw`)* `mus_center` + `chl_center` + `cal_center` [μm] + `fd` (fit×depth), float `[r, c]` |
+| `<name>_mapping.dat/.hdr`, `<name>_color_enhanced.dat/.hdr`, `<name>_mus.dat/.hdr`, `<name>_chl.dat/.hdr`, `<name>_cal.dat/.hdr` | *(ENVI input)* Same source `lines`/`samples`; source map/CRS fields inherited where present, with no reprojection |
+| `<name>_float.dat/.hdr` | *(ENVI input)* Four-band float32 `mus_center`, `chl_center`, `cal_center`, `fd` on the source grid |
+| `<name>_raw.npz` | *(only with `--raw`)* Optional raw float arrays for custom analysis |
+
+**Spatial-output convention**
+
+- **EMIT NetCDF input:** classification and center fitting run on the source
+  scene grid. `write_tiff` then uses the per-pixel lon/lat grids for
+  orthorectification and projection, so the five GeoTIFFs can have different
+  row/column dimensions from the source cube. Raw NPZ arrays remain on the
+  source grid and are not projected.
+- **ENVI HDR input:** `write_envi` performs no orthorectification or
+  reprojection. Every output preserves the source `lines` and `samples`, and
+  source map/projection fields are inherited when present. If the source header
+  has no CRS fields, none are invented.
+
+For the bundled EMIT demonstration scene, the source cube is 1280 × 1242,
+whereas the projected GeoTIFF grid is 1775 × 1980 at 60 m in WGS 84 / UTM
+zone 47N (EPSG:32647). The raw NPZ arrays remain 1280 × 1242.
 
 ### Python API
 
@@ -201,9 +224,30 @@ for r in results:
 
 ### Other sensors (non-EMIT data)
 
-`load_emit` is only a convenience reader. For any other sensor, load the cube
-yourself and pass the same band-configuration contract — references are
-resampled to your wavelengths/FWHM automatically:
+For ENVI Standard files, `load_envi` reads the binary, wavelength/FWHM,
+`reflectance scale factor`, `data ignore value` and optional
+`good_wavelengths`. BSQ, BIL and BIP are supported. If the header lacks FWHM,
+pass it explicitly in µm. `valid_bands=` accepts zero-based sensor-specific
+band indices; without a mask, all bands are used. See the
+[ENVI reader guide](docs/envi_reader.md).
+
+```python
+spectrum, lon, lat, w, bp, wl, chanels = engine.load_envi(
+    "scene.hdr", valid_bands=None
+)
+orth, color, mus, chl, cal, mus_center, chl_center, cal_center, fd = \
+    engine.spectrum_analysis(spectrum, wl, w, bp, chanels, n_workers=4, raw=True)
+engine.write_envi(
+    "output/scene", "scene.hdr", orth, color, mus, chl, cal,
+    mus_center=mus_center, chl_center=chl_center, cal_center=cal_center, fd=fd,
+)
+# Same lines/samples as the source; map/CRS fields are inherited where present.
+# Use write_tiff only when you supply genuine lon/lat grids for orthorectification.
+```
+
+For any other sensor, load the cube yourself and pass the same
+band-configuration contract — references are resampled to your
+wavelengths/FWHM automatically:
 
 ```python
 from cramm import MicaEngine
@@ -245,9 +289,11 @@ More scenarios — float (`raw=True`) output, custom rule libraries, the
 | `MicaEngine` method | Purpose |
 |---|---|
 | `load_emit(path)` | *(EMIT-specific convenience reader)* Read EMIT L2A NetCDF → `(spectrum, lon, lat, w, bp, wl, chanels)`; float32 cube, bad bands removed, fill values zeroed. Not needed for other sensors — supply the same tuple yourself |
+| `load_envi(path, ...)` | Read ENVI Standard `.hdr` + binary → the same seven-tuple with `lon=lat=None`; BSQ/BIL/BIP, scale/ignore values, wavelength/FWHM units and valid-band masks supported |
 | `spectrum_analysis(spectrum, wl, w, bp, chanels, ...)` | Classify a whole scene → 5 uint8 RGB images; `raw=True` adds `mus_center` + `chl_center` + `cal_center` + `fd` float arrays. Supports `progress_callback`, `log_callback`, `cancel_flag`, `n_workers` |
 | `classify_spectrum(spectrum, wl, w, bp, chanels, top_n=10, pdf_path=None)` | Identify one spectrum → Top-N `[{"name", "fit", "fd"}]` |
 | `write_tiff(prefix, lon, lat, orth, color, mus, chl=None, cal=None)` | Orthorectify (pyresample) and write the GeoTIFFs; `chl` and `cal` are optional (omit for legacy 3- or 4-file output); requires GDAL |
+| `write_envi(prefix, source_hdr, orth, color, mus, chl, cal, ...)` | Write same-grid ENVI products without reprojection; inherit source map/CRS fields, with optional four-band float center/fd output |
 | `get_resample(w, bp)` | All reference spectra resampled to the sensor bands `{rule_name: spectrum}` (cached; keys are rule-name strings — the sole link to the reference library after the v1.4.0 id purge) |
 | `invalidate_caches()` | **Required** after mutating `engine.rf` in place — see below |
 
@@ -570,8 +616,8 @@ python tests/test_parallel.py 4        # full-scene golden regression (parallel)
 python tests/test_parallel.py 1        # full-scene golden regression (serial)
 ```
 
-**Current verification state (2026-11-24/25):** the offline suite reports
-**40 passed, 2 warnings**. Serial and four-worker golden regressions both pass
+**Current verification state (2026-11-26):** the offline suite reports
+**51 passed, 2 warnings**, including eleven ENVI reader/writer tests. Serial and
 with all five arrays bit-identical. A seven-variant per-pixel audit explained
 all 28,226 label changes, all center/RGB differences and the two lowFe/fallback
 interaction pixels before the baseline was rebuilt. See
@@ -601,6 +647,8 @@ cramm/
   __init__.py       # exports MicaEngine / ProcessResult
   mica_engine.py    # facade: resource loading + component wiring + CLI main()
   emit_reader.py    # EMIT L2A NetCDF reader + bad-band removal (float32 contract)
+  envi_reader.py    # ENVI Standard HDR + binary reader (BSQ/BIL/BIP)
+  envi_writer.py    # same-grid ENVI products + source map/CRS inheritance
   classifier.py     # MICA core: resampling / compiled rules / serial & parallel classification
   renderer.py       # rendering: five maps / GeoTIFF / single-spectrum PDF diagnostics
   data/             # color_table.json + rf.json + rf77_splib07_1nm.npz

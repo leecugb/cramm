@@ -4,7 +4,8 @@
 MICA core engine — zero GUI dependencies (facade)
 =================================================
 Composes three decoupled components while preserving the original public API:
-    - EmitReader      (image reading, cramm/emit_reader.py)
+    - EmitReader      (EMIT NetCDF reading, cramm/emit_reader.py)
+    - EnviReader      (ENVI Standard HDR reading, cramm/envi_reader.py)
     - MicaClassifier  (spectral analysis core, cramm/classifier.py)
     - ResultRenderer  (result packaging, cramm/renderer.py)
 
@@ -23,7 +24,7 @@ How to verify:
     python tests/check_rows_logic.py     # 16 checks of rows surviving-pixel semantics
     python tests/check_compiled_path.py  # compiled/direct path 302x77 bit-exact diff
     python tests/test_parallel_isolation.py  # shared-state / thread / worker isolation (no NC needed)
-    python -m cramm.mica_engine -i <nc> [-o dir] [--raw]  # end-to-end CLI
+    python -m cramm.mica_engine -i <nc|hdr> [-o dir] [--raw]  # end-to-end CLI
 """
 
 from __future__ import annotations
@@ -37,6 +38,8 @@ import numpy as np
 
 from .classifier import MicaClassifier
 from .emit_reader import EmitReader
+from .envi_reader import EnviReader
+from .envi_writer import EnviResultWriter
 from .renderer import ResultRenderer
 
 
@@ -64,9 +67,9 @@ class MicaEngine:
     """
     MICA mineral identification engine (facade).
 
-    Composes EmitReader / MicaClassifier / ResultRenderer while preserving the
-    original public API. Resource loading happens in this class; analysis and
-    rendering are delegated to the respective components.
+    Composes EmitReader / EnviReader / MicaClassifier / ResultRenderer while
+    preserving the original public API. Resource loading happens in this class;
+    analysis and rendering are delegated to the respective components.
 
     Parameters
     ----------
@@ -124,6 +127,17 @@ class MicaEngine:
     def load_emit(pathname: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Load an EMIT NetCDF file (delegated to EmitReader)."""
         return EmitReader.load(pathname)
+
+    @staticmethod
+    def load_envi(pathname: str, **kwargs):
+        """Load an ENVI Standard ``.hdr`` file (delegated to EnviReader).
+
+        Returns the same seven-tuple as :meth:`load_emit`, except ``lon`` and
+        ``lat`` are ``None`` because map metadata are not expanded into
+        per-pixel coordinate grids. Optional ``data_path``, ``fwhm``,
+        ``valid_bands`` and ``wavelength_units`` arguments are forwarded.
+        """
+        return EnviReader.load(pathname, **kwargs)
 
     def get_resample(self, w: np.ndarray, bp: np.ndarray) -> Dict[str, np.ndarray]:
         """Resample all reference spectra to the EMIT wavelengths/FWHM (delegated to MicaClassifier).
@@ -289,55 +303,96 @@ class MicaEngine:
             pathname, lon, lat, orth_rgb, color_enhanced, mus_image, chl_image, cal_image
         )
 
+    @staticmethod
+    def write_envi(pathname: str, source_hdr: str, orth_rgb: np.ndarray,
+                   color_enhanced: np.ndarray, mus_image: np.ndarray,
+                   chl_image: np.ndarray, cal_image: np.ndarray, **kwargs):
+        """Write same-grid ENVI products and inherit source map metadata.
+
+        Unlike :meth:`write_tiff`, this performs no orthorectification. Every
+        output preserves the source ``lines`` and ``samples``. Optional keyword
+        arrays ``mus_center``, ``chl_center``, ``cal_center`` and ``fd`` add a
+        four-band float32 product.
+        """
+        return EnviResultWriter.write(
+            pathname, source_hdr, orth_rgb, color_enhanced, mus_image,
+            chl_image, cal_image, **kwargs
+        )
+
 
 # =============================================================================
 # CLI entry point (cramm command after pip install / python -m cramm.mica_engine)
 # =============================================================================
 
 def main():
-    """Command-line entry point: process EMIT NetCDF → 5 GeoTIFFs + float variables."""
+    """Command-line entry point: EMIT NetCDF or ENVI HDR → maps + float variables."""
     import argparse
     import time
 
     parser = argparse.ArgumentParser(
-        description="CRAMM — hyperspectral mineral identification (USGS MICA, extended); CLI reads EMIT L2A via the built-in reader"
+        description="CRAMM — hyperspectral mineral identification; CLI reads EMIT L2A or ENVI Standard HDR"
     )
-    parser.add_argument("--input", "-i", required=True, help="path to EMIT L2A NetCDF file")
+    parser.add_argument("--input", "-i", required=True, help="path to EMIT L2A NetCDF or ENVI .hdr file")
     parser.add_argument("--output", "-o", default=".", help="output directory (default: current directory)")
     parser.add_argument("--name", "-n", default=None, help="output filename prefix (default: input filename)")
     parser.add_argument("--workers", "-w", type=int, default=None, help="number of parallel worker processes (default: min(cpu, 8))")
     parser.add_argument("--raw", action="store_true", help="also save mus_center + chl_center + cal_center + fd float arrays as npz")
+    parser.add_argument("--format", choices=("auto", "emit", "envi"), default="auto", help="input format (default: infer .hdr as ENVI, otherwise EMIT)")
+    parser.add_argument("--envi-data", default=None, help="explicit ENVI binary path when it cannot be inferred")
+    parser.add_argument("--envi-fwhm", type=float, default=None, help="fallback scalar FWHM in micrometres when absent from ENVI header")
     args = parser.parse_args()
 
-    nc_path = args.input
+    input_path = args.input
     out_dir = args.output
-    out_name = args.name or os.path.splitext(os.path.basename(nc_path))[0]
+    out_name = args.name or os.path.splitext(os.path.basename(input_path))[0]
     out_path = os.path.join(out_dir, out_name)
-    # Create the output directory up front: --raw's npz is saved before write_tiff (which contains makedirs)
     os.makedirs(out_dir, exist_ok=True)
 
     engine = MicaEngine()
-    print(f"[CRAMM] Loading: {nc_path}", flush=True)
-    spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit(nc_path)
+    print(f"[CRAMM] Loading: {input_path}", flush=True)
+    is_envi = args.format == "envi" or (args.format == "auto" and input_path.lower().endswith(".hdr"))
+    if is_envi:
+        kwargs = {}
+        if args.envi_data is not None:
+            kwargs["data_path"] = args.envi_data
+        if args.envi_fwhm is not None:
+            kwargs["fwhm"] = args.envi_fwhm
+        spectrum, lon, lat, w, bp, wl, chanels = engine.load_envi(input_path, **kwargs)
+    else:
+        spectrum, lon, lat, w, bp, wl, chanels = engine.load_emit(input_path)
     print(f"[CRAMM] Shape: {spectrum.shape}  Valid bands: {len(chanels)}/{len(w)}", flush=True)
 
+    want_raw = args.raw or is_envi
     t0 = time.time()
-    if args.raw:
+    if want_raw:
         orth, color, mus, chl, cal, mus_center, chl_center, cal_center, fd = engine.spectrum_analysis(
             spectrum, wl, w, bp, chanels, n_workers=args.workers, raw=True,
             progress_callback=lambda p: print(f"[CRAMM] {p}%", flush=True),
         )
-        np.savez_compressed(
-            os.path.join(out_dir, out_name + "_raw.npz"),
-            mus_center=mus_center, chl_center=chl_center, cal_center=cal_center, fd=fd,
-        )
-        print(f"[CRAMM] Raw data saved: {out_name}_raw.npz", flush=True)
+        if args.raw:
+            np.savez_compressed(
+                os.path.join(out_dir, out_name + "_raw.npz"),
+                mus_center=mus_center, chl_center=chl_center, cal_center=cal_center, fd=fd,
+            )
+            print(f"[CRAMM] Raw data saved: {out_name}_raw.npz", flush=True)
     else:
         orth, color, mus, chl, cal = engine.spectrum_analysis(
             spectrum, wl, w, bp, chanels, n_workers=args.workers,
             progress_callback=lambda p: print(f"[CRAMM] {p}%", flush=True),
         )
     print(f"[CRAMM] Analysis: {time.time()-t0:.1f}s", flush=True)
+
+    if is_envi:
+        written = engine.write_envi(
+            out_path, input_path, orth, color, mus, chl, cal,
+            mus_center=mus_center, chl_center=chl_center,
+            cal_center=cal_center, fd=fd,
+        )
+        print(f"[CRAMM] Same-grid ENVI products written; source map/CRS fields inherited where present: {out_dir}", flush=True)
+        for path in written:
+            print(f"  {os.path.basename(path)}", flush=True)
+        print(f"[CRAMM] Done. Total: {time.time()-t0:.1f}s", flush=True)
+        return
 
     engine.write_tiff(out_path, lon, lat, orth, color, mus, chl, cal)
     print(f"[CRAMM] GeoTIFF written to: {out_dir}", flush=True)

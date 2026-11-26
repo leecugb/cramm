@@ -24,6 +24,16 @@ platform.
 
 Notes
 
+- 2026-11-26 ENVI Standard HDR input: new `cramm/envi_reader.py` and
+  `MicaEngine.load_envi()` support BSQ/BIL/BIP, byte order, header offset,
+  wavelength/FWHM units, scale factors, ignore values and valid-band masks.
+  The CLI auto-detects `.hdr`; ENVI results preserve the source grid and inherit
+  map/CRS fields through `write_envi`, with no reprojection. Eleven reader/writer
+  tests pass, bringing the offline suite to **51 passed, 2 warnings**. A local
+  converted EMIT fixture completed full-scene API and CLI classification, and
+  the original EMIT four-worker golden regression remains PASS. See
+  `docs/envi_reader.md`; this is not independent GeoAHSI scene validation.
+
 - 2026-11-24 per-pixel golden audit: C2 reproduces the golden arrays exactly;
   joint reversion of the 0.55 threshold, lowFe 2.244 window and refit fallback
   restores C2 labels/RGB/numeric arrays; current serial and parallel outputs are

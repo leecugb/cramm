@@ -1,4 +1,4 @@
-........................................                                 [100%]
+...................................................                      [100%]
 =============================== warnings summary ===============================
 tests/test_core.py::test_emit_reader_non_emit_nc
   <frozen importlib._bootstrap>:488: RuntimeWarning: numpy.ndarray size changed, may indicate binary incompatibility. Expected 16 from C header, got 96 from PyObject
@@ -8,4 +8,4 @@ tests/test_core.py::test_color_tif_sampling_and_validation
     warnings.warn(
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-40 passed, 2 warnings in 14.59s
+51 passed, 2 warnings in 15.06s
