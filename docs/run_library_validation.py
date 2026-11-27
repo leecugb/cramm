@@ -39,7 +39,7 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, ".")
+sys.path.insert(0, "repo/src")
 from cramm import MicaEngine  # noqa: E402
 from cramm.classifier import _resample_  # noqa: E402
 from usgs_splib import USGSLibrary  # noqa: E402

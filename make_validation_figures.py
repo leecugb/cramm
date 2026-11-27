@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Rectangle
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "repo", "src"))
 
 DOCS = "docs/figures"
 RAW_NPZ = "D:/test/EMIT_L2A_RFL_001_20220819T061448_2223104_025_raw.npz"

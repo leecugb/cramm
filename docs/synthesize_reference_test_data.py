@@ -26,7 +26,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parent.parent
-SOURCE = REPO / "cramm/data/rf77_splib07_1nm.npz"
+SOURCE = REPO / "repo/src/cramm/data/rf77_splib07_1nm.npz"
 DEFAULT_OUT = REPO / "output/synthetic_reference_v1"
 BASE_SEED = 20261118
 SNR_LEVELS_DB = (40.0, 25.0, 15.0)

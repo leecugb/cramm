@@ -22,7 +22,7 @@ buffer-history sensitivity would also surface as an A/B mismatch.
 Run from the project root:  python tests/check_alive_restriction.py
 """
 import os, sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # project root
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "repo", "src"))  # project root
 import numpy as np
 import cramm.classifier as C
 from cramm.emit_reader import EmitReader

@@ -16,7 +16,7 @@ import numpy as np
 from netCDF4 import Dataset
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "repo" / "src"))
 from cramm.classifier import (  # noqa: E402
     InvalidLeftEndPointError, InvalidRangeError, InvalidRightEndPointError,
     _continuum_constraints_list, _diagnostic_feature, _get_fit,
@@ -68,7 +68,7 @@ def main():
         raise SystemExit(f"Output directory must be empty: {OUT}")
     engine = MicaEngine()
     rf = engine.rf
-    bundle = np.load(ROOT / "cramm/data/rf77_splib07_1nm.npz", allow_pickle=False)
+    bundle = np.load(ROOT / "repo/src/cramm/data/rf77_splib07_1nm.npz", allow_pickle=False)
     grid, rules, labels, spectra = (bundle[k] for k in ("grid", "rule", "label", "spectra"))
     with Dataset(NC) as ds:
         group = ds["sensor_band_parameters"]

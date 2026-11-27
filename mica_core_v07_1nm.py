@@ -32,10 +32,10 @@ import sys
 
 import numpy as np
 
-# Make the repo root importable when the script is invoked directly.
-_REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
-if _REPO_ROOT not in sys.path:
-    sys.path.insert(0, _REPO_ROOT)
+# Make repo/src importable when the script is invoked directly.
+_REPO_SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "repo", "src")
+if _REPO_SRC not in sys.path:
+    sys.path.insert(0, _REPO_SRC)
 
 from cramm.classifier import MicaClassifier  # noqa: E402
 from cramm.emit_reader import EmitReader     # noqa: E402

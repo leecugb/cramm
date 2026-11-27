@@ -129,7 +129,7 @@ def main():
 
     # ---------------- B. CR 谱形对照 ----------------
     ax = axes[1]
-    z = np.load(REPO / 'cramm' / 'data' / 'rf77_splib07_1nm.npz',
+    z = np.load(REPO / 'repo' / 'src' / 'cramm' / 'data' / 'rf77_splib07_1nm.npz',
                 allow_pickle=True)
     grid, rules, specs = z['grid'], [str(r) for r in z['rule']], z['spectra']
 

@@ -6,7 +6,7 @@ import sys
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "repo" / "src"))
 
 from cramm.classifier import _fit_r2_depth, _get_quadratic_center, _precompute_feature, _resample_
 

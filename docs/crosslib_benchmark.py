@@ -43,7 +43,7 @@ warnings.filterwarnings('ignore')
 REPO = Path(__file__).resolve().parent.parent
 # 防呆:脚本方式运行时 sys.path[0]=docs/,`import cramm` 会命中 site-packages
 # 里的旧版 pip 包(1.0.2)而非本仓库源码——必须把仓库根插到最前
-sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "repo" / "src"))
 sys.path.insert(0, str(REPO / 'docs'))
 from _relab_stage1_selection import FAMILY_PATTERNS, FAMILY_NEGATIVES  # noqa: E402
 
@@ -225,7 +225,7 @@ def main() -> int:
     eng = MicaEngine()
     n_rules = len(eng.rf) if hasattr(eng, 'rf') else len(RULE_FAMILY)
     assert set(RULE_FAMILY) == set(json.loads(
-        (REPO / 'cramm' / 'data' / 'rf.json').read_text())['rf']), \
+        (REPO / 'repo' / 'src' / 'cramm' / 'data' / 'rf.json').read_text())['rf']), \
         'RULE_FAMILY 与 rf.json 的 77 规则不一致'
     DIAG_DIR.mkdir(exist_ok=True)
 

@@ -41,7 +41,7 @@ warnings.filterwarnings('ignore')
 REPO = Path(__file__).resolve().parent.parent
 # 防呆:脚本方式运行时 sys.path[0]=docs/,`import cramm` 会命中 site-packages
 # 里的旧版 pip 包(1.0.2)而非本仓库源码——必须把仓库根插到最前
-sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "repo" / "src"))
 USGS_ROOT = '/media/lee/共享14/backup/usgs_splib07'
 RELAB_ROOT = '/media/lee/共享14/backup/relab'
 MUS_CHAIN = Path('/media/lee/共享14/backup/gems/results/transfer_chain_validation.csv')

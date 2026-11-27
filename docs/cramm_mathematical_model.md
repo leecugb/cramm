@@ -59,7 +59,7 @@ g_k(\lambda_i)=\exp\left[-\frac{(\lambda_i-x)^2}{\sigma_k^2}\right].
 
 若正权重样本为空，则 \(\widetilde q_{jk}=\mathrm{NaN}\)。该模型表达的是**传感器响应坐标变换**，不是重新训练规则，也不是改变参考谱的物理诊断含义。参考侧缓存键必须包含波段配置及规则内容；原地修改规则后需要显式使缓存失效。
 
-代码依据：[classifier.py:251-332](../cramm/classifier.py#L251-L332)。
+代码依据：[classifier.py:251-332](../repo/src/cramm/classifier.py#L251-L332)。
 
 ## 3. 诊断特征的连续统移除
 
@@ -156,7 +156,7 @@ d=a k_0.
 
 该 \(d\) 是后续相对排除和深度比使用的**未加权深度**。它不等于 `feature_weight × depth`，也不等于 fit×depth。
 
-代码依据：[classifier.py:542-698](../cramm/classifier.py#L542-L698)。
+代码依据：[classifier.py:542-698](../repo/src/cramm/classifier.py#L542-L698)。
 
 ## 5. 从特征评价到候选规则
 
@@ -239,7 +239,7 @@ Q_j>Q_{\min},
 
 它不是 weighted depth ratio，也不是 fit×depth ratio。纯白云母/伊利石规则当前上限为 0.6，三条高岭石—白云母混合规则为 0.55。该约束只删除候选，不直接生成通用混合标签；高超阈可表示排除纯净归属或排除特定混合解释，语义取决于规则。
 
-代码依据：[classifier.py:983-1125](../cramm/classifier.py#L983-L1125)。
+代码依据：[classifier.py:983-1125](../repo/src/cramm/classifier.py#L983-L1125)。
 
 ## 6. 最佳匹配与无输出
 
@@ -269,7 +269,7 @@ j_0(x)=\arg\max_j\widetilde F_j(x).
 
 被拒绝状态的 NaN 快照被保留下来供仲裁验收使用，不能将“被拒绝”与“合法零 fit”混为一谈。
 
-代码依据：[classifier.py:1791-1800](../cramm/classifier.py#L1791-L1800)。
+代码依据：[classifier.py:1791-1800](../repo/src/cramm/classifier.py#L1791-L1800)。
 
 ## 7. 二次三点吸收中心估计
 
@@ -293,7 +293,7 @@ c=-\frac12
 
 非有限顶点折叠为 NaN，输出层再记为 0，表示无有效中心。当前实现没有单独的正曲率门控，也没有完整的中心不确定度模型。中心估计的用途是连续变化描述和仲裁，不能单独证明化学成分。
 
-代码依据：[classifier.py:362-407](../cramm/classifier.py#L362-L407)。
+代码依据：[classifier.py:362-407](../repo/src/cramm/classifier.py#L362-L407)。
 
 ## 8. 波长仲裁模型
 
@@ -341,7 +341,7 @@ c_0,&\text{否则}.
 - 无窗混合规则不参与仲裁；
 - 仲裁不会改变其他族或丰度层的归属。
 
-代码依据：[classifier.py:410-539](../cramm/classifier.py#L410-L539)。
+代码依据：[classifier.py:410-539](../repo/src/cramm/classifier.py#L410-L539)。
 
 ## 9. 输出模型与单谱模式差异
 

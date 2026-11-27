@@ -39,7 +39,7 @@ _MCF_CANDIDATES = [
 ]
 MCF = (Path(sys.argv[1]) if len(sys.argv) > 1
        else next((p for p in _MCF_CANDIDATES if p.exists()), _MCF_CANDIDATES[0]))
-RFJ = Path(sys.argv[2]) if len(sys.argv) > 2 else _REPO / "cramm/data/rf.json"
+RFJ = Path(sys.argv[2]) if len(sys.argv) > 2 else _REPO / "repo/src/cramm/data/rf.json"
 NULL = -99.99
 TOL = 5e-4  # .mcf 4 位小数 vs rf.json 有效数字
 

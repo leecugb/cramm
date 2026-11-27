@@ -18,7 +18,7 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, ".")
+sys.path.insert(0, "repo/src")
 from cramm import MicaEngine
 from cramm.classifier import _resample_
 from usgs_splib import USGSLibrary

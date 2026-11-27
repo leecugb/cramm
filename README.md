@@ -87,8 +87,8 @@ Everything is pure Python and GUI-free. Cross-platform:
   processes.
 - **Bit-exact discipline** — serial and parallel paths produce identical
   bytes; every change is guarded by a dual-path golden regression suite.
-- **Self-contained** — the rule library (`cramm/data/rf.json`),
-  the 1 nm rule-face spectra bundle (`cramm/data/rf77_splib07_1nm.npz`), and the
+- **Self-contained** — the rule library (`repo/src/cramm/data/rf.json`),
+  the 1 nm rule-face spectra bundle (`repo/src/cramm/data/rf77_splib07_1nm.npz`), and the
   mineral color table are bundled inside the wheel.
 
 ## How it works
@@ -148,6 +148,11 @@ From source (sdist / checkout):
 ```bash
 pip install .            # add [all] for the optional extras
 ```
+
+The repository keeps the import package in `repo/src/cramm/`, with tests in
+`tests/`, documentation in `docs/`, and examples in `examples/`. Both `LICENSE`
+and `LICENSE.txt` contain the MIT license. For development without an install,
+use `PYTHONPATH=repo/src`; the pytest configuration already adds this path.
 
 ## Quick start
 
@@ -332,9 +337,9 @@ Both require an explicit `invalidate_caches()` call.
 
 The classifier runs the **1 nm rule-face track** exclusively — reference
 spectra baked onto a shared 1 nm master grid (350–2500 nm) in
-`cramm/data/rf77_splib07_1nm.npz` (77 rule-face rows); no splib06b / specpr / external
+`repo/src/cramm/data/rf77_splib07_1nm.npz` (77 rule-face rows); no splib06b / specpr / external
 library is needed at runtime. The rule library
-`cramm/data/rf.json` carries the **same 77 rules** as the
+`repo/src/cramm/data/rf.json` carries the **same 77 rules** as the
 historical USGS `.mcf` v6a. As of v1.4.0 the rule library is **id-free**:
 every `reference.reflectance_record` (and every
 `not_(abs/rel)_features` `reflectance_record`) is a rule-name string drawn
@@ -675,5 +680,5 @@ field-spectrum assignment rates do not replace per-sample mineral truth.
 The decision rules implement the USGS MICA system
 (Kokaly et al., `russet`-era rule set); reference spectra come from the USGS
 splib07a spectral library (Clark et al., 2017; 1 nm rule-face grid baked into
-`cramm/data/rf77_splib07_1nm.npz`). The bundled test scene uses
+`repo/src/cramm/data/rf77_splib07_1nm.npz`). The bundled test scene uses
 EMIT L2A products, courtesy of NASA/JPL.

@@ -23,7 +23,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "repo" / "src"))
 
 from cramm.classifier import (  # noqa: E402
     CARBONATE_ABUNDANT_MINERALS,
@@ -35,7 +35,7 @@ from cramm.classifier import (  # noqa: E402
     _reassign_by_absorption_center,
 )
 
-rf = json.load(open(REPO / "cramm" / "data" / "rf.json",
+rf = json.load(open(REPO / "repo" / "src" / "cramm" / "data" / "rf.json",
                     encoding="utf-8"))["rf"]
 fails = []
 
@@ -204,7 +204,7 @@ check("F10 中心恰在 dolomite 窗 lo 2.308(闭) → 翻转 dolomite", got == 
 
 print("=== G. 重拟合 ===")
 # 真实光谱重拟合路径:用 npz 参考谱合成一个会被翻转的像元
-z = np.load(REPO / "cramm" / "data" / "rf77_splib07_1nm.npz")
+z = np.load(REPO / "repo" / "src" / "cramm" / "data" / "rf77_splib07_1nm.npz")
 grid = z["grid"]
 spec_row = z["spectra"][list(z["rule"]).index("muscovite_medAl")]
 m = (grid >= 2.1) & (grid <= 2.4)

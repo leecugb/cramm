@@ -122,7 +122,7 @@ def main() -> None:
         },
         "code_sha256": {
             **{
-                f"cramm/{name}": resource_sha256(name)
+                f"repo/src/cramm/{name}": resource_sha256(name)
                 for name in ("__init__.py", "classifier.py", "emit_reader.py", "mica_engine.py", "renderer.py")
             },
             "examples/erlongnan/run_emit_case.py": sha256(Path(__file__).resolve()),

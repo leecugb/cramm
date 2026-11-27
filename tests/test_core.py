@@ -25,7 +25,7 @@ import traceback
 
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # project root (where the cramm package lives)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "repo", "src"))  # repo/src (where the cramm package lives)
 
 NC_DEFAULT = "./EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc"
 

@@ -5,7 +5,7 @@
 
 ---
 
-## 一、`_resample_` 重采样核([classifier.py:156-228](../cramm/classifier.py#L156-L228))
+## 一、`_resample_` 重采样核([classifier.py:156-228](../repo/src/cramm/classifier.py#L156-L228))
 
 ### 1.1 算法口径
 
@@ -30,7 +30,7 @@
 - **影响评估**:参考谱相对量级 1e-16,对分类无影响;黄金回归链由同一实现产生与验证,不受波及。
 - **处置**:不改数值路径;将 docstring 中原"bit-exact vs pre-optimization version"的过度声明修正为如实记录该 1-ulp 例外(随本审计一并提交)。
 
-## 二、特征窗排除波段逻辑([classifier.py:419-494](../cramm/classifier.py#L419-L494))
+## 二、特征窗排除波段逻辑([classifier.py:419-494](../repo/src/cramm/classifier.py#L419-L494))
 
 ### 2.1 参考侧:编译期剔除(不对称设计)
 
@@ -50,7 +50,7 @@ mask = mask & ~np.isnan(reference)             # NaN 列物理移出窗口
 | `InvalidLeftEndPointError` | 左端点区间 `[e0, e1]` 无波段 |
 | `InvalidRightEndPointError` | 右端点区间 `[e2, e3]` 无波段 |
 
-- 以 `{"exc": ...}` 缓存于编译产物,求值时抛**同类型新实例**([_diagnostic_feature:636-639](../cramm/classifier.py#L636-L639)),避免共享实例累积 `__traceback__`。
+- 以 `{"exc": ...}` 缓存于编译产物,求值时抛**同类型新实例**([_diagnostic_feature:636-639](../repo/src/cramm/classifier.py#L636-L639)),避免共享实例累积 `__traceback__`。
 - classify 主循环捕获 → 规则优雅跳过。
 - **触发普查**:测试套件三异常均覆盖(201/413/13 次);真实 EMIT 文件(244 有效波段)**零触发**——501 个特征窗全部编译通过。
 
@@ -74,7 +74,7 @@ _get_compiled_rules (classifier.py:1398-1401)
 ```
 
 - 被移除的水汽带**永远不可能落入任何特征窗**:不参与端点均值、不参与 `con_`/`B`、不可能触发三个 Invalid 异常。
-- 编译缓存键 `(resample_key, wl.tobytes(), chanels.tobytes())`([classifier.py:1385-1389](../cramm/classifier.py#L1385-L1389))把波段选择列为正式编译输入,选择变化自动失效重编译。
+- 编译缓存键 `(resample_key, wl.tobytes(), chanels.tobytes())`([classifier.py:1385-1389](../repo/src/cramm/classifier.py#L1385-L1389))把波段选择列为正式编译输入,选择变化自动失效重编译。
 
 ## 四、全链无效值语义总图
 

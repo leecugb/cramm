@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "repo" / "src"))
 from cramm.classifier import (  # noqa: E402
     CARBONATE_ABUNDANT_MINERALS, CARBONATE_MINERALS, CARBONATE_PLAIN_MINERALS,
     _get_quadratic_center, _judge_reference_entry,

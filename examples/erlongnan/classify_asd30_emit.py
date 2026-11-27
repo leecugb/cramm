@@ -166,8 +166,8 @@ def main() -> None:
         "emit_contract": {"total_bands": len(w), "valid_bands": len(channels), "resampling": "CRAMM _resample_ production function"},
         "cramm_distribution": distribution,
         "code_sha256": {
-            "cramm/classifier.py": resource_sha256("classifier.py"),
-            "cramm/mica_engine.py": resource_sha256("mica_engine.py"),
+            "repo/src/cramm/classifier.py": resource_sha256("classifier.py"),
+            "repo/src/cramm/mica_engine.py": resource_sha256("mica_engine.py"),
             "examples/erlongnan/classify_asd30_emit.py": sha256(Path(__file__).resolve()),
         },
         "resource_sha256": {

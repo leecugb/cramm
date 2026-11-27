@@ -14,7 +14,7 @@ import time
 
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "repo", "src"))
 from cramm import MicaEngine
 
 NC = "./EMIT_L2A_RFL_001_20220819T061448_2223104_025.nc"

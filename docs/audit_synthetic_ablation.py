@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "repo" / "src"))
 from cramm.classifier import _diagnostic_feature  # noqa: E402
 from cramm.mica_engine import MicaEngine  # noqa: E402
 

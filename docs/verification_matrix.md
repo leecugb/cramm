@@ -24,7 +24,14 @@ platform.
 
 Notes
 
-- 2026-11-26 ENVI Standard HDR input: new `cramm/envi_reader.py` and
+- 2026-11-26 v1.6.1 repository compliance: the canonical package moved to
+  `repo/src/cramm/` and `LICENSE.txt` was added for SoftwareX's public GitHub
+  layout requirements. Packaging and direct-script imports use `repo/src`;
+  historical archive paths remain unchanged. The 51 offline tests, mathematical
+  checks, MCF verifier, and serial/four-worker full-scene golden regressions all
+  pass after migration, with all five golden arrays bit-identical.
+
+- 2026-11-26 ENVI Standard HDR input: new `repo/src/cramm/envi_reader.py` and
   `MicaEngine.load_envi()` support BSQ/BIL/BIP, byte order, header offset,
   wavelength/FWHM units, scale factors, ignore values and valid-band masks.
   The CLI auto-detects `.hdr`; ENVI results preserve the source grid and inherit

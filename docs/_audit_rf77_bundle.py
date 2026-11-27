@@ -30,8 +30,8 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parent.parent
-NPZ = REPO / "cramm" / "data" / "rf77_splib07_1nm.npz"
-RF = REPO / "cramm" / "data" / "rf.json"
+NPZ = REPO / "repo" / "src" / "cramm" / "data" / "rf77_splib07_1nm.npz"
+RF = REPO / "repo" / "src" / "cramm" / "data" / "rf.json"
 SEL = REPO / "docs" / "splib07_selection.json"
 CSV = REPO / "docs" / "rf77_splib07_1nm.csv"
 OLD_RF_COMMIT = "11b0f53"  # 最后一个含 cramm/data/rf.json(带 mixtures)的提交

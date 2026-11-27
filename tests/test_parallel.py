@@ -1,5 +1,5 @@
 import sys, os, time
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # project root (where the cramm package lives)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "repo", "src"))  # repo/src (where the cramm package lives)
 import numpy as np
 from cramm.mica_engine import MicaEngine
 

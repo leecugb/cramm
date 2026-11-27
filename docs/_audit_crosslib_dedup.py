@@ -27,7 +27,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parent.parent
-NPZ = REPO / 'cramm' / 'data' / 'rf77_splib07_1nm.npz'
+NPZ = REPO / 'repo' / 'src' / 'cramm' / 'data' / 'rf77_splib07_1nm.npz'
 SELECTION_JSON = REPO / 'docs' / 'splib07_selection.json'
 ECO_ROOT = '/media/lee/共享14/backup/ecospeclib-all'
 RELAB_ROOT = '/media/lee/共享14/backup/relab'

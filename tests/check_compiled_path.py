@@ -12,7 +12,7 @@ Also validates the compile-time exception path: endpoints beyond the wavelength 
 captured at compile time, re-raised in place at evaluation time.
 """
 import os, sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # project root (where the cramm package lives)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "repo", "src"))  # repo/src (where the cramm package lives)
 import numpy as np
 from cramm.classifier import (
     MicaClassifier, _judge_reference_entry, _diagnostic_feature, _precompute_feature,

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "CRAMM"
-version = "1.6.0"
+version = "1.6.1"
 description = "CRAMM — sensor-agnostic hyperspectral mineral identification with auditable MICA rules, depth-ratio constraints, absorption-center mapping, and EMIT L2A / ENVI HDR readers"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -16,7 +16,6 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -55,6 +54,7 @@ Repository = "https://github.com/leecugb/cramm"
 Issues = "https://github.com/leecugb/cramm/issues"
 
 [tool.setuptools]
+package-dir = {"" = "repo/src"}
 packages = ["cramm"]
 
 [tool.setuptools.package-data]
@@ -63,3 +63,6 @@ cramm = [
     "data/rf.json",
     "data/rf77_splib07_1nm.npz",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["repo/src"]

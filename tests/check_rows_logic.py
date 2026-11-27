@@ -11,7 +11,7 @@ Coverage:
 5. Empty rows does not crash (defensive)
 """
 import os, sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # project root (where the cramm package lives)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "repo", "src"))  # repo/src (where the cramm package lives)
 import numpy as np
 from cramm.classifier import (
     MicaClassifier, _diagnostic_feature, _get_fit,

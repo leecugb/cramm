@@ -7,5 +7,5 @@
 
 from .mica_engine import MicaEngine, ProcessResult
 
-__version__ = "1.6.0"
+__version__ = "1.6.1"
 __all__ = ["MicaEngine", "ProcessResult", "__version__"]

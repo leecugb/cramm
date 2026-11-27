@@ -14,7 +14,7 @@ import time
 
 import numpy as np
 
-sys.path.insert(0, "/home/lee/CRAMM")
+sys.path.insert(0, "/home/lee/CRAMM/repo/src")
 from cramm.mica_engine import MicaEngine  # noqa: E402
 from cramm.classifier import _judge_reference_entry  # noqa: E402
 

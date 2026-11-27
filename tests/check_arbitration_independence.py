@@ -21,7 +21,7 @@ Direct stale-center detectors for cross-family flips:
     cal->chl flip leaves num in chlorites with cal_center > 0
 """
 import os, sys, time
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "repo", "src"))
 import numpy as np
 from cramm.mica_engine import MicaEngine
 from cramm.classifier import MUSCOVITE_MINERALS, CHLORITE_MINERALS, CARBONATE_MINERALS
